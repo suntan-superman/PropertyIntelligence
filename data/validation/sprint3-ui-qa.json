@@ -1,0 +1,32 @@
+{
+  "at": "2026-09-18T20:16:24.659Z",
+  "status": "PASS",
+  "checks": [
+    "Property mode / no deal assumptions / 15 mapped and retained comps",
+    "Table → marker, marker click → table and keyboard activation of overlapping marker",
+    "Golden financial values / all 21 scenarios / unknown-cost warning",
+    "Expandable evidence and source provenance",
+    "390px responsive layout / keyboard focus sequence",
+    "Bass STOP / Joyce ambiguity retained",
+    "Ambiguous abbreviated address requires explicit confirmation",
+    "Failed lookup clears prior-property evidence",
+    "Manual claims isolated / core economics include explicit additional cost",
+    "Synthetic long / missing fields and 70-comp UI retain every row",
+    "Same-origin API / environment blocked / report generated from exact server session",
+    "Actual local key and encoded key absent from bundle; no provider headers"
+  ],
+  "errors": [],
+  "externalRequests": 0,
+  "newProviderCalls": 0,
+  "report": {
+    "path": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-24-400Z-c225b818.pdf",
+    "pages": 11,
+    "digest": "195e1a59d8ac7d7af22c35374ac712e8712c663416864d21e6a660f251cc1fe1",
+    "sha256": "a35f7dc7792a651aa460c94cb15313f19f71bfbb6529b194daba1b5a30c95a95",
+    "download": "/api/reports/d36c3502-97bd-455f-bee1-212c981b12a9"
+  },
+  "preservation": {
+    "status": "PASS",
+    "files": 36
+  }
+}

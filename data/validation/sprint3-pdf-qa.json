@@ -1,0 +1,281 @@
+{
+  "at": "2026-09-18T20:16:59.513Z",
+  "liveCalls": 0,
+  "preservation": {
+    "status": "PASS",
+    "files": 36
+  },
+  "results": [
+    {
+      "path": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-52-349Z-2602b6ad.pdf",
+      "pages": 11,
+      "digest": "195e1a59d8ac7d7af22c35374ac712e8712c663416864d21e6a660f251cc1fe1",
+      "sha256": "7d3a524c0000a896bc3e6a590a0bc6fd366939c480e82dbc3e60c4682e2737a8",
+      "id": "fantasia",
+      "pageCount": 11,
+      "compPages": 2,
+      "pageImages": [
+        {
+          "page": 1,
+          "image": "data/validation/sprint3-visual/fantasia-page-01.png",
+          "words": 53
+        },
+        {
+          "page": 2,
+          "image": "data/validation/sprint3-visual/fantasia-page-02.png",
+          "words": 30
+        },
+        {
+          "page": 3,
+          "image": "data/validation/sprint3-visual/fantasia-page-03.png",
+          "words": 111
+        },
+        {
+          "page": 4,
+          "image": "data/validation/sprint3-visual/fantasia-page-04.png",
+          "words": 99
+        },
+        {
+          "page": 5,
+          "image": "data/validation/sprint3-visual/fantasia-page-05.png",
+          "words": 25
+        },
+        {
+          "page": 6,
+          "image": "data/validation/sprint3-visual/fantasia-page-06.png",
+          "words": 58
+        },
+        {
+          "page": 7,
+          "image": "data/validation/sprint3-visual/fantasia-page-07.png",
+          "words": 60
+        },
+        {
+          "page": 8,
+          "image": "data/validation/sprint3-visual/fantasia-page-08.png",
+          "words": 68
+        },
+        {
+          "page": 9,
+          "image": "data/validation/sprint3-visual/fantasia-page-09.png",
+          "words": 43
+        },
+        {
+          "page": 10,
+          "image": "data/validation/sprint3-visual/fantasia-page-10.png",
+          "words": 42
+        },
+        {
+          "page": 11,
+          "image": "data/validation/sprint3-visual/fantasia-page-11.png",
+          "words": 24
+        }
+      ],
+      "contact": "data/validation/sprint3-visual/fantasia-contact.png",
+      "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
+    },
+    {
+      "path": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-16-54-055Z-e2b30e4e.pdf",
+      "pages": 4,
+      "digest": "5655f4f3db1d912282c554c3c69b3a5dab0457a665fdbe8359ee0155f5f964e5",
+      "sha256": "6c13f24370e960fd409ffa08e6eedcc70ef6c5e91fc9872ba0de2c58d527cc6f",
+      "id": "bass",
+      "pageCount": 4,
+      "compPages": 1,
+      "pageImages": [
+        {
+          "page": 1,
+          "image": "data/validation/sprint3-visual/bass-page-01.png",
+          "words": 48
+        },
+        {
+          "page": 2,
+          "image": "data/validation/sprint3-visual/bass-page-02.png",
+          "words": 44
+        },
+        {
+          "page": 3,
+          "image": "data/validation/sprint3-visual/bass-page-03.png",
+          "words": 33
+        },
+        {
+          "page": 4,
+          "image": "data/validation/sprint3-visual/bass-page-04.png",
+          "words": 41
+        }
+      ],
+      "contact": "data/validation/sprint3-visual/bass-contact.png",
+      "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
+    },
+    {
+      "path": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-16-55-245Z-7e7835ab.pdf",
+      "pages": 4,
+      "digest": "2a490e803c9f223e3e0e2ffe3b30bbe7e3701834fd4ed02d15a68c5f98aaf64b",
+      "sha256": "237732cbbb6a8ccf3bac69254f65edf5bb3d346ba6ed7b200b958857cd2039e5",
+      "id": "joyce",
+      "pageCount": 4,
+      "compPages": 1,
+      "pageImages": [
+        {
+          "page": 1,
+          "image": "data/validation/sprint3-visual/joyce-page-01.png",
+          "words": 48
+        },
+        {
+          "page": 2,
+          "image": "data/validation/sprint3-visual/joyce-page-02.png",
+          "words": 44
+        },
+        {
+          "page": 3,
+          "image": "data/validation/sprint3-visual/joyce-page-03.png",
+          "words": 33
+        },
+        {
+          "page": 4,
+          "image": "data/validation/sprint3-visual/joyce-page-04.png",
+          "words": 39
+        }
+      ],
+      "contact": "data/validation/sprint3-visual/joyce-contact.png",
+      "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
+    },
+    {
+      "path": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-16-56-449Z-eac1dd55.pdf",
+      "pages": 5,
+      "digest": "e4b448f429c5e798b576a2c4b99cf4ec49260bb87924a4f2e49295f2fa12881b",
+      "sha256": "d31ec1836f62bbe362ed5d8b88be43eef9f3519683bd509f1135e8776049f631",
+      "id": "synthetic-long",
+      "pageCount": 5,
+      "compPages": 1,
+      "pageImages": [
+        {
+          "page": 1,
+          "image": "data/validation/sprint3-visual/synthetic-long-page-01.png",
+          "words": 48
+        },
+        {
+          "page": 2,
+          "image": "data/validation/sprint3-visual/synthetic-long-page-02.png",
+          "words": 56
+        },
+        {
+          "page": 3,
+          "image": "data/validation/sprint3-visual/synthetic-long-page-03.png",
+          "words": 34
+        },
+        {
+          "page": 4,
+          "image": "data/validation/sprint3-visual/synthetic-long-page-04.png",
+          "words": 46
+        },
+        {
+          "page": 5,
+          "image": "data/validation/sprint3-visual/synthetic-long-page-05.png",
+          "words": 39
+        }
+      ],
+      "contact": "data/validation/sprint3-visual/synthetic-long-contact.png",
+      "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
+    },
+    {
+      "path": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-16-57-763Z-3e3f2569.pdf",
+      "pages": 17,
+      "digest": "54e42c759e05a141bcf150050ecd62d02fbb36ca1cb44c6191e3ce4bd17bef22",
+      "sha256": "e4753332c62343827e7fd0e7fb252c0395cd7918087e7b756929291384426dcd",
+      "id": "synthetic-many-comps",
+      "pageCount": 17,
+      "compPages": 8,
+      "pageImages": [
+        {
+          "page": 1,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-01.png",
+          "words": 54
+        },
+        {
+          "page": 2,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-02.png",
+          "words": 31
+        },
+        {
+          "page": 3,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-03.png",
+          "words": 115
+        },
+        {
+          "page": 4,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-04.png",
+          "words": 137
+        },
+        {
+          "page": 5,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-05.png",
+          "words": 137
+        },
+        {
+          "page": 6,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-06.png",
+          "words": 137
+        },
+        {
+          "page": 7,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-07.png",
+          "words": 137
+        },
+        {
+          "page": 8,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-08.png",
+          "words": 137
+        },
+        {
+          "page": 9,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-09.png",
+          "words": 137
+        },
+        {
+          "page": 10,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-10.png",
+          "words": 35
+        },
+        {
+          "page": 11,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-11.png",
+          "words": 25
+        },
+        {
+          "page": 12,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-12.png",
+          "words": 58
+        },
+        {
+          "page": 13,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-13.png",
+          "words": 60
+        },
+        {
+          "page": 14,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-14.png",
+          "words": 68
+        },
+        {
+          "page": 15,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-15.png",
+          "words": 43
+        },
+        {
+          "page": 16,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-16.png",
+          "words": 42
+        },
+        {
+          "page": 17,
+          "image": "data/validation/sprint3-visual/synthetic-many-comps-page-17.png",
+          "words": 24
+        }
+      ],
+      "contact": "data/validation/sprint3-visual/synthetic-many-comps-contact.png",
+      "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
+    }
+  ],
+  "visualInspection": "PNG pages/contact sheets generated; reviewer findings recorded in docs/PDF_QA_CHECKLIST.md"
+}

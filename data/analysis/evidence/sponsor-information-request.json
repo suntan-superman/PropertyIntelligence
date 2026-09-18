@@ -1,0 +1,127 @@
+{
+  "status": "DRAFT_NOT_SENT",
+  "requests": [
+    {
+      "id": "fantasia-resaleSupport",
+      "propertyId": "fantasia",
+      "question": "Supply the evidence/comps supporting $279,000; identify closed sales versus listings and home/land tenure.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-landTenure",
+      "propertyId": "fantasia",
+      "question": "Does Fantasia include owned land, a leasehold, or home-only/chattel rights? Supply supporting documents.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-parkCommunity",
+      "propertyId": "fantasia",
+      "question": "Identify the park/community and provide governing documents.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-spaceRent",
+      "propertyId": "fantasia",
+      "question": "Confirm monthly space rent, billing terms, rent increases and all additional fees.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-restrictions",
+      "propertyId": "fantasia",
+      "question": "Provide investor/resale, buyer approval, age, occupancy and transfer restrictions.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-repairs",
+      "propertyId": "fantasia",
+      "question": "Supply itemized repair scope, contractor estimates and contingency support.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-condition",
+      "propertyId": "fantasia",
+      "question": "Supply current photos and inspection/condition evidence.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-taxes",
+      "propertyId": "fantasia",
+      "question": "Supply taxes applicable during holding and at transfer, including allocation rules.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-insurance",
+      "propertyId": "fantasia",
+      "question": "Supply insurance quote, coverage period and premiums.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-utilities",
+      "propertyId": "fantasia",
+      "question": "Supply utilities, maintenance and other recurring holding costs.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-acquisitionClosing",
+      "propertyId": "fantasia",
+      "question": "Supply acquisition closing costs and purchase agreement support.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-financing",
+      "propertyId": "fantasia",
+      "question": "Supply financing terms, fees, interest and payment timing.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-title",
+      "propertyId": "fantasia",
+      "question": "Supply title/encumbrance information, proposed lien instruments and priority.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-schedule",
+      "propertyId": "fantasia",
+      "question": "Explain the 120-day schedule and milestones for renovation, listing and closing; reconcile three months of rent.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "fantasia-sellingCosts",
+      "propertyId": "fantasia",
+      "question": "Support commission/escrow and supply transfer/application fees and other disposition costs.",
+      "status": "UNANSWERED",
+      "priority": "MATERIAL"
+    },
+    {
+      "id": "bass-identity",
+      "propertyId": "bass",
+      "question": "Supply manufactured-home type, unit/lot, parcel/home identifiers and structural details for 95 Bass Circle; provider record is insufficient.",
+      "status": "UNANSWERED",
+      "priority": "STOP_GATE"
+    },
+    {
+      "id": "joyce-address",
+      "propertyId": "joyce",
+      "question": "Confirm complete street/city/state/ZIP and any unit/lot for 131 Joyce Place.",
+      "status": "UNANSWERED",
+      "priority": "STOP_GATE"
+    }
+  ],
+  "notes": [
+    "No message sent. Collateral verification remains outside this sprint."
+  ]
+}

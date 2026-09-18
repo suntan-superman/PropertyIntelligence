@@ -1,0 +1,714 @@
+{
+  "schemaVersion": 1,
+  "id": "brandon-florida",
+  "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+  "properties": [
+    {
+      "id": "fantasia",
+      "sponsorAddress": {
+        "street": "8426 Fantasia Parkway",
+        "city": "Riverview",
+        "state": "FL",
+        "zip": null
+      },
+      "addressClaim": {
+        "field": "address",
+        "value": {
+          "street": "8426 Fantasia Parkway",
+          "city": "Riverview",
+          "state": "FL",
+          "zip": null
+        },
+        "unit": null,
+        "suppliedBy": "Brandon",
+        "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+        "suppliedAt": null,
+        "status": "SPONSOR_SUPPLIED",
+        "evidenceRefs": [],
+        "notes": [
+          "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+        ]
+      },
+      "addressConfirmation": {
+        "address": {
+          "street": "8426 Fantasia Park Way",
+          "city": "Riverview",
+          "state": "FL",
+          "zip": "33578"
+        },
+        "suppliedBy": "Stan",
+        "suppliedDate": "2026-09-18",
+        "status": "USER_CONFIRMED",
+        "sourceDocument": "docs/FLORIDA_ADDRESS_CONFIRMATIONS.md",
+        "notes": [
+          "Confirms intended address only; original sponsor address remains unchanged."
+        ]
+      }
+    },
+    {
+      "id": "bass",
+      "sponsorAddress": {
+        "street": "95 Bass Circle",
+        "city": "Winter Haven",
+        "state": "FL",
+        "zip": null
+      },
+      "addressClaim": {
+        "field": "address",
+        "value": {
+          "street": "95 Bass Circle",
+          "city": "Winter Haven",
+          "state": "FL",
+          "zip": null
+        },
+        "unit": null,
+        "suppliedBy": "Brandon",
+        "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+        "suppliedAt": null,
+        "status": "SPONSOR_SUPPLIED",
+        "evidenceRefs": [],
+        "notes": [
+          "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+        ]
+      }
+    },
+    {
+      "id": "joyce",
+      "sponsorAddress": {
+        "street": "131 Joyce Place",
+        "city": null,
+        "state": null,
+        "zip": null
+      },
+      "addressClaim": {
+        "field": "address",
+        "value": {
+          "street": "131 Joyce Place",
+          "city": null,
+          "state": null,
+          "zip": null
+        },
+        "unit": null,
+        "suppliedBy": "Brandon",
+        "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+        "suppliedAt": null,
+        "status": "SPONSOR_SUPPLIED",
+        "evidenceRefs": [],
+        "notes": [
+          "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+        ]
+      }
+    }
+  ],
+  "deals": [
+    {
+      "id": "fantasia",
+      "name": "8426 Fantasia Parkway",
+      "propertyRef": "fantasia",
+      "sponsor": "Brandon",
+      "claims": [
+        {
+          "field": "projectedListPrice",
+          "value": 279000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "salesCommission",
+          "value": 5000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "escrowClosingCosts",
+          "value": 2000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "spaceRentThreeMonths",
+          "value": 3000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedNetSaleProceeds",
+          "value": 269000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "acquisitionCost",
+          "value": 160000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "estimatedRepairs",
+          "value": 10000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedNetProfit",
+          "value": 99000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "totalCashInvested",
+          "value": 173000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedCashOnCashReturn",
+          "value": 0.572,
+          "unit": "ratio",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        }
+      ],
+      "evidence": [],
+      "underwriting": null
+    },
+    {
+      "id": "bass",
+      "name": "95 Bass Circle",
+      "propertyRef": "bass",
+      "sponsor": "Brandon",
+      "claims": [
+        {
+          "field": "projectedListPrice",
+          "value": 65000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "salesCommission",
+          "value": 3000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "escrowClosingCosts",
+          "value": 2000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "spaceRentThreeMonths",
+          "value": 2400,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedNetSaleProceeds",
+          "value": 57600,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "acquisitionCost",
+          "value": 15000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "estimatedRepairs",
+          "value": 12000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedNetProfit",
+          "value": 30600,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "totalCashInvested",
+          "value": 29400,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedCashOnCashReturn",
+          "value": 1.041,
+          "unit": "ratio",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        }
+      ],
+      "evidence": [],
+      "underwriting": null
+    },
+    {
+      "id": "joyce",
+      "name": "131 Joyce Place",
+      "propertyRef": "joyce",
+      "sponsor": "Brandon",
+      "claims": [
+        {
+          "field": "projectedListPrice",
+          "value": 40000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "salesCommission",
+          "value": 2500,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "escrowClosingCosts",
+          "value": 2000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "spaceRentThreeMonths",
+          "value": 3122,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedNetSaleProceeds",
+          "value": 32378,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "acquisitionCost",
+          "value": 5000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "estimatedRepairs",
+          "value": 5000,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedNetProfit",
+          "value": 22378,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "totalCashInvested",
+          "value": 13122,
+          "unit": "USD",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        },
+        {
+          "field": "projectedCashOnCashReturn",
+          "value": 1.705,
+          "unit": "ratio",
+          "suppliedBy": "Brandon",
+          "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+          "suppliedAt": null,
+          "status": "SPONSOR_SUPPLIED",
+          "evidenceRefs": [],
+          "notes": [
+            "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+          ]
+        }
+      ],
+      "evidence": [],
+      "underwriting": null
+    }
+  ],
+  "claims": [
+    {
+      "field": "totalPurchasePrices",
+      "value": 180000,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "totalEstimatedRepairs",
+      "value": 27000,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "totalThreeMonthSpaceRents",
+      "value": 8522,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "totalCashInvested",
+      "value": 215522,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "combinedProjectedListPrices",
+      "value": 384000,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "combinedProjectedNetSaleProceeds",
+      "value": 358978,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "combinedProjectedNetProfit",
+      "value": 151978,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "projectedCashOnCashReturn",
+      "value": 0.705,
+      "unit": "ratio",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "estimatedTimelineDays",
+      "value": 120,
+      "unit": "days",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    }
+  ],
+  "collateralClaims": [
+    {
+      "field": "promissoryNotes",
+      "value": "Sponsor reports promissory notes; terms/documents not supplied.",
+      "unit": null,
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "liens",
+      "value": "Sponsor reports liens on the three Florida properties; lien instruments and priority unverified.",
+      "unit": null,
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "additionalCollateralAddress",
+      "value": "713 Bryce Drive",
+      "unit": null,
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "additionalCollateralFreeAndClear",
+      "value": true,
+      "unit": null,
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    },
+    {
+      "field": "additionalCollateralEstimatedValue",
+      "value": 230000,
+      "unit": "USD",
+      "suppliedBy": "Brandon",
+      "sourceDocument": "docs/PropertyIntelligence_Foundation_Sprint1_RentCast_Codex.md",
+      "suppliedAt": null,
+      "status": "SPONSOR_SUPPLIED",
+      "evidenceRefs": [],
+      "notes": [
+        "Transcribed from the supplied sprint specification; original sponsor package/date unavailable."
+      ]
+    }
+  ],
+  "notes": [
+    "No city/state/ZIP inferred for Joyce or collateral. Collateral verification is out of scope."
+  ]
+}

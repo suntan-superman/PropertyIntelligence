@@ -1,0 +1,149 @@
+{
+  "createdAt": "2026-09-18T20:01:17.135Z",
+  "files": [
+    {
+      "file": "data/analysis/break-even/fantasia-break-even.csv",
+      "sha256": "0bbbf3aef800c9da66fb63aa1cd126ad5359cfcf33c38e616318cc28c36482d1"
+    },
+    {
+      "file": "data/analysis/break-even/fantasia-break-even.json",
+      "sha256": "089fe4693340202eb52f453fdc2a1cfec787f09ec86b2952536872d4fbe120c7"
+    },
+    {
+      "file": "data/analysis/evidence/florida-evidence-completeness.csv",
+      "sha256": "5c935d4447191cdb60578452683c4bb95aedb66f87490bfbfa00936cec9594ba"
+    },
+    {
+      "file": "data/analysis/evidence/florida-evidence-completeness.json",
+      "sha256": "1f9e457a6b96077c8cfd7612fa4d4536942f32717b8cca5b86eeb8554c34f22e"
+    },
+    {
+      "file": "data/analysis/evidence/monte-carlo-readiness.json",
+      "sha256": "a3e66e0cbc6507bd62c627f66231e506be25bfebbd4fc09cd3946a6a57727b14"
+    },
+    {
+      "file": "data/analysis/evidence/sponsor-information-request.json",
+      "sha256": "2247a2b96847009860f68eabb5f899b9f8ebe1d44c256491883076198644d10b"
+    },
+    {
+      "file": "data/analysis/scenarios/fantasia-scenarios.csv",
+      "sha256": "df93974b18b353a3bd40dd98f51db62bee4d4e2bd6ea86636ba991cb974dd2cc"
+    },
+    {
+      "file": "data/analysis/scenarios/fantasia-scenarios.json",
+      "sha256": "a3f45487d43b29291ec46e2b305bbfaade2dd0e342bf08a45c56f3dd33a9acfb"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-deterministic-ranking.json",
+      "sha256": "82f5bb6e8cbd71e09424159adfb2e53aa1ff39f6c5c7d73c23b1fff514fcd05a"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-hold-sensitivity.csv",
+      "sha256": "2d168068f7cfe6733d358ce176ba5f7fc31c6efe584eee4058bf33236d2d8ee2"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-repair-sensitivity.csv",
+      "sha256": "ca4b6d1f39a69110213d6ee128655d6ed31088d514d6404fd0bdedd57947251a"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-sale-repair-matrix.csv",
+      "sha256": "01a5d321acacef63c728ab37137f706938934e1e99092824c2464f5d1cbe2c4e"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-sale-sensitivity.csv",
+      "sha256": "27894ff5151f95d692360178bd483b3e8775fa7723ac25c01a04dc6ebbf1f365"
+    },
+    {
+      "file": "data/analysis/sprint2-input-manifest.json",
+      "sha256": "8900c1a76a43e7c008aaba77e1ad65a25b3b769735c310f4ed4a144a0ab77eb3"
+    },
+    {
+      "file": "data/cache/kern-metadata-inspection-failure.json",
+      "sha256": "c6ce3f5a63aa1ac621018a802c443588ab1917cb0f88cfb04c92efb2ca80913a"
+    },
+    {
+      "file": "data/comparisons/florida-comparisons.csv",
+      "sha256": "c964efdf759193e0b1a7cfcc68e5edf24ea70eb588fe0d694b02c76b5a9fcdb6"
+    },
+    {
+      "file": "data/comparisons/florida-comparisons.json",
+      "sha256": "93c5582ebf81485349e5822faf834610c3369df19653984d10c1ad956f32c192"
+    },
+    {
+      "file": "data/deals/florida-portfolio.json",
+      "sha256": "25afc00499798be7bb2087e48145811975ae448f2173e41ad5bfe224f2946742"
+    },
+    {
+      "file": "data/normalized/florida-underwriting.json",
+      "sha256": "293772dc6275c48f307df4a0c95aa944a309ee12ee00ce4069a0a3624c599c46"
+    },
+    {
+      "file": "data/normalized/florida-verification.json",
+      "sha256": "d20021aa0acfc3879b31c67e34c73a1c1d4b725043df1cff53f9cbaaa1c46572"
+    },
+    {
+      "file": "data/raw/kern_power_to_sell_2026-09-15.csv",
+      "sha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3"
+    },
+    {
+      "file": "data/raw/rentcast/988be361cf4184980e2656c76344de2305e627c95258c2feed5a2d2009739c80/4eb7d353749bdb83fcc8228588bb01fecea01fd2f87f96c5e36128da40a4b901.json",
+      "sha256": "bfda0159e0b8ecbf42f0e52f58759b4aeffbfce147069eb1d85feb2a6db60601"
+    },
+    {
+      "file": "data/raw/rentcast/988be361cf4184980e2656c76344de2305e627c95258c2feed5a2d2009739c80/c1670113c9811ee08d8d39db8801994cb22f42959f1374cba289772440cc1372.index.json",
+      "sha256": "a2708217b29d198dbf7d18ef0131bb2b72ad226f4f2d7317307ab2353f236d9e"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/0e16470bed82a92870087f1adc64a7750b257b9fd5c064300d93448118140dd4.index.json",
+      "sha256": "fe9bdd0074ef2a732104651f610f11687afdfb08bece338ee56c29101f2dd76f"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/1d56702f0f22f299bd7cbf0cf788df3901c7535db691a15a3398914e1e99df46.json",
+      "sha256": "a9ec9067c86536dfbc2d62e01099aeb6ace8446d8846f2de305e7b86487e9cd2"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/23aaea18ff7e014ac26282a09d0d2ceeec7cfe6877ca9d20e458220c516689f4.json",
+      "sha256": "23d91f2fdb84972e28e6f5046278e1d1184469059aa53710cf6f3c3f3bd5762e"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/98f5ff37e04f08d5faf8ed1f92544a8dd71d4994f9124aaa9b8c8a84937cafce.index.json",
+      "sha256": "22a1fe054be21a1ab310664f020d12a7564a50a2f53cc55dfef18b05efe16b13"
+    },
+    {
+      "file": "data/raw/rentcast/c4dc8130e5ddcf025a63a54f0ae05fc3af55a83e133df0a4750634c355c2980b/5fafb228816ae593bf65159ebc4749dbfbfe43e360ab538db1f857d00e81874c.json",
+      "sha256": "25d0c2e5a26fa45c843ad0cb8859e3f670823c9051c08781c40bb9bf0c57faf5"
+    },
+    {
+      "file": "data/raw/rentcast/c4dc8130e5ddcf025a63a54f0ae05fc3af55a83e133df0a4750634c355c2980b/80a9979d5d51158130a0a0ac486b0975a39d8a0714425aa0bca767b889eb54ce.index.json",
+      "sha256": "6aab70bb239177103cb9ea8ed7a7a5539f659dc0484b1732a69a742296395c95"
+    },
+    {
+      "file": "data/raw/rentcast/c4dc8130e5ddcf025a63a54f0ae05fc3af55a83e133df0a4750634c355c2980b/d5641b036d6564553c1e2a690534ad6da28748d0e0a116fbd54f3061c168fb54.json",
+      "sha256": "42161a07c335202ad61621442ee906c92ed08ee41930a0cd609827f78e57e089"
+    },
+    {
+      "file": "data/validation/foundation-cache-replay.json",
+      "sha256": "1973015b09a0a7588e2eb20aa379a6bcb1b7a923c14f6bd381095f70644d2b15"
+    },
+    {
+      "file": "data/validation/foundation-sprint2-reproducibility.json",
+      "sha256": "f778399ff5c0549a9735dc65284d9a0db8acaed77662fa72f567a9cee86e7a18"
+    },
+    {
+      "file": "data/validation/foundation-sprint2-tests.json",
+      "sha256": "8783fe5484385527059d8227dba53f1b9497b1771cea4511e1f26660a165895b"
+    },
+    {
+      "file": "data/validation/foundation-tests.json",
+      "sha256": "9f920c20c1a47ffbf5f776e258a51cccc936a8e26cc23f55bcae27c00c0cf398"
+    },
+    {
+      "file": "data/validation/foundation-validation.json",
+      "sha256": "6345ef7befc02162641403179c8249dff9ce88bae14b6d8f5899c285a70ece56"
+    },
+    {
+      "file": "data/validation/kern_poc1_manual_validation_20.csv",
+      "sha256": "85e530d890e89cb3d0eab666508ccf8cb4f0ee6ec5b7fc198161f2570eb4ddc1"
+    }
+  ]
+}

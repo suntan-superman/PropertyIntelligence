@@ -1,0 +1,42 @@
+{
+  "name": "property-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent property evidence and deterministic deal verification",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "kern:inspect": "node scripts/inspect-kern-layer.js",
+    "rentcast:audit": "node scripts/rentcast-inspect-config.js",
+    "deals:seed:florida": "node scripts/seed-florida-deals.js",
+    "deals:verify:florida": "node scripts/verify-florida-properties.js",
+    "deals:compare:florida": "node scripts/compare-sponsor-to-evidence.js",
+    "foundation:summarize": "node scripts/summarize-foundation-sprint1.js",
+    "analysis:evidence": "node scripts/analyze-evidence-completeness.js",
+    "analysis:break-even": "node scripts/analyze-break-even.js",
+    "analysis:scenarios": "node scripts/analyze-scenarios.js",
+    "analysis:sensitivity": "node scripts/analyze-sensitivity.js",
+    "sprint2:summarize": "node scripts/summarize-foundation-sprint2.js",
+    "sprint2:reproduce": "node scripts/reproduce-foundation-sprint2.js",
+    "test": "node scripts/test-foundation.js",
+    "web:dev": "node scripts/workbench-server.js",
+    "web:start": "node scripts/workbench-server.js --built",
+    "web:build": "vite build --config apps/web/vite.config.js",
+    "web:test": "node scripts/qa-ui.js",
+    "map:test": "node scripts/qa-maps.js",
+    "report:fantasia": "node scripts/report-fantasia.js",
+    "report:test": "node scripts/qa-reports.js",
+    "sprint3:qa": "npm test && npm run web:build && npm run web:test && npm run report:test"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.80",
+    "leaflet": "1.9.4",
+    "pdfjs-dist": "4.10.38",
+    "playwright-core": "1.58.2",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "vite": "6.4.3"
+  }
+}

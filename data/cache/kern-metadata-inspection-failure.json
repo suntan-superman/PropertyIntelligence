@@ -1,0 +1,13 @@
+{
+  "inspected_at": "2026-09-17T16:16:32.518Z",
+  "mapserver_url": "https://maps.kerncounty.com/arcgis/rest/services/Assessor/Assessor_Public/MapServer",
+  "layer_url": "https://maps.kerncounty.com/arcgis/rest/services/Assessor/Assessor_Public/MapServer/2",
+  "status": "METADATA_INSPECTION_FAILED",
+  "error": {
+    "url": "https://maps.kerncounty.com/arcgis/rest/services/Assessor/Assessor_Public/MapServer",
+    "http_status": 200,
+    "code": 499,
+    "message": "Token Required",
+    "details": []
+  }
+}

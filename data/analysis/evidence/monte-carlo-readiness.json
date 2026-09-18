@@ -1,0 +1,198 @@
+{
+  "propertyId": "fantasia",
+  "status": "NOT_READY",
+  "variables": [
+    {
+      "variable": "resalePrice",
+      "distributionReady": false,
+      "evidenceAvailable": {
+        "sponsor": 279000,
+        "provider": {
+          "price": 122000,
+          "low": 40000,
+          "high": 204000
+        }
+      },
+      "unresolvedConflict": true,
+      "missingInputs": [
+        "Reconcile sponsor and provider valuation evidence",
+        "Establish land tenure and comp comparability",
+        "Support sale-price variability"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "repairCost",
+      "distributionReady": false,
+      "evidenceAvailable": {
+        "sponsor": 10000
+      },
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Itemized scope",
+        "Contractor estimates",
+        "Condition evidence",
+        "Observed uncertainty"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "renovationDuration",
+      "distributionReady": false,
+      "evidenceAvailable": null,
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Renovation schedule and milestones",
+        "Duration evidence"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "saleDuration",
+      "distributionReady": false,
+      "evidenceAvailable": {
+        "compDaysOnMarket": [
+          133,
+          135,
+          166,
+          152,
+          162,
+          37,
+          231,
+          101,
+          39,
+          56,
+          246,
+          74,
+          87,
+          128,
+          145
+        ]
+      },
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Subject sale-duration evidence",
+        "Separate listing and closing time"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "spaceRent",
+      "distributionReady": false,
+      "evidenceAvailable": {
+        "threeMonthSponsorAggregate": 3000
+      },
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Lease/park rent terms",
+        "Increases and additional fees"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "taxes",
+      "distributionReady": false,
+      "evidenceAvailable": {
+        "historicalProviderTaxes": {
+          "2022": {
+            "year": 2022,
+            "total": 3654
+          },
+          "2023": {
+            "year": 2023,
+            "total": 3528
+          },
+          "2024": {
+            "year": 2024,
+            "total": 3961
+          },
+          "2025": {
+            "year": 2025,
+            "total": 4287
+          }
+        }
+      },
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Applicable holding tax basis and allocation"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "insurance",
+      "distributionReady": false,
+      "evidenceAvailable": null,
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Premium quote and coverage period"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "utilities",
+      "distributionReady": false,
+      "evidenceAvailable": null,
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Monthly bills or supported estimates"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "financing",
+      "distributionReady": false,
+      "evidenceAvailable": null,
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Loan amount, fees, rate and payment timing"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "sellingCosts",
+      "distributionReady": false,
+      "evidenceAvailable": {
+        "commission": 5000,
+        "escrow": 2000
+      },
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Contracts and transfer/disposition charges"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    },
+    {
+      "variable": "unexpectedRepairs",
+      "distributionReady": false,
+      "evidenceAvailable": null,
+      "unresolvedConflict": false,
+      "missingInputs": [
+        "Inspection evidence",
+        "Contingency support and relevant cost history"
+      ],
+      "notes": [
+        "Readiness schema only. No distribution, probability or simulation assigned."
+      ]
+    }
+  ]
+}

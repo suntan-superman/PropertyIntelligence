@@ -1,0 +1,20 @@
+{
+  "note": "Synthetic, sanitized fixtures. No live property or credential data.",
+  "property": {
+    "id": "fixture-property", "formattedAddress": "10 Example Pkwy, Example City, FL 00000",
+    "addressLine1": "10 Example Pkwy", "city": "Example City", "state": "FL", "zipCode": "00000",
+    "propertyType": "Manufactured", "county": "Example", "latitude": 28.1, "longitude": -81.1,
+    "assessorID": "001-0002", "bedrooms": 2, "bathrooms": 0, "squareFootage": 900,
+    "lotSize": null, "yearBuilt": 1990, "propertyTaxes": {"2025": {"total": 0}},
+    "taxAssessments": {"2025": {"value": 10000}}, "lastSalePrice": 12000,
+    "lastSaleDate": "2024-01-02T00:00:00.000Z", "history": {}
+  },
+  "avm": {
+    "price": 60000, "priceRangeLow": 50000, "priceRangeHigh": 70000,
+    "subjectProperty": {"id":"fixture-property", "addressLine1":"10 Example Pkwy", "city":"Example City", "state":"FL", "propertyType":"Manufactured"},
+    "comparables": [
+      {"id":"fixture-comp-1", "formattedAddress":"12 Example Pkwy", "price":55000, "propertyType":"Manufactured", "distance":0, "correlation":0.9, "daysOnMarket":0, "status":"Active", "listedDate":"2025-01-01"},
+      {"id":"fixture-comp-2", "formattedAddress":"14 Example Pkwy", "price":65000, "propertyType":"Single Family", "distance":9, "correlation":0.2, "status":"Inactive"}
+    ]
+  }
+}

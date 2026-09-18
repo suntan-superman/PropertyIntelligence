@@ -1,0 +1,10 @@
+{
+  "at": "2026-09-18T20:54:21.897Z",
+  "command": "node --import ./src/analysis/offline.js --test --test-reporter=tap tests",
+  "tests": 54,
+  "passed": 54,
+  "failed": 0,
+  "exitCode": 0,
+  "networkDisabled": true,
+  "liveCalls": 0
+}
