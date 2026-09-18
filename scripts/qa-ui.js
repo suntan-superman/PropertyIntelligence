@@ -10,7 +10,7 @@ const app=await startWorkbench({env:{},port:0,mapConfig:{configured:false,reason
 const errors=[],external=[],checks=[];
 page.on('pageerror',e=>errors.push(e.message));
 await page.route('**/*',route=>{if(!route.request().url().startsWith(app.url)){external.push(route.request().url());return route.abort();}return route.continue();});
-async function state(s){await page.locator('[data-testid="state"]').filter({hasText:s}).waitFor();}
+async function state(s){await page.waitForFunction(expected=>document.querySelector('[data-testid="state"]')?.dataset.state===expected,s);}
 try{
   await page.goto(app.url);await state('IDLE');
   await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await state('READY_PROPERTY');
@@ -25,8 +25,8 @@ try{
   await page.getByRole('heading',{name:'Modeled deal economics',exact:true}).waitFor();
   assert.match(await page.locator('body').innerText(),/\$180,000/);assert.match(await page.locator('body').innerText(),/-\$58,000/);
   await page.getByRole('button',{name:'View all 21 scenarios',exact:true}).click();assert.equal(await page.locator('#scenarios tbody tr').count(),21);checks.push('Golden financial values / all 21 scenarios / unknown-cost warning');
-  await page.locator('#evidence details').first().locator('summary').click();assert.ok((await page.locator('#evidence details').first().innerText()).includes('Independent evidence'));
-  await page.locator('#sources summary').click();checks.push('Expandable evidence and source provenance');
+  await page.locator('#evidence .evidence-group > details').first().locator('summary').first().click();assert.ok((await page.locator('#evidence .evidence-group > details').first().innerText()).includes('Independent evidence'));
+  await page.locator('#sources summary').first().click();checks.push('Expandable evidence and source provenance');
   await page.screenshot({path:resolve(`${dir}/ui-laptop.png`),fullPage:true});
   await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:resolve(`${dir}/ui-laptop-top.png`)});
   await page.locator('.comp-map').screenshot({path:resolve(`${dir}/ui-map.png`)});
@@ -34,8 +34,8 @@ try{
   await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:resolve(`${dir}/ui-narrow-top.png`)});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,'No page-wide horizontal overflow');
   await page.locator('#address').focus();await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.getAttribute('aria-label')),'Analysis mode');checks.push('390px responsive layout / keyboard focus sequence');
-  await page.getByRole('button',{name:'Bass — STOP',exact:true}).click();await state('SOURCE_STOP');assert.match(await page.locator('body').innerText(),/MANUFACTURED_REPRESENTATION_STOP/);
-  await page.getByRole('button',{name:'Joyce — ambiguous',exact:true}).click();await state('AMBIGUOUS');assert.match(await page.locator('body').innerText(),/ADDRESS_AMBIGUOUS/);checks.push('Bass STOP / Joyce ambiguity retained');
+  await page.getByRole('button',{name:'Bass — STOP',exact:true}).click();await state('SOURCE_STOP');assert.match(await page.locator('body').innerText(),/Property representation needs verification/);
+  await page.getByRole('button',{name:'Joyce — ambiguous',exact:true}).click();await state('AMBIGUOUS');assert.match(await page.locator('body').innerText(),/Address needs confirmation/);checks.push('Bass STOP / Joyce ambiguity retained');
   await page.locator('#address').fill('8426 Fantasia Park Way');await page.getByRole('button',{name:'Analyze cached evidence',exact:true}).click();await state('AMBIGUOUS');await page.getByRole('button',{name:/^Confirm 8426/}).click();await state('READY_DEAL');checks.push('Ambiguous abbreviated address requires explicit confirmation');
   await page.locator('#address').fill('999 Uncached Road, Elsewhere, FL 12345');await page.getByRole('button',{name:'Analyze cached evidence',exact:true}).click();await state('ERROR');assert.equal(await page.locator('[data-comp-row]').count(),0);assert.equal(await page.locator('.property-header').count(),0);checks.push('Failed lookup clears prior-property evidence');
   await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await state('READY_DEAL');await page.locator('.deal-form summary').click();
@@ -69,4 +69,4 @@ try{
 }finally{await instance.close();await app.close();}
 // Exercise the development boundary too, including Vite source serving.
 const dev=await startWorkbench({env:{},port:0,dev:true,mapConfig:{configured:false,reason:'Offline regression fixture'}}),b=await browser();
-try{const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(dev.url);await p.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await p.locator('[data-testid="state"]').filter({hasText:'READY_PROPERTY'}).waitFor();assert.deepEqual(errors,[]);console.log('Development server fixture smoke: PASS');}finally{await b.close();await dev.close();}
+try{const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(dev.url);await p.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await p.waitForFunction(()=>document.querySelector('[data-testid="state"]')?.dataset.state==='READY_PROPERTY');assert.deepEqual(errors,[]);console.log('Development server fixture smoke: PASS');}finally{await b.close();await dev.close();}

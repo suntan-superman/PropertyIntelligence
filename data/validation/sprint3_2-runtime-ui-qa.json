@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "at": "2026-09-18T21:56:03.969Z",
+  "at": "2026-09-18T22:58:11.683Z",
   "checks": [
     "Page load / health consumes zero provider calls",
     "Explicit mocked live result uses shared Google map/table, 15 comps, responsive at 390px",

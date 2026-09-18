@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-18T22:57:37.154Z",
+  "status": "PASS",
+  "referenceModel": "Fantasia cached evidence; no persisted Mainsail fixture is present in this repository",
+  "widths": [
+    1366,
+    1024,
+    768,
+    390
+  ],
+  "checks": [
+    "Property Mode hierarchy/details/anchors/15 comps at 1366px",
+    "Property Mode hierarchy/details/anchors/15 comps at 1024px",
+    "Property Mode hierarchy/details/anchors/15 comps at 768px",
+    "Property Mode hierarchy/details/anchors/15 comps at 390px",
+    "Deal Mode retains applicable economics/scenarios/sensitivity/questions"
+  ],
+  "providerCalls": 0,
+  "errors": []
+}
