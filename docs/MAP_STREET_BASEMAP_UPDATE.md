@@ -22,7 +22,7 @@ Adapted those patterns locally. No new mapping provider, map dependency, Home Ad
 
 ## Configuration and security
 
-The project currently has **no configured Google Maps browser key**. The implementation and offline behavior are tested; **live Google street tiles have not been verified**. Without the key, the application truthfully displays the unavailable-map fallback.
+The browser key has now been configured by the user with the authorized local referrer. **Live Google street tiles were verified on 2026-09-18 at `http://127.0.0.1:4173`.** Desktop and 390px popups, overlap selection, offline fallback and explicit recovery passed with no Google authorization errors, browser exceptions or CSP violations. Without a valid key, the application still displays the unavailable-map fallback.
 
 Add the real value only to this project's ignored `.env`:
 
@@ -60,7 +60,7 @@ npm run web:test
 - Build: PASS.
 - Map browser QA: **7 scenarios passed**: Google adapter desktop; narrow 390px; missing coordinates/exact duplicates; blocked network; authorization failure; tile timeout; missing key. Tested selection, popup close/Escape, responsive wrapping, fallback transitions/retry, one loader per session, no permanent price labels, and no browser/CSP errors.
 - Existing workbench browser regressions and development-server smoke: PASS. Original financial figures and evidence gates still reconcile.
-- **Google-path tests use a clearly identified API contract double**, not real Google tiles or quota. The fallback runs real Leaflet in Chrome. No live-basemap acceptance claim is made until the authorized key is configured and checked.
+- Default Google-path tests use a clearly identified API contract double, not real Google tiles or quota. The fallback runs real Leaflet in Chrome. A separate, explicitly opted-in live check now also passes against Google at the approved referrer; it is never run by default tests.
 - Reviewed desktop/narrow popup screenshots. Moved fallback zoom controls out of the popup heading area and verified no horizontal popup clipping. Internal scrolling is intentional and explicitly labeled.
 - Protected original evidence: **36/36 hashes unchanged**. Non-map implementation: **21/21 source-file hashes unchanged**, covering underwriting, analysis, reports, shared model/search, App, panels and deal form. Baseline: `data/validation/map-update-protected-sources.json`.
 
@@ -72,4 +72,12 @@ Map feature: `Comps.jsx`, `ComparableMap.jsx`, `mapData.js`, `googleLoader.js`, 
 
 Supporting boundary/tests: `src/workbench/mapConfig.js`, map-only additions to `src/workbench/server.js`, `.env.example`, `.gitignore`, `package.json` (`map:test`), `tests/maps.test.js`, `scripts/qa-maps.js`, `scripts/fixtures/google-maps-browser.js`, map readiness/isolation adjustments to `scripts/qa-ui.js`, and generated QA records. No new npm dependency.
 
-Remaining external prerequisite: supply the restricted browser key and verify the live street map. No underwriting, other-panel redesign, PDF change, deployment or authentication work was performed.
+## Live verification after key configuration
+
+`node scripts/qa-map-live.js --live` passed using the actual Google Maps API and installed Chrome. This command consumes Google Maps usage and therefore requires explicit opt-in; it does not call RentCast. The check uses port 4173 to match the approved referrer, reuses an existing workbench server if present, and closes only the server it started.
+
+Verified real streets and marker labels visually, comp popup/table synchronization, the subject's $122,000 independent AVM, overlap roster selection, narrow-screen layout, and live → offline fallback → explicit live retry with selection retained. All 15 comp rows and fallback markers survived. The initial live test incorrectly assumed the subject belonged to the first overlap group; that test assumption was corrected to select the actual subject marker. No application change was required.
+
+Result: `data/validation/map-live-qa.json` (PASS). Screenshots: `data/validation/map-update/live/street-laptop.png`, `popup-laptop.png`, `popup-narrow.png`, `offline-narrow.png`. Popup content intentionally scrolls within the map; street screenshots confirm actual Google tiles rather than the contract double. The browser key was not printed in diagnostics. Original evidence preservation remains 36/36; RentCast calls: zero.
+
+No underwriting, other-panel redesign, PDF change, deployment or authentication work was performed.
