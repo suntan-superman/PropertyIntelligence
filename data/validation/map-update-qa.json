@@ -1,0 +1,138 @@
+{
+  "at": "2026-09-18T21:00:03.640Z",
+  "results": [
+    {
+      "name": "google-laptop",
+      "status": "PASS",
+      "width": 1366,
+      "engine": "STREET",
+      "mockProvider": true,
+      "blockedExternalRequests": 1,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    },
+    {
+      "name": "google-narrow",
+      "status": "PASS",
+      "width": 390,
+      "engine": "STREET",
+      "mockProvider": true,
+      "blockedExternalRequests": 1,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    },
+    {
+      "name": "google-missing-duplicates",
+      "status": "PASS",
+      "width": 390,
+      "engine": "STREET",
+      "mockProvider": true,
+      "blockedExternalRequests": 1,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    },
+    {
+      "name": "offline-network",
+      "status": "PASS",
+      "width": 1366,
+      "engine": "OFFLINE_FALLBACK",
+      "mockProvider": false,
+      "blockedExternalRequests": 1,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    },
+    {
+      "name": "offline-auth-narrow",
+      "status": "PASS",
+      "width": 390,
+      "engine": "OFFLINE_FALLBACK",
+      "mockProvider": false,
+      "blockedExternalRequests": 1,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    },
+    {
+      "name": "offline-tile-timeout",
+      "status": "PASS",
+      "width": 1366,
+      "engine": "OFFLINE_FALLBACK",
+      "mockProvider": true,
+      "blockedExternalRequests": 1,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    },
+    {
+      "name": "offline-missing-key",
+      "status": "PASS",
+      "width": 390,
+      "engine": "OFFLINE_FALLBACK",
+      "mockProvider": false,
+      "blockedExternalRequests": 0,
+      "checks": [
+        "15 comps retained",
+        "responsive",
+        "popup/marker/table selection",
+        "evidence statuses",
+        "no coordinate displacement",
+        "no persistent price labels",
+        "offline fallback",
+        "no browser/CSP errors"
+      ]
+    }
+  ],
+  "preservation": {
+    "status": "PASS",
+    "files": 36
+  },
+  "liveProviderCalls": 0,
+  "liveBasemapVerified": false,
+  "note": "Google contract-double tests plus real Leaflet fallback. Live Google map requires an authorized browser key; no Google tiles or RentCast calls consumed."
+}

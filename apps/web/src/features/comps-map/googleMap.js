@@ -15,6 +15,8 @@ export function googleMap(host,maps,entries,{onSelect,onGroups,onExpand,onReady,
     listeners.push(marker.addListener('click',()=>onSelect(entry.id)));markers.set(entry.id,marker);
   }
   listeners.push(info.addListener('closeclick',()=>onSelect(null)));
+  const escape=event=>{if(event.key==='Escape'&&selected){event.preventDefault();onSelect(null);}};
+  host.addEventListener('keydown',escape,true);
   const regroup=()=>{
     if(disposed)return;
     const projection=map.getProjection();if(!projection)return;
@@ -43,6 +45,6 @@ export function googleMap(host,maps,entries,{onSelect,onGroups,onExpand,onReady,
       info.setContent(popupContent(entry));info.setOptions({ariaLabel:entry.title});info.open({map,anchor:markers.get(id),shouldFocus:false});
     },
     zoomGroup(group){map.fitBounds(bounds(group.members),70);if(group.members.every(e=>e.position.lat===group.position.lat&&e.position.lng===group.position.lng))map.setZoom(Math.min(20,(map.getZoom()??15)+2));},
-    destroy(){disposed=true;clearTimeout(paintTimer);resize.disconnect();info.close();for(const listener of listeners)listener.remove();for(const marker of [...markers.values(),...clusters]){maps.event.clearInstanceListeners(marker);marker.setMap(null);}maps.event.clearInstanceListeners(map);host.replaceChildren();}
+    destroy(){disposed=true;clearTimeout(paintTimer);resize.disconnect();host.removeEventListener('keydown',escape,true);info.close();for(const listener of listeners)listener.remove();for(const marker of [...markers.values(),...clusters]){maps.event.clearInstanceListeners(marker);marker.setMap(null);}maps.event.clearInstanceListeners(map);host.replaceChildren();}
   };
 }

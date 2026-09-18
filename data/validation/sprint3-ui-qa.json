@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-18T20:16:24.659Z",
+  "at": "2026-09-18T21:00:08.872Z",
   "status": "PASS",
   "checks": [
     "Property mode / no deal assumptions / 15 mapped and retained comps",
@@ -19,11 +19,11 @@
   "externalRequests": 0,
   "newProviderCalls": 0,
   "report": {
-    "path": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-24-400Z-c225b818.pdf",
+    "path": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-00-08-532Z-19e8d5f0.pdf",
     "pages": 11,
     "digest": "195e1a59d8ac7d7af22c35374ac712e8712c663416864d21e6a660f251cc1fe1",
-    "sha256": "a35f7dc7792a651aa460c94cb15313f19f71bfbb6529b194daba1b5a30c95a95",
-    "download": "/api/reports/d36c3502-97bd-455f-bee1-212c981b12a9"
+    "sha256": "de14b44371553fd2c6e23a429ec10a14f187db230e253bc2a6f1e4f899e06db6",
+    "download": "/api/reports/e04f827f-ebfd-4b57-bef8-88b8b376166d"
   },
   "preservation": {
     "status": "PASS",

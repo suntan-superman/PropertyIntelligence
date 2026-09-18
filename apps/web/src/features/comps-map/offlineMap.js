@@ -4,14 +4,16 @@ import {overlapGroups,popupContent} from './mapData.js';
 
 export function offlineMap(host,entries,{onSelect,onGroups,onExpand}) {
   const located=entries.filter(e=>e.position),markers=new Map();
-  const map=L.map(host,{scrollWheelZoom:false,zoomAnimation:false,fadeAnimation:false,markerZoomAnimation:false});
+  const map=L.map(host,{scrollWheelZoom:false,zoomAnimation:false,fadeAnimation:false,markerZoomAnimation:false}).setView([located[0].position.lat,located[0].position.lng],13);
+  map.zoomControl.setPosition('bottomright');
   const points=located.map(e=>[e.position.lat,e.position.lng]);
   let selecting=false,disposed=false;
   const popup=L.popup({maxWidth:Math.min(340,host.clientWidth-48),maxHeight:260,autoPanPadding:[18,18]});
+  const labelNode=value=>{const node=document.createElement('span');node.textContent=String(value);return node;};
   const keyboard=(element,fn)=>{element.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();fn();}});};
   for(const entry of located){
     const marker=L.marker([entry.position.lat,entry.position.lng],{title:entry.title,keyboard:true,riseOnHover:true,zIndexOffset:entry.subject?800:0,
-      icon:L.divIcon({className:entry.subject?'subject-pin':'comp-pin',html:entry.label,iconSize:[entry.subject?30:27,entry.subject?30:27]})}).addTo(map);
+      icon:L.divIcon({className:entry.subject?'subject-pin':'comp-pin',html:labelNode(entry.label),iconSize:[entry.subject?30:27,entry.subject?30:27]})}).addTo(map);
     marker.on('click',()=>onSelect(entry.id));marker.getElement().setAttribute('aria-label',`Select ${entry.title}`);keyboard(marker.getElement(),()=>onSelect(entry.id));markers.set(entry.id,marker);
   }
   map.on('popupclose',()=>{if(!selecting&&!disposed)onSelect(null);});
@@ -22,7 +24,7 @@ export function offlineMap(host,entries,{onSelect,onGroups,onExpand}) {
     count=0;for(let y=Math.floor(b.getSouth()/step)*step;y<b.getNorth()&&count++<100;y+=step)L.polyline([[y,b.getWest()],[y,b.getEast()]],{color:'#bdd2d0',weight:1,interactive:false}).addTo(grid);
     const groups=overlapGroups(located,p=>map.latLngToContainerPoint([p.lat,p.lng]));
     for(const group of groups){const marker=L.marker([group.position.lat,group.position.lng],{title:`Expand ${group.members.length} overlapping locations`,keyboard:true,zIndexOffset:500,
-      icon:L.divIcon({className:'overlap-pin',html:String(group.members.length),iconSize:[34,34]})}).addTo(clusters);
+      icon:L.divIcon({className:'overlap-pin',html:labelNode(group.members.length),iconSize:[34,34]})}).addTo(clusters);
       marker.on('click',()=>onExpand(group));keyboard(marker.getElement(),()=>onExpand(group));}
     onGroups(groups);
   };

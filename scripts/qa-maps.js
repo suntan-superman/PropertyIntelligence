@@ -26,6 +26,7 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
     m.comps[0].address='<img src=x onerror="window.__injected=true">';
     await page.route(`${app.url}/api/fixture`,route=>route.fulfill({contentType:'application/json',body:JSON.stringify({model:m,sessionId:'qa'})}));
   }
+  if(network==='missing')await page.route(`${app.url}/api/maps/config`,route=>route.fulfill({contentType:'application/json',body:JSON.stringify({configured:false,reason:'Browser key not configured.'})}));
   try {
     await page.goto(app.url);await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();
     const engine=network==='mock'&&!noTiles?'STREET':'OFFLINE_FALLBACK';
@@ -38,10 +39,12 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
       const originalPositions=await page.evaluate(()=>window.__mapTestInstances.at(-1).markers.filter(m=>!m.title.startsWith('Expand ')).map(m=>m.position));
       await page.locator('[data-comp-row="comp-2"] button').click();await page.locator('[data-map-popup="comp-2"]').waitFor();
       assert.match(await page.locator('[data-map-popup="comp-2"]').innerText(),/Days on market/);assert.match(await page.locator('[data-map-popup="comp-2"]').innerText(),/Land tenure unknown/);
+      assert.equal(await page.locator('[data-map-popup="comp-2"]').evaluate(el=>el.scrollWidth<=el.clientWidth),true,'Popup text must wrap without horizontal clipping');
       assert.equal(await page.locator('[data-comp-row="comp-2"] button').getAttribute('aria-pressed'),'true');
       await page.getByRole('button',{name:'Close popup',exact:true}).click();assert.equal(await page.locator('[data-comp-row="comp-2"] button').getAttribute('aria-pressed'),'false');
       await page.getByRole('button',{name:/^Subject: 8426/}).click();await page.locator('[data-map-popup="subject"]').waitFor();assert.match(await page.locator('[data-map-popup="subject"]').innerText(),/\$122,000/);
       await page.getByRole('button',{name:'Close popup',exact:true}).click();
+      await page.locator('[data-comp-row="comp-2"] button').click();await page.getByRole('button',{name:'Close popup',exact:true}).focus();await page.keyboard.press('Escape');assert.equal(await page.locator('[data-comp-row="comp-2"] button').getAttribute('aria-pressed'),'false');
       await page.locator('.map-overlaps button').first().click();await page.locator('.map-overlap-roster').waitFor();
       await page.locator('.map-overlap-roster li button').first().click();assert.equal(await page.locator('[data-map-popup]').count(),1);
       await page.getByRole('button',{name:'Zoom to group',exact:true}).click();
@@ -52,6 +55,7 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
       }
       assert.equal(requests.length,1,'No repeated Maps API load on selection or rerender');
       await page.locator('#comps').screenshot({path:resolve(`${root}/${name}.png`)});
+      await page.locator('.comp-map').screenshot({path:resolve(`${root}/${name}-popup.png`)});
       // A real browser offline transition must preserve selected evidence and all comps.
       await page.locator('[data-comp-row="comp-2"] button').click();await context.setOffline(true);
       await page.locator('[data-map-engine="OFFLINE_FALLBACK"]').waitFor();await page.locator('[data-map-popup="comp-2"]').waitFor();
@@ -63,8 +67,10 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
       await page.locator('[data-comp-row="comp-2"] button').click();await page.locator('[data-map-popup="comp-2"]').waitFor();
       assert.match(await page.locator('[data-map-popup="comp-2"]').innerText(),/Provider status/);
       await page.locator('.comp-pin').filter({hasText:/^3$/}).focus();await page.keyboard.press('Enter');await page.locator('[data-map-popup="comp-3"]').waitFor();
+      assert.equal(await page.locator('[data-map-popup="comp-3"]').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
       assert.equal(await page.locator('[data-comp-row="comp-3"] button').getAttribute('aria-pressed'),'true');
       await page.locator('#comps').screenshot({path:resolve(`${root}/${name}.png`)});
+      await page.locator('.comp-map').screenshot({path:resolve(`${root}/${name}-popup.png`)});
     }
     assert.equal(await page.locator('.price-label').count(),0,'No persistent price-label clutter');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
@@ -78,5 +84,6 @@ try {
   await scenario('google-missing-duplicates',{width:390,missing:true});
   await scenario('offline-network',{network:'blocked'});await scenario('offline-auth-narrow',{width:390,network:'auth'});
   await scenario('offline-tile-timeout',{noTiles:true});
+  await scenario('offline-missing-key',{network:'missing',width:390});
   await writeJson('data/validation/map-update-qa.json',{at:new Date().toISOString(),results,preservation:await preservation(),liveProviderCalls:0,liveBasemapVerified:false,note:'Google contract-double tests plus real Leaflet fallback. Live Google map requires an authorized browser key; no Google tiles or RentCast calls consumed.'});
 }finally{await instance.close();await app.close();}

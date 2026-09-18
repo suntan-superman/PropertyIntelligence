@@ -1,0 +1,89 @@
+{
+  "purpose": "Map-only change: unchanged source files outside map feature",
+  "files": [
+    {
+      "file": "src/workbench/model.js",
+      "sha256": "8d73084929a1bae6a6748cd88bd9664894cf6de4237855010d721ef3d7abd9c8"
+    },
+    {
+      "file": "src/workbench/search.js",
+      "sha256": "f359d24fd70359b8987306a60192149447c9e5426dcb0313ea15849428dc6f65"
+    },
+    {
+      "file": "apps/web/src/app/App.jsx",
+      "sha256": "b59f9dbc736a4c39e114f445715f2dda39aedd892743b8f3ffbae59a892c2bbf"
+    },
+    {
+      "file": "apps/web/src/components/Panels.jsx",
+      "sha256": "cbca6e0c2c89cb6b09cbdfc013f5ec0805eb49b011d138cd45da4e8334f73bbd"
+    },
+    {
+      "file": "apps/web/src/features/property-search/DealForm.jsx",
+      "sha256": "7c50f826618b5e81c755a90e63bf1b26e9e99c50578aa89089b5e461dc757321"
+    },
+    {
+      "file": "src/underwriting/comparison.js",
+      "sha256": "fcd168555555b9c54d00b83cf1ecbc99df672faaac014669b271df5e43d01f04"
+    },
+    {
+      "file": "src/underwriting/costModel.js",
+      "sha256": "849020b2f00bfc1f5c7ed221b2302628277c68c6e1154084aa846ad0213059f5"
+    },
+    {
+      "file": "src/underwriting/deterministic.js",
+      "sha256": "9232e8a7a586aced94ae13dad604e51338c6e2efdd38d6d8f9c033e309a27f72"
+    },
+    {
+      "file": "src/underwriting/metrics.js",
+      "sha256": "58377e9f83ab3adbb9c1929c7911ab126fc8c5d47bafca70d29842312000926a"
+    },
+    {
+      "file": "src/analysis/artifacts.js",
+      "sha256": "3ddb21c66ba9a33df5576ebad0fe85ce553ba6d9557b7361aad00b0ebe28f576"
+    },
+    {
+      "file": "src/analysis/breakEven.js",
+      "sha256": "27305181a8b2de1bc66ae4a017dc91e7141bf4df2c479d84dac2e45aeb2e6e85"
+    },
+    {
+      "file": "src/analysis/context.js",
+      "sha256": "baa491a7f219dc034a2d9d0cc631af2c4ab3010086043ccebfcdc385fa5e44b9"
+    },
+    {
+      "file": "src/analysis/evidenceCompleteness.js",
+      "sha256": "0260708f0d73b60e84cb257ec4a3e46ba2c3182fc7cd2d7813dea9f18028866a"
+    },
+    {
+      "file": "src/analysis/inputs.js",
+      "sha256": "6fc9035abf31ba484d4029c0d24bd91c88c66debba6a034271485afd7df163fc"
+    },
+    {
+      "file": "src/analysis/offline.js",
+      "sha256": "eba520135df13843c3f54ebdbbd5ff74c0a89d70988f9349df39958bcad38d14"
+    },
+    {
+      "file": "src/analysis/reports.js",
+      "sha256": "8dc4ae3acc10e9efbe2a56425b5a760b00bb1cd7c541755057977b228283fab6"
+    },
+    {
+      "file": "src/analysis/scenarioCatalog.js",
+      "sha256": "52602560871e74793bc7698079ae9dc88fa9c09f22ecffa628aa0bc963033991"
+    },
+    {
+      "file": "src/analysis/scenarios.js",
+      "sha256": "4dac522d729ea2b354292d10b375c12c7405bff062109abc04285d8b060203c5"
+    },
+    {
+      "file": "src/analysis/sensitivity.js",
+      "sha256": "27719f088bbc1c63660d02340aceb73a4ba16b118adde78b14067a55f80c87a3"
+    },
+    {
+      "file": "src/reports/html.js",
+      "sha256": "122025bf4e42b79d68651d7d30a3fb4975e77c49ab40506e3d739ea315064305"
+    },
+    {
+      "file": "src/reports/pdf.js",
+      "sha256": "4035783d3d186ac3098711c63de607225de355f679b8145a0e0e0ee8dee64252"
+    }
+  ]
+}

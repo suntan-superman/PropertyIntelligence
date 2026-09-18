@@ -11,6 +11,7 @@ export function mapEntries(model) {
       ...model.metrics.filter(m=>/Purchase|Resale|Break-Even/.test(m.label)).map(m=>[m.label,`${m.display} · ${m.status}`]),
       ['Listing status / DOM','Unknown / Unknown'],['Distance','Subject location — not a comparable distance'],
       ['Evidence status',`${model.resolutionStatus} · ${model.valuationStatus}`],['Land tenure','Unknown — unresolved; not inferred'],
+      ['Source',model.provenance.some(p=>p.source==='RentCast')?'RentCast / INDEPENDENT_ONLY (provider-reported)':'Unknown'],
       ['Retrieved',model.cache.retrievedAt.join(', ')||'Not available']]};
   return [subject,...model.comps.map(c=>({id:c.id,label:String(c.number),title:`Comp ${c.number}: ${c.address}`,address:c.address,subject:false,
     position:located(c)?{lat:c.latitude,lng:c.longitude}:null,
@@ -36,6 +37,7 @@ export function overlapGroups(entries,project,radius=32) {
 export function popupContent(entry) {
   const root=document.createElement('article');root.className='map-evidence-popup';root.dataset.mapPopup=entry.id;
   const heading=document.createElement('h3');heading.textContent=entry.title;root.append(heading);
+  const hint=document.createElement('small');hint.textContent='Scroll within this popup for all evidence and limitations.';root.append(hint);
   const list=document.createElement('dl');
   for(const [label,value] of entry.facts){const term=document.createElement('dt'),detail=document.createElement('dd');term.textContent=label;detail.textContent=value;list.append(term,detail);}
   root.append(list);const note=document.createElement('p');note.textContent=entry.subject?'Independent estimates are evidence, not verified resale proceeds.':'Provider-listed price is not an established closed sale.';root.append(note);
