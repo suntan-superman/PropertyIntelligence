@@ -1,16 +1,16 @@
 // Explicit opt-in: loads live Google Maps at the authorized local referrer.
 // This is intentionally not part of default tests and never calls RentCast.
 import assert from 'node:assert/strict';
-import {mkdir} from 'node:fs/promises';
+import {mkdir,readFile} from 'node:fs/promises';
 import {startWorkbench} from '../src/workbench/server.js';
-import {readMapConfig} from '../src/workbench/mapConfig.js';
+import {readMapConfig,MAP_CSP} from '../src/workbench/mapConfig.js';
 import {browser} from '../src/reports/pdf.js';
 import {preservation} from '../src/workbench/model.js';
 import {resolve,writeJson} from '../src/io/files.js';
 
 if(!process.argv.includes('--live'))throw new Error('Explicit --live required; this uses Google Maps quota.');
 const config=await readMapConfig();if(!config.configured)throw new Error(config.reason);
-const url='http://127.0.0.1:4173',directory='data/validation/map-update/live';
+const url='http://127.0.0.1:4173',directory=process.argv.includes('--sprint3.2')?'data/validation/sprint3_2-visual/live-map':'data/validation/map-update/live';
 await mkdir(resolve(directory),{recursive:true});
 let server=null,instance=null,page=null;
 const errors=[],googleErrors=[],violations=[],checks=[],externalHosts=new Set();
@@ -23,9 +23,17 @@ try {
   instance=await browser();const context=await instance.newContext({viewport:{width:1366,height:950}});page=await context.newPage();
   page.on('pageerror',error=>errors.push(safe(error.message)));
   page.on('console',message=>{const match=message.text().match(/Google Maps JavaScript API error:\s*([A-Za-z0-9_]+)/);if(match)googleErrors.push(match[1]);});
-  await page.addInitScript(()=>{window.__liveMapViolations=[];window.addEventListener('securitypolicyviolation',e=>window.__liveMapViolations.push({directive:e.violatedDirective,origin:e.blockedURI.startsWith('http')?new URL(e.blockedURI).origin:e.blockedURI}));});
-  await page.route('**/*',route=>{
+  await page.addInitScript(()=>{window.__liveMapViolations=[];window.addEventListener('securitypolicyviolation',e=>window.__liveMapViolations.push({directive:e.violatedDirective,origin:/^(https?|wss?):/.test(e.blockedURI)?new URL(e.blockedURI).origin:e.blockedURI}));});
+  await page.route('**/*',async route=>{
     const requestURL=new URL(route.request().url());
+    // Exercise the actual production build at the already-authorized map referrer,
+    // even if Stan's existing server on 4173 is a Vite development server.
+    // Do not stop/reconfigure that server or relax CSP to allow development HMR.
+    if(process.argv.includes('--sprint3.2')&&requestURL.origin===url&&(requestURL.pathname==='/'||/^\/assets\/[\w.-]+$/.test(requestURL.pathname))){
+      const file=requestURL.pathname==='/'?'index.html':requestURL.pathname.slice(1);
+      const body=await readFile(resolve(`apps/web/dist/${file}`));
+      return route.fulfill({body,headers:{'Content-Security-Policy':MAP_CSP,'Referrer-Policy':'strict-origin-when-cross-origin'},contentType:file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.png')?'image/png':'text/html'});
+    }
     if(requestURL.origin===url)return route.continue();
     externalHosts.add(requestURL.hostname);
     if(requestURL.protocol==='https:'&&/\.(googleapis|gstatic|google|googleusercontent)\.com$/.test(requestURL.hostname))return route.continue();
@@ -70,6 +78,6 @@ try {
   process.exitCode=1;
 }finally{
   const result={at:new Date().toISOString(),status,liveGoogle:true,rentcastCalls:0,checks,googleErrors,errors,violations,externalHosts:[...externalHosts],preservation:await preservation()};
-  await writeJson('data/validation/map-live-qa.json',result);console.log(JSON.stringify(result,null,2));
+  await writeJson(process.argv.includes('--sprint3.2')?'data/validation/sprint3_2-live-map-qa.json':'data/validation/map-live-qa.json',result);console.log(JSON.stringify(result,null,2));
   await instance?.close();await server?.close();
 }

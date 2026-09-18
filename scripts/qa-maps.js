@@ -6,8 +6,8 @@ import {fixture,preservation} from '../src/workbench/model.js';
 import {resolve,writeJson} from '../src/io/files.js';
 
 const mock=await readFile(resolve('scripts/fixtures/google-maps-browser.js'),'utf8');
-const root='data/validation/map-update';await mkdir(resolve(root),{recursive:true});
-const app=await startWorkbench({port:0,mapConfig:{provider:'google',configured:true,browserKey:'qa-browser-key-no-live-access'}}),instance=await browser(),results=[];
+const root='data/validation/sprint3_2-visual/maps';await mkdir(resolve(root),{recursive:true});
+const app=await startWorkbench({env:{},port:0,mapConfig:{provider:'google',configured:true,browserKey:'qa-browser-key-no-live-access'}}),instance=await browser(),results=[];
 async function scenario(name,{width=1366,network='mock',noTiles=false,missing=false}={}) {
   const context=await instance.newContext({viewport:{width,height:950}}),page=await context.newPage(),errors=[],violations=[],requests=[];
   page.on('pageerror',error=>errors.push(error.message));
@@ -85,5 +85,5 @@ try {
   await scenario('offline-network',{network:'blocked'});await scenario('offline-auth-narrow',{width:390,network:'auth'});
   await scenario('offline-tile-timeout',{noTiles:true});
   await scenario('offline-missing-key',{network:'missing',width:390});
-  await writeJson('data/validation/map-update-qa.json',{at:new Date().toISOString(),results,preservation:await preservation(),liveProviderCalls:0,liveBasemapVerified:false,note:'Google contract-double tests plus real Leaflet fallback. Live Google map requires an authorized browser key; no Google tiles or RentCast calls consumed.'});
+  await writeJson('data/validation/sprint3_2-map-qa.json',{at:new Date().toISOString(),results,preservation:await preservation(),liveProviderCalls:0,liveBasemapVerified:false,note:'Google contract-double tests plus real Leaflet fallback. Live Google map requires an authorized browser key; no Google tiles or RentCast calls consumed.'});
 }finally{await instance.close();await app.close();}

@@ -7,8 +7,8 @@ export function normalizeAddress(text) {
 }
 // Sprint 3 is cache-first and deliberately makes no new provider calls. A new,
 // uncached identity requires a future explicit retrieval workflow, not geocoding guesses.
-export async function resolveCached(text,mode='property') {
-  const address=normalizeAddress(text),input=await inputs(),key=addressKey(address);
+export async function resolveCached(text,mode='property',repository={}) {
+  const address=normalizeAddress(text),input=repository.input??await inputs(),key=addressKey(address);
   if(!key)throw new Error('ADDRESS_REQUIRED');
   const candidates=[];
   for(const seed of input.portfolio.properties) {
@@ -16,7 +16,7 @@ export async function resolveCached(text,mode='property') {
     const addressObj=result.verificationAddress??seed.sponsorAddress;
     const full=result.property?.address??Object.values(addressObj).filter(Boolean).join(', ');
     const exact=addressKey(full)===key;
-    if(exact&&result.status==='INDEPENDENT_EVIDENCE_AVAILABLE')return {model:await fixture(seed.id,mode)};
+    if(exact&&result.status==='INDEPENDENT_EVIDENCE_AVAILABLE')return {model:await (repository.loadFixture??fixture)(seed.id,mode)};
     const aliases=[addressObj.street,seed.sponsorAddress.street,[addressObj.street,addressObj.city,addressObj.state].filter(Boolean).join(', '),Object.values(seed.sponsorAddress).filter(Boolean).join(', ')];
     if(exact||aliases.some(alias=>addressKey(alias)===key))candidates.push({id:seed.id,address:full});
   }

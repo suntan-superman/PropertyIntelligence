@@ -17,14 +17,15 @@ export function normalizeValuation(body) {
   return { price: body.price, low: body.priceRangeLow ?? null, high: body.priceRangeHigh ?? null,
     comps: normalizeComps(body.comparables ?? body.comps ?? []) };
 }
-export async function fetchValuation(client, address, matched, options) {
+export async function fetchValuation(client, address, matched, options={}) {
+  const {expectedPropertyType='Manufactured',...requestOptions}=options;
   const record = await client.get('/avm/value', { address: queryAddress(address), compCount: 15,
-    maxRadius: 2, daysOld: 180 }, options);
+    maxRadius: 2, daysOld: 180 }, requestOptions);
   const subject = record.body.subjectProperty;
   if (!subject || !identityMatches(address, subject)
     || (matched.id && subject.id && matched.id !== subject.id)) {
     throw new ProviderStop('AVM_SUBJECT_IDENTITY_STOP', record.rawResponseRef);
   }
-  if (subject.propertyType !== 'Manufactured') throw new ProviderStop('MANUFACTURED_REPRESENTATION_STOP', record.rawResponseRef);
+  if (subject.propertyType !== expectedPropertyType) throw new ProviderStop(expectedPropertyType==='Manufactured'?'MANUFACTURED_REPRESENTATION_STOP':'PROPERTY_REPRESENTATION_STOP', record.rawResponseRef);
   return { record, valuation: normalizeValuation(record.body) };
 }

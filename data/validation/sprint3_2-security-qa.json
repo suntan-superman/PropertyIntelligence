@@ -1,0 +1,21 @@
+{
+  "at": "2026-09-18T21:57:10.967Z",
+  "status": "PASS",
+  "filesScanned": 20,
+  "actualLocalSecretChecked": true,
+  "encodedVariantsChecked": true,
+  "functionOutputScanned": true,
+  "functionZipScanned": true,
+  "functionZipBytes": 460775,
+  "functionZipEntries": [
+    "___netlify-entry-point.mjs",
+    "___netlify-telemetry.mjs",
+    "___netlify-metadata.json",
+    "netlify/functions/api.mjs",
+    "package.json",
+    "___netlify-bootstrap.mjs"
+  ],
+  "runtimeLogScanned": true,
+  "protectedFiles": 42,
+  "providerCalls": 0
+}

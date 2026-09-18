@@ -1,0 +1,23 @@
+{
+  "status": "PASS_LOCAL_BUILD_ONLY",
+  "date": "2026-09-18",
+  "command": "npx --yes netlify-cli@23.11.0 build --offline",
+  "node": "20.19.4",
+  "netlifyCli": "23.11.0",
+  "netlifyBuild": "35.3.1",
+  "config": "netlify.toml",
+  "publish": "apps/web/dist",
+  "function": "api",
+  "configuredBundler": "esbuild",
+  "outerModernFunctionPackageBundler": "nft",
+  "functionZipBytes": 460775,
+  "functionBundleSucceeded": true,
+  "remoteDeploymentAttempted": false,
+  "remoteDeploymentVerified": false,
+  "realRentCastCalls": 0,
+  "notes": [
+    "Netlify-local JSON routing and fixture smoke evidence is in sprint3_2-netlify-smoke.json.",
+    "Actual secret/encoded-variant scans include uncompressed function ZIP entries and captured local runtime logs.",
+    "Existing site ID/access and explicit live-address authorization were requested but not supplied during this run."
+  ]
+}

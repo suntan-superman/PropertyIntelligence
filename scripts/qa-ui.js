@@ -5,8 +5,8 @@ import {browser} from '../src/reports/pdf.js';
 import {fixture,preservation} from '../src/workbench/model.js';
 import {synthetic} from '../src/workbench/synthetic.js';
 import {resolve,writeJson} from '../src/io/files.js';
-const dir='data/validation/sprint3-visual';await mkdir(resolve(dir),{recursive:true});
-const app=await startWorkbench({port:0,mapConfig:{configured:false,reason:'Offline regression fixture'}}),instance=await browser(),page=await instance.newPage({viewport:{width:1366,height:950}});
+const dir='data/validation/sprint3_2-visual/ui';await mkdir(resolve(dir),{recursive:true});
+const app=await startWorkbench({env:{},port:0,mapConfig:{configured:false,reason:'Offline regression fixture'}}),instance=await browser(),page=await instance.newPage({viewport:{width:1366,height:950}});
 const errors=[],external=[],checks=[];
 page.on('pageerror',e=>errors.push(e.message));
 await page.route('**/*',route=>{if(!route.request().url().startsWith(app.url)){external.push(route.request().url());return route.abort();}return route.continue();});
@@ -64,9 +64,9 @@ try{
   }
   assert.doesNotMatch(bundle,/RENTCAST_API_KEY|MARKET_DATA_API_KEY|X-Api-Key/);checks.push('Actual local key and encoded key absent from bundle; no provider headers');
   assert.deepEqual(errors,[]);assert.deepEqual(external,[]);
-  await writeJson('data/validation/sprint3-ui-qa.json',{at:new Date().toISOString(),status:'PASS',checks,errors,externalRequests:external.length,newProviderCalls:0,report:pdf,preservation:await preservation()});
+  await writeJson('data/validation/sprint3_2-ui-qa.json',{at:new Date().toISOString(),status:'PASS',checks,errors,externalRequests:external.length,newProviderCalls:0,report:pdf,preservation:await preservation()});
   console.log(JSON.stringify({status:'PASS',checks,reportPages:pdf.pages},null,2));
 }finally{await instance.close();await app.close();}
 // Exercise the development boundary too, including Vite source serving.
-const dev=await startWorkbench({port:0,dev:true,mapConfig:{configured:false,reason:'Offline regression fixture'}}),b=await browser();
+const dev=await startWorkbench({env:{},port:0,dev:true,mapConfig:{configured:false,reason:'Offline regression fixture'}}),b=await browser();
 try{const p=await b.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(dev.url);await p.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await p.locator('[data-testid="state"]').filter({hasText:'READY_PROPERTY'}).waitFor();assert.deepEqual(errors,[]);console.log('Development server fixture smoke: PASS');}finally{await b.close();await dev.close();}

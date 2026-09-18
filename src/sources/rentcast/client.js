@@ -25,7 +25,7 @@ export function retryDelay(header, now = Date.now()) {
 }
 export function createClient(config, { fetchImpl = fetch,
   sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
-  cachePrefix = 'data/raw/rentcast', clock = () => new Date().toISOString() } = {}) {
+  cachePrefix = 'data/raw/rentcast', clock = () => new Date().toISOString(), store = {get:readCache,put:saveCache} } = {}) {
   const metrics = { apiCalls: 0, cacheHits: 0, retries: 0, rateLimits: 0, events: [] };
   let exhaustedQuota = false;
   async function get(endpoint, params, { refresh = false } = {}) {
@@ -36,7 +36,7 @@ export function createClient(config, { fetchImpl = fetch,
       throw new ProviderStop('REQUEST_CONTRACT_STOP');
     }
     const location = cacheLocation(endpoint, params, cachePrefix);
-    const cached = refresh ? null : await readCache(location);
+    const cached = refresh ? null : await store.get(location);
     if (cached) { metrics.cacheHits++; return cached; }
     const url = new URL(`${config.baseUrl}${endpoint}`);
     for (const [key, value] of Object.entries(params)) url.searchParams.set(key, String(value));
@@ -61,7 +61,7 @@ export function createClient(config, { fetchImpl = fetch,
         await sleep(500 * 2 ** attempt + Math.floor(Math.random() * 100));
         continue;
       } finally { clearTimeout(timeout); }
-      const entry = await saveCache(location, { retrievedAt: clock(), httpStatus: response.status,
+      const entry = await store.put(location, { retrievedAt: clock(), httpStatus: response.status,
         body: redact(body, [config.apiKey]) });
       metrics.events.push({ endpoint, httpStatus: response.status, rawResponseRef: entry.rawResponseRef });
       const remaining = response.headers.get('x-ratelimit-remaining');

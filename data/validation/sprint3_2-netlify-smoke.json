@@ -1,0 +1,18 @@
+{
+  "at": "2026-09-18T21:56:01.933Z",
+  "status": "PASS",
+  "target": "http://localhost:8888",
+  "remote": false,
+  "checks": [
+    "GET /api/health reaches Netlify JSON function, not SPA",
+    "fantasia: READY_PROPERTY, fixture calls 0",
+    "bass: SOURCE_STOP, fixture calls 0",
+    "joyce: AMBIGUOUS, fixture calls 0",
+    "Netlify served UI: shared map mock, 15 comps, responsive, remote PDF accurately local-only",
+    "Missing-key health disables live action; fixtures still work"
+  ],
+  "fixtureProviderCalls": 0,
+  "liveSmokeCount": 0,
+  "realGoogleTiles": false,
+  "errors": []
+}

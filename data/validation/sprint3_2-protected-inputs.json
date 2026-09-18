@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Sprint 3.2 immutable evidence, sponsor inputs and analytical engines; captured before refactor",
+  "files": [
+    {
+      "file": "data/deals/florida-portfolio.json",
+      "sha256": "25afc00499798be7bb2087e48145811975ae448f2173e41ad5bfe224f2946742"
+    },
+    {
+      "file": "data/raw/rentcast/988be361cf4184980e2656c76344de2305e627c95258c2feed5a2d2009739c80/4eb7d353749bdb83fcc8228588bb01fecea01fd2f87f96c5e36128da40a4b901.json",
+      "sha256": "bfda0159e0b8ecbf42f0e52f58759b4aeffbfce147069eb1d85feb2a6db60601"
+    },
+    {
+      "file": "data/raw/rentcast/988be361cf4184980e2656c76344de2305e627c95258c2feed5a2d2009739c80/c1670113c9811ee08d8d39db8801994cb22f42959f1374cba289772440cc1372.index.json",
+      "sha256": "a2708217b29d198dbf7d18ef0131bb2b72ad226f4f2d7317307ab2353f236d9e"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/0e16470bed82a92870087f1adc64a7750b257b9fd5c064300d93448118140dd4.index.json",
+      "sha256": "fe9bdd0074ef2a732104651f610f11687afdfb08bece338ee56c29101f2dd76f"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/1d56702f0f22f299bd7cbf0cf788df3901c7535db691a15a3398914e1e99df46.json",
+      "sha256": "a9ec9067c86536dfbc2d62e01099aeb6ace8446d8846f2de305e7b86487e9cd2"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/23aaea18ff7e014ac26282a09d0d2ceeec7cfe6877ca9d20e458220c516689f4.json",
+      "sha256": "23d91f2fdb84972e28e6f5046278e1d1184469059aa53710cf6f3c3f3bd5762e"
+    },
+    {
+      "file": "data/raw/rentcast/b9f4b102132387564b6982660690b9947d792ddfbb3908828231703e6eff3d62/98f5ff37e04f08d5faf8ed1f92544a8dd71d4994f9124aaa9b8c8a84937cafce.index.json",
+      "sha256": "22a1fe054be21a1ab310664f020d12a7564a50a2f53cc55dfef18b05efe16b13"
+    },
+    {
+      "file": "data/raw/rentcast/c4dc8130e5ddcf025a63a54f0ae05fc3af55a83e133df0a4750634c355c2980b/5fafb228816ae593bf65159ebc4749dbfbfe43e360ab538db1f857d00e81874c.json",
+      "sha256": "25d0c2e5a26fa45c843ad0cb8859e3f670823c9051c08781c40bb9bf0c57faf5"
+    },
+    {
+      "file": "data/raw/rentcast/c4dc8130e5ddcf025a63a54f0ae05fc3af55a83e133df0a4750634c355c2980b/80a9979d5d51158130a0a0ac486b0975a39d8a0714425aa0bca767b889eb54ce.index.json",
+      "sha256": "6aab70bb239177103cb9ea8ed7a7a5539f659dc0484b1732a69a742296395c95"
+    },
+    {
+      "file": "data/raw/rentcast/c4dc8130e5ddcf025a63a54f0ae05fc3af55a83e133df0a4750634c355c2980b/d5641b036d6564553c1e2a690534ad6da28748d0e0a116fbd54f3061c168fb54.json",
+      "sha256": "42161a07c335202ad61621442ee906c92ed08ee41930a0cd609827f78e57e089"
+    },
+    {
+      "file": "data/normalized/florida-underwriting.json",
+      "sha256": "293772dc6275c48f307df4a0c95aa944a309ee12ee00ce4069a0a3624c599c46"
+    },
+    {
+      "file": "data/normalized/florida-verification.json",
+      "sha256": "d20021aa0acfc3879b31c67e34c73a1c1d4b725043df1cff53f9cbaaa1c46572"
+    },
+    {
+      "file": "data/analysis/break-even/fantasia-break-even.csv",
+      "sha256": "0bbbf3aef800c9da66fb63aa1cd126ad5359cfcf33c38e616318cc28c36482d1"
+    },
+    {
+      "file": "data/analysis/break-even/fantasia-break-even.json",
+      "sha256": "089fe4693340202eb52f453fdc2a1cfec787f09ec86b2952536872d4fbe120c7"
+    },
+    {
+      "file": "data/analysis/evidence/florida-evidence-completeness.csv",
+      "sha256": "5c935d4447191cdb60578452683c4bb95aedb66f87490bfbfa00936cec9594ba"
+    },
+    {
+      "file": "data/analysis/evidence/florida-evidence-completeness.json",
+      "sha256": "1f9e457a6b96077c8cfd7612fa4d4536942f32717b8cca5b86eeb8554c34f22e"
+    },
+    {
+      "file": "data/analysis/evidence/monte-carlo-readiness.json",
+      "sha256": "a3e66e0cbc6507bd62c627f66231e506be25bfebbd4fc09cd3946a6a57727b14"
+    },
+    {
+      "file": "data/analysis/evidence/sponsor-information-request.json",
+      "sha256": "2247a2b96847009860f68eabb5f899b9f8ebe1d44c256491883076198644d10b"
+    },
+    {
+      "file": "data/analysis/scenarios/fantasia-scenarios.csv",
+      "sha256": "df93974b18b353a3bd40dd98f51db62bee4d4e2bd6ea86636ba991cb974dd2cc"
+    },
+    {
+      "file": "data/analysis/scenarios/fantasia-scenarios.json",
+      "sha256": "a3f45487d43b29291ec46e2b305bbfaade2dd0e342bf08a45c56f3dd33a9acfb"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-deterministic-ranking.json",
+      "sha256": "82f5bb6e8cbd71e09424159adfb2e53aa1ff39f6c5c7d73c23b1fff514fcd05a"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-hold-sensitivity.csv",
+      "sha256": "2d168068f7cfe6733d358ce176ba5f7fc31c6efe584eee4058bf33236d2d8ee2"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-repair-sensitivity.csv",
+      "sha256": "ca4b6d1f39a69110213d6ee128655d6ed31088d514d6404fd0bdedd57947251a"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-sale-repair-matrix.csv",
+      "sha256": "01a5d321acacef63c728ab37137f706938934e1e99092824c2464f5d1cbe2c4e"
+    },
+    {
+      "file": "data/analysis/sensitivity/fantasia-sale-sensitivity.csv",
+      "sha256": "27894ff5151f95d692360178bd483b3e8775fa7723ac25c01a04dc6ebbf1f365"
+    },
+    {
+      "file": "data/analysis/sprint2-input-manifest.json",
+      "sha256": "8900c1a76a43e7c008aaba77e1ad65a25b3b769735c310f4ed4a144a0ab77eb3"
+    },
+    {
+      "file": "data/comparisons/florida-comparisons.csv",
+      "sha256": "c964efdf759193e0b1a7cfcc68e5edf24ea70eb588fe0d694b02c76b5a9fcdb6"
+    },
+    {
+      "file": "data/comparisons/florida-comparisons.json",
+      "sha256": "93c5582ebf81485349e5822faf834610c3369df19653984d10c1ad956f32c192"
+    },
+    {
+      "file": "src/analysis/artifacts.js",
+      "sha256": "3ddb21c66ba9a33df5576ebad0fe85ce553ba6d9557b7361aad00b0ebe28f576"
+    },
+    {
+      "file": "src/analysis/breakEven.js",
+      "sha256": "27305181a8b2de1bc66ae4a017dc91e7141bf4df2c479d84dac2e45aeb2e6e85"
+    },
+    {
+      "file": "src/analysis/context.js",
+      "sha256": "baa491a7f219dc034a2d9d0cc631af2c4ab3010086043ccebfcdc385fa5e44b9"
+    },
+    {
+      "file": "src/analysis/evidenceCompleteness.js",
+      "sha256": "0260708f0d73b60e84cb257ec4a3e46ba2c3182fc7cd2d7813dea9f18028866a"
+    },
+    {
+      "file": "src/analysis/inputs.js",
+      "sha256": "6fc9035abf31ba484d4029c0d24bd91c88c66debba6a034271485afd7df163fc"
+    },
+    {
+      "file": "src/analysis/offline.js",
+      "sha256": "eba520135df13843c3f54ebdbbd5ff74c0a89d70988f9349df39958bcad38d14"
+    },
+    {
+      "file": "src/analysis/reports.js",
+      "sha256": "8dc4ae3acc10e9efbe2a56425b5a760b00bb1cd7c541755057977b228283fab6"
+    },
+    {
+      "file": "src/analysis/scenarioCatalog.js",
+      "sha256": "52602560871e74793bc7698079ae9dc88fa9c09f22ecffa628aa0bc963033991"
+    },
+    {
+      "file": "src/analysis/scenarios.js",
+      "sha256": "4dac522d729ea2b354292d10b375c12c7405bff062109abc04285d8b060203c5"
+    },
+    {
+      "file": "src/analysis/sensitivity.js",
+      "sha256": "27719f088bbc1c63660d02340aceb73a4ba16b118adde78b14067a55f80c87a3"
+    },
+    {
+      "file": "src/underwriting/comparison.js",
+      "sha256": "fcd168555555b9c54d00b83cf1ecbc99df672faaac014669b271df5e43d01f04"
+    },
+    {
+      "file": "src/underwriting/costModel.js",
+      "sha256": "849020b2f00bfc1f5c7ed221b2302628277c68c6e1154084aa846ad0213059f5"
+    },
+    {
+      "file": "src/underwriting/deterministic.js",
+      "sha256": "9232e8a7a586aced94ae13dad604e51338c6e2efdd38d6d8f9c033e309a27f72"
+    },
+    {
+      "file": "src/underwriting/metrics.js",
+      "sha256": "58377e9f83ab3adbb9c1929c7911ab126fc8c5d47bafca70d29842312000926a"
+    }
+  ]
+}

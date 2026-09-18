@@ -1,0 +1,27 @@
+{
+  "at": "2026-09-18T21:50:50.437Z",
+  "status": "PASS",
+  "liveGoogle": true,
+  "rentcastCalls": 0,
+  "checks": [
+    "Live street basemap loaded; 15 retained comp rows",
+    "Live comp popup/table selection and evidence",
+    "Overlap roster and rich subject popup",
+    "390px responsive live map/popup",
+    "Live-to-offline fallback retains all 15 comp markers and selection",
+    "Explicit retry restores live street map and selected popup"
+  ],
+  "googleErrors": [],
+  "errors": [],
+  "violations": [],
+  "externalHosts": [
+    "maps.googleapis.com",
+    "maps.gstatic.com",
+    "fonts.googleapis.com",
+    "fonts.gstatic.com"
+  ],
+  "preservation": {
+    "status": "PASS",
+    "files": 36
+  }
+}

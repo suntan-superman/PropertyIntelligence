@@ -8,7 +8,7 @@ import {reportHtml} from '../src/reports/html.js';
 import {resolve,writeJson} from '../src/io/files.js';
 Object.assign(globalThis,{DOMMatrix,ImageData,Path2D});
 const {getDocument}=await import('pdfjs-dist/legacy/build/pdf.mjs');
-const directory='data/validation/sprint3-visual';await mkdir(resolve(directory),{recursive:true});
+const directory='data/validation/sprint3_2-visual/pdf';await mkdir(resolve(directory),{recursive:true});
 const results=[];
 for(const model of [await fixture('fantasia'),await fixture('bass'),await fixture('joyce'),await synthetic('long'),await synthetic('many-comps')]){
   assert.doesNotMatch(reportHtml(model),/investment recommendation|offering memorandum|guaranteed return|investment approval/i);
@@ -41,4 +41,4 @@ for(const model of [await fixture('fantasia'),await fixture('bass'),await fixtur
   results.push({...report,id:model.id,pageCount:doc.numPages,compPages,pageImages:pages,contact,checks:'PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology'});
   console.log(`${model.id}: ${doc.numPages} pages, ${model.comps.length} comps, PASS`);await doc.destroy();
 }
-await writeJson('data/validation/sprint3-pdf-qa.json',{at:new Date().toISOString(),liveCalls:0,preservation:await preservation(),results,visualInspection:'PNG pages/contact sheets generated; reviewer findings recorded in docs/PDF_QA_CHECKLIST.md'});
+await writeJson('data/validation/sprint3_2-pdf-qa.json',{at:new Date().toISOString(),liveCalls:0,preservation:await preservation(),results,visualInspection:'PNG pages/contact sheets generated; reviewer findings recorded in docs/PDF_QA_CHECKLIST.md'});
