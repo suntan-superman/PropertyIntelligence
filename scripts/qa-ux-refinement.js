@@ -18,7 +18,7 @@ try{
   await page.close();
  }
  const page=await instance.newPage({viewport:{width:1366,height:900}});await page.goto(app.url);await page.getByRole('combobox',{name:'Analysis mode'}).selectOption('deal');await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await page.locator('[data-state="READY_DEAL"]').waitFor();
- for(const anchor of ['#economics','#scenarios','#sensitivity','#questions'])assert.equal(await page.locator(`a[href="${anchor}"]`).count(),1);assert.equal(await page.locator('#economics').count(),1);assert.equal(await page.locator('#questions').count(),1);checks.push('Deal Mode retains applicable economics/scenarios/sensitivity/questions');
+ for(const anchor of ['#economics','#scenarios','#sensitivity','#questions'])assert.equal(await page.locator(`.section-nav a[href="${anchor}"]`).count(),1);assert.equal(await page.locator('#economics').count(),1);assert.equal(await page.locator('#questions').count(),1);checks.push('Deal Mode retains applicable economics/scenarios/sensitivity/questions');
  await page.screenshot({path:resolve(`${directory}/fantasia-deal-1366.png`),fullPage:true});await page.close();
  assert.deepEqual(errors,[]);const result={at:new Date().toISOString(),status:'PASS',referenceModel:'Fantasia cached evidence; no persisted Mainsail fixture is present in this repository',widths,checks,providerCalls:0,errors};await writeJson('data/validation/sprint3_2-ux-visual-qa.json',result);console.log(JSON.stringify(result,null,2));
 }finally{await instance.close();await app.close();}

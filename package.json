@@ -30,6 +30,7 @@
     "netlify:smoke": "node scripts/qa-netlify-smoke.js",
     "web:test": "node scripts/qa-ui.js",
     "ux:qa": "node scripts/qa-ux-refinement.js",
+    "deal:cleanup:qa": "node scripts/qa-deal-cleanup.js",
     "map:test": "node scripts/qa-maps.js",
     "report:fantasia": "node scripts/report-fantasia.js",
     "report:test": "node scripts/qa-reports.js",

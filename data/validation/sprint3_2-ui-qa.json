@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-18T22:57:30.299Z",
+  "at": "2026-09-18T23:51:50.735Z",
   "status": "PASS",
   "checks": [
     "Property mode / no deal assumptions / 15 mapped and retained comps",
@@ -10,7 +10,7 @@
     "Bass STOP / Joyce ambiguity retained",
     "Ambiguous abbreviated address requires explicit confirmation",
     "Failed lookup clears prior-property evidence",
-    "Manual claims isolated / core economics include explicit additional cost",
+    "Manual claims isolated / core economics include explicit closing timing and additional cost",
     "Synthetic long / missing fields and 70-comp UI retain every row",
     "Same-origin API / environment blocked / report generated from exact server session",
     "Actual local key and encoded key absent from bundle; no provider headers"
@@ -19,10 +19,10 @@
   "externalRequests": 0,
   "newProviderCalls": 0,
   "report": {
-    "pages": 11,
-    "digest": "195e1a59d8ac7d7af22c35374ac712e8712c663416864d21e6a660f251cc1fe1",
-    "sha256": "100a63e207c5edb721087deb96ce65d4fba9db3cdd7c2b167f5c09f603f182d5",
-    "download": "/api/reports/94ded1c9-4bfc-4cea-88e6-582581b4c023"
+    "pages": 12,
+    "digest": "a04821b5d7cb88dc99bfadbc44094a86403f57067f8f15b092f9597d498b93a5",
+    "sha256": "0101a7dccf76417490dd425f8184fb714d2d7673713bfa63db6d876f64647738",
+    "download": "/api/reports/5e4da778-2523-4646-a253-89bc2e49d890"
   },
   "preservation": {
     "status": "PASS",

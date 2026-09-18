@@ -27,3 +27,30 @@ export function propertyFacts(model){const p=model?.property??{};return [
   ['Property type',p.propertyType,'propertyType'],['Bedrooms',p.bedrooms,'bedrooms'],['Bathrooms',p.bathrooms,'bathrooms'],['Living area',p.squareFeet==null?null:`${p.squareFeet.toLocaleString()} SF`,'squareFeet'],['Year built',p.yearBuilt,'yearBuilt'],['Lot size',p.lotSize==null?null:`${p.lotSize.toLocaleString()} SF`,'lotSize'],['APN / parcel',p.identifiers?.apn,'apn'],['County',p.county,'county']
 ];}
 export function latestRecord(value){if(!value||typeof value!=='object'||Array.isArray(value))return null;const keys=Object.keys(value).sort((a,b)=>String(b).localeCompare(String(a)));return keys.length?[keys[0],value[keys[0]]]:null;}
+
+const summaryGroups=[
+  ['identity','Property identity',f=>/^(address|propertytype|bedrooms|bathrooms|squarefeet|yearbuilt|county|apn|manufacturedidentity)$/.test(f.field)],
+  ['characteristics','Property characteristics',f=>/^(propertytype|bedrooms|bathrooms|squarefeet|yearbuilt|features|conditionEvidence)$/.test(f.field)],
+  ['valuation','Independent valuation',f=>/^(projectedResalePrice|avm|avmRange|valuation)$/.test(f.field)],
+  ['comparables','Comparable evidence',f=>/^(comparables|compClosedSaleStatus|daysOnMarket|compLandTenure|compBasis)$/.test(f.field)],
+  ['tax','Tax & assessment',f=>/^(taxes|assessments|propertyTaxes)$/.test(f.field)],
+  ['transaction','Transaction history',f=>/^(saleHistory|lastSalePrice|lastSaleDate|transactionHistory)$/.test(f.field)]
+];
+function evidenceSummaryStatus(fields){
+  if(!fields.length)return 'Not available';
+  if(fields.some(f=>f.status==='CONFLICTING'))return 'Conflicting';
+  if(fields.some(f=>['IDENTITY_UNRESOLVED','MISSING','NO_EVIDENCE'].includes(f.status)))return 'Needs verification';
+  if(fields.some(f=>['PARTIAL','PARTIALLY_SUPPORTED'].includes(f.status)))return 'Partial';
+  return 'Available';
+}
+export function evidenceSummary(model){
+  const fields=model?.evidence??[],comps=model?.comps??[];
+  return summaryGroups.map(([id,label,match])=>({id,label,status:evidenceSummaryStatus(fields.filter(match)),detail:null})).map(item=>{
+    if(item.id==='comparables')return {...item,status:comps.length?'Available':'Not available',detail:comps.length?`${comps.length} properties`:null};
+    return item;
+  });
+}
+export function additionalDueDiligence(model){
+  const questions=model?.questions??[],seen=new Set();
+  return questions.filter(q=>q.status==='UNANSWERED'&&q.materiality!=='LOW').filter(q=>{const key=q.relatedFields?.join('|')??q.id;if(seen.has(key))return false;seen.add(key);return true;}).map(q=>({...q,label:q.question}));
+}

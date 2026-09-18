@@ -1,10 +1,10 @@
 {
   "status": "PASS",
-  "at": "2026-09-18T22:58:11.683Z",
+  "at": "2026-09-18T23:52:29.708Z",
   "checks": [
     "Page load / health consumes zero provider calls",
     "Explicit mocked live result uses shared Google map/table, 15 comps, responsive at 390px",
-    "Create Deal starts blank; explicit analyst claims use existing engine with no extra provider calls",
+    "Create Deal starts blank; explicit analyst claims use explicit closing timing with no extra provider calls",
     "Explicit repeated analysis uses cache",
     "HTML fallback displays sanitized service-unavailable error and clears stale property"
   ],

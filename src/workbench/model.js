@@ -4,8 +4,13 @@ import {context} from '../analysis/context.js';
 import {costModel} from '../underwriting/costModel.js';
 import {evaluate} from '../underwriting/metrics.js';
 import {breakEven} from '../analysis/breakEven.js';
+import {dealBreakEven} from '../analysis/dealBreakEven.js';
 import {sensitivity} from '../analysis/sensitivity.js';
+import {dealSensitivity} from '../analysis/dealSensitivity.js';
 import {scenarioCatalog} from '../analysis/scenarioCatalog.js';
+import {diligenceQuestions} from '../analysis/diligenceQuestions.js';
+import {dealCostModel} from '../underwriting/dealCostModel.js';
+import {dealEvaluate} from '../underwriting/dealMetrics.js';
 
 export const WARNING='Excludes material unknown costs. This is not a fully burdened profit estimate.';
 export const DEFAULT_SCENARIOS=['SPONSOR_CASE','SALE_MINUS_10','SALE_MINUS_20','INDEPENDENT_AVM_HIGH','INDEPENDENT_AVM_POINT'];
@@ -31,6 +36,7 @@ export function compView(c,index) {
     unit:c.providerAttributes?.addressLine2??null,sourceStatus:'RentCast / INDEPENDENT_ONLY'};
 }
 function questionGroup(q) {
+  if(q.category)return q.category;
   if(/identity|address/i.test(q.id))return 'Unresolved identity';
   if(/resale|comp/i.test(q.id))return 'Valuation';
   if(/repair|condition/i.test(q.id))return 'Repairs';
@@ -55,7 +61,8 @@ export function finalize(model) {
   model.scale=model.scale.map(([label,value])=>({label,value,display:money(value),position:100*value/max}));
   model.warning=WARNING;
   model.limitations=['Independent estimates are evidence, not verified resale proceeds.','Manufactured-home land tenure, park restrictions and comp tenure/comparability remain unresolved.','Unknown costs remain excluded, not zero. No probability assigned.'];
-  model.questions=model.questions.map(q=>({...q,group:questionGroup(q)}));
+  model.questions=model.questions.map(q=>({...q,group:q.group??questionGroup(q),category:q.category??questionGroup(q)}));
+  model.questionHeading=model.claimOrigin==='SPONSOR_SUPPLIED'?'Questions for Sponsor':'Due Diligence Questions';
   model.digest=hash(JSON.stringify({...model,digest:undefined}));
   return model;
 }
@@ -70,34 +77,55 @@ export async function fixture(id,mode='deal') {
       scenarios:scenarios.scenarios,breakEven:be,sensitivity:sensitivity(input),defaultScenarios:DEFAULT_SCENARIOS};
   }
   const result=ctx.result;
-  return finalize({schemaVersion:1,id,mode,address:result.property?.address??Object.values(result.verificationAddress??ctx.seed.sponsorAddress).filter(Boolean).join(', '),
+  const model={schemaVersion:1,id,mode,address:result.property?.address??Object.values(result.verificationAddress??ctx.seed.sponsorAddress).filter(Boolean).join(', '),
     state:result.status==='ADDRESS_AMBIGUOUS'?'AMBIGUOUS':result.status.includes('STOP')?'SOURCE_STOP':mode==='deal'?'READY_DEAL':'READY_PROPERTY',
     resolutionStatus:result.status,property:result.property,analysis,claims:mode==='deal'?ctx.deal.claims:[],claimOrigin:'SPONSOR_SUPPLIED',
     candidates:result.candidates.map((c,index)=>({index,address:c.formattedAddress??c.addressLine1??'Unspecified candidate'})),
     evidence:evidence.properties.find(p=>p.propertyId===id).fields.filter(f=>mode==='deal'||['identity','property','valuation','comparability','tenure'].includes(f.category)),
     questions:questions.requests.filter(q=>q.propertyId===id),provenance:ctx.provenance,
     cache:{status:'EXISTING_CACHED_EVIDENCE',retrievedAt:[...new Set(result.evidence.map(e=>e.retrievedAt).filter(Boolean))],newProviderCalls:0},
-    notes:result.anomalies,originalClaimsPreserved:true});
+    notes:result.anomalies,originalClaimsPreserved:true};
+  if(id==='fantasia'&&mode==='deal') model.questions=diligenceQuestions({id,claimOrigin:'SPONSOR_SUPPLIED',property:model.property,claims:model.claims,evidence:model.evidence,analysis:model.analysis});
+  return finalize(model);
 }
 export function manualDeal(original,payload) {
   if(!['READY_PROPERTY','READY_DEAL'].includes(original.state))throw new Error('IDENTITY_STOP');
   if(!['ANALYST_ENTERED','SPONSOR_SUPPLIED'].includes(payload.origin))throw new Error('CLAIM_ORIGIN_REQUIRED');
-  const mapping={acquisitionCost:'acquisition',estimatedRepairs:'repairs',projectedListPrice:'sale',spaceRentThreeMonths:'rent',salesCommission:'commission',escrowClosingCosts:'escrow'};
+  const mapping={acquisitionCost:'acquisition',estimatedRepairs:'repairs',projectedListPrice:'sale',spaceRentThreeMonths:'rent',salesCommission:'commission'};
   const values={};
   for(const [field,key] of Object.entries(mapping)){
     const value=payload[key];
     if(typeof value!=='number'||!Number.isFinite(value)||value<0||value>1e10)throw new Error('EXPLICIT_COSTS_REQUIRED');
     values[field]=value;
   }
+  const hasExplicitClosing=Object.prototype.hasOwnProperty.call(payload,'acquisitionClosingCosts')||Object.prototype.hasOwnProperty.call(payload,'dispositionClosingCosts');
+  const hasLegacyClosing=Object.prototype.hasOwnProperty.call(payload,'escrow');
+  if(hasExplicitClosing&&hasLegacyClosing)throw new Error('CLOSING_COST_MODE_CONFLICT');
+  if(hasExplicitClosing) {
+    for(const key of ['acquisitionClosingCosts','dispositionClosingCosts']) {
+      const value=payload[key];
+      if(value!==null&&value!==undefined&&(!Number.isFinite(value)||value<0||value>1e10))throw new Error('INVALID_CLOSING_COST');
+      values[key]=value===undefined?null:value;
+    }
+  } else {
+    const value=payload.escrow;
+    if(typeof value!=='number'||!Number.isFinite(value)||value<0||value>1e10)throw new Error('EXPLICIT_COSTS_REQUIRED');
+    values.escrowClosingCosts=value;
+  }
   if(!Number.isFinite(payload.holdDays)||payload.holdDays<=0||payload.holdDays>3650)throw new Error('HOLD_DAYS_REQUIRED');
   const model=structuredClone(original),at=new Date().toISOString();
   model.mode='deal';model.state='READY_DEAL';model.claimOrigin=payload.origin;
-  model.claims=Object.entries(values).map(([field,value])=>({field:field==='spaceRentThreeMonths'?'spaceRentForHoldingPeriod':field,value,status:payload.origin,suppliedAt:at,sourceDocument:'Local analyst entry; not independently verified'}));
+  model.claims=Object.entries(values).map(([field,value])=>({field:field==='spaceRentThreeMonths'?'spaceRentForHoldingPeriod':field,value,
+    status:value===null?'UNKNOWN':payload.origin,origin:payload.origin,suppliedAt:at,sourceDocument:'Local analyst entry; not independently verified',
+    ...(field==='acquisitionClosingCosts'?{timing:'UPFRONT'}:{}),...(field==='dispositionClosingCosts'?{timing:'DISPOSITION'}:{})}));
   model.claims.push({field:'holdDays',value:payload.holdDays,status:payload.origin,suppliedAt:at});
   model.provenance=[...original.provenance.filter(p=>p.source==='RentCast'),{source:payload.origin,reference:'Local analyst entry',retrievedAt:at}];
-  const costs=costModel(values,{provenance:model.provenance,sponsorTimelineDays:payload.holdDays});
-  costs.baseRentCoverageDays=payload.holdDays;costs.monthlySpaceRent=payload.rent/(payload.holdDays/30);
-  costs.derivation={status:'DERIVED_FROM_EXPLICIT_AGGREGATE',aggregate:payload.rent,days:payload.holdDays,monthlySpaceRent:costs.monthlySpaceRent,daysPerModelMonth:30};
+  const costs=hasExplicitClosing?dealCostModel(values,{provenance:model.provenance,sponsorTimelineDays:payload.holdDays}):costModel(values,{provenance:model.provenance,sponsorTimelineDays:payload.holdDays});
+  costs.baseRentCoverageDays=payload.holdDays;
+  costs.monthlySpaceRent=payload.rent>0?payload.rent/(payload.holdDays/30):null;
+  costs.derivation=payload.rent>0
+    ?{status:'DERIVED_FROM_EXPLICIT_AGGREGATE',aggregate:payload.rent,days:payload.holdDays,monthlySpaceRent:costs.monthlySpaceRent,daysPerModelMonth:30}
+    :{status:'UNAVAILABLE',reason:'No positive recurring holding-cost basis.'};
   costs.warnings=[WARNING,'Manual rent is an explicit aggregate for the entered hold duration. Holding scenarios vary rent only.'];
   costs.costs.forEach(c=>{if(c.status==='KNOWN_SUPPLIED')c.source=payload.origin;if(c.field==='spaceRent')c.claimField='spaceRentForHoldingPeriod';});
   if(payload.otherKnownCost!==null&&payload.otherKnownCost!==undefined) {
@@ -105,17 +133,19 @@ export function manualDeal(original,payload) {
     costs.costs.push({field:'additionalExplicitCosts',value:payload.otherKnownCost,status:'KNOWN_SUPPLIED',source:payload.origin,cashTiming:payload.otherCashTiming,notes:['Additional explicitly supplied cost; unresolved cost categories remain unknown.']});
     model.claims.push({field:'additionalExplicitCosts',value:payload.otherKnownCost,cashTiming:payload.otherCashTiming,status:payload.origin,suppliedAt:at});
   }
-  const base=evaluate(costs),input={portfolio:{deals:[{id:model.id,claims:model.claims}],properties:[{id:model.id}]},verification:{properties:[{propertyId:model.id,property:model.property,evidence:[]}]}};
+  const evaluateDeal=hasExplicitClosing?dealEvaluate:evaluate;
+  const base=evaluateDeal(costs),input={portfolio:{deals:[{id:model.id,claims:model.claims}],properties:[{id:model.id}]},verification:{properties:[{propertyId:model.id,property:model.property,evidence:[]}]}};
   const scenarios=scenarioCatalog(costs,model.property?.valuation).map(s=>{
-    const outputs=Object.values(s.overrides).some(v=>v===null)?{status:'UNAVAILABLE'}:evaluate(costs,s.overrides);
+    const outputs=Object.values(s.overrides).some(v=>v===null)?{status:'UNAVAILABLE'}:evaluateDeal(costs,s.overrides);
     outputs.changeVsSponsorDollars=outputs.modeledProfit==null?null:outputs.modeledProfit-base.modeledProfit;
     return {...s,label:s.label.replaceAll('Sponsor','Entered').replaceAll('sponsor','entered'),outputs,provenance:model.provenance};
   });
-  model.analysis={base,costModel:costs,scenarios,breakEven:breakEven(input,{id:model.id,model:costs}),sensitivity:sensitivity(input,{id:model.id,model:costs}),defaultScenarios:DEFAULT_SCENARIOS};
+  model.analysis={base,costModel:costs,scenarios,breakEven:hasExplicitClosing?dealBreakEven(input,{id:model.id,model:costs}):breakEven(input,{id:model.id,model:costs}),sensitivity:hasExplicitClosing?dealSensitivity(input,{id:model.id,model:costs}):sensitivity(input,{id:model.id,model:costs}),defaultScenarios:DEFAULT_SCENARIOS};
   model.analysis.sensitivity.ranking.basis=model.analysis.sensitivity.ranking.basis.replace('sponsor arithmetic','entered base-case arithmetic');
   model.analysis.sensitivity.ranking.notes=['Deterministic perturbations; no probability assigned.',`Holding baseline is the explicitly entered ${payload.holdDays}-day rent coverage.`];
   // Original evidence remains historical; it must not masquerade as confirmation of edited claims.
   model.evidence=model.evidence.map(f=>({...f,notes:[...(f.notes??[]),'Original fixture evidence assessment; does not validate manual deal inputs.']}));
+  model.questions=diligenceQuestions({id:model.id,claimOrigin:payload.origin,property:model.property,claims:model.claims,evidence:model.evidence,analysis:model.analysis});
   model.notes=[...model.notes,'Manual scenario is separate from the saved sponsor deal. Original artifacts unchanged.'];
   return finalize(model);
 }

@@ -25,7 +25,7 @@ try{
   await page.getByRole('heading',{name:'Modeled deal economics',exact:true}).waitFor();
   assert.match(await page.locator('body').innerText(),/\$180,000/);assert.match(await page.locator('body').innerText(),/-\$58,000/);
   await page.getByRole('button',{name:'View all 21 scenarios',exact:true}).click();assert.equal(await page.locator('#scenarios tbody tr').count(),21);checks.push('Golden financial values / all 21 scenarios / unknown-cost warning');
-  await page.locator('#evidence .evidence-group > details').first().locator('summary').first().click();assert.ok((await page.locator('#evidence .evidence-group > details').first().innerText()).includes('Independent evidence'));
+  await page.locator('#evidence .detailed-evidence > summary').click();await page.locator('#evidence .evidence-group > details').first().locator('summary').first().click();assert.ok((await page.locator('#evidence .evidence-group > details').first().innerText()).includes('Independent evidence'));
   await page.locator('#sources summary').first().click();checks.push('Expandable evidence and source provenance');
   await page.screenshot({path:resolve(`${dir}/ui-laptop.png`),fullPage:true});
   await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:resolve(`${dir}/ui-laptop-top.png`)});
@@ -39,8 +39,8 @@ try{
   await page.locator('#address').fill('8426 Fantasia Park Way');await page.getByRole('button',{name:'Analyze cached evidence',exact:true}).click();await state('AMBIGUOUS');await page.getByRole('button',{name:/^Confirm 8426/}).click();await state('READY_DEAL');checks.push('Ambiguous abbreviated address requires explicit confirmation');
   await page.locator('#address').fill('999 Uncached Road, Elsewhere, FL 12345');await page.getByRole('button',{name:'Analyze cached evidence',exact:true}).click();await state('ERROR');assert.equal(await page.locator('[data-comp-row]').count(),0);assert.equal(await page.locator('.property-header').count(),0);checks.push('Failed lookup clears prior-property evidence');
   await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();await state('READY_DEAL');await page.locator('.deal-form summary').click();
-  for(const [key,val] of Object.entries({acquisition:160000,repairs:10000,sale:279000,holdDays:90,rent:3000,commission:5000,escrow:2000,otherKnownCost:1000}))await page.locator(`[name="${key}"]`).fill(String(val));
-  await page.getByRole('button',{name:'Analyze explicit claims',exact:true}).click();await state('READY_DEAL');assert.match(await page.locator('#economics').innerText(),/\$98,000/);checks.push('Manual claims isolated / core economics include explicit additional cost');
+  for(const [key,val] of Object.entries({acquisition:160000,repairs:10000,sale:279000,holdDays:90,rent:3000,commission:5000,acquisitionClosingCosts:1000,dispositionClosingCosts:2000,otherKnownCost:1000}))await page.locator(`[name="${key}"]`).fill(String(val));
+  await page.getByRole('button',{name:'Analyze explicit claims',exact:true}).click();await state('READY_DEAL');assert.match(await page.locator('#economics').innerText(),/\$97,000/);checks.push('Manual claims isolated / core economics include explicit closing timing and additional cost');
   for(const kind of ['long','many-comps']){
     const model=await synthetic(kind);
     await page.route(`${app.url}/api/fixture`,route=>route.fulfill({contentType:'application/json',body:JSON.stringify({model,sessionId:'synthetic-qa'})}));

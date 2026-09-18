@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-18T23:51:33.111Z",
+  "status": "PASS",
+  "checks": [
+    "Fantasia questions, concise evidence summary, additional diligence and collapsed detailed evidence",
+    "Detailed field-level evidence/provenance expands on demand",
+    "Conventional manual deal preserves blank closing costs as unknown and shows unavailable holding sensitivity",
+    "Explicit acquisition/disposition timing and partial holding basis render without double counting",
+    "Manual Deal Mode remains responsive at 390px",
+    "Bass STOP and Joyce ambiguity do not receive resolved-deal diligence"
+  ],
+  "providerCalls": 0,
+  "errors": []
+}
