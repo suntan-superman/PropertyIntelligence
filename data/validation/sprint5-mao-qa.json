@@ -1,0 +1,18 @@
+{
+  "at": "2026-09-19T03:38:31.642Z",
+  "status": "PASS",
+  "checks": [
+    "CASH_ON_CASH exact threshold",
+    "RETURN_ON_TOTAL_PROJECT_COST exact threshold",
+    "PROFIT_MARGIN_ON_SALE exact threshold",
+    "fixed, purchase and exit percentage costs",
+    "per-day and per-month costs",
+    "explicit zero differs from unknown",
+    "incomplete and unavailable gates",
+    "encumbrances are separate and gap is neutral",
+    "conflict and sensitivity retain evidence bases",
+    "deterministic fingerprint and invalid domains"
+  ],
+  "providerCalls": 0,
+  "modelVersion": "sprint5-mao-v1"
+}

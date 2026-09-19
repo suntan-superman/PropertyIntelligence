@@ -1,0 +1,13 @@
+{
+  "at": "2026-09-19T00:57:33.953Z",
+  "status": "PASS",
+  "checks": [
+    "POST/GET property persistence",
+    "POST/GET deal persistence",
+    "analysis history endpoint",
+    "API idempotent replay",
+    "UUID validation"
+  ],
+  "propertyId": "180313dc-d081-4cdd-b03a-32ddadab64bd",
+  "dealId": "100179b6-b343-4312-b755-82456b8380e3"
+}

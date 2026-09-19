@@ -1,0 +1,40 @@
+{
+  "at": "2026-09-19T02:36:54.812Z",
+  "status": "PASS",
+  "deploymentUrl": "https://worksidepropertyintelligence.netlify.app",
+  "health": {
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true
+  },
+  "qaTag": "SPRINT4_1_PRODUCTION_RECERT_20260919",
+  "property": {
+    "propertyId": "16141865-fcaf-4d2c-9be5-04c97cc6884c",
+    "reopened": true,
+    "evidenceSnapshotId": "1724e1a6-1ed8-4f32-abd3-748df3518ffa",
+    "evidenceSnapshots": 5,
+    "retainedComps": 15,
+    "idempotentReplay": true
+  },
+  "deal": {
+    "dealId": "c48ef431-21be-4767-8001-401054a6d1ec",
+    "reopened": true,
+    "claims": 10,
+    "diligence": 21,
+    "analysisSnapshotIds": [
+      "b4943315-b0cd-438b-86b0-bcf9811f2e4d",
+      "7942c131-57ef-43e8-8052-9a2e24ab6550"
+    ],
+    "analysisSnapshots": 2,
+    "firstAnalysisUnchanged": true,
+    "idempotentReplay": true,
+    "analysisReplay": true,
+    "listedMatches": 1
+  },
+  "browserSecretScan": {
+    "assetsScanned": 1,
+    "status": "PASS"
+  },
+  "rentcastCalls": 0
+}

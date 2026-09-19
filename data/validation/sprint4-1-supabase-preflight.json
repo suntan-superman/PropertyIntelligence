@@ -1,0 +1,37 @@
+{
+  "at": "2026-09-19T02:58:57.207Z",
+  "status": "PASS",
+  "postgresVersion": "PostgreSQL 17.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit",
+  "databaseName": "postgres",
+  "sslActive": true,
+  "tlsAuthorized": true,
+  "tlsProtocol": "TLSv1.3",
+  "tlsAuthorizationError": false,
+  "ledgerPresent": true,
+  "applicationTables": {
+    "present": [
+      "properties",
+      "property_aliases",
+      "evidence_snapshots",
+      "valuations",
+      "comparable_snapshots",
+      "comparables",
+      "deals",
+      "deal_claims",
+      "analysis_snapshots",
+      "diligence_items",
+      "discovery_signals",
+      "documents",
+      "reports",
+      "idempotency_keys",
+      "audit_events"
+    ],
+    "missing": [
+      "acquisition_decisions",
+      "property_encumbrances",
+      "property_condition_assessments",
+      "property_condition_items"
+    ]
+  },
+  "pending": 1
+}

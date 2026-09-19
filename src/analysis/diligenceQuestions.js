@@ -98,3 +98,19 @@ export function diligenceQuestions({id='deal',claimOrigin='ANALYST_ENTERED',prop
 }
 
 export const diligenceQuestionCategories=Object.freeze(['Acquisition','Valuation','Repairs & Condition','Holding Costs','Title / Legal','Manufactured / Community','Schedule','Other Deal Costs']);
+
+export function acquisitionDecisionQuestions(decision={}) {
+  const questions=[];const add=(key,question,trigger,relatedFields)=>questions.push({id:`acquisition-${key}`,category:'Acquisition Decision',question,trigger,materiality:'MATERIAL',relatedFields,status:'UNANSWERED',claimOrigin:'ANALYST_ENTERED'});
+  const enc=decision.encumbrances??[];
+  if(enc.some(item=>item.type?.includes('MORTGAGE')||item.type==='HELOC')&&enc.some(item=>!item.payoffVerified))add('mortgage-payoff','Obtain a current payoff statement; a reported mortgage balance is not a verified payoff.','Mortgage amount is not payoff verified.',['encumbrances']);
+  if(enc.some(item=>item.priorityKnown!==true))add('lien-priority','Verify lien priority and enforceability with current title/legal documentation.','Lien priority is unknown.',['encumbrances','priorityKnown']);
+  if(enc.some(item=>item.amountStatus!=='VERIFIED'&&item.amountStatus!=='DOCUMENTED'))add('liens-taxes','Obtain current tax, lien and payoff documentation for every reported or estimated obligation.','Taxes or liens are reported, estimated or otherwise not fully documented.',['encumbrances','amountStatus']);
+  if((decision.rehab?.items??[]).some(item=>item.conditionStatus!=='GOOD'&&item.conditionStatus!=='NOT_ASSESSED'&&item.estimatedCost==null))add('condition-cost','Obtain an itemized condition scope and cost for each identified work item.','Condition work is identified without a cost.',['rehab']);
+  if(!(decision.rehab?.items??[]).some(item=>item.source&&/contractor|inspection/i.test(item.source)))add('contractor-support','Obtain contractor or inspection support for the rehab scope and pricing.','No contractor support is attached to the rehab assumptions.',['rehab','source']);
+  if(decision.rehab?.contingencyAmount===0)add('contingency','Enter an explicit contingency amount or percentage if contingency is not intentionally zero.','No rehab contingency is modeled.',['rehab','contingency']);
+  if((decision.costCompleteness??'').includes('INCOMPLETE')&&decision.unknownCosts?.some(item=>/hold|tax|insurance|utility/i.test(String(item))))add('holding-costs','Supply taxes, insurance, utilities, maintenance, security, HOA or space-rent terms for the expected hold.','Holding costs are incomplete.',['holdingCosts']);
+  if(decision.financingMode&&decision.financingMode!=='CASH'&&decision.unknownCosts?.some(item=>/financ/i.test(String(item))))add('financing','Supply loan amount/LTV, rate, points, fees and duration.','Financing assumptions are incomplete.',['financing']);
+  if((decision.exitResults??[]).some(item=>item.exitConflict))add('exit-conflict','Document the evidence supporting the analyst or sponsor exit outside the independent range.','Selected or available exit basis conflicts with independent valuation range.',['exitResults']);
+  if(decision.encumbrances&&!decision.titleVerified)add('title','Obtain current title and legal verification before relying on encumbrance observations.','Title is not verified.',['title','encumbrances']);
+  return questions;
+}

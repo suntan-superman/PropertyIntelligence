@@ -1,0 +1,41 @@
+{
+  "at": "2026-09-19T03:37:55.075Z",
+  "status": "PASS",
+  "deploymentUrl": "https://worksidepropertyintelligence.netlify.app",
+  "qaTag": "SPRINT5_PRODUCTION_QA_20260919_1",
+  "health": {
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true
+  },
+  "propertyId": "16141865-fcaf-4d2c-9be5-04c97cc6884c",
+  "evidenceSnapshotId": "a54efe70-9ec2-40d3-b9ce-0cbc4936be97",
+  "retainedComps": 15,
+  "dealId": "4cda148f-3136-4168-94ae-974d33146414",
+  "claims": 10,
+  "diligence": 21,
+  "decision1Id": "87c8c229-579a-4c8b-ad6e-4e3fe77b2c67",
+  "decision2Id": "0b7a3d79-b9db-436a-b9ae-8647227d891d",
+  "decision1Fingerprint": "47e57f3fb8436c04129bc88320af87333f7773b144579d2b59a3f4b5dc08b370",
+  "decision2Fingerprint": "8896ff0363911fd11bb34d2c3806180dbabaccbebe26886afa9f0cc0558e64ae",
+  "hurdleType": "CASH_ON_CASH",
+  "hurdleRate": 0.2,
+  "selectedExitBasis": "INDEPENDENT_POINT",
+  "selectedMao": 152000,
+  "walkAway": 145000,
+  "targetOffer": 136800,
+  "knownEncumbranceTotal": 50000,
+  "unknownEncumbranceCount": 1,
+  "conditionItems": 1,
+  "historyCount": 4,
+  "firstDecisionUnchanged": true,
+  "idempotentReplay": true,
+  "encumbranceSeparation": true,
+  "incompleteUnknownPreserved": true,
+  "browserSecretScan": {
+    "assetsScanned": 1,
+    "status": "PASS"
+  },
+  "rentcastCalls": 0
+}

@@ -1,0 +1,27 @@
+{
+  "at": "2026-09-19T00:53:46.840Z",
+  "status": "PASS",
+  "checks": [
+    "empty migration schema",
+    "property save/read",
+    "aliases",
+    "all 15 comps",
+    "immutable evidence refresh",
+    "valuation history",
+    "deal save/read",
+    "unknown and zero round-trip",
+    "analysis history immutability",
+    "diligence",
+    "duplicate independent claims",
+    "soft archive",
+    "transaction rollback",
+    "idempotency",
+    "FK rejection",
+    "parameterized search"
+  ],
+  "propertyId": "e8bd8f5b-98de-4690-854f-59cb02602701",
+  "dealId": "8a15215c-76a1-441a-86a4-e8a99bc65080",
+  "duplicateDealId": "bf5a8f9f-3b73-4e06-aec5-d89b7427e0ca",
+  "evidenceSnapshots": 2,
+  "analysisSnapshots": 2
+}

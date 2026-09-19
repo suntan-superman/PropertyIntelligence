@@ -1,0 +1,31 @@
+{
+  "at": "2026-09-19T02:08:10.755Z",
+  "status": "PASS",
+  "provider": "supabase-postgresql",
+  "qaTag": "SPRINT4_1_QA",
+  "propertyId": "950042da-1be5-49eb-92ea-2b3e4d4b4fd2",
+  "dealId": "c7fca3ad-6aa0-459f-9319-9357b486a0e7",
+  "duplicateDealId": "dfcd1f10-8c17-4b5c-ab1e-5c6812c470cd",
+  "evidenceSnapshots": 2,
+  "analysisSnapshots": 2,
+  "ledgerFiles": [
+    "001_persistent_intelligence.sql"
+  ],
+  "checks": [
+    "separate-pool save/read",
+    "alias preservation",
+    "15 retained comps",
+    "immutable evidence refresh across separate pool",
+    "deal/claims/diligence round trip",
+    "unknown versus explicit zero",
+    "cash timing",
+    "immutable reanalysis across separate pool",
+    "historical evidence linkage",
+    "independent duplicate claims",
+    "soft archive/list",
+    "transaction rollback",
+    "idempotent replay",
+    "parameterized injection-safe search"
+  ],
+  "providerCalls": 0
+}

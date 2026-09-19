@@ -1,0 +1,22 @@
+{
+  "at": "2026-09-19T02:59:20.975Z",
+  "status": "PASS",
+  "qaTag": "SPRINT5_QA_1789786756193",
+  "propertyId": "950042da-1be5-49eb-92ea-2b3e4d4b4fd2",
+  "evidenceSnapshotId": "a1b3e11b-18fd-4f99-882e-78b4d7e1520d",
+  "decisionIds": [
+    "1fd6b398-6cae-4e76-aa0f-45e781bc9c95",
+    "4aff0c24-ff7c-40bb-9287-c5e98cf2fbeb"
+  ],
+  "historyCount": 2,
+  "checks": [
+    "immutable decision snapshot",
+    "idempotent replay",
+    "separate database connection reopen",
+    "encumbrance history",
+    "condition history",
+    "transaction rollback",
+    "0 provider calls"
+  ],
+  "providerCalls": 0
+}
