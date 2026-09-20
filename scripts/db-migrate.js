@@ -4,7 +4,7 @@ import {resolve,hash,writeJson} from '../src/io/files.js';
 
 try { process.loadEnvFile(resolve('.env')); } catch { /* Netlify injects DATABASE_URL in deployed functions */ }
 
-const APP_TABLES=['properties','property_aliases','evidence_snapshots','valuations','comparable_snapshots','comparables','deals','deal_claims','analysis_snapshots','diligence_items','discovery_signals','documents','reports','idempotency_keys','audit_events','acquisition_decisions','property_encumbrances','property_condition_assessments','property_condition_items'];
+const APP_TABLES=['properties','property_aliases','evidence_snapshots','valuations','comparable_snapshots','comparables','deals','deal_claims','analysis_snapshots','diligence_items','discovery_signals','documents','reports','idempotency_keys','audit_events','acquisition_decisions','property_encumbrances','property_condition_assessments','property_condition_items','discovery_sources','discovery_records','opportunity_candidates','opportunity_record_links','opportunity_signals','opportunity_reviews'];
 const LEDGER='property_intelligence_schema_migrations';
 const command=process.argv[2]??'help';
 const migrations=async()=>{

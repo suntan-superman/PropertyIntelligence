@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-20T23:23:35.305Z",
+  "status": "PASS",
+  "url": "https://6ab06aaecf22df927764b7d9--worksidepropertyintelligence.netlify.app",
+  "checks": [
+    "DECISION_ANALYSIS_PROPERTY_MISMATCH",
+    "DECISION_ANALYSIS_DEAL_MISMATCH",
+    "DECISION_ANALYSIS_EVIDENCE_MISMATCH",
+    "DECISION_ANALYSIS_LINK_REQUIRED"
+  ],
+  "historyCount": 2,
+  "additionalDecisions": 0,
+  "providerCalls": 0
+}

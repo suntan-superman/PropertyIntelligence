@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "at": "2026-09-20T23:34:26.718Z",
+  "results": [
+    {
+      "fixture": "complete",
+      "pages": 8,
+      "renderMs": 690,
+      "bytes": 101937,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "sparse",
+      "pages": 6,
+      "renderMs": 614,
+      "bytes": 93456,
+      "comps": 0,
+      "status": "PASS"
+    },
+    {
+      "fixture": "exit-conflict",
+      "pages": 8,
+      "renderMs": 638,
+      "bytes": 102316,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "many-encumbrances",
+      "pages": 11,
+      "renderMs": 642,
+      "bytes": 109555,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "large-rehab",
+      "pages": 34,
+      "renderMs": 766,
+      "bytes": 152276,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "all-15-comps",
+      "pages": 8,
+      "renderMs": 647,
+      "bytes": 101937,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "long-legal",
+      "pages": 14,
+      "renderMs": 631,
+      "bytes": 112923,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "many-diligence",
+      "pages": 14,
+      "renderMs": 652,
+      "bytes": 113723,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "manufactured",
+      "pages": 8,
+      "renderMs": 624,
+      "bytes": 102156,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "explicit-zero",
+      "pages": 8,
+      "renderMs": 632,
+      "bytes": 101954,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "no-condition",
+      "pages": 8,
+      "renderMs": 625,
+      "bytes": 101736,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "historical",
+      "pages": 8,
+      "renderMs": 630,
+      "bytes": 101964,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "long-sources",
+      "pages": 10,
+      "renderMs": 644,
+      "bytes": 105933,
+      "comps": 15,
+      "status": "PASS"
+    },
+    {
+      "fixture": "minimal",
+      "pages": 6,
+      "renderMs": 619,
+      "bytes": 93456,
+      "comps": 0,
+      "status": "PASS"
+    },
+    {
+      "fixture": "extreme-dollars",
+      "pages": 8,
+      "renderMs": 611,
+      "bytes": 101944,
+      "comps": 15,
+      "status": "PASS"
+    }
+  ],
+  "localApiFixtures": 3,
+  "protectedFiles": 351,
+  "providerCalls": 0,
+  "visualDirectory": "data/validation/sprint6_1-pdf"
+}

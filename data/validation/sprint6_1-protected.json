@@ -1,0 +1,1409 @@
+{
+  "at": "2026-09-20T22:34:16.329Z",
+  "files": [
+    {
+      "file": "src/reports/html.js",
+      "sha256": "122025bf4e42b79d68651d7d30a3fb4975e77c49ab40506e3d739ea315064305"
+    },
+    {
+      "file": "src/reports/pdf.js",
+      "sha256": "4035783d3d186ac3098711c63de607225de355f679b8145a0e0e0ee8dee64252"
+    },
+    {
+      "file": "src/underwriting/comparison.js",
+      "sha256": "fcd168555555b9c54d00b83cf1ecbc99df672faaac014669b271df5e43d01f04"
+    },
+    {
+      "file": "src/underwriting/costModel.js",
+      "sha256": "849020b2f00bfc1f5c7ed221b2302628277c68c6e1154084aa846ad0213059f5"
+    },
+    {
+      "file": "src/underwriting/dealCostModel.js",
+      "sha256": "3e046d1bc3f205e31107e13f503fd2266088f27daa0ba6f5aff7ec7d580168b6"
+    },
+    {
+      "file": "src/underwriting/dealMetrics.js",
+      "sha256": "5c4c3a19be6db13bca1face5b1556fa567fb6a2dc2ed70be20adb289b21cf990"
+    },
+    {
+      "file": "src/underwriting/deterministic.js",
+      "sha256": "9232e8a7a586aced94ae13dad604e51338c6e2efdd38d6d8f9c033e309a27f72"
+    },
+    {
+      "file": "src/underwriting/mao.js",
+      "sha256": "91cc141c5eef94a4310339800ec6bd8f523b17e0d46f92c24a11f4f510e7ec2e"
+    },
+    {
+      "file": "src/underwriting/metrics.js",
+      "sha256": "58377e9f83ab3adbb9c1929c7911ab126fc8c5d47bafca70d29842312000926a"
+    },
+    {
+      "file": "src/analysis/artifacts.js",
+      "sha256": "3ddb21c66ba9a33df5576ebad0fe85ce553ba6d9557b7361aad00b0ebe28f576"
+    },
+    {
+      "file": "src/analysis/breakEven.js",
+      "sha256": "27305181a8b2de1bc66ae4a017dc91e7141bf4df2c479d84dac2e45aeb2e6e85"
+    },
+    {
+      "file": "src/analysis/context.js",
+      "sha256": "baa491a7f219dc034a2d9d0cc631af2c4ab3010086043ccebfcdc385fa5e44b9"
+    },
+    {
+      "file": "src/analysis/dealBreakEven.js",
+      "sha256": "486c26b8626bebd5ebb31ae7ed8c31f3e284bb02373cd2c27f79919ad7d8c8aa"
+    },
+    {
+      "file": "src/analysis/dealSensitivity.js",
+      "sha256": "1a3d9050d15e5a59b49f2c35e258a5fba636e353eb65b8208d8a85d66284d6a8"
+    },
+    {
+      "file": "src/analysis/diligenceQuestions.js",
+      "sha256": "057ddaab8f0889ece09a514aba478416439144e584eb61f7dfe56d1c0e102c81"
+    },
+    {
+      "file": "src/analysis/evidenceCompleteness.js",
+      "sha256": "0260708f0d73b60e84cb257ec4a3e46ba2c3182fc7cd2d7813dea9f18028866a"
+    },
+    {
+      "file": "src/analysis/inputs.js",
+      "sha256": "6fc9035abf31ba484d4029c0d24bd91c88c66debba6a034271485afd7df163fc"
+    },
+    {
+      "file": "src/analysis/offline.js",
+      "sha256": "eba520135df13843c3f54ebdbbd5ff74c0a89d70988f9349df39958bcad38d14"
+    },
+    {
+      "file": "src/analysis/reports.js",
+      "sha256": "8dc4ae3acc10e9efbe2a56425b5a760b00bb1cd7c541755057977b228283fab6"
+    },
+    {
+      "file": "src/analysis/scenarioCatalog.js",
+      "sha256": "52602560871e74793bc7698079ae9dc88fa9c09f22ecffa628aa0bc963033991"
+    },
+    {
+      "file": "src/analysis/scenarios.js",
+      "sha256": "4dac522d729ea2b354292d10b375c12c7405bff062109abc04285d8b060203c5"
+    },
+    {
+      "file": "src/analysis/sensitivity.js",
+      "sha256": "27719f088bbc1c63660d02340aceb73a4ba16b118adde78b14067a55f80c87a3"
+    },
+    {
+      "file": "netlify/database/migrations/001_persistent_intelligence.sql",
+      "sha256": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "file": "netlify/database/migrations/002_acquisition_decisions.sql",
+      "sha256": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "file": "netlify/database/migrations/003_opportunity_discovery.sql",
+      "sha256": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-10-15-280Z-2a47aec0.model.json",
+      "sha256": "1fb9c918b66eab77f185f61f6e117007eb5d2df24914b5166e332ec9dea8906b"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-10-15-280Z-2a47aec0.pdf",
+      "sha256": "e2a8d958fc285895f79a49b3ac40f9a1c12db96838e10f451dd34347961579d0"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-10-55-605Z-2a3f7dd5.model.json",
+      "sha256": "1fb9c918b66eab77f185f61f6e117007eb5d2df24914b5166e332ec9dea8906b"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-10-55-605Z-2a3f7dd5.pdf",
+      "sha256": "72d747c88b67ec48d01b19676caf0f5f55627082625f5041011adb0be0a8ed3b"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-15-39-371Z-58fc1eaf.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-15-39-371Z-58fc1eaf.pdf",
+      "sha256": "6d12a9fe91c73bd099415f130e24fe04e90603e9dfbfe1859b6fb6168cbd272b"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-16-29-097Z-22e49d96.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-16-29-097Z-22e49d96.pdf",
+      "sha256": "67ee40a014083fc299429b851b6350ae5c1230622772f8a0521fdfb316d649c3"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-16-54-055Z-e2b30e4e.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T20-16-54-055Z-e2b30e4e.pdf",
+      "sha256": "6c13f24370e960fd409ffa08e6eedcc70ef6c5e91fc9872ba0de2c58d527cc6f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T21-45-18-824Z-98edbbf0.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T21-45-18-824Z-98edbbf0.pdf",
+      "sha256": "1f5adced207397bca12d39de40a0d7c794c25b7550a797e256d558dde74a4ed1"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T21-53-59-702Z-5675d57e.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T21-53-59-702Z-5675d57e.pdf",
+      "sha256": "356ed199603d87e569fd2f16c95681124750539a1c091a2e0a0dfd07edf9754b"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T21-55-53-196Z-8579953d.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T21-55-53-196Z-8579953d.pdf",
+      "sha256": "f4c26484c99dd40d518ba480b7d825764af2a7087fca0f49658a69ac1111dc6e"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T22-52-30-035Z-f02ed8f5.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T22-52-30-035Z-f02ed8f5.pdf",
+      "sha256": "58c5e0c118763b1bd5a138b2b5f9000c6625c10dc03ff9a348924d285393e959"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T22-55-08-853Z-2374ebc3.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T22-55-08-853Z-2374ebc3.pdf",
+      "sha256": "d7c9977faf109f6b968ff80bed6e1a1cd717f424f46932dd1f7707674bd3f15a"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T22-58-01-068Z-bfcf1359.model.json",
+      "sha256": "7e6b53145b78b47d800b22af556c0d1dfa489f8ec99617bacfd7694621bead4d"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T22-58-01-068Z-bfcf1359.pdf",
+      "sha256": "439e67c693b8ff93b9ead136c50584bc96f20535678137f446576908d98f3890"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T23-40-49-161Z-8b7396c0.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T23-40-49-161Z-8b7396c0.pdf",
+      "sha256": "35fc1ce7a1d463de6e2fb093892c7c8c1416dcc00f927919a89e101e913df346"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T23-52-20-153Z-313de668.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-18T23-52-20-153Z-313de668.pdf",
+      "sha256": "587126fcb15f002c99ccb15dfbea516c2810eb3e8dbc7fad5d02428c93569af1"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T00-50-59-625Z-70c831b1.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T00-50-59-625Z-70c831b1.pdf",
+      "sha256": "fe862342e65a8fea7d1d653efdd1ea055d9997da3eeaa529932f5e52c17dd4ec"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T01-41-34-992Z-1eb01fbc.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T01-41-34-992Z-1eb01fbc.pdf",
+      "sha256": "b3d8255f579605d180b4790123de53707496190fd78789167d827e5bea2792ff"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-09-19-811Z-476c39fe.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-09-19-811Z-476c39fe.pdf",
+      "sha256": "6ed86dc7b39cce98c6013134c40487103a3cf5676fa767a223d36d8c0e874a18"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-13-50-735Z-cf21e070.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-13-50-735Z-cf21e070.pdf",
+      "sha256": "56875942e068b42c122f049a46f8223cbc6b5a2b8ec8c9b43cb1862a08e2d160"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-28-16-851Z-3de0df36.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-28-16-851Z-3de0df36.pdf",
+      "sha256": "e2296217b42aa128ffeadf6ccad87041c55c472e9d8d9dd5d1f0853419811bda"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-38-01-290Z-8b47b019.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T02-38-01-290Z-8b47b019.pdf",
+      "sha256": "91e9e3b9aaff11a9a56ac831ae3bcfb8b30bf85244095fe674240cc60a7448ba"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T03-00-49-419Z-419206e2.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T03-00-49-419Z-419206e2.pdf",
+      "sha256": "fab63a8421bdcaafc97662f22acf0ad6a2792990e62570ab42b036630a91320f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T03-05-01-412Z-b156ebf5.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T03-05-01-412Z-b156ebf5.pdf",
+      "sha256": "2bc37791e52f6efb00df18d8ef94083b14c20976e106a90471baba06d2c4ed65"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T03-39-31-098Z-4d38bef2.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T03-39-31-098Z-4d38bef2.pdf",
+      "sha256": "759be3723946919ecfcbf70358c96e6a5306e779691f6328c8de6c4e2deeea6e"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T16-51-57-540Z-bb3dc037.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T16-51-57-540Z-bb3dc037.pdf",
+      "sha256": "ce8c40f783c797529f8e693d7d9a4cab9fbee8f2a8834db2edbed1d2020090c9"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T16-57-22-854Z-43ef3b4b.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T16-57-22-854Z-43ef3b4b.pdf",
+      "sha256": "aaaa1bca65eb45ca9ca5b9b1f18696b99907df2967710189b079ca29203cc732"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T17-01-09-318Z-bab81643.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T17-01-09-318Z-bab81643.pdf",
+      "sha256": "a39f29da6bad4fd69a9f0efeea9556f03cc275f376dc0af245a4019aaf30ff1b"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T17-27-16-487Z-243615c7.model.json",
+      "sha256": "b77b90886bdeb9b8d7179ffa11dcbe8bf17e243844a58bb4eb80a2a24885c13f"
+    },
+    {
+      "file": "data/reports/bass/property-intelligence-deal-review-2026-09-19T17-27-16-487Z-243615c7.pdf",
+      "sha256": "866a548f4930d8427b036ee1ec231cc8e5654f217f19f602153b2d1added0460"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-07-46-675Z-90324ba9.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-07-46-675Z-90324ba9.pdf",
+      "sha256": "9e73d345c28e71e82a1e511c1f0c2068093296b84aa608557bdf5fd95b2a2516"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-10-13-819Z-72bf22c3.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-10-13-819Z-72bf22c3.pdf",
+      "sha256": "95562eb88f7f6004b1226ea17fa543f32c6fa5b0825625ce988757dd38d2a55c"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-10-54-097Z-ecee9e52.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-10-54-097Z-ecee9e52.pdf",
+      "sha256": "ec6b6ceda1fc9cf537808c62aae74fddb1f6ae4240ad47be4ed9e8b3b0c12b3b"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-11-36-993Z-597629d2.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-11-36-993Z-597629d2.pdf",
+      "sha256": "1c76b16ff6844802c0fd0d505de069cefb19e3066cd1333477fbc0bbceb36bdd"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-12-03-764Z-79c404e5.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-12-03-764Z-79c404e5.pdf",
+      "sha256": "cd1070239b690daf0cac990464f31228b19bda43ee265b96b5e7b42e25856eca"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-13-14-725Z-2250c0fd.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-13-14-725Z-2250c0fd.pdf",
+      "sha256": "893a0c6641a4173a91dced4090dde3cb902b8eb3082cb09949f7889ab85c0f4d"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-13-51-249Z-5f57b2ca.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-13-51-249Z-5f57b2ca.pdf",
+      "sha256": "febb165d10a843b2ab8cabc81e6915bc2bada00f41a4275e3ec84e119f0e6f47"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-15-34-403Z-e312f11d.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-15-34-403Z-e312f11d.pdf",
+      "sha256": "ac0d73bfa328006aa9b83ff80b1f58e11a6c53e4f60a97d65babdf5b8a2a0247"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-15-37-780Z-635a090a.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-15-37-780Z-635a090a.pdf",
+      "sha256": "56074ccb3c6a1042953745e2615d25c39e3419567e7106ecb9e94c36b7cc0c67"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-15-46-393Z-746e7e6a.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-15-46-393Z-746e7e6a.pdf",
+      "sha256": "bd55239375466e00a762db8fb0769e845ea8f77c378d873b7486cc91defdbff0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-24-400Z-c225b818.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-24-400Z-c225b818.pdf",
+      "sha256": "a35f7dc7792a651aa460c94cb15313f19f71bfbb6529b194daba1b5a30c95a95"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-27-618Z-9fb063e4.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-27-618Z-9fb063e4.pdf",
+      "sha256": "001d3b11afb70a382475d08c8b3d4683b3d3bcebb8ac363f4612a62f26ec766e"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-52-349Z-2602b6ad.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-16-52-349Z-2602b6ad.pdf",
+      "sha256": "7d3a524c0000a896bc3e6a590a0bc6fd366939c480e82dbc3e60c4682e2737a8"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-17-01-090Z-b1ff0128.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-17-01-090Z-b1ff0128.pdf",
+      "sha256": "4c72c26ea2391b1e528eaee4063dacfbf06d0902bf127fb14d1d8258d6bd1783"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-56-36-247Z-37a11cc3.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T20-56-36-247Z-37a11cc3.pdf",
+      "sha256": "86eb2eaccc82139d12670c063d9cbadc21c804da78434aa21e4aa857210ab5de"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-00-08-532Z-19e8d5f0.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-00-08-532Z-19e8d5f0.pdf",
+      "sha256": "de14b44371553fd2c6e23a429ec10a14f187db230e253bc2a6f1e4f899e06db6"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-43-22-210Z-25accc3e.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-43-22-210Z-25accc3e.pdf",
+      "sha256": "eb611b52374a8309022af10c29d5328e61fdd32259b0753675185a8b34d7ec03"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-45-17-414Z-be5f3c56.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-45-17-414Z-be5f3c56.pdf",
+      "sha256": "a0178ae169890cab46df45b244c2863fe5c16e49bb90f7ce0bdd5705cf7d519f"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-53-29-476Z-57296350.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-53-29-476Z-57296350.pdf",
+      "sha256": "77e0743c00d29762f6dbaacf8d49d9f6ee1919f2e9e3b9f75087e3c16611bfdc"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-53-58-305Z-7e63f222.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-53-58-305Z-7e63f222.pdf",
+      "sha256": "819d2b3499050366064b642a46b9a3352e65d19ae610802f610a7ce75584b2bb"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-55-28-495Z-1118d482.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-55-28-495Z-1118d482.pdf",
+      "sha256": "fb8bd6e4dba613e864b1db73e90296c234e5400a0afde21d5ea37f3bafcf27f0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-55-51-773Z-5429456a.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T21-55-51-773Z-5429456a.pdf",
+      "sha256": "15a243521f1ef6e35884074f18379feb97c0738d66f1c922227183309a8fdf7d"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-49-59-184Z-769b8b1c.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-49-59-184Z-769b8b1c.pdf",
+      "sha256": "903508eb39f6f14f8ad9ede2c3031961e021de16b9e0d683193f34caa9534590"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-52-28-318Z-865a2661.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-52-28-318Z-865a2661.pdf",
+      "sha256": "18ae40e2aeddcf518b17c7fe630113960e8446eae33a322617d8402a3304aa46"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-53-47-245Z-d87961f3.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-53-47-245Z-d87961f3.pdf",
+      "sha256": "11ab3e77eeb78dcccfeb3cec3b53ec544d899e03cd53f28d884d6207e8749da9"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-54-38-672Z-a247325d.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-54-38-672Z-a247325d.pdf",
+      "sha256": "3b128b96ecd8f7849da7f27146ab2437b5a88b886ad3fd6b71aa3e788692af34"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-55-07-409Z-7bef3bb7.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-55-07-409Z-7bef3bb7.pdf",
+      "sha256": "21f1b3f950bc10567024b8c0625c7d7a200d0c68d74d36dabe330f1e9dc75489"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-57-29-929Z-643bef8b.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-57-29-929Z-643bef8b.pdf",
+      "sha256": "100a63e207c5edb721087deb96ce65d4fba9db3cdd7c2b167f5c09f603f182d5"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-57-59-510Z-37510324.model.json",
+      "sha256": "ffe3c61f62a58386af2c14cdac9021f9e71efa176e24f8b1f063c268f05d6e12"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T22-57-59-510Z-37510324.pdf",
+      "sha256": "b644d2b1b4fb4bc6e57cf57e8ad251c42f3b2352eba041f585c7390bf8967942"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-39-51-289Z-1f5baf18.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-39-51-289Z-1f5baf18.pdf",
+      "sha256": "4af6c7dd4b034210d5c9c5e6842cae3c1666741f84b914ba6e44553d7095fca5"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-40-47-169Z-10e8a105.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-40-47-169Z-10e8a105.pdf",
+      "sha256": "b0b5d6691d15d517078ada417d78b33fbd687294ccd93defd18c8ef927ac48a1"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-51-50-477Z-a1955b07.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-51-50-477Z-a1955b07.pdf",
+      "sha256": "0101a7dccf76417490dd425f8184fb714d2d7673713bfa63db6d876f64647738"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-52-18-490Z-8b6a42e8.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-18T23-52-18-490Z-8b6a42e8.pdf",
+      "sha256": "e97801daab90c97346d3d80d1808678ebea13870a0b2f946a1e2dbdb47623de1"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T00-50-25-666Z-3a82cd99.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T00-50-25-666Z-3a82cd99.pdf",
+      "sha256": "ca8d9c2b6e77e7b0070ff81c3e9cbd90c3aa6cca073c125b29980c8851d0bd1b"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T00-50-57-974Z-d69395e1.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T00-50-57-974Z-d69395e1.pdf",
+      "sha256": "243e0f46da286636c6b19dec445272f52083546ee5d0a87765a24ce8c54568a7"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T00-57-12-929Z-511cc38d.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T00-57-12-929Z-511cc38d.pdf",
+      "sha256": "be2e3510ab4ffa94aedc420d794217d3cea0f066ec14722254650f26a148c050"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T01-41-04-652Z-79baf5db.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T01-41-04-652Z-79baf5db.pdf",
+      "sha256": "ab145606f921e524ddb2084f279a331eafc7f639594c796383a177c8c690f195"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T01-41-33-523Z-cca55808.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T01-41-33-523Z-cca55808.pdf",
+      "sha256": "947d2ab72bab1692cb85ec6d5decb3d7446979d02c32883cfbac1a23c1bf98d1"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-08-42-151Z-64f1accc.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-08-42-151Z-64f1accc.pdf",
+      "sha256": "696745176b637ef2e0e7310797d57b26e1427f3d2147329112f5992ea183e1ca"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-09-18-412Z-f4579a00.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-09-18-412Z-f4579a00.pdf",
+      "sha256": "4df52fa9eaeb3ec525925de8921cd1c1c15362c0e2f46e868158fc163df7d95e"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-13-13-154Z-a8bf5727.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-13-13-154Z-a8bf5727.pdf",
+      "sha256": "413d8732c0605f615fa9dfa139830cfba9cd41d27c86cd15fc567be4951720c7"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-13-49-282Z-ef352bcb.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-13-49-282Z-ef352bcb.pdf",
+      "sha256": "42a6da609b1ea76035d07b50a5cbe5250ec1d7a70d83c1b86f272eb466aa0e98"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-27-39-406Z-11a1ee43.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-27-39-406Z-11a1ee43.pdf",
+      "sha256": "9472222c628c34d159d730f2163bd8e6adaf27427b19b19d39b3a88873812a4c"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-28-15-486Z-8187be37.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-28-15-486Z-8187be37.pdf",
+      "sha256": "bf9e42394c6c07a44403d296048e42a6b851fe3661828236d939f9dbcd51eab6"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-37-22-900Z-453bd104.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-37-22-900Z-453bd104.pdf",
+      "sha256": "edc958bbf5eaef15fc1ec7125e61535e06c9252690ab9a928cfba9b87bffdb01"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-37-59-750Z-ecc27550.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-37-59-750Z-ecc27550.pdf",
+      "sha256": "bb55f36ba97a52f8f46a48f00165dfd0b7e2defb00cc9f68164ca977458e0e04"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-59-29-366Z-c9568752.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T02-59-29-366Z-c9568752.pdf",
+      "sha256": "472d47e556e3adf8c5e4f5676887a0bfea6766c60bfd2f498c0f4c5819ac6ea4"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-00-11-439Z-ee7474aa.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-00-11-439Z-ee7474aa.pdf",
+      "sha256": "f8ad13872c3b2815a9b41f45b29145bcc18b3d8f1f06473f57bbb18a3fce0b9b"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-00-47-992Z-a85ab520.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-00-47-992Z-a85ab520.pdf",
+      "sha256": "e412028041e2b25d5d81b36f4301c5148b9f9c6e946512e90c31402547a270e1"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-04-23-795Z-e43fb1d0.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-04-23-795Z-e43fb1d0.pdf",
+      "sha256": "8dccd5dd74b81f3c9c928eefcf90da573ece663b19cc393ffe078a25de931eec"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-04-59-978Z-9648652a.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-04-59-978Z-9648652a.pdf",
+      "sha256": "d81b8c9bd36f5b4d83d5a1b1cfdb20be50c39f685e3569d0c8cdf6a149405978"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-38-50-340Z-84a6530a.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-38-50-340Z-84a6530a.pdf",
+      "sha256": "92d74dcd9bd21163b4f728a40decb1744bdac0101e9177468994bb75ba43f522"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-39-29-359Z-aeb1cb37.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T03-39-29-359Z-aeb1cb37.pdf",
+      "sha256": "fd23b68d0f8f60e487c3ef9db1fb3f7b3bc7fadc5eb273dcd374246b38309f46"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-46-26-903Z-4a3b2443.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-46-26-903Z-4a3b2443.pdf",
+      "sha256": "3bac1d7fba76c497321d4e24bd19a5b3e164ea938d3e17ac209675a9bce9739e"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-51-14-554Z-76407ccf.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-51-14-554Z-76407ccf.pdf",
+      "sha256": "49280525f5100c0cf211e56767a5abb73398a57430bbc11fc9d3345921633325"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-51-55-877Z-585fb4ee.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-51-55-877Z-585fb4ee.pdf",
+      "sha256": "d412f15ecc29e4231f729d53ed844b15626dc0ce37701c1f8e99593160125e2d"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-56-35-407Z-70ae98ab.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-56-35-407Z-70ae98ab.pdf",
+      "sha256": "16071a8c19557ade4a5111a5a8a6653894123b3669fb8d7001c700cab56d067c"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-57-21-068Z-71aca57c.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T16-57-21-068Z-71aca57c.pdf",
+      "sha256": "9f8a1dda7fe3c96c8bc19be4cd6f453de967ba0542080f1f1d923a2b40b835cf"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-00-28-569Z-cc57d5e8.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-00-28-569Z-cc57d5e8.pdf",
+      "sha256": "7ae42fe1a784161f40ad5d267758d8daa2793b73805f630cbbe77d1442d37f02"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-01-07-803Z-cab0feaf.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-01-07-803Z-cab0feaf.pdf",
+      "sha256": "2f127bc7882464e20c6559cbfed54e0912a2beca006f6a9abe74c73a96f55c03"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-26-37-470Z-4ea350e1.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-26-37-470Z-4ea350e1.pdf",
+      "sha256": "8d874d7abd20baed5ab404aa1e0a75e33a26ab065d0c5ee7f163033fc850c5db"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-27-14-933Z-e56a95c7.model.json",
+      "sha256": "b7f751da2fee9a577fa79856e521ed866a762e4193c5fc66343d4a92be6bbce0"
+    },
+    {
+      "file": "data/reports/fantasia/property-intelligence-deal-review-2026-09-19T17-27-14-933Z-e56a95c7.pdf",
+      "sha256": "116f5227b1c62c7ed57ebdb3671793d2f6f5bc718e9de965783121f09553bb8d"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-10-56-913Z-a04dbda3.model.json",
+      "sha256": "2e0b2a6502933e1956287dcf2c4bb01c92777eb365cf20654383cad4011e8161"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-10-56-913Z-a04dbda3.pdf",
+      "sha256": "0ba2e11ab53df038e43203d9abeb7d2c3910a47a2091fef3ff8d5f0e5c87496f"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-15-40-518Z-02bbf6ac.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-15-40-518Z-02bbf6ac.pdf",
+      "sha256": "6f5499e6734797795b8e41432f0eb7f52038980e47cd4f8f8dd40d6e24149368"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-16-30-133Z-c9472a0f.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-16-30-133Z-c9472a0f.pdf",
+      "sha256": "389bd55d2d7f07548be32edd376bf717623667d1b306f840c675572f29975935"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-16-55-245Z-7e7835ab.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T20-16-55-245Z-7e7835ab.pdf",
+      "sha256": "237732cbbb6a8ccf3bac69254f65edf5bb3d346ba6ed7b200b958857cd2039e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T21-45-20-191Z-00014aff.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T21-45-20-191Z-00014aff.pdf",
+      "sha256": "55114120778c2525150a1388888ebe9cebb68089ae11a53e5468fe5f70a7031a"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T21-54-00-679Z-4be75b0d.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T21-54-00-679Z-4be75b0d.pdf",
+      "sha256": "c29e84d91b685809673373fe57a684c429bf6a9b10a0c431aa64a4ec9b560931"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T21-55-54-435Z-26698586.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T21-55-54-435Z-26698586.pdf",
+      "sha256": "15ee986f57e9da31f2990d4690177cd0a506f80992352d9517d065c6b87419b7"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T22-52-31-185Z-bddc2c8f.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T22-52-31-185Z-bddc2c8f.pdf",
+      "sha256": "ea602c1b3f2b61d229bdf69053f40a8d64200427b54bd65bb17a66e779aa6acc"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T22-55-09-927Z-63f6c388.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T22-55-09-927Z-63f6c388.pdf",
+      "sha256": "695e48ea80bbf6ddd5eeea5acfb60a3f9e60e1001263b5442e16d08d619c87f4"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T22-58-02-255Z-c917b96e.model.json",
+      "sha256": "c02077e21ada58f1d570fe7683b9cbbc67f346eacb703ae03777044dfa0763e5"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T22-58-02-255Z-c917b96e.pdf",
+      "sha256": "371fa25d5cd935cccad9e3403c39021398662d71e7e97a8f0267a7a9b7fcf3ae"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T23-40-50-434Z-e8e5ee3c.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T23-40-50-434Z-e8e5ee3c.pdf",
+      "sha256": "d2621f9bc4ccb6a96a2e4aea1fc8783f310bdf016481225d8d78dd4ee94e03d7"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T23-52-21-285Z-c96b460f.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-18T23-52-21-285Z-c96b460f.pdf",
+      "sha256": "a8872456aa5fa85cb840b5e723d380a38742b993dfcfd47928722c1a06c8f4f3"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T00-51-00-977Z-5580ee4e.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T00-51-00-977Z-5580ee4e.pdf",
+      "sha256": "279f762a6373ea55d5de3946fbe379e932de60c4d4683d3d6ffeb6c822bd6647"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T01-41-36-118Z-ffe39258.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T01-41-36-118Z-ffe39258.pdf",
+      "sha256": "8349b8b1ce7384c794377c093d1b532d89e13ff5ec75f3f547ce076e13b070a4"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-09-20-741Z-545cdde6.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-09-20-741Z-545cdde6.pdf",
+      "sha256": "cb4e710ade58abec075a7b0d33cef657fb75c0de9b0e02244f657701210ee039"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-13-51-718Z-622834a6.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-13-51-718Z-622834a6.pdf",
+      "sha256": "b94e501c291351ecf6be22b6a5885d973504092c767c8431f40af2eed33eaa74"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-28-17-890Z-c83cee90.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-28-17-890Z-c83cee90.pdf",
+      "sha256": "251ee35534d4f60be27b4fae2258e7f68d6943906495d5083276ac8fc79361b2"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-38-02-431Z-cf006205.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T02-38-02-431Z-cf006205.pdf",
+      "sha256": "3bbb9ef261edd39e76c246ffeedff46d961b20fb8f2903e96ad4a01f6701bce9"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T03-00-50-361Z-b691f9e2.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T03-00-50-361Z-b691f9e2.pdf",
+      "sha256": "9ffec5a417587df4b5e266acd5c5c7f33637e15594db47b3011e8ef1d4f8166d"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T03-05-02-342Z-6ac9ea0f.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T03-05-02-342Z-6ac9ea0f.pdf",
+      "sha256": "608ab080e953c42b279cb6afc25696fb77043bf5622b43626d507c37ec59be3c"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T03-39-32-439Z-4ff37efa.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T03-39-32-439Z-4ff37efa.pdf",
+      "sha256": "1af970e045319e6818d92e1b4fe18ec0258f6d4e8af7ceb5e934cc7fd0f8829c"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T16-51-58-823Z-6f707877.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T16-51-58-823Z-6f707877.pdf",
+      "sha256": "83d2c590eb370244ec437dd8ccafb03ea5844babb7c098e2436d243eac25f537"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T16-57-24-299Z-988abf93.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T16-57-24-299Z-988abf93.pdf",
+      "sha256": "806f87b845d26107dd12d85c2d67baa882cfa28ed50682f01e0085e26df48d6e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T17-01-10-377Z-d5517e96.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T17-01-10-377Z-d5517e96.pdf",
+      "sha256": "e41edff477cc852f163d91330fa0ec9e1b07f688511a91909aa3511031121151"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T17-27-17-500Z-de286039.model.json",
+      "sha256": "9bb04e19bb32fbb166a377ea8ecbe5bc5bc4d96f2717f7c5ffb90e4b5544714e"
+    },
+    {
+      "file": "data/reports/joyce/property-intelligence-deal-review-2026-09-19T17-27-17-500Z-de286039.pdf",
+      "sha256": "8d4bf51325580b4c8ce7f7458190a24534df6ffaba153525c2fef46fd3dab7c8"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-10-58-039Z-62244a20.model.json",
+      "sha256": "fb17a190901e7ad27b2cfdedd0fdc111e84c844a521163b61640686d152b3c2e"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-10-58-039Z-62244a20.pdf",
+      "sha256": "eea3e194a5ff550ec9e48c4653834a92bdc6a36400cad7aeb42889382b8d11a6"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-15-41-523Z-10c0c34a.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-15-41-523Z-10c0c34a.pdf",
+      "sha256": "e0b1cdfeb97aaa0e3d6896a7669c67929cb260f422e9e920b6ce216416eabc0f"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-16-31-347Z-fbf68746.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-16-31-347Z-fbf68746.pdf",
+      "sha256": "149e46aee846c0b379a06fe892c9cd0cb3b2c396351ece8162229273d6deba08"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-16-56-449Z-eac1dd55.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T20-16-56-449Z-eac1dd55.pdf",
+      "sha256": "d31ec1836f62bbe362ed5d8b88be43eef9f3519683bd509f1135e8776049f631"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T21-45-21-220Z-e8189ee1.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T21-45-21-220Z-e8189ee1.pdf",
+      "sha256": "3317903a137d9883d7d973182cafc10840a00fed21551c0791db5a108ceb4989"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T21-54-01-740Z-e3c9dbb0.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T21-54-01-740Z-e3c9dbb0.pdf",
+      "sha256": "c359270ca4642e87d6330bc62bc9ff2469ad5ca928f3926afe5c2fe061f8bd64"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T21-55-55-536Z-b167c24a.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T21-55-55-536Z-b167c24a.pdf",
+      "sha256": "66344da48409cccda40f4eb4cfa1d180c871bf0c092e07b9255c3483f6c6fe84"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T22-52-32-439Z-a833ede4.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T22-52-32-439Z-a833ede4.pdf",
+      "sha256": "2e1ef4127712b7bd16fa35ac9adc040e2c9665db8a2299711d0a384236ba2fdf"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T22-55-11-017Z-d4fcd445.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T22-55-11-017Z-d4fcd445.pdf",
+      "sha256": "7a72e6e6c43b7698d28becfe79722c6cb496a9a2e6c1b85b1d72642316bffef3"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T22-58-03-584Z-0b6ea0fd.model.json",
+      "sha256": "ea0c24086dcaf8f0cc264176f8db42d9231418d7ddf3b88a72a0e7d6924e758b"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T22-58-03-584Z-0b6ea0fd.pdf",
+      "sha256": "887691cf5e80a0fb447fcb7faee2eb402d448c3551a12618b1d4b4d5b081f703"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T23-40-51-696Z-687611dd.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T23-40-51-696Z-687611dd.pdf",
+      "sha256": "56d89e0ca60617cf0a647f1aa87fcd7a46e6a3a816e63b7adf20f4cc027267e6"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T23-52-22-386Z-7a3f46e0.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-18T23-52-22-386Z-7a3f46e0.pdf",
+      "sha256": "7c7a023ed9cb05c87073b4388724aa359ba7ae5cdd8c0f381a40b5188310cc70"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T00-51-07-862Z-dcd184a5.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T00-51-07-862Z-dcd184a5.pdf",
+      "sha256": "e2426a86354d29e908a449c0bf458653cc38974465021af1bf5a0a2215e9b1a3"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T01-41-37-370Z-9dee07ba.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T01-41-37-370Z-9dee07ba.pdf",
+      "sha256": "48c1754565e38533ea82d9fc98791df8e427e67564fb557b4d44bfab67e0a6c3"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-09-21-747Z-1f3e159e.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-09-21-747Z-1f3e159e.pdf",
+      "sha256": "ac8f0fc041a95730c1f08581151d7330c26fd2bf70c36ad42ec6f024f86cf4a5"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-13-52-747Z-7ff3dda9.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-13-52-747Z-7ff3dda9.pdf",
+      "sha256": "289b7f7550e63139c8019ff596f15fa56b532e561bc9b66d44db33c9515ae607"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-28-18-935Z-d804ff48.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-28-18-935Z-d804ff48.pdf",
+      "sha256": "86349bd28955f7606c13396d091e8ab6ce0363f0be6b294f6777ad0e0d64a7b6"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-38-03-622Z-3513b83b.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T02-38-03-622Z-3513b83b.pdf",
+      "sha256": "0d52e462c31ef31ebc97e3c5fcd59276df696339d433261bbfe5eb244156fa78"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T03-00-51-357Z-7daf97b8.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T03-00-51-357Z-7daf97b8.pdf",
+      "sha256": "3bb2120f3898169306cfe6b14575d70e2f7223283793c78ed03b1d9ad57d82bd"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T03-05-03-331Z-2b53c193.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T03-05-03-331Z-2b53c193.pdf",
+      "sha256": "529053e01301ec8cdeaf965f9abfbb0c06acc14ce20200e5bd8473048cdd0fe7"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T03-39-33-903Z-45195fdd.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T03-39-33-903Z-45195fdd.pdf",
+      "sha256": "250f233c933720d8ee19212ec6238f838ec2365c4e5ad3927606d70c45d23f97"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T16-52-00-116Z-754d26b4.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T16-52-00-116Z-754d26b4.pdf",
+      "sha256": "0714ec93d0c4e9cf8dde7c8dccae198b5407cf4bda020b46ab8db186d707f313"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T16-57-25-690Z-5f33d4e9.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T16-57-25-690Z-5f33d4e9.pdf",
+      "sha256": "221e1ae63f534608989b478d53ba662e9d3f505a11f55cc1aaff1c1fcb394b87"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T17-01-11-460Z-a87be0cf.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T17-01-11-460Z-a87be0cf.pdf",
+      "sha256": "7545055f27e0cb3ae537d82f6e2663fe31a45a612e35089482516f7f443d6237"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T17-27-18-616Z-c6c15b5b.model.json",
+      "sha256": "8e54d173f6a3001f330dc80d5655b508b98233036d3bacc4838128e92488a8eb"
+    },
+    {
+      "file": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-19T17-27-18-616Z-c6c15b5b.pdf",
+      "sha256": "fa190c4b80eb3de7cf3595e612c7407c738a6c53138e985952961b4d6f800833"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-10-59-237Z-686086d1.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-10-59-237Z-686086d1.pdf",
+      "sha256": "6bd83259c2f7589a15399c77aa5372d341e53bb4d5a6fe7c2970c148e8056102"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-15-42-711Z-b8c396a4.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-15-42-711Z-b8c396a4.pdf",
+      "sha256": "8855e591c008d4180b6599a679cab3fca24f30bcd81b491a9e07c0c52655c9ea"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-16-32-554Z-de4e2855.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-16-32-554Z-de4e2855.pdf",
+      "sha256": "4e7f0f414409b5322f1b88eb67d7644c86454e98be43b8cade871854fa054618"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-16-57-763Z-3e3f2569.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T20-16-57-763Z-3e3f2569.pdf",
+      "sha256": "e4753332c62343827e7fd0e7fb252c0395cd7918087e7b756929291384426dcd"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T21-45-22-453Z-cdbad9fe.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T21-45-22-453Z-cdbad9fe.pdf",
+      "sha256": "b4bbb1c6030a2efefb88b7c9dab73ea30b30b1f2c393328dc97aa48a9d162bb7"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T21-54-02-880Z-de59d44a.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T21-54-02-880Z-de59d44a.pdf",
+      "sha256": "d6557a58d7dde81b63e85b25f54cf29b691a58ff8eba10d008f8794144e1ea74"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T21-55-56-775Z-b2ad3f7e.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T21-55-56-775Z-b2ad3f7e.pdf",
+      "sha256": "16085ddf34811a211970014fb37aef7cce3388ae4b57e3bd59f3adc811e15f5f"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T22-52-33-745Z-30ba8a4b.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T22-52-33-745Z-30ba8a4b.pdf",
+      "sha256": "e99aaba1d0bfccf801b7c52f59ecafce43a721bb879834c518a0d895cd1a2951"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T22-55-12-225Z-b5ef5983.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T22-55-12-225Z-b5ef5983.pdf",
+      "sha256": "a5b2de7222178e5a73fdb5da2de78bcbfc1f7b5137dc455f487a1f25ba57b71d"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T22-58-04-923Z-c9ff6f32.model.json",
+      "sha256": "e388a8ec73490ec9ddc119f5da29923652130e63464544e385082e26080ed5f1"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T22-58-04-923Z-c9ff6f32.pdf",
+      "sha256": "4fe89f93097a4d8c5a0afb74d2c744cc3ce8506ee1cc57b037ec4161a42bcbb4"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T23-40-53-180Z-ff49ea40.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T23-40-53-180Z-ff49ea40.pdf",
+      "sha256": "e86bf24cc4f20ace692b327ab3d82640c685c73a5fd84abeee4174006e93dcad"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T23-52-23-663Z-d0f504da.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-18T23-52-23-663Z-d0f504da.pdf",
+      "sha256": "6a2b081cb5f7ccd9981a8fa4f86cf6d9c632a373bc5faa0ee87fc8afca8ebd07"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T00-51-09-276Z-37ada3d1.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T00-51-09-276Z-37ada3d1.pdf",
+      "sha256": "74619259da72b050e1e4ea17d94942120441557ae672d6c8f1f74a1f77235d5e"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T01-41-38-811Z-b2ba351a.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T01-41-38-811Z-b2ba351a.pdf",
+      "sha256": "632307362e933049ea8769d99e0d1157b3b91d9ec2b166e22a6cfb81170558c0"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-09-22-998Z-40914d34.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-09-22-998Z-40914d34.pdf",
+      "sha256": "cc98f492f78463780563b94f7f05aaa67f9c8d94fe9c26fcac6527c31feb501c"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-13-54-264Z-1717cf2a.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-13-54-264Z-1717cf2a.pdf",
+      "sha256": "205cd9153bdd40260062a970cd2f6b2baab6ffd4722f5327ad64d9df577a0b7a"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-28-20-054Z-75961928.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-28-20-054Z-75961928.pdf",
+      "sha256": "e34f1e53bd036c725d2ba520a668227129f4fad553dd89909bfa0b20c9d8fb8c"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-38-04-950Z-cffb62b5.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T02-38-04-950Z-cffb62b5.pdf",
+      "sha256": "919bc004b787ee63d6e2e78dbb14287d43811af303ecf3b9a864ef0143c0240a"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T03-00-52-545Z-8daf2767.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T03-00-52-545Z-8daf2767.pdf",
+      "sha256": "4b68d11f52fc27444471695559477ea9daee724ebb87fde5f57041213d2cc4ee"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T03-05-04-497Z-d8c9e25e.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T03-05-04-497Z-d8c9e25e.pdf",
+      "sha256": "dea3f68850fd3553df232d102065f06073d51bf1655c986c104892f755a2e160"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T03-39-36-126Z-be13e39e.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T03-39-36-126Z-be13e39e.pdf",
+      "sha256": "d99b913e7de22cb4e91240556c029ce9d42df8785fbb7a84f81b60264d9a5f59"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T16-52-01-603Z-bc48798e.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T16-52-01-603Z-bc48798e.pdf",
+      "sha256": "5d2099821b27dbcde4f05bbf04d9c597878b5c93b4e9f6e30dc2bdc032bb4585"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T16-57-27-377Z-1d3f220b.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T16-57-27-377Z-1d3f220b.pdf",
+      "sha256": "07406fdb2f1b7a5e7ec71ee4aa3cf0ebc8ec43adb296b712168f5ba44e0ce23a"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T17-01-12-884Z-99e57de4.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T17-01-12-884Z-99e57de4.pdf",
+      "sha256": "5d738909a896285c5628b86fdc5c68b99d0275f782d52916a89f55665764472f"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T17-27-19-829Z-e4570d8e.model.json",
+      "sha256": "8cdd713f48008bdb11f3e4667ad5b170c251ade172ac2207f61ec48da1f5dc51"
+    },
+    {
+      "file": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-19T17-27-19-829Z-e4570d8e.pdf",
+      "sha256": "53d2a89ab7cf9b0a1ff7d0ea657ea5160db26615ba13f92c1f580b33db4efeda"
+    }
+  ]
+}

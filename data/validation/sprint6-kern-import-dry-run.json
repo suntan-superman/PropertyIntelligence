@@ -1,0 +1,24 @@
+{
+  "at": "2026-09-20T23:34:28.262Z",
+  "status": "PASS",
+  "sourceFile": "data/raw/kern_power_to_sell_2026-09-15.csv",
+  "sourceFileHash": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+  "recordCount": 11321,
+  "validCount": 11321,
+  "rejectedCount": 0,
+  "rejectedSample": [],
+  "exactDuplicateRows": 0,
+  "uniqueCandidateEstimate": 11316,
+  "sourceName": "Kern County Power to Sell Listing",
+  "sourceDate": "2026-09-15",
+  "columns": [
+    "owner_name",
+    "atn",
+    "parcel_amount_owed",
+    "owner_total_owed",
+    "source_date",
+    "source",
+    "source_page"
+  ],
+  "providerCalls": 0
+}

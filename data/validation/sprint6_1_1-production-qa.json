@@ -1,0 +1,48 @@
+{
+  "at": "2026-09-20T23:33:12.176Z",
+  "status": "PASS",
+  "mode": "production",
+  "url": "https://worksidepropertyintelligence.netlify.app",
+  "qaTag": "SPRINT6_1_1_PRODUCTION_QA_900e1709-fce7-403b-9037-46da406dada1",
+  "health": {
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true
+  },
+  "propertyId": "16141865-fcaf-4d2c-9be5-04c97cc6884c",
+  "evidenceSnapshotId": "eec75521-25b6-4328-b081-27ab9436ed76",
+  "dealId": "67e53433-5d04-4554-aa06-1b0ce95b3362",
+  "analysisIds": [
+    "f5217a78-0795-4968-a646-d07cb93673bf",
+    "ff47eee7-efab-413a-9cec-9207a2a5c56c"
+  ],
+  "decisionIds": [
+    "224dcbe7-8a7d-4516-8e32-6d04608bb3e3",
+    "32499d14-71cf-4a01-8d13-7965dfae43b0"
+  ],
+  "firstDecisionHash": "42d882c80e143871cdce6fc87cc1108e197b608217d1a1f73a1107908d30fec2",
+  "firstAnalysisHash": "f97639b8056b3e213e7cf2510d04b572f935a96909922f8d78fcc7f4d76f3eb4",
+  "reportFingerprints": [
+    "baf147a07b666bc0f11b1b7d7b2182a5b638c9dc08898dc82647cfb8b08c96ef",
+    "5136fc9ea69bd6ccdc40745d9e8444d844e2b19a6179a80cb1d1cfb1440607f5"
+  ],
+  "compCount": 15,
+  "claimCount": 10,
+  "diligenceCount": 21,
+  "historyCount": 2,
+  "idempotentReplay": true,
+  "coldRequests": 26,
+  "separateDatabaseReconstruction": true,
+  "firstDecisionUnchanged": true,
+  "firstAnalysisUnchanged": true,
+  "firstReportUnchanged": true,
+  "historicalRowsUnchanged": 6,
+  "historicalStops": 6,
+  "missingLinkStop": true,
+  "staleLinkStop": true,
+  "responseCredentialScan": "PASS",
+  "providerCalls": 0,
+  "providerCallProof": "Allowlisted fixture/persistence/report endpoints only; no live/refresh requests; local provider tripwire",
+  "historicalRepairs": 0
+}

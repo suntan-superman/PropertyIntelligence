@@ -1,0 +1,21 @@
+{
+  "at": "2026-09-20T23:25:20.393Z",
+  "status": "PASS",
+  "previewUrl": "https://6ab06aaecf22df927764b7d9--worksidepropertyintelligence.netlify.app",
+  "browserAssets": 2,
+  "localFiles": 78,
+  "functionZipBytes": 278713,
+  "functionZipEntries": 61,
+  "functionZipHash": "03096cb61118f2a43dc695d2a56445e85fd8acac0a3413675d422dd57a6c95f0",
+  "credentialVariantsChecked": true,
+  "databaseUriAndPasswordCheckedInMemory": true,
+  "providerCredentialsChecked": true,
+  "privateKeysScan": "PASS",
+  "protectedFiles": 351,
+  "protectedHashes": "UNCHANGED",
+  "functionLogExitCode": 0,
+  "functionLogLines": 34,
+  "functionLogsScan": "PASS_AVAILABLE_LOGS",
+  "rawLogsRetained": false,
+  "providerCalls": 0
+}

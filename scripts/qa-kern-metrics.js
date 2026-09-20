@@ -1,0 +1,4 @@
+import {createDatabase} from '../src/persistence/db.js';
+try{process.loadEnvFile('.env');}catch{}
+const db=createDatabase();if(!db)throw new Error('DATABASE_NOT_CONFIGURED');
+try{const source=(await db.query('SELECT id,record_count FROM discovery_sources ORDER BY imported_at DESC LIMIT 1')).rows[0];const stats=(await db.query('SELECT priority_band,count(*)::int AS count,min(screening_score)::int AS min_score,max(screening_score)::int AS max_score FROM opportunity_candidates GROUP BY priority_band ORDER BY priority_band')).rows;const dup=(await db.query('SELECT count(*)::int AS duplicate_atn_values FROM (SELECT atn FROM discovery_records WHERE discovery_source_id=$1 GROUP BY atn HAVING count(*)>1) x',[source.id])).rows[0];console.log(JSON.stringify({sourceRecords:source.record_count,stats,duplicateAtnValues:dup.duplicate_atn_values,providerCalls:0},null,2));}finally{await db.closePoolForTests();}

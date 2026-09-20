@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "tag": "SPRINT6_1_REPORT_QA_a5460dfb-5879-4141-8f3d-d0ace3ccced5",
+  "actualPostgresRoundtrip": true,
+  "compCount": 15,
+  "historicalContentUnchanged": true,
+  "metadataAtomic": true,
+  "reportPages": 8,
+  "reportBytes": 102203,
+  "providerCalls": 0,
+  "commit": false,
+  "rollbackVerified": true
+}

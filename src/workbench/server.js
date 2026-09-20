@@ -5,6 +5,7 @@ import {resolve} from '../io/files.js';
 import {fixture,preservation} from './model.js';
 import {resolveCached} from './search.js';
 import {generateReport} from '../reports/pdf.js';
+import {renderInvestmentPdf} from '../reports/investment/pdf.js';
 import {readMapConfig,MAP_CSP} from './mapConfig.js';
 import {createRuntime} from './api/runtime.js';
 import {filesystemStore} from '../sources/rentcast/stores.js';
@@ -14,7 +15,7 @@ export async function startWorkbench({port=4173,dev=false,mapConfig,env,fetchImp
   await preservation();
   if(!env)loadLocalEnvironment();
   const api=createRuntime({runtime:'local',env:env??process.env,store:cacheStore??filesystemStore(),fixtureLoader:fixture,searchResolver:resolveCached,fetchImpl,
-    mapConfig:()=>mapConfig??readMapConfig(),reportService:{generate:generateReport,read:report=>readFile(resolve(report.path))}});
+    mapConfig:()=>mapConfig??readMapConfig(),reportService:{generate:generateReport,investment:renderInvestmentPdf,read:report=>readFile(resolve(report.path))}});
   let vite=null;
     if(dev){const {createServer}=await import('vite');vite=await createServer({configFile:resolve('apps/web/vite.config.js'),server:{middlewareMode:true,hmr:false},appType:'spa'});}
   const json=(res,status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(data));};

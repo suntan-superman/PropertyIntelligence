@@ -1,0 +1,121 @@
+{
+  "auditedAt": "2026-09-20T23:34:27.790Z",
+  "sourceFile": "data/raw/kern_power_to_sell_2026-09-15.csv",
+  "bytes": 1159321,
+  "sha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+  "header": [
+    "owner_name",
+    "atn",
+    "parcel_amount_owed",
+    "owner_total_owed",
+    "source_date",
+    "source",
+    "source_page"
+  ],
+  "expectedHeaderMatch": true,
+  "recordCount": 11321,
+  "validRowCount": 11321,
+  "rowFieldCounts": {
+    "7": 11321
+  },
+  "malformedRowCount": 0,
+  "malformedRows": [],
+  "nullRates": {
+    "owner_name": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    },
+    "atn": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    },
+    "parcel_amount_owed": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    },
+    "owner_total_owed": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    },
+    "source_date": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    },
+    "source": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    },
+    "source_page": {
+      "nullCount": 0,
+      "nonNullCount": 11321,
+      "rate": 0
+    }
+  },
+  "edition": {
+    "sourceNames": [
+      "Kern County Power to Sell Listing"
+    ],
+    "sourceDates": [
+      "2026-09-15"
+    ],
+    "sourceDateInterpretation": "Observed source_date field only; no edition semantics inferred."
+  },
+  "identifiers": {
+    "atnFieldPresent": true,
+    "apnFieldPresent": false,
+    "atnNonNull": 11321,
+    "apnNonNull": 0,
+    "uniqueAtn": 11316,
+    "duplicateAtnValues": 5,
+    "stableIdentifierRule": "ATN is normalized for comparison only; APN is absent in this artifact and no ATN/APN equivalence is assumed."
+  },
+  "ownerName": {
+    "fieldPresent": true,
+    "nonNull": 11321,
+    "uniqueNormalized": 9099,
+    "repeatNameValues": 865,
+    "mergeRule": "Owner name is provenance only and never merges parcels."
+  },
+  "amounts": {
+    "parcel_amount_owed": {
+      "nonNull": 11321,
+      "zeroCount": 0,
+      "negativeCount": 0,
+      "invalidCount": 0
+    },
+    "owner_total_owed": {
+      "nonNull": 11321,
+      "zeroCount": 0,
+      "negativeCount": 0,
+      "invalidCount": 0
+    }
+  },
+  "addresses": {
+    "addressFields": [],
+    "availability": "No address/situs field is present; address cannot be inferred from identifiers or owner name."
+  },
+  "provenance": {
+    "sourcePagePresent": 11321,
+    "sourcePageNumericCount": 11321,
+    "sourcePageMin": 1,
+    "sourcePageMax": 595,
+    "sourceFieldPresent": 11321,
+    "sourceDatePresent": 11321
+  },
+  "duplicates": {
+    "exactRowDuplicateGroups": 0,
+    "exactDuplicateExtraRows": 0,
+    "atnDuplicateRows": 5
+  },
+  "parsing": {
+    "criticalMalformedRows": 0,
+    "criticalMalformedFields": [],
+    "notes": "Raw values are retained; malformed critical amount fields are rejected by the importer rather than coerced."
+  }
+}

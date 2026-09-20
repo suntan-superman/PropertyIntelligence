@@ -1,0 +1,27 @@
+{
+  "at": "2026-09-19T17:02:33.095Z",
+  "status": "PASS",
+  "deploymentUrl": "https://6aaec00e4eab6fa6e83bd0e3--worksidepropertyintelligence.netlify.app",
+  "qaTag": "SPRINT6_PREVIEW_QA_20260919_4",
+  "health": {
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true
+  },
+  "pageSize": 25,
+  "totalCandidates": 11316,
+  "importedRecords": 11321,
+  "candidateId": "6e1898c0-c897-4c5d-aa35-90be3d46877b",
+  "signals": 3,
+  "sourceRecords": 1,
+  "csvRows": 100,
+  "reviewId": "ebf45fc9-594b-42b1-9378-f9f872018d6d",
+  "idempotentReplay": true,
+  "enrichmentConfirmationGate": true,
+  "browserSecretScan": {
+    "assetsScanned": 1,
+    "status": "PASS"
+  },
+  "rentcastCalls": 0
+}

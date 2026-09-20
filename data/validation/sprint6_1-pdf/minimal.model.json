@@ -1,0 +1,200 @@
+{
+  "reportMeta": {
+    "reportType": "FULL_INVESTMENT_ANALYSIS",
+    "propertyId": "10000000-0000-4000-8000-000000000001",
+    "dealId": "20000000-0000-4000-8000-000000000001",
+    "analysisSnapshotId": "40000000-0000-4000-8000-000000000001",
+    "acquisitionDecisionId": "50000000-0000-4000-8000-000000000001",
+    "evidenceSnapshotId": "30000000-0000-4000-8000-000000000001",
+    "rendererVersion": "investment-html-v1",
+    "generatedAt": "2026-09-20T00:00:00.000Z",
+    "status": "READY",
+    "storageReference": null,
+    "reportModelFingerprint": "f47f01f2661a8f41845e46862d3878fea1a7b13c74ad1857fb21e700bf7b6a16"
+  },
+  "property": {
+    "address": "100 Sparse Synthetic Avenue",
+    "propertyType": null,
+    "identityStatus": "INDEPENDENT_ONLY"
+  },
+  "propertyDetails": {
+    "address": "100 Sparse Synthetic Avenue",
+    "propertyType": null,
+    "taxes": null,
+    "assessments": null,
+    "saleHistory": [],
+    "features": {},
+    "legal": null
+  },
+  "evidenceSummary": {
+    "status": "INDEPENDENT_ONLY",
+    "source": "SYNTHETIC_OFFLINE",
+    "retrievedAt": "2026-01-01T00:00:00.000Z",
+    "snapshotType": "SYNTHETIC"
+  },
+  "valuation": {
+    "price": null,
+    "low": null,
+    "high": null
+  },
+  "comparables": {
+    "all": [],
+    "primary": [],
+    "selection": "Nearest supplied distance; missing distances last; stable identifier tie-break. All retained comps follow in appendix."
+  },
+  "deal": {
+    "claims": [
+      {
+        "field": "acquisition",
+        "value": 150000,
+        "source": "SYNTHETIC_ANALYST"
+      }
+    ],
+    "strategy": "FIX_AND_FLIP"
+  },
+  "encumbrances": {
+    "items": [],
+    "knownTotal": null,
+    "unknownCount": null,
+    "gap": 106666.66
+  },
+  "condition": {
+    "items": [],
+    "status": "Not assessed",
+    "limitation": "Only condition detail embedded in this immutable decision is included. Unlinked later assessments are not substituted."
+  },
+  "rehab": null,
+  "economics": {
+    "base": {
+      "modeledProceeds": null,
+      "scenarioCashInvested": null,
+      "modeledProfit": null,
+      "cashOnCash": null,
+      "modeledProjectCost": null,
+      "modeledHoldingDays": 90,
+      "costCompleteness": "INCOMPLETE",
+      "includedCosts": {
+        "acquisition": 150000,
+        "repairs": 10000,
+        "holding": 0,
+        "disposition": 5000
+      }
+    },
+    "costModel": {
+      "acquisition": null,
+      "rehab": null,
+      "holding": null,
+      "disposition": null
+    },
+    "breakEven": {
+      "salePrice": null
+    },
+    "warnings": []
+  },
+  "maoDecision": {
+    "strategy": "FIX_AND_FLIP",
+    "hurdle": {
+      "type": "CASH_ON_CASH",
+      "rate": 0.2,
+      "formula": "Modeled profit / modeled cash invested"
+    },
+    "hurdleDefinition": "Modeled profit / modeled cash invested",
+    "selectedExitBasis": "INDEPENDENT_POINT",
+    "selectedExitValue": 200000,
+    "calculatedMao": 156666.66,
+    "effectiveWalkawayPrice": 150000,
+    "targetOffer": 140000,
+    "sellerAskingPrice": 160000,
+    "auctionMinimum": null,
+    "knownEncumbranceTotal": null,
+    "unknownEncumbranceCount": null,
+    "encumbranceGap": 106666.66,
+    "costCompleteness": "INCOMPLETE",
+    "encumbrances": [],
+    "rehab": null,
+    "exitResults": [
+      {
+        "exitBasis": "INDEPENDENT_LOW",
+        "exitValue": 180000,
+        "calculatedMao": 140000,
+        "exitEvidenceStatus": "INDEPENDENT_ONLY"
+      },
+      {
+        "exitBasis": "INDEPENDENT_POINT",
+        "exitValue": 200000,
+        "calculatedMao": 156666.66,
+        "exitEvidenceStatus": "INDEPENDENT_ONLY"
+      },
+      {
+        "exitBasis": "INDEPENDENT_HIGH",
+        "exitValue": 220000,
+        "calculatedMao": 173333.33,
+        "exitEvidenceStatus": "INDEPENDENT_ONLY"
+      }
+    ],
+    "warnings": [
+      "Material cost amounts not supplied"
+    ],
+    "diligenceQuestions": [
+      {
+        "group": "Title / encumbrances",
+        "question": "Obtain an independently verified payoff.",
+        "status": "Needs verification"
+      }
+    ],
+    "sensitivity": [
+      {
+        "exitBasis": "INDEPENDENT_POINT",
+        "exitValue": 200000,
+        "rehabCase": "BASE",
+        "calculatedMao": 156666.66,
+        "status": "AVAILABLE",
+        "costCompleteness": "COMPLETE"
+      }
+    ]
+  },
+  "scenarios": [],
+  "sensitivity": {
+    "analysis": {
+      "status": "Not available"
+    },
+    "mao": [
+      {
+        "exitBasis": "INDEPENDENT_POINT",
+        "exitValue": 200000,
+        "rehabCase": "BASE",
+        "calculatedMao": 156666.66,
+        "status": "AVAILABLE",
+        "costCompleteness": "COMPLETE"
+      }
+    ]
+  },
+  "diligence": [
+    {
+      "group": "Title / encumbrances",
+      "question": "Obtain an independently verified payoff.",
+      "status": "Needs verification"
+    }
+  ],
+  "sources": [
+    {
+      "source": "SYNTHETIC_OFFLINE",
+      "retrievedAt": "2026-01-01T00:00:00.000Z",
+      "status": "INDEPENDENT_ONLY"
+    }
+  ],
+  "methodology": {
+    "analysisVersion": "fixture-existing-v1",
+    "decisionVersion": "fixture-mao-v1",
+    "hurdleDefinition": "Modeled profit / modeled cash invested",
+    "analysisCreatedAt": "2026-01-01T00:00:00.000Z",
+    "decisionCreatedAt": "2026-01-01T00:00:00.000Z",
+    "limitations": [
+      "Unknown values remain unknown; explicit zero is retained.",
+      "Independent evidence and analyst/sponsor assumptions are distinct.",
+      "Property/seller encumbrances affect title clearance, seller proceeds and negotiation constraints. They are not automatically added to investor project costs.",
+      "Existing deterministic scenarios have no probability interpretation.",
+      "MAO is the highest modeled purchase price satisfying the selected return hurdle under the stated assumptions. It is not a guarantee of return or an investment recommendation."
+    ]
+  }
+}

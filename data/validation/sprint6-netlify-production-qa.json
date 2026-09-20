@@ -1,0 +1,38 @@
+{
+  "at": "2026-09-19T17:24:56.134Z",
+  "status": "PASS",
+  "deploymentUrl": "https://worksidepropertyintelligence.netlify.app",
+  "deployId": "6aaec51d6991406deda80902",
+  "qaTag": "SPRINT6_PRODUCTION_QA_20260919_1",
+  "health": {
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true
+  },
+  "sourceFileHash": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+  "recordCount": 11321,
+  "candidateCount": 11316,
+  "priorityDistribution": {
+    "HIGH_REVIEW_PRIORITY": 312,
+    "MEDIUM_REVIEW_PRIORITY": 701,
+    "LOW_REVIEW_PRIORITY": 10303
+  },
+  "needsAddress": 11316,
+  "pageSize": 25,
+  "defaultPageSize": 25,
+  "cappedPageSize": 100,
+  "candidateId": "6e1898c0-c897-4c5d-aa35-90be3d46877b",
+  "sourceRecords": 1,
+  "signals": 3,
+  "reviewId": "3a455f63-bc68-431d-91ba-bdfb2bb3f788",
+  "idempotentReplay": true,
+  "restoredStatus": "NEEDS_ADDRESS",
+  "csvRows": 100,
+  "enrichmentConfirmationGate": true,
+  "browserSecretScan": {
+    "assetsScanned": 1,
+    "status": "PASS"
+  },
+  "rentcastCalls": 0
+}

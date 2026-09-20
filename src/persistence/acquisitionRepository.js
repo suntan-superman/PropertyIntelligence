@@ -1,4 +1,5 @@
 import {audit} from './db.js';
+import {acquisitionAnalysisLink} from './acquisitionAnalysisLink.js';
 
 export async function insertEncumbrances(tx,propertyId,evidenceSnapshotId,items=[]) {
   const rows=[];
@@ -35,6 +36,7 @@ export async function listConditionAssessments(tx,propertyId) {
 }
 
 export async function insertAcquisitionDecision(tx,value) {
+  await acquisitionAnalysisLink(tx,value);
   const {rows}=await tx.query(`INSERT INTO acquisition_decisions
     (property_id,deal_id,evidence_snapshot_id,analysis_snapshot_id,strategy,decision_version,hurdle_type,hurdle_rate,selected_exit_basis,selected_exit_value,calculated_mao,manual_walkaway_cap,effective_walkaway_price,target_offer,target_policy_payload,seller_asking_price,auction_minimum,known_encumbrance_total,unknown_encumbrance_count,encumbrance_gap,cost_completeness,inputs_payload,outputs_payload,warnings_payload,model_fingerprint)
     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15::jsonb,$16,$17,$18,$19,$20,$21,$22::jsonb,$23::jsonb,$24::jsonb,$25) RETURNING *`,[

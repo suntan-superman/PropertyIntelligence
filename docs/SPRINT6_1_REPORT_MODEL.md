@@ -1,0 +1,15 @@
+# Immutable report model
+
+`src/reports/investment/model.js` creates a deeply frozen JSON model with reportMeta, property, propertyDetails, evidenceSummary, valuation, comparables, deal, encumbrances, condition, rehab, economics, maoDecision, scenarios, sensitivity, diligence, sources and methodology.
+
+The request accepts only decisionId and optional persistMetadata. The server follows decision.property_id/deal_id/evidence_snapshot_id/analysis_snapshot_id and verifies every ownership/reference edge. Missing links yield REPORT_HISTORICAL_LINK_REQUIRED; mismatched ownership yields REPORT_LINKAGE_STOP. Scalar decision amounts/hurdle are checked against embedded decision outputs; analysis scalar profit/return/cash/proceeds/break-even are checked against embedded Analysis outputs. A mismatch stops with REPORT_RECONCILIATION_STOP. Supplied snapshot comp count must match retained relational comps.
+
+Property facts and valuation come from exact Evidence payloads; deal claims from exact Analysis inputs; economics/scenarios/sensitivity from exact Analysis outputs; MAO/negotiation constraints/encumbrance totals and recorded rehab from exact Decision outputs/inputs. No current-history merging or analytical engine imports. Canonical rows validate identity only. All comps remain in `comparables.all`; the primary eight sort by supplied distance, missing last, then stable ID/address. No comparability inference is added.
+
+Financial formatting displays cents; null amounts display Unknown and explicit zero displays $0.00. Structured fields display Not supplied, condition absence Not assessed, and diligence without supplied status Needs verification. A missing map/image is omitted rather than fetched. Money values are not computed by the report. SVG calculations position already supplied values only.
+
+Fingerprint: SHA-256 of recursively key-sorted JSON, including durable IDs, report type, renderer version and normalized content; generation timestamp excluded. A new timestamp changes the document date but not its analytical fingerprint. Deep freeze and clone prevent source mutation. The historical regression inserts a second decision/evidence into an ID-indexed repository double and regenerates the first through a separate service wrapper, proving unchanged content and fingerprint.
+
+Optional metadata: reports contains common columns; audit_events contains full metadata including Evidence/Decision IDs and fingerprint. Both writes commit together only after successful rendering. Binaries are streamed; storageReference stays null. No migration is needed.
+
+Known historical limits: all six existing saved decisions inspected on 2026-09-20 lack analysis_snapshot_id. Reports explicitly stop for these. The new report does not backfill historical links, select latest analysis, or change the acquisition save workflow. Separately recorded condition/diligence without a decision-bound historical reference is not attached; embedded decision content remains usable. Synthetic fixture report values are test inputs, never asserted as real property evidence.

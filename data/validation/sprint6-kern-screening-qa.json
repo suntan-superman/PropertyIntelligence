@@ -1,0 +1,18 @@
+{
+  "at": "2026-09-20T23:34:28.955Z",
+  "status": "PASS",
+  "screenVersion": "kern-screen-v1",
+  "checks": [
+    "complete identifier and high amount score is explainable",
+    "low amount remains lower priority without owner points",
+    "unknown amount is not zero and retains identifier-only score",
+    "missing stable identifier is unresolved and insufficient",
+    "optional resolved/link signals add documented points",
+    "identity hints never use owner names or addresses",
+    "same stable identifier is the only conservative merge key",
+    "ATN and APN are not silently treated as equivalent",
+    "explicitly conflicting identifiers stop conservative merging",
+    "conflicting identifiers receive no completeness points"
+  ],
+  "providerCalls": 0
+}

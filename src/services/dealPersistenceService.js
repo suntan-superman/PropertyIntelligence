@@ -24,14 +24,16 @@ export async function saveDeal({db,model,propertyId,evidenceSnapshotId=null,requ
 export const savedDeals = ({db,search='',includeArchived=false}) => { if (!db) throw new Error('DATABASE_NOT_CONFIGURED'); return db.transaction(tx => listDeals(tx,{search,includeArchived})); };
 export const openDeal = ({db,id}) => { if (!db) throw new Error('DATABASE_NOT_CONFIGURED'); if(!isUuid(id)) throw new Error('INVALID_UUID'); return db.transaction(async tx => {
   const deal=await getDeal(tx,id);if(!deal)return null;
-  const evidence=(await tx.query('SELECT * FROM evidence_snapshots WHERE property_id=$1 ORDER BY retrieved_at DESC,created_at DESC LIMIT 1',[deal.property_id])).rows[0];
   const analysis=(await tx.query('SELECT * FROM analysis_snapshots WHERE deal_id=$1 ORDER BY created_at DESC LIMIT 1',[id])).rows[0];
+  // Opening the current Deal view selects a displayed snapshot once. Its exact
+  // Evidence and Analysis IDs travel with the view; decision saves never reselect it.
+  const evidence=analysis?.evidence_snapshot_id?(await tx.query('SELECT * FROM evidence_snapshots WHERE id=$1 AND property_id=$2',[analysis.evidence_snapshot_id,deal.property_id])).rows[0]:null;
   const claims=(deal.claims??[]).map(c=>({...c,field:c.field_key,value:c.value_numeric!=null?Number(c.value_numeric):c.value_text??c.value_json}));
   const comps=evidence?(await tx.query(`SELECT c.* FROM comparables c JOIN comparable_snapshots cs ON cs.id=c.comparable_snapshot_id WHERE cs.evidence_snapshot_id=$1 ORDER BY c.created_at`,[evidence.id])).rows.map(c=>({id:c.provider_comp_id,address:c.address,latitude:c.latitude,longitude:c.longitude,propertyType:c.property_type,status:c.status,price:c.price,priceLabel:c.price_label,bedrooms:c.bedrooms,bathrooms:c.bathrooms,squareFeet:c.square_feet,lotSize:c.lot_size,yearBuilt:c.year_built,distanceMiles:c.distance_miles,daysOnMarket:c.days_on_market,correlation:c.correlation,landTenureStatus:c.land_tenure_status,providerPayload:c.provider_payload})):[];
   const diligence=await diligenceHistory(tx,id),analysisHistoryRows=await analysisHistory(tx,id);
   const questions=diligence.map(item=>({id:item.question_key,questionKey:item.question_key,questionText:item.question_text,category:item.category,materiality:item.materiality,status:item.status,relatedFields:item.related_fields,answerText:item.answer_text,resolvedAt:item.resolved_at}));
   const model=analysis&&evidence?finalize({schemaVersion:1,id,mode:'deal',address:[evidence.property_payload?.address,evidence.property_payload?.city,evidence.property_payload?.state].filter(Boolean).join(', '),state:'READY_DEAL',resolutionStatus:'DURABLE_SAVED',property:{...evidence.property_payload,valuation:evidence.valuation_payload??{},comps},analysis:analysis.outputs_payload,claims,claimOrigin:deal.origin,evidence:[],questions,provenance:evidence.provenance_payload??[],cache:{status:'DURABLE_SAVED',source:'Saved deal',retrievedAt:[evidence.retrieved_at],newProviderCalls:0,durable:true},notes:['Historical analysis — values reflect the assumptions and evidence available at that time.','Re-analysis reconstructs this model from durable property, evidence and deal claims.'],originalClaimsPreserved:true}):null;
-  return {...deal,diligence,analysisHistory:analysisHistoryRows,model};
+  return {...deal,diligence,analysisHistory:analysisHistoryRows,model,analysisContext:analysis&&evidence?{propertyId:deal.property_id,dealId:id,analysisSnapshotId:analysis.id,evidenceSnapshotId:evidence.id}:null};
 }); };
 export const setDealArchive = ({db,id,archived=true}) => { if (!db) throw new Error('DATABASE_NOT_CONFIGURED'); if(!isUuid(id)) throw new Error('INVALID_UUID'); return db.transaction(tx => archiveDeal(tx,id,archived)); };
 

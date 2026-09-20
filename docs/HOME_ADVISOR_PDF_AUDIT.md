@@ -1,0 +1,13 @@
+# Home Advisor PDF audit — 2026-09-20
+
+Read-only inspection began in `HomeAdvisor/apps/web`. Its Next.js package has no PDF renderer dependency. `lib/api.js` constructs API export URLs; `app/properties/[propertyId]/workspaceReportTab.js` and `PropertyWorkspaceClient.js` distinguish generating a saved version, previewing and downloading it. Rendering lives in `apps/api/src/modules/documents/html-pdf.service.js`, not in the web browser.
+
+The API imports Puppeteer and pdf-lib. `renderHtmlPdf` launches Chromium, uses `setContent` with `networkidle0`, prints Letter with CSS page sizing and zero print margins, then loads the bytes with pdf-lib for page count. Browser shutdown is in `finally`; navigation/protocol limits are 120 seconds. Logs record duration, bytes and pages, but also raw failure messages, which PI will not copy.
+
+HTML uses 8.5-inch pages, minimum 11-inch height, 0.58-inch horizontal/top padding and 0.68-inch bottom padding. Segoe UI/Aptos/Helvetica/Arial body text and Georgia headings; headings 40/29/20px, explanatory text 13–15px. Explicit section pages, primary/overflow splitting, continuation sections, card break avoidance and auto-flow containers handle long reports. Last page suppresses trailing page break. `renderFooter` is template content rather than Chromium page-X/Y headers. There is also `pdf-theme.js` with pdf-lib Letter dimensions 612×792, 42-point margins and character-based wrapped drawing helpers.
+
+Templates include selected-comparable tables, metric cards, gallery images, range/bar visuals and Google static maps. Map URLs are fetched server-side and converted to data URIs; failed images are omitted. This provider-fetching behavior is unsuitable for PI's zero-call report boundary. Formatting helpers distinguish some missing values from explicit zero, but distance and square-foot helpers omit nonpositive values; PI must retain zero where meaningful.
+
+Useful patterns: escaped text, primary versus appendix content, section-specific continuation context, browser lifecycle cleanup, bounded rendering, page/file metrics, explicit saved-version downloads. Not copied: marketing copy, contact CTAs, report calculations, static-map fetching, large decorative cards and current/latest report selection.
+
+No dedicated PDF visual fixture suite was found in the searched web/API package scripts or filenames. Web tests cover onboarding; that is not evidence of PDF pagination certification. Fixed-height/min-height page wrappers, unsplittable cards and character-based wrapping may leave whitespace or overflow on extreme content. PI will use its existing PDF.js/canvas text-bound and image QA instead. Home Advisor was not modified.

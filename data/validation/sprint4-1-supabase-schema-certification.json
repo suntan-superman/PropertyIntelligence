@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-19T03:07:39.091Z",
+  "at": "2026-09-19T16:50:07.758Z",
   "status": "PASS",
   "provider": "supabase-postgresql",
   "migrations": [
@@ -12,13 +12,18 @@
       "filename": "002_acquisition_decisions.sql",
       "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
       "applied_at": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "applied_at": "2026-09-19T16:36:46.141Z"
     }
   ],
-  "expectedTableCount": 19,
-  "expectedIndexCount": 16,
-  "foreignKeysOnDeleteRestrict": 29,
+  "expectedTableCount": 25,
+  "expectedIndexCount": 24,
+  "foreignKeysOnDeleteRestrict": 36,
   "checks": [
-    "repository checksum ledger for 001 and 002",
+    "repository checksum ledger for 001, 002 and 003",
     "all application tables",
     "all required columns",
     "expected indexes",

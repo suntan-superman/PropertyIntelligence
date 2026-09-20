@@ -1,0 +1,28 @@
+{
+  "at": "2026-09-20T22:45:42.420Z",
+  "status": "PASS_WITH_DOCUMENTED_RUNTIME_AND_HISTORICAL_LIMITS",
+  "url": "https://6ab061f7588dbc7d7fb59f6b--worksidepropertyintelligence.netlify.app",
+  "health": {
+    "ok": true,
+    "runtime": "netlify",
+    "rentcastConfigured": true,
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true,
+    "pdfAvailable": false,
+    "durableLiveCache": false,
+    "durableSessions": true
+  },
+  "capability": {
+    "available": false,
+    "modelAvailable": true,
+    "message": "PDF generation is currently available in the local analyst runtime."
+  },
+  "decisionId": "0b7a3d79-b9db-436a-b9ae-8647227d891d",
+  "historicalLinkGate": "REPORT_HISTORICAL_LINK_REQUIRED",
+  "idsOnlyGate": "REPORT_IDS_ONLY",
+  "invalidIdGate": 400,
+  "browserScan": "PASS",
+  "providerCalls": 0,
+  "remotePdfFixtures": "Not run: current Netlify runtime has no PDF browser; complete/sparse/long API PDFs certified locally."
+}

@@ -27,16 +27,24 @@ const expected={
   ,property_encumbrances:['id','property_id','evidence_snapshot_id','type','amount','amount_status','source','as_of_date','payoff_verified','priority_known','notes','created_at','superseded_at']
   ,property_condition_assessments:['id','property_id','deal_id','assessment_date','source','created_at']
   ,property_condition_items:['id','assessment_id','category','condition_status','estimated_cost','source','notes','created_at']
+  ,discovery_sources:['id','source_type','jurisdiction','source_name','edition','source_date','source_file_hash','record_count','imported_at','provenance_payload']
+  ,discovery_records:['id','discovery_source_id','source_row_number','source_page','external_identifier','atn','apn','owner_name','amount_owed','raw_payload','normalized_payload','record_fingerprint','imported_at']
+  ,opportunity_candidates:['id','jurisdiction','candidate_key','atn','apn','normalized_owner_name','resolved_property_id','identity_status','candidate_status','priority_band','screening_score','score_version','first_seen_at','last_seen_at','archived_at','created_at','updated_at']
+  ,opportunity_record_links:['id','candidate_id','discovery_record_id','link_type','confidence_basis','created_at']
+  ,opportunity_signals:['id','candidate_id','signal_type','numeric_value','text_value','status','source_record_id','evidence_payload','created_at','superseded_at']
+  ,opportunity_reviews:['id','candidate_id','action','reason_code','notes','created_at']
 };
-const expectedIndexes=['properties_state_county_idx','properties_apn_jurisdiction_idx','property_aliases_normalized_idx','evidence_property_retrieved_idx','valuation_property_effective_idx','comp_snapshot_property_created_idx','deals_property_status_idx','analysis_deal_created_idx','discovery_source_type_date_idx','diligence_deal_status_idx','audit_aggregate_created_idx','acquisition_decisions_property_created_idx','acquisition_decisions_deal_created_idx','property_encumbrances_property_created_idx','condition_assessments_property_created_idx','condition_items_assessment_created_idx'];
+const expectedIndexes=['properties_state_county_idx','properties_apn_jurisdiction_idx','property_aliases_normalized_idx','evidence_property_retrieved_idx','valuation_property_effective_idx','comp_snapshot_property_created_idx','deals_property_status_idx','analysis_deal_created_idx','discovery_source_type_date_idx','diligence_deal_status_idx','audit_aggregate_created_idx','acquisition_decisions_property_created_idx','acquisition_decisions_deal_created_idx','property_encumbrances_property_created_idx','condition_assessments_property_created_idx','condition_items_assessment_created_idx','discovery_records_source_row_idx','discovery_records_identifier_idx','opportunity_candidates_queue_idx','opportunity_candidates_identity_idx','opportunity_candidates_atn_idx','opportunity_links_candidate_idx','opportunity_signals_candidate_idx','opportunity_reviews_candidate_idx'];
 const tables=Object.keys(expected);
 try {
   const migration=await readFile(resolve('netlify/database/migrations/001_persistent_intelligence.sql'),'utf8');
   const migration002=await readFile(resolve('netlify/database/migrations/002_acquisition_decisions.sql'),'utf8');
-  const ledger=(await db.query('SELECT filename,checksum,applied_at FROM property_intelligence_schema_migrations WHERE filename=ANY($1::text[]) ORDER BY filename',[ ['001_persistent_intelligence.sql','002_acquisition_decisions.sql'] ])).rows;
-  assert.equal(ledger.length,2,'migration ledger must contain exactly one applied 001 and 002 row');
+  const migration003=await readFile(resolve('netlify/database/migrations/003_opportunity_discovery.sql'),'utf8');
+  const ledger=(await db.query('SELECT filename,checksum,applied_at FROM property_intelligence_schema_migrations WHERE filename=ANY($1::text[]) ORDER BY filename',[ ['001_persistent_intelligence.sql','002_acquisition_decisions.sql','003_opportunity_discovery.sql'] ])).rows;
+  assert.equal(ledger.length,3,'migration ledger must contain exactly one applied 001, 002 and 003 row');
   assert.equal(ledger.find(row=>row.filename==='001_persistent_intelligence.sql').checksum,hash(migration),'migration 001 checksum must match repository authority');
   assert.equal(ledger.find(row=>row.filename==='002_acquisition_decisions.sql').checksum,hash(migration002),'migration 002 checksum must match repository authority');
+  assert.equal(ledger.find(row=>row.filename==='003_opportunity_discovery.sql').checksum,hash(migration003),'migration 003 checksum must match repository authority');
   const tableRows=(await db.query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' AND table_name=ANY($1::text[]) ORDER BY table_name",[tables])).rows.map(row=>row.table_name);
   assert.deepEqual(tableRows,[...tables].sort(),'all expected application tables must exist');
   const columns=(await db.query("SELECT table_name,column_name FROM information_schema.columns WHERE table_schema='public' AND table_name=ANY($1::text[])",[tables])).rows;
@@ -46,6 +54,6 @@ try {
   assert.deepEqual(indexes.sort(),expectedIndexes.sort(),'expected indexes must exist');
   const restrict=(await db.query("SELECT count(*)::int AS n FROM pg_constraint c JOIN pg_class t ON t.oid=c.conrelid JOIN pg_namespace n ON n.oid=t.relnamespace WHERE n.nspname='public' AND c.contype='f' AND c.confdeltype='r' AND t.relname=ANY($1::text[])",[tables])).rows[0].n;
   assert.ok(restrict>=16,'foreign keys must remain ON DELETE RESTRICT');
-  const report={at:new Date().toISOString(),status:'PASS',provider:'supabase-postgresql',migrations:ledger,expectedTableCount:tables.length,expectedIndexCount:expectedIndexes.length,foreignKeysOnDeleteRestrict:restrict,checks:['repository checksum ledger for 001 and 002','all application tables','all required columns','expected indexes','restrictive foreign keys','no schema mutation'],providerCalls:0};
+  const report={at:new Date().toISOString(),status:'PASS',provider:'supabase-postgresql',migrations:ledger,expectedTableCount:tables.length,expectedIndexCount:expectedIndexes.length,foreignKeysOnDeleteRestrict:restrict,checks:['repository checksum ledger for 001, 002 and 003','all application tables','all required columns','expected indexes','restrictive foreign keys','no schema mutation'],providerCalls:0};
   await writeJson('data/validation/sprint4-1-supabase-schema-certification.json',report);console.log(JSON.stringify(report,null,2));
 } finally { await db.closePoolForTests(); }

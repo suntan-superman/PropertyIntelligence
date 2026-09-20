@@ -1,0 +1,48 @@
+{
+  "at": "2026-09-20T23:21:24.265Z",
+  "status": "PASS",
+  "mode": "local",
+  "url": "http://127.0.0.1:4173",
+  "qaTag": "SPRINT6_1_1_LOCAL_QA_b98eb4e6-16cc-4123-ac52-15a5073ed868",
+  "health": {
+    "runtime": "local",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true
+  },
+  "propertyId": "16141865-fcaf-4d2c-9be5-04c97cc6884c",
+  "evidenceSnapshotId": "b2a5d324-3767-4ea6-b9f5-464b5c35a3ca",
+  "dealId": "de156ac7-c6f9-4623-a24c-69f037313985",
+  "analysisIds": [
+    "7e6d50ac-a61c-47d9-8c50-57dc9b797143",
+    "11334723-859d-4d6c-bc6f-79c97c1d0a1f"
+  ],
+  "decisionIds": [
+    "c11033bf-de61-491f-b8c5-4ac94717dfdb",
+    "c9d773e6-c895-4b46-8f5e-80f3a2bb6a17"
+  ],
+  "firstDecisionHash": "a00f39b0ab731a10747d07f24b2941b639c67219e30602e034ad7ce31c95b64e",
+  "firstAnalysisHash": "315b1540c84e6cb16302887726e46a140fbe740b84c421d762da6f63d7483e5a",
+  "reportFingerprints": [
+    "cc192cc055e30566a367d20d896b107b46352ef1d1f7cf4274391f95b599ce99",
+    "23ff9f0d790bb5348e62398d6dbc5468c888927404daf85eb317c2c6835a34bb"
+  ],
+  "compCount": 15,
+  "claimCount": 10,
+  "diligenceCount": 21,
+  "historyCount": 2,
+  "idempotentReplay": true,
+  "coldRequests": 26,
+  "separateDatabaseReconstruction": true,
+  "firstDecisionUnchanged": true,
+  "firstAnalysisUnchanged": true,
+  "firstReportUnchanged": true,
+  "historicalRowsUnchanged": 6,
+  "historicalStops": 6,
+  "missingLinkStop": true,
+  "staleLinkStop": true,
+  "responseCredentialScan": "PASS",
+  "providerCalls": 0,
+  "providerCallProof": "Allowlisted fixture/persistence/report endpoints only; no live/refresh requests; local provider tripwire",
+  "historicalRepairs": 0
+}

@@ -1,0 +1,564 @@
+{
+  "reportMeta": {
+    "reportType": "FULL_INVESTMENT_ANALYSIS",
+    "propertyId": "10000000-0000-4000-8000-000000000001",
+    "dealId": "20000000-0000-4000-8000-000000000001",
+    "analysisSnapshotId": "40000000-0000-4000-8000-000000000001",
+    "acquisitionDecisionId": "50000000-0000-4000-8000-000000000001",
+    "evidenceSnapshotId": "30000000-0000-4000-8000-000000000001",
+    "rendererVersion": "investment-html-v1",
+    "generatedAt": "2026-09-20T00:00:00.000Z",
+    "status": "READY",
+    "storageReference": null,
+    "reportModelFingerprint": "c86c9237403937b08a1d73ec37022ed861db2f98d4360e63c5855ecd05293043"
+  },
+  "property": {
+    "address": "100 Synthetic Avenue, Example, FL 33578",
+    "propertyType": "Single Family",
+    "identityStatus": "INDEPENDENT_ONLY"
+  },
+  "propertyDetails": {
+    "address": "100 Synthetic Avenue, Example, FL 33578",
+    "propertyType": "Single Family",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1500,
+    "yearBuilt": 1990,
+    "lotSize": 6000,
+    "county": "Synthetic County",
+    "identifiers": {
+      "apn": "SYNTHETIC-01"
+    },
+    "taxes": {
+      "annualAmount": 2000
+    },
+    "assessments": {
+      "assessedValue": 150000
+    },
+    "saleHistory": [],
+    "features": {},
+    "legal": {
+      "description": "Synthetic legal description"
+    }
+  },
+  "evidenceSummary": {
+    "status": "INDEPENDENT_ONLY",
+    "source": "SYNTHETIC_OFFLINE",
+    "retrievedAt": "2026-01-01T00:00:00.000Z",
+    "snapshotType": "SYNTHETIC"
+  },
+  "valuation": {
+    "low": 180000,
+    "price": 200000,
+    "high": 220000
+  },
+  "comparables": {
+    "all": [
+      {
+        "id": "comp-00",
+        "address": "1 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 200000,
+        "price_label": "Listing price",
+        "distance_miles": 0,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-01",
+        "address": "2 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 201000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.1,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-02",
+        "address": "3 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 202000,
+        "price_label": "Listing price",
+        "distance_miles": 0.2,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-03",
+        "address": "4 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 203000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.3,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-04",
+        "address": "5 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 204000,
+        "price_label": "Listing price",
+        "distance_miles": 0.4,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-05",
+        "address": "6 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 205000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.5,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-06",
+        "address": "7 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 206000,
+        "price_label": "Listing price",
+        "distance_miles": 0.6,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-07",
+        "address": "8 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 207000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.7,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-08",
+        "address": "9 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 208000,
+        "price_label": "Listing price",
+        "distance_miles": 0.8,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-09",
+        "address": "10 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 209000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.9,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-10",
+        "address": "11 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 210000,
+        "price_label": "Listing price",
+        "distance_miles": 1,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-11",
+        "address": "12 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 211000,
+        "price_label": "Reported closed price",
+        "distance_miles": 1.1,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-12",
+        "address": "13 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 212000,
+        "price_label": "Listing price",
+        "distance_miles": 1.2,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-13",
+        "address": "14 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 213000,
+        "price_label": "Reported closed price",
+        "distance_miles": 1.3,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-14",
+        "address": "15 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 214000,
+        "price_label": "Listing price",
+        "distance_miles": 1.4,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      }
+    ],
+    "primary": [
+      {
+        "id": "comp-00",
+        "address": "1 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 200000,
+        "price_label": "Listing price",
+        "distance_miles": 0,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-01",
+        "address": "2 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 201000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.1,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-02",
+        "address": "3 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 202000,
+        "price_label": "Listing price",
+        "distance_miles": 0.2,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-03",
+        "address": "4 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 203000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.3,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-04",
+        "address": "5 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 204000,
+        "price_label": "Listing price",
+        "distance_miles": 0.4,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-05",
+        "address": "6 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 205000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.5,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-06",
+        "address": "7 Synthetic Comp Avenue",
+        "status": "Active",
+        "price": 206000,
+        "price_label": "Listing price",
+        "distance_miles": 0.6,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      },
+      {
+        "id": "comp-07",
+        "address": "8 Synthetic Comp Avenue",
+        "status": "Closed",
+        "price": 207000,
+        "price_label": "Reported closed price",
+        "distance_miles": 0.7,
+        "square_feet": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "year_built": 1990,
+        "land_tenure_status": "UNKNOWN"
+      }
+    ],
+    "selection": "Nearest supplied distance; missing distances last; stable identifier tie-break. All retained comps follow in appendix."
+  },
+  "deal": {
+    "claims": [
+      {
+        "field": "acquisition",
+        "value": 150000,
+        "source": "SYNTHETIC_ANALYST"
+      }
+    ],
+    "strategy": "FIX_AND_FLIP"
+  },
+  "encumbrances": {
+    "items": [
+      {
+        "type": "FIRST_MORTGAGE",
+        "amount": 50000,
+        "amountStatus": "REPORTED",
+        "source": "Synthetic analyst fixture",
+        "payoffVerified": false,
+        "priorityKnown": false
+      },
+      {
+        "type": "TAX_LIEN",
+        "amount": null,
+        "amountStatus": "UNKNOWN",
+        "source": "Synthetic analyst fixture"
+      }
+    ],
+    "knownTotal": 50000,
+    "unknownCount": 1,
+    "gap": 106666.66
+  },
+  "condition": {
+    "items": [
+      {
+        "category": "ROOF",
+        "conditionStatus": "REPAIR_NEEDED",
+        "estimatedCost": 10000,
+        "source": "SYNTHETIC_ANALYST",
+        "notes": "Recorded inspection finding"
+      }
+    ],
+    "status": "Recorded assessment",
+    "limitation": "Only condition detail embedded in this immutable decision is included. Unlinked later assessments are not substituted."
+  },
+  "rehab": {
+    "baseRehabCost": 10000,
+    "unallocatedRehab": 0,
+    "contingencyAmount": 0,
+    "totalRehabCost": 10000
+  },
+  "economics": {
+    "base": {
+      "modeledProceeds": 195000,
+      "scenarioCashInvested": 160000,
+      "modeledProfit": 35000,
+      "cashOnCash": 0.21875,
+      "modeledProjectCost": 165000,
+      "modeledHoldingDays": 90,
+      "costCompleteness": "COMPLETE",
+      "includedCosts": {
+        "acquisition": 150000,
+        "repairs": 10000,
+        "holding": 0,
+        "disposition": 5000
+      }
+    },
+    "costModel": {
+      "acquisition": 150000,
+      "rehab": 10000,
+      "holding": 0,
+      "disposition": 5000
+    },
+    "breakEven": {
+      "salePrice": 165000
+    },
+    "warnings": []
+  },
+  "maoDecision": {
+    "strategy": "FIX_AND_FLIP",
+    "hurdle": {
+      "type": "CASH_ON_CASH",
+      "rate": 0.2,
+      "formula": "Modeled profit / modeled cash invested"
+    },
+    "hurdleDefinition": "Modeled profit / modeled cash invested",
+    "selectedExitBasis": "INDEPENDENT_POINT",
+    "selectedExitValue": 200000,
+    "calculatedMao": 156666.66,
+    "effectiveWalkawayPrice": 150000,
+    "targetOffer": 140000,
+    "sellerAskingPrice": 160000,
+    "auctionMinimum": null,
+    "knownEncumbranceTotal": 50000,
+    "unknownEncumbranceCount": 1,
+    "encumbranceGap": 106666.66,
+    "costCompleteness": "COMPLETE",
+    "encumbrances": [
+      {
+        "type": "FIRST_MORTGAGE",
+        "amount": 50000,
+        "amountStatus": "REPORTED",
+        "source": "Synthetic analyst fixture",
+        "payoffVerified": false,
+        "priorityKnown": false
+      },
+      {
+        "type": "TAX_LIEN",
+        "amount": null,
+        "amountStatus": "UNKNOWN",
+        "source": "Synthetic analyst fixture"
+      }
+    ],
+    "rehab": {
+      "baseRehabCost": 10000,
+      "unallocatedRehab": 0,
+      "contingencyAmount": 0,
+      "totalRehabCost": 10000
+    },
+    "exitResults": [
+      {
+        "exitBasis": "INDEPENDENT_LOW",
+        "exitValue": 180000,
+        "calculatedMao": 140000,
+        "exitEvidenceStatus": "INDEPENDENT_ONLY"
+      },
+      {
+        "exitBasis": "INDEPENDENT_POINT",
+        "exitValue": 200000,
+        "calculatedMao": 156666.66,
+        "exitEvidenceStatus": "INDEPENDENT_ONLY"
+      },
+      {
+        "exitBasis": "INDEPENDENT_HIGH",
+        "exitValue": 220000,
+        "calculatedMao": 173333.33,
+        "exitEvidenceStatus": "INDEPENDENT_ONLY"
+      }
+    ],
+    "warnings": [
+      "Unknown encumbrance amounts are excluded from the known total."
+    ],
+    "diligenceQuestions": [
+      {
+        "group": "Title / encumbrances",
+        "question": "Obtain an independently verified payoff.",
+        "status": "Needs verification"
+      }
+    ],
+    "sensitivity": [
+      {
+        "exitBasis": "INDEPENDENT_POINT",
+        "exitValue": 200000,
+        "rehabCase": "BASE",
+        "calculatedMao": 156666.66,
+        "status": "AVAILABLE",
+        "costCompleteness": "COMPLETE"
+      }
+    ]
+  },
+  "scenarios": [],
+  "sensitivity": {
+    "analysis": {
+      "status": "Not available"
+    },
+    "mao": [
+      {
+        "exitBasis": "INDEPENDENT_POINT",
+        "exitValue": 200000,
+        "rehabCase": "BASE",
+        "calculatedMao": 156666.66,
+        "status": "AVAILABLE",
+        "costCompleteness": "COMPLETE"
+      }
+    ]
+  },
+  "diligence": [
+    {
+      "group": "Title / encumbrances",
+      "question": "Obtain an independently verified payoff.",
+      "status": "Needs verification"
+    }
+  ],
+  "sources": [
+    {
+      "source": "SYNTHETIC_OFFLINE",
+      "retrievedAt": "2026-01-01T00:00:00.000Z",
+      "status": "INDEPENDENT_ONLY"
+    }
+  ],
+  "methodology": {
+    "analysisVersion": "fixture-existing-v1",
+    "decisionVersion": "fixture-mao-v1",
+    "hurdleDefinition": "Modeled profit / modeled cash invested",
+    "analysisCreatedAt": "2026-01-01T00:00:00.000Z",
+    "decisionCreatedAt": "2026-01-01T00:00:00.000Z",
+    "limitations": [
+      "Unknown values remain unknown; explicit zero is retained.",
+      "Independent evidence and analyst/sponsor assumptions are distinct.",
+      "Property/seller encumbrances affect title clearance, seller proceeds and negotiation constraints. They are not automatically added to investor project costs.",
+      "Existing deterministic scenarios have no probability interpretation.",
+      "MAO is the highest modeled purchase price satisfying the selected return hurdle under the stated assumptions. It is not a guarantee of return or an investment recommendation."
+    ]
+  }
+}

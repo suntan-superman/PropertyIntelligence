@@ -1,0 +1,10 @@
+{
+  "at": "2026-09-20T23:34:28.606Z",
+  "status": "PASS",
+  "checks": 8,
+  "rawPreserved": true,
+  "identifierNormalized": true,
+  "malformedRejected": true,
+  "duplicateFingerprintStable": true,
+  "providerCalls": 0
+}

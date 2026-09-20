@@ -1,0 +1,16 @@
+{
+  "at": "2026-09-19T16:50:14.647Z",
+  "status": "PASS",
+  "qaTag": "SPRINT6_OPPORTUNITY_QA_1789836608679",
+  "sourceFileHash": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+  "sourceRecords": 11321,
+  "candidates": 11316,
+  "candidateId": "0002615c-4acd-448b-ae53-2beccb602bd3",
+  "signals": 3,
+  "recordImmutability": true,
+  "idempotentReview": true,
+  "archiveRestore": true,
+  "transactionRollback": true,
+  "importReplay": true,
+  "providerCalls": 0
+}

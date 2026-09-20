@@ -37,3 +37,9 @@ test('Sprint 5 migration is additive and MAO persistence tables are append-only'
   for(const table of ['acquisition_decisions','property_encumbrances','property_condition_assessments','property_condition_items'])assert.match(sql,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
   assert.match(sql,/REFERENCES properties\(id\) ON DELETE RESTRICT/);assert.match(sql,/REFERENCES evidence_snapshots\(id\) ON DELETE RESTRICT/);assert.doesNotMatch(sql,/\b(DROP|TRUNCATE|DELETE\s+FROM|UPDATE)\b/i);
 });
+
+test('Sprint 6 migration is additive and opportunity source rows are immutable',async()=>{
+  const sql=await readFile(resolve('netlify/database/migrations/003_opportunity_discovery.sql'),'utf8');
+  for(const table of ['discovery_sources','discovery_records','opportunity_candidates','opportunity_record_links','opportunity_signals','opportunity_reviews'])assert.match(sql,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
+  assert.match(sql,/source_file_hash text NOT NULL UNIQUE/);assert.match(sql,/record_fingerprint text NOT NULL/);assert.match(sql,/resolved_property_id uuid REFERENCES properties\(id\) ON DELETE RESTRICT/);assert.match(sql,/UNIQUE \(candidate_id, signal_type, source_record_id\)/);assert.doesNotMatch(sql,/\b(DROP|TRUNCATE|DELETE\s+FROM|UPDATE)\b/i);
+});

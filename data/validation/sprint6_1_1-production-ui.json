@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-20T23:33:51.148Z",
+  "status": "PASS",
+  "mode": "production",
+  "url": "https://worksidepropertyintelligence.netlify.app",
+  "exactDisplayedAnalysisContext": true,
+  "saveBodyBoundToCalculation": true,
+  "staleAssumptionsDisableSave": true,
+  "desktopAndNarrow": true,
+  "saveWasIntercepted": true,
+  "additionalPersistenceWrites": 0,
+  "providerCalls": 0,
+  "browserErrors": 0
+}

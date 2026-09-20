@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-20T23:22:37.083Z",
+  "status": "PASS",
+  "exitCode": 0,
+  "deployId": "6ab06aaecf22df927764b7d9",
+  "previewUrl": "https://6ab06aaecf22df927764b7d9--worksidepropertyintelligence.netlify.app",
+  "production": false,
+  "buildLogCredentialScan": "PASS",
+  "netlifyDatabaseProvisioning": false,
+  "rawLogsRetained": false
+}

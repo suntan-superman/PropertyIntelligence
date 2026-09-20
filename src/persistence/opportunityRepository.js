@@ -1,0 +1,45 @@
+import {rowJson,audit} from './db.js';
+
+export async function findDiscoverySource(tx,{sourceFileHash}){
+  const {rows}=await tx.query('SELECT * FROM discovery_sources WHERE source_file_hash=$1',[sourceFileHash]);return rows[0]??null;
+}
+export async function insertDiscoverySource(tx,value){
+  const {rows}=await tx.query(`INSERT INTO discovery_sources (source_type,jurisdiction,source_name,edition,source_date,source_file_hash,record_count,provenance_payload) VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb) ON CONFLICT (source_file_hash) DO NOTHING RETURNING *`,[value.sourceType,value.jurisdiction,value.sourceName,value.edition,value.sourceDate??null,value.sourceFileHash,value.recordCount,JSON.stringify(value.provenancePayload??{})]);
+  return rows[0]??findDiscoverySource(tx,{sourceFileHash:value.sourceFileHash});
+}
+export async function insertDiscoveryRecord(tx,value){
+  const {rows}=await tx.query(`INSERT INTO discovery_records (discovery_source_id,source_row_number,source_page,external_identifier,atn,apn,owner_name,amount_owed,raw_payload,normalized_payload,record_fingerprint) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10::jsonb,$11) ON CONFLICT (discovery_source_id,record_fingerprint) DO NOTHING RETURNING *`,[value.discoverySourceId,value.sourceRowNumber,value.sourcePage??null,value.externalIdentifier,value.atn??null,value.apn??null,value.ownerName??null,value.amountOwed??null,JSON.stringify(value.rawPayload),JSON.stringify(value.normalizedPayload),value.recordFingerprint]);
+  if(rows[0])return rows[0];
+  const existing=await tx.query('SELECT * FROM discovery_records WHERE discovery_source_id=$1 AND record_fingerprint=$2',[value.discoverySourceId,value.recordFingerprint]);return existing.rows[0]??null;
+}
+export async function upsertOpportunityCandidate(tx,value){
+  const {rows}=await tx.query(`INSERT INTO opportunity_candidates (jurisdiction,candidate_key,atn,apn,normalized_owner_name,identity_status,candidate_status,priority_band,screening_score,score_version) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT (candidate_key) DO UPDATE SET last_seen_at=now(),updated_at=now() RETURNING *`,[value.jurisdiction,value.candidateKey,value.atn??null,value.apn??null,value.normalizedOwnerName??null,value.identityStatus,value.candidateStatus,value.priorityBand,value.screeningScore??null,value.scoreVersion??null]);return rows[0];
+}
+export async function insertRecordLink(tx,value){
+  const {rows}=await tx.query(`INSERT INTO opportunity_record_links (candidate_id,discovery_record_id,link_type,confidence_basis) VALUES ($1,$2,$3,$4) ON CONFLICT (candidate_id,discovery_record_id,link_type) DO NOTHING RETURNING *`,[value.candidateId,value.discoveryRecordId,value.linkType,value.confidenceBasis]);return rows[0]??null;
+}
+export async function insertSignal(tx,value){
+  const {rows}=await tx.query(`INSERT INTO opportunity_signals (candidate_id,signal_type,numeric_value,text_value,status,source_record_id,evidence_payload) VALUES ($1,$2,$3,$4,$5,$6,$7::jsonb) ON CONFLICT (candidate_id,signal_type,source_record_id) DO NOTHING RETURNING *`,[value.candidateId,value.signalType,value.numericValue??null,value.textValue??null,value.status, value.sourceRecordId??null,JSON.stringify(value.evidencePayload??{})]);return rows[0]??null;
+}
+export async function insertReview(tx,value){const {rows}=await tx.query(`INSERT INTO opportunity_reviews (candidate_id,action,reason_code,notes) VALUES ($1,$2,$3,$4) RETURNING *`,[value.candidateId,value.action,value.reasonCode??null,value.notes??null]);return rows[0];}
+export async function getSourceStatus(tx,sourceFileHash=null){
+  const source=sourceFileHash?await findDiscoverySource(tx,{sourceFileHash}):(await tx.query('SELECT * FROM discovery_sources ORDER BY imported_at DESC LIMIT 1')).rows[0]??null;
+  if(!source)return null;
+  const counts=await tx.query(`SELECT count(DISTINCT r.id)::int AS records,count(DISTINCT c.id)::int AS candidates,count(DISTINCT c.id) FILTER (WHERE c.identity_status='UNRESOLVED')::int AS unresolved,count(DISTINCT c.id) FILTER (WHERE c.candidate_status='NEEDS_ADDRESS')::int AS needs_address,count(DISTINCT c.id) FILTER (WHERE c.candidate_status='READY_FOR_ENRICHMENT')::int AS ready_for_enrichment,count(DISTINCT c.id) FILTER (WHERE c.candidate_status='ENRICHED')::int AS enriched,count(DISTINCT c.id) FILTER (WHERE c.candidate_status='DEAL_CREATED')::int AS deal_created,count(DISTINCT c.id) FILTER (WHERE c.candidate_status IN ('DEFERRED','ARCHIVED'))::int AS deferred_archived FROM discovery_records r JOIN opportunity_record_links l ON l.discovery_record_id=r.id JOIN opportunity_candidates c ON c.id=l.candidate_id WHERE r.discovery_source_id=$1`,[source.id]);
+  const quality=await tx.query(`SELECT count(DISTINCT r.id)::int AS records,count(DISTINCT r.id) FILTER (WHERE r.atn IS NOT NULL)::int AS atn_count,count(DISTINCT r.id) FILTER (WHERE r.apn IS NOT NULL)::int AS apn_count,count(DISTINCT r.id) FILTER (WHERE r.amount_owed IS NULL)::int AS amount_null_count,count(DISTINCT c.id) FILTER (WHERE c.identity_status='AMBIGUOUS')::int AS ambiguous_count,count(DISTINCT c.id) FILTER (WHERE c.resolved_property_id IS NOT NULL)::int AS linked_properties,count(DISTINCT r.id) FILTER (WHERE r2.id IS NOT NULL)::int AS duplicate_links FROM discovery_records r JOIN opportunity_record_links l ON l.discovery_record_id=r.id JOIN opportunity_candidates c ON c.id=l.candidate_id LEFT JOIN opportunity_record_links r2 ON r2.candidate_id=c.id AND r2.id<>l.id WHERE r.discovery_source_id=$1`,[source.id]);
+  return {...rowJson(source),counts:counts.rows[0],quality:quality.rows[0]};
+}
+export async function listCandidates(tx,{limit=50,offset=0,search='',status=null,priorityBand=null,identityStatus=null,sort='priority'}={}){
+  const safeSort={priority:'screening_score DESC NULLS LAST,updated_at DESC',amount:'amount_owed DESC NULLS LAST,updated_at DESC',updated:'updated_at DESC',atn:'atn ASC NULLS LAST'}[sort]??'screening_score DESC NULLS LAST,updated_at DESC';
+  const values=[`%${search}%`,status,priorityBand,identityStatus,Math.min(Math.max(Number(limit)||50,1),100),Math.max(Number(offset)||0,0)];
+  const result=await tx.query(`SELECT c.*,latest.amount_owed,latest.source_page,latest.discovery_source_id,ds.source_name,ds.edition,ds.source_date,ds.source_file_hash, p.address_line1,p.city,p.state,p.postal_code, count(*) OVER()::int AS total_count FROM opportunity_candidates c LEFT JOIN LATERAL (SELECT r.amount_owed,r.source_page,r.discovery_source_id FROM opportunity_record_links l JOIN discovery_records r ON r.id=l.discovery_record_id WHERE l.candidate_id=c.id ORDER BY r.source_row_number DESC LIMIT 1) latest ON true LEFT JOIN discovery_sources ds ON ds.id=latest.discovery_source_id LEFT JOIN properties p ON p.id=c.resolved_property_id WHERE ($1='' OR c.candidate_key ILIKE $1 OR c.atn ILIKE $1 OR c.apn ILIKE $1 OR c.normalized_owner_name ILIKE $1) AND ($2::text IS NULL OR c.candidate_status=$2) AND ($3::text IS NULL OR c.priority_band=$3) AND ($4::text IS NULL OR c.identity_status=$4) ORDER BY ${safeSort} LIMIT $5 OFFSET $6`,values);return {rows:result.rows,total:result.rows[0]?.total_count??0};
+}
+export async function getCandidate(tx,id){
+  const candidate=(await tx.query('SELECT c.*,p.address_line1,p.city,p.state,p.postal_code FROM opportunity_candidates c LEFT JOIN properties p ON p.id=c.resolved_property_id WHERE c.id=$1',[id])).rows[0]??null;if(!candidate)return null;
+  const records=(await tx.query(`SELECT r.*,l.link_type,l.confidence_basis,ds.source_name,ds.edition,ds.source_date,ds.source_file_hash FROM discovery_records r JOIN opportunity_record_links l ON l.discovery_record_id=r.id JOIN discovery_sources ds ON ds.id=r.discovery_source_id WHERE l.candidate_id=$1 ORDER BY r.source_row_number`,[id])).rows;
+  const signals=(await tx.query('SELECT * FROM opportunity_signals WHERE candidate_id=$1 AND superseded_at IS NULL ORDER BY created_at',[id])).rows;
+  const reviews=(await tx.query('SELECT * FROM opportunity_reviews WHERE candidate_id=$1 ORDER BY created_at DESC',[id])).rows;
+  return {...rowJson(candidate),records:records.map(rowJson),signals:signals.map(rowJson),reviews:reviews.map(rowJson)};
+}
+export async function updateCandidate(tx,{id,status,identityStatus,resolvedPropertyId=null,priorityBand,screeningScore,scoreVersion}){const {rows}=await tx.query(`UPDATE opportunity_candidates SET candidate_status=COALESCE($2,candidate_status),identity_status=COALESCE($3,identity_status),resolved_property_id=COALESCE($4,resolved_property_id),priority_band=COALESCE($5,priority_band),screening_score=COALESCE($6,screening_score),score_version=COALESCE($7,score_version),updated_at=now(),archived_at=CASE WHEN $2 IN ('ARCHIVED','DEFERRED','REJECTED') THEN now() WHEN $2 IS NOT NULL THEN NULL ELSE archived_at END WHERE id=$1 RETURNING *`,[id,status??null,identityStatus??null,resolvedPropertyId,priorityBand??null,screeningScore??null,scoreVersion??null]);return rows[0]??null;}
+export async function countSourceRecords(tx,sourceId){return Number((await tx.query('SELECT count(*)::int AS n FROM discovery_records WHERE discovery_source_id=$1',[sourceId])).rows[0].n);}

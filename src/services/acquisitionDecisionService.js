@@ -1,12 +1,28 @@
 import {idempotent,isUuid} from '../persistence/db.js';
 import {insertAcquisitionDecision,insertConditionAssessment,insertEncumbrances,listAcquisitionDecisions,getAcquisitionDecision,listEncumbrances,listConditionAssessments,auditAcquisitionDecision} from '../persistence/acquisitionRepository.js';
 import {calculateAcquisitionDecision} from '../underwriting/mao.js';
+import {acquisitionAnalysisLink,linkageFingerprint} from '../persistence/acquisitionAnalysisLink.js';
 
 const json=value=>typeof value==='string'&&/^[{[]/.test(value)?JSON.parse(value):value;
 
 function validateReference(value,name) { if(!isUuid(value))throw new Error(`INVALID_${name.toUpperCase()}`); }
 
 export async function calculateDecision(input) { return calculateAcquisitionDecision(input); }
+
+async function linkedCalculation(tx,references,input) {
+  const analysisLink=await acquisitionAnalysisLink(tx,references);
+  // Explicit acquisition assumptions remain independent of Deal formulas. Bind the
+  // immutable Deal economics context before calculation, without copying/inventing costs.
+  for(const id of [input?.evidenceSnapshotId,...(input?.exitBases??[]).map(item=>item.evidenceSnapshotId)].filter(Boolean)){
+    if(id!==references.evidenceSnapshotId)throw new Error('DECISION_ANALYSIS_EVIDENCE_MISMATCH');
+  }
+  return {...calculateAcquisitionDecision(input),analysisLink};
+}
+
+export async function calculateLinkedDecision({db,input,...references}) {
+  if(!db)throw new Error('DATABASE_NOT_CONFIGURED');
+  return db.transaction(tx=>linkedCalculation(tx,references,input));
+}
 
 export async function saveEncumbranceHistory({db,propertyId,evidenceSnapshotId=null,items=[],requestKey=null}) {
   if(!db)throw new Error('DATABASE_NOT_CONFIGURED');validateReference(propertyId,'property_id');if(evidenceSnapshotId)validateReference(evidenceSnapshotId,'evidence_snapshot_id');
@@ -24,8 +40,15 @@ export async function saveConditionHistory({db,propertyId,dealId=null,assessment
 export async function saveAcquisitionDecision({db,propertyId,evidenceSnapshotId,dealId=null,analysisSnapshotId=null,decision,input=null,requestKey=null,conditionAssessment=null}) {
   if(!db)throw new Error('DATABASE_NOT_CONFIGURED');
   validateReference(propertyId,'property_id');validateReference(evidenceSnapshotId,'evidence_snapshot_id');if(dealId)validateReference(dealId,'deal_id');if(analysisSnapshotId)validateReference(analysisSnapshotId,'analysis_snapshot_id');
-  if(!decision||decision.status==='UNAVAILABLE'||!decision.calculatedMao&&decision.calculatedMao!==0)throw new Error('DECISION_UNAVAILABLE');
-  return db.transaction(async tx=>idempotent(tx,requestKey,'SAVE_ACQUISITION_DECISION',async()=>{
+  return db.transaction(async tx=>{
+    const references={propertyId,dealId,evidenceSnapshotId,analysisSnapshotId};
+    const calculated=await linkedCalculation(tx,references,input);
+    if(calculated.status==='UNAVAILABLE'||calculated.calculatedMao==null)throw new Error('DECISION_UNAVAILABLE');
+    // Do not accept a stale calculation, a changed ID, or client-modified economics.
+    if(decision&&!decision.analysisLink)throw new Error('DECISION_ANALYSIS_LINK_REQUIRED');
+    if(decision&&linkageFingerprint(decision)!==linkageFingerprint(calculated))throw new Error('DECISION_CALCULATION_MISMATCH');
+    decision=calculated;
+    const saved=await idempotent(tx,requestKey,'SAVE_ACQUISITION_DECISION',async()=>{
     const property=(await tx.query('SELECT id FROM properties WHERE id=$1',[propertyId])).rows[0];if(!property)throw new Error('PROPERTY_NOT_SAVED');
     const evidence=(await tx.query('SELECT id FROM evidence_snapshots WHERE id=$1 AND property_id=$2',[evidenceSnapshotId,propertyId])).rows[0];if(!evidence)throw new Error('EVIDENCE_NOT_LINKED');
     if(dealId&&!((await tx.query('SELECT id FROM deals WHERE id=$1 AND property_id=$2',[dealId,propertyId])).rows[0]))throw new Error('DEAL_NOT_LINKED');
@@ -36,9 +59,12 @@ export async function saveAcquisitionDecision({db,propertyId,evidenceSnapshotId,
       const source=conditionAssessment?.source??'ANALYST_ENTERED';condition=await insertConditionAssessment(tx,{propertyId,dealId,assessmentDate:conditionAssessment?.assessmentDate??new Date().toISOString().slice(0,10),source,items:conditionAssessment?.items??input.rehab.items});
     }
     const row=await insertAcquisitionDecision(tx,{propertyId,dealId,evidenceSnapshotId,analysisSnapshotId,strategy:decision.strategy,decisionVersion:decision.decisionVersion,hurdleType:decision.hurdle.type,hurdleRate:decision.hurdle.rate,selectedExitBasis:decision.selectedExitBasis,selectedExitValue:decision.selectedExitValue,calculatedMao:decision.calculatedMao,manualWalkawayCap:decision.manualWalkawayCap,effectiveWalkawayPrice:decision.effectiveWalkawayPrice,targetOffer:decision.targetOffer,targetPolicyPayload:decision.targetPolicy,sellerAskingPrice:decision.sellerAskingPrice,auctionMinimum:decision.auctionMinimum,knownEncumbranceTotal:decision.knownEncumbranceTotal,unknownEncumbranceCount:decision.unknownEncumbranceCount,encumbranceGap:decision.encumbranceGap,costCompleteness:decision.costCompleteness,inputsPayload:input??decision.inputsPayload,outputsPayload:decision,warningsPayload:decision.warnings,modelFingerprint:decision.modelFingerprint});
-    await auditAcquisitionDecision(tx,row.id,{evidenceSnapshotId,dealId,analysisSnapshotId,modelFingerprint:decision.modelFingerprint},requestKey);
-    return {decisionId:row.id,propertyId,dealId,evidenceSnapshotId,analysisSnapshotId,costCompleteness:row.cost_completeness,calculatedMao:row.calculated_mao,savedAt:row.created_at,encumbranceCount:persistedEncumbrances.length,conditionAssessmentId:condition?.id??null};
-  }));
+    await auditAcquisitionDecision(tx,row.id,{evidenceSnapshotId,dealId,analysisSnapshotId,modelFingerprint:decision.modelFingerprint,analysisLink:decision.analysisLink},requestKey);
+    return {decisionId:row.id,propertyId,dealId,evidenceSnapshotId,analysisSnapshotId,calculationFingerprint:linkageFingerprint(decision),costCompleteness:row.cost_completeness,calculatedMao:row.calculated_mao,savedAt:row.created_at,encumbranceCount:persistedEncumbrances.length,conditionAssessmentId:condition?.id??null};
+    });
+    if(saved.propertyId!==propertyId||saved.dealId!==dealId||saved.evidenceSnapshotId!==evidenceSnapshotId||saved.analysisSnapshotId!==analysisSnapshotId||saved.calculationFingerprint!==linkageFingerprint(decision))throw new Error('DECISION_CALCULATION_MISMATCH');
+    return saved;
+  });
 }
 
 function hydrate(row,encumbrances=[],conditions=[]) {
