@@ -114,6 +114,7 @@ export function createApi({runtime='local',loadFixture,resolveCached,live,mapCon
       if(path==='/api/properties'){
         const token=data.sessionId?.match?.(/^fixture:(fantasia|bass|joyce):(property|deal)$/);
         const session=recall(sessions,data.sessionId) ?? (token ? await loadFixture(token[1],token[2]) : null);
+        if(!session)return json(410,{error:'SESSION_EXPIRED',message:'This analysis session is no longer available. Analyze the address again before saving the property.'});
         return json(200,await saveProperty({db:persistence,model:session,requestKey:data.requestKey ?? request.headers.get('Idempotency-Key')}));
       }
       if(path==='/api/acquisition-decisions/calculate')return json(200,{decision:data.analysisSnapshotId||data.dealId||data.propertyId
@@ -159,6 +160,7 @@ export function createApi({runtime='local',loadFixture,resolveCached,live,mapCon
       if(isPropertyRefresh(path)){
         const id=path.split('/')[3],token=data.sessionId?.match?.(/^fixture:(fantasia|bass|joyce):(property|deal)$/);
         const model=recall(sessions,data.sessionId) ?? (token ? await loadFixture(token[1],token[2]) : null);
+        if(!model)return json(410,{error:'SESSION_EXPIRED',message:'This analysis session is no longer available. Analyze the address again before refreshing evidence.'});
         const providerRefresh=data.providerRefresh===true;
         if(providerRefresh&&!live)throw new Error('LIVE_NOT_CONFIGURED');
         return json(200,await refreshEvidence({db:persistence,propertyId:id,model,
@@ -169,6 +171,7 @@ export function createApi({runtime='local',loadFixture,resolveCached,live,mapCon
       if(path==='/api/deals'){
         const token=data.sessionId?.match?.(/^fixture:(fantasia|bass|joyce):deal$/);
         const model=recall(sessions,data.sessionId) ?? (token ? await loadFixture(token[1],'deal') : null);
+        if(!model)return json(410,{error:'SESSION_EXPIRED',message:'This deal session is no longer available. Reopen the saved property and start the deal again.'});
         return json(200,await saveDeal({db:persistence,model,propertyId:data.propertyId,evidenceSnapshotId:data.evidenceSnapshotId,name:data.name,requestKey:data.requestKey ?? request.headers.get('Idempotency-Key')}));
       }
       if(isDealAnalyze(path)){

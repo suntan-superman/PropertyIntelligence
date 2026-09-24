@@ -1,5 +1,5 @@
 export const UNAVAILABLE='Property Intelligence API is unavailable. The web interface loaded, but the analysis service could not be reached.';
-const messages={SESSION_EXPIRED:'This nonpersistent session expired. Reload the fixture or analyze the address again.',
+const messages={SESSION_EXPIRED:'This analysis session expired before it could be saved. Analyze the address again, then save it while the session is active.',
   ADDRESS_INVALID:'Enter a complete address: street, city, two-letter state ZIP. Do not supply a URL.',
   ADDRESS_INCOMPLETE:'County situs is incomplete. Enter and confirm the complete property address.',
   ADDRESS_CONFLICT:'The proposed address conflicts with the linked Property identity. No change was saved.',
@@ -15,7 +15,10 @@ const messages={SESSION_EXPIRED:'This nonpersistent session expired. Reload the 
   EXPLICIT_COSTS_REQUIRED:'Enter each required known cost explicitly. Unknown is not zero.',
   HOLD_DAYS_REQUIRED:'Enter a positive holding duration.',OTHER_COST_TIMING_REQUIRED:'Specify the additional cost and its cash timing.',
   CONFIRMATION_INVALID:'Confirmation expired or was already used. Analyze the address again.',
-  IDENTITY_STOP:'Identity / representation must be resolved before creating a deal.'};
+  IDENTITY_STOP:'Identity / representation must be resolved before creating a deal.',
+  DATABASE_NOT_CONFIGURED:'Durable persistence is not configured on this server. The property was not saved.',
+  DATABASE_UNAVAILABLE:'Durable persistence is temporarily unavailable. The property was not saved.',
+  PROPERTY_NOT_SAVED:'The property could not be saved. No durable record was created.'};
 export async function request(path,options={}){
   let res;try{res=await fetch(`/api/${path}`,options);}catch{throw new Error(UNAVAILABLE);}
   const type=(res.headers.get('content-type')??'').split(';')[0].trim().toLowerCase();
