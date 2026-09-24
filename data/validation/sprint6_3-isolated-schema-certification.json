@@ -1,0 +1,273 @@
+{
+  "status": "PASS",
+  "qaSchema": "qa_sprint6_3_757ea6468f364fc2899ed071e4f4a4f1",
+  "mode": "ISOLATED_SCHEMA_ONLY",
+  "providerCalls": 0,
+  "databaseConnections": 1,
+  "databaseQueryCalls": 281,
+  "productionWrites": 0,
+  "productionMigrationApplied": false,
+  "cleanup": {
+    "attempted": true,
+    "verified": true
+  },
+  "migrations": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    }
+  ],
+  "sourceReconciliation": {
+    "importerVersion": "kern-assessor-import-v1",
+    "sourceEdition": "2026 Final",
+    "sourceDate": "2026-06-26",
+    "countyZipSha256": "7954771690266e4f54402b4889ef5a9ae69dfdb04f9e34a6d822f115550c92ae",
+    "countyMemberSha256": "3f96888125baad5525b1791d2e2ab56b5403b14d10f489378059341c0d17fbd5",
+    "ptsSha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+    "highPopulationSha256": "3d1d7be5c8d84cd0c63834d45f278efbbeb174bec0f59e383831c61416cc8dd3",
+    "candidatePopulationSha256": "bbd74e59e42fa212956de444f99c53a748f9b0ef25586818d2cb525a2138a74e",
+    "payloadSha256": "1b234fc477a7ffef433c293bb824b721e4c4ba2eb18afea78c04197101ec0feb",
+    "candidateCount": 11316,
+    "exactCount": 11263,
+    "unmatchedCount": 53,
+    "geometryExact": 11263,
+    "situsCounts": {
+      "SITUS_MISSING": 9990,
+      "SITUS_PRESENT": 1270,
+      "NOT_APPLICABLE": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "categoryCounts": {
+      "OTHER": 5581,
+      "VACANT_OTHER": 4786,
+      "UNKNOWN": 226,
+      "NOT_APPLICABLE": 53,
+      "COMMERCIAL": 45,
+      "RESIDENTIAL_SINGLE_FAMILY": 324,
+      "INDUSTRIAL": 11,
+      "AGRICULTURAL": 135,
+      "RESIDENTIAL_MULTI_FAMILY": 37,
+      "MANUFACTURED_MOBILE": 97,
+      "GOVERNMENT_EXEMPT": 3,
+      "VACANT_RESIDENTIAL": 14,
+      "MINERAL": 4
+    },
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "unmatched": 3,
+      "situs": 258,
+      "residential": 118,
+      "singleFamily": 81,
+      "singleFamilySitus": 81
+    },
+    "reviewFlagCounts": {
+      "SITUS_MISSING": 9990,
+      "USE_CATEGORY_REVIEW": 5807,
+      "ROLL_ACRES_EXPLICIT_ZERO": 6860,
+      "BASE_YEAR_VALUE_MISSING": 8130,
+      "ACREAGE_DELTA_GT_0_01": 4397,
+      "ASSESSOR_UNMATCHED": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "reviewRequired": 11316,
+    "proposedNewBatch": {
+      "inserts": 11316,
+      "supersessions": 0,
+      "rejections": 0
+    },
+    "discrepancies": [],
+    "providerCalls": 0,
+    "networkCalls": 0
+  },
+  "migrationReview": {
+    "publicQualifiedReferences": 0,
+    "sequences": 0,
+    "extensions": 0,
+    "crossSchemaTargets": 0,
+    "ledgerAssumptions": 0,
+    "legacyTriggers": 0,
+    "newTriggers": 2,
+    "rlsAndGrants": "004 targets new unqualified QA tables; static anon/authenticated role revokes only"
+  },
+  "tls": {
+    "encrypted": true,
+    "authorized": true
+  },
+  "publicBefore": {
+    "metadataSha256": "c9054cb2aa1f5b4c397ef80118231bef164bab4826cd99ea1ff7141e7d5769c2",
+    "applicationDataSha256": "226e03595e8f36dc4557e44ea296f317ab529aa66b4151d120d5c8a98b9cdd21",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "server": {
+    "version": "PostgreSQL 17.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit",
+    "version_number": "170006"
+  },
+  "preDdl": {
+    "schema": "qa_sprint6_3_757ea6468f364fc2899ed071e4f4a4f1",
+    "namespaceOid": null,
+    "ledgerOid": null
+  },
+  "ledger": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    }
+  ],
+  "ledgerReplay": {
+    "pending": 0,
+    "rows": 4
+  },
+  "schema": {
+    "tables": 28,
+    "indexes": 69,
+    "foreignKeys": 39,
+    "triggers": 2,
+    "constraints": [
+      {
+        "contype": "c",
+        "n": 56
+      },
+      {
+        "contype": "f",
+        "n": 39
+      },
+      {
+        "contype": "p",
+        "n": 28
+      },
+      {
+        "contype": "u",
+        "n": 11
+      }
+    ],
+    "newTables": [
+      {
+        "tablename": "opportunity_assessor_enrichments",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "opportunity_assessor_import_batches",
+        "rowsecurity": true
+      }
+    ],
+    "newIndexes": [
+      "opportunity_assessor_apn9_idx",
+      "opportunity_assessor_current_candidate_idx",
+      "opportunity_assessor_current_filters_idx",
+      "opportunity_assessor_current_geometry_idx",
+      "opportunity_assessor_current_review_idx",
+      "opportunity_assessor_enrichmen_candidate_id_import_batch_id_key",
+      "opportunity_assessor_enrichments_pkey",
+      "opportunity_assessor_history_idx",
+      "opportunity_assessor_import_b_discovery_source_id_assessor__key",
+      "opportunity_assessor_import_batches_pkey"
+    ],
+    "decimalColumns": [
+      {
+        "column_name": "base_year_value",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5
+      },
+      {
+        "column_name": "improvement_assessment",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5
+      },
+      {
+        "column_name": "land_assessment",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5
+      },
+      {
+        "column_name": "net_assessment",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5
+      }
+    ],
+    "publicApiGrants": 0
+  },
+  "rollback": {
+    "uniqueViolationRejected": true,
+    "syntheticRowAbsent": true
+  },
+  "importerQa": {
+    "syntheticCandidates": 3,
+    "exact": 2,
+    "unmatched": 1,
+    "rollback": true,
+    "failedImportQueries": 7,
+    "replayNoDuplicates": true,
+    "immutableContent": true,
+    "futureEditionSupersession": true,
+    "nullVsZero": true,
+    "repeatedApn9": true,
+    "candidateScoresStatusesUnchanged": true,
+    "serverFilters": true,
+    "pagination": true,
+    "coldApiReopen": true,
+    "safeCsv": true,
+    "confirmationGate": true,
+    "queryMs": {
+      "all": 61,
+      "exact": 81,
+      "unmatched": 65,
+      "situs": 65,
+      "geometry": 80,
+      "review": 57,
+      "highResidential": 155,
+      "highSfr": 145
+    },
+    "providerCalls": 0
+  },
+  "publicAfterTest": {
+    "metadataSha256": "c9054cb2aa1f5b4c397ef80118231bef164bab4826cd99ea1ff7141e7d5769c2",
+    "applicationDataSha256": "226e03595e8f36dc4557e44ea296f317ab529aa66b4151d120d5c8a98b9cdd21",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "publicAfterCleanup": {
+    "metadataSha256": "c9054cb2aa1f5b4c397ef80118231bef164bab4826cd99ea1ff7141e7d5769c2",
+    "applicationDataSha256": "226e03595e8f36dc4557e44ea296f317ab529aa66b4151d120d5c8a98b9cdd21",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "publicAfterCommit": {
+    "metadataSha256": "c9054cb2aa1f5b4c397ef80118231bef164bab4826cd99ea1ff7141e7d5769c2",
+    "applicationDataSha256": "226e03595e8f36dc4557e44ea296f317ab529aa66b4151d120d5c8a98b9cdd21",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "completedStage": "ISOLATED_REBUILD_CERTIFIED",
+  "cumulativeDatabaseConnections": 4,
+  "cumulativeDatabaseQueryCalls": 828
+}

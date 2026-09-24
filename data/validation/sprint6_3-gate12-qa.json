@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "gate": 12,
+  "mode": "ROLLBACK_ONLY",
+  "migrationInvocations": 0,
+  "providerCalls": 0,
+  "productionCountyImport": false,
+  "applicationDeployment": false,
+  "databaseQueryCalls": 444,
+  "preWriteNamespace": {
+    "namespace": "public",
+    "namespaces": "{public,pg_catalog}",
+    "search_path": "public,pg_catalog"
+  },
+  "ledgerBefore": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "applied_at": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "applied_at": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "applied_at": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "applied_at": "2026-09-23T20:25:49.044Z"
+    }
+  ],
+  "tables": [
+    {
+      "tablename": "opportunity_assessor_enrichments",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "opportunity_assessor_import_batches",
+      "rowsecurity": true
+    }
+  ],
+  "preWriteCounts": {
+    "batches": 0,
+    "observations": 0
+  },
+  "existingBefore": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "qaNamespace": {
+    "namespace": "public",
+    "namespaces": "{public,pg_catalog}"
+  },
+  "persistenceQa": {
+    "tag": "SPRINT6_3_GATE12_60eaa3b6-4c8a-4181-b7a1-22309f55844a",
+    "syntheticSourceId": "4cfab3f6-2f71-4c10-b89c-e2c97d09e2da",
+    "syntheticCandidateIds": [
+      "d0c08261-2ae6-4859-ab72-73e398ee213f",
+      "722753ba-722a-4257-8d91-afe4142202ea",
+      "ecd56a90-30a1-4b5a-acab-328690168c45"
+    ],
+    "transientBatchIds": [
+      "578a9175-2cea-4b15-a2ba-ec7987469098",
+      "31d6b80f-22c5-4926-bbfb-bdf3452d1586"
+    ],
+    "syntheticCandidates": 3,
+    "transientObservations": 6,
+    "exactMatches": 2,
+    "unmatched": 1,
+    "rollbackAfterPartialFailure": true,
+    "replayNoDuplicates": true,
+    "immutableContent": true,
+    "futureEditionSupersession": true,
+    "nullVsZero": true,
+    "decimalPrecision": true,
+    "repeatedApn9": true,
+    "atnApn9Separate": true,
+    "officialUseResearchCategorySeparate": true,
+    "situsStatesExact": true,
+    "serverPagination": true,
+    "reopenSameTransaction": true,
+    "candidateScoresStatusesUnchanged": true,
+    "committed": false,
+    "providerCalls": 0,
+    "rollbackComplete": true
+  },
+  "postRollbackCounts": {
+    "batches": 0,
+    "observations": 0
+  },
+  "syntheticRows": {
+    "candidates": 0,
+    "records": 0
+  },
+  "allSyntheticRowsAbsent": true,
+  "ledgerAfter": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "applied_at": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "applied_at": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "applied_at": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "applied_at": "2026-09-23T20:25:49.044Z"
+    }
+  ],
+  "existingAfter": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "existingMetadataDataUnchanged": true,
+  "candidatePopulation": [
+    {
+      "priority_band": "HIGH_REVIEW_PRIORITY",
+      "candidate_status": "NEEDS_ADDRESS",
+      "score_version": "kern-screen-v1",
+      "n": 312
+    },
+    {
+      "priority_band": "LOW_REVIEW_PRIORITY",
+      "candidate_status": "NEEDS_ADDRESS",
+      "score_version": "kern-screen-v1",
+      "n": 10303
+    },
+    {
+      "priority_band": "MEDIUM_REVIEW_PRIORITY",
+      "candidate_status": "NEEDS_ADDRESS",
+      "score_version": "kern-screen-v1",
+      "n": 701
+    }
+  ],
+  "stage": "GATE_12_COMPLETE_GATE_13_STOP",
+  "nextAction": "STOP_FOR_RECONCILED_IMPORT_REVIEW"
+}

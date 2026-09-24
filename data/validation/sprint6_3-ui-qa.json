@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Sticky headers / server-side sorting control",
+    "25-row pagination",
+    "118 / 81 preset presentation",
+    "Incomplete county situs opens resolver and cancel makes zero analysis requests",
+    "1366px / 390px detail, labels and privacy",
+    "53 unmatched retained; no analysis action"
+  ],
+  "fixtureTransport": true,
+  "realPostgresCertifiedSeparately": true,
+  "maxRows": 25,
+  "providerCalls": 0,
+  "externalRequests": 0,
+  "analyzeRequests": 0,
+  "visualDirectory": "data/runtime/sprint6_3/visual"
+}

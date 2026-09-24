@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-20T23:35:29.292Z",
+  "at": "2026-09-24T16:20:10.423Z",
   "liveCalls": 0,
   "preservation": {
     "status": "PASS",
@@ -7,10 +7,10 @@
   },
   "results": [
     {
-      "path": "data/reports/fantasia/property-intelligence-deal-review-2026-09-20T23-35-23-153Z-a1b2af02.pdf",
+      "path": "data/reports/fantasia/property-intelligence-deal-review-2026-09-24T16-20-04-544Z-dd8359e2.pdf",
       "pages": 12,
       "digest": "a04821b5d7cb88dc99bfadbc44094a86403f57067f8f15b092f9597d498b93a5",
-      "sha256": "089685e0e5b4f5d19b51ece4941080c8dbdfc4673d6ec3543188b857955340eb",
+      "sha256": "64ac32c77c16b6aeec84443ac039571372d6f3571cbac306533bd52a8af11be8",
       "id": "fantasia",
       "pageCount": 12,
       "compPages": 2,
@@ -80,10 +80,10 @@
       "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
     },
     {
-      "path": "data/reports/bass/property-intelligence-deal-review-2026-09-20T23-35-24-681Z-e6e0e211.pdf",
+      "path": "data/reports/bass/property-intelligence-deal-review-2026-09-24T16-20-05-968Z-dfd2cda3.pdf",
       "pages": 4,
       "digest": "f77dcf72b52d9c966b0e643449ccb9c5e31f37cb0255ecda460d11de81662223",
-      "sha256": "475fb48bb4ed8e4a246df5e8e96edeae783484284eb70022c249a37c111b2f72",
+      "sha256": "e9dc35ae22bd98984c02059cb78969a93c1181de2792dd9930ed5150f462f528",
       "id": "bass",
       "pageCount": 4,
       "compPages": 1,
@@ -113,10 +113,10 @@
       "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
     },
     {
-      "path": "data/reports/joyce/property-intelligence-deal-review-2026-09-20T23-35-25-688Z-3ac5b31f.pdf",
+      "path": "data/reports/joyce/property-intelligence-deal-review-2026-09-24T16-20-06-983Z-461b88c2.pdf",
       "pages": 4,
       "digest": "5ab770acae9eff98d87ca4a85dad612ed3f3d7177ac63234e2b859d4e5964dee",
-      "sha256": "168b874de8fa2e22aa508deb845c517a7cac30f6b6f90f4085f19a83056dd8bf",
+      "sha256": "5dabca525980a592a741327939911229344b1215f78533647696bfc341769c01",
       "id": "joyce",
       "pageCount": 4,
       "compPages": 1,
@@ -146,10 +146,10 @@
       "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
     },
     {
-      "path": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-20T23-35-26-777Z-5b873868.pdf",
+      "path": "data/reports/synthetic-long/property-intelligence-deal-review-2026-09-24T16-20-08-024Z-c669380c.pdf",
       "pages": 6,
       "digest": "01047bb468c6c29e958ff635c5c37817344932434ab9e212ef90523133b690c8",
-      "sha256": "65a5305d1bfe60ea3cec44f18fdea4a43f5ccea022de1462435276914dd0f60e",
+      "sha256": "e0f1e5e7e36b0aa8d3289e0ed79ca021eafcb16bd9c60376cd10aa858484eb85",
       "id": "synthetic-long",
       "pageCount": 6,
       "compPages": 1,
@@ -189,10 +189,10 @@
       "checks": "PASS: model equality, page count, text bounds, nonblank pages, footers, retained comps, terminology"
     },
     {
-      "path": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-20T23-35-28-068Z-7bb3c4f2.pdf",
+      "path": "data/reports/synthetic-many-comps/property-intelligence-deal-review-2026-09-24T16-20-09-224Z-539fabe7.pdf",
       "pages": 18,
       "digest": "2eb2044329899df21b99c1497d523fced42dabb3c3d3a59ec0d2f550569747ff",
-      "sha256": "bb85b7860489a0e376da16fb3491e57e7000ea7ab2aa5e7bb0c08c1bf5fe61ce",
+      "sha256": "591abc9389d9839b471bd33dc60808922365ebd0ad6a4f173b63fb07ca7096fe",
       "id": "synthetic-many-comps",
       "pageCount": 18,
       "compPages": 8,

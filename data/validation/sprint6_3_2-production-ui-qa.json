@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "previewUrl": "https://worksidepropertyintelligence.netlify.app",
+  "providerCalls": 0,
+  "mutations": 0,
+  "checks": [
+    "High-SFR View opens allowlisted detail",
+    "Escape closes and list state remains",
+    "390px full-width detail sheet",
+    "Close returns to exact filtered list",
+    "View RESIDENTIAL_MULTI_FAMILY candidate",
+    "View MANUFACTURED_MOBILE candidate",
+    "View VACANT_OTHER candidate",
+    "View Assessor-unmatched candidate",
+    "View/browser path made zero mutations and provider requests"
+  ],
+  "screenshots": [
+    "data/validation/sprint6_3_2-production-desktop.png",
+    "data/validation/sprint6_3_2-production-mobile.png"
+  ]
+}

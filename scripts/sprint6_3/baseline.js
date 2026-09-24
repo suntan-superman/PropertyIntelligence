@@ -1,0 +1,10 @@
+import {execFileSync} from 'node:child_process';
+import {mkdir,readdir,writeFile} from 'node:fs/promises';
+import {fileHash,ZIP,ZIP_HASH,PTS,PTS_HASH,requireHash} from '../sprint6_2/io.js';
+const dir='data/runtime/sprint6_3';await mkdir(dir,{recursive:true});
+const files=new Set(execFileSync('git',['-c','safe.directory=C:/Users/sjroy/Source/PropertyIntelligence','ls-files','-z'],{encoding:'utf8'}).split('\0').filter(Boolean));
+for(const path of ['docs','data/validation','scripts/sprint6_2'])for(const f of await readdir(path))if(path.endsWith('sprint6_2')||/^sprint6_2[-_]/i.test(f))files.add(`${path}/${f}`);
+const rows=[];for(const path of files)rows.push({path,sha256:await fileHash(path)});
+requireHash(await fileHash(ZIP),ZIP_HASH);requireHash(await fileHash(PTS),PTS_HASH);
+await writeFile(`${dir}/baseline.json`,JSON.stringify({files:rows,zip:ZIP_HASH,pts:PTS_HASH},null,2),{flag:'wx'});
+console.log(JSON.stringify({status:'PASS',protectedFiles:rows.length,sourcesVerified:true}));

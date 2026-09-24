@@ -1,0 +1,4202 @@
+{
+  "officialDomain": [
+    {
+      "USE_CODE": "0000",
+      "USE_DESC": "NO USE CODE (INTERIM STATUS)"
+    },
+    {
+      "USE_CODE": "0001",
+      "USE_DESC": "VAC <1 AC NO R1/2/3/4/E/C/I"
+    },
+    {
+      "USE_CODE": "0009",
+      "USE_DESC": "SAME AS 0001 W/MINOR MISC IMP"
+    },
+    {
+      "USE_CODE": "0010",
+      "USE_DESC": "R1 ZONE ONE ACRE OR LESS"
+    },
+    {
+      "USE_CODE": "0017",
+      "USE_DESC": "SAME AS 0010 W/LICENSED MH"
+    },
+    {
+      "USE_CODE": "0019",
+      "USE_DESC": "R1 ZONE W/MISC IMP"
+    },
+    {
+      "USE_CODE": "0020",
+      "USE_DESC": "R2 ZONE"
+    },
+    {
+      "USE_CODE": "0027",
+      "USE_DESC": "SAME AS 0020 W/LICENSED MH"
+    },
+    {
+      "USE_CODE": "0029",
+      "USE_DESC": "R2 ZONE W/MISC IMP"
+    },
+    {
+      "USE_CODE": "0030",
+      "USE_DESC": "R3 ZONE"
+    },
+    {
+      "USE_CODE": "0039",
+      "USE_DESC": "R3 ZONE W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "0040",
+      "USE_DESC": "R4 ZONE"
+    },
+    {
+      "USE_CODE": "0049",
+      "USE_DESC": "R4 ZONE W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "0050",
+      "USE_DESC": "E ZONED LAND ONE ACRE OR LESS"
+    },
+    {
+      "USE_CODE": "0059",
+      "USE_DESC": "SAME AS 0050 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "0060",
+      "USE_DESC": "VAC>1AC <3 NO R2 3 4 COMM IND"
+    },
+    {
+      "USE_CODE": "0067",
+      "USE_DESC": "SAME AS 0060 W/LIC MH"
+    },
+    {
+      "USE_CODE": "0068",
+      "USE_DESC": "SAME AS 0060 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "0069",
+      "USE_DESC": "SAME AS 0060 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "0070",
+      "USE_DESC": "VAC=3 AC <7 NO R2 3 4 COMM IND"
+    },
+    {
+      "USE_CODE": "0077",
+      "USE_DESC": "SAME AS 0070 W/LIC MH"
+    },
+    {
+      "USE_CODE": "0079",
+      "USE_DESC": "SAME AS 0070 W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "0080",
+      "USE_DESC": "VAC 7-20 AC NO R2 3 4 COMM IND"
+    },
+    {
+      "USE_CODE": "0081",
+      "USE_DESC": "20-40 AC NO R2 3 4 COMM IND"
+    },
+    {
+      "USE_CODE": "0082",
+      "USE_DESC": "40-100 AC NO R2 3 4 COMM IND"
+    },
+    {
+      "USE_CODE": "0083",
+      "USE_DESC": "100< NO R2 3 4 COMM IND"
+    },
+    {
+      "USE_CODE": "0087",
+      "USE_DESC": "SAME AS 0080 W/LIC MH"
+    },
+    {
+      "USE_CODE": "0088",
+      "USE_DESC": "VACANT LAND - RENEWABLE ENERGY"
+    },
+    {
+      "USE_CODE": "0089",
+      "USE_DESC": "7-20AC W/MISC"
+    },
+    {
+      "USE_CODE": "0090",
+      "USE_DESC": "VAC ALL T ZONE INCL T RST R1T"
+    },
+    {
+      "USE_CODE": "0091",
+      "USE_DESC": "VAC W/MANUFTD HOME SUBDIVISION"
+    },
+    {
+      "USE_CODE": "0097",
+      "USE_DESC": "MS & T ZONING W/LIC MH"
+    },
+    {
+      "USE_CODE": "0098",
+      "USE_DESC": "SAME AS 0097 W/2+ LIC MH"
+    },
+    {
+      "USE_CODE": "0099",
+      "USE_DESC": "VAC T W/MISC IMP NO LIC MH"
+    },
+    {
+      "USE_CODE": "0100",
+      "USE_DESC": "SGL FAM RES ON RS ZONED LAND"
+    },
+    {
+      "USE_CODE": "0101",
+      "USE_DESC": "SGL FAM RES ON R1 ZONED LAND"
+    },
+    {
+      "USE_CODE": "0102",
+      "USE_DESC": "SGL FAM RES ON R2 ZONED LAND"
+    },
+    {
+      "USE_CODE": "0103",
+      "USE_DESC": "SGL FAM RES ON R3 ZONED LAND"
+    },
+    {
+      "USE_CODE": "0104",
+      "USE_DESC": "SGL FAM RES ON R4 ZONED LAND"
+    },
+    {
+      "USE_CODE": "0105",
+      "USE_DESC": "SGL FAM RES ON COMM/IND ZONE"
+    },
+    {
+      "USE_CODE": "0106",
+      "USE_DESC": "SFR NOT ON RS 1 2 3 4"
+    },
+    {
+      "USE_CODE": "0107",
+      "USE_DESC": "SGL FAM RES + 1 LICENSED MH"
+    },
+    {
+      "USE_CODE": "0108",
+      "USE_DESC": "SGL FAM RES W/2+ LICENSED MH"
+    },
+    {
+      "USE_CODE": "0109",
+      "USE_DESC": "SFR DEVELOP COMMON AREA"
+    },
+    {
+      "USE_CODE": "0180",
+      "USE_DESC": "MH NO PERM FOUNDATION MS ZONE"
+    },
+    {
+      "USE_CODE": "0181",
+      "USE_DESC": "SAME AS 0180 NO T RST R1T ZONE"
+    },
+    {
+      "USE_CODE": "0182",
+      "USE_DESC": "SAME AS 0180 NO A SERIES ZONE"
+    },
+    {
+      "USE_CODE": "0183",
+      "USE_DESC": "0180 ALL Z NO MS T RST R1T A Z"
+    },
+    {
+      "USE_CODE": "0186",
+      "USE_DESC": "SAME AS 0106 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "0188",
+      "USE_DESC": "SAME AS 0180 WITH LICENSED MH"
+    },
+    {
+      "USE_CODE": "0189",
+      "USE_DESC": "MLTP MHS ANY ZN NO PERM FOUND"
+    },
+    {
+      "USE_CODE": "0190",
+      "USE_DESC": "MH PERM FOUND MS ZONING"
+    },
+    {
+      "USE_CODE": "0191",
+      "USE_DESC": "SAME AS 0190 NO T RST R1T ZONE"
+    },
+    {
+      "USE_CODE": "0192",
+      "USE_DESC": "SAME AS 0190 A SERIES ZONING"
+    },
+    {
+      "USE_CODE": "0193",
+      "USE_DESC": "0190 ALL Z NO MS T RST R1T Z"
+    },
+    {
+      "USE_CODE": "0194",
+      "USE_DESC": "MODULAR HOME WITH CERT OF OCC"
+    },
+    {
+      "USE_CODE": "0196",
+      "USE_DESC": "SAME AS 0106 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "0198",
+      "USE_DESC": "SAME AS 0190 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "0199",
+      "USE_DESC": "MLTP MHS W/PERM FOUN ANY ZONE"
+    },
+    {
+      "USE_CODE": "0200",
+      "USE_DESC": "DUPLEX OR 2 LIV UN 1 PARCEL"
+    },
+    {
+      "USE_CODE": "0201",
+      "USE_DESC": "2 SEPARATE RES ON 1 PARCEL"
+    },
+    {
+      "USE_CODE": "0207",
+      "USE_DESC": "SAME AS 0200 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "0300",
+      "USE_DESC": "TRIPLEX OR 3 LIV UN ON 1 PARC"
+    },
+    {
+      "USE_CODE": "0301",
+      "USE_DESC": "DUPLEX + 1 RES = 3 LIV UN"
+    },
+    {
+      "USE_CODE": "0302",
+      "USE_DESC": "PARCEL W/3 SEPARATE RES"
+    },
+    {
+      "USE_CODE": "0307",
+      "USE_DESC": "SAME AS 0300-0302 W/MH"
+    },
+    {
+      "USE_CODE": "0390",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "0400",
+      "USE_DESC": "FOURPLEX OR 4 LIV UN ON 1 PARC"
+    },
+    {
+      "USE_CODE": "0401",
+      "USE_DESC": "2 DUPLEXES ON 1 PARCEL"
+    },
+    {
+      "USE_CODE": "0402",
+      "USE_DESC": "TRIPLEX + 1 RES ON 1 PARCEL"
+    },
+    {
+      "USE_CODE": "0403",
+      "USE_DESC": "1 PARCEL W/4 SEPARATE RES"
+    },
+    {
+      "USE_CODE": "0404",
+      "USE_DESC": "DUPLEX + 2 RESIDENCES"
+    },
+    {
+      "USE_CODE": "0407",
+      "USE_DESC": "SAME AS 0400 W/LIC MH"
+    },
+    {
+      "USE_CODE": "0500",
+      "USE_DESC": "1 PARCEL W/5-9 UNIT COMPLEX"
+    },
+    {
+      "USE_CODE": "0501",
+      "USE_DESC": "1 PARCEL W/10-20 UNIT COMPLEX"
+    },
+    {
+      "USE_CODE": "0502",
+      "USE_DESC": "1 PARCEL W/21-30 UNIT COMPLEX"
+    },
+    {
+      "USE_CODE": "0503",
+      "USE_DESC": "1 PARCEL W/(31+) UNIT COMPLEX"
+    },
+    {
+      "USE_CODE": "0504",
+      "USE_DESC": "1 PARCEL W/(5+) RES COMBO = 5"
+    },
+    {
+      "USE_CODE": "0600",
+      "USE_DESC": "TOWNHOUSE OR PUD"
+    },
+    {
+      "USE_CODE": "0601",
+      "USE_DESC": "CONDO/PUD COMMON AREA"
+    },
+    {
+      "USE_CODE": "0602",
+      "USE_DESC": "COOPERATIVE HOUSING"
+    },
+    {
+      "USE_CODE": "0603",
+      "USE_DESC": "CONDOMINIUM"
+    },
+    {
+      "USE_CODE": "0700",
+      "USE_DESC": "SFR ON R2/3/4 LAND, LOT<6000SF"
+    },
+    {
+      "USE_CODE": "0800",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "0900",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "1000",
+      "USE_DESC": "COMMERCIAL LAND"
+    },
+    {
+      "USE_CODE": "1007",
+      "USE_DESC": "SAME AS 1000 W/LIC MH"
+    },
+    {
+      "USE_CODE": "1009",
+      "USE_DESC": "SAME AS 1000 W/MIS IMPS"
+    },
+    {
+      "USE_CODE": "1010",
+      "USE_DESC": "VAC C-1 ZONE"
+    },
+    {
+      "USE_CODE": "1019",
+      "USE_DESC": "SAME AS 1010 W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "1020",
+      "USE_DESC": "VAC C-2 ZONE"
+    },
+    {
+      "USE_CODE": "1027",
+      "USE_DESC": "SAME AS 1020 W/LIC MH"
+    },
+    {
+      "USE_CODE": "1029",
+      "USE_DESC": "SAME AS 1000-1020 W/ MULT. MH"
+    },
+    {
+      "USE_CODE": "1030",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "1086",
+      "USE_DESC": "VAC COM LAND-CANNABIS CULT"
+    },
+    {
+      "USE_CODE": "1090",
+      "USE_DESC": "SAME AS 1000 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "1099",
+      "USE_DESC": "COMM LAND PART ECON UNIT"
+    },
+    {
+      "USE_CODE": "1100",
+      "USE_DESC": "SMALL STREET RETAIL < 5000 SF"
+    },
+    {
+      "USE_CODE": "1111",
+      "USE_DESC": "LIQUOR"
+    },
+    {
+      "USE_CODE": "1116",
+      "USE_DESC": "AUTO PARTS"
+    },
+    {
+      "USE_CODE": "1119",
+      "USE_DESC": "BARBER/BEAUTY"
+    },
+    {
+      "USE_CODE": "1120",
+      "USE_DESC": "LAUNDRY/DRY CLEANING"
+    },
+    {
+      "USE_CODE": "1123",
+      "USE_DESC": "FREESTANDING RETAIL <5000 SF"
+    },
+    {
+      "USE_CODE": "1124",
+      "USE_DESC": "IN-LINE MULTI-TENANT <5000 SF"
+    },
+    {
+      "USE_CODE": "1125",
+      "USE_DESC": "RETAIL PAD IN CENTER <5000 SF"
+    },
+    {
+      "USE_CODE": "1186",
+      "USE_DESC": "SMALL RETAIL-DISPENSARY"
+    },
+    {
+      "USE_CODE": "1190",
+      "USE_DESC": "MULTIPLE USE STORE"
+    },
+    {
+      "USE_CODE": "1200",
+      "USE_DESC": "COMBO RES & COMMERCIAL"
+    },
+    {
+      "USE_CODE": "1201",
+      "USE_DESC": "COMBO RESIDENCE & OFFICE"
+    },
+    {
+      "USE_CODE": "1202",
+      "USE_DESC": "INACTIVATED"
+    },
+    {
+      "USE_CODE": "1203",
+      "USE_DESC": "COMBO RES & RETAIL"
+    },
+    {
+      "USE_CODE": "1290",
+      "USE_DESC": "SAME AS 1200 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "1300",
+      "USE_DESC": "LARGE STREET RETAIL > 5000 SF"
+    },
+    {
+      "USE_CODE": "1301",
+      "USE_DESC": "DEPARTMENT"
+    },
+    {
+      "USE_CODE": "1308",
+      "USE_DESC": "FREESTANDING RETAIL BLDG >5000"
+    },
+    {
+      "USE_CODE": "1309",
+      "USE_DESC": "IN-LINE RETAIL BLDG >5000"
+    },
+    {
+      "USE_CODE": "1310",
+      "USE_DESC": "PAD IN SHOPPING CENTER >5000SF"
+    },
+    {
+      "USE_CODE": "1311",
+      "USE_DESC": "INDOOR SWAP MEET >5000 SF"
+    },
+    {
+      "USE_CODE": "1312",
+      "USE_DESC": "BIG BOX RETAIL >15000 SF"
+    },
+    {
+      "USE_CODE": "1316",
+      "USE_DESC": "AUTO PARTS"
+    },
+    {
+      "USE_CODE": "1386",
+      "USE_DESC": "LARGE RETAIL-DISPENSARY"
+    },
+    {
+      "USE_CODE": "1390",
+      "USE_DESC": "MULTIPLE USE"
+    },
+    {
+      "USE_CODE": "1399",
+      "USE_DESC": "SAME AS 1300 WITH GROUND LEASE"
+    },
+    {
+      "USE_CODE": "1400",
+      "USE_DESC": "MARKETS"
+    },
+    {
+      "USE_CODE": "1401",
+      "USE_DESC": "SUPERMARKET"
+    },
+    {
+      "USE_CODE": "1402",
+      "USE_DESC": "GROCERY"
+    },
+    {
+      "USE_CODE": "1403",
+      "USE_DESC": "FRANCHISE FOOD (7-11 CIRCLE-K)"
+    },
+    {
+      "USE_CODE": "1404",
+      "USE_DESC": "MEAT RETAIL"
+    },
+    {
+      "USE_CODE": "1405",
+      "USE_DESC": "PRODUCE"
+    },
+    {
+      "USE_CODE": "1406",
+      "USE_DESC": "SEAFOOD"
+    },
+    {
+      "USE_CODE": "1407",
+      "USE_DESC": "FRUIT STAND"
+    },
+    {
+      "USE_CODE": "1490",
+      "USE_DESC": "MULTI USE"
+    },
+    {
+      "USE_CODE": "1499",
+      "USE_DESC": "SAME AS 1400 WITH GROUND LEASE"
+    },
+    {
+      "USE_CODE": "1500",
+      "USE_DESC": "SHOPPING CENTER"
+    },
+    {
+      "USE_CODE": "1501",
+      "USE_DESC": "SMALL SHOPPING CENTER"
+    },
+    {
+      "USE_CODE": "1502",
+      "USE_DESC": "LARGE REGIONAL SHOPPING CENTER"
+    },
+    {
+      "USE_CODE": "1599",
+      "USE_DESC": "SAME AS 1500 WITH GROUND LEASE"
+    },
+    {
+      "USE_CODE": "1600",
+      "USE_DESC": "OFFICE BLDGS"
+    },
+    {
+      "USE_CODE": "1601",
+      "USE_DESC": "MEDIA"
+    },
+    {
+      "USE_CODE": "1602",
+      "USE_DESC": "OFFICE BUILDINGS 10,000-"
+    },
+    {
+      "USE_CODE": "1603",
+      "USE_DESC": "OFFICE BUILDINGS 10,000+"
+    },
+    {
+      "USE_CODE": "1604",
+      "USE_DESC": "COMMUNICATION SERVICE"
+    },
+    {
+      "USE_CODE": "1605",
+      "USE_DESC": "MEDICAL"
+    },
+    {
+      "USE_CODE": "1606",
+      "USE_DESC": "DENTAL"
+    },
+    {
+      "USE_CODE": "1607",
+      "USE_DESC": "MEDICAL-DENTAL COMBO"
+    },
+    {
+      "USE_CODE": "1613",
+      "USE_DESC": "VETERINARY"
+    },
+    {
+      "USE_CODE": "1614",
+      "USE_DESC": "OFFICE/RESIDENCE COMBINATION"
+    },
+    {
+      "USE_CODE": "1690",
+      "USE_DESC": "MULTIPLE USE"
+    },
+    {
+      "USE_CODE": "1700",
+      "USE_DESC": "INSTITUTIONAL"
+    },
+    {
+      "USE_CODE": "1701",
+      "USE_DESC": "HOSPITAL"
+    },
+    {
+      "USE_CODE": "1702",
+      "USE_DESC": "PSYCHIATRIC HOSPITAL"
+    },
+    {
+      "USE_CODE": "1703",
+      "USE_DESC": "ASSISTED LIVING"
+    },
+    {
+      "USE_CODE": "1704",
+      "USE_DESC": "MEDICAL LAB"
+    },
+    {
+      "USE_CODE": "1705",
+      "USE_DESC": "AMBULANCE SVC"
+    },
+    {
+      "USE_CODE": "1706",
+      "USE_DESC": "CHURCH"
+    },
+    {
+      "USE_CODE": "1707",
+      "USE_DESC": "CEMETARY"
+    },
+    {
+      "USE_CODE": "1708",
+      "USE_DESC": "MORTUARY"
+    },
+    {
+      "USE_CODE": "1709",
+      "USE_DESC": "MAUSOLEUM"
+    },
+    {
+      "USE_CODE": "1710",
+      "USE_DESC": "PRIVATE SCHOOL"
+    },
+    {
+      "USE_CODE": "1711",
+      "USE_DESC": "CHURCH OWNED"
+    },
+    {
+      "USE_CODE": "1712",
+      "USE_DESC": "INDEPENDENT LIVING"
+    },
+    {
+      "USE_CODE": "1713",
+      "USE_DESC": "DAY CARE CENTER"
+    },
+    {
+      "USE_CODE": "1714",
+      "USE_DESC": "HALF-WAY HOUSE"
+    },
+    {
+      "USE_CODE": "1715",
+      "USE_DESC": "MUSEUM"
+    },
+    {
+      "USE_CODE": "1716",
+      "USE_DESC": "DETENTION FACILITY/PRISON"
+    },
+    {
+      "USE_CODE": "1717",
+      "USE_DESC": "HOMELESS FACILIITY"
+    },
+    {
+      "USE_CODE": "1718",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "1719",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "1720",
+      "USE_DESC": "SKILLED NURSING"
+    },
+    {
+      "USE_CODE": "1790",
+      "USE_DESC": "INSTITUTIONAL W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "1800",
+      "USE_DESC": "FOOD/BEVERAGE"
+    },
+    {
+      "USE_CODE": "1801",
+      "USE_DESC": "RESTAURANTS"
+    },
+    {
+      "USE_CODE": "1802",
+      "USE_DESC": "CAFES"
+    },
+    {
+      "USE_CODE": "1803",
+      "USE_DESC": "COFFEE SHOP"
+    },
+    {
+      "USE_CODE": "1804",
+      "USE_DESC": "COCKTAIL LOUNGE"
+    },
+    {
+      "USE_CODE": "1805",
+      "USE_DESC": "BAR OR TAVERN"
+    },
+    {
+      "USE_CODE": "1806",
+      "USE_DESC": "CATERING"
+    },
+    {
+      "USE_CODE": "1807",
+      "USE_DESC": "DRIVE-IN"
+    },
+    {
+      "USE_CODE": "1808",
+      "USE_DESC": "SPECIALTY DRIVE UPS"
+    },
+    {
+      "USE_CODE": "1890",
+      "USE_DESC": "MULTI-USE FOOD/BEVERAGE"
+    },
+    {
+      "USE_CODE": "1899",
+      "USE_DESC": "SAME AS 1800 WITH GROUND LEASE"
+    },
+    {
+      "USE_CODE": "1900",
+      "USE_DESC": "RECREATIONAL"
+    },
+    {
+      "USE_CODE": "1901",
+      "USE_DESC": "THEATER (ENCLOSED)"
+    },
+    {
+      "USE_CODE": "1902",
+      "USE_DESC": "DRIVE-IN THEATE"
+    },
+    {
+      "USE_CODE": "1903",
+      "USE_DESC": "POOL HALL"
+    },
+    {
+      "USE_CODE": "1904",
+      "USE_DESC": "HEALTH/SPA"
+    },
+    {
+      "USE_CODE": "1905",
+      "USE_DESC": "BOWLING ALLEY"
+    },
+    {
+      "USE_CODE": "1906",
+      "USE_DESC": "SKATING RINK"
+    },
+    {
+      "USE_CODE": "1907",
+      "USE_DESC": "MINIATURE GOLF"
+    },
+    {
+      "USE_CODE": "1908",
+      "USE_DESC": "FRATERNAL ORG"
+    },
+    {
+      "USE_CODE": "1909",
+      "USE_DESC": "COUNTRY CLUB"
+    },
+    {
+      "USE_CODE": "1910",
+      "USE_DESC": "GOLF COURSE"
+    },
+    {
+      "USE_CODE": "1911",
+      "USE_DESC": "TENNIS CLUB"
+    },
+    {
+      "USE_CODE": "1912",
+      "USE_DESC": "RECREATION OR MEETING HALL"
+    },
+    {
+      "USE_CODE": "1913",
+      "USE_DESC": "LODGE/RESORT"
+    },
+    {
+      "USE_CODE": "1914",
+      "USE_DESC": "AUTO RACETRACK"
+    },
+    {
+      "USE_CODE": "1915",
+      "USE_DESC": "MOTORCYCLE RACETRACK"
+    },
+    {
+      "USE_CODE": "1916",
+      "USE_DESC": "HORSE RACETRACK"
+    },
+    {
+      "USE_CODE": "1917",
+      "USE_DESC": "PERFORMING ARTS STUDIO"
+    },
+    {
+      "USE_CODE": "1918",
+      "USE_DESC": "HANDBALL/RAQUETBALL COURTS"
+    },
+    {
+      "USE_CODE": "1919",
+      "USE_DESC": "DRIVING RANGE"
+    },
+    {
+      "USE_CODE": "1920",
+      "USE_DESC": "WINE TASTING ROOM"
+    },
+    {
+      "USE_CODE": "1980",
+      "USE_DESC": "RECREATIONAL W/LIC MHS"
+    },
+    {
+      "USE_CODE": "1990",
+      "USE_DESC": "RECREATIONAL W/MISC IMP"
+    },
+    {
+      "USE_CODE": "2000",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "2100",
+      "USE_DESC": "FINANCIAL"
+    },
+    {
+      "USE_CODE": "2101",
+      "USE_DESC": "BANK"
+    },
+    {
+      "USE_CODE": "2102",
+      "USE_DESC": "SAVINGS & LOAN"
+    },
+    {
+      "USE_CODE": "2103",
+      "USE_DESC": "BAIL BOND"
+    },
+    {
+      "USE_CODE": "2190",
+      "USE_DESC": "FINANCIAL W/MISC IMP"
+    },
+    {
+      "USE_CODE": "2199",
+      "USE_DESC": "SAME AS 2100 WITH GROUND LEASE"
+    },
+    {
+      "USE_CODE": "2200",
+      "USE_DESC": "SERVICE/REPAIR SHOPS"
+    },
+    {
+      "USE_CODE": "2201",
+      "USE_DESC": "CAR WASH"
+    },
+    {
+      "USE_CODE": "2202",
+      "USE_DESC": "KENNEL/PET GROOMING"
+    },
+    {
+      "USE_CODE": "2203",
+      "USE_DESC": "AUTO BODY/PAINT"
+    },
+    {
+      "USE_CODE": "2204",
+      "USE_DESC": "AUTO REPAIR/GARAGE"
+    },
+    {
+      "USE_CODE": "2205",
+      "USE_DESC": "MOTORCYCLE REPAIR"
+    },
+    {
+      "USE_CODE": "2206",
+      "USE_DESC": "BICYCLE REPAIR"
+    },
+    {
+      "USE_CODE": "2207",
+      "USE_DESC": "EQUIPMENT REPAIR"
+    },
+    {
+      "USE_CODE": "2208",
+      "USE_DESC": "BUS DEPOT"
+    },
+    {
+      "USE_CODE": "2209",
+      "USE_DESC": "LUBE SHOP"
+    },
+    {
+      "USE_CODE": "2290",
+      "USE_DESC": "MULTI USE SERVICE/REPAIR SHOPS"
+    },
+    {
+      "USE_CODE": "2300",
+      "USE_DESC": "PETROLEUM"
+    },
+    {
+      "USE_CODE": "2301",
+      "USE_DESC": "SERVICE STATION"
+    },
+    {
+      "USE_CODE": "2302",
+      "USE_DESC": "BULK PLANT"
+    },
+    {
+      "USE_CODE": "2303",
+      "USE_DESC": "BOTTLED GAS DLR"
+    },
+    {
+      "USE_CODE": "2304",
+      "USE_DESC": "GAS & MINI-MART"
+    },
+    {
+      "USE_CODE": "2305",
+      "USE_DESC": "MINI-MART SS/FAST FOOD"
+    },
+    {
+      "USE_CODE": "2390",
+      "USE_DESC": "MULTI USE PETROLEUM RELATED"
+    },
+    {
+      "USE_CODE": "2399",
+      "USE_DESC": "SAME AS 2300 WITH GROUND LEASE"
+    },
+    {
+      "USE_CODE": "2400",
+      "USE_DESC": "SALES-MOTOR VEH"
+    },
+    {
+      "USE_CODE": "2401",
+      "USE_DESC": "AUTO SALES NEW"
+    },
+    {
+      "USE_CODE": "2402",
+      "USE_DESC": "AUTO SALES USED"
+    },
+    {
+      "USE_CODE": "2403",
+      "USE_DESC": "BOAT SALES"
+    },
+    {
+      "USE_CODE": "2404",
+      "USE_DESC": "AIRCRAFT SALES"
+    },
+    {
+      "USE_CODE": "2405",
+      "USE_DESC": "FARM MACHINERY SALES"
+    },
+    {
+      "USE_CODE": "2406",
+      "USE_DESC": "RV SALES"
+    },
+    {
+      "USE_CODE": "2490",
+      "USE_DESC": "MULTI USE AUTOMOTIVE RELATED"
+    },
+    {
+      "USE_CODE": "2500",
+      "USE_DESC": "COMM/IND COMMON AREA"
+    },
+    {
+      "USE_CODE": "2501",
+      "USE_DESC": "PARKING LOT"
+    },
+    {
+      "USE_CODE": "2590",
+      "USE_DESC": "MULTI USE PARKING RELATED"
+    },
+    {
+      "USE_CODE": "2600",
+      "USE_DESC": "NURSERIES"
+    },
+    {
+      "USE_CODE": "2601",
+      "USE_DESC": "NURSERIES"
+    },
+    {
+      "USE_CODE": "2602",
+      "USE_DESC": "GARDNERS"
+    },
+    {
+      "USE_CODE": "2603",
+      "USE_DESC": "TREE SERVICE"
+    },
+    {
+      "USE_CODE": "2604",
+      "USE_DESC": "SEED GROWERS"
+    },
+    {
+      "USE_CODE": "2605",
+      "USE_DESC": "PEST CONTROL"
+    },
+    {
+      "USE_CODE": "2606",
+      "USE_DESC": "HYDROPONICS/GREENHOUSES"
+    },
+    {
+      "USE_CODE": "2607",
+      "USE_DESC": "TREE FARM NOT NURSERY STOCK"
+    },
+    {
+      "USE_CODE": "2608",
+      "USE_DESC": "ORCHARD NURSERIES"
+    },
+    {
+      "USE_CODE": "2609",
+      "USE_DESC": "APIARY"
+    },
+    {
+      "USE_CODE": "2686",
+      "USE_DESC": "GRNHSE CANNABIS CULTIVATION"
+    },
+    {
+      "USE_CODE": "2690",
+      "USE_DESC": "MULTI USE HORTICULTURE RELATED"
+    },
+    {
+      "USE_CODE": "2700",
+      "USE_DESC": "HOTEL"
+    },
+    {
+      "USE_CODE": "2701",
+      "USE_DESC": "HOTEL W/O RESTAURANT"
+    },
+    {
+      "USE_CODE": "2705",
+      "USE_DESC": "SHORT TERM RENTAL"
+    },
+    {
+      "USE_CODE": "2707",
+      "USE_DESC": "ROOMING HOUSE"
+    },
+    {
+      "USE_CODE": "2790",
+      "USE_DESC": "HOTEL RELATED W/MISC IMP"
+    },
+    {
+      "USE_CODE": "2800",
+      "USE_DESC": "MOTEL"
+    },
+    {
+      "USE_CODE": "2801",
+      "USE_DESC": "MOTEL W/O RESTAURANT"
+    },
+    {
+      "USE_CODE": "2890",
+      "USE_DESC": "MOTEL RELATED W/MISC IMP"
+    },
+    {
+      "USE_CODE": "2900",
+      "USE_DESC": "MANUFACTURED HOME PARK"
+    },
+    {
+      "USE_CODE": "2901",
+      "USE_DESC": "RV/TRAILER PARK"
+    },
+    {
+      "USE_CODE": "2910",
+      "USE_DESC": "RV/MH PARK COMBO"
+    },
+    {
+      "USE_CODE": "2990",
+      "USE_DESC": "MANUFTD HOME PARK W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "3000",
+      "USE_DESC": "VACANT LAND INDUSTRIAL"
+    },
+    {
+      "USE_CODE": "3010",
+      "USE_DESC": "VACANT M-1"
+    },
+    {
+      "USE_CODE": "3019",
+      "USE_DESC": "M1  W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "3020",
+      "USE_DESC": "VACANT M-2"
+    },
+    {
+      "USE_CODE": "3027",
+      "USE_DESC": "SAME AS 3020 W/LIC MH"
+    },
+    {
+      "USE_CODE": "3029",
+      "USE_DESC": "M2  W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "3030",
+      "USE_DESC": "VACANT M-3"
+    },
+    {
+      "USE_CODE": "3039",
+      "USE_DESC": "M3  W/MISC IMPS"
+    },
+    {
+      "USE_CODE": "3050",
+      "USE_DESC": "RAILROAD SPUR"
+    },
+    {
+      "USE_CODE": "3080",
+      "USE_DESC": "SAME AS 3000 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "3086",
+      "USE_DESC": "VAC IND LAND-CANNABIS CULT"
+    },
+    {
+      "USE_CODE": "3089",
+      "USE_DESC": "SAME AS 3080 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "3090",
+      "USE_DESC": "SAME AS 3000 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "3099",
+      "USE_DESC": "IND LAND PART ECON UNIT"
+    },
+    {
+      "USE_CODE": "3100",
+      "USE_DESC": "LIGHT MFG"
+    },
+    {
+      "USE_CODE": "3101",
+      "USE_DESC": "CONTRACTOR - GENERAL BLDG"
+    },
+    {
+      "USE_CODE": "3102",
+      "USE_DESC": "CONTRACTOR - SWIMMING POOL"
+    },
+    {
+      "USE_CODE": "3103",
+      "USE_DESC": "CONTRACTOR - ENGINEERING"
+    },
+    {
+      "USE_CODE": "3104",
+      "USE_DESC": "CONTRACTOR - DRILLING"
+    },
+    {
+      "USE_CODE": "3105",
+      "USE_DESC": "CONTRACTOR - OILFIELD"
+    },
+    {
+      "USE_CODE": "3106",
+      "USE_DESC": "MACHINE SHOP"
+    },
+    {
+      "USE_CODE": "3107",
+      "USE_DESC": "TIRESHOP - RETREAD"
+    },
+    {
+      "USE_CODE": "3108",
+      "USE_DESC": "RECYCLING CENTER"
+    },
+    {
+      "USE_CODE": "3120",
+      "USE_DESC": "OFFICE/WAREHOUSE MULTI UNIT"
+    },
+    {
+      "USE_CODE": "3180",
+      "USE_DESC": "SAME AS 3100 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "3186",
+      "USE_DESC": "CANNABIS PRODUCTION"
+    },
+    {
+      "USE_CODE": "3190",
+      "USE_DESC": "INDUSTRIAL MULTI-USE"
+    },
+    {
+      "USE_CODE": "3200",
+      "USE_DESC": "HEAVY INDUSTRIAL"
+    },
+    {
+      "USE_CODE": "3201",
+      "USE_DESC": "FOUNDRY"
+    },
+    {
+      "USE_CODE": "3202",
+      "USE_DESC": "STEEL FABRICATION"
+    },
+    {
+      "USE_CODE": "3203",
+      "USE_DESC": "HEAVY EQUIPMENT-MFG"
+    },
+    {
+      "USE_CODE": "3204",
+      "USE_DESC": "CARBON PLANT"
+    },
+    {
+      "USE_CODE": "3205",
+      "USE_DESC": "CONCRETE AND/OR BATCH PLANTS"
+    },
+    {
+      "USE_CODE": "3206",
+      "USE_DESC": "REFINERIES"
+    },
+    {
+      "USE_CODE": "3280",
+      "USE_DESC": "SAME AS 3200 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "3290",
+      "USE_DESC": "SAME AS 3200 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "3300",
+      "USE_DESC": "TIMBER"
+    },
+    {
+      "USE_CODE": "3301",
+      "USE_DESC": "LUMBER YARD"
+    },
+    {
+      "USE_CODE": "3302",
+      "USE_DESC": "SAW MILL"
+    },
+    {
+      "USE_CODE": "3303",
+      "USE_DESC": "PLANING MILL"
+    },
+    {
+      "USE_CODE": "3400",
+      "USE_DESC": "PRODUCE PLANT"
+    },
+    {
+      "USE_CODE": "3401",
+      "USE_DESC": "COTTON GIN"
+    },
+    {
+      "USE_CODE": "3402",
+      "USE_DESC": "PACKING SHED"
+    },
+    {
+      "USE_CODE": "3406",
+      "USE_DESC": "GREENHOUSE PROD FACILITY"
+    },
+    {
+      "USE_CODE": "3490",
+      "USE_DESC": "MULTI USE"
+    },
+    {
+      "USE_CODE": "3500",
+      "USE_DESC": "FOOD PROCESSING"
+    },
+    {
+      "USE_CODE": "3501",
+      "USE_DESC": "BAKERY"
+    },
+    {
+      "USE_CODE": "3502",
+      "USE_DESC": "CREAMERY"
+    },
+    {
+      "USE_CODE": "3503",
+      "USE_DESC": "BOTTLING PLANT"
+    },
+    {
+      "USE_CODE": "3504",
+      "USE_DESC": "MEAT PACKING"
+    },
+    {
+      "USE_CODE": "3505",
+      "USE_DESC": "WINERY"
+    },
+    {
+      "USE_CODE": "3506",
+      "USE_DESC": "ALMOND HULLER"
+    },
+    {
+      "USE_CODE": "3507",
+      "USE_DESC": "DAIRY DISTRIBUTORSHIP"
+    },
+    {
+      "USE_CODE": "3508",
+      "USE_DESC": "SOFT DRINK DIST"
+    },
+    {
+      "USE_CODE": "3509",
+      "USE_DESC": "ALCOHOLIC BEBERAGE DIST"
+    },
+    {
+      "USE_CODE": "3590",
+      "USE_DESC": "MULTI USE"
+    },
+    {
+      "USE_CODE": "3600",
+      "USE_DESC": "STORAGE (ENCLOSED)"
+    },
+    {
+      "USE_CODE": "3601",
+      "USE_DESC": "WAREHOUSE"
+    },
+    {
+      "USE_CODE": "3602",
+      "USE_DESC": "PUBLIC STORAGE (MINI WHSE)"
+    },
+    {
+      "USE_CODE": "3603",
+      "USE_DESC": "VAN & STORAGE"
+    },
+    {
+      "USE_CODE": "3604",
+      "USE_DESC": "ICE/COLD STORAGE"
+    },
+    {
+      "USE_CODE": "3605",
+      "USE_DESC": "GRAIN ELEVATOR OR SILO"
+    },
+    {
+      "USE_CODE": "3680",
+      "USE_DESC": "SAME AS 3600 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "3700",
+      "USE_DESC": "STORAGE (FENCED W/ SMALL OFF)"
+    },
+    {
+      "USE_CODE": "3701",
+      "USE_DESC": "EQUIPMENT RENTAL"
+    },
+    {
+      "USE_CODE": "3702",
+      "USE_DESC": "AUTO WRECKING"
+    },
+    {
+      "USE_CODE": "3703",
+      "USE_DESC": "METAL SALVAGE"
+    },
+    {
+      "USE_CODE": "3704",
+      "USE_DESC": "FARM EQUIPMENT"
+    },
+    {
+      "USE_CODE": "3705",
+      "USE_DESC": "TRUCKING COMPANY"
+    },
+    {
+      "USE_CODE": "3706",
+      "USE_DESC": "TRUCK TERMINAL"
+    },
+    {
+      "USE_CODE": "3707",
+      "USE_DESC": "TOWING COMPANY"
+    },
+    {
+      "USE_CODE": "3708",
+      "USE_DESC": "TAXI-CAB OPERATION"
+    },
+    {
+      "USE_CODE": "3709",
+      "USE_DESC": "COMMUTER SERVICE"
+    },
+    {
+      "USE_CODE": "3710",
+      "USE_DESC": "JUNK YARD"
+    },
+    {
+      "USE_CODE": "3720",
+      "USE_DESC": "DISTRIBUTION CENTERS"
+    },
+    {
+      "USE_CODE": "3780",
+      "USE_DESC": "SAME AS 3700 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "3790",
+      "USE_DESC": "MULTI USE"
+    },
+    {
+      "USE_CODE": "3800",
+      "USE_DESC": "INDUSTRIAL SALES"
+    },
+    {
+      "USE_CODE": "3801",
+      "USE_DESC": "MANFACTURED HOME SALES"
+    },
+    {
+      "USE_CODE": "3880",
+      "USE_DESC": "SAME AS 3800 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "3890",
+      "USE_DESC": "SAME AS 3800 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "3900",
+      "USE_DESC": "AIRPARKS"
+    },
+    {
+      "USE_CODE": "3901",
+      "USE_DESC": "LANDING STRIP (AIRCRAFT)"
+    },
+    {
+      "USE_CODE": "3902",
+      "USE_DESC": "ANTENNAS/TOWERS"
+    },
+    {
+      "USE_CODE": "3950",
+      "USE_DESC": "MARINAS"
+    },
+    {
+      "USE_CODE": "3960",
+      "USE_DESC": "ENERGY GENERATION"
+    },
+    {
+      "USE_CODE": "3961",
+      "USE_DESC": "WIND PARK"
+    },
+    {
+      "USE_CODE": "4490",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4500",
+      "USE_DESC": "DAIRY"
+    },
+    {
+      "USE_CODE": "4600",
+      "USE_DESC": "FEEDLOT"
+    },
+    {
+      "USE_CODE": "4700",
+      "USE_DESC": "AGRICULTURAL/IND. COMPLEX"
+    },
+    {
+      "USE_CODE": "4800",
+      "USE_DESC": "LIVESTOCK"
+    },
+    {
+      "USE_CODE": "4801",
+      "USE_DESC": "CATTLE"
+    },
+    {
+      "USE_CODE": "4802",
+      "USE_DESC": "HORSES"
+    },
+    {
+      "USE_CODE": "4803",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4804",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4805",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4806",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4807",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4808",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4809",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4810",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4811",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4812",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4813",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4814",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4900",
+      "USE_DESC": "RANCH HDQTRS"
+    },
+    {
+      "USE_CODE": "4908",
+      "USE_DESC": "FARM LABOR CAMPS"
+    },
+    {
+      "USE_CODE": "5000",
+      "USE_DESC": "UNDEVELOPED LAND >20AC MT/DES"
+    },
+    {
+      "USE_CODE": "5001",
+      "USE_DESC": "REPLACED BY USE CODE 0106"
+    },
+    {
+      "USE_CODE": "5002",
+      "USE_DESC": "REPLACED BY USE CODE 0201"
+    },
+    {
+      "USE_CODE": "5007",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "5008",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "5009",
+      "USE_DESC": "SAME AS 5000 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "5080",
+      "USE_DESC": ">20AC W/OIL"
+    },
+    {
+      "USE_CODE": "5090",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "5097",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "5098",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "5100",
+      "USE_DESC": "REPLACED BY USE CODE 5000"
+    },
+    {
+      "USE_CODE": "5200",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5300",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5400",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5500",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5600",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5700",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5800",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "5900",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "6000",
+      "USE_DESC": "U S A"
+    },
+    {
+      "USE_CODE": "6010",
+      "USE_DESC": "STATE OF CALIFORNIA"
+    },
+    {
+      "USE_CODE": "6020",
+      "USE_DESC": "COUNTY OF KERN"
+    },
+    {
+      "USE_CODE": "6030",
+      "USE_DESC": "INCORPORATED CITY"
+    },
+    {
+      "USE_CODE": "6040",
+      "USE_DESC": "SCHOOL OWNED"
+    },
+    {
+      "USE_CODE": "6050",
+      "USE_DESC": "SPECIAL DISTRICTS"
+    },
+    {
+      "USE_CODE": "6060",
+      "USE_DESC": "REDEVELOPMENT AGENCY"
+    },
+    {
+      "USE_CODE": "6070",
+      "USE_DESC": "QUASI GOVERNMENT PROPERTY"
+    },
+    {
+      "USE_CODE": "6100",
+      "USE_DESC": "ASSESSORS UTILITY PARCELS"
+    },
+    {
+      "USE_CODE": "6200",
+      "USE_DESC": "SEC 11 TAXABLE (LA)"
+    },
+    {
+      "USE_CODE": "6201",
+      "USE_DESC": "SEC 11 TAXABLE (NOT LA)"
+    },
+    {
+      "USE_CODE": "6202",
+      "USE_DESC": "SEC 11 EXEMPT (LA)"
+    },
+    {
+      "USE_CODE": "6203",
+      "USE_DESC": "SEC 11 EXEMPT (NOT LA)"
+    },
+    {
+      "USE_CODE": "6300",
+      "USE_DESC": "NO VAL-SUMP ETC"
+    },
+    {
+      "USE_CODE": "6301",
+      "USE_DESC": "SAME AS 6300 EXCEPT <$1000"
+    },
+    {
+      "USE_CODE": "6302",
+      "USE_DESC": "SAME AS 6300 EXCEPT >$1000"
+    },
+    {
+      "USE_CODE": "6308",
+      "USE_DESC": "PRIVATE AG WELL SITE"
+    },
+    {
+      "USE_CODE": "6309",
+      "USE_DESC": "PRIVATE DOMESTIC WTR WELL SITE"
+    },
+    {
+      "USE_CODE": "6400",
+      "USE_DESC": "COMMUNICATION TOWER SITE"
+    },
+    {
+      "USE_CODE": "6500",
+      "USE_DESC": "STATE ASSESSED"
+    },
+    {
+      "USE_CODE": "6600",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "6700",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "6800",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "6900",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "7000",
+      "USE_DESC": "TOXIC HAZARD PRESENT ON SITE"
+    },
+    {
+      "USE_CODE": "8000",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "8100",
+      "USE_DESC": "MINE & QUARRIES"
+    },
+    {
+      "USE_CODE": "8101",
+      "USE_DESC": "BORAX"
+    },
+    {
+      "USE_CODE": "8102",
+      "USE_DESC": "CEMENT PLANT"
+    },
+    {
+      "USE_CODE": "8103",
+      "USE_DESC": "SAND & GRAVEL"
+    },
+    {
+      "USE_CODE": "8104",
+      "USE_DESC": "GYPSUM"
+    },
+    {
+      "USE_CODE": "8105",
+      "USE_DESC": "ALL OTHER TYPES"
+    },
+    {
+      "USE_CODE": "8180",
+      "USE_DESC": "SAME AS 8100 W/LIC MHS"
+    },
+    {
+      "USE_CODE": "8181",
+      "USE_DESC": "BUFFER LAND MINING AU"
+    },
+    {
+      "USE_CODE": "8182",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8183",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8184",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8185",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8186",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8187",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8188",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8189",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8190",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8191",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8192",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8193",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8194",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8195",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8196",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8197",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8198",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8199",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8200",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8201",
+      "USE_DESC": "PRODUCTIVE MINERAL RIGHTS"
+    },
+    {
+      "USE_CODE": "8202",
+      "USE_DESC": "RESERVE MR/NON-PRODUCING"
+    },
+    {
+      "USE_CODE": "8203",
+      "USE_DESC": "OIL PUMPING STATION"
+    },
+    {
+      "USE_CODE": "8204",
+      "USE_DESC": "GAS PLANT"
+    },
+    {
+      "USE_CODE": "8205",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8206",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8207",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8208",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8209",
+      "USE_DESC": "SAME AS 8200 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "8210",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8211",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8212",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8213",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8214",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8215",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8216",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8217",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8218",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8219",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8220",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8221",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8222",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8223",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8224",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8225",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8226",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8227",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8228",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8229",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8230",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8231",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8232",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8233",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8234",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8235",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8236",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8237",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8238",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8239",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8240",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8300",
+      "USE_DESC": "WATER COMPANIES"
+    },
+    {
+      "USE_CODE": "8301",
+      "USE_DESC": "PUBLIC UTILITY"
+    },
+    {
+      "USE_CODE": "8302",
+      "USE_DESC": "MUTUAL WATER COMPANY"
+    },
+    {
+      "USE_CODE": "8303",
+      "USE_DESC": "PRIVATE WATER COMPANY"
+    },
+    {
+      "USE_CODE": "8304",
+      "USE_DESC": "WATER RIGHTS"
+    },
+    {
+      "USE_CODE": "8305",
+      "USE_DESC": "CANALS"
+    },
+    {
+      "USE_CODE": "8306",
+      "USE_DESC": "COMMUNITY WATER SYSTEM"
+    },
+    {
+      "USE_CODE": "8307",
+      "USE_DESC": "GROUNDWATER RECHARGE POND"
+    },
+    {
+      "USE_CODE": "8400",
+      "USE_DESC": "MINING CLAIMS"
+    },
+    {
+      "USE_CODE": "8401",
+      "USE_DESC": "PATENTED"
+    },
+    {
+      "USE_CODE": "8402",
+      "USE_DESC": "NON-PATENTED"
+    },
+    {
+      "USE_CODE": "8409",
+      "USE_DESC": "SAME AS 8400 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "8490",
+      "USE_DESC": "SAME AS 8400 W/MISC IMP"
+    },
+    {
+      "USE_CODE": "8500",
+      "USE_DESC": "TIMBER PRODUCTION"
+    },
+    {
+      "USE_CODE": "8600",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8680",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8690",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "8700",
+      "USE_DESC": "HAZARDOUS WATE DISPOSAL SITE"
+    },
+    {
+      "USE_CODE": "8701",
+      "USE_DESC": "HAZ WASTE DUMP CLASS I"
+    },
+    {
+      "USE_CODE": "8702",
+      "USE_DESC": "HAZ WASTE DUMP CLASS II"
+    },
+    {
+      "USE_CODE": "8703",
+      "USE_DESC": "NON-HAZ DUMP"
+    },
+    {
+      "USE_CODE": "8704",
+      "USE_DESC": "PRIVATE SEWAGE DUMP"
+    },
+    {
+      "USE_CODE": "8800",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "8900",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "9000",
+      "USE_DESC": "RES POSSESSORY INT-FEDERAL"
+    },
+    {
+      "USE_CODE": "9001",
+      "USE_DESC": "COMM POSSESSORY INT-FEDERAL"
+    },
+    {
+      "USE_CODE": "9002",
+      "USE_DESC": "AG POSSESSORY INT-FEDERAL"
+    },
+    {
+      "USE_CODE": "9003",
+      "USE_DESC": "NTRL RESOURCES PI FEDERAL"
+    },
+    {
+      "USE_CODE": "9004",
+      "USE_DESC": "GRAZING RIGHTS PI FEDERAL"
+    },
+    {
+      "USE_CODE": "9010",
+      "USE_DESC": "RES POSSESSORY INT-STATE"
+    },
+    {
+      "USE_CODE": "9011",
+      "USE_DESC": "COMMERCIAL PI-STATE"
+    },
+    {
+      "USE_CODE": "9012",
+      "USE_DESC": "AG POSSESSORY INTEREST-STATE"
+    },
+    {
+      "USE_CODE": "9013",
+      "USE_DESC": "NTRL RESOURCES PI-STATE"
+    },
+    {
+      "USE_CODE": "9020",
+      "USE_DESC": "RESIDENTIAL PI-KERN"
+    },
+    {
+      "USE_CODE": "9021",
+      "USE_DESC": "COMMERCIAL PI-KERN"
+    },
+    {
+      "USE_CODE": "9022",
+      "USE_DESC": "AG POSSESSORY INTEREST-KERN"
+    },
+    {
+      "USE_CODE": "9023",
+      "USE_DESC": "NATURAL RESOURCES PI-KERN"
+    },
+    {
+      "USE_CODE": "9030",
+      "USE_DESC": "RES POSSESSORY INT-CITY"
+    },
+    {
+      "USE_CODE": "9031",
+      "USE_DESC": "COMMERCIAL PI-CITY"
+    },
+    {
+      "USE_CODE": "9032",
+      "USE_DESC": "AG POSSESSORY INT-CITY"
+    },
+    {
+      "USE_CODE": "9033",
+      "USE_DESC": "NATURAL RESOURCES PI-CITY"
+    },
+    {
+      "USE_CODE": "9040",
+      "USE_DESC": "SPECIAL DISTRICTS PI"
+    },
+    {
+      "USE_CODE": "9050",
+      "USE_DESC": "CHINA LAKE NWC/EDWARDS"
+    },
+    {
+      "USE_CODE": "9100",
+      "USE_DESC": "LEASED EQUIP LESSOR SUB"
+    },
+    {
+      "USE_CODE": "9101",
+      "USE_DESC": "LEASED EQUIP LESSOR (PMO)"
+    },
+    {
+      "USE_CODE": "9102",
+      "USE_DESC": "INVENTORY/STORAGE"
+    },
+    {
+      "USE_CODE": "9103",
+      "USE_DESC": "LEASED EQUIP LESSEE DIRECT"
+    },
+    {
+      "USE_CODE": "9104",
+      "USE_DESC": "LEASED EQUIP LESSOR EXEMPT PMO"
+    },
+    {
+      "USE_CODE": "9200",
+      "USE_DESC": "RES IMP UNSECURED NO PI NO MH"
+    },
+    {
+      "USE_CODE": "9201",
+      "USE_DESC": "COMMERCIAL IMP UNSECURED NO PI"
+    },
+    {
+      "USE_CODE": "9202",
+      "USE_DESC": "RURAL IMP UNSECURED NO PI"
+    },
+    {
+      "USE_CODE": "9203",
+      "USE_DESC": "OIL PIPELINE UNSECURED"
+    },
+    {
+      "USE_CODE": "9204",
+      "USE_DESC": "PIPELINE RIGHT-OF-WAY"
+    },
+    {
+      "USE_CODE": "9300",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "9400",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "9500",
+      "USE_DESC": "UNSECURED MH W/I MH PARK"
+    },
+    {
+      "USE_CODE": "9501",
+      "USE_DESC": "UNSECURED MH IN ANY OTHER ZONE"
+    },
+    {
+      "USE_CODE": "9502",
+      "USE_DESC": "LICENSED MH NOT ON TAX ROLL"
+    },
+    {
+      "USE_CODE": "9600",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "9700",
+      "USE_DESC": "BOATS OR AIRCRAFT"
+    },
+    {
+      "USE_CODE": "9701",
+      "USE_DESC": "CERTIFICATED AIRCRAFT"
+    },
+    {
+      "USE_CODE": "9702",
+      "USE_DESC": "FRACTIONALLY OWNED AIRCRAFT"
+    },
+    {
+      "USE_CODE": "9703",
+      "USE_DESC": "GENERAL AIRCRAFT"
+    },
+    {
+      "USE_CODE": "9704",
+      "USE_DESC": "BOAT"
+    },
+    {
+      "USE_CODE": "9800",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "9900",
+      "USE_DESC": "NOT USED"
+    },
+    {
+      "USE_CODE": "3962",
+      "USE_DESC": "SOLAR PARK"
+    },
+    {
+      "USE_CODE": "3963",
+      "USE_DESC": "GEOTHERMAL"
+    },
+    {
+      "USE_CODE": "3964",
+      "USE_DESC": "COAL"
+    },
+    {
+      "USE_CODE": "3965",
+      "USE_DESC": "WATER"
+    },
+    {
+      "USE_CODE": "3966",
+      "USE_DESC": "BATTERY STORAGE"
+    },
+    {
+      "USE_CODE": "3967",
+      "USE_DESC": "CO-GENERATION PLANT OIL FIRED"
+    },
+    {
+      "USE_CODE": "3968",
+      "USE_DESC": "CO-GENERATION PLANT NAT GAS"
+    },
+    {
+      "USE_CODE": "3969",
+      "USE_DESC": "CO-GENERATION PLANT BIOMASS"
+    },
+    {
+      "USE_CODE": "3984",
+      "USE_DESC": "CO-GEN COAL FIRED OIL RELATED"
+    },
+    {
+      "USE_CODE": "3988",
+      "USE_DESC": "CO-GEN GAS FIRED OIL RELATED"
+    },
+    {
+      "USE_CODE": "4000",
+      "USE_DESC": "UNDEVELOPED LAND >20AC"
+    },
+    {
+      "USE_CODE": "4001",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4002",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4010",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4020",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4080",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4100",
+      "USE_DESC": "ORCHARDS"
+    },
+    {
+      "USE_CODE": "4101",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4102",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4103",
+      "USE_DESC": "CITRUS"
+    },
+    {
+      "USE_CODE": "4104",
+      "USE_DESC": "STONE FRUIT"
+    },
+    {
+      "USE_CODE": "4105",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4106",
+      "USE_DESC": "MISC TREE FRUIT"
+    },
+    {
+      "USE_CODE": "4107",
+      "USE_DESC": "EXOTIC TREE/BUSH/VINE"
+    },
+    {
+      "USE_CODE": "4110",
+      "USE_DESC": "ALMOND AND PISTACHIO"
+    },
+    {
+      "USE_CODE": "4111",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4112",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4113",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4115",
+      "USE_DESC": "ALMOND AND VINE"
+    },
+    {
+      "USE_CODE": "4116",
+      "USE_DESC": "PISTACHIO AND VINE"
+    },
+    {
+      "USE_CODE": "4120",
+      "USE_DESC": "ALMOND"
+    },
+    {
+      "USE_CODE": "4121",
+      "USE_DESC": "PISTACHIO"
+    },
+    {
+      "USE_CODE": "4122",
+      "USE_DESC": "WALNUT"
+    },
+    {
+      "USE_CODE": "4123",
+      "USE_DESC": "PECAN"
+    },
+    {
+      "USE_CODE": "4124",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4125",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4126",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4127",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4128",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4129",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4130",
+      "USE_DESC": "ORANGE"
+    },
+    {
+      "USE_CODE": "4131",
+      "USE_DESC": "NAVEL ORANGES"
+    },
+    {
+      "USE_CODE": "4132",
+      "USE_DESC": "VALENCIA ORANGE"
+    },
+    {
+      "USE_CODE": "4134",
+      "USE_DESC": "LEMON"
+    },
+    {
+      "USE_CODE": "4135",
+      "USE_DESC": "GRAPEFRUIT"
+    },
+    {
+      "USE_CODE": "4136",
+      "USE_DESC": "TANGERINE/TANGELO"
+    },
+    {
+      "USE_CODE": "4137",
+      "USE_DESC": "CLEMENTINE/MANDARIN"
+    },
+    {
+      "USE_CODE": "4140",
+      "USE_DESC": "PLUM"
+    },
+    {
+      "USE_CODE": "4141",
+      "USE_DESC": "PEACH"
+    },
+    {
+      "USE_CODE": "4142",
+      "USE_DESC": "NECTARINE"
+    },
+    {
+      "USE_CODE": "4143",
+      "USE_DESC": "APRICOT"
+    },
+    {
+      "USE_CODE": "4144",
+      "USE_DESC": "CHERRY"
+    },
+    {
+      "USE_CODE": "4145",
+      "USE_DESC": "PRUNE"
+    },
+    {
+      "USE_CODE": "4150",
+      "USE_DESC": "APPLE"
+    },
+    {
+      "USE_CODE": "4155",
+      "USE_DESC": "PEAR"
+    },
+    {
+      "USE_CODE": "4160",
+      "USE_DESC": "OLIVE"
+    },
+    {
+      "USE_CODE": "4161",
+      "USE_DESC": "FIG"
+    },
+    {
+      "USE_CODE": "4162",
+      "USE_DESC": "ORCHARDS W/SOLAR FARM"
+    },
+    {
+      "USE_CODE": "4163",
+      "USE_DESC": "PERSIMMON"
+    },
+    {
+      "USE_CODE": "4164",
+      "USE_DESC": "POMEGRANATE"
+    },
+    {
+      "USE_CODE": "4180",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4190",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4200",
+      "USE_DESC": "GRAPE VINES"
+    },
+    {
+      "USE_CODE": "4201",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4210",
+      "USE_DESC": "TABLE GRAPE"
+    },
+    {
+      "USE_CODE": "4211",
+      "USE_DESC": "WINE GRAPE"
+    },
+    {
+      "USE_CODE": "4212",
+      "USE_DESC": "WHITE WINE GRAPE"
+    },
+    {
+      "USE_CODE": "4215",
+      "USE_DESC": "RED WINE GRAPE"
+    },
+    {
+      "USE_CODE": "4218",
+      "USE_DESC": "RAISIN"
+    },
+    {
+      "USE_CODE": "4220",
+      "USE_DESC": "VINE AND ALMOND"
+    },
+    {
+      "USE_CODE": "4221",
+      "USE_DESC": "VINE AND PISTACHIO"
+    },
+    {
+      "USE_CODE": "4250",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4262",
+      "USE_DESC": "VINDYARDS W/SOLAR FARM"
+    },
+    {
+      "USE_CODE": "4270",
+      "USE_DESC": "KIWI FRUIT"
+    },
+    {
+      "USE_CODE": "4271",
+      "USE_DESC": "BLUEBERRY"
+    },
+    {
+      "USE_CODE": "4280",
+      "USE_DESC": "UNKNOWN USEL"
+    },
+    {
+      "USE_CODE": "4290",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4300",
+      "USE_DESC": "IRRIGATED LAND"
+    },
+    {
+      "USE_CODE": "4301",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4302",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4310",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4311",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4362",
+      "USE_DESC": "IRR LAND W/SOLAR FARM"
+    },
+    {
+      "USE_CODE": "4380",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4390",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4400",
+      "USE_DESC": "GRAZING OR DRY FARM LAND"
+    },
+    {
+      "USE_CODE": "4401",
+      "USE_DESC": "UNKNOWN USE"
+    },
+    {
+      "USE_CODE": "4462",
+      "USE_DESC": "GRAZING W/SOLAR FARM"
+    },
+    {
+      "USE_CODE": "4480",
+      "USE_DESC": "UNKNOWN USE"
+    }
+  ],
+  "countyWideUseDistribution": {
+    "1000": 589,
+    "1007": 5,
+    "1009": 17,
+    "1010": 823,
+    "1019": 25,
+    "1020": 1909,
+    "1027": 7,
+    "1029": 62,
+    "1090": 128,
+    "1099": 34,
+    "1100": 555,
+    "1111": 22,
+    "1116": 40,
+    "1119": 59,
+    "1120": 25,
+    "1123": 28,
+    "1124": 42,
+    "1125": 3,
+    "1186": 12,
+    "1190": 262,
+    "1200": 28,
+    "1201": 49,
+    "1203": 201,
+    "1290": 3,
+    "1300": 247,
+    "1301": 9,
+    "1308": 87,
+    "1309": 129,
+    "1310": 10,
+    "1311": 3,
+    "1312": 30,
+    "1316": 6,
+    "1390": 147,
+    "1400": 59,
+    "1401": 51,
+    "1402": 84,
+    "1403": 8,
+    "1404": 12,
+    "1405": 2,
+    "1406": 1,
+    "1407": 3,
+    "1490": 43,
+    "1500": 139,
+    "1501": 202,
+    "1502": 41,
+    "1600": 959,
+    "1601": 26,
+    "1602": 5,
+    "1603": 9,
+    "1604": 8,
+    "1605": 531,
+    "1606": 105,
+    "1607": 29,
+    "1613": 29,
+    "1614": 3,
+    "1690": 432,
+    "1700": 18,
+    "1701": 26,
+    "1702": 1,
+    "1703": 42,
+    "1704": 3,
+    "1705": 15,
+    "1706": 776,
+    "1707": 21,
+    "1708": 27,
+    "1710": 59,
+    "1711": 276,
+    "1712": 22,
+    "1713": 48,
+    "1714": 43,
+    "1715": 8,
+    "1716": 9,
+    "1717": 4,
+    "1720": 10,
+    "1790": 4,
+    "1800": 35,
+    "1801": 219,
+    "1802": 57,
+    "1803": 9,
+    "1804": 12,
+    "1805": 56,
+    "1806": 3,
+    "1807": 336,
+    "1808": 5,
+    "1890": 121,
+    "1899": 13,
+    "1900": 87,
+    "1901": 23,
+    "1903": 1,
+    "1904": 23,
+    "1905": 6,
+    "1906": 3,
+    "1907": 1,
+    "1908": 58,
+    "1909": 21,
+    "1910": 24,
+    "1911": 2,
+    "1912": 60,
+    "1913": 1,
+    "1914": 32,
+    "1916": 1,
+    "1917": 3,
+    "1918": 1,
+    "1919": 1,
+    "1980": 1,
+    "1990": 13,
+    "2100": 17,
+    "2101": 65,
+    "2102": 2,
+    "2103": 3,
+    "2190": 2,
+    "2200": 265,
+    "2201": 84,
+    "2202": 18,
+    "2203": 72,
+    "2204": 320,
+    "2205": 4,
+    "2206": 1,
+    "2207": 16,
+    "2208": 5,
+    "2290": 179,
+    "2300": 13,
+    "2301": 31,
+    "2302": 8,
+    "2303": 15,
+    "2304": 307,
+    "2305": 25,
+    "2390": 62,
+    "2399": 1,
+    "2400": 24,
+    "2401": 31,
+    "2402": 102,
+    "2403": 2,
+    "2405": 11,
+    "2406": 7,
+    "2490": 38,
+    "2500": 39,
+    "2501": 808,
+    "2590": 30,
+    "2600": 15,
+    "2601": 22,
+    "2602": 1,
+    "2604": 2,
+    "2605": 5,
+    "2606": 4,
+    "2607": 1,
+    "2608": 3,
+    "2686": 4,
+    "2690": 9,
+    "2700": 48,
+    "2701": 5,
+    "2707": 6,
+    "2790": 2,
+    "2800": 160,
+    "2801": 23,
+    "2890": 9,
+    "2900": 197,
+    "2901": 48,
+    "2910": 16,
+    "2990": 32,
+    "3000": 214,
+    "3010": 1624,
+    "3019": 128,
+    "3020": 788,
+    "3027": 3,
+    "3029": 95,
+    "3030": 292,
+    "3039": 35,
+    "3050": 9,
+    "3080": 10,
+    "3086": 183,
+    "3089": 6,
+    "3090": 9,
+    "3099": 3,
+    "3100": 967,
+    "3101": 106,
+    "3102": 3,
+    "3103": 12,
+    "3104": 14,
+    "3105": 158,
+    "3106": 44,
+    "3107": 8,
+    "3108": 16,
+    "3120": 114,
+    "3180": 3,
+    "3186": 37,
+    "3190": 261,
+    "3200": 67,
+    "3202": 16,
+    "3203": 18,
+    "3204": 1,
+    "3205": 30,
+    "3206": 45,
+    "3290": 5,
+    "3300": 3,
+    "3301": 10,
+    "3400": 8,
+    "3401": 12,
+    "3402": 41,
+    "3406": 3,
+    "3490": 6,
+    "3500": 16,
+    "3501": 5,
+    "3503": 21,
+    "3504": 6,
+    "3505": 8,
+    "3506": 20,
+    "3507": 3,
+    "3508": 1,
+    "3509": 4,
+    "3590": 18,
+    "3600": 107,
+    "3601": 230,
+    "3602": 144,
+    "3603": 6,
+    "3604": 36,
+    "3605": 7,
+    "3700": 185,
+    "3701": 34,
+    "3702": 63,
+    "3703": 10,
+    "3704": 31,
+    "3705": 84,
+    "3706": 11,
+    "3707": 17,
+    "3710": 8,
+    "3720": 47,
+    "3780": 11,
+    "3790": 97,
+    "3800": 44,
+    "3801": 1,
+    "3890": 2,
+    "3900": 4,
+    "3901": 6,
+    "3902": 16,
+    "3960": 3,
+    "3961": 696,
+    "3962": 468,
+    "3965": 1,
+    "3968": 15,
+    "3969": 3,
+    "4000": 1323,
+    "4100": 463,
+    "4103": 290,
+    "4104": 8,
+    "4110": 60,
+    "4115": 17,
+    "4116": 3,
+    "4120": 2307,
+    "4121": 1748,
+    "4122": 9,
+    "4123": 8,
+    "4130": 154,
+    "4131": 171,
+    "4132": 13,
+    "4134": 34,
+    "4135": 7,
+    "4136": 57,
+    "4137": 77,
+    "4141": 3,
+    "4142": 2,
+    "4144": 81,
+    "4150": 5,
+    "4160": 22,
+    "4161": 1,
+    "4162": 2,
+    "4163": 9,
+    "4164": 66,
+    "4200": 168,
+    "4210": 859,
+    "4211": 76,
+    "4218": 75,
+    "4220": 20,
+    "4221": 4,
+    "4271": 14,
+    "4280": 1,
+    "4300": 3780,
+    "4362": 1,
+    "4390": 1,
+    "4400": 7281,
+    "4480": 3,
+    "4500": 58,
+    "4600": 20,
+    "4700": 23,
+    "4800": 40,
+    "4801": 3,
+    "4802": 15,
+    "4900": 55,
+    "4908": 6,
+    "5000": 10702,
+    "5009": 151,
+    "5080": 877,
+    "5090": 2,
+    "5098": 1,
+    "6000": 6095,
+    "6010": 1409,
+    "6020": 1081,
+    "6030": 3733,
+    "6040": 681,
+    "6050": 2509,
+    "6060": 38,
+    "6070": 2,
+    "6100": 1276,
+    "6200": 647,
+    "6201": 322,
+    "6202": 13,
+    "6203": 59,
+    "6300": 1631,
+    "6301": 388,
+    "6302": 112,
+    "6308": 15,
+    "6309": 19,
+    "6400": 27,
+    "6500": 5,
+    "7000": 4,
+    "8100": 11,
+    "8101": 103,
+    "8102": 8,
+    "8103": 26,
+    "8104": 12,
+    "8105": 29,
+    "8201": 5,
+    "8202": 1,
+    "8203": 71,
+    "8204": 1,
+    "8209": 12,
+    "8300": 90,
+    "8301": 128,
+    "8302": 105,
+    "8303": 38,
+    "8304": 2,
+    "8305": 233,
+    "8306": 63,
+    "8307": 11,
+    "8400": 75,
+    "8401": 77,
+    "8409": 4,
+    "8490": 8,
+    "8700": 11,
+    "8702": 3,
+    "8703": 3,
+    "8704": 2,
+    "9201": 1,
+    "9500": 2,
+    "9501": 3,
+    "0503": 691,
+    "0101": 162868,
+    "0201": 5437,
+    "0200": 2724,
+    "0010": 33972,
+    "0102": 11476,
+    "0500": 661,
+    "0300": 810,
+    "0504": 239,
+    "0501": 287,
+    "0105": 1595,
+    "0402": 136,
+    "0030": 768,
+    "0400": 1875,
+    "0502": 106,
+    "0103": 2972,
+    "0193": 1492,
+    "0401": 486,
+    "0301": 578,
+    "0039": 81,
+    "0302": 401,
+    "0404": 118,
+    "0104": 436,
+    "0600": 4307,
+    "0700": 1220,
+    "0106": 27525,
+    "0603": 1607,
+    "0020": 4902,
+    "0029": 90,
+    "0040": 3343,
+    "0403": 141,
+    "0190": 1836,
+    "0019": 556,
+    "0191": 2744,
+    "0181": 2376,
+    "0601": 493,
+    "0070": 6910,
+    "0000": 33,
+    "0001": 3891,
+    "0183": 898,
+    "0199": 112,
+    "0186": 19,
+    "0100": 2415,
+    "0060": 28884,
+    "0080": 8516,
+    "0081": 1237,
+    "0090": 5834,
+    "0091": 252,
+    "0180": 830,
+    "0097": 1867,
+    "0099": 600,
+    "0050": 3641,
+    "0107": 104,
+    "0207": 9,
+    "0082": 521,
+    "0602": 1,
+    "0049": 6,
+    "0017": 122,
+    "0009": 81,
+    "0182": 283,
+    "0083": 207,
+    "0088": 1246,
+    "0089": 164,
+    "0067": 62,
+    "0069": 317,
+    "0192": 600,
+    "0189": 77,
+    "0059": 124,
+    "0196": 7,
+    "0079": 219,
+    "0198": 12,
+    "0077": 14,
+    "0098": 15,
+    "0087": 17,
+    "0194": 19,
+    "0109": 4,
+    "0068": 1,
+    "0027": 5,
+    "(missing)": 3,
+    "0307": 4,
+    "0188": 2,
+    "0108": 6,
+    "0407": 2
+  },
+  "candidateDistribution": [
+    {
+      "useCode": "0010",
+      "description": "R1 ZONE ONE ACRE OR LESS",
+      "category": "OTHER",
+      "all": 4115,
+      "high": 15,
+      "situsPresent": 224
+    },
+    {
+      "useCode": "0060",
+      "description": "VAC>1AC <3 NO R2 3 4 COMM IND",
+      "category": "VACANT_OTHER",
+      "all": 2202,
+      "high": 9,
+      "situsPresent": 72
+    },
+    {
+      "useCode": "5000",
+      "description": "UNDEVELOPED LAND >20AC MT/DES",
+      "category": "VACANT_OTHER",
+      "all": 1036,
+      "high": 11,
+      "situsPresent": 6
+    },
+    {
+      "useCode": "0040",
+      "description": "R4 ZONE",
+      "category": "OTHER",
+      "all": 529,
+      "high": 1,
+      "situsPresent": 4
+    },
+    {
+      "useCode": "0020",
+      "description": "R2 ZONE",
+      "category": "OTHER",
+      "all": 492,
+      "high": 15,
+      "situsPresent": 46
+    },
+    {
+      "useCode": "0070",
+      "description": "VAC=3 AC <7 NO R2 3 4 COMM IND",
+      "category": "VACANT_OTHER",
+      "all": 376,
+      "high": 4,
+      "situsPresent": 26
+    },
+    {
+      "useCode": "0090",
+      "description": "VAC ALL T ZONE INCL T RST R1T",
+      "category": "VACANT_OTHER",
+      "all": 355,
+      "high": 1,
+      "situsPresent": 15
+    },
+    {
+      "useCode": "0080",
+      "description": "VAC 7-20 AC NO R2 3 4 COMM IND",
+      "category": "VACANT_OTHER",
+      "all": 297,
+      "high": 8,
+      "situsPresent": 9
+    },
+    {
+      "useCode": "0001",
+      "description": "VAC <1 AC NO R1/2/3/4/E/C/I",
+      "category": "VACANT_OTHER",
+      "all": 276,
+      "high": 2,
+      "situsPresent": 14
+    },
+    {
+      "useCode": "0101",
+      "description": "SGL FAM RES ON R1 ZONED LAND",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 185,
+      "high": 41,
+      "situsPresent": 184
+    },
+    {
+      "useCode": "0050",
+      "description": "E ZONED LAND ONE ACRE OR LESS",
+      "category": "OTHER",
+      "all": 139,
+      "high": 4,
+      "situsPresent": 36
+    },
+    {
+      "useCode": "4400",
+      "description": "GRAZING OR DRY FARM LAND",
+      "category": "AGRICULTURAL",
+      "all": 108,
+      "high": 2,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0181",
+      "description": "SAME AS 0180 NO T RST R1T ZONE",
+      "category": "UNKNOWN",
+      "all": 88,
+      "high": 19,
+      "situsPresent": 85
+    },
+    {
+      "useCode": "0097",
+      "description": "MS & T ZONING W/LIC MH",
+      "category": "MANUFACTURED_MOBILE",
+      "all": 66,
+      "high": 7,
+      "situsPresent": 57
+    },
+    {
+      "useCode": "0030",
+      "description": "R3 ZONE",
+      "category": "OTHER",
+      "all": 58,
+      "high": 5,
+      "situsPresent": 16
+    },
+    {
+      "useCode": "0106",
+      "description": "SFR NOT ON RS 1 2 3 4",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 58,
+      "high": 19,
+      "situsPresent": 51
+    },
+    {
+      "useCode": "6300",
+      "description": "NO VAL-SUMP ETC",
+      "category": "OTHER",
+      "all": 54,
+      "high": 1,
+      "situsPresent": 24
+    },
+    {
+      "useCode": "6301",
+      "description": "SAME AS 6300 EXCEPT <$1000",
+      "category": "UNKNOWN",
+      "all": 53,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "1010",
+      "description": "VAC C-1 ZONE",
+      "category": "VACANT_OTHER",
+      "all": 52,
+      "high": 1,
+      "situsPresent": 7
+    },
+    {
+      "useCode": "0102",
+      "description": "SGL FAM RES ON R2 ZONED LAND",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 46,
+      "high": 11,
+      "situsPresent": 46
+    },
+    {
+      "useCode": "3010",
+      "description": "VACANT M-1",
+      "category": "VACANT_OTHER",
+      "all": 45,
+      "high": 1,
+      "situsPresent": 4
+    },
+    {
+      "useCode": "1020",
+      "description": "VAC C-2 ZONE",
+      "category": "VACANT_OTHER",
+      "all": 42,
+      "high": 11,
+      "situsPresent": 14
+    },
+    {
+      "useCode": "4000",
+      "description": "UNDEVELOPED LAND >20AC",
+      "category": "VACANT_OTHER",
+      "all": 39,
+      "high": 2,
+      "situsPresent": 7
+    },
+    {
+      "useCode": "0081",
+      "description": "20-40 AC NO R2 3 4 COMM IND",
+      "category": "OTHER",
+      "all": 34,
+      "high": 2,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "0099",
+      "description": "VAC T W/MISC IMP NO LIC MH",
+      "category": "VACANT_OTHER",
+      "all": 33,
+      "high": 5,
+      "situsPresent": 20
+    },
+    {
+      "useCode": "0183",
+      "description": "0180 ALL Z NO MS T RST R1T A Z",
+      "category": "OTHER",
+      "all": 26,
+      "high": 3,
+      "situsPresent": 26
+    },
+    {
+      "useCode": "1000",
+      "description": "COMMERCIAL LAND",
+      "category": "COMMERCIAL",
+      "all": 25,
+      "high": 2,
+      "situsPresent": 16
+    },
+    {
+      "useCode": "0191",
+      "description": "SAME AS 0190 NO T RST R1T ZONE",
+      "category": "UNKNOWN",
+      "all": 23,
+      "high": 8,
+      "situsPresent": 22
+    },
+    {
+      "useCode": "0180",
+      "description": "MH NO PERM FOUNDATION MS ZONE",
+      "category": "MANUFACTURED_MOBILE",
+      "all": 22,
+      "high": 5,
+      "situsPresent": 20
+    },
+    {
+      "useCode": "8305",
+      "description": "CANALS",
+      "category": "OTHER",
+      "all": 20,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0019",
+      "description": "R1 ZONE W/MISC IMP",
+      "category": "OTHER",
+      "all": 19,
+      "high": 4,
+      "situsPresent": 11
+    },
+    {
+      "useCode": "0201",
+      "description": "2 SEPARATE RES ON 1 PARCEL",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 19,
+      "high": 12,
+      "situsPresent": 18
+    },
+    {
+      "useCode": "4300",
+      "description": "IRRIGATED LAND",
+      "category": "AGRICULTURAL",
+      "all": 18,
+      "high": 3,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0103",
+      "description": "SGL FAM RES ON R3 ZONED LAND",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 17,
+      "high": 3,
+      "situsPresent": 17
+    },
+    {
+      "useCode": "0091",
+      "description": "VAC W/MANUFTD HOME SUBDIVISION",
+      "category": "VACANT_RESIDENTIAL",
+      "all": 14,
+      "high": 1,
+      "situsPresent": 9
+    },
+    {
+      "useCode": "0193",
+      "description": "0190 ALL Z NO MS T RST R1T Z",
+      "category": "OTHER",
+      "all": 12,
+      "high": 3,
+      "situsPresent": 12
+    },
+    {
+      "useCode": "6302",
+      "description": "SAME AS 6300 EXCEPT >$1000",
+      "category": "UNKNOWN",
+      "all": 12,
+      "high": 1,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "0069",
+      "description": "SAME AS 0060 W/MISC IMP",
+      "category": "UNKNOWN",
+      "all": 10,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0105",
+      "description": "SGL FAM RES ON COMM/IND ZONE",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 9,
+      "high": 4,
+      "situsPresent": 9
+    },
+    {
+      "useCode": "0192",
+      "description": "SAME AS 0190 A SERIES ZONING",
+      "category": "UNKNOWN",
+      "all": 9,
+      "high": 1,
+      "situsPresent": 9
+    },
+    {
+      "useCode": "0200",
+      "description": "DUPLEX OR 2 LIV UN 1 PARCEL",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 9,
+      "high": 4,
+      "situsPresent": 9
+    },
+    {
+      "useCode": "1706",
+      "description": "CHURCH",
+      "category": "OTHER",
+      "all": 9,
+      "high": 3,
+      "situsPresent": 7
+    },
+    {
+      "useCode": "3020",
+      "description": "VACANT M-2",
+      "category": "VACANT_OTHER",
+      "all": 9,
+      "high": 0,
+      "situsPresent": 5
+    },
+    {
+      "useCode": "8302",
+      "description": "MUTUAL WATER COMPANY",
+      "category": "OTHER",
+      "all": 9,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0079",
+      "description": "SAME AS 0070 W/MISC IMPS",
+      "category": "UNKNOWN",
+      "all": 8,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3086",
+      "description": "VAC IND LAND-CANNABIS CULT",
+      "category": "VACANT_OTHER",
+      "all": 8,
+      "high": 4,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0082",
+      "description": "40-100 AC NO R2 3 4 COMM IND",
+      "category": "OTHER",
+      "all": 7,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0190",
+      "description": "MH PERM FOUND MS ZONING",
+      "category": "MANUFACTURED_MOBILE",
+      "all": 7,
+      "high": 3,
+      "situsPresent": 7
+    },
+    {
+      "useCode": "3030",
+      "description": "VACANT M-3",
+      "category": "VACANT_OTHER",
+      "all": 7,
+      "high": 0,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "0601",
+      "description": "CONDO/PUD COMMON AREA",
+      "category": "OTHER",
+      "all": 6,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0088",
+      "description": "VACANT LAND - RENEWABLE ENERGY",
+      "category": "VACANT_OTHER",
+      "all": 5,
+      "high": 1,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0182",
+      "description": "SAME AS 0180 NO A SERIES ZONE",
+      "category": "UNKNOWN",
+      "all": 5,
+      "high": 0,
+      "situsPresent": 4
+    },
+    {
+      "useCode": "3961",
+      "description": "WIND PARK",
+      "category": "INDUSTRIAL",
+      "all": 5,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "4121",
+      "description": "PISTACHIO",
+      "category": "AGRICULTURAL",
+      "all": 5,
+      "high": 2,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0009",
+      "description": "SAME AS 0001 W/MINOR MISC IMP",
+      "category": "UNKNOWN",
+      "all": 4,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0029",
+      "description": "R2 ZONE W/MISC IMP",
+      "category": "OTHER",
+      "all": 4,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0039",
+      "description": "R3 ZONE W/MISC IMPS",
+      "category": "OTHER",
+      "all": 4,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0059",
+      "description": "SAME AS 0050 W/MISC IMP",
+      "category": "UNKNOWN",
+      "all": 4,
+      "high": 0,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "0600",
+      "description": "TOWNHOUSE OR PUD",
+      "category": "OTHER",
+      "all": 4,
+      "high": 0,
+      "situsPresent": 4
+    },
+    {
+      "useCode": "1100",
+      "description": "SMALL STREET RETAIL < 5000 SF",
+      "category": "COMMERCIAL",
+      "all": 4,
+      "high": 1,
+      "situsPresent": 4
+    },
+    {
+      "useCode": "3000",
+      "description": "VACANT LAND INDUSTRIAL",
+      "category": "VACANT_OTHER",
+      "all": 4,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "8400",
+      "description": "MINING CLAIMS",
+      "category": "MINERAL",
+      "all": 4,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0100",
+      "description": "SGL FAM RES ON RS ZONED LAND",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 3,
+      "high": 1,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "0500",
+      "description": "1 PARCEL W/5-9 UNIT COMPLEX",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 3,
+      "high": 2,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "0700",
+      "description": "SFR ON R2/3/4 LAND, LOT<6000SF",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 3,
+      "high": 1,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "1190",
+      "description": "MULTIPLE USE STORE",
+      "category": "OTHER",
+      "all": 3,
+      "high": 1,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "1203",
+      "description": "COMBO RES & RETAIL",
+      "category": "COMMERCIAL",
+      "all": 3,
+      "high": 2,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "1600",
+      "description": "OFFICE BLDGS",
+      "category": "COMMERCIAL",
+      "all": 3,
+      "high": 2,
+      "situsPresent": 3
+    },
+    {
+      "useCode": "2501",
+      "description": "PARKING LOT",
+      "category": "OTHER",
+      "all": 3,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "5080",
+      "description": ">20AC W/OIL",
+      "category": "OTHER",
+      "all": 3,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0017",
+      "description": "SAME AS 0010 W/LICENSED MH",
+      "category": "UNKNOWN",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "0089",
+      "description": "7-20AC W/MISC",
+      "category": "OTHER",
+      "all": 2,
+      "high": 2,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "0104",
+      "description": "SGL FAM RES ON R4 ZONED LAND",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "0189",
+      "description": "MLTP MHS ANY ZN NO PERM FOUND",
+      "category": "MANUFACTURED_MOBILE",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0302",
+      "description": "PARCEL W/3 SEPARATE RES",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "1029",
+      "description": "SAME AS 1000-1020 W/ MULT. MH",
+      "category": "UNKNOWN",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "1300",
+      "description": "LARGE STREET RETAIL > 5000 SF",
+      "category": "COMMERCIAL",
+      "all": 2,
+      "high": 2,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "2204",
+      "description": "AUTO REPAIR/GARAGE",
+      "category": "COMMERCIAL",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "2490",
+      "description": "MULTI USE AUTOMOTIVE RELATED",
+      "category": "OTHER",
+      "all": 2,
+      "high": 2,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "2990",
+      "description": "MANUFTD HOME PARK W/MISC IMPS",
+      "category": "COMMERCIAL",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3029",
+      "description": "M2  W/MISC IMPS",
+      "category": "OTHER",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3039",
+      "description": "M3  W/MISC IMPS",
+      "category": "OTHER",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3100",
+      "description": "LIGHT MFG",
+      "category": "INDUSTRIAL",
+      "all": 2,
+      "high": 2,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "3186",
+      "description": "CANNABIS PRODUCTION",
+      "category": "OTHER",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3700",
+      "description": "STORAGE (FENCED W/ SMALL OFF)",
+      "category": "INDUSTRIAL",
+      "all": 2,
+      "high": 2,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "3790",
+      "description": "MULTI USE",
+      "category": "OTHER",
+      "all": 2,
+      "high": 1,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "4144",
+      "description": "CHERRY",
+      "category": "AGRICULTURAL",
+      "all": 2,
+      "high": 2,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "4200",
+      "description": "GRAPE VINES",
+      "category": "AGRICULTURAL",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "5009",
+      "description": "SAME AS 5000 W/MISC IMP",
+      "category": "UNKNOWN",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "6030",
+      "description": "INCORPORATED CITY",
+      "category": "GOVERNMENT_EXEMPT",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 2
+    },
+    {
+      "useCode": "8303",
+      "description": "PRIVATE WATER COMPANY",
+      "category": "OTHER",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "8306",
+      "description": "COMMUNITY WATER SYSTEM",
+      "category": "OTHER",
+      "all": 2,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0049",
+      "description": "R4 ZONE W/MISC IMPS",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0067",
+      "description": "SAME AS 0060 W/LIC MH",
+      "category": "UNKNOWN",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0107",
+      "description": "SGL FAM RES + 1 LICENSED MH",
+      "category": "RESIDENTIAL_SINGLE_FAMILY",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0198",
+      "description": "SAME AS 0190 W/LIC MHS",
+      "category": "UNKNOWN",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0300",
+      "description": "TRIPLEX OR 3 LIV UN ON 1 PARC",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0402",
+      "description": "TRIPLEX + 1 RES ON 1 PARCEL",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0503",
+      "description": "1 PARCEL W/(31+) UNIT COMPLEX",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "0504",
+      "description": "1 PARCEL W/(5+) RES COMBO = 5",
+      "category": "RESIDENTIAL_MULTI_FAMILY",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "0603",
+      "description": "CONDOMINIUM",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1027",
+      "description": "SAME AS 1020 W/LIC MH",
+      "category": "UNKNOWN",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1090",
+      "description": "SAME AS 1000 W/MISC IMP",
+      "category": "UNKNOWN",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1601",
+      "description": "MEDIA",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1605",
+      "description": "MEDICAL",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1606",
+      "description": "DENTAL",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1714",
+      "description": "HALF-WAY HOUSE",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1802",
+      "description": "CAFES",
+      "category": "COMMERCIAL",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1807",
+      "description": "DRIVE-IN",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1900",
+      "description": "RECREATIONAL",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "1908",
+      "description": "FRATERNAL ORG",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "2201",
+      "description": "CAR WASH",
+      "category": "COMMERCIAL",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "2301",
+      "description": "SERVICE STATION",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "2390",
+      "description": "MULTI USE PETROLEUM RELATED",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "2800",
+      "description": "MOTEL",
+      "category": "COMMERCIAL",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "2901",
+      "description": "RV/TRAILER PARK",
+      "category": "COMMERCIAL",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3601",
+      "description": "WAREHOUSE",
+      "category": "INDUSTRIAL",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3703",
+      "description": "METAL SALVAGE",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "3705",
+      "description": "TRUCKING COMPANY",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "3962",
+      "description": "SOLAR PARK",
+      "category": "INDUSTRIAL",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "6020",
+      "description": "COUNTY OF KERN",
+      "category": "GOVERNMENT_EXEMPT",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 1
+    },
+    {
+      "useCode": "7000",
+      "description": "TOXIC HAZARD PRESENT ON SITE",
+      "category": "OTHER",
+      "all": 1,
+      "high": 1,
+      "situsPresent": 0
+    },
+    {
+      "useCode": "8301",
+      "description": "PUBLIC UTILITY",
+      "category": "OTHER",
+      "all": 1,
+      "high": 0,
+      "situsPresent": 0
+    }
+  ],
+  "all": {
+    "RESIDENTIAL_SINGLE_FAMILY": {
+      "count": 324,
+      "situsPresent": 316,
+      "LAND_VAL": 324,
+      "IMP_VAL": 324,
+      "NET_VAL": 324,
+      "BASEYR_VAL": 3,
+      "situsRate": 97.5309
+    },
+    "RESIDENTIAL_MULTI_FAMILY": {
+      "count": 37,
+      "situsPresent": 35,
+      "LAND_VAL": 37,
+      "IMP_VAL": 37,
+      "NET_VAL": 37,
+      "BASEYR_VAL": 0,
+      "situsRate": 94.5946
+    },
+    "MANUFACTURED_MOBILE": {
+      "count": 97,
+      "situsPresent": 85,
+      "LAND_VAL": 97,
+      "IMP_VAL": 97,
+      "NET_VAL": 97,
+      "BASEYR_VAL": 3,
+      "situsRate": 87.6289
+    },
+    "VACANT_RESIDENTIAL": {
+      "count": 14,
+      "situsPresent": 9,
+      "LAND_VAL": 14,
+      "IMP_VAL": 14,
+      "NET_VAL": 14,
+      "BASEYR_VAL": 1,
+      "situsRate": 64.2857
+    },
+    "VACANT_OTHER": {
+      "count": 4786,
+      "situsPresent": 203,
+      "LAND_VAL": 4786,
+      "IMP_VAL": 4786,
+      "NET_VAL": 4786,
+      "BASEYR_VAL": 1996,
+      "situsRate": 4.2415
+    },
+    "COMMERCIAL": {
+      "count": 45,
+      "situsPresent": 35,
+      "LAND_VAL": 45,
+      "IMP_VAL": 45,
+      "NET_VAL": 45,
+      "BASEYR_VAL": 0,
+      "situsRate": 77.7778
+    },
+    "INDUSTRIAL": {
+      "count": 11,
+      "situsPresent": 7,
+      "LAND_VAL": 11,
+      "IMP_VAL": 11,
+      "NET_VAL": 11,
+      "BASEYR_VAL": 0,
+      "situsRate": 63.6364
+    },
+    "AGRICULTURAL": {
+      "count": 135,
+      "situsPresent": 3,
+      "LAND_VAL": 135,
+      "IMP_VAL": 135,
+      "NET_VAL": 135,
+      "BASEYR_VAL": 13,
+      "situsRate": 2.2222
+    },
+    "GOVERNMENT_EXEMPT": {
+      "count": 3,
+      "situsPresent": 3,
+      "LAND_VAL": 3,
+      "IMP_VAL": 3,
+      "NET_VAL": 3,
+      "BASEYR_VAL": 0,
+      "situsRate": 100
+    },
+    "MINERAL": {
+      "count": 4,
+      "situsPresent": 0,
+      "LAND_VAL": 4,
+      "IMP_VAL": 4,
+      "NET_VAL": 4,
+      "BASEYR_VAL": 0,
+      "situsRate": 0
+    },
+    "OTHER": {
+      "count": 5581,
+      "situsPresent": 440,
+      "LAND_VAL": 5581,
+      "IMP_VAL": 5581,
+      "NET_VAL": 5581,
+      "BASEYR_VAL": 1112,
+      "situsRate": 7.8839
+    },
+    "UNKNOWN": {
+      "count": 226,
+      "situsPresent": 134,
+      "LAND_VAL": 226,
+      "IMP_VAL": 226,
+      "NET_VAL": 226,
+      "BASEYR_VAL": 5,
+      "situsRate": 59.292
+    }
+  },
+  "high": {
+    "RESIDENTIAL_SINGLE_FAMILY": {
+      "count": 81,
+      "situsPresent": 81,
+      "LAND_VAL": 81,
+      "IMP_VAL": 81,
+      "NET_VAL": 81,
+      "BASEYR_VAL": 3,
+      "situsRate": 100
+    },
+    "RESIDENTIAL_MULTI_FAMILY": {
+      "count": 21,
+      "situsPresent": 20,
+      "LAND_VAL": 21,
+      "IMP_VAL": 21,
+      "NET_VAL": 21,
+      "BASEYR_VAL": 0,
+      "situsRate": 95.2381
+    },
+    "MANUFACTURED_MOBILE": {
+      "count": 16,
+      "situsPresent": 15,
+      "LAND_VAL": 16,
+      "IMP_VAL": 16,
+      "NET_VAL": 16,
+      "BASEYR_VAL": 1,
+      "situsRate": 93.75
+    },
+    "VACANT_RESIDENTIAL": {
+      "count": 1,
+      "situsPresent": 1,
+      "LAND_VAL": 1,
+      "IMP_VAL": 1,
+      "NET_VAL": 1,
+      "BASEYR_VAL": 0,
+      "situsRate": 100
+    },
+    "VACANT_OTHER": {
+      "count": 60,
+      "situsPresent": 27,
+      "LAND_VAL": 60,
+      "IMP_VAL": 60,
+      "NET_VAL": 60,
+      "BASEYR_VAL": 2,
+      "situsRate": 45
+    },
+    "COMMERCIAL": {
+      "count": 13,
+      "situsPresent": 13,
+      "LAND_VAL": 13,
+      "IMP_VAL": 13,
+      "NET_VAL": 13,
+      "BASEYR_VAL": 0,
+      "situsRate": 100
+    },
+    "INDUSTRIAL": {
+      "count": 4,
+      "situsPresent": 4,
+      "LAND_VAL": 4,
+      "IMP_VAL": 4,
+      "NET_VAL": 4,
+      "BASEYR_VAL": 0,
+      "situsRate": 100
+    },
+    "AGRICULTURAL": {
+      "count": 9,
+      "situsPresent": 1,
+      "LAND_VAL": 9,
+      "IMP_VAL": 9,
+      "NET_VAL": 9,
+      "BASEYR_VAL": 1,
+      "situsRate": 11.1111
+    },
+    "GOVERNMENT_EXEMPT": {
+      "count": 0,
+      "situsPresent": 0,
+      "LAND_VAL": 0,
+      "IMP_VAL": 0,
+      "NET_VAL": 0,
+      "BASEYR_VAL": 0,
+      "situsRate": null
+    },
+    "MINERAL": {
+      "count": 0,
+      "situsPresent": 0,
+      "LAND_VAL": 0,
+      "IMP_VAL": 0,
+      "NET_VAL": 0,
+      "BASEYR_VAL": 0,
+      "situsRate": null
+    },
+    "OTHER": {
+      "count": 74,
+      "situsPresent": 69,
+      "LAND_VAL": 74,
+      "IMP_VAL": 74,
+      "NET_VAL": 74,
+      "BASEYR_VAL": 4,
+      "situsRate": 93.2432
+    },
+    "UNKNOWN": {
+      "count": 30,
+      "situsPresent": 27,
+      "LAND_VAL": 30,
+      "IMP_VAL": 30,
+      "NET_VAL": 30,
+      "BASEYR_VAL": 1,
+      "situsRate": 90
+    }
+  },
+  "rule": "Description-based conservative research categories; no numeric-prefix or zoning-to-building inference. SAME AS/unknown descriptions require review.",
+  "scoreChanged": false
+}

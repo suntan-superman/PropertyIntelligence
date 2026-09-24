@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-20T23:34:42.102Z",
+  "at": "2026-09-24T17:03:51.469Z",
   "status": "PASS",
   "checks": [
     "Property mode / no deal assumptions / 15 mapped and retained comps",
@@ -21,8 +21,8 @@
   "report": {
     "pages": 12,
     "digest": "a04821b5d7cb88dc99bfadbc44094a86403f57067f8f15b092f9597d498b93a5",
-    "sha256": "ed8c01d66135330e10110be8c6f95131047a496827cf92db991204e08fc4789c",
-    "download": "/api/reports/37b020d5-0f58-4920-a27e-ff27a653e6f8"
+    "sha256": "135ff3a3448866b855ca08ebae8bc9218a1b6a52c791d4b333f727e1c2353d7c",
+    "download": "/api/reports/b80b8057-2ffa-4ded-9e43-b7a4afd834f4"
   },
   "preservation": {
     "status": "PASS",

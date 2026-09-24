@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "previewUrl": "https://6ab54dca6d9373bd7e38bd20--worksidepropertyintelligence.netlify.app",
+  "providerCalls": 0,
+  "mutations": 0,
+  "checks": [
+    "High-SFR View opens allowlisted detail",
+    "Escape closes and list state remains",
+    "390px full-width detail sheet",
+    "Close returns to exact filtered list",
+    "View/browser path made zero mutations and provider requests"
+  ],
+  "screenshots": [
+    "data/validation/sprint6_3_2-preview-desktop.png",
+    "data/validation/sprint6_3_2-preview-mobile.png"
+  ]
+}

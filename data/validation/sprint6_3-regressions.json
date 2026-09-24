@@ -1,0 +1,198 @@
+{
+  "status": "PASS",
+  "workspace": "data/runtime/sprint6_3/regression-36086db6-7ef0-47e8-8828-f406c67de770",
+  "providerCalls": 0,
+  "productionDatabaseCalls": 0,
+  "checks": [
+    {
+      "script": "qa-kern-import.js",
+      "exitCode": 0,
+      "ms": 74
+    },
+    {
+      "script": "qa-kern-screening.js",
+      "exitCode": 0,
+      "ms": 73
+    },
+    {
+      "script": "qa-mao.js",
+      "exitCode": 0,
+      "ms": 104
+    },
+    {
+      "script": "test-foundation.js",
+      "exitCode": 0,
+      "ms": 3297
+    },
+    {
+      "script": "qa-ui.js",
+      "exitCode": 0,
+      "ms": 21868
+    },
+    {
+      "script": "qa-ux-refinement.js",
+      "exitCode": 0,
+      "ms": 3920
+    },
+    {
+      "script": "qa-deal-cleanup.js",
+      "exitCode": 0,
+      "ms": 3142
+    },
+    {
+      "script": "qa-maps.js",
+      "exitCode": 0,
+      "ms": 19543
+    },
+    {
+      "script": "qa-reports.js",
+      "exitCode": 0,
+      "ms": 11261
+    },
+    {
+      "script": "qa-runtime-ui.js",
+      "exitCode": 0,
+      "ms": 2088
+    },
+    {
+      "script": "qa-runtime-security.js",
+      "exitCode": 0,
+      "ms": 68
+    },
+    {
+      "script": "qa-investment-report.js",
+      "exitCode": 0,
+      "ms": 23718
+    }
+  ],
+  "pdf": {
+    "status": "PASS",
+    "at": "2026-09-23T20:17:23.418Z",
+    "results": [
+      {
+        "fixture": "complete",
+        "pages": 8,
+        "renderMs": 582,
+        "bytes": 101937,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "sparse",
+        "pages": 6,
+        "renderMs": 565,
+        "bytes": 93456,
+        "comps": 0,
+        "status": "PASS"
+      },
+      {
+        "fixture": "exit-conflict",
+        "pages": 8,
+        "renderMs": 549,
+        "bytes": 102316,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "many-encumbrances",
+        "pages": 11,
+        "renderMs": 566,
+        "bytes": 109555,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "large-rehab",
+        "pages": 34,
+        "renderMs": 638,
+        "bytes": 152276,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "all-15-comps",
+        "pages": 8,
+        "renderMs": 571,
+        "bytes": 101937,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "long-legal",
+        "pages": 14,
+        "renderMs": 571,
+        "bytes": 112923,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "many-diligence",
+        "pages": 14,
+        "renderMs": 604,
+        "bytes": 113723,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "manufactured",
+        "pages": 8,
+        "renderMs": 558,
+        "bytes": 102156,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "explicit-zero",
+        "pages": 8,
+        "renderMs": 568,
+        "bytes": 101954,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "no-condition",
+        "pages": 8,
+        "renderMs": 581,
+        "bytes": 101736,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "historical",
+        "pages": 8,
+        "renderMs": 557,
+        "bytes": 101964,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "long-sources",
+        "pages": 10,
+        "renderMs": 598,
+        "bytes": 105933,
+        "comps": 15,
+        "status": "PASS"
+      },
+      {
+        "fixture": "minimal",
+        "pages": 6,
+        "renderMs": 572,
+        "bytes": 93456,
+        "comps": 0,
+        "status": "PASS"
+      },
+      {
+        "fixture": "extreme-dollars",
+        "pages": 8,
+        "renderMs": 610,
+        "bytes": 101944,
+        "comps": 15,
+        "status": "PASS"
+      }
+    ],
+    "localApiFixtures": 3,
+    "protectedFiles": 351,
+    "providerCalls": 0,
+    "visualDirectory": "data/validation/sprint6_1-pdf"
+  }
+}

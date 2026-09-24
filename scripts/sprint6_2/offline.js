@@ -1,0 +1,15 @@
+import net from 'node:net';
+import tls from 'node:tls';
+import http from 'node:http';
+import https from 'node:https';
+import http2 from 'node:http2';
+import dns from 'node:dns';
+import dgram from 'node:dgram';
+import {syncBuiltinESMExports} from 'node:module';
+export const network={attempts:0};
+const stop=()=>{network.attempts++;throw new Error('SPRINT6_2_NETWORK_FORBIDDEN');};
+globalThis.fetch=stop;globalThis.WebSocket=class{constructor(){stop();}};
+net.Socket.prototype.connect=stop;net.connect=stop;net.createConnection=stop;tls.connect=stop;
+http.request=stop;http.get=stop;https.request=stop;https.get=stop;http2.connect=stop;dgram.createSocket=stop;
+for(const o of [dns,dns.promises])for(const key of Object.keys(o))if(/^(lookup|resolve|reverse)/.test(key)&&typeof o[key]==='function')o[key]=stop;
+syncBuiltinESMExports();

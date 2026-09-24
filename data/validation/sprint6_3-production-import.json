@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "gate": 13,
+  "mode": "AUTHORIZED_PRODUCTION_IMPORT",
+  "migrationInvocations": 0,
+  "providerCalls": 0,
+  "googleCalls": 0,
+  "countyNetworkCalls": 0,
+  "databaseConnections": 3,
+  "databaseQueryCalls": 393,
+  "productionDeployment": false,
+  "sourcePlan": {
+    "importerVersion": "kern-assessor-import-v1",
+    "sourceEdition": "2026 Final",
+    "sourceDate": "2026-06-26",
+    "countyZipSha256": "7954771690266e4f54402b4889ef5a9ae69dfdb04f9e34a6d822f115550c92ae",
+    "countyMemberSha256": "3f96888125baad5525b1791d2e2ab56b5403b14d10f489378059341c0d17fbd5",
+    "ptsSha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+    "highPopulationSha256": "3d1d7be5c8d84cd0c63834d45f278efbbeb174bec0f59e383831c61416cc8dd3",
+    "candidatePopulationSha256": "bbd74e59e42fa212956de444f99c53a748f9b0ef25586818d2cb525a2138a74e",
+    "payloadSha256": "1b234fc477a7ffef433c293bb824b721e4c4ba2eb18afea78c04197101ec0feb",
+    "candidateCount": 11316,
+    "exactCount": 11263,
+    "unmatchedCount": 53,
+    "geometryExact": 11263,
+    "situsCounts": {
+      "SITUS_MISSING": 9990,
+      "SITUS_PRESENT": 1270,
+      "NOT_APPLICABLE": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "categoryCounts": {
+      "OTHER": 5581,
+      "VACANT_OTHER": 4786,
+      "UNKNOWN": 226,
+      "NOT_APPLICABLE": 53,
+      "COMMERCIAL": 45,
+      "RESIDENTIAL_SINGLE_FAMILY": 324,
+      "INDUSTRIAL": 11,
+      "AGRICULTURAL": 135,
+      "RESIDENTIAL_MULTI_FAMILY": 37,
+      "MANUFACTURED_MOBILE": 97,
+      "GOVERNMENT_EXEMPT": 3,
+      "VACANT_RESIDENTIAL": 14,
+      "MINERAL": 4
+    },
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "unmatched": 3,
+      "situs": 258,
+      "residential": 118,
+      "singleFamily": 81,
+      "singleFamilySitus": 81
+    },
+    "reviewFlagCounts": {
+      "SITUS_MISSING": 9990,
+      "USE_CATEGORY_REVIEW": 5807,
+      "ROLL_ACRES_EXPLICIT_ZERO": 6860,
+      "BASE_YEAR_VALUE_MISSING": 8130,
+      "ACREAGE_DELTA_GT_0_01": 4397,
+      "ASSESSOR_UNMATCHED": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "reviewRequired": 11316,
+    "proposedNewBatch": {
+      "inserts": 11316,
+      "supersessions": 0,
+      "rejections": 0
+    },
+    "discrepancies": [],
+    "providerCalls": 0,
+    "networkCalls": 0
+  },
+  "migration": {
+    "invocations": 0,
+    "ledger": [
+      {
+        "filename": "001_persistent_intelligence.sql",
+        "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+      },
+      {
+        "filename": "002_acquisition_decisions.sql",
+        "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+      },
+      {
+        "filename": "003_opportunity_discovery.sql",
+        "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+      },
+      {
+        "filename": "004_kern_assessor_opportunity_enrichment.sql",
+        "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+      }
+    ],
+    "alreadyApplied": true
+  },
+  "tls": {
+    "encrypted": true,
+    "authorized": true
+  },
+  "namespace": {
+    "namespace": "public",
+    "namespaces": "{public,pg_catalog}"
+  },
+  "ledger": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    }
+  ],
+  "preImportCounts": {
+    "batches": 0,
+    "observations": 0
+  },
+  "existingBefore": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "source": {
+    "recordCount": 11321
+  },
+  "scoreStatusFingerprint": "fc883cf777b35b966d5fdd84d44d2005739e200fea0a19e0497641e50a7a0a17",
+  "import": {
+    "batchId": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "replay": false,
+    "inserts": 11316,
+    "supersessions": 0,
+    "rejections": 0,
+    "providerCalls": 0
+  },
+  "batch": {
+    "id": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "committedAt": "2026-09-23T22:52:41.498Z",
+    "summary": {
+      "payloadSha256": "1b234fc477a7ffef433c293bb824b721e4c4ba2eb18afea78c04197101ec0feb",
+      "candidatePopulationSha256": "bbd74e59e42fa212956de444f99c53a748f9b0ef25586818d2cb525a2138a74e",
+      "highPopulationSha256": "3d1d7be5c8d84cd0c63834d45f278efbbeb174bec0f59e383831c61416cc8dd3"
+    }
+  },
+  "postCounts": {
+    "observations": 11316,
+    "crosswalk": {
+      "MATCHED_EXACT": 11263,
+      "UNMATCHED": 53
+    },
+    "geometry": {
+      "GEOMETRY_EXACT": 11263,
+      "NOT_APPLICABLE": 53
+    },
+    "situs": {
+      "SITUS_MISSING": 9990,
+      "SITUS_PRESENT": 1270,
+      "NOT_APPLICABLE": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "categories": {
+      "OTHER": 5581,
+      "VACANT_OTHER": 4786,
+      "UNKNOWN": 226,
+      "NOT_APPLICABLE": 53,
+      "COMMERCIAL": 45,
+      "RESIDENTIAL_SINGLE_FAMILY": 324,
+      "INDUSTRIAL": 11,
+      "AGRICULTURAL": 135,
+      "RESIDENTIAL_MULTI_FAMILY": 37,
+      "MANUFACTURED_MOBILE": 97,
+      "GOVERNMENT_EXEMPT": 3,
+      "VACANT_RESIDENTIAL": 14,
+      "MINERAL": 4
+    },
+    "reviewFlags": {
+      "SITUS_MISSING": 9990,
+      "USE_CATEGORY_REVIEW": 5807,
+      "ROLL_ACRES_EXPLICIT_ZERO": 6860,
+      "BASE_YEAR_VALUE_MISSING": 8130,
+      "ACREAGE_DELTA_GT_0_01": 4397,
+      "ASSESSOR_UNMATCHED": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "unmatched": 3,
+      "situs": 258,
+      "residential": 118,
+      "singleFamily": 81,
+      "singleFamilySitus": 81
+    },
+    "highSingleFamilyWithoutCountySitus": 0
+  },
+  "scoreStatusUnchanged": true,
+  "safeInventory": {
+    "forbiddenColumns": 0,
+    "rawPolygons": 0,
+    "ownerContactData": 0,
+    "countyAssessmentStates": {
+      "baseYear": {
+        "VALUE_PRESENT": 3133,
+        "VALUE_MISSING": 8130,
+        "NOT_APPLICABLE": 53
+      },
+      "countyAcres": {
+        "EXPLICIT_ZERO": 6860,
+        "VALUE_PRESENT": 4403,
+        "NOT_APPLICABLE": 53
+      }
+    }
+  },
+  "existingAfter": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "existingDataUnchanged": true,
+  "replay": {
+    "batchId": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "replay": true,
+    "inserts": 0,
+    "supersessions": 0,
+    "rejections": 0,
+    "providerCalls": 0
+  },
+  "batchCountAfterReplay": 1,
+  "observationCountAfterReplay": 11316,
+  "providerAccounting": {
+    "rentCastCalls": 0,
+    "googleCalls": 0,
+    "countyNetworkCalls": 0,
+    "supabaseDatabaseTraffic": "nonzero; wrapper reconciliation queries recorded separately from importer internals",
+    "runnerInstrumentedQueryCalls": 393
+  },
+  "stage": "GATE_13_IMPORT_COMPLETE_STOP",
+  "nextAction": "STOP_NO_PREVIEW_OR_DEPLOYMENT"
+}

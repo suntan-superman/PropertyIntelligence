@@ -1,0 +1,112 @@
+{
+  "status": "PASS",
+  "stage": "DEPLOYED_RUNTIME_CERTIFIED",
+  "recommendation": "PREVIEW_CERTIFIED_STOP_BEFORE_PRODUCTION",
+  "deployId": "6ab4689b129d477bd21c54f4",
+  "previewUrl": "https://6ab4689b129d477bd21c54f4--worksidepropertyintelligence.netlify.app",
+  "supersedesFailedPreview": "6ab45d8eeff8ea741f01670e",
+  "productionDeployment": false,
+  "migrationInvocations": 0,
+  "enrichmentImportInvocations": 0,
+  "netlifyDatabaseProvisioningObserved": false,
+  "health": {
+    "ok": true,
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true,
+    "rentcastConfigured": true,
+    "durableSessions": true
+  },
+  "certifiedBatch": {
+    "batchId": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "observations": 11316,
+    "matchedExact": 11263,
+    "unmatched": 53,
+    "countySitusPresent": 1270,
+    "geometryExact": 11263,
+    "priority": { "high": 312, "medium": 701, "low": 10303 },
+    "highResidentialBuildings": 118,
+    "highSingleFamily": 81,
+    "highSingleFamilyWithSitus": 81
+  },
+  "serverPagination": { "defaultPageSize": 25, "defaultTotal": 11316, "maxObservedPageSize": 25 },
+  "filterTotals": {
+    "HIGH_REVIEW_PRIORITY": 312,
+    "MEDIUM_REVIEW_PRIORITY": 701,
+    "LOW_REVIEW_PRIORITY": 10303,
+    "MATCHED_EXACT": 11263,
+    "UNMATCHED": 53,
+    "HIGH_RESIDENTIAL": 118,
+    "HIGH_SFR": 81,
+    "RESIDENTIAL_SINGLE_FAMILY": 324,
+    "RESIDENTIAL_MULTI_FAMILY": 37,
+    "MANUFACTURED_MOBILE": 97,
+    "VACANT_RESIDENTIAL": 14,
+    "VACANT_OTHER": 4786,
+    "COMMERCIAL": 45,
+    "INDUSTRIAL": 11,
+    "AGRICULTURAL": 135,
+    "OTHER_UNKNOWN": 5807,
+    "HAS_SITUS": 1270,
+    "GEOMETRY_EXACT": 11263,
+    "REVIEW_REQUIRED": 11316
+  },
+  "representativeCandidates": {
+    "highSingleFamilyWithSitus": "52273c0b-021d-4514-9de8-274c58fb954b",
+    "highMultiFamily": "ac8dfcac-97fc-4753-b3f7-61ad0f487b36",
+    "manufacturedMissingSitus": "91898290-1118-4300-864f-7e980450c315",
+    "unmatched": "19aeaf69-6e37-4676-b62b-cfde7de58097",
+    "explicitZeroAcreage": "1f4312d6-d73c-4ded-8f30-ce1c9f1a86bb"
+  },
+  "responseContract": {
+    "metricsKeys": ["counts", "quality"],
+    "rawProvenancePayload": false,
+    "approvedAssessorEvidence": true,
+    "candidateDetailPrivacyScan": "PASS",
+    "reviewEndpointMissingAction": { "status": 400, "error": "REVIEW_ACTION_REQUIRED" },
+    "csvHeaders": "id,candidate_key,atn,apn,address,priority_band,screening_score,identity_status,candidate_status,amount_owed,resolved_property_id,source_edition",
+    "csvAssessorFields": false,
+    "forbiddenResponseKeys": false,
+    "falsePositiveScanNote": "dba matches occurred only inside UUID substrings; no DBA field was present"
+  },
+  "detailAndPresentation": {
+    "coldSeparateRequests": true,
+    "approvedProvenance": ["source_type", "source_name", "county", "assessor_source_edition", "assessor_source_date", "disclaimer_reference", "import_batch_id", "source_row_locator", "source_row_fingerprint"],
+    "countySitusWarning": true,
+    "taxRollNotMarketValueDisclaimer": true,
+    "uiPrivacyText": true,
+    "analyzeCancelStatus": 409,
+    "analyzeCancelError": "ENRICHMENT_CONFIRMATION_REQUIRED",
+    "providerCalls": 0
+  },
+  "latencyMs": {
+    "sampleCountPerEndpoint": 3,
+    "defaultPage": { "p50": 1435.1, "p95": 1653.5 },
+    "high": { "p50": 908.5, "p95": 959.2 },
+    "highResidential": { "p50": 884.9, "p95": 910.2 },
+    "highSfr": { "p50": 937.7, "p95": 1006.3 },
+    "hasSitus": { "p50": 1004.3, "p95": 1010.8 },
+    "assessorExact": { "p50": 1190.5, "p95": 1250.7 },
+    "candidateDetail": { "p50": 943.7, "p95": 990.4 },
+    "unmatchedDetail": { "p50": 819.3, "p95": 833.8 }
+  },
+  "security": {
+    "browserBundleCredentialAndPathScan": "PASS",
+    "deployedFunctionArtifactCredentialScan": "PASS_LOCAL_CERTIFIED_BUNDLE",
+    "deployedFunctionLogsCredentialScan": "PASS_SANITIZED_DURATION_MEMORY_ONLY",
+    "deployedResponsesPrivacyScan": "PASS",
+    "qaArtifactCredentialScan": "PASS_42_FILES",
+    "providerCalls": { "rentcast": 0, "google": 0, "county": 0 }
+  },
+  "regressions": {
+    "npmTest": "PASS_128_OF_128",
+    "apiPrivacyTests": "PASS_5_OF_5",
+    "assessorQa": "PASS_7_OF_7",
+    "webBuild": "PASS",
+    "webTest": "PASS",
+    "security": "PASS_42_FILES",
+    "oldSprint6_2Freeze": "24_PASS_1_EXPECTED_SCOPED_FAILURE"
+  },
+  "limitations": ["Supabase database traffic is real and nonzero; no provider calls occurred.", "Hosted Function logs expose only sanitized duration/memory records.", "Production application deployment remains unauthorized."]
+}

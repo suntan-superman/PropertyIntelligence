@@ -1,0 +1,16 @@
+{
+  "zipAuditExtractMs": 5757.8976999999995,
+  "dbfLoadProfileMs": 2707.0546999999997,
+  "atnJoinMs": 16.390699999999924,
+  "kipsAuditMs": 175.55349999999999,
+  "kipsFallbackMs": 0,
+  "historyAuditFallbackMs": 801.5092000000004,
+  "geometryLoadJoinMs": 669.8636000000006,
+  "totalRunMs": 5979.8819,
+  "processPeakRssBytes": 511156224,
+  "method": "4 MiB DBF batches; candidate-only land records; ID counters; SHP+SHX read for record existence only. Timings are observational, not benchmark guarantees.",
+  "networkAttempts": 0,
+  "providerCalls": 0,
+  "dbConnections": 0,
+  "dbWrites": 0
+}

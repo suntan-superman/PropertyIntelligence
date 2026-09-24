@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "mode": "ISOLATED_SCHEMA_ONLY",
+  "qaSchema": "qa_sprint6_3_1_b81a97399d53498c93a903707a5578b0",
+  "productionWrites": 0,
+  "productionMigrationApplied": false,
+  "providerCalls": 0,
+  "migrations": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    },
+    {
+      "filename": "005_candidate_address_resolutions.sql",
+      "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1"
+    }
+  ],
+  "tls": {
+    "encrypted": true,
+    "authorized": true
+  },
+  "namespace": {
+    "currentSchema": "qa_sprint6_3_1_b81a97399d53498c93a903707a5578b0",
+    "currentSchemas": "{qa_sprint6_3_1_b81a97399d53498c93a903707a5578b0,pg_catalog}"
+  },
+  "schema": {
+    "tableCount": 29,
+    "canonicalRows": 0,
+    "indexes": [
+      "candidate_address_resolutions_active_candidate_idx",
+      "candidate_address_resolutions_history_idx",
+      "candidate_address_resolutions_idempotency_idx",
+      "candidate_address_resolutions_pkey"
+    ],
+    "triggers": [
+      "candidate_address_resolution_guard"
+    ],
+    "constraints": 18
+  },
+  "addressBehavior": {
+    "activeUniqueness": true,
+    "immutableHistory": true,
+    "versions": 2
+  },
+  "cleanup": {
+    "dropped": true
+  },
+  "completedStage": "ISOLATED_REBUILD_CERTIFIED"
+}

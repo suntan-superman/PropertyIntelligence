@@ -1,0 +1,207 @@
+{
+  "status": "PASS",
+  "mode": "PRODUCTION_SCHEMA_CERTIFICATION_AND_ROLLBACK_QA",
+  "migrationInvocations": 0,
+  "providerCalls": 0,
+  "googleCalls": 0,
+  "countyNetworkCalls": 0,
+  "realCandidateAddressWrites": 0,
+  "databaseQueryCalls": 271,
+  "tls": {
+    "encrypted": true,
+    "authorized": true,
+    "protocol": "TLSv1.3"
+  },
+  "ledger": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "appliedAt": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "appliedAt": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "appliedAt": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "appliedAt": "2026-09-23T20:25:49.044Z"
+    },
+    {
+      "filename": "005_candidate_address_resolutions.sql",
+      "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1",
+      "appliedAt": "2026-09-24T14:53:36.797Z"
+    }
+  ],
+  "schema": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "candidate_id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "county_enrichment_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "county_situs_raw",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "street",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "city",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "state",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "postal_code",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "postal_code_extension",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "formatted_address",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "resolution_source",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "resolution_method",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "verification_status",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "provider_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "provider_place_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "provider_payload_fingerprint",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "analyst_confirmed",
+        "type": "boolean",
+        "nullable": "NO"
+      },
+      {
+        "name": "confirmed_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      },
+      {
+        "name": "superseded_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_by_context",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "version",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "text",
+        "nullable": "YES"
+      }
+    ],
+    "indexes": [
+      "candidate_address_resolutions_active_candidate_idx",
+      "candidate_address_resolutions_history_idx",
+      "candidate_address_resolutions_idempotency_idx",
+      "candidate_address_resolutions_pkey"
+    ]
+  },
+  "protectedBefore": {
+    "metadataSha256": "e0daad0132ead14a5af4ed08386ecacbe826ac23dd64cbc5150bd9f90954b0fd",
+    "dataSha256": "eff362d8bf7de1ae1ab393f1b745ed6d76fcc4c77c8b1991cc3e5d229875ca09",
+    "tableCount": 28,
+    "rows": 80453
+  },
+  "rollbackQa": {
+    "candidateTag": "SPRINT6_3_1_ADDRESS_QA_04e629c9-bada-4554-b17c-55a79d21b925",
+    "invalidAddressRejected": true,
+    "zipPlus4": true,
+    "manualSource": true,
+    "analystConfirmation": true,
+    "idempotentReplay": true,
+    "activeCount": 1,
+    "historyVersions": 2,
+    "immutableSupersession": true,
+    "identityConflictStopped": true,
+    "candidateScoreStatusUnchanged": true,
+    "assessorUnchanged": true,
+    "providerCalls": 0
+  },
+  "protectedAfter": {
+    "metadataSha256": "e0daad0132ead14a5af4ed08386ecacbe826ac23dd64cbc5150bd9f90954b0fd",
+    "dataSha256": "eff362d8bf7de1ae1ab393f1b745ed6d76fcc4c77c8b1991cc3e5d229875ca09",
+    "tableCount": 28,
+    "rows": 80453
+  },
+  "postRollback": {
+    "canonicalRows": 0,
+    "syntheticAbsent": true,
+    "ledgerUnchanged": true,
+    "assessorUnchanged": true,
+    "protectedUnchanged": true
+  },
+  "completedAt": "2026-09-24T14:57:58.931Z"
+}

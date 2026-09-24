@@ -1,0 +1,18 @@
+# Sprint 6.3 schema — production 004 certified; Gate 12 pending
+
+Gate 3 passed using the explicitly authorized separate certification entry point. Following subsequent operator authorization and fresh prerequisite checks, the unchanged migration runner applied 004 exactly once to `public` on 2026-09-23 at 20:25:49.044Z. Gate 11 production schema certification passed: all expected columns, ten indexes, 38 checks, three restrictive FKs, two PKs, two unique constraints, two enabled triggers with bodies matching certified SQL, RLS enabled and zero public API grants/policies. Both new tables remain empty. Existing table metadata/data and migrations 001–003 are unchanged. Do not rerun 004. Gate 12 stopped on a QA-only namespace-quoting error before any synthetic inserts; no schema workaround is necessary or authorized.
+
+`netlify/database/migrations/004_kern_assessor_opportunity_enrichment.sql` adds:
+
+- `opportunity_assessor_import_batches`: PTS discovery-source FK, source edition/date, ZIP/member/PTS hashes, population fingerprints, importer version, expected counts, transactional import state and summary. Edition/source-hash uniqueness prevents a new batch on replay.
+- `opportunity_assessor_enrichments`: candidate/batch FKs, provenance, separate raw/normalized PTS and Assessor ATNs, APN9, raw situs/status, official use code/description, independently labeled research category/version/reason, decimal county assessments, null/zero statuses, county acreage, separate shape-area diagnostics, flags and supersession timestamps.
+
+Money uses `numeric(19,5)` to preserve the county DBF scale; shape acreage uses `numeric(24,11)`. No owner/contact/billing/care-of/DBA fields, raw records or polygon vertices are included. APN9 has a nonunique index: multiple assessment entities may reference the same parcel. Current observation uniqueness is on candidate ID only, with superseded history retained.
+
+Restrictive FKs, source membership/provenance triggers, exact-identity checks, explicit null/zero constraints, fixed review flags and batch-completion counts are database-certified. Observation changes permit only one-way supersession; deletion and completed-batch mutation are rejected. Actual isolated-PG tests proved atomic failure rollback, identical replay, historical-content retention and next-edition supersession. Source-key advisory locking and candidate locking serialize imports; a concurrent multi-client load test has not been claimed.
+
+Partial current-row indexes cover status/category/situs, geometry and review-required filtering; candidate/history and APN9 indexes support reopen/provenance. All 10 new indexes (including PK/unique-backed indexes) exist in the certified schema. Three-candidate remote SQL list/filter timings were 57–155 ms; no full-population production benchmark is claimed.
+
+Both new tables enable RLS with no public policies and revoke table privileges from PUBLIC and, if present, `anon`/`authenticated`. Actual isolated and production catalog inspection confirmed RLS and zero grants to those roles. No existing table policies/grants changed; this does not remediate historical Supabase security advisories. Production persistence/import validation is not claimed from schema certification alone.
+
+Migrations 001–003, v1 screening, all certified 6.2 artifacts, existing analytical/PDF/map code and the normal migration/runtime adapters remain byte-identical. Four explicitly scoped integration files changed (package/router/App/Opportunities). See the completion report for checksum ledger, 28-table/69-index/39-FK/2-trigger certification and public fingerprints. Static unit tests are reported separately from actual PostgreSQL execution.

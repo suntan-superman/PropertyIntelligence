@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "at": "2026-09-20T23:34:26.718Z",
+  "at": "2026-09-20T23:59:41.284Z",
   "results": [
     {
       "fixture": "complete",
       "pages": 8,
-      "renderMs": 690,
+      "renderMs": 633,
       "bytes": 101937,
       "comps": 15,
       "status": "PASS"
@@ -13,7 +13,7 @@
     {
       "fixture": "sparse",
       "pages": 6,
-      "renderMs": 614,
+      "renderMs": 549,
       "bytes": 93456,
       "comps": 0,
       "status": "PASS"
@@ -21,7 +21,7 @@
     {
       "fixture": "exit-conflict",
       "pages": 8,
-      "renderMs": 638,
+      "renderMs": 590,
       "bytes": 102316,
       "comps": 15,
       "status": "PASS"
@@ -29,7 +29,7 @@
     {
       "fixture": "many-encumbrances",
       "pages": 11,
-      "renderMs": 642,
+      "renderMs": 621,
       "bytes": 109555,
       "comps": 15,
       "status": "PASS"
@@ -37,7 +37,7 @@
     {
       "fixture": "large-rehab",
       "pages": 34,
-      "renderMs": 766,
+      "renderMs": 651,
       "bytes": 152276,
       "comps": 15,
       "status": "PASS"
@@ -45,7 +45,7 @@
     {
       "fixture": "all-15-comps",
       "pages": 8,
-      "renderMs": 647,
+      "renderMs": 648,
       "bytes": 101937,
       "comps": 15,
       "status": "PASS"
@@ -53,7 +53,7 @@
     {
       "fixture": "long-legal",
       "pages": 14,
-      "renderMs": 631,
+      "renderMs": 604,
       "bytes": 112923,
       "comps": 15,
       "status": "PASS"
@@ -61,7 +61,7 @@
     {
       "fixture": "many-diligence",
       "pages": 14,
-      "renderMs": 652,
+      "renderMs": 622,
       "bytes": 113723,
       "comps": 15,
       "status": "PASS"
@@ -69,7 +69,7 @@
     {
       "fixture": "manufactured",
       "pages": 8,
-      "renderMs": 624,
+      "renderMs": 606,
       "bytes": 102156,
       "comps": 15,
       "status": "PASS"
@@ -77,7 +77,7 @@
     {
       "fixture": "explicit-zero",
       "pages": 8,
-      "renderMs": 632,
+      "renderMs": 600,
       "bytes": 101954,
       "comps": 15,
       "status": "PASS"
@@ -85,7 +85,7 @@
     {
       "fixture": "no-condition",
       "pages": 8,
-      "renderMs": 625,
+      "renderMs": 618,
       "bytes": 101736,
       "comps": 15,
       "status": "PASS"
@@ -93,7 +93,7 @@
     {
       "fixture": "historical",
       "pages": 8,
-      "renderMs": 630,
+      "renderMs": 600,
       "bytes": 101964,
       "comps": 15,
       "status": "PASS"
@@ -101,7 +101,7 @@
     {
       "fixture": "long-sources",
       "pages": 10,
-      "renderMs": 644,
+      "renderMs": 599,
       "bytes": 105933,
       "comps": 15,
       "status": "PASS"
@@ -109,7 +109,7 @@
     {
       "fixture": "minimal",
       "pages": 6,
-      "renderMs": 619,
+      "renderMs": 588,
       "bytes": 93456,
       "comps": 0,
       "status": "PASS"
@@ -117,7 +117,7 @@
     {
       "fixture": "extreme-dollars",
       "pages": 8,
-      "renderMs": 611,
+      "renderMs": 607,
       "bytes": 101944,
       "comps": 15,
       "status": "PASS"

@@ -1,0 +1,98 @@
+{
+  "status": "STOP",
+  "stage": "DEPLOYED_RUNTIME_CERTIFICATION",
+  "recommendation": "NO_GO_PRIVACY_GATE",
+  "deployId": "6ab45d8eeff8ea741f01670e",
+  "previewUrl": "https://6ab45d8eeff8ea741f01670e--worksidepropertyintelligence.netlify.app",
+  "productionDeployment": false,
+  "migrationInvocations": 0,
+  "enrichmentImportInvocations": 0,
+  "health": {
+    "ok": true,
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true,
+    "rentcastConfigured": true,
+    "durableSessions": true
+  },
+  "certifiedBatch": {
+    "batchId": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "observations": 11316,
+    "matchedExact": 11263,
+    "unmatched": 53,
+    "countySitusPresent": 1270,
+    "geometryExact": 11263,
+    "priority": { "high": 312, "medium": 701, "low": 10303 },
+    "highResidentialBuildings": 118,
+    "highSingleFamily": 81,
+    "highSingleFamilyWithSitus": 81
+  },
+  "serverPagination": { "defaultPageSize": 25, "defaultTotal": 11316, "maxObservedPageSize": 25 },
+  "filterTotals": {
+    "HIGH_REVIEW_PRIORITY": 312,
+    "MEDIUM_REVIEW_PRIORITY": 701,
+    "LOW_REVIEW_PRIORITY": 10303,
+    "MATCHED_EXACT": 11263,
+    "UNMATCHED": 53,
+    "RESIDENTIAL_SINGLE_FAMILY": 324,
+    "RESIDENTIAL_MULTI_FAMILY": 37,
+    "MANUFACTURED_MOBILE": 97,
+    "VACANT_RESIDENTIAL": 14,
+    "VACANT_OTHER": 4786,
+    "COMMERCIAL": 45,
+    "INDUSTRIAL": 11,
+    "AGRICULTURAL": 135,
+    "OTHER_UNKNOWN": 5807,
+    "HAS_SITUS": 1270,
+    "GEOMETRY_EXACT": 11263,
+    "REVIEW_REQUIRED": 11316
+  },
+  "representativeCandidates": {
+    "highSingleFamilyWithSitus": "52273c0b-021d-4514-9de8-274c58fb954b",
+    "highMultiFamily": "ac8dfcac-97fc-4753-b3f7-61ad0f487b36",
+    "manufacturedMissingSitus": "91898290-1118-4300-864f-7e980450c315",
+    "unmatched": "19aeaf69-6e37-4676-b62b-cfde7de58097",
+    "explicitZeroAcreage": "1f4312d6-d73c-4ded-8f30-ce1c9f1a86bb"
+  },
+  "detailAndPresentation": {
+    "coldSeparateRequests": true,
+    "safeIdentityAndAssessmentFields": true,
+    "countySitusWarning": true,
+    "taxRollNotMarketValueDisclaimer": true,
+    "uiPrivacyText": true,
+    "csvHeadersApprovedOnly": true,
+    "analyzeCancelStatus": 409,
+    "analyzeCancelError": "ENRICHMENT_CONFIRMATION_REQUIRED",
+    "providerCalls": 0
+  },
+  "latencyMs": {
+    "sampleCountPerEndpoint": 3,
+    "defaultPage": { "p50": 1511.4, "p95": 1945.8 },
+    "high": { "p50": 906.6, "p95": 961.4 },
+    "highResidential": { "p50": 941.7, "p95": 980.3 },
+    "highSfr": { "p50": 903.8, "p95": 1008.9 },
+    "hasSitus": { "p50": 912.2, "p95": 919.4 },
+    "assessorExact": { "p50": 1197.7, "p95": 1280.4 },
+    "candidateDetail": { "p50": 807.3, "p95": 977.6 },
+    "unmatchedDetail": { "p50": 778.2, "p95": 835.2 }
+  },
+  "security": {
+    "browserBundleCredentialScan": "PASS",
+    "functionArtifactCredentialScan": "PASS_LOCAL_CERTIFIED_BUNDLE",
+    "functionLogsCredentialScan": "PASS_SANITIZED_DURATION_MEMORY_ONLY",
+    "qaArtifactCredentialScan": "PASS",
+    "providerCalls": 0
+  },
+  "discrepancies": [
+    {
+      "gate": "DEPLOYED_PRIVACY",
+      "status": "FAIL",
+      "endpoint": "/api/opportunities and /api/opportunities/metrics",
+      "finding": "metrics includes discovery_sources.provenance_payload containing an owner_name header and a data/raw source-file path",
+      "impact": "Violates the requirement that deployed responses expose no owner/assessee metadata, raw discovery payload, or county source filesystem path",
+      "action": "STOP; do not certify preview or deploy production. Requires a separately reviewed response-sanitization revision."
+    }
+  ],
+  "regressions": { "npmTest": "PASS_128", "sourceAssessorQa": "PASS_7_OF_7", "security": "PASS_40_FILES", "oldSprint6_2Freeze": "24_PASS_1_EXPECTED_SCOPED_FAILURE" }
+}

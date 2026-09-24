@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "mode": "PREVIEW_UI_QA",
+  "previewUrl": "https://6ab53c8d41d64774dd564fa6--worksidepropertyintelligence.netlify.app",
+  "providerCalls": 0,
+  "checks": {
+    "desktop1366": true,
+    "mobile390": true,
+    "incompleteCandidate": true,
+    "countySitusReadOnly": true,
+    "zipBlankWithoutEvidence": true,
+    "analystConfirmationRequired": true,
+    "missingZipValidation": true,
+    "invalidStateValidation": true,
+    "staysOnOpportunities": true,
+    "resolverOpens": true,
+    "noBlankOverview": true,
+    "noProviderRequest": true,
+    "noExternalRequests": true
+  }
+}

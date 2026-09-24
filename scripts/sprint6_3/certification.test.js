@@ -1,0 +1,10 @@
+import '../sprint6_2/offline.js';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {qaName,target,auditSql,migrationInputs,namespaceGuard} from './certification.js';
+test('trusted UUID namespace requires explicit certification mode',()=>{const n=qaName();assert.match(n,/^qa_sprint6_3_[a-f0-9]{32}$/);assert.equal(target(n,true),`"${n}"`);for(const mode of [false,undefined,'true',1])assert.throws(()=>target(n,mode));});
+test('public, application and injected identifiers are rejected',()=>{for(const n of ['public','properties','qa_sprint6_3_','qa_sprint6_3_x','qa_sprint6_3_'+ 'a'.repeat(32)+';DROP SCHEMA public','qa_sprint6_3_'+ 'a'.repeat(33)])assert.throws(()=>target(n,true));});
+test('migration audit rejects namespace escape and unsafe dependencies',()=>{for(const sql of ['CREATE TABLE public.test(id int)','CREATE TABLE other.test(id int)','CREATE EXTENSION test','SET search_path=public','CREATE FUNCTION x() RETURNS int SECURITY DEFINER','CREATE SEQUENCE x','SELECT * FROM property_intelligence_schema_migrations','EXECUTE arbitrary_sql'])assert.throws(()=>auditSql(sql));});
+test('all actual migrations audited and 001-003 match protected checksums',async()=>{const ms=await migrationInputs();assert.equal(ms.length,4);assert.deepEqual(ms.map(m=>m.filename.slice(0,3)),['001','002','003','004']);});
+test('namespace guard cannot resolve public ledger even if caller claims isolation',async()=>{const name=qaName();let calls=0;const query=async()=>{calls++;return {rows:[{path:`"${name}", pg_catalog`,current:name,namespace_oid:123,expected_ledger:99,resolved_ledger:100}]};};await assert.rejects(namespaceGuard(query,name,true,{exists:true,ledger:true}),/RESOLUTION_STOP/);assert.equal(calls,2);});
+test('guard rejects pre-existing target before CREATE',async()=>{const name=qaName();const query=async()=>({rows:[{path:`"${name}", pg_catalog`,current:name,namespace_oid:123,expected_ledger:null,resolved_ledger:null}]});await assert.rejects(namespaceGuard(query,name,true),/RESOLUTION_STOP/);});

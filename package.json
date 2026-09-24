@@ -8,6 +8,16 @@
     "node": ">=20"
   },
   "scripts": {
+    "assessor:enrichment:dry-run": "node scripts/assessor-enrichment.js dry-run",
+    "assessor:enrichment:status": "node scripts/assessor-enrichment.js status",
+    "assessor:enrichment:apply": "node scripts/assessor-enrichment.js apply",
+    "assessor:enrichment:qa": "node --test scripts/sprint6_3/assessor.test.js",
+    "sprint6.3:gate12:qa": "node scripts/sprint6_3/gate12-retry.js",
+    "sprint6.3:production-import": "node scripts/sprint6_3/production-import.js",
+    "sprint6.3.1:schema:certify": "node scripts/sprint6_3_1/schema-certify.js",
+    "sprint6.3.1:production:precheck": "node scripts/sprint6_3_1/production-precheck.js",
+    "sprint6.3.1:production:certify": "node scripts/sprint6_3_1/production-certify-qa.js",
+    "sprint6.3.1:test": "node --test scripts/sprint6_3_1/address.test.js",
     "report:investment:test": "node --test tests/investment-report.test.js",
     "report:investment:qa": "node scripts/qa-investment-report.js",
     "sprint6.1:qa": "npm run report:investment:test && npm run report:investment:qa && npm run mao:test && npm run sprint6:qa",

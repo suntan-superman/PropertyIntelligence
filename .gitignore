@@ -17,3 +17,5 @@ data/validation/map-update/
 .netlify/
 data/runtime/
 data/validation/sprint3_2-visual/
+
+data/raw/kern-assessor/*.zip

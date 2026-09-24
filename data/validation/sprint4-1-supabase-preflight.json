@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-19T16:35:41.411Z",
+  "at": "2026-09-24T14:52:12.808Z",
   "status": "PASS",
   "postgresVersion": "PostgreSQL 17.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit",
   "databaseName": "postgres",
@@ -28,16 +28,15 @@
       "acquisition_decisions",
       "property_encumbrances",
       "property_condition_assessments",
-      "property_condition_items"
-    ],
-    "missing": [
+      "property_condition_items",
       "discovery_sources",
       "discovery_records",
       "opportunity_candidates",
       "opportunity_record_links",
       "opportunity_signals",
       "opportunity_reviews"
-    ]
+    ],
+    "missing": []
   },
   "pending": 1
 }

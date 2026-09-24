@@ -1,0 +1,1173 @@
+{
+  "status": "STOP",
+  "at": "2026-09-23T20:25:30.760Z",
+  "stage": "ROLLBACK_ONLY_SYNTHETIC_PERSISTENCE_QA",
+  "migrationApplied": true,
+  "migrationInvocations": 1,
+  "providerCalls": 0,
+  "databaseQueryCalls": 389,
+  "productionCountyImport": false,
+  "applicationDeployment": false,
+  "certified004Sha256": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+  "sourcePlan": {
+    "importerVersion": "kern-assessor-import-v1",
+    "sourceEdition": "2026 Final",
+    "sourceDate": "2026-06-26",
+    "countyZipSha256": "7954771690266e4f54402b4889ef5a9ae69dfdb04f9e34a6d822f115550c92ae",
+    "countyMemberSha256": "3f96888125baad5525b1791d2e2ab56b5403b14d10f489378059341c0d17fbd5",
+    "ptsSha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+    "highPopulationSha256": "3d1d7be5c8d84cd0c63834d45f278efbbeb174bec0f59e383831c61416cc8dd3",
+    "candidatePopulationSha256": "bbd74e59e42fa212956de444f99c53a748f9b0ef25586818d2cb525a2138a74e",
+    "payloadSha256": "1b234fc477a7ffef433c293bb824b721e4c4ba2eb18afea78c04197101ec0feb",
+    "candidateCount": 11316,
+    "exactCount": 11263,
+    "unmatchedCount": 53,
+    "geometryExact": 11263,
+    "situsCounts": {
+      "SITUS_MISSING": 9990,
+      "SITUS_PRESENT": 1270,
+      "NOT_APPLICABLE": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "categoryCounts": {
+      "OTHER": 5581,
+      "VACANT_OTHER": 4786,
+      "UNKNOWN": 226,
+      "NOT_APPLICABLE": 53,
+      "COMMERCIAL": 45,
+      "RESIDENTIAL_SINGLE_FAMILY": 324,
+      "INDUSTRIAL": 11,
+      "AGRICULTURAL": 135,
+      "RESIDENTIAL_MULTI_FAMILY": 37,
+      "MANUFACTURED_MOBILE": 97,
+      "GOVERNMENT_EXEMPT": 3,
+      "VACANT_RESIDENTIAL": 14,
+      "MINERAL": 4
+    },
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "unmatched": 3,
+      "situs": 258,
+      "residential": 118,
+      "singleFamily": 81,
+      "singleFamilySitus": 81
+    },
+    "reviewFlagCounts": {
+      "SITUS_MISSING": 9990,
+      "USE_CATEGORY_REVIEW": 5807,
+      "ROLL_ACRES_EXPLICIT_ZERO": 6860,
+      "BASE_YEAR_VALUE_MISSING": 8130,
+      "ACREAGE_DELTA_GT_0_01": 4397,
+      "ASSESSOR_UNMATCHED": 53,
+      "SITUS_MALFORMED": 3
+    },
+    "reviewRequired": 11316,
+    "proposedNewBatch": {
+      "inserts": 11316,
+      "supersessions": 0,
+      "rejections": 0
+    },
+    "discrepancies": [],
+    "providerCalls": 0,
+    "networkCalls": 0
+  },
+  "ledgerBefore": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "applied_at": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "applied_at": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "applied_at": "2026-09-19T16:36:46.141Z"
+    }
+  ],
+  "existingTables": [
+    "acquisition_decisions",
+    "analysis_snapshots",
+    "audit_events",
+    "comparable_snapshots",
+    "comparables",
+    "deal_claims",
+    "deals",
+    "diligence_items",
+    "discovery_records",
+    "discovery_signals",
+    "discovery_sources",
+    "documents",
+    "evidence_snapshots",
+    "idempotency_keys",
+    "opportunity_candidates",
+    "opportunity_record_links",
+    "opportunity_reviews",
+    "opportunity_signals",
+    "properties",
+    "property_aliases",
+    "property_condition_assessments",
+    "property_condition_items",
+    "property_encumbrances",
+    "property_intelligence_schema_migrations",
+    "reports",
+    "valuations"
+  ],
+  "existingBefore": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "migrationResult": {
+    "at": "2026-09-23T20:25:50.299Z",
+    "status": "PASS",
+    "applied": [
+      "001_persistent_intelligence.sql",
+      "002_acquisition_decisions.sql",
+      "003_opportunity_discovery.sql",
+      "004_kern_assessor_opportunity_enrichment.sql"
+    ],
+    "pending": []
+  },
+  "ledgerAfter": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "applied_at": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "applied_at": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "applied_at": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "applied_at": "2026-09-23T20:25:49.044Z"
+    }
+  ],
+  "schema": {
+    "tables": [
+      {
+        "tablename": "opportunity_assessor_enrichments",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "opportunity_assessor_import_batches",
+        "rowsecurity": true
+      }
+    ],
+    "columns": [
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "id",
+        "data_type": "uuid",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "candidate_id",
+        "data_type": "uuid",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "import_batch_id",
+        "data_type": "uuid",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "source_reference",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "disclaimer_reference",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "'docs/SPRINT6_2_SOURCE_DISCLAIMER.md'::text"
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "assessor_source_edition",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "assessor_source_date",
+        "data_type": "date",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "county_zip_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "county_member_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "source_row_locator",
+        "data_type": "integer",
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "source_row_fingerprint",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "pts_atn_raw",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "pts_atn_normalized",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "assessor_atn_raw",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "assessor_atn_normalized",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "crosswalk_status",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "crosswalk_reason",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "apn9",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "situs_raw",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "situs_status",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "use_code",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "use_description",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "research_use_category",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "mapping_version",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "mapping_reason",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "land_assessment",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "improvement_assessment",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "net_assessment",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "base_year_value",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "base_year_status",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "county_acres",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "county_acres_status",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "geometry_status",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "geometry_source_apn9",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "shape_sqft",
+        "data_type": "numeric",
+        "numeric_precision": 19,
+        "numeric_scale": 5,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "shape_acres",
+        "data_type": "numeric",
+        "numeric_precision": 24,
+        "numeric_scale": 11,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "acreage_delta",
+        "data_type": "numeric",
+        "numeric_precision": 24,
+        "numeric_scale": 11,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "review_flags",
+        "data_type": "jsonb",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "'[]'::jsonb"
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "imported_at",
+        "data_type": "timestamp with time zone",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "table_name": "opportunity_assessor_enrichments",
+        "column_name": "superseded_at",
+        "data_type": "timestamp with time zone",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "id",
+        "data_type": "uuid",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "gen_random_uuid()"
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "discovery_source_id",
+        "data_type": "uuid",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "pts_source_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "assessor_source_edition",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "assessor_source_date",
+        "data_type": "date",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "county_zip_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "county_member_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "importer_version",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "candidate_population_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "high_population_sha256",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "candidate_count",
+        "data_type": "integer",
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "exact_count",
+        "data_type": "integer",
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "unmatched_count",
+        "data_type": "integer",
+        "numeric_precision": 32,
+        "numeric_scale": 0,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "status",
+        "data_type": "text",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": null
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "summary",
+        "data_type": "jsonb",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "'{}'::jsonb"
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "imported_at",
+        "data_type": "timestamp with time zone",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "NO",
+        "column_default": "now()"
+      },
+      {
+        "table_name": "opportunity_assessor_import_batches",
+        "column_name": "completed_at",
+        "data_type": "timestamp with time zone",
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": "YES",
+        "column_default": null
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "opportunity_assessor_apn9_idx",
+        "indexdef": "CREATE INDEX opportunity_assessor_apn9_idx ON public.opportunity_assessor_enrichments USING btree (apn9)"
+      },
+      {
+        "indexname": "opportunity_assessor_current_candidate_idx",
+        "indexdef": "CREATE UNIQUE INDEX opportunity_assessor_current_candidate_idx ON public.opportunity_assessor_enrichments USING btree (candidate_id) WHERE (superseded_at IS NULL)"
+      },
+      {
+        "indexname": "opportunity_assessor_current_filters_idx",
+        "indexdef": "CREATE INDEX opportunity_assessor_current_filters_idx ON public.opportunity_assessor_enrichments USING btree (crosswalk_status, research_use_category, situs_status, candidate_id) WHERE (superseded_at IS NULL)"
+      },
+      {
+        "indexname": "opportunity_assessor_current_geometry_idx",
+        "indexdef": "CREATE INDEX opportunity_assessor_current_geometry_idx ON public.opportunity_assessor_enrichments USING btree (geometry_status, candidate_id) WHERE (superseded_at IS NULL)"
+      },
+      {
+        "indexname": "opportunity_assessor_current_review_idx",
+        "indexdef": "CREATE INDEX opportunity_assessor_current_review_idx ON public.opportunity_assessor_enrichments USING btree (candidate_id) WHERE ((superseded_at IS NULL) AND (review_flags <> '[]'::jsonb))"
+      },
+      {
+        "indexname": "opportunity_assessor_enrichmen_candidate_id_import_batch_id_key",
+        "indexdef": "CREATE UNIQUE INDEX opportunity_assessor_enrichmen_candidate_id_import_batch_id_key ON public.opportunity_assessor_enrichments USING btree (candidate_id, import_batch_id)"
+      },
+      {
+        "indexname": "opportunity_assessor_enrichments_pkey",
+        "indexdef": "CREATE UNIQUE INDEX opportunity_assessor_enrichments_pkey ON public.opportunity_assessor_enrichments USING btree (id)"
+      },
+      {
+        "indexname": "opportunity_assessor_history_idx",
+        "indexdef": "CREATE INDEX opportunity_assessor_history_idx ON public.opportunity_assessor_enrichments USING btree (candidate_id, imported_at DESC)"
+      },
+      {
+        "indexname": "opportunity_assessor_import_b_discovery_source_id_assessor__key",
+        "indexdef": "CREATE UNIQUE INDEX opportunity_assessor_import_b_discovery_source_id_assessor__key ON public.opportunity_assessor_import_batches USING btree (discovery_source_id, assessor_source_edition, county_zip_sha256)"
+      },
+      {
+        "indexname": "opportunity_assessor_import_batches_pkey",
+        "indexdef": "CREATE UNIQUE INDEX opportunity_assessor_import_batches_pkey ON public.opportunity_assessor_import_batches USING btree (id)"
+      }
+    ],
+    "constraintCounts": {
+      "u": 2,
+      "c": 38,
+      "f": 3,
+      "p": 2
+    },
+    "constraints": [
+      {
+        "conname": "opportunity_assessor_enrichmen_candidate_id_import_batch_id_key",
+        "contype": "u",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "UNIQUE (candidate_id, import_batch_id)"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_apn9_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((apn9 ~ '^[0-9]{9}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_assessor_atn_normalized_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((assessor_atn_normalized ~ '^[0-9]{11}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_base_year_status_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((base_year_status = ANY (ARRAY['VALUE_PRESENT'::text, 'VALUE_MISSING'::text, 'EXPLICIT_ZERO'::text, 'NOT_APPLICABLE'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_candidate_id_fkey",
+        "contype": "f",
+        "convalidated": true,
+        "confdeltype": "r",
+        "target_schema": "public",
+        "target_table": "opportunity_candidates",
+        "definition": "FOREIGN KEY (candidate_id) REFERENCES opportunity_candidates(id) ON DELETE RESTRICT"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((superseded_at IS NULL) OR (superseded_at >= imported_at)))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check1",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((pts_atn_raw ~ '^[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]$'::text) AND (replace(pts_atn_raw, '-'::text, ''::text) = pts_atn_normalized)))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check2",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((crosswalk_status <> 'MATCHED_EXACT'::text) OR ((assessor_atn_normalized IS NOT NULL) AND (assessor_atn_normalized = pts_atn_normalized) AND (assessor_atn_raw IS NOT NULL) AND (assessor_atn_raw = assessor_atn_normalized) AND (apn9 IS NOT NULL) AND (source_row_locator IS NOT NULL) AND (situs_status <> 'NOT_APPLICABLE'::text) AND (research_use_category IS NOT NULL) AND (mapping_version IS NOT NULL) AND (mapping_version = 'kern-use-map-v1'::text) AND (mapping_reason IS NOT NULL))))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check3",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((crosswalk_status = 'MATCHED_EXACT'::text) OR ((assessor_atn_raw IS NULL) AND (assessor_atn_normalized IS NULL) AND (apn9 IS NULL) AND (source_row_locator IS NULL) AND (situs_raw IS NULL) AND (situs_status = 'NOT_APPLICABLE'::text) AND (use_code IS NULL) AND (use_description IS NULL) AND (research_use_category IS NULL) AND (mapping_version IS NULL) AND (mapping_reason IS NULL) AND (land_assessment IS NULL) AND (improvement_assessment IS NULL) AND (net_assessment IS NULL) AND (base_year_value IS NULL) AND (base_year_status = 'NOT_APPLICABLE'::text) AND (county_acres IS NULL) AND (county_acres_status = 'NOT_APPLICABLE'::text) AND (geometry_status = 'NOT_APPLICABLE'::text) AND (geometry_source_apn9 IS NULL) AND (shape_sqft IS NULL) AND (shape_acres IS NULL) AND (acreage_delta IS NULL))))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check4",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((((situs_status = ANY (ARRAY['SITUS_PRESENT'::text, 'SITUS_MALFORMED'::text])) AND (situs_raw IS NOT NULL) AND (length(btrim(situs_raw)) > 0)) OR ((situs_status = ANY (ARRAY['SITUS_MISSING'::text, 'NOT_APPLICABLE'::text])) AND (situs_raw IS NULL))))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check5",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((((base_year_status = ANY (ARRAY['VALUE_MISSING'::text, 'NOT_APPLICABLE'::text])) AND (base_year_value IS NULL)) OR ((base_year_status = 'EXPLICIT_ZERO'::text) AND (base_year_value IS NOT NULL) AND (base_year_value = (0)::numeric)) OR ((base_year_status = 'VALUE_PRESENT'::text) AND (base_year_value IS NOT NULL) AND (base_year_value <> (0)::numeric))))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check6",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((((county_acres_status = ANY (ARRAY['VALUE_MISSING'::text, 'NOT_APPLICABLE'::text])) AND (county_acres IS NULL)) OR ((county_acres_status = 'EXPLICIT_ZERO'::text) AND (county_acres IS NOT NULL) AND (county_acres = (0)::numeric)) OR ((county_acres_status = 'VALUE_PRESENT'::text) AND (county_acres IS NOT NULL) AND (county_acres <> (0)::numeric))))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_check7",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((geometry_status <> 'GEOMETRY_EXACT'::text) OR ((apn9 IS NOT NULL) AND (geometry_source_apn9 IS NOT NULL) AND (geometry_source_apn9 = apn9))))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_county_acres_status_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((county_acres_status = ANY (ARRAY['VALUE_PRESENT'::text, 'VALUE_MISSING'::text, 'EXPLICIT_ZERO'::text, 'NOT_APPLICABLE'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_county_member_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((county_member_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_county_zip_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((county_zip_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_crosswalk_status_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((crosswalk_status = ANY (ARRAY['MATCHED_EXACT'::text, 'UNMATCHED'::text, 'MATCHED_MULTIPLE'::text, 'SOURCE_INVALID'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_disclaimer_reference_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((disclaimer_reference = 'docs/SPRINT6_2_SOURCE_DISCLAIMER.md'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_geometry_source_apn9_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((geometry_source_apn9 ~ '^[0-9]{9}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_geometry_status_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((geometry_status = ANY (ARRAY['GEOMETRY_EXACT'::text, 'GEOMETRY_MISSING'::text, 'GEOMETRY_MULTIPLE'::text, 'NOT_APPLICABLE'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_import_batch_id_fkey",
+        "contype": "f",
+        "convalidated": true,
+        "confdeltype": "r",
+        "target_schema": "public",
+        "target_table": "opportunity_assessor_import_batches",
+        "definition": "FOREIGN KEY (import_batch_id) REFERENCES opportunity_assessor_import_batches(id) ON DELETE RESTRICT"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_pkey",
+        "contype": "p",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_pts_atn_normalized_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((pts_atn_normalized ~ '^[0-9]{11}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_research_use_category_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((research_use_category = ANY (ARRAY['RESIDENTIAL_SINGLE_FAMILY'::text, 'RESIDENTIAL_MULTI_FAMILY'::text, 'MANUFACTURED_MOBILE'::text, 'VACANT_RESIDENTIAL'::text, 'VACANT_OTHER'::text, 'COMMERCIAL'::text, 'INDUSTRIAL'::text, 'AGRICULTURAL'::text, 'GOVERNMENT_EXEMPT'::text, 'MINERAL'::text, 'OTHER'::text, 'UNKNOWN'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_review_flags_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((jsonb_typeof(review_flags) = 'array'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_review_flags_check1",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((review_flags <@ '[\"ASSESSOR_UNMATCHED\", \"SITUS_MISSING\", \"SITUS_MALFORMED\", \"USE_CATEGORY_REVIEW\", \"ACREAGE_DELTA_GT_0_01\", \"BASE_YEAR_VALUE_MISSING\", \"ROLL_ACRES_EXPLICIT_ZERO\"]'::jsonb))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_situs_status_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((situs_status = ANY (ARRAY['SITUS_PRESENT'::text, 'SITUS_MISSING'::text, 'SITUS_MALFORMED'::text, 'NOT_APPLICABLE'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_source_row_fingerprint_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((source_row_fingerprint ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_source_row_locator_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((source_row_locator > 0))"
+      },
+      {
+        "conname": "opportunity_assessor_enrichments_use_code_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((use_code ~ '^[0-9]{4}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_b_candidate_population_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((candidate_population_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_b_discovery_source_id_assessor__key",
+        "contype": "u",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "UNIQUE (discovery_source_id, assessor_source_edition, county_zip_sha256)"
+      },
+      {
+        "conname": "opportunity_assessor_import_batche_high_population_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((high_population_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_candidate_count_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((candidate_count > 0))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((exact_count + unmatched_count) = candidate_count))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_check1",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK (((status = 'COMPLETE'::text) = (completed_at IS NOT NULL)))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_county_member_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((county_member_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_county_zip_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((county_zip_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_discovery_source_id_fkey",
+        "contype": "f",
+        "convalidated": true,
+        "confdeltype": "r",
+        "target_schema": "public",
+        "target_table": "discovery_sources",
+        "definition": "FOREIGN KEY (discovery_source_id) REFERENCES discovery_sources(id) ON DELETE RESTRICT"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_exact_count_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((exact_count >= 0))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_pkey",
+        "contype": "p",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_pts_source_sha256_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((pts_source_sha256 ~ '^[0-9a-f]{64}$'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_status_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((status = ANY (ARRAY['IMPORTING'::text, 'COMPLETE'::text])))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_summary_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((jsonb_typeof(summary) = 'object'::text))"
+      },
+      {
+        "conname": "opportunity_assessor_import_batches_unmatched_count_check",
+        "contype": "c",
+        "convalidated": true,
+        "confdeltype": " ",
+        "target_schema": null,
+        "target_table": null,
+        "definition": "CHECK ((unmatched_count >= 0))"
+      }
+    ],
+    "triggers": [
+      {
+        "tgname": "opportunity_assessor_batch_guard",
+        "tgenabled": "O",
+        "proname": "guard_opportunity_assessor_batch",
+        "function_schema": "public",
+        "definition": "CREATE TRIGGER opportunity_assessor_batch_guard BEFORE INSERT OR DELETE OR UPDATE ON public.opportunity_assessor_import_batches FOR EACH ROW EXECUTE FUNCTION guard_opportunity_assessor_batch()"
+      },
+      {
+        "tgname": "opportunity_assessor_observation_guard",
+        "tgenabled": "O",
+        "proname": "guard_opportunity_assessor_observation",
+        "function_schema": "public",
+        "definition": "CREATE TRIGGER opportunity_assessor_observation_guard BEFORE INSERT OR DELETE OR UPDATE ON public.opportunity_assessor_enrichments FOR EACH ROW EXECUTE FUNCTION guard_opportunity_assessor_observation()"
+      }
+    ],
+    "triggerBodiesMatchCertifiedSql": true,
+    "publicApiGrants": 0,
+    "policies": 0,
+    "rowCounts": {
+      "batches": 0,
+      "observations": 0
+    }
+  },
+  "existingAfterMigration": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "error": "SANITIZED_GATE_FAILURE",
+  "sqlState": null,
+  "failureRollback": true
+}

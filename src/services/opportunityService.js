@@ -30,6 +30,15 @@ export async function importSource({db,source,records,requestKey=null}){
   }));
 }
 
+const metricFields=['records','candidates','unresolved','needs_address','ready_for_enrichment','enriched','deal_created','deferred_archived'];
+const qualityFields=['records','atn_count','apn_count','amount_null_count','ambiguous_count','linked_properties','duplicate_links'];
+const numberFields=(value,fields)=>Object.fromEntries(fields.filter(k=>value?.[k]!==undefined).map(k=>[k,Number(value[k])]));
+// Metrics are an aggregate-only public contract.  In particular, never return
+// discovery_sources.provenance_payload (which may contain owner headers/raw
+// payloads and local source paths) merely because the UI requests metrics.
+export function safeOpportunityMetrics(status){
+  return {counts:numberFields(status?.counts,metricFields),quality:numberFields(status?.quality,qualityFields)};
+}
 export async function opportunityStatus({db,sourceFileHash=null}){if(!db)throw new Error('DATABASE_NOT_CONFIGURED');return db.transaction(tx=>getSourceStatus(tx,sourceFileHash));}
 export async function opportunities({db,options={}}){if(!db)throw new Error('DATABASE_NOT_CONFIGURED');return db.transaction(tx=>listCandidates(tx,options));}
 export async function opportunity({db,id}){if(!db)throw new Error('DATABASE_NOT_CONFIGURED');if(!validUuid(id))throw new Error('INVALID_CANDIDATE_ID');return db.transaction(tx=>getCandidate(tx,id));}

@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "stage": "PRE_MIGRATION_READ_ONLY",
+  "migrationInvocations": 0,
+  "productionWrites": 0,
+  "providerCalls": 0,
+  "sourceBaseline": {
+    "candidateCount": 11316,
+    "exactCount": 11263,
+    "unmatchedCount": 53,
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "unmatched": 3,
+      "situs": 258,
+      "residential": 118,
+      "singleFamily": 81,
+      "singleFamilySitus": 81
+    },
+    "providerCalls": 0
+  },
+  "migration005": {
+    "filename": "005_candidate_address_resolutions.sql",
+    "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1"
+  },
+  "tls": {
+    "encrypted": true,
+    "authorized": true,
+    "protocol": "TLSv1.3"
+  },
+  "ledgerBefore": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    }
+  ],
+  "candidatePopulation": {
+    "count": 11316,
+    "priorities": {
+      "HIGH_REVIEW_PRIORITY": 312,
+      "MEDIUM_REVIEW_PRIORITY": 701,
+      "LOW_REVIEW_PRIORITY": 10303
+    },
+    "scoreStatusFingerprint": "fc883cf777b35b966d5fdd84d44d2005739e200fea0a19e0497641e50a7a0a17"
+  },
+  "assessor": {
+    "batchId": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "observations": {
+      "count": 11316,
+      "exact": 11263,
+      "unmatched": 53
+    },
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "residential": 118,
+      "singleFamily": 81
+    }
+  },
+  "protectedFingerprint": {
+    "metadataSha256": "e0daad0132ead14a5af4ed08386ecacbe826ac23dd64cbc5150bd9f90954b0fd",
+    "dataSha256": "eff362d8bf7de1ae1ab393f1b745ed6d76fcc4c77c8b1991cc3e5d229875ca09",
+    "tableCount": 28,
+    "rows": 80453
+  },
+  "completedAt": "2026-09-24T14:53:30.353Z"
+}

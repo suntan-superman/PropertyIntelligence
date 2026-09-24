@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "stage": "PRODUCTION_RUNTIME_CERTIFIED",
+  "at": "2026-09-24T00:26:52.2418371Z",
+  "certifiedPreviewDeploy": "6ab469b7e165d1222cdd9ad7",
+  "productionDeployId": "6ab46d05cc42f49433bf22ac",
+  "productionUrl": "https://worksidepropertyintelligence.netlify.app",
+  "productionDeployUrl": "https://6ab46d05cc42f49433bf22ac--worksidepropertyintelligence.netlify.app",
+  "migrationInvocations": 0,
+  "enrichmentImportInvocations": 0,
+  "netlifyDatabaseProvisioningObserved": false,
+  "providerCalls": { "rentcast": 0, "google": 0, "county": 0 },
+  "supabaseTraffic": "real_nonzero_database_traffic",
+  "preDeployReadOnly": {
+    "migrationLedger": [
+      { "filename": "001_persistent_intelligence.sql", "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe" },
+      { "filename": "002_acquisition_decisions.sql", "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7" },
+      { "filename": "003_opportunity_discovery.sql", "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77" },
+      { "filename": "004_kern_assessor_opportunity_enrichment.sql", "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18" }
+    ],
+    "batchId": "6055c2fe-20e8-427a-8912-e46a655ff7e7",
+    "batchStatus": "COMPLETE",
+    "observations": 11316,
+    "matchedExact": 11263,
+    "unmatched": 53,
+    "existingFingerprint": {
+      "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+      "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+      "tableCount": 26,
+      "rows": 69136
+    }
+  },
+  "health": {
+    "ok": true,
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true,
+    "durableSessions": true,
+    "pdfAvailable": false
+  },
+  "opportunities": {
+    "candidates": 11316,
+    "sourceRecords": 11321,
+    "matchedExact": 11263,
+    "unmatched": 53,
+    "situsPresent": 1270,
+    "geometryExact": 11263,
+    "priority": { "high": 312, "medium": 701, "low": 10303 },
+    "highExact": 309,
+    "highSitus": 258,
+    "highResidentialBuildings": 118,
+    "highSingleFamily": 81,
+    "highSingleFamilyWithSitus": 81,
+    "serverPagination": { "defaultPageSize": 25, "maxPageSize": 100, "defaultTotal": 11316 },
+    "filters": {
+      "HIGH_REVIEW_PRIORITY": 312,
+      "MEDIUM_REVIEW_PRIORITY": 701,
+      "LOW_REVIEW_PRIORITY": 10303,
+      "MATCHED_EXACT": 11263,
+      "UNMATCHED": 53,
+      "HIGH_RESIDENTIAL": 118,
+      "HIGH_SFR": 81,
+      "HAS_SITUS": 1270,
+      "GEOMETRY_EXACT": 11263,
+      "RESIDENTIAL_SINGLE_FAMILY": 324,
+      "RESIDENTIAL_MULTI_FAMILY": 37,
+      "MANUFACTURED_MOBILE": 97,
+      "VACANT_RESIDENTIAL": 14,
+      "VACANT_OTHER": 4786,
+      "COMMERCIAL": 45,
+      "INDUSTRIAL": 11,
+      "AGRICULTURAL": 135,
+      "OTHER_UNKNOWN": 5807
+    }
+  },
+  "representativeCandidates": {
+    "highSingleFamilyWithSitus": "52273c0b-021d-4514-9de8-274c58fb954b",
+    "highMultiFamily": "ac8dfcac-97fc-4753-b3f7-61ad0f487b36",
+    "missingSitus": "005b3fea-e2cd-4271-bc79-c4d11f25858b",
+    "unmatched": "19aeaf69-6e37-4676-b62b-cfde7de58097"
+  },
+  "privacy": {
+    "certifiedPreviewBrowserBundleMatches": true,
+    "browserBundleSha256": "be4d0c1af21a05274b6d4c65fa053ddc4880d1475a2c1765859a1faf7850a1e6",
+    "metricsKeys": ["counts", "quality"],
+    "rawProvenancePayload": false,
+    "forbiddenResponseKeys": false,
+    "csvHeader": "id,candidate_key,atn,apn,address,priority_band,screening_score,identity_status,candidate_status,amount_owed,resolved_property_id,source_edition",
+    "csvRows": 100,
+    "browserBundle": "PASS",
+    "functionArtifact": "PASS_SOURCE_AND_DEPLOY_BUNDLE_SCAN",
+    "functionLogs": "PASS_SANITIZED_DURATION_MEMORY_ONLY",
+    "qaArtifacts": "PASS_44_FILES"
+  },
+  "ui": {
+    "title": "Property Intelligence | Internal Workbench",
+    "defaultPagination": "PASS",
+    "highResidentialPreset": "PASS_118",
+    "highSingleFamilyPreset": "PASS_81",
+    "countySitusWarning": true,
+    "assessmentNotMarketValueWarning": true,
+    "analyzeCancel": { "status": 409, "error": "ENRICHMENT_CONFIRMATION_REQUIRED", "providerRequest": false },
+    "coldDetailReopen": true
+  },
+  "latencyMs": {
+    "sampleCountPerEndpoint": 3,
+    "defaultPage": { "p50": 1013.3, "p95": 1833.9 },
+    "high": { "p50": 653.4, "p95": 660.4 },
+    "highResidential": { "p50": 667.8, "p95": 668.6 },
+    "highSfr": { "p50": 642.7, "p95": 664.9 },
+    "hasSitus": { "p50": 678.4, "p95": 708.2 },
+    "assessorExact": { "p50": 995.5, "p95": 1011.4 },
+    "candidateDetail": { "p50": 632.0, "p95": 635.5 },
+    "unmatchedDetail": { "p50": 635.3, "p95": 641.4 }
+  },
+  "regressions": {
+    "npmTest": "PASS_128_OF_128",
+    "apiPrivacyTests": "PASS_5_OF_5",
+    "assessorQa": "PASS_7_OF_7",
+    "webBuild": "PASS",
+    "webTest": "PASS",
+    "security": "PASS_44_FILES",
+    "sprint6_2HistoricalFreeze": "24_PASS_1_EXPECTED_SCOPED_FAILURE"
+  },
+  "recommendation": "PRODUCTION_CERTIFIED — KERN ASSESSOR OPPORTUNITY DISCOVERY & ENRICHMENT OPERATIONAL"
+}

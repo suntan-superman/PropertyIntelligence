@@ -1,5 +1,5 @@
 {
-  "at": "2026-09-20T23:34:32.202Z",
+  "at": "2026-09-24T16:19:39.539Z",
   "command": "node --import ./src/analysis/offline.js --test --test-reporter=tap tests",
   "tests": 128,
   "passed": 128,

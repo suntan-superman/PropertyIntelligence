@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "filesScanned": 44,
+  "opaqueCredentialVariantsChecked": true,
+  "credentialValuesPrinted": false,
+  "privateKeyAndConnectionLiteralPatterns": true,
+  "browserBundle": true,
+  "functionSourceAndLocalReviewBundle": true,
+  "localRegressionLogs": true,
+  "hostedFunctionArtifactOrLogs": "NOT_APPLICABLE_NO_DEPLOYMENT_AUTHORIZED",
+  "providerCalls": 0,
+  "networkCalls": 0
+}

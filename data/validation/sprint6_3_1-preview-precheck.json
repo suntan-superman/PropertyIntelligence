@@ -1,0 +1,26 @@
+{
+  "status": "STOP",
+  "mode": "READ_ONLY_PREVIEW_PRECHECK",
+  "productionWrites": 0,
+  "providerCalls": 0,
+  "source": {
+    "candidates": 11316,
+    "exact": 11263,
+    "unmatched": 53,
+    "high": {
+      "total": 312,
+      "exact": 309,
+      "unmatched": 3,
+      "situs": 258,
+      "residential": 118,
+      "singleFamily": 81,
+      "singleFamilySitus": 81
+    }
+  },
+  "tls": {
+    "encrypted": true,
+    "authorized": true,
+    "protocol": "TLSv1.3"
+  },
+  "error": "SANITIZED_PREVIEW_PRECHECK_STOP"
+}

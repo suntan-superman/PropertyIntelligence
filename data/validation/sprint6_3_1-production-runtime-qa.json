@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "mode": "PRODUCTION_READONLY_RUNTIME_QA",
+  "previewUrl": "https://worksidepropertyintelligence.netlify.app",
+  "providerCalls": 0,
+  "checks": {
+    "health": true,
+    "pagination": true,
+    "counts": true,
+    "priorityDistribution": true,
+    "exact11263": true,
+    "unmatched53": true,
+    "highResidential118": true,
+    "highSfr81": true,
+    "allHighSfrHaveSitus": true,
+    "situs1270": true,
+    "coldDetail": true,
+    "signalsPersist": true,
+    "assessorEvidencePersist": true,
+    "addressIncompleteStop": true,
+    "failedAnalysisNavigationCovered": true,
+    "csvAllowlist": true,
+    "privacyAllowlist": true,
+    "noRawProviderPayload": true
+  },
+  "representativeCandidateIds": {
+    "highSfr": "52273c0b-021d-4514-9de8-274c58fb954b",
+    "incomplete": "005b3fea-e2cd-4271-bc79-c4d11f25858b"
+  },
+  "metrics": {
+    "records": 11321,
+    "candidates": 11316,
+    "exact": 11263,
+    "unmatched": 53,
+    "high": 312,
+    "medium": 701,
+    "low": 10303,
+    "highResidential": 118,
+    "highSfr": 81,
+    "highSfrSitus": 81,
+    "situsPresent": 1270
+  }
+}

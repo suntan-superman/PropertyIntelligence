@@ -1,0 +1,63 @@
+{
+  "importerVersion": "kern-assessor-import-v1",
+  "sourceEdition": "2026 Final",
+  "sourceDate": "2026-06-26",
+  "countyZipSha256": "7954771690266e4f54402b4889ef5a9ae69dfdb04f9e34a6d822f115550c92ae",
+  "countyMemberSha256": "3f96888125baad5525b1791d2e2ab56b5403b14d10f489378059341c0d17fbd5",
+  "ptsSha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+  "highPopulationSha256": "3d1d7be5c8d84cd0c63834d45f278efbbeb174bec0f59e383831c61416cc8dd3",
+  "candidatePopulationSha256": "bbd74e59e42fa212956de444f99c53a748f9b0ef25586818d2cb525a2138a74e",
+  "payloadSha256": "1b234fc477a7ffef433c293bb824b721e4c4ba2eb18afea78c04197101ec0feb",
+  "candidateCount": 11316,
+  "exactCount": 11263,
+  "unmatchedCount": 53,
+  "geometryExact": 11263,
+  "situsCounts": {
+    "SITUS_MISSING": 9990,
+    "SITUS_PRESENT": 1270,
+    "NOT_APPLICABLE": 53,
+    "SITUS_MALFORMED": 3
+  },
+  "categoryCounts": {
+    "OTHER": 5581,
+    "VACANT_OTHER": 4786,
+    "UNKNOWN": 226,
+    "NOT_APPLICABLE": 53,
+    "COMMERCIAL": 45,
+    "RESIDENTIAL_SINGLE_FAMILY": 324,
+    "INDUSTRIAL": 11,
+    "AGRICULTURAL": 135,
+    "RESIDENTIAL_MULTI_FAMILY": 37,
+    "MANUFACTURED_MOBILE": 97,
+    "GOVERNMENT_EXEMPT": 3,
+    "VACANT_RESIDENTIAL": 14,
+    "MINERAL": 4
+  },
+  "high": {
+    "total": 312,
+    "exact": 309,
+    "unmatched": 3,
+    "situs": 258,
+    "residential": 118,
+    "singleFamily": 81,
+    "singleFamilySitus": 81
+  },
+  "reviewFlagCounts": {
+    "SITUS_MISSING": 9990,
+    "USE_CATEGORY_REVIEW": 5807,
+    "ROLL_ACRES_EXPLICIT_ZERO": 6860,
+    "BASE_YEAR_VALUE_MISSING": 8130,
+    "ACREAGE_DELTA_GT_0_01": 4397,
+    "ASSESSOR_UNMATCHED": 53,
+    "SITUS_MALFORMED": 3
+  },
+  "reviewRequired": 11316,
+  "proposedNewBatch": {
+    "inserts": 11316,
+    "supersessions": 0,
+    "rejections": 0
+  },
+  "discrepancies": [],
+  "providerCalls": 0,
+  "networkCalls": 0
+}

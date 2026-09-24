@@ -1,0 +1,58 @@
+{
+  "status": "STOP",
+  "mode": "READ_ONLY_DIAGNOSTICS",
+  "providerCalls": 0,
+  "databaseQueryCalls": 192,
+  "productionWrites": 0,
+  "defaultNamespace": {
+    "namespace": "public",
+    "search_path": "\"\\$user\", public, extensions",
+    "read_only": "on"
+  },
+  "qaNamespace": {
+    "namespace": null,
+    "search_path": "\"public,pg_catalog\""
+  },
+  "cause": "QA_SEARCH_PATH_QUOTED_AS_ONE_IDENTIFIER",
+  "qaStoppedBeforeSyntheticInserts": true,
+  "expectedNamespace": {
+    "namespace": "public"
+  },
+  "existingAfterRollback": {
+    "metadataSha256": "9e279efdd6506a0126d0df0f06bb073a032900e50fcd3b823ec41efad7da2536",
+    "dataSha256": "5cbdd67e0e8f6eb73f67d07b18a3e68442ab3e5bafb1cb6933e380c987985e26",
+    "tableCount": 26,
+    "rows": 69136
+  },
+  "existingMetadataDataUnchanged": true,
+  "newTableCounts": {
+    "batches": 0,
+    "observations": 0
+  },
+  "ledger": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "applied_at": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "applied_at": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "applied_at": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "applied_at": "2026-09-23T20:25:49.044Z"
+    }
+  ],
+  "migration004LedgerRows": 1,
+  "diagnosticsPassed": true,
+  "nextAction": "STOP_FOR_REVIEW_BEFORE_RETRYING_GATE_12",
+  "cumulativeDiagnosticQueryCalls": 383
+}

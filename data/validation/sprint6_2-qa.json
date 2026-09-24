@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "unitTests": {
+    "tests": 25,
+    "passed": 25,
+    "failed": 0
+  },
+  "syntaxChecked": 11,
+  "deterministicReplay": {
+    "artifacts": 5,
+    "byteIdentical": true,
+    "excluded": [
+      "performance (observational timings)",
+      "qa (verification results)"
+    ]
+  },
+  "protectedFiles": {
+    "count": 567,
+    "unchanged": true
+  },
+  "sourceHashes": {
+    "zip": "7954771690266e4f54402b4889ef5a9ae69dfdb04f9e34a6d822f115550c92ae",
+    "pts": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+    "unchanged": true
+  },
+  "credentialScan": {
+    "filesScanned": 25,
+    "findings": 0,
+    "privateValueFieldFindings": 0,
+    "scope": "New POC scripts/docs/validation only. No credentials/environment loaded."
+  },
+  "providerCalls": 0,
+  "networkCalls": 0,
+  "dbConnections": 0,
+  "dbWrites": 0,
+  "migrations": 0,
+  "deployments": 0
+}

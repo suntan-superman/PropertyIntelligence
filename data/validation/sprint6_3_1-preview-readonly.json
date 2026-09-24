@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "mode": "READ_ONLY_PREVIEW_RECONCILIATION",
+  "productionWrites": 0,
+  "providerCalls": 0,
+  "tls": {
+    "encrypted": true,
+    "authorized": true,
+    "protocol": "TLSv1.3"
+  },
+  "reconciliation": {
+    "migrations": [
+      "001_persistent_intelligence.sql",
+      "002_acquisition_decisions.sql",
+      "003_opportunity_discovery.sql",
+      "004_kern_assessor_opportunity_enrichment.sql",
+      "005_candidate_address_resolutions.sql"
+    ],
+    "canonicalRows": 0,
+    "candidates": 11316,
+    "exact": 11263,
+    "unmatched": 53,
+    "priority": {
+      "high": 312,
+      "medium": 701,
+      "low": 10303
+    },
+    "highResidential": 118,
+    "highSingleFamily": 81,
+    "highSingleFamilySitus": 81,
+    "scoreStatusFingerprint": "fc883cf777b35b966d5fdd84d44d2005739e200fea0a19e0497641e50a7a0a17",
+    "assessorBatch": "6055c2fe-20e8-427a-8912-e46a655ff7e7"
+  },
+  "completedAt": "2026-09-24T15:28:21.594Z"
+}

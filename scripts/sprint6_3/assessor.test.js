@@ -1,0 +1,13 @@
+import '../sprint6_2/offline.js';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {buildPlan,numericText,valueStatus,reviewFlags} from './source-plan.js';
+import {validatePlan,ASSESSOR_FIELDS} from '../../src/persistence/assessorImport.js';
+const plan=await buildPlan();
+test('full certified source hashes/counts and High populations reconcile',()=>{const m=validatePlan(plan);assert.equal(m.candidateCount,11316);assert.equal(m.exactCount,11263);assert.equal(m.unmatchedCount,53);assert.equal(m.high.residential,118);assert.equal(m.high.singleFamily,81);assert.equal(m.high.singleFamilySitus,81);assert.deepEqual(m.discrepancies,[]);});
+test('raw county decimals retain precision; null and explicit zero differ',()=>{assert.equal(numericText('12345.00001'),'12345.00001');assert.equal(numericText(''),null);assert.equal(valueStatus(null),'VALUE_MISSING');assert.equal(valueStatus('0.00000'),'EXPLICIT_ZERO');assert.throws(()=>numericText('1e10'));});
+test('only allowlisted safe fields enter the import payload',()=>{for(const r of plan.rows)assert.deepEqual(Object.keys(r).sort(),[...ASSESSOR_FIELDS].sort());assert.ok(!ASSESSOR_FIELDS.some(f=>/owner|billing|contact|polygon|vertices/.test(f)));});
+test('unmatched retain null county fields, not zero or inferred identity',()=>{const rows=plan.rows.filter(r=>r.crosswalk_status==='UNMATCHED');assert.equal(rows.length,53);for(const r of rows){assert.equal(r.apn9,null);assert.equal(r.land_assessment,null);assert.equal(r.situs_status,'NOT_APPLICABLE');assert.deepEqual(r.review_flags,['ASSESSOR_UNMATCHED']);}});
+test('review flags are diagnostic and include new missing-base-year/zero-acre flags',()=>{assert.equal(plan.manifest.reviewFlagCounts.BASE_YEAR_VALUE_MISSING,8130);assert.equal(plan.manifest.reviewFlagCounts.ROLL_ACRES_EXPLICIT_ZERO,6860);assert.equal(plan.manifest.reviewRequired,11316);assert.deepEqual(reviewFlags({crosswalk_status:'UNMATCHED'}),['ASSESSOR_UNMATCHED']);});
+test('altered payload stops rather than trusting a cached summary',()=>{const changed=structuredClone(plan);changed.rows[0].land_assessment='999';assert.throws(()=>validatePlan(changed),/PAYLOAD_CHANGED/);});
+test('situs and official/research categories remain separate',()=>{assert.equal(plan.manifest.situsCounts.SITUS_PRESENT,1270);assert.equal(plan.manifest.situsCounts.SITUS_MALFORMED,3);const zoning=plan.rows.find(r=>r.use_code==='0010');assert.equal(zoning.use_description,'R1 ZONE ONE ACRE OR LESS');assert.equal(zoning.research_use_category,'OTHER');assert.equal(zoning.mapping_version,'kern-use-map-v1');});

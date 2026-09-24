@@ -1,0 +1,5482 @@
+{
+  "zip": {
+    "path": "data/raw/kern-assessor/KernCountyAssessor_GisParcels_2026final.zip",
+    "sha256": "7954771690266e4f54402b4889ef5a9ae69dfdb04f9e34a6d822f115550c92ae",
+    "bytes": 332584937,
+    "edition": "2026 Final; README/extract date 2026-06-26; land metadata updated 2026-08-12"
+  },
+  "pts": {
+    "path": "data/raw/kern_power_to_sell_2026-09-15.csv",
+    "sha256": "89481a5b113a5a46263ec81443a80f1e6f42f5c27ff19ce31830238fa2a0a2a3",
+    "rows": 11321,
+    "uniqueAtns": 11316,
+    "duplicateAtnValues": 5,
+    "headers": [
+      "owner_name",
+      "atn",
+      "parcel_amount_owed",
+      "owner_total_owed",
+      "source_date",
+      "source",
+      "source_page"
+    ],
+    "priorities": {
+      "LOW_REVIEW_PRIORITY": 10303,
+      "MEDIUM_REVIEW_PRIORITY": 701,
+      "HIGH_REVIEW_PRIORITY": 312
+    },
+    "scoreVersion": "kern-screen-v1"
+  },
+  "inventory": [
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/_readme.txt",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 1289255357,
+      "compressedBytes": 6419,
+      "bytes": 6419,
+      "offset": 0,
+      "children": []
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/FileGeodatabase_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2367187058,
+      "compressedBytes": 180297229,
+      "bytes": 180297229,
+      "offset": 6516,
+      "children": [
+        {
+          "name": "ASR_GDB_2026final.gdb/",
+          "flags": 0,
+          "method": 0,
+          "crc32": 0,
+          "compressedBytes": 0,
+          "bytes": 0,
+          "offset": 0
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000001.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2529943236,
+          "compressedBytes": 82,
+          "bytes": 110,
+          "offset": 52
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000001.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 302199616,
+          "compressedBytes": 354,
+          "bytes": 755,
+          "offset": 206
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000001.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1597710964,
+          "compressedBytes": 120,
+          "bytes": 5152,
+          "offset": 630
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000001.TablesByName.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2513330168,
+          "compressedBytes": 510,
+          "bytes": 32790,
+          "offset": 820
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000002.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1868924595,
+          "compressedBytes": 642,
+          "bytes": 2055,
+          "offset": 1408
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000002.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2165908499,
+          "compressedBytes": 133,
+          "bytes": 5152,
+          "offset": 2120
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000003.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 279189289,
+          "compressedBytes": 40,
+          "bytes": 42,
+          "offset": 2323
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000003.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3817562029,
+          "compressedBytes": 642,
+          "bytes": 1411,
+          "offset": 2435
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000003.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3820235296,
+          "compressedBytes": 45,
+          "bytes": 5152,
+          "offset": 3147
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.CatItemsByPhysicalName.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3661629824,
+          "compressedBytes": 825,
+          "bytes": 45078,
+          "offset": 3262
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.CatItemsByType.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2805495433,
+          "compressedBytes": 388,
+          "bytes": 16406,
+          "offset": 4175
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.FDO_UUID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1343164061,
+          "compressedBytes": 1510,
+          "bytes": 16406,
+          "offset": 4643
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.freelist",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4195411466,
+          "compressedBytes": 330,
+          "bytes": 33112,
+          "offset": 6227
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 548459433,
+          "compressedBytes": 132,
+          "bytes": 310,
+          "offset": 6627
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4239969037,
+          "compressedBytes": 336811,
+          "bytes": 1137289,
+          "offset": 6831
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2204413464,
+          "compressedBytes": 305,
+          "bytes": 10272,
+          "offset": 343712
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000004.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2275859197,
+          "compressedBytes": 443,
+          "bytes": 172054,
+          "offset": 344087
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000005.CatItemTypesByName.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2860844326,
+          "compressedBytes": 531,
+          "bytes": 12310,
+          "offset": 344595
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000005.CatItemTypesByParentTypeID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2904097335,
+          "compressedBytes": 277,
+          "bytes": 4118,
+          "offset": 345210
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000005.CatItemTypesByUUID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3522251515,
+          "compressedBytes": 864,
+          "bytes": 4118,
+          "offset": 345579
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000005.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2175196442,
+          "compressedBytes": 119,
+          "bytes": 296,
+          "offset": 346527
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000005.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4193492546,
+          "compressedBytes": 1119,
+          "bytes": 1803,
+          "offset": 346718
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000005.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3894553275,
+          "compressedBytes": 130,
+          "bytes": 5152,
+          "offset": 347907
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.CatRelsByDestinationID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1238865693,
+          "compressedBytes": 940,
+          "bytes": 16406,
+          "offset": 348107
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.CatRelsByOriginID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 975762040,
+          "compressedBytes": 334,
+          "bytes": 20502,
+          "offset": 349135
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.CatRelsByType.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 688641097,
+          "compressedBytes": 277,
+          "bytes": 16406,
+          "offset": 349552
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.FDO_UUID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 416266586,
+          "compressedBytes": 1060,
+          "bytes": 16406,
+          "offset": 349908
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 297724318,
+          "compressedBytes": 129,
+          "bytes": 318,
+          "offset": 351042
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 524848525,
+          "compressedBytes": 1595,
+          "bytes": 3037,
+          "offset": 351243
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000006.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3293194567,
+          "compressedBytes": 149,
+          "bytes": 5152,
+          "offset": 352908
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.CatRelTypesByBackwardLabel.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1351268297,
+          "compressedBytes": 333,
+          "bytes": 4118,
+          "offset": 353127
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.CatRelTypesByDestItemTypeID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2614692358,
+          "compressedBytes": 297,
+          "bytes": 4118,
+          "offset": 353552
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.CatRelTypesByForwardLabel.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1898399115,
+          "compressedBytes": 265,
+          "bytes": 4118,
+          "offset": 353942
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.CatRelTypesByName.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2888144490,
+          "compressedBytes": 339,
+          "bytes": 4118,
+          "offset": 354298
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.CatRelTypesByOriginItemTypeID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2236813991,
+          "compressedBytes": 381,
+          "bytes": 4118,
+          "offset": 354720
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.CatRelTypesByUUID.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2098206661,
+          "compressedBytes": 482,
+          "bytes": 4118,
+          "offset": 355196
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3251437668,
+          "compressedBytes": 172,
+          "bytes": 602,
+          "offset": 355761
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2066058099,
+          "compressedBytes": 1309,
+          "bytes": 2504,
+          "offset": 356005
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000007.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1241174809,
+          "compressedBytes": 91,
+          "bytes": 5152,
+          "offset": 357384
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004c.APN9.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2342287511,
+          "compressedBytes": 1957473,
+          "bytes": 9490454,
+          "offset": 357545
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004c.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 158483647,
+          "compressedBytes": 64,
+          "bytes": 104,
+          "offset": 2315088
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004c.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3651665127,
+          "compressedBytes": 23421311,
+          "bytes": 114758898,
+          "offset": 2315224
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004c.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 402043512,
+          "compressedBytes": 1119617,
+          "bytes": 2135072,
+          "offset": 25736605
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004d.APN9.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 332584746,
+          "compressedBytes": 25339,
+          "bytes": 110614,
+          "offset": 26856292
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004d.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 158483647,
+          "compressedBytes": 64,
+          "bytes": 104,
+          "offset": 26881701
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004d.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 531130590,
+          "compressedBytes": 149653,
+          "bytes": 1150721,
+          "offset": 26881837
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004d.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1589936876,
+          "compressedBytes": 12802,
+          "bytes": 25632,
+          "offset": 27031560
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004e.APN9.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 174656170,
+          "compressedBytes": 53085,
+          "bytes": 249878,
+          "offset": 27044432
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004e.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 158483647,
+          "compressedBytes": 64,
+          "bytes": 104,
+          "offset": 27097587
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004e.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2679455748,
+          "compressedBytes": 384821,
+          "bytes": 2861700,
+          "offset": 27097723
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004e.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1555397200,
+          "compressedBytes": 29606,
+          "bytes": 56352,
+          "offset": 27482614
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004f.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2675677118,
+          "compressedBytes": 46,
+          "bytes": 66,
+          "offset": 27512290
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004f.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3247296368,
+          "compressedBytes": 2429496,
+          "bytes": 25622576,
+          "offset": 27512408
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000004f.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3944360509,
+          "compressedBytes": 938771,
+          "bytes": 2667552,
+          "offset": 29941974
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000050.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2675677118,
+          "compressedBytes": 46,
+          "bytes": 66,
+          "offset": 30880815
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000050.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2017857146,
+          "compressedBytes": 505,
+          "bytes": 880,
+          "offset": 30880933
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000050.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 229450951,
+          "compressedBytes": 71,
+          "bytes": 5152,
+          "offset": 30881508
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000051.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2675677118,
+          "compressedBytes": 46,
+          "bytes": 66,
+          "offset": 30881649
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000051.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1181996734,
+          "compressedBytes": 463,
+          "bytes": 791,
+          "offset": 30881767
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000051.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3120537403,
+          "compressedBytes": 57,
+          "bytes": 5152,
+          "offset": 30882300
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000052.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2675677118,
+          "compressedBytes": 46,
+          "bytes": 66,
+          "offset": 30882427
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000052.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1937733049,
+          "compressedBytes": 6344,
+          "bytes": 17737,
+          "offset": 30882545
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000052.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1959894270,
+          "compressedBytes": 1150,
+          "bytes": 5152,
+          "offset": 30888959
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000053.APN9.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 165461401,
+          "compressedBytes": 2013174,
+          "bytes": 9572374,
+          "offset": 30890179
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000053.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 67484835,
+          "compressedBytes": 82,
+          "bytes": 154,
+          "offset": 32903423
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000053.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 324648207,
+          "compressedBytes": 6337022,
+          "bytes": 25714674,
+          "offset": 32903577
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000053.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 336925614,
+          "compressedBytes": 744225,
+          "bytes": 2150432,
+          "offset": 39240669
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000053.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 70491457,
+          "compressedBytes": 905828,
+          "bytes": 5197846,
+          "offset": 39984964
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000054.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 40890857
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000054.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 641886598,
+          "compressedBytes": 2556,
+          "bytes": 7386,
+          "offset": 40890999
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000054.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 336396297,
+          "compressedBytes": 301,
+          "bytes": 5152,
+          "offset": 40893625
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000054.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 940273819,
+          "compressedBytes": 271,
+          "bytes": 4118,
+          "offset": 40893996
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000055.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 40894332
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000055.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3943944201,
+          "compressedBytes": 76218692,
+          "bytes": 167252198,
+          "offset": 40894474
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000055.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2927089877,
+          "compressedBytes": 3034135,
+          "bytes": 7214112,
+          "offset": 117113236
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000055.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1204183208,
+          "compressedBytes": 2732056,
+          "bytes": 19341334,
+          "offset": 120147441
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000056.APN9.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 992519606,
+          "compressedBytes": 29337,
+          "bytes": 139286,
+          "offset": 122879562
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000056.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 67484835,
+          "compressedBytes": 82,
+          "bytes": 154,
+          "offset": 122908969
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000056.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1101695094,
+          "compressedBytes": 92133,
+          "bytes": 264091,
+          "offset": 122909123
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000056.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2993994120,
+          "compressedBytes": 10519,
+          "bytes": 30752,
+          "offset": 123001326
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000056.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3980749384,
+          "compressedBytes": 14909,
+          "bytes": 77846,
+          "offset": 123011915
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000057.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 123026889
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000057.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 992301608,
+          "compressedBytes": 62432,
+          "bytes": 162053,
+          "offset": 123027031
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000057.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2185648927,
+          "compressedBytes": 7095,
+          "bytes": 20512,
+          "offset": 123089533
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000057.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2168286715,
+          "compressedBytes": 10723,
+          "bytes": 57366,
+          "offset": 123096698
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000058.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 123107486
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000058.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1655326519,
+          "compressedBytes": 6873,
+          "bytes": 13472,
+          "offset": 123107628
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000058.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3312167927,
+          "compressedBytes": 830,
+          "bytes": 5152,
+          "offset": 123114571
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000058.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2901888903,
+          "compressedBytes": 1438,
+          "bytes": 12310,
+          "offset": 123115471
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000059.APN9.atx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1449762215,
+          "compressedBytes": 54455,
+          "bytes": 253974,
+          "offset": 123116974
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000059.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 67484835,
+          "compressedBytes": 82,
+          "bytes": 154,
+          "offset": 123171499
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000059.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2994463440,
+          "compressedBytes": 147819,
+          "bytes": 551000,
+          "offset": 123171653
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000059.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3528655419,
+          "compressedBytes": 19914,
+          "bytes": 61472,
+          "offset": 123319542
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a00000059.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 170170108,
+          "compressedBytes": 18681,
+          "bytes": 143382,
+          "offset": 123339526
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000005a.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 123358272
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000005a.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2051625703,
+          "compressedBytes": 2496,
+          "bytes": 5646,
+          "offset": 123358414
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000005a.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2174989964,
+          "compressedBytes": 278,
+          "bytes": 5152,
+          "offset": 123360980
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a0000005a.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3631865458,
+          "compressedBytes": 287,
+          "bytes": 4118,
+          "offset": 123361328
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c0.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 123361680
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c0.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1481255654,
+          "compressedBytes": 52798110,
+          "bytes": 76534502,
+          "offset": 123361822
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c0.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4278718135,
+          "compressedBytes": 961469,
+          "bytes": 2124832,
+          "offset": 176160002
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c0.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3210837393,
+          "compressedBytes": 764472,
+          "bytes": 5963798,
+          "offset": 177121541
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c1.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 177886078
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c1.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4223872407,
+          "compressedBytes": 629873,
+          "bytes": 837943,
+          "offset": 177886220
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c1.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1693129582,
+          "compressedBytes": 11156,
+          "bytes": 25632,
+          "offset": 178516163
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c1.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3929816613,
+          "compressedBytes": 21359,
+          "bytes": 135190,
+          "offset": 178527389
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c2.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 178548813
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c2.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2537045603,
+          "compressedBytes": 1307741,
+          "bytes": 1485321,
+          "offset": 178548955
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c2.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1059806194,
+          "compressedBytes": 7287,
+          "bytes": 15392,
+          "offset": 179856766
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c2.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2038894468,
+          "compressedBytes": 6005,
+          "bytes": 49174,
+          "offset": 179864123
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c3.gdbindexes",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1731915611,
+          "compressedBytes": 70,
+          "bytes": 116,
+          "offset": 179870193
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c3.gdbtable",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2092229308,
+          "compressedBytes": 409432,
+          "bytes": 448388,
+          "offset": 179870335
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c3.gdbtablx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4061876278,
+          "compressedBytes": 1370,
+          "bytes": 5152,
+          "offset": 180279837
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/a000000c3.spx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2062761806,
+          "compressedBytes": 1232,
+          "bytes": 12310,
+          "offset": 180281277
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/gdb",
+          "flags": 0,
+          "method": 0,
+          "crc32": 379203374,
+          "compressedBytes": 4,
+          "bytes": 4,
+          "offset": 180282574
+        },
+        {
+          "name": "ASR_GDB_2026final.gdb/timestamps",
+          "flags": 0,
+          "method": 8,
+          "crc32": 860627096,
+          "compressedBytes": 43,
+          "bytes": 400,
+          "offset": 180282633
+        }
+      ],
+      "sha256": "a9835694b110b03a41cf4823743bfdb6c0a78e5c86ff25b071582f73f531a5d8"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/KIPS_Situs_2026-06-26.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2561848529,
+      "compressedBytes": 1802195,
+      "bytes": 1802195,
+      "offset": 180303860,
+      "children": [
+        {
+          "name": "SITS.TXT",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1471012877,
+          "compressedBytes": 1801669,
+          "bytes": 24974658,
+          "offset": 0
+        },
+        {
+          "name": "sits_schema.txt",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1740091554,
+          "compressedBytes": 234,
+          "bytes": 437,
+          "offset": 1801707
+        }
+      ],
+      "sha256": "4d03d8df662a14c04cf19cd3750396e954486aeff3db40c33004c5a833b0e453"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/Shapefile_AssrMapBooks_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2493966939,
+      "compressedBytes": 801803,
+      "bytes": 801803,
+      "offset": 182106166,
+      "children": [
+        {
+          "name": "assr_map_books_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2511621307,
+          "compressedBytes": 513,
+          "bytes": 1978,
+          "offset": 0
+        },
+        {
+          "name": "assr_map_books_2026final.prj",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1213665262,
+          "compressedBytes": 336,
+          "bytes": 565,
+          "offset": 571
+        },
+        {
+          "name": "assr_map_books_2026final.sbn",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2524323994,
+          "compressedBytes": 3184,
+          "bytes": 4740,
+          "offset": 965
+        },
+        {
+          "name": "assr_map_books_2026final.sbx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1261765178,
+          "compressedBytes": 258,
+          "bytes": 460,
+          "offset": 4207
+        },
+        {
+          "name": "assr_map_books_2026final.shp",
+          "flags": 0,
+          "method": 8,
+          "crc32": 994195640,
+          "compressedBytes": 751179,
+          "bytes": 1211372,
+          "offset": 4523
+        },
+        {
+          "name": "assr_map_books_2026final.shx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 275638337,
+          "compressedBytes": 2521,
+          "bytes": 3924,
+          "offset": 755760
+        },
+        {
+          "name": "assr_map_books_2026final_metadata.htm",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3550121280,
+          "compressedBytes": 10287,
+          "bytes": 59172,
+          "offset": 758339
+        },
+        {
+          "name": "assr_map_books_2026final_shp.xml",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2461367109,
+          "compressedBytes": 32133,
+          "bytes": 53001,
+          "offset": 768693
+        }
+      ],
+      "sha256": "8b5b831de3ca7b5400fda3a2055da923748f23e013548f19072e4f63c254a8ba"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/Shapefile_Parcels_Land_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 3240884936,
+      "compressedBytes": 82455733,
+      "bytes": 82455733,
+      "offset": 182908091,
+      "children": [
+        {
+          "name": "parcels_land_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3024791283,
+          "compressedBytes": 3824861,
+          "bytes": 21630569,
+          "offset": 0
+        },
+        {
+          "name": "parcels_land_2026final.prj",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1213665262,
+          "compressedBytes": 336,
+          "bytes": 565,
+          "offset": 3824917
+        },
+        {
+          "name": "parcels_land_2026final.sbn",
+          "flags": 0,
+          "method": 8,
+          "crc32": 520232168,
+          "compressedBytes": 995749,
+          "bytes": 3718196,
+          "offset": 3825309
+        },
+        {
+          "name": "parcels_land_2026final.sbx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1203559374,
+          "compressedBytes": 35459,
+          "bytes": 83724,
+          "offset": 4821114
+        },
+        {
+          "name": "parcels_land_2026final.shp",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2958014992,
+          "compressedBytes": 76276781,
+          "bytes": 156713276,
+          "offset": 4856629
+        },
+        {
+          "name": "parcels_land_2026final.shx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 40616722,
+          "compressedBytes": 1269807,
+          "bytes": 3393100,
+          "offset": 81133466
+        },
+        {
+          "name": "parcels_land_2026final_metadata.htm",
+          "flags": 0,
+          "method": 8,
+          "crc32": 449633434,
+          "compressedBytes": 15370,
+          "bytes": 85974,
+          "offset": 82403329
+        },
+        {
+          "name": "parcels_land_2026final_shp.xml",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1670105618,
+          "compressedBytes": 36010,
+          "bytes": 67917,
+          "offset": 82418764
+        }
+      ],
+      "sha256": "c473bd8db03df01ea06f94dd1b6c111cebd8c790d004866c0ae063ff8e5ab7a8"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/Shapefile_Parcels_Mineral_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2652699704,
+      "compressedBytes": 821104,
+      "bytes": 821104,
+      "offset": 265363946,
+      "children": [
+        {
+          "name": "parcels_mineral_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 564738673,
+          "compressedBytes": 25992,
+          "bytes": 132150,
+          "offset": 0
+        },
+        {
+          "name": "parcels_mineral_2026final.prj",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1213665262,
+          "compressedBytes": 336,
+          "bytes": 565,
+          "offset": 26051
+        },
+        {
+          "name": "parcels_mineral_2026final.sbn",
+          "flags": 0,
+          "method": 8,
+          "crc32": 4115297581,
+          "compressedBytes": 26424,
+          "bytes": 48180,
+          "offset": 26446
+        },
+        {
+          "name": "parcels_mineral_2026final.sbx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3466641233,
+          "compressedBytes": 1292,
+          "bytes": 2756,
+          "offset": 52929
+        },
+        {
+          "name": "parcels_mineral_2026final.shp",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1227694311,
+          "compressedBytes": 699611,
+          "bytes": 1470108,
+          "offset": 54280
+        },
+        {
+          "name": "parcels_mineral_2026final.shx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 917456998,
+          "compressedBytes": 17353,
+          "bytes": 37820,
+          "offset": 753950
+        },
+        {
+          "name": "parcels_mineral_2026final_metadata.htm",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2695621489,
+          "compressedBytes": 13821,
+          "bytes": 76453,
+          "offset": 771362
+        },
+        {
+          "name": "parcels_mineral_2026final_shp.xml",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3605352733,
+          "compressedBytes": 34867,
+          "bytes": 63867,
+          "offset": 785251
+        }
+      ],
+      "sha256": "4cc5cd0385c814c5ae071d0d5d6232d9e1ca48169231e8aa78e9823a4cc60bf5"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/Shapefile_TaxRateAreas_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2855223382,
+      "compressedBytes": 2253286,
+      "bytes": 2253286,
+      "offset": 266185175,
+      "children": [
+        {
+          "name": "tax_rate_areas_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3796852182,
+          "compressedBytes": 12040,
+          "bytes": 57042,
+          "offset": 0
+        },
+        {
+          "name": "tax_rate_areas_2026final.prj",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1213665262,
+          "compressedBytes": 336,
+          "bytes": 565,
+          "offset": 12098
+        },
+        {
+          "name": "tax_rate_areas_2026final.sbn",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2172279819,
+          "compressedBytes": 15835,
+          "bytes": 28020,
+          "offset": 12492
+        },
+        {
+          "name": "tax_rate_areas_2026final.sbx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2240854248,
+          "compressedBytes": 742,
+          "bytes": 1564,
+          "offset": 28385
+        },
+        {
+          "name": "tax_rate_areas_2026final.shp",
+          "flags": 0,
+          "method": 8,
+          "crc32": 725156311,
+          "compressedBytes": 2165781,
+          "bytes": 3837824,
+          "offset": 29185
+        },
+        {
+          "name": "tax_rate_areas_2026final.shx",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1838714248,
+          "compressedBytes": 13686,
+          "bytes": 22852,
+          "offset": 2195024
+        },
+        {
+          "name": "tax_rate_areas_2026final_metadata.htm",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2027479507,
+          "compressedBytes": 11211,
+          "bytes": 69143,
+          "offset": 2208768
+        },
+        {
+          "name": "tax_rate_areas_2026final_shp.xml",
+          "flags": 0,
+          "method": 8,
+          "crc32": 2489950620,
+          "compressedBytes": 32263,
+          "bytes": 56641,
+          "offset": 2220046
+        }
+      ],
+      "sha256": "83479cb145a2cae4a02cb7231b518237087aba121775be7cb56029f08ae4cc11"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_Land_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 625808628,
+      "compressedBytes": 25364795,
+      "bytes": 25364795,
+      "offset": 268438583,
+      "children": [
+        {
+          "name": "TaxRoll_Land_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1919871119,
+          "compressedBytes": 25364609,
+          "bytes": 267136820,
+          "offset": 0
+        }
+      ],
+      "sha256": "b64c7e28900a7d7cb7cdf47ff75622f1eb56f4c402b93c69841c8501064633e4"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_Mineral_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 1276957202,
+      "compressedBytes": 146255,
+      "bytes": 146255,
+      "offset": 293803490,
+      "children": [
+        {
+          "name": "TaxRoll_Mineral_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1926317545,
+          "compressedBytes": 146063,
+          "bytes": 2319240,
+          "offset": 0
+        }
+      ],
+      "sha256": "93a9acd963b0d9ac0d1204b4a2c44a16d14708b4a2e566e720b53d6f7dca9749"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_ParcelHistory_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 1477422438,
+      "compressedBytes": 2461078,
+      "bytes": 2461078,
+      "offset": 293949860,
+      "children": [
+        {
+          "name": "TaxRoll_ParcelHistory_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1201196182,
+          "compressedBytes": 2460874,
+          "bytes": 36235962,
+          "offset": 0
+        }
+      ],
+      "sha256": "6a3de47a4901e11a42521d79b0433e33d8a3bae54f411c790ac679f761efc325"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_ParcelHistory_EventTypes_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2903669723,
+      "compressedBytes": 699,
+      "bytes": 699,
+      "offset": 296411059,
+      "children": [
+        {
+          "name": "TaxRoll_ParcelHistory_EventTypes_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1652139032,
+          "compressedBytes": 473,
+          "bytes": 1560,
+          "offset": 0
+        }
+      ],
+      "sha256": "f87378d300296652155aa7c8edeea50b9032fdacb08f458b41dac630ee4c0472"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_RawData_2026final_MSACC10.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2173293018,
+      "compressedBytes": 36163998,
+      "bytes": 36163998,
+      "offset": 296411890,
+      "children": [
+        {
+          "name": "TaxRoll_RawData_2026-06-26.accdb",
+          "flags": 0,
+          "method": 8,
+          "crc32": 3774717140,
+          "compressedBytes": 36163800,
+          "bytes": 178237440,
+          "offset": 0
+        }
+      ],
+      "sha256": "c39fa980793d9c7c4f0f39cd081f6154a6cd2138e86fa4c75e7aa2b07cda6ad7"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_RollTypes_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 1727757075,
+      "compressedBytes": 624,
+      "bytes": 624,
+      "offset": 332576011,
+      "children": [
+        {
+          "name": "TaxRoll_RollTypes_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 1694818056,
+          "compressedBytes": 428,
+          "bytes": 1132,
+          "offset": 0
+        }
+      ],
+      "sha256": "c446d83d48b11b8c94e41f2d73f33328060c06b966d77d32d1d86962216ba96d"
+    },
+    {
+      "name": "KernCountyAssessor_GisParcels_2026final/TaxRoll_UseCodes_2026final.zip",
+      "flags": 2056,
+      "method": 0,
+      "crc32": 2286403376,
+      "compressedBytes": 6397,
+      "bytes": 6397,
+      "offset": 332576752,
+      "children": [
+        {
+          "name": "TaxRoll_UseCodes_2026final.dbf",
+          "flags": 0,
+          "method": 8,
+          "crc32": 956401579,
+          "compressedBytes": 6203,
+          "bytes": 49378,
+          "offset": 0
+        }
+      ],
+      "sha256": "59ed8cca2cf90af7dde841be9fddba39d5bfb52e50ebcbeb518fe5f113451771"
+    }
+  ],
+  "dbfProfiles": {
+    "Shapefile_Parcels_Land_2026final": {
+      "count": 424125,
+      "headerBytes": 193,
+      "recordBytes": 51,
+      "bytes": 21630569,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "APN",
+          "type": "C",
+          "width": 8,
+          "decimals": 0,
+          "offset": 1
+        },
+        {
+          "name": "APN9",
+          "type": "C",
+          "width": 9,
+          "decimals": 0,
+          "offset": 9
+        },
+        {
+          "name": "APN_LABEL",
+          "type": "C",
+          "width": 10,
+          "decimals": 0,
+          "offset": 18
+        },
+        {
+          "name": "SHAPE_SQFT",
+          "type": "N",
+          "width": 10,
+          "decimals": 0,
+          "offset": 28
+        },
+        {
+          "name": "SHAPE_ACRE",
+          "type": "F",
+          "width": 13,
+          "decimals": 11,
+          "offset": 38
+        }
+      ],
+      "active": 424125,
+      "deleted": 0,
+      "distributions": {
+        "APN": {
+          "lengths": {
+            "8": 424125
+          },
+          "examples": [
+            "00102001",
+            "00102002",
+            "00102004",
+            "00102011",
+            "00102012"
+          ]
+        },
+        "APN9": {
+          "lengths": {
+            "9": 424125
+          },
+          "examples": [
+            "001020015",
+            "001020023",
+            "001020049",
+            "001020114",
+            "001020122"
+          ]
+        },
+        "APN_LABEL": {
+          "lengths": {
+            "10": 424125
+          },
+          "examples": [
+            "001-020-01",
+            "001-020-02",
+            "001-020-04",
+            "001-020-11",
+            "001-020-12"
+          ]
+        }
+      }
+    },
+    "TaxRoll_Land_2026final": {
+      "count": 426054,
+      "headerBytes": 961,
+      "recordBytes": 627,
+      "bytes": 267136820,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "TE_NO",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 1
+        },
+        {
+          "name": "APN9",
+          "type": "C",
+          "width": 9,
+          "decimals": 0,
+          "offset": 20
+        },
+        {
+          "name": "ATN",
+          "type": "C",
+          "width": 11,
+          "decimals": 0,
+          "offset": 29
+        },
+        {
+          "name": "ROLL",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 40
+        },
+        {
+          "name": "USE_CODE",
+          "type": "C",
+          "width": 4,
+          "decimals": 0,
+          "offset": 41
+        },
+        {
+          "name": "TRA",
+          "type": "C",
+          "width": 6,
+          "decimals": 0,
+          "offset": 45
+        },
+        {
+          "name": "SUP_DIST",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 51
+        },
+        {
+          "name": "ASSE_NAME",
+          "type": "C",
+          "width": 44,
+          "decimals": 0,
+          "offset": 52
+        },
+        {
+          "name": "IN_CARE_OF",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 96
+        },
+        {
+          "name": "DBA",
+          "type": "C",
+          "width": 50,
+          "decimals": 0,
+          "offset": 136
+        },
+        {
+          "name": "LAND_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 186
+        },
+        {
+          "name": "MIN_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 205
+        },
+        {
+          "name": "IMP_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 224
+        },
+        {
+          "name": "OIFIX_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 243
+        },
+        {
+          "name": "PP_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 262
+        },
+        {
+          "name": "EX_TYPE",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 281
+        },
+        {
+          "name": "EX_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 283
+        },
+        {
+          "name": "NET_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 302
+        },
+        {
+          "name": "PROP8",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 321
+        },
+        {
+          "name": "BASEYR_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 323
+        },
+        {
+          "name": "ADDR_SITUS",
+          "type": "C",
+          "width": 60,
+          "decimals": 0,
+          "offset": 342
+        },
+        {
+          "name": "ADDR_BILL1",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 402
+        },
+        {
+          "name": "ADDR_BILL2",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 442
+        },
+        {
+          "name": "ADDR_BILL3",
+          "type": "C",
+          "width": 30,
+          "decimals": 0,
+          "offset": 482
+        },
+        {
+          "name": "LEGAL_TYPE",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 512
+        },
+        {
+          "name": "LEGAL_DESC",
+          "type": "C",
+          "width": 60,
+          "decimals": 0,
+          "offset": 514
+        },
+        {
+          "name": "ACRES",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 574
+        },
+        {
+          "name": "AG_PRES",
+          "type": "C",
+          "width": 15,
+          "decimals": 0,
+          "offset": 593
+        },
+        {
+          "name": "CITRUS_AC",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 608
+        }
+      ],
+      "active": 426054,
+      "deleted": 0,
+      "distributions": {
+        "APN9": {
+          "lengths": {
+            "9": 426054
+          },
+          "examples": [
+            "001020015",
+            "001020023",
+            "001020049",
+            "001020114",
+            "001020122"
+          ]
+        },
+        "ATN": {
+          "lengths": {
+            "11": 426054
+          },
+          "examples": [
+            "00102001015",
+            "00102002009",
+            "00102004005",
+            "00102011005",
+            "00102012008"
+          ]
+        },
+        "ROLL": {
+          "lengths": {
+            "1": 426054
+          },
+          "examples": [
+            "1",
+            "5"
+          ]
+        },
+        "USE_CODE": {
+          "lengths": {
+            "0": 3,
+            "4": 426051
+          },
+          "examples": [
+            "3700",
+            "2406",
+            "1020",
+            "3020",
+            "3190"
+          ]
+        }
+      }
+    },
+    "TaxRoll_Mineral_2026final": {
+      "count": 4722,
+      "headerBytes": 737,
+      "recordBytes": 491,
+      "bytes": 2319240,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "TE_NO",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 1
+        },
+        {
+          "name": "APN9",
+          "type": "C",
+          "width": 9,
+          "decimals": 0,
+          "offset": 20
+        },
+        {
+          "name": "ATN",
+          "type": "C",
+          "width": 11,
+          "decimals": 0,
+          "offset": 29
+        },
+        {
+          "name": "ROLL",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 40
+        },
+        {
+          "name": "USE_CODE",
+          "type": "C",
+          "width": 4,
+          "decimals": 0,
+          "offset": 41
+        },
+        {
+          "name": "TRA",
+          "type": "C",
+          "width": 6,
+          "decimals": 0,
+          "offset": 45
+        },
+        {
+          "name": "SUP_DIST",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 51
+        },
+        {
+          "name": "ASSE_NAME",
+          "type": "C",
+          "width": 44,
+          "decimals": 0,
+          "offset": 52
+        },
+        {
+          "name": "IN_CARE_OF",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 96
+        },
+        {
+          "name": "DBA",
+          "type": "C",
+          "width": 50,
+          "decimals": 0,
+          "offset": 136
+        },
+        {
+          "name": "LAND_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 186
+        },
+        {
+          "name": "MIN_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 205
+        },
+        {
+          "name": "IMP_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 224
+        },
+        {
+          "name": "OIFIX_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 243
+        },
+        {
+          "name": "PP_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 262
+        },
+        {
+          "name": "NET_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 281
+        },
+        {
+          "name": "ADDR_BILL1",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 300
+        },
+        {
+          "name": "ADDR_BILL2",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 340
+        },
+        {
+          "name": "ADDR_BILL3",
+          "type": "C",
+          "width": 30,
+          "decimals": 0,
+          "offset": 380
+        },
+        {
+          "name": "LEGAL_TYPE",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 410
+        },
+        {
+          "name": "LEGAL_DESC",
+          "type": "C",
+          "width": 60,
+          "decimals": 0,
+          "offset": 412
+        },
+        {
+          "name": "ACRES",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 472
+        }
+      ],
+      "active": 4722,
+      "deleted": 0,
+      "distributions": {
+        "APN9": {
+          "lengths": {
+            "9": 4722
+          },
+          "examples": [
+            "008211526",
+            "011250107",
+            "011260031",
+            "011290152",
+            "011290244"
+          ]
+        },
+        "ATN": {
+          "lengths": {
+            "11": 4722
+          },
+          "examples": [
+            "00821152005",
+            "01125010002",
+            "01126003005",
+            "01129015009",
+            "01129024005"
+          ]
+        },
+        "ROLL": {
+          "lengths": {
+            "1": 4722
+          },
+          "examples": [
+            "2",
+            "5",
+            "1"
+          ]
+        },
+        "USE_CODE": {
+          "lengths": {
+            "4": 4722
+          },
+          "examples": [
+            "8202",
+            "8201",
+            "6040",
+            "3968",
+            "8100"
+          ]
+        }
+      }
+    },
+    "TaxRoll_ParcelHistory_2026final": {
+      "count": 532878,
+      "headerBytes": 257,
+      "recordBytes": 68,
+      "bytes": 36235962,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "APN9",
+          "type": "C",
+          "width": 9,
+          "decimals": 0,
+          "offset": 1
+        },
+        {
+          "name": "EVT_NUM_CR",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 10
+        },
+        {
+          "name": "EVT_TYP_CR",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 29
+        },
+        {
+          "name": "DT_CREATE",
+          "type": "C",
+          "width": 8,
+          "decimals": 0,
+          "offset": 31
+        },
+        {
+          "name": "EVT_NUM_IN",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 39
+        },
+        {
+          "name": "EVT_TYP_IN",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 58
+        },
+        {
+          "name": "DT_INACT",
+          "type": "C",
+          "width": 8,
+          "decimals": 0,
+          "offset": 60
+        }
+      ],
+      "active": 532878,
+      "deleted": 0,
+      "distributions": {
+        "APN9": {
+          "lengths": {
+            "9": 532878
+          },
+          "examples": [
+            "001103027",
+            "001103035",
+            "001103043",
+            "001103050",
+            "001103068"
+          ]
+        }
+      }
+    },
+    "TaxRoll_ParcelHistory_EventTypes_2026final": {
+      "count": 10,
+      "headerBytes": 129,
+      "recordBytes": 143,
+      "bytes": 1560,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "EVT_TYP_CD",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 1
+        },
+        {
+          "name": "EVT_TYPE",
+          "type": "C",
+          "width": 30,
+          "decimals": 0,
+          "offset": 3
+        },
+        {
+          "name": "EVT_NOTE",
+          "type": "C",
+          "width": 110,
+          "decimals": 0,
+          "offset": 33
+        }
+      ],
+      "active": 10,
+      "deleted": 0,
+      "distributions": {},
+      "domain": [
+        {
+          "EVT_TYP_CD": "AR",
+          "EVT_TYPE": "AE Reassignment",
+          "EVT_NOTE": "Assessable Entity Reassignment."
+        },
+        {
+          "EVT_TYP_CD": "CB",
+          "EVT_TYPE": "Parcel Combine",
+          "EVT_NOTE": "Combine, merge, and dissolve multiple parcels into one."
+        },
+        {
+          "EVT_TYP_CD": "CR",
+          "EVT_TYPE": "Parcel Create",
+          "EVT_NOTE": "Create a new parcel record, \"from thin air.\""
+        },
+        {
+          "EVT_TYP_CD": "CT",
+          "EVT_TYPE": "Parcel Cut",
+          "EVT_NOTE": "One parcel split into multiple parcels."
+        },
+        {
+          "EVT_TYP_CD": "CV",
+          "EVT_TYPE": "Conversion",
+          "EVT_NOTE": "Parcel data converted from old computer system to Kern Integrated Property System (KIPS) on 1994-09-01."
+        },
+        {
+          "EVT_TYP_CD": "DL",
+          "EVT_TYPE": "Delete",
+          "EVT_NOTE": "Parcel record inactivated, which \"deletes\" it from the roll being prepared."
+        },
+        {
+          "EVT_TYP_CD": "DS",
+          "EVT_TYPE": "TE Desegregation",
+          "EVT_NOTE": "Tax entity desegregation."
+        },
+        {
+          "EVT_TYP_CD": "DT",
+          "EVT_TYPE": "Direct Transfer",
+          "EVT_NOTE": "Parcel number transferred to a new parcel number, typically due to map reorganization."
+        },
+        {
+          "EVT_TYP_CD": "PC",
+          "EVT_TYPE": "Prior Conversion",
+          "EVT_NOTE": "Unclear purpose."
+        },
+        {
+          "EVT_TYP_CD": "SG",
+          "EVT_TYPE": "TE Segregation",
+          "EVT_NOTE": "Tax entity segregation."
+        }
+      ]
+    },
+    "TaxRoll_RollTypes_2026final": {
+      "count": 6,
+      "headerBytes": 129,
+      "recordBytes": 167,
+      "bytes": 1132,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "ROLL",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 1
+        },
+        {
+          "name": "ROLL_TYPE",
+          "type": "C",
+          "width": 15,
+          "decimals": 0,
+          "offset": 2
+        },
+        {
+          "name": "ROLL_NOTE",
+          "type": "C",
+          "width": 150,
+          "decimals": 0,
+          "offset": 17
+        }
+      ],
+      "active": 6,
+      "deleted": 0,
+      "distributions": {
+        "ROLL": {
+          "lengths": {
+            "1": 6
+          },
+          "examples": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      "domain": [
+        {
+          "ROLL": "1",
+          "ROLL_TYPE": "SECURED",
+          "ROLL_NOTE": "All taxable real property on which the tax lien is secured by the land and improvements."
+        },
+        {
+          "ROLL": "2",
+          "ROLL_TYPE": "OIL-GAS-MINERAL",
+          "ROLL_NOTE": "All taxable property related to the active production of oil, gas, or other valuable minerals."
+        },
+        {
+          "ROLL": "3",
+          "ROLL_TYPE": "UTILITY",
+          "ROLL_NOTE": "Properties assessed by the State BOE and billed by the County."
+        },
+        {
+          "ROLL": "4",
+          "ROLL_TYPE": "UNSECURED",
+          "ROLL_NOTE": "Taxable property of insufficient value to secure the tax lien, or property where the assessee owns no rights to land."
+        },
+        {
+          "ROLL": "5",
+          "ROLL_TYPE": "EXEMPT",
+          "ROLL_NOTE": "Properties that are tax-exempt or non-billable. Includes govt-owned parcels, and utility parcels designated by State BOE."
+        },
+        {
+          "ROLL": "6",
+          "ROLL_TYPE": "MOBILEHOME",
+          "ROLL_NOTE": "Mobilehomes that are assessed separately from the land."
+        }
+      ]
+    },
+    "TaxRoll_UseCodes_2026final": {
+      "count": 640,
+      "headerBytes": 97,
+      "recordBytes": 77,
+      "bytes": 49378,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "USE_CODE",
+          "type": "C",
+          "width": 4,
+          "decimals": 0,
+          "offset": 1
+        },
+        {
+          "name": "USE_DESC",
+          "type": "C",
+          "width": 72,
+          "decimals": 0,
+          "offset": 5
+        }
+      ],
+      "active": 640,
+      "deleted": 0,
+      "distributions": {
+        "USE_CODE": {
+          "lengths": {
+            "4": 640
+          },
+          "examples": [
+            "0000",
+            "0001",
+            "0009",
+            "0010",
+            "0017"
+          ]
+        },
+        "USE_DESC": {
+          "lengths": {
+            "3": 1,
+            "4": 5,
+            "5": 14,
+            "6": 18,
+            "7": 12,
+            "8": 36,
+            "9": 23,
+            "10": 17,
+            "11": 126,
+            "12": 25,
+            "13": 19,
+            "14": 17,
+            "15": 30,
+            "16": 13,
+            "17": 12,
+            "18": 16,
+            "19": 14,
+            "20": 18,
+            "21": 22,
+            "22": 30,
+            "23": 30,
+            "24": 19,
+            "25": 23,
+            "26": 14,
+            "27": 16,
+            "28": 19,
+            "29": 26,
+            "30": 25
+          },
+          "examples": [
+            "NO USE CODE (INTERIM STATUS)",
+            "VAC <1 AC NO R1/2/3/4/E/C/I",
+            "SAME AS 0001 W/MINOR MISC IMP",
+            "R1 ZONE ONE ACRE OR LESS",
+            "SAME AS 0010 W/LICENSED MH"
+          ]
+        }
+      },
+      "domain": [
+        {
+          "USE_CODE": "0000",
+          "USE_DESC": "NO USE CODE (INTERIM STATUS)"
+        },
+        {
+          "USE_CODE": "0001",
+          "USE_DESC": "VAC <1 AC NO R1/2/3/4/E/C/I"
+        },
+        {
+          "USE_CODE": "0009",
+          "USE_DESC": "SAME AS 0001 W/MINOR MISC IMP"
+        },
+        {
+          "USE_CODE": "0010",
+          "USE_DESC": "R1 ZONE ONE ACRE OR LESS"
+        },
+        {
+          "USE_CODE": "0017",
+          "USE_DESC": "SAME AS 0010 W/LICENSED MH"
+        },
+        {
+          "USE_CODE": "0019",
+          "USE_DESC": "R1 ZONE W/MISC IMP"
+        },
+        {
+          "USE_CODE": "0020",
+          "USE_DESC": "R2 ZONE"
+        },
+        {
+          "USE_CODE": "0027",
+          "USE_DESC": "SAME AS 0020 W/LICENSED MH"
+        },
+        {
+          "USE_CODE": "0029",
+          "USE_DESC": "R2 ZONE W/MISC IMP"
+        },
+        {
+          "USE_CODE": "0030",
+          "USE_DESC": "R3 ZONE"
+        },
+        {
+          "USE_CODE": "0039",
+          "USE_DESC": "R3 ZONE W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "0040",
+          "USE_DESC": "R4 ZONE"
+        },
+        {
+          "USE_CODE": "0049",
+          "USE_DESC": "R4 ZONE W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "0050",
+          "USE_DESC": "E ZONED LAND ONE ACRE OR LESS"
+        },
+        {
+          "USE_CODE": "0059",
+          "USE_DESC": "SAME AS 0050 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "0060",
+          "USE_DESC": "VAC>1AC <3 NO R2 3 4 COMM IND"
+        },
+        {
+          "USE_CODE": "0067",
+          "USE_DESC": "SAME AS 0060 W/LIC MH"
+        },
+        {
+          "USE_CODE": "0068",
+          "USE_DESC": "SAME AS 0060 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "0069",
+          "USE_DESC": "SAME AS 0060 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "0070",
+          "USE_DESC": "VAC=3 AC <7 NO R2 3 4 COMM IND"
+        },
+        {
+          "USE_CODE": "0077",
+          "USE_DESC": "SAME AS 0070 W/LIC MH"
+        },
+        {
+          "USE_CODE": "0079",
+          "USE_DESC": "SAME AS 0070 W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "0080",
+          "USE_DESC": "VAC 7-20 AC NO R2 3 4 COMM IND"
+        },
+        {
+          "USE_CODE": "0081",
+          "USE_DESC": "20-40 AC NO R2 3 4 COMM IND"
+        },
+        {
+          "USE_CODE": "0082",
+          "USE_DESC": "40-100 AC NO R2 3 4 COMM IND"
+        },
+        {
+          "USE_CODE": "0083",
+          "USE_DESC": "100< NO R2 3 4 COMM IND"
+        },
+        {
+          "USE_CODE": "0087",
+          "USE_DESC": "SAME AS 0080 W/LIC MH"
+        },
+        {
+          "USE_CODE": "0088",
+          "USE_DESC": "VACANT LAND - RENEWABLE ENERGY"
+        },
+        {
+          "USE_CODE": "0089",
+          "USE_DESC": "7-20AC W/MISC"
+        },
+        {
+          "USE_CODE": "0090",
+          "USE_DESC": "VAC ALL T ZONE INCL T RST R1T"
+        },
+        {
+          "USE_CODE": "0091",
+          "USE_DESC": "VAC W/MANUFTD HOME SUBDIVISION"
+        },
+        {
+          "USE_CODE": "0097",
+          "USE_DESC": "MS & T ZONING W/LIC MH"
+        },
+        {
+          "USE_CODE": "0098",
+          "USE_DESC": "SAME AS 0097 W/2+ LIC MH"
+        },
+        {
+          "USE_CODE": "0099",
+          "USE_DESC": "VAC T W/MISC IMP NO LIC MH"
+        },
+        {
+          "USE_CODE": "0100",
+          "USE_DESC": "SGL FAM RES ON RS ZONED LAND"
+        },
+        {
+          "USE_CODE": "0101",
+          "USE_DESC": "SGL FAM RES ON R1 ZONED LAND"
+        },
+        {
+          "USE_CODE": "0102",
+          "USE_DESC": "SGL FAM RES ON R2 ZONED LAND"
+        },
+        {
+          "USE_CODE": "0103",
+          "USE_DESC": "SGL FAM RES ON R3 ZONED LAND"
+        },
+        {
+          "USE_CODE": "0104",
+          "USE_DESC": "SGL FAM RES ON R4 ZONED LAND"
+        },
+        {
+          "USE_CODE": "0105",
+          "USE_DESC": "SGL FAM RES ON COMM/IND ZONE"
+        },
+        {
+          "USE_CODE": "0106",
+          "USE_DESC": "SFR NOT ON RS 1 2 3 4"
+        },
+        {
+          "USE_CODE": "0107",
+          "USE_DESC": "SGL FAM RES + 1 LICENSED MH"
+        },
+        {
+          "USE_CODE": "0108",
+          "USE_DESC": "SGL FAM RES W/2+ LICENSED MH"
+        },
+        {
+          "USE_CODE": "0109",
+          "USE_DESC": "SFR DEVELOP COMMON AREA"
+        },
+        {
+          "USE_CODE": "0180",
+          "USE_DESC": "MH NO PERM FOUNDATION MS ZONE"
+        },
+        {
+          "USE_CODE": "0181",
+          "USE_DESC": "SAME AS 0180 NO T RST R1T ZONE"
+        },
+        {
+          "USE_CODE": "0182",
+          "USE_DESC": "SAME AS 0180 NO A SERIES ZONE"
+        },
+        {
+          "USE_CODE": "0183",
+          "USE_DESC": "0180 ALL Z NO MS T RST R1T A Z"
+        },
+        {
+          "USE_CODE": "0186",
+          "USE_DESC": "SAME AS 0106 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "0188",
+          "USE_DESC": "SAME AS 0180 WITH LICENSED MH"
+        },
+        {
+          "USE_CODE": "0189",
+          "USE_DESC": "MLTP MHS ANY ZN NO PERM FOUND"
+        },
+        {
+          "USE_CODE": "0190",
+          "USE_DESC": "MH PERM FOUND MS ZONING"
+        },
+        {
+          "USE_CODE": "0191",
+          "USE_DESC": "SAME AS 0190 NO T RST R1T ZONE"
+        },
+        {
+          "USE_CODE": "0192",
+          "USE_DESC": "SAME AS 0190 A SERIES ZONING"
+        },
+        {
+          "USE_CODE": "0193",
+          "USE_DESC": "0190 ALL Z NO MS T RST R1T Z"
+        },
+        {
+          "USE_CODE": "0194",
+          "USE_DESC": "MODULAR HOME WITH CERT OF OCC"
+        },
+        {
+          "USE_CODE": "0196",
+          "USE_DESC": "SAME AS 0106 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "0198",
+          "USE_DESC": "SAME AS 0190 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "0199",
+          "USE_DESC": "MLTP MHS W/PERM FOUN ANY ZONE"
+        },
+        {
+          "USE_CODE": "0200",
+          "USE_DESC": "DUPLEX OR 2 LIV UN 1 PARCEL"
+        },
+        {
+          "USE_CODE": "0201",
+          "USE_DESC": "2 SEPARATE RES ON 1 PARCEL"
+        },
+        {
+          "USE_CODE": "0207",
+          "USE_DESC": "SAME AS 0200 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "0300",
+          "USE_DESC": "TRIPLEX OR 3 LIV UN ON 1 PARC"
+        },
+        {
+          "USE_CODE": "0301",
+          "USE_DESC": "DUPLEX + 1 RES = 3 LIV UN"
+        },
+        {
+          "USE_CODE": "0302",
+          "USE_DESC": "PARCEL W/3 SEPARATE RES"
+        },
+        {
+          "USE_CODE": "0307",
+          "USE_DESC": "SAME AS 0300-0302 W/MH"
+        },
+        {
+          "USE_CODE": "0390",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "0400",
+          "USE_DESC": "FOURPLEX OR 4 LIV UN ON 1 PARC"
+        },
+        {
+          "USE_CODE": "0401",
+          "USE_DESC": "2 DUPLEXES ON 1 PARCEL"
+        },
+        {
+          "USE_CODE": "0402",
+          "USE_DESC": "TRIPLEX + 1 RES ON 1 PARCEL"
+        },
+        {
+          "USE_CODE": "0403",
+          "USE_DESC": "1 PARCEL W/4 SEPARATE RES"
+        },
+        {
+          "USE_CODE": "0404",
+          "USE_DESC": "DUPLEX + 2 RESIDENCES"
+        },
+        {
+          "USE_CODE": "0407",
+          "USE_DESC": "SAME AS 0400 W/LIC MH"
+        },
+        {
+          "USE_CODE": "0500",
+          "USE_DESC": "1 PARCEL W/5-9 UNIT COMPLEX"
+        },
+        {
+          "USE_CODE": "0501",
+          "USE_DESC": "1 PARCEL W/10-20 UNIT COMPLEX"
+        },
+        {
+          "USE_CODE": "0502",
+          "USE_DESC": "1 PARCEL W/21-30 UNIT COMPLEX"
+        },
+        {
+          "USE_CODE": "0503",
+          "USE_DESC": "1 PARCEL W/(31+) UNIT COMPLEX"
+        },
+        {
+          "USE_CODE": "0504",
+          "USE_DESC": "1 PARCEL W/(5+) RES COMBO = 5"
+        },
+        {
+          "USE_CODE": "0600",
+          "USE_DESC": "TOWNHOUSE OR PUD"
+        },
+        {
+          "USE_CODE": "0601",
+          "USE_DESC": "CONDO/PUD COMMON AREA"
+        },
+        {
+          "USE_CODE": "0602",
+          "USE_DESC": "COOPERATIVE HOUSING"
+        },
+        {
+          "USE_CODE": "0603",
+          "USE_DESC": "CONDOMINIUM"
+        },
+        {
+          "USE_CODE": "0700",
+          "USE_DESC": "SFR ON R2/3/4 LAND, LOT<6000SF"
+        },
+        {
+          "USE_CODE": "0800",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "0900",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "1000",
+          "USE_DESC": "COMMERCIAL LAND"
+        },
+        {
+          "USE_CODE": "1007",
+          "USE_DESC": "SAME AS 1000 W/LIC MH"
+        },
+        {
+          "USE_CODE": "1009",
+          "USE_DESC": "SAME AS 1000 W/MIS IMPS"
+        },
+        {
+          "USE_CODE": "1010",
+          "USE_DESC": "VAC C-1 ZONE"
+        },
+        {
+          "USE_CODE": "1019",
+          "USE_DESC": "SAME AS 1010 W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "1020",
+          "USE_DESC": "VAC C-2 ZONE"
+        },
+        {
+          "USE_CODE": "1027",
+          "USE_DESC": "SAME AS 1020 W/LIC MH"
+        },
+        {
+          "USE_CODE": "1029",
+          "USE_DESC": "SAME AS 1000-1020 W/ MULT. MH"
+        },
+        {
+          "USE_CODE": "1030",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "1086",
+          "USE_DESC": "VAC COM LAND-CANNABIS CULT"
+        },
+        {
+          "USE_CODE": "1090",
+          "USE_DESC": "SAME AS 1000 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "1099",
+          "USE_DESC": "COMM LAND PART ECON UNIT"
+        },
+        {
+          "USE_CODE": "1100",
+          "USE_DESC": "SMALL STREET RETAIL < 5000 SF"
+        },
+        {
+          "USE_CODE": "1111",
+          "USE_DESC": "LIQUOR"
+        },
+        {
+          "USE_CODE": "1116",
+          "USE_DESC": "AUTO PARTS"
+        },
+        {
+          "USE_CODE": "1119",
+          "USE_DESC": "BARBER/BEAUTY"
+        },
+        {
+          "USE_CODE": "1120",
+          "USE_DESC": "LAUNDRY/DRY CLEANING"
+        },
+        {
+          "USE_CODE": "1123",
+          "USE_DESC": "FREESTANDING RETAIL <5000 SF"
+        },
+        {
+          "USE_CODE": "1124",
+          "USE_DESC": "IN-LINE MULTI-TENANT <5000 SF"
+        },
+        {
+          "USE_CODE": "1125",
+          "USE_DESC": "RETAIL PAD IN CENTER <5000 SF"
+        },
+        {
+          "USE_CODE": "1186",
+          "USE_DESC": "SMALL RETAIL-DISPENSARY"
+        },
+        {
+          "USE_CODE": "1190",
+          "USE_DESC": "MULTIPLE USE STORE"
+        },
+        {
+          "USE_CODE": "1200",
+          "USE_DESC": "COMBO RES & COMMERCIAL"
+        },
+        {
+          "USE_CODE": "1201",
+          "USE_DESC": "COMBO RESIDENCE & OFFICE"
+        },
+        {
+          "USE_CODE": "1202",
+          "USE_DESC": "INACTIVATED"
+        },
+        {
+          "USE_CODE": "1203",
+          "USE_DESC": "COMBO RES & RETAIL"
+        },
+        {
+          "USE_CODE": "1290",
+          "USE_DESC": "SAME AS 1200 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "1300",
+          "USE_DESC": "LARGE STREET RETAIL > 5000 SF"
+        },
+        {
+          "USE_CODE": "1301",
+          "USE_DESC": "DEPARTMENT"
+        },
+        {
+          "USE_CODE": "1308",
+          "USE_DESC": "FREESTANDING RETAIL BLDG >5000"
+        },
+        {
+          "USE_CODE": "1309",
+          "USE_DESC": "IN-LINE RETAIL BLDG >5000"
+        },
+        {
+          "USE_CODE": "1310",
+          "USE_DESC": "PAD IN SHOPPING CENTER >5000SF"
+        },
+        {
+          "USE_CODE": "1311",
+          "USE_DESC": "INDOOR SWAP MEET >5000 SF"
+        },
+        {
+          "USE_CODE": "1312",
+          "USE_DESC": "BIG BOX RETAIL >15000 SF"
+        },
+        {
+          "USE_CODE": "1316",
+          "USE_DESC": "AUTO PARTS"
+        },
+        {
+          "USE_CODE": "1386",
+          "USE_DESC": "LARGE RETAIL-DISPENSARY"
+        },
+        {
+          "USE_CODE": "1390",
+          "USE_DESC": "MULTIPLE USE"
+        },
+        {
+          "USE_CODE": "1399",
+          "USE_DESC": "SAME AS 1300 WITH GROUND LEASE"
+        },
+        {
+          "USE_CODE": "1400",
+          "USE_DESC": "MARKETS"
+        },
+        {
+          "USE_CODE": "1401",
+          "USE_DESC": "SUPERMARKET"
+        },
+        {
+          "USE_CODE": "1402",
+          "USE_DESC": "GROCERY"
+        },
+        {
+          "USE_CODE": "1403",
+          "USE_DESC": "FRANCHISE FOOD (7-11 CIRCLE-K)"
+        },
+        {
+          "USE_CODE": "1404",
+          "USE_DESC": "MEAT RETAIL"
+        },
+        {
+          "USE_CODE": "1405",
+          "USE_DESC": "PRODUCE"
+        },
+        {
+          "USE_CODE": "1406",
+          "USE_DESC": "SEAFOOD"
+        },
+        {
+          "USE_CODE": "1407",
+          "USE_DESC": "FRUIT STAND"
+        },
+        {
+          "USE_CODE": "1490",
+          "USE_DESC": "MULTI USE"
+        },
+        {
+          "USE_CODE": "1499",
+          "USE_DESC": "SAME AS 1400 WITH GROUND LEASE"
+        },
+        {
+          "USE_CODE": "1500",
+          "USE_DESC": "SHOPPING CENTER"
+        },
+        {
+          "USE_CODE": "1501",
+          "USE_DESC": "SMALL SHOPPING CENTER"
+        },
+        {
+          "USE_CODE": "1502",
+          "USE_DESC": "LARGE REGIONAL SHOPPING CENTER"
+        },
+        {
+          "USE_CODE": "1599",
+          "USE_DESC": "SAME AS 1500 WITH GROUND LEASE"
+        },
+        {
+          "USE_CODE": "1600",
+          "USE_DESC": "OFFICE BLDGS"
+        },
+        {
+          "USE_CODE": "1601",
+          "USE_DESC": "MEDIA"
+        },
+        {
+          "USE_CODE": "1602",
+          "USE_DESC": "OFFICE BUILDINGS 10,000-"
+        },
+        {
+          "USE_CODE": "1603",
+          "USE_DESC": "OFFICE BUILDINGS 10,000+"
+        },
+        {
+          "USE_CODE": "1604",
+          "USE_DESC": "COMMUNICATION SERVICE"
+        },
+        {
+          "USE_CODE": "1605",
+          "USE_DESC": "MEDICAL"
+        },
+        {
+          "USE_CODE": "1606",
+          "USE_DESC": "DENTAL"
+        },
+        {
+          "USE_CODE": "1607",
+          "USE_DESC": "MEDICAL-DENTAL COMBO"
+        },
+        {
+          "USE_CODE": "1613",
+          "USE_DESC": "VETERINARY"
+        },
+        {
+          "USE_CODE": "1614",
+          "USE_DESC": "OFFICE/RESIDENCE COMBINATION"
+        },
+        {
+          "USE_CODE": "1690",
+          "USE_DESC": "MULTIPLE USE"
+        },
+        {
+          "USE_CODE": "1700",
+          "USE_DESC": "INSTITUTIONAL"
+        },
+        {
+          "USE_CODE": "1701",
+          "USE_DESC": "HOSPITAL"
+        },
+        {
+          "USE_CODE": "1702",
+          "USE_DESC": "PSYCHIATRIC HOSPITAL"
+        },
+        {
+          "USE_CODE": "1703",
+          "USE_DESC": "ASSISTED LIVING"
+        },
+        {
+          "USE_CODE": "1704",
+          "USE_DESC": "MEDICAL LAB"
+        },
+        {
+          "USE_CODE": "1705",
+          "USE_DESC": "AMBULANCE SVC"
+        },
+        {
+          "USE_CODE": "1706",
+          "USE_DESC": "CHURCH"
+        },
+        {
+          "USE_CODE": "1707",
+          "USE_DESC": "CEMETARY"
+        },
+        {
+          "USE_CODE": "1708",
+          "USE_DESC": "MORTUARY"
+        },
+        {
+          "USE_CODE": "1709",
+          "USE_DESC": "MAUSOLEUM"
+        },
+        {
+          "USE_CODE": "1710",
+          "USE_DESC": "PRIVATE SCHOOL"
+        },
+        {
+          "USE_CODE": "1711",
+          "USE_DESC": "CHURCH OWNED"
+        },
+        {
+          "USE_CODE": "1712",
+          "USE_DESC": "INDEPENDENT LIVING"
+        },
+        {
+          "USE_CODE": "1713",
+          "USE_DESC": "DAY CARE CENTER"
+        },
+        {
+          "USE_CODE": "1714",
+          "USE_DESC": "HALF-WAY HOUSE"
+        },
+        {
+          "USE_CODE": "1715",
+          "USE_DESC": "MUSEUM"
+        },
+        {
+          "USE_CODE": "1716",
+          "USE_DESC": "DETENTION FACILITY/PRISON"
+        },
+        {
+          "USE_CODE": "1717",
+          "USE_DESC": "HOMELESS FACILIITY"
+        },
+        {
+          "USE_CODE": "1718",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "1719",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "1720",
+          "USE_DESC": "SKILLED NURSING"
+        },
+        {
+          "USE_CODE": "1790",
+          "USE_DESC": "INSTITUTIONAL W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "1800",
+          "USE_DESC": "FOOD/BEVERAGE"
+        },
+        {
+          "USE_CODE": "1801",
+          "USE_DESC": "RESTAURANTS"
+        },
+        {
+          "USE_CODE": "1802",
+          "USE_DESC": "CAFES"
+        },
+        {
+          "USE_CODE": "1803",
+          "USE_DESC": "COFFEE SHOP"
+        },
+        {
+          "USE_CODE": "1804",
+          "USE_DESC": "COCKTAIL LOUNGE"
+        },
+        {
+          "USE_CODE": "1805",
+          "USE_DESC": "BAR OR TAVERN"
+        },
+        {
+          "USE_CODE": "1806",
+          "USE_DESC": "CATERING"
+        },
+        {
+          "USE_CODE": "1807",
+          "USE_DESC": "DRIVE-IN"
+        },
+        {
+          "USE_CODE": "1808",
+          "USE_DESC": "SPECIALTY DRIVE UPS"
+        },
+        {
+          "USE_CODE": "1890",
+          "USE_DESC": "MULTI-USE FOOD/BEVERAGE"
+        },
+        {
+          "USE_CODE": "1899",
+          "USE_DESC": "SAME AS 1800 WITH GROUND LEASE"
+        },
+        {
+          "USE_CODE": "1900",
+          "USE_DESC": "RECREATIONAL"
+        },
+        {
+          "USE_CODE": "1901",
+          "USE_DESC": "THEATER (ENCLOSED)"
+        },
+        {
+          "USE_CODE": "1902",
+          "USE_DESC": "DRIVE-IN THEATE"
+        },
+        {
+          "USE_CODE": "1903",
+          "USE_DESC": "POOL HALL"
+        },
+        {
+          "USE_CODE": "1904",
+          "USE_DESC": "HEALTH/SPA"
+        },
+        {
+          "USE_CODE": "1905",
+          "USE_DESC": "BOWLING ALLEY"
+        },
+        {
+          "USE_CODE": "1906",
+          "USE_DESC": "SKATING RINK"
+        },
+        {
+          "USE_CODE": "1907",
+          "USE_DESC": "MINIATURE GOLF"
+        },
+        {
+          "USE_CODE": "1908",
+          "USE_DESC": "FRATERNAL ORG"
+        },
+        {
+          "USE_CODE": "1909",
+          "USE_DESC": "COUNTRY CLUB"
+        },
+        {
+          "USE_CODE": "1910",
+          "USE_DESC": "GOLF COURSE"
+        },
+        {
+          "USE_CODE": "1911",
+          "USE_DESC": "TENNIS CLUB"
+        },
+        {
+          "USE_CODE": "1912",
+          "USE_DESC": "RECREATION OR MEETING HALL"
+        },
+        {
+          "USE_CODE": "1913",
+          "USE_DESC": "LODGE/RESORT"
+        },
+        {
+          "USE_CODE": "1914",
+          "USE_DESC": "AUTO RACETRACK"
+        },
+        {
+          "USE_CODE": "1915",
+          "USE_DESC": "MOTORCYCLE RACETRACK"
+        },
+        {
+          "USE_CODE": "1916",
+          "USE_DESC": "HORSE RACETRACK"
+        },
+        {
+          "USE_CODE": "1917",
+          "USE_DESC": "PERFORMING ARTS STUDIO"
+        },
+        {
+          "USE_CODE": "1918",
+          "USE_DESC": "HANDBALL/RAQUETBALL COURTS"
+        },
+        {
+          "USE_CODE": "1919",
+          "USE_DESC": "DRIVING RANGE"
+        },
+        {
+          "USE_CODE": "1920",
+          "USE_DESC": "WINE TASTING ROOM"
+        },
+        {
+          "USE_CODE": "1980",
+          "USE_DESC": "RECREATIONAL W/LIC MHS"
+        },
+        {
+          "USE_CODE": "1990",
+          "USE_DESC": "RECREATIONAL W/MISC IMP"
+        },
+        {
+          "USE_CODE": "2000",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "2100",
+          "USE_DESC": "FINANCIAL"
+        },
+        {
+          "USE_CODE": "2101",
+          "USE_DESC": "BANK"
+        },
+        {
+          "USE_CODE": "2102",
+          "USE_DESC": "SAVINGS & LOAN"
+        },
+        {
+          "USE_CODE": "2103",
+          "USE_DESC": "BAIL BOND"
+        },
+        {
+          "USE_CODE": "2190",
+          "USE_DESC": "FINANCIAL W/MISC IMP"
+        },
+        {
+          "USE_CODE": "2199",
+          "USE_DESC": "SAME AS 2100 WITH GROUND LEASE"
+        },
+        {
+          "USE_CODE": "2200",
+          "USE_DESC": "SERVICE/REPAIR SHOPS"
+        },
+        {
+          "USE_CODE": "2201",
+          "USE_DESC": "CAR WASH"
+        },
+        {
+          "USE_CODE": "2202",
+          "USE_DESC": "KENNEL/PET GROOMING"
+        },
+        {
+          "USE_CODE": "2203",
+          "USE_DESC": "AUTO BODY/PAINT"
+        },
+        {
+          "USE_CODE": "2204",
+          "USE_DESC": "AUTO REPAIR/GARAGE"
+        },
+        {
+          "USE_CODE": "2205",
+          "USE_DESC": "MOTORCYCLE REPAIR"
+        },
+        {
+          "USE_CODE": "2206",
+          "USE_DESC": "BICYCLE REPAIR"
+        },
+        {
+          "USE_CODE": "2207",
+          "USE_DESC": "EQUIPMENT REPAIR"
+        },
+        {
+          "USE_CODE": "2208",
+          "USE_DESC": "BUS DEPOT"
+        },
+        {
+          "USE_CODE": "2209",
+          "USE_DESC": "LUBE SHOP"
+        },
+        {
+          "USE_CODE": "2290",
+          "USE_DESC": "MULTI USE SERVICE/REPAIR SHOPS"
+        },
+        {
+          "USE_CODE": "2300",
+          "USE_DESC": "PETROLEUM"
+        },
+        {
+          "USE_CODE": "2301",
+          "USE_DESC": "SERVICE STATION"
+        },
+        {
+          "USE_CODE": "2302",
+          "USE_DESC": "BULK PLANT"
+        },
+        {
+          "USE_CODE": "2303",
+          "USE_DESC": "BOTTLED GAS DLR"
+        },
+        {
+          "USE_CODE": "2304",
+          "USE_DESC": "GAS & MINI-MART"
+        },
+        {
+          "USE_CODE": "2305",
+          "USE_DESC": "MINI-MART SS/FAST FOOD"
+        },
+        {
+          "USE_CODE": "2390",
+          "USE_DESC": "MULTI USE PETROLEUM RELATED"
+        },
+        {
+          "USE_CODE": "2399",
+          "USE_DESC": "SAME AS 2300 WITH GROUND LEASE"
+        },
+        {
+          "USE_CODE": "2400",
+          "USE_DESC": "SALES-MOTOR VEH"
+        },
+        {
+          "USE_CODE": "2401",
+          "USE_DESC": "AUTO SALES NEW"
+        },
+        {
+          "USE_CODE": "2402",
+          "USE_DESC": "AUTO SALES USED"
+        },
+        {
+          "USE_CODE": "2403",
+          "USE_DESC": "BOAT SALES"
+        },
+        {
+          "USE_CODE": "2404",
+          "USE_DESC": "AIRCRAFT SALES"
+        },
+        {
+          "USE_CODE": "2405",
+          "USE_DESC": "FARM MACHINERY SALES"
+        },
+        {
+          "USE_CODE": "2406",
+          "USE_DESC": "RV SALES"
+        },
+        {
+          "USE_CODE": "2490",
+          "USE_DESC": "MULTI USE AUTOMOTIVE RELATED"
+        },
+        {
+          "USE_CODE": "2500",
+          "USE_DESC": "COMM/IND COMMON AREA"
+        },
+        {
+          "USE_CODE": "2501",
+          "USE_DESC": "PARKING LOT"
+        },
+        {
+          "USE_CODE": "2590",
+          "USE_DESC": "MULTI USE PARKING RELATED"
+        },
+        {
+          "USE_CODE": "2600",
+          "USE_DESC": "NURSERIES"
+        },
+        {
+          "USE_CODE": "2601",
+          "USE_DESC": "NURSERIES"
+        },
+        {
+          "USE_CODE": "2602",
+          "USE_DESC": "GARDNERS"
+        },
+        {
+          "USE_CODE": "2603",
+          "USE_DESC": "TREE SERVICE"
+        },
+        {
+          "USE_CODE": "2604",
+          "USE_DESC": "SEED GROWERS"
+        },
+        {
+          "USE_CODE": "2605",
+          "USE_DESC": "PEST CONTROL"
+        },
+        {
+          "USE_CODE": "2606",
+          "USE_DESC": "HYDROPONICS/GREENHOUSES"
+        },
+        {
+          "USE_CODE": "2607",
+          "USE_DESC": "TREE FARM NOT NURSERY STOCK"
+        },
+        {
+          "USE_CODE": "2608",
+          "USE_DESC": "ORCHARD NURSERIES"
+        },
+        {
+          "USE_CODE": "2609",
+          "USE_DESC": "APIARY"
+        },
+        {
+          "USE_CODE": "2686",
+          "USE_DESC": "GRNHSE CANNABIS CULTIVATION"
+        },
+        {
+          "USE_CODE": "2690",
+          "USE_DESC": "MULTI USE HORTICULTURE RELATED"
+        },
+        {
+          "USE_CODE": "2700",
+          "USE_DESC": "HOTEL"
+        },
+        {
+          "USE_CODE": "2701",
+          "USE_DESC": "HOTEL W/O RESTAURANT"
+        },
+        {
+          "USE_CODE": "2705",
+          "USE_DESC": "SHORT TERM RENTAL"
+        },
+        {
+          "USE_CODE": "2707",
+          "USE_DESC": "ROOMING HOUSE"
+        },
+        {
+          "USE_CODE": "2790",
+          "USE_DESC": "HOTEL RELATED W/MISC IMP"
+        },
+        {
+          "USE_CODE": "2800",
+          "USE_DESC": "MOTEL"
+        },
+        {
+          "USE_CODE": "2801",
+          "USE_DESC": "MOTEL W/O RESTAURANT"
+        },
+        {
+          "USE_CODE": "2890",
+          "USE_DESC": "MOTEL RELATED W/MISC IMP"
+        },
+        {
+          "USE_CODE": "2900",
+          "USE_DESC": "MANUFACTURED HOME PARK"
+        },
+        {
+          "USE_CODE": "2901",
+          "USE_DESC": "RV/TRAILER PARK"
+        },
+        {
+          "USE_CODE": "2910",
+          "USE_DESC": "RV/MH PARK COMBO"
+        },
+        {
+          "USE_CODE": "2990",
+          "USE_DESC": "MANUFTD HOME PARK W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "3000",
+          "USE_DESC": "VACANT LAND INDUSTRIAL"
+        },
+        {
+          "USE_CODE": "3010",
+          "USE_DESC": "VACANT M-1"
+        },
+        {
+          "USE_CODE": "3019",
+          "USE_DESC": "M1  W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "3020",
+          "USE_DESC": "VACANT M-2"
+        },
+        {
+          "USE_CODE": "3027",
+          "USE_DESC": "SAME AS 3020 W/LIC MH"
+        },
+        {
+          "USE_CODE": "3029",
+          "USE_DESC": "M2  W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "3030",
+          "USE_DESC": "VACANT M-3"
+        },
+        {
+          "USE_CODE": "3039",
+          "USE_DESC": "M3  W/MISC IMPS"
+        },
+        {
+          "USE_CODE": "3050",
+          "USE_DESC": "RAILROAD SPUR"
+        },
+        {
+          "USE_CODE": "3080",
+          "USE_DESC": "SAME AS 3000 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "3086",
+          "USE_DESC": "VAC IND LAND-CANNABIS CULT"
+        },
+        {
+          "USE_CODE": "3089",
+          "USE_DESC": "SAME AS 3080 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "3090",
+          "USE_DESC": "SAME AS 3000 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "3099",
+          "USE_DESC": "IND LAND PART ECON UNIT"
+        },
+        {
+          "USE_CODE": "3100",
+          "USE_DESC": "LIGHT MFG"
+        },
+        {
+          "USE_CODE": "3101",
+          "USE_DESC": "CONTRACTOR - GENERAL BLDG"
+        },
+        {
+          "USE_CODE": "3102",
+          "USE_DESC": "CONTRACTOR - SWIMMING POOL"
+        },
+        {
+          "USE_CODE": "3103",
+          "USE_DESC": "CONTRACTOR - ENGINEERING"
+        },
+        {
+          "USE_CODE": "3104",
+          "USE_DESC": "CONTRACTOR - DRILLING"
+        },
+        {
+          "USE_CODE": "3105",
+          "USE_DESC": "CONTRACTOR - OILFIELD"
+        },
+        {
+          "USE_CODE": "3106",
+          "USE_DESC": "MACHINE SHOP"
+        },
+        {
+          "USE_CODE": "3107",
+          "USE_DESC": "TIRESHOP - RETREAD"
+        },
+        {
+          "USE_CODE": "3108",
+          "USE_DESC": "RECYCLING CENTER"
+        },
+        {
+          "USE_CODE": "3120",
+          "USE_DESC": "OFFICE/WAREHOUSE MULTI UNIT"
+        },
+        {
+          "USE_CODE": "3180",
+          "USE_DESC": "SAME AS 3100 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "3186",
+          "USE_DESC": "CANNABIS PRODUCTION"
+        },
+        {
+          "USE_CODE": "3190",
+          "USE_DESC": "INDUSTRIAL MULTI-USE"
+        },
+        {
+          "USE_CODE": "3200",
+          "USE_DESC": "HEAVY INDUSTRIAL"
+        },
+        {
+          "USE_CODE": "3201",
+          "USE_DESC": "FOUNDRY"
+        },
+        {
+          "USE_CODE": "3202",
+          "USE_DESC": "STEEL FABRICATION"
+        },
+        {
+          "USE_CODE": "3203",
+          "USE_DESC": "HEAVY EQUIPMENT-MFG"
+        },
+        {
+          "USE_CODE": "3204",
+          "USE_DESC": "CARBON PLANT"
+        },
+        {
+          "USE_CODE": "3205",
+          "USE_DESC": "CONCRETE AND/OR BATCH PLANTS"
+        },
+        {
+          "USE_CODE": "3206",
+          "USE_DESC": "REFINERIES"
+        },
+        {
+          "USE_CODE": "3280",
+          "USE_DESC": "SAME AS 3200 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "3290",
+          "USE_DESC": "SAME AS 3200 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "3300",
+          "USE_DESC": "TIMBER"
+        },
+        {
+          "USE_CODE": "3301",
+          "USE_DESC": "LUMBER YARD"
+        },
+        {
+          "USE_CODE": "3302",
+          "USE_DESC": "SAW MILL"
+        },
+        {
+          "USE_CODE": "3303",
+          "USE_DESC": "PLANING MILL"
+        },
+        {
+          "USE_CODE": "3400",
+          "USE_DESC": "PRODUCE PLANT"
+        },
+        {
+          "USE_CODE": "3401",
+          "USE_DESC": "COTTON GIN"
+        },
+        {
+          "USE_CODE": "3402",
+          "USE_DESC": "PACKING SHED"
+        },
+        {
+          "USE_CODE": "3406",
+          "USE_DESC": "GREENHOUSE PROD FACILITY"
+        },
+        {
+          "USE_CODE": "3490",
+          "USE_DESC": "MULTI USE"
+        },
+        {
+          "USE_CODE": "3500",
+          "USE_DESC": "FOOD PROCESSING"
+        },
+        {
+          "USE_CODE": "3501",
+          "USE_DESC": "BAKERY"
+        },
+        {
+          "USE_CODE": "3502",
+          "USE_DESC": "CREAMERY"
+        },
+        {
+          "USE_CODE": "3503",
+          "USE_DESC": "BOTTLING PLANT"
+        },
+        {
+          "USE_CODE": "3504",
+          "USE_DESC": "MEAT PACKING"
+        },
+        {
+          "USE_CODE": "3505",
+          "USE_DESC": "WINERY"
+        },
+        {
+          "USE_CODE": "3506",
+          "USE_DESC": "ALMOND HULLER"
+        },
+        {
+          "USE_CODE": "3507",
+          "USE_DESC": "DAIRY DISTRIBUTORSHIP"
+        },
+        {
+          "USE_CODE": "3508",
+          "USE_DESC": "SOFT DRINK DIST"
+        },
+        {
+          "USE_CODE": "3509",
+          "USE_DESC": "ALCOHOLIC BEBERAGE DIST"
+        },
+        {
+          "USE_CODE": "3590",
+          "USE_DESC": "MULTI USE"
+        },
+        {
+          "USE_CODE": "3600",
+          "USE_DESC": "STORAGE (ENCLOSED)"
+        },
+        {
+          "USE_CODE": "3601",
+          "USE_DESC": "WAREHOUSE"
+        },
+        {
+          "USE_CODE": "3602",
+          "USE_DESC": "PUBLIC STORAGE (MINI WHSE)"
+        },
+        {
+          "USE_CODE": "3603",
+          "USE_DESC": "VAN & STORAGE"
+        },
+        {
+          "USE_CODE": "3604",
+          "USE_DESC": "ICE/COLD STORAGE"
+        },
+        {
+          "USE_CODE": "3605",
+          "USE_DESC": "GRAIN ELEVATOR OR SILO"
+        },
+        {
+          "USE_CODE": "3680",
+          "USE_DESC": "SAME AS 3600 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "3700",
+          "USE_DESC": "STORAGE (FENCED W/ SMALL OFF)"
+        },
+        {
+          "USE_CODE": "3701",
+          "USE_DESC": "EQUIPMENT RENTAL"
+        },
+        {
+          "USE_CODE": "3702",
+          "USE_DESC": "AUTO WRECKING"
+        },
+        {
+          "USE_CODE": "3703",
+          "USE_DESC": "METAL SALVAGE"
+        },
+        {
+          "USE_CODE": "3704",
+          "USE_DESC": "FARM EQUIPMENT"
+        },
+        {
+          "USE_CODE": "3705",
+          "USE_DESC": "TRUCKING COMPANY"
+        },
+        {
+          "USE_CODE": "3706",
+          "USE_DESC": "TRUCK TERMINAL"
+        },
+        {
+          "USE_CODE": "3707",
+          "USE_DESC": "TOWING COMPANY"
+        },
+        {
+          "USE_CODE": "3708",
+          "USE_DESC": "TAXI-CAB OPERATION"
+        },
+        {
+          "USE_CODE": "3709",
+          "USE_DESC": "COMMUTER SERVICE"
+        },
+        {
+          "USE_CODE": "3710",
+          "USE_DESC": "JUNK YARD"
+        },
+        {
+          "USE_CODE": "3720",
+          "USE_DESC": "DISTRIBUTION CENTERS"
+        },
+        {
+          "USE_CODE": "3780",
+          "USE_DESC": "SAME AS 3700 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "3790",
+          "USE_DESC": "MULTI USE"
+        },
+        {
+          "USE_CODE": "3800",
+          "USE_DESC": "INDUSTRIAL SALES"
+        },
+        {
+          "USE_CODE": "3801",
+          "USE_DESC": "MANFACTURED HOME SALES"
+        },
+        {
+          "USE_CODE": "3880",
+          "USE_DESC": "SAME AS 3800 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "3890",
+          "USE_DESC": "SAME AS 3800 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "3900",
+          "USE_DESC": "AIRPARKS"
+        },
+        {
+          "USE_CODE": "3901",
+          "USE_DESC": "LANDING STRIP (AIRCRAFT)"
+        },
+        {
+          "USE_CODE": "3902",
+          "USE_DESC": "ANTENNAS/TOWERS"
+        },
+        {
+          "USE_CODE": "3950",
+          "USE_DESC": "MARINAS"
+        },
+        {
+          "USE_CODE": "3960",
+          "USE_DESC": "ENERGY GENERATION"
+        },
+        {
+          "USE_CODE": "3961",
+          "USE_DESC": "WIND PARK"
+        },
+        {
+          "USE_CODE": "4490",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4500",
+          "USE_DESC": "DAIRY"
+        },
+        {
+          "USE_CODE": "4600",
+          "USE_DESC": "FEEDLOT"
+        },
+        {
+          "USE_CODE": "4700",
+          "USE_DESC": "AGRICULTURAL/IND. COMPLEX"
+        },
+        {
+          "USE_CODE": "4800",
+          "USE_DESC": "LIVESTOCK"
+        },
+        {
+          "USE_CODE": "4801",
+          "USE_DESC": "CATTLE"
+        },
+        {
+          "USE_CODE": "4802",
+          "USE_DESC": "HORSES"
+        },
+        {
+          "USE_CODE": "4803",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4804",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4805",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4806",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4807",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4808",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4809",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4810",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4811",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4812",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4813",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4814",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4900",
+          "USE_DESC": "RANCH HDQTRS"
+        },
+        {
+          "USE_CODE": "4908",
+          "USE_DESC": "FARM LABOR CAMPS"
+        },
+        {
+          "USE_CODE": "5000",
+          "USE_DESC": "UNDEVELOPED LAND >20AC MT/DES"
+        },
+        {
+          "USE_CODE": "5001",
+          "USE_DESC": "REPLACED BY USE CODE 0106"
+        },
+        {
+          "USE_CODE": "5002",
+          "USE_DESC": "REPLACED BY USE CODE 0201"
+        },
+        {
+          "USE_CODE": "5007",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "5008",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "5009",
+          "USE_DESC": "SAME AS 5000 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "5080",
+          "USE_DESC": ">20AC W/OIL"
+        },
+        {
+          "USE_CODE": "5090",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "5097",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "5098",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "5100",
+          "USE_DESC": "REPLACED BY USE CODE 5000"
+        },
+        {
+          "USE_CODE": "5200",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5300",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5400",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5500",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5600",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5700",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5800",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "5900",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "6000",
+          "USE_DESC": "U S A"
+        },
+        {
+          "USE_CODE": "6010",
+          "USE_DESC": "STATE OF CALIFORNIA"
+        },
+        {
+          "USE_CODE": "6020",
+          "USE_DESC": "COUNTY OF KERN"
+        },
+        {
+          "USE_CODE": "6030",
+          "USE_DESC": "INCORPORATED CITY"
+        },
+        {
+          "USE_CODE": "6040",
+          "USE_DESC": "SCHOOL OWNED"
+        },
+        {
+          "USE_CODE": "6050",
+          "USE_DESC": "SPECIAL DISTRICTS"
+        },
+        {
+          "USE_CODE": "6060",
+          "USE_DESC": "REDEVELOPMENT AGENCY"
+        },
+        {
+          "USE_CODE": "6070",
+          "USE_DESC": "QUASI GOVERNMENT PROPERTY"
+        },
+        {
+          "USE_CODE": "6100",
+          "USE_DESC": "ASSESSORS UTILITY PARCELS"
+        },
+        {
+          "USE_CODE": "6200",
+          "USE_DESC": "SEC 11 TAXABLE (LA)"
+        },
+        {
+          "USE_CODE": "6201",
+          "USE_DESC": "SEC 11 TAXABLE (NOT LA)"
+        },
+        {
+          "USE_CODE": "6202",
+          "USE_DESC": "SEC 11 EXEMPT (LA)"
+        },
+        {
+          "USE_CODE": "6203",
+          "USE_DESC": "SEC 11 EXEMPT (NOT LA)"
+        },
+        {
+          "USE_CODE": "6300",
+          "USE_DESC": "NO VAL-SUMP ETC"
+        },
+        {
+          "USE_CODE": "6301",
+          "USE_DESC": "SAME AS 6300 EXCEPT <$1000"
+        },
+        {
+          "USE_CODE": "6302",
+          "USE_DESC": "SAME AS 6300 EXCEPT >$1000"
+        },
+        {
+          "USE_CODE": "6308",
+          "USE_DESC": "PRIVATE AG WELL SITE"
+        },
+        {
+          "USE_CODE": "6309",
+          "USE_DESC": "PRIVATE DOMESTIC WTR WELL SITE"
+        },
+        {
+          "USE_CODE": "6400",
+          "USE_DESC": "COMMUNICATION TOWER SITE"
+        },
+        {
+          "USE_CODE": "6500",
+          "USE_DESC": "STATE ASSESSED"
+        },
+        {
+          "USE_CODE": "6600",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "6700",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "6800",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "6900",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "7000",
+          "USE_DESC": "TOXIC HAZARD PRESENT ON SITE"
+        },
+        {
+          "USE_CODE": "8000",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "8100",
+          "USE_DESC": "MINE & QUARRIES"
+        },
+        {
+          "USE_CODE": "8101",
+          "USE_DESC": "BORAX"
+        },
+        {
+          "USE_CODE": "8102",
+          "USE_DESC": "CEMENT PLANT"
+        },
+        {
+          "USE_CODE": "8103",
+          "USE_DESC": "SAND & GRAVEL"
+        },
+        {
+          "USE_CODE": "8104",
+          "USE_DESC": "GYPSUM"
+        },
+        {
+          "USE_CODE": "8105",
+          "USE_DESC": "ALL OTHER TYPES"
+        },
+        {
+          "USE_CODE": "8180",
+          "USE_DESC": "SAME AS 8100 W/LIC MHS"
+        },
+        {
+          "USE_CODE": "8181",
+          "USE_DESC": "BUFFER LAND MINING AU"
+        },
+        {
+          "USE_CODE": "8182",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8183",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8184",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8185",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8186",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8187",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8188",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8189",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8190",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8191",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8192",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8193",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8194",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8195",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8196",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8197",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8198",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8199",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8200",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8201",
+          "USE_DESC": "PRODUCTIVE MINERAL RIGHTS"
+        },
+        {
+          "USE_CODE": "8202",
+          "USE_DESC": "RESERVE MR/NON-PRODUCING"
+        },
+        {
+          "USE_CODE": "8203",
+          "USE_DESC": "OIL PUMPING STATION"
+        },
+        {
+          "USE_CODE": "8204",
+          "USE_DESC": "GAS PLANT"
+        },
+        {
+          "USE_CODE": "8205",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8206",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8207",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8208",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8209",
+          "USE_DESC": "SAME AS 8200 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "8210",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8211",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8212",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8213",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8214",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8215",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8216",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8217",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8218",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8219",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8220",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8221",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8222",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8223",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8224",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8225",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8226",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8227",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8228",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8229",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8230",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8231",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8232",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8233",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8234",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8235",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8236",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8237",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8238",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8239",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8240",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8300",
+          "USE_DESC": "WATER COMPANIES"
+        },
+        {
+          "USE_CODE": "8301",
+          "USE_DESC": "PUBLIC UTILITY"
+        },
+        {
+          "USE_CODE": "8302",
+          "USE_DESC": "MUTUAL WATER COMPANY"
+        },
+        {
+          "USE_CODE": "8303",
+          "USE_DESC": "PRIVATE WATER COMPANY"
+        },
+        {
+          "USE_CODE": "8304",
+          "USE_DESC": "WATER RIGHTS"
+        },
+        {
+          "USE_CODE": "8305",
+          "USE_DESC": "CANALS"
+        },
+        {
+          "USE_CODE": "8306",
+          "USE_DESC": "COMMUNITY WATER SYSTEM"
+        },
+        {
+          "USE_CODE": "8307",
+          "USE_DESC": "GROUNDWATER RECHARGE POND"
+        },
+        {
+          "USE_CODE": "8400",
+          "USE_DESC": "MINING CLAIMS"
+        },
+        {
+          "USE_CODE": "8401",
+          "USE_DESC": "PATENTED"
+        },
+        {
+          "USE_CODE": "8402",
+          "USE_DESC": "NON-PATENTED"
+        },
+        {
+          "USE_CODE": "8409",
+          "USE_DESC": "SAME AS 8400 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "8490",
+          "USE_DESC": "SAME AS 8400 W/MISC IMP"
+        },
+        {
+          "USE_CODE": "8500",
+          "USE_DESC": "TIMBER PRODUCTION"
+        },
+        {
+          "USE_CODE": "8600",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8680",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8690",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "8700",
+          "USE_DESC": "HAZARDOUS WATE DISPOSAL SITE"
+        },
+        {
+          "USE_CODE": "8701",
+          "USE_DESC": "HAZ WASTE DUMP CLASS I"
+        },
+        {
+          "USE_CODE": "8702",
+          "USE_DESC": "HAZ WASTE DUMP CLASS II"
+        },
+        {
+          "USE_CODE": "8703",
+          "USE_DESC": "NON-HAZ DUMP"
+        },
+        {
+          "USE_CODE": "8704",
+          "USE_DESC": "PRIVATE SEWAGE DUMP"
+        },
+        {
+          "USE_CODE": "8800",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "8900",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "9000",
+          "USE_DESC": "RES POSSESSORY INT-FEDERAL"
+        },
+        {
+          "USE_CODE": "9001",
+          "USE_DESC": "COMM POSSESSORY INT-FEDERAL"
+        },
+        {
+          "USE_CODE": "9002",
+          "USE_DESC": "AG POSSESSORY INT-FEDERAL"
+        },
+        {
+          "USE_CODE": "9003",
+          "USE_DESC": "NTRL RESOURCES PI FEDERAL"
+        },
+        {
+          "USE_CODE": "9004",
+          "USE_DESC": "GRAZING RIGHTS PI FEDERAL"
+        },
+        {
+          "USE_CODE": "9010",
+          "USE_DESC": "RES POSSESSORY INT-STATE"
+        },
+        {
+          "USE_CODE": "9011",
+          "USE_DESC": "COMMERCIAL PI-STATE"
+        },
+        {
+          "USE_CODE": "9012",
+          "USE_DESC": "AG POSSESSORY INTEREST-STATE"
+        },
+        {
+          "USE_CODE": "9013",
+          "USE_DESC": "NTRL RESOURCES PI-STATE"
+        },
+        {
+          "USE_CODE": "9020",
+          "USE_DESC": "RESIDENTIAL PI-KERN"
+        },
+        {
+          "USE_CODE": "9021",
+          "USE_DESC": "COMMERCIAL PI-KERN"
+        },
+        {
+          "USE_CODE": "9022",
+          "USE_DESC": "AG POSSESSORY INTEREST-KERN"
+        },
+        {
+          "USE_CODE": "9023",
+          "USE_DESC": "NATURAL RESOURCES PI-KERN"
+        },
+        {
+          "USE_CODE": "9030",
+          "USE_DESC": "RES POSSESSORY INT-CITY"
+        },
+        {
+          "USE_CODE": "9031",
+          "USE_DESC": "COMMERCIAL PI-CITY"
+        },
+        {
+          "USE_CODE": "9032",
+          "USE_DESC": "AG POSSESSORY INT-CITY"
+        },
+        {
+          "USE_CODE": "9033",
+          "USE_DESC": "NATURAL RESOURCES PI-CITY"
+        },
+        {
+          "USE_CODE": "9040",
+          "USE_DESC": "SPECIAL DISTRICTS PI"
+        },
+        {
+          "USE_CODE": "9050",
+          "USE_DESC": "CHINA LAKE NWC/EDWARDS"
+        },
+        {
+          "USE_CODE": "9100",
+          "USE_DESC": "LEASED EQUIP LESSOR SUB"
+        },
+        {
+          "USE_CODE": "9101",
+          "USE_DESC": "LEASED EQUIP LESSOR (PMO)"
+        },
+        {
+          "USE_CODE": "9102",
+          "USE_DESC": "INVENTORY/STORAGE"
+        },
+        {
+          "USE_CODE": "9103",
+          "USE_DESC": "LEASED EQUIP LESSEE DIRECT"
+        },
+        {
+          "USE_CODE": "9104",
+          "USE_DESC": "LEASED EQUIP LESSOR EXEMPT PMO"
+        },
+        {
+          "USE_CODE": "9200",
+          "USE_DESC": "RES IMP UNSECURED NO PI NO MH"
+        },
+        {
+          "USE_CODE": "9201",
+          "USE_DESC": "COMMERCIAL IMP UNSECURED NO PI"
+        },
+        {
+          "USE_CODE": "9202",
+          "USE_DESC": "RURAL IMP UNSECURED NO PI"
+        },
+        {
+          "USE_CODE": "9203",
+          "USE_DESC": "OIL PIPELINE UNSECURED"
+        },
+        {
+          "USE_CODE": "9204",
+          "USE_DESC": "PIPELINE RIGHT-OF-WAY"
+        },
+        {
+          "USE_CODE": "9300",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "9400",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "9500",
+          "USE_DESC": "UNSECURED MH W/I MH PARK"
+        },
+        {
+          "USE_CODE": "9501",
+          "USE_DESC": "UNSECURED MH IN ANY OTHER ZONE"
+        },
+        {
+          "USE_CODE": "9502",
+          "USE_DESC": "LICENSED MH NOT ON TAX ROLL"
+        },
+        {
+          "USE_CODE": "9600",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "9700",
+          "USE_DESC": "BOATS OR AIRCRAFT"
+        },
+        {
+          "USE_CODE": "9701",
+          "USE_DESC": "CERTIFICATED AIRCRAFT"
+        },
+        {
+          "USE_CODE": "9702",
+          "USE_DESC": "FRACTIONALLY OWNED AIRCRAFT"
+        },
+        {
+          "USE_CODE": "9703",
+          "USE_DESC": "GENERAL AIRCRAFT"
+        },
+        {
+          "USE_CODE": "9704",
+          "USE_DESC": "BOAT"
+        },
+        {
+          "USE_CODE": "9800",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "9900",
+          "USE_DESC": "NOT USED"
+        },
+        {
+          "USE_CODE": "3962",
+          "USE_DESC": "SOLAR PARK"
+        },
+        {
+          "USE_CODE": "3963",
+          "USE_DESC": "GEOTHERMAL"
+        },
+        {
+          "USE_CODE": "3964",
+          "USE_DESC": "COAL"
+        },
+        {
+          "USE_CODE": "3965",
+          "USE_DESC": "WATER"
+        },
+        {
+          "USE_CODE": "3966",
+          "USE_DESC": "BATTERY STORAGE"
+        },
+        {
+          "USE_CODE": "3967",
+          "USE_DESC": "CO-GENERATION PLANT OIL FIRED"
+        },
+        {
+          "USE_CODE": "3968",
+          "USE_DESC": "CO-GENERATION PLANT NAT GAS"
+        },
+        {
+          "USE_CODE": "3969",
+          "USE_DESC": "CO-GENERATION PLANT BIOMASS"
+        },
+        {
+          "USE_CODE": "3984",
+          "USE_DESC": "CO-GEN COAL FIRED OIL RELATED"
+        },
+        {
+          "USE_CODE": "3988",
+          "USE_DESC": "CO-GEN GAS FIRED OIL RELATED"
+        },
+        {
+          "USE_CODE": "4000",
+          "USE_DESC": "UNDEVELOPED LAND >20AC"
+        },
+        {
+          "USE_CODE": "4001",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4002",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4010",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4020",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4080",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4100",
+          "USE_DESC": "ORCHARDS"
+        },
+        {
+          "USE_CODE": "4101",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4102",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4103",
+          "USE_DESC": "CITRUS"
+        },
+        {
+          "USE_CODE": "4104",
+          "USE_DESC": "STONE FRUIT"
+        },
+        {
+          "USE_CODE": "4105",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4106",
+          "USE_DESC": "MISC TREE FRUIT"
+        },
+        {
+          "USE_CODE": "4107",
+          "USE_DESC": "EXOTIC TREE/BUSH/VINE"
+        },
+        {
+          "USE_CODE": "4110",
+          "USE_DESC": "ALMOND AND PISTACHIO"
+        },
+        {
+          "USE_CODE": "4111",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4112",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4113",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4115",
+          "USE_DESC": "ALMOND AND VINE"
+        },
+        {
+          "USE_CODE": "4116",
+          "USE_DESC": "PISTACHIO AND VINE"
+        },
+        {
+          "USE_CODE": "4120",
+          "USE_DESC": "ALMOND"
+        },
+        {
+          "USE_CODE": "4121",
+          "USE_DESC": "PISTACHIO"
+        },
+        {
+          "USE_CODE": "4122",
+          "USE_DESC": "WALNUT"
+        },
+        {
+          "USE_CODE": "4123",
+          "USE_DESC": "PECAN"
+        },
+        {
+          "USE_CODE": "4124",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4125",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4126",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4127",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4128",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4129",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4130",
+          "USE_DESC": "ORANGE"
+        },
+        {
+          "USE_CODE": "4131",
+          "USE_DESC": "NAVEL ORANGES"
+        },
+        {
+          "USE_CODE": "4132",
+          "USE_DESC": "VALENCIA ORANGE"
+        },
+        {
+          "USE_CODE": "4134",
+          "USE_DESC": "LEMON"
+        },
+        {
+          "USE_CODE": "4135",
+          "USE_DESC": "GRAPEFRUIT"
+        },
+        {
+          "USE_CODE": "4136",
+          "USE_DESC": "TANGERINE/TANGELO"
+        },
+        {
+          "USE_CODE": "4137",
+          "USE_DESC": "CLEMENTINE/MANDARIN"
+        },
+        {
+          "USE_CODE": "4140",
+          "USE_DESC": "PLUM"
+        },
+        {
+          "USE_CODE": "4141",
+          "USE_DESC": "PEACH"
+        },
+        {
+          "USE_CODE": "4142",
+          "USE_DESC": "NECTARINE"
+        },
+        {
+          "USE_CODE": "4143",
+          "USE_DESC": "APRICOT"
+        },
+        {
+          "USE_CODE": "4144",
+          "USE_DESC": "CHERRY"
+        },
+        {
+          "USE_CODE": "4145",
+          "USE_DESC": "PRUNE"
+        },
+        {
+          "USE_CODE": "4150",
+          "USE_DESC": "APPLE"
+        },
+        {
+          "USE_CODE": "4155",
+          "USE_DESC": "PEAR"
+        },
+        {
+          "USE_CODE": "4160",
+          "USE_DESC": "OLIVE"
+        },
+        {
+          "USE_CODE": "4161",
+          "USE_DESC": "FIG"
+        },
+        {
+          "USE_CODE": "4162",
+          "USE_DESC": "ORCHARDS W/SOLAR FARM"
+        },
+        {
+          "USE_CODE": "4163",
+          "USE_DESC": "PERSIMMON"
+        },
+        {
+          "USE_CODE": "4164",
+          "USE_DESC": "POMEGRANATE"
+        },
+        {
+          "USE_CODE": "4180",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4190",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4200",
+          "USE_DESC": "GRAPE VINES"
+        },
+        {
+          "USE_CODE": "4201",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4210",
+          "USE_DESC": "TABLE GRAPE"
+        },
+        {
+          "USE_CODE": "4211",
+          "USE_DESC": "WINE GRAPE"
+        },
+        {
+          "USE_CODE": "4212",
+          "USE_DESC": "WHITE WINE GRAPE"
+        },
+        {
+          "USE_CODE": "4215",
+          "USE_DESC": "RED WINE GRAPE"
+        },
+        {
+          "USE_CODE": "4218",
+          "USE_DESC": "RAISIN"
+        },
+        {
+          "USE_CODE": "4220",
+          "USE_DESC": "VINE AND ALMOND"
+        },
+        {
+          "USE_CODE": "4221",
+          "USE_DESC": "VINE AND PISTACHIO"
+        },
+        {
+          "USE_CODE": "4250",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4262",
+          "USE_DESC": "VINDYARDS W/SOLAR FARM"
+        },
+        {
+          "USE_CODE": "4270",
+          "USE_DESC": "KIWI FRUIT"
+        },
+        {
+          "USE_CODE": "4271",
+          "USE_DESC": "BLUEBERRY"
+        },
+        {
+          "USE_CODE": "4280",
+          "USE_DESC": "UNKNOWN USEL"
+        },
+        {
+          "USE_CODE": "4290",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4300",
+          "USE_DESC": "IRRIGATED LAND"
+        },
+        {
+          "USE_CODE": "4301",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4302",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4310",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4311",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4362",
+          "USE_DESC": "IRR LAND W/SOLAR FARM"
+        },
+        {
+          "USE_CODE": "4380",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4390",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4400",
+          "USE_DESC": "GRAZING OR DRY FARM LAND"
+        },
+        {
+          "USE_CODE": "4401",
+          "USE_DESC": "UNKNOWN USE"
+        },
+        {
+          "USE_CODE": "4462",
+          "USE_DESC": "GRAZING W/SOLAR FARM"
+        },
+        {
+          "USE_CODE": "4480",
+          "USE_DESC": "UNKNOWN USE"
+        }
+      ]
+    }
+  },
+  "land": {
+    "schema": {
+      "count": 426054,
+      "headerBytes": 961,
+      "recordBytes": 627,
+      "bytes": 267136820,
+      "languageDriver": 0,
+      "fields": [
+        {
+          "name": "TE_NO",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 1
+        },
+        {
+          "name": "APN9",
+          "type": "C",
+          "width": 9,
+          "decimals": 0,
+          "offset": 20
+        },
+        {
+          "name": "ATN",
+          "type": "C",
+          "width": 11,
+          "decimals": 0,
+          "offset": 29
+        },
+        {
+          "name": "ROLL",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 40
+        },
+        {
+          "name": "USE_CODE",
+          "type": "C",
+          "width": 4,
+          "decimals": 0,
+          "offset": 41
+        },
+        {
+          "name": "TRA",
+          "type": "C",
+          "width": 6,
+          "decimals": 0,
+          "offset": 45
+        },
+        {
+          "name": "SUP_DIST",
+          "type": "C",
+          "width": 1,
+          "decimals": 0,
+          "offset": 51
+        },
+        {
+          "name": "ASSE_NAME",
+          "type": "C",
+          "width": 44,
+          "decimals": 0,
+          "offset": 52
+        },
+        {
+          "name": "IN_CARE_OF",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 96
+        },
+        {
+          "name": "DBA",
+          "type": "C",
+          "width": 50,
+          "decimals": 0,
+          "offset": 136
+        },
+        {
+          "name": "LAND_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 186
+        },
+        {
+          "name": "MIN_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 205
+        },
+        {
+          "name": "IMP_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 224
+        },
+        {
+          "name": "OIFIX_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 243
+        },
+        {
+          "name": "PP_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 262
+        },
+        {
+          "name": "EX_TYPE",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 281
+        },
+        {
+          "name": "EX_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 283
+        },
+        {
+          "name": "NET_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 302
+        },
+        {
+          "name": "PROP8",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 321
+        },
+        {
+          "name": "BASEYR_VAL",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 323
+        },
+        {
+          "name": "ADDR_SITUS",
+          "type": "C",
+          "width": 60,
+          "decimals": 0,
+          "offset": 342
+        },
+        {
+          "name": "ADDR_BILL1",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 402
+        },
+        {
+          "name": "ADDR_BILL2",
+          "type": "C",
+          "width": 40,
+          "decimals": 0,
+          "offset": 442
+        },
+        {
+          "name": "ADDR_BILL3",
+          "type": "C",
+          "width": 30,
+          "decimals": 0,
+          "offset": 482
+        },
+        {
+          "name": "LEGAL_TYPE",
+          "type": "C",
+          "width": 2,
+          "decimals": 0,
+          "offset": 512
+        },
+        {
+          "name": "LEGAL_DESC",
+          "type": "C",
+          "width": 60,
+          "decimals": 0,
+          "offset": 514
+        },
+        {
+          "name": "ACRES",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 574
+        },
+        {
+          "name": "AG_PRES",
+          "type": "C",
+          "width": 15,
+          "decimals": 0,
+          "offset": 593
+        },
+        {
+          "name": "CITRUS_AC",
+          "type": "N",
+          "width": 19,
+          "decimals": 5,
+          "offset": 608
+        }
+      ],
+      "active": 426054,
+      "deleted": 0
+    },
+    "situs": {
+      "SITUS_PRESENT": 281388,
+      "SITUS_MISSING": 144608,
+      "SITUS_MALFORMED": 58
+    },
+    "useCodePopulated": 426051,
+    "legalDescriptionPresent": 426007,
+    "identifierAsciiOnly": true,
+    "situsNonAscii": 0,
+    "identifiers": {
+      "ATN": {
+        "nonNull": 426054,
+        "missing": 0,
+        "invalid": 0,
+        "distinct": 426054,
+        "duplicateValues": 0,
+        "duplicateExcess": 0
+      },
+      "APN9": {
+        "nonNull": 426054,
+        "missing": 0,
+        "invalid": 0,
+        "distinct": 424125,
+        "duplicateValues": 1095,
+        "duplicateExcess": 1929
+      }
+    },
+    "assessmentAvailability": {
+      "LAND_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 19828,
+        "negative": 0,
+        "positive": 406226
+      },
+      "IMP_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 156162,
+        "negative": 0,
+        "positive": 269892
+      },
+      "NET_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 23237,
+        "negative": 0,
+        "positive": 402817
+      },
+      "BASEYR_VAL": {
+        "present": 42090,
+        "missing": 383964,
+        "malformed": 0,
+        "zero": 0,
+        "negative": 0,
+        "positive": 42090
+      },
+      "MIN_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 425983,
+        "negative": 0,
+        "positive": 71
+      },
+      "OIFIX_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 424730,
+        "negative": 0,
+        "positive": 1324
+      },
+      "PP_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 424417,
+        "negative": 0,
+        "positive": 1637
+      },
+      "EX_VAL": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 329899,
+        "negative": 0,
+        "positive": 96155
+      },
+      "ACRES": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 197150,
+        "negative": 0,
+        "positive": 228904
+      },
+      "CITRUS_AC": {
+        "present": 426054,
+        "missing": 0,
+        "malformed": 0,
+        "zero": 425009,
+        "negative": 0,
+        "positive": 1045
+      }
+    },
+    "rollDistribution": {
+      "1": 408809,
+      "5": 17245
+    }
+  },
+  "kips": {
+    "rows": 304569,
+    "lineLengths": {
+      "80": 304569
+    },
+    "teNoLengths": {
+      "1": 4,
+      "2": 80,
+      "3": 827,
+      "4": 7832,
+      "5": 47992,
+      "6": 247834
+    },
+    "invalidTe": 0,
+    "distinctTe": 304569,
+    "duplicateTe": 0,
+    "joinStatus": "KIPS_JOIN_UNPROVEN",
+    "incrementalSitus": 0,
+    "reason": "Both tables contain TE_NO but package docs do not state the cross-file relationship or conversion contract; never substitute ATN/APN."
+  },
+  "history": {
+    "createTypes": {
+      "CV": 372347,
+      "CT": 110499,
+      "PC": 431,
+      "CB": 5918,
+      "DT": 37886,
+      "CR": 5797
+    },
+    "inactivateTypes": {
+      "(missing)": 460746,
+      "CT": 11392,
+      "DL": 6915,
+      "CB": 15938,
+      "DT": 37886,
+      "AR": 1
+    },
+    "apn9Invalid": 0,
+    "applicability": "No PTS APN supplied; no documented ATN-to-historical-APN transform. No history identity recovered.",
+    "chainsApplied": 0,
+    "distinctApn9": 532878,
+    "duplicateApn9": 0
+  },
+  "geometry": {
+    "records": 424125,
+    "nullShapes": 0,
+    "apnPrefixMismatches": 0,
+    "identifiers": {
+      "nonNull": 424125,
+      "missing": 0,
+      "invalid": 0,
+      "distinct": 424125,
+      "duplicateValues": 0,
+      "duplicateExcess": 0
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/Shapefile_Parcels_Land_2026final/parcels_land_2026final.dbf",
+      "sha256": "d27d17ea42946debd31b165893d042ea11fb39c608c81620724dc03f3527bd5e"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/TaxRoll_Land_2026final/TaxRoll_Land_2026final.dbf",
+      "sha256": "3f96888125baad5525b1791d2e2ab56b5403b14d10f489378059341c0d17fbd5"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/TaxRoll_Mineral_2026final/TaxRoll_Mineral_2026final.dbf",
+      "sha256": "1b9a73c43c634a1a8433d1b04c491e839543d13917ce37c5811915106e99b61f"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/TaxRoll_ParcelHistory_2026final/TaxRoll_ParcelHistory_2026final.dbf",
+      "sha256": "ad866d3dc10122aecf8442da0210e0d25d1cf2287b786ca7fd9769f0c2fd7d11"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/TaxRoll_ParcelHistory_EventTypes_2026final/TaxRoll_ParcelHistory_EventTypes_2026final.dbf",
+      "sha256": "de0a4de73c4d336b51b190165ec8f7592fb3228875b20578f25c76869c24dadf"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/TaxRoll_RollTypes_2026final/TaxRoll_RollTypes_2026final.dbf",
+      "sha256": "9eb282c48d91d615c4646e1daa3ec43f01aef5f40857e7d8134e4629938eaa58"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/extracted/TaxRoll_UseCodes_2026final/TaxRoll_UseCodes_2026final.dbf",
+      "sha256": "bc8955385b3d39a4360f437463d8c651748f7a0364270b987e1a5e69abe6fe0e"
+    }
+  ],
+  "encoding": "DBF language-driver=0 (unspecified); identifiers ASCII only; text decoded CP1252 for diagnostics, raw sources preserved. No postal normalization.",
+  "protectedBaseline": {
+    "files": 567,
+    "unchanged": true
+  },
+  "providerCalls": 0,
+  "networkAttempts": 0,
+  "dbConnections": 0,
+  "dbWrites": 0
+}

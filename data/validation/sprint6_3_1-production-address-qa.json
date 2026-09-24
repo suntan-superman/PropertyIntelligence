@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "mode": "PRODUCTION_SYNTHETIC_ADDRESS_QA",
+  "previewUrl": "https://worksidepropertyintelligence.netlify.app",
+  "qaTag": "SPRINT6_3_1_PREVIEW_62fbdd84-1d3b-4203-8478-d94969acb367",
+  "providerCalls": 0,
+  "realCandidateWrites": 0,
+  "syntheticIds": {
+    "candidateId": "05af8ea7-8cc0-402a-8457-4740d7224b91",
+    "conflictId": "d3faec6a-a0d3-4d48-980b-311fea42eed2",
+    "propertyId": "46c44f1c-08fd-4f34-85a8-8e810eeb4d3d"
+  },
+  "checks": {
+    "saveAddress": true,
+    "coldReopen": true,
+    "manualSource": true,
+    "analystConfirmed": true,
+    "countySitusUnchanged": true,
+    "idempotentReplay": true,
+    "versionTwo": true,
+    "versionOneReadable": true,
+    "oneActive": true,
+    "conflictStop": true,
+    "saveAndAnalyzeConfirmationGate": true,
+    "cancelPreservesAddress": true,
+    "privacyAllowlist": true,
+    "rawProviderPayload": false
+  },
+  "requestCount": 9,
+  "cleanup": "SYNTHETIC_TAG_CLEANED"
+}
