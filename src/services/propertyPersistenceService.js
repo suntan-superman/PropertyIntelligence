@@ -4,6 +4,7 @@ import {evidenceHistory} from '../persistence/evidenceRepository.js';
 import {persistEvidenceSnapshot} from './evidenceSnapshotService.js';
 import {addressKey} from '../sources/rentcast/propertyLookup.js';
 import {finalize} from '../workbench/model.js';
+import {createOpportunityPropertyLink} from '../persistence/opportunityPropertyLinkRepository.js';
 
 function parseAddress(text) {
   const match = String(text ?? '').trim().match(/^([^,]{1,180}),\s*([^,]{2,80}),\s*([A-Za-z]{2})\s+(\d{5}(?:-\d{4})?)$/);
@@ -21,7 +22,7 @@ export function canonicalInput(model) {
     identityStatus:model.state === 'AMBIGUOUS' ? 'AMBIGUOUS' : 'UNCONFIRMED'};
 }
 
-export async function saveProperty({db,model,requestKey = null}) {
+export async function saveProperty({db,model,workflowOrigin=null,requestKey = null}) {
   if (!db) throw new Error('DATABASE_NOT_CONFIGURED');
   if (!model || !['READY_PROPERTY','READY_DEAL'].includes(model.state)) throw new Error('IDENTITY_STOP');
   return db.transaction(async tx => idempotent(tx,requestKey,'SAVE_PROPERTY',async () => {
@@ -32,8 +33,14 @@ export async function saveProperty({db,model,requestKey = null}) {
       ...(model.property?.address && model.property.address !== model.address ? [{aliasType:'PROVIDER',addressText:model.property.address,normalizedAddress:addressKey(model.property.address),source:'PROVIDER'}] : [])
     ]);
     const snapshot = await persistEvidenceSnapshot(tx,model,property.id,requestKey ? `${requestKey}:snapshot` : null);
+    let linkage=null;
+    const origin=workflowOrigin??null;
+    if(origin?.candidateId){
+      const linked=await createOpportunityPropertyLink(tx,{candidateId:origin.candidateId,propertyId:property.id,addressResolutionId:origin.addressResolutionId??null,assessorEnrichmentId:origin.assessorEnrichmentId??null,createdByContext:origin.createdByContext??'PROPERTY_SAVE',idempotencyKey:requestKey?`${requestKey}:opportunity-link`:null});
+      linkage={...linked.link,idempotentReplay:Boolean(linked.idempotentReplay)};
+    }
     await audit(tx,{aggregateType:'property',aggregateId:property.id,eventType:'PROPERTY_SAVED',payload:{evidenceSnapshotId:snapshot.evidenceSnapshotId},requestKey});
-    return {propertyId:property.id,...snapshot,savedAt:new Date().toISOString()};
+    return {propertyId:property.id,...snapshot,linkage,savedAt:new Date().toISOString()};
   }));
 }
 

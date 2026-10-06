@@ -1,0 +1,150 @@
+{
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "endpoint": "property/detailmortgage",
+  "mode": "attom-id",
+  "propertyCount": 1,
+  "status": {
+    "code": 0,
+    "msg": "SuccessWithResult",
+    "total": 1,
+    "page": 1,
+    "pageSize": 10,
+    "transactionId": null
+  },
+  "attomId": 29411496,
+  "identity": {
+    "attomId": 29411496,
+    "apn": "251-091-30-00-1",
+    "fips": "06029",
+    "standardizedAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+    "matchCode": "ExaStr",
+    "latitude": 34.871303,
+    "longitude": -118.170131,
+    "propertyType": "Single Family Residence / Townhouse",
+    "beds": 3,
+    "baths": null,
+    "livingAreaSqFt": 1265,
+    "yearBuilt": null
+  },
+  "data": {
+    "identifier": {
+      "Id": 29411496,
+      "attomId": 29411496,
+      "fips": "06029",
+      "apn": "251-091-30-00-1",
+      "apnOrig": "251-091-30-00-1"
+    },
+    "lot": {
+      "lotnum": "25",
+      "lotsize1": 0.221,
+      "lotsize2": 9638
+    },
+    "area": {
+      "blockNum": "1",
+      "countrysecsubd": "Kern",
+      "countyuse1": "0101",
+      "muncode": "KE",
+      "munname": "KERN",
+      "subdname": "9M61-62",
+      "subdtractnum": "1786",
+      "taxcodearea": "11-010"
+    },
+    "address": {
+      "country": "US",
+      "countrySubd": "CA",
+      "line1": "3484 HAVEN ST",
+      "line2": "ROSAMOND, CA 93560",
+      "locality": "ROSAMOND",
+      "matchCode": "ExaStr",
+      "oneLine": "3484 HAVEN ST, ROSAMOND, CA 93560",
+      "postal1": "93560",
+      "postal2": "7635"
+    },
+    "location": {
+      "accuracy": "Rooftop",
+      "latitude": "34.871303",
+      "longitude": "-118.170131",
+      "distance": 0,
+      "geoid": "CO06029, CS0690800, DB0637620, PL0662826, SB0000145525, SB0000147289, SB0000150848, ZI93560",
+      "geoIdV4": {
+        "CI": "80b1871eac564c7fa66431365aa2ed60",
+        "CO": "aeb379fa3b8c6cbb961ac11d18e8b769",
+        "CS": "8ad8dba681f3fc577c02735adfb4d253",
+        "DB": "14544e3be41c218b3c138271a2f740b9",
+        "PL": "d38da76bb447c366ed3aad8aa967eec3",
+        "PZ": "96571e846e5159b5f069160a8a166a01",
+        "SB": "6bb56c12c33a17649aa5f040cb35d2bc,17b9ce5db1fdf4bf27761bdd9ec302a8",
+        "ZI": "839d1ab793bf635005d08a69d52a3d92"
+      }
+    },
+    "summary": {
+      "absenteeInd": "ABSENTEE(MAIL AND SITUS NOT =)",
+      "propclass": "Single Family Residence / Townhouse",
+      "propsubtype": "Residential",
+      "proptype": "SFR",
+      "propertyType": "SINGLE FAMILY RESIDENCE",
+      "yearbuilt": 1966,
+      "propLandUse": "SFR",
+      "propIndicator": "10",
+      "legal1": "TRACT 1786 , BLOCK , LOT 25"
+    },
+    "utilities": {
+      "heatingtype": "FLOOR/WALL FURNACE"
+    },
+    "building": {
+      "size": {
+        "bldgsize": 1265,
+        "grosssize": 1265,
+        "grosssizeadjusted": 1265,
+        "groundfloorsize": 1029,
+        "livingsize": 1265,
+        "sizeInd": "LIVING SQFT",
+        "universalsize": 1265
+      },
+      "rooms": {
+        "bathsfull": 0,
+        "bathspartial": 1,
+        "bathstotal": 1.5,
+        "beds": 3,
+        "roomsTotal": 5
+      },
+      "interior": {},
+      "construction": {
+        "constructiontype": "FRAME",
+        "frameType": "WOOD"
+      },
+      "parking": {
+        "garagetype": "Garage, Attached",
+        "prkgSize": 236,
+        "prkgSpaces": "1",
+        "prkgType": "Garage, Attached"
+      },
+      "summary": {
+        "bldgsNum": 1,
+        "levels": 1,
+        "quality": "AVERAGE",
+        "yearbuilteffective": 1966
+      }
+    },
+    "mortgage": {
+      "lender": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+      "title": {
+        "companyname": "CLEAR TITLE"
+      },
+      "amount": 117500,
+      "date": "2025-02-12",
+      "loantypecode": "SCB",
+      "deedtype": "CS",
+      "duedate": ""
+    },
+    "vintage": {
+      "lastModified": "2026-09-23",
+      "pubDate": "2026-09-23"
+    }
+  }
+}

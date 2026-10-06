@@ -1,0 +1,96 @@
+{
+  "status": "PASS — SINGLE 3484 HAVEN LINK CERTIFIED",
+  "mode": "AUTHORIZED_SINGLE_RECONCILIATION_APPLY",
+  "writes": {
+    "performed": true,
+    "transaction": "COMMITTED_ONE_ACTIVE_LINK",
+    "certificationInvocation": "ALREADY_COMMITTED_EXACT_LINK_CERTIFIED"
+  },
+  "providerCalls": {
+    "rentcast": 0,
+    "google": 0,
+    "county": 0
+  },
+  "authorizedPair": {
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+    "addressResolutionId": "b6f69e57-071c-4029-8eef-c22435e4875e",
+    "assessorEnrichmentId": "943aa186-9598-4735-aa91-5763dbc1356a",
+    "apn9": "251091302"
+  },
+  "requested": {
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b"
+  },
+  "dryRunArtifact": "data/validation/sprint6_3_3-reconciliation-dry-run.json",
+  "migrationLedger": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "appliedAt": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "appliedAt": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "appliedAt": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "appliedAt": "2026-09-23T20:25:49.044Z"
+    },
+    {
+      "filename": "005_candidate_address_resolutions.sql",
+      "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1",
+      "appliedAt": "2026-09-24T14:53:36.797Z"
+    },
+    {
+      "filename": "006_opportunity_property_links.sql",
+      "checksum": "00d0402c5506f0a62b36e208ffbae67017da0287ecf785136715e7aec0c082b6",
+      "appliedAt": "2026-09-24T18:16:22.025Z"
+    }
+  ],
+  "before": {
+    "candidate": "e356fde2c7859c89830217d47a5c227eccf4e774b937be84875d328c0d56300f",
+    "property": "6ec449917b7e5bc494cee446d5b0f737037ff4e727522039f25b439c9035700a",
+    "canonical": "4aaebec8fdd8b384af2171daf5567f1840054eb7c41ca2da9652259809a3bde6",
+    "assessor": "aebd99c0945d4d1dd2dc6844f9a6cfdfacea51bd1e2e8a4de91a55fadb81e4ec",
+    "evidence": {
+      "count": 1,
+      "fingerprint": "3fb5a5968cd7fe6cdedb7928bfd44444ccd6bb87dcfbdcc095944cf477745a8b"
+    }
+  },
+  "after": {
+    "candidate": "e356fde2c7859c89830217d47a5c227eccf4e774b937be84875d328c0d56300f",
+    "property": "6ec449917b7e5bc494cee446d5b0f737037ff4e727522039f25b439c9035700a",
+    "canonical": "4aaebec8fdd8b384af2171daf5567f1840054eb7c41ca2da9652259809a3bde6",
+    "assessor": "aebd99c0945d4d1dd2dc6844f9a6cfdfacea51bd1e2e8a4de91a55fadb81e4ec",
+    "evidence": {
+      "count": 1,
+      "fingerprint": "3fb5a5968cd7fe6cdedb7928bfd44444ccd6bb87dcfbdcc095944cf477745a8b"
+    }
+  },
+  "postWrite": {
+    "totalLineageRows": 1,
+    "activeCandidateLinks": 1,
+    "activePropertyLinks": 1,
+    "lineageId": "2ce14477-ab18-4391-ad2a-8347cc000a15",
+    "createdAt": "2026-09-24T18:26:02.771Z"
+  },
+  "replay": {
+    "idempotent": true,
+    "createdAdditionalRows": 0,
+    "supersessions": 0
+  },
+  "lifecycle": {
+    "workflowLifecycle": "PROPERTY_SAVED",
+    "propertyLinkStatus": "PROPERTY_LINKED",
+    "linkedPropertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b"
+  },
+  "propertyEvidenceFingerprint": "3fb5a5968cd7fe6cdedb7928bfd44444ccd6bb87dcfbdcc095944cf477745a8b"
+}

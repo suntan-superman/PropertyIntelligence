@@ -1,0 +1,2610 @@
+{
+  "joinAnalysis": {
+    "Recorder \u2194 LoanModel by AttomID": {
+      "leftUniqueIds": 709363,
+      "rightUniqueIds": 1187700,
+      "matchedUniqueIds": 667557,
+      "leftMatchPct": 94.1065,
+      "rightMatchPct": 56.2059
+    },
+    "Recorder \u2194 AssignmentRelease by AttomID": {
+      "leftUniqueIds": 709363,
+      "rightUniqueIds": 969667,
+      "matchedUniqueIds": 547726,
+      "leftMatchPct": 77.2138,
+      "rightMatchPct": 56.486
+    },
+    "Recorder \u2194 Preforeclosure by AttomID": {
+      "leftUniqueIds": 709363,
+      "rightUniqueIds": 18642,
+      "matchedUniqueIds": 13633,
+      "leftMatchPct": 1.9219,
+      "rightMatchPct": 73.1306
+    },
+    "Preforeclosure \u2194 CombinedForeclosure by AttomID": {
+      "leftUniqueIds": 18642,
+      "rightUniqueIds": 6109,
+      "matchedUniqueIds": 6020,
+      "leftMatchPct": 32.2927,
+      "rightMatchPct": 98.5431
+    },
+    "LoanModel \u2194 Preforeclosure by AttomID": {
+      "leftUniqueIds": 1187700,
+      "rightUniqueIds": 18642,
+      "matchedUniqueIds": 18162,
+      "leftMatchPct": 1.5292,
+      "rightMatchPct": 97.4252
+    }
+  },
+  "recorderDeleteAnalysis": {
+    "rows": 166532,
+    "uniqueDeleteTransactionIds": 166532,
+    "alsoPresentInRecorderSample": 31,
+    "notPresentInRecorderSample": 166501,
+    "duplicateDeleteRows": 0,
+    "availableFields": [
+      "TransactionID"
+    ],
+    "semantics": "Sample proves only a TransactionID list; no reason, status, or deletion timestamp field is supplied."
+  },
+  "eventLinkageAnalysis": {
+    "assignmentRowsWithMortgageTransactionID": 2542473,
+    "uniqueMortgageTransactionIDs": 2216743,
+    "rowsLinkedToRecorderTransactionID": 140022,
+    "uniqueMortgageTransactionIDsLinkedToRecorder": 128620,
+    "interpretation": "Only the explicit MortgageTransactionID \u2192 Recorder.TransactionID relationship is tested; same-property ATTOM ID joins are reported separately."
+  },
+  "mortgageLifecycleFixtures": [
+    {
+      "fixture": "M01",
+      "recorderPositiveMortgageRows": 2,
+      "assignmentReleaseRows": 259,
+      "eventTimeline": [
+        {
+          "date": "2005-04-28",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-28",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-06-20",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-12-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2006-05-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2006-05-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-02-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-05-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-06-08",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-06-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-06-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-06-18",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-08-14",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-08-14",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-08-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-08-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-09-14",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-10-03",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-10-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-01-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 7,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M02",
+      "recorderPositiveMortgageRows": 2,
+      "assignmentReleaseRows": 110,
+      "eventTimeline": [
+        {
+          "date": "2014-03-04",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-12-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-03-17",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-08-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-06-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-06-23",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2019-10-07",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-06-10",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTTR",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2021-07-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 6,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M03",
+      "recorderPositiveMortgageRows": 2,
+      "assignmentReleaseRows": 96,
+      "eventTimeline": [
+        {
+          "date": "2007-08-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-08-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-07-20",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-05-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 8,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M04",
+      "recorderPositiveMortgageRows": 21,
+      "assignmentReleaseRows": 64,
+      "eventTimeline": [
+        {
+          "date": "2007-02-23",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-06-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-11-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2007-12-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-04-29",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-04-29",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-08-18",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2010-05-28",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2010-08-20",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-01-10",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-08-26",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-10-10",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-10-10",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-06-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-07-24",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-08-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-08-27",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-12-03",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-06-20",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-07-03",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-07-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-07-10",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-07-23",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 6,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M05",
+      "recorderPositiveMortgageRows": 73,
+      "assignmentReleaseRows": 2,
+      "eventTimeline": [
+        {
+          "date": "2025-05-22",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-23",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-23",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-23",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-27",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-28",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-28",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-29",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-29",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-30",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-05-30",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-06-20",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-06-27",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-22",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTIT",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-24",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-24",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-25",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-25",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-30",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2025-07-31",
+          "eventFamily": "RECORDER_MORTGAGE",
+          "eventTypeCode": "DTGD",
+          "countyFips": "06111"
+        },
+        {
+          "date": "2026-05-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2026-06-04",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": false,
+      "currentLoanPositionFactsAvailable": 8,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M06",
+      "recorderPositiveMortgageRows": 2,
+      "assignmentReleaseRows": 71,
+      "eventTimeline": [
+        {
+          "date": "2005-02-10",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-03-24",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-04-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2005-05-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTPL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 7,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M07",
+      "recorderPositiveMortgageRows": 2,
+      "assignmentReleaseRows": 66,
+      "eventTimeline": [
+        {
+          "date": "2008-06-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-06-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-07-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-10-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-10-13",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-07-16",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-08-27",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-09-01",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-03-16",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-03-23",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-04-07",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-04-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-06-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-07-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-08-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-09-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-09-23",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-01-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 9,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M08",
+      "recorderPositiveMortgageRows": 2,
+      "assignmentReleaseRows": 56,
+      "eventTimeline": [
+        {
+          "date": "2006-11-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-02-12",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2009-03-06",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2009-04-17",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2010-01-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2010-12-07",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-11-21",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-02-29",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-05-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-06-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-10-03",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-01-29",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-01-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-04-26",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-05-23",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-06-12",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-06-17",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-07-01",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-09",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-28",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-28",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-09-04",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-11-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-11-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-12-09",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 6,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M09",
+      "recorderPositiveMortgageRows": 3,
+      "assignmentReleaseRows": 54,
+      "eventTimeline": [
+        {
+          "date": "2007-04-20",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2008-12-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2009-01-14",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-07-01",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-07-26",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-01-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-14",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-08-27",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-06-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-06-11",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-07-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-08-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-09-15",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-10-01",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-10-29",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2014-11-25",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-03-24",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-07-16",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-09-10",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-10-08",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2015-12-09",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2016-02-17",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-04-05",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-05-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2017-11-02",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTFL",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 7,
+      "currentLoanPositionFieldCount": 9
+    },
+    {
+      "fixture": "M10",
+      "recorderPositiveMortgageRows": 3,
+      "assignmentReleaseRows": 50,
+      "eventTimeline": [
+        {
+          "date": "2007-05-24",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2010-04-07",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2010-04-07",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2011-02-22",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTSF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2012-08-27",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTAM",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-01-30",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": true,
+          "loanPosition": 1,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        },
+        {
+          "date": "2013-02-19",
+          "eventFamily": "ASSIGNMENT_RELEASE",
+          "eventTypeCode": "DTNF",
+          "mortgageTransactionLinkPresent": false,
+          "loanPosition": null,
+          "originalAmountPresent": true
+        }
+      ],
+      "timelineCappedAt25": true,
+      "currentLoanPositionFactsAvailable": 8,
+      "currentLoanPositionFieldCount": 9
+    }
+  ],
+  "foreclosureLifecycleFixtures": [
+    {
+      "fixture": "F01",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-09-09",
+            "AuctionDate": "2022-11-10",
+            "CreateDate": "2022-10-19",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-10-02",
+            "CreateDate": "2024-10-03",
+            "RecordLastUpdated": "2024-10-03"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-10-02",
+            "CreateDate": "2024-10-03",
+            "RecordLastUpdated": "2024-10-03"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F02",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2023-04-05",
+            "AuctionDate": "2023-06-28",
+            "CreateDate": "2023-06-07",
+            "RecordLastUpdated": "2023-06-07"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-12-14",
+            "CreateDate": "2022-12-15",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-12-14",
+            "CreateDate": "2022-12-15",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F03",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2023-06-21",
+            "AuctionDate": "2023-09-28",
+            "CreateDate": "2023-09-11",
+            "RecordLastUpdated": "2023-09-11"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-09-19",
+            "CreateDate": "2022-09-21",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-09-19",
+            "CreateDate": "2022-09-21",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F04",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-01-12",
+            "AuctionDate": "2024-02-15",
+            "CreateDate": "2024-01-19",
+            "RecordLastUpdated": "2024-01-19"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-10-02",
+            "AuctionDate": "2025-10-30",
+            "CreateDate": "2025-10-08",
+            "RecordLastUpdated": "2025-10-08"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-10-18",
+            "AuctionDate": "2023-02-02",
+            "CreateDate": "2022-11-30",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-10-18",
+            "AuctionDate": "2022-12-01",
+            "CreateDate": "2022-10-26",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-10-18",
+            "AuctionDate": "2023-03-23",
+            "CreateDate": "2023-02-02",
+            "RecordLastUpdated": "2023-02-02"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-10-02",
+            "AuctionDate": "2026-10-01",
+            "CreateDate": "2026-08-26",
+            "RecordLastUpdated": "2026-08-26"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "NTS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-10-02",
+            "AuctionDate": "2026-10-01",
+            "CreateDate": "2026-08-26",
+            "RecordLastUpdated": "2026-08-26"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOD",
+          "dates": {
+            "ForeclosureRecordingDate": "2023-10-09",
+            "CreateDate": "2023-10-17",
+            "RecordLastUpdated": "2023-10-17"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOD",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-06-30",
+            "CreateDate": "2022-07-12",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOD",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-06-25",
+            "CreateDate": "2025-07-08",
+            "RecordLastUpdated": "2025-07-08"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F05",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-04-18",
+            "AuctionDate": "2025-07-15",
+            "CreateDate": "2025-06-25",
+            "RecordLastUpdated": "2025-06-25"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-06-10",
+            "CreateDate": "2024-06-11",
+            "RecordLastUpdated": "2024-06-11"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "REO",
+          "dates": {
+            "CreateDate": "2026-09-22",
+            "RecordLastUpdated": "2026-08-13"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F06",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-06-29",
+            "AuctionDate": "2026-07-29",
+            "CreateDate": "2026-07-24",
+            "RecordLastUpdated": "2026-07-24"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2023-09-06",
+            "AuctionDate": "2023-11-09",
+            "CreateDate": "2023-10-24",
+            "RecordLastUpdated": "2023-10-24"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-04-23",
+            "AuctionDate": "2026-01-14",
+            "CreateDate": "2026-01-01",
+            "RecordLastUpdated": "2026-01-01"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-04-23",
+            "AuctionDate": "2025-10-15",
+            "CreateDate": "2025-09-24",
+            "RecordLastUpdated": "2025-09-24"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-04-23",
+            "AuctionDate": "2025-06-04",
+            "CreateDate": "2025-05-12",
+            "RecordLastUpdated": "2025-05-12"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "NFS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-06-29",
+            "AuctionDate": "2026-07-29",
+            "CreateDate": "2026-07-24",
+            "RecordLastUpdated": "2026-07-24"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2023-02-14",
+            "CreateDate": "2023-02-15",
+            "RecordLastUpdated": "2023-02-15"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F07",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2023-05-25",
+            "AuctionDate": "2023-07-25",
+            "CreateDate": "2023-07-05",
+            "RecordLastUpdated": "2023-07-05"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-09-14",
+            "CreateDate": "2022-09-15",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2022-09-14",
+            "CreateDate": "2022-09-15",
+            "RecordLastUpdated": "2023-01-18"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F08",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-05-26",
+            "AuctionDate": "2025-09-16",
+            "CreateDate": "2025-08-29",
+            "RecordLastUpdated": "2025-08-29"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-07-21",
+            "CreateDate": "2026-07-22",
+            "RecordLastUpdated": "2026-07-22"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-07-21",
+            "CreateDate": "2026-07-22",
+            "RecordLastUpdated": "2026-07-22"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F09",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-01-22",
+            "AuctionDate": "2025-02-24",
+            "CreateDate": "2025-02-10",
+            "RecordLastUpdated": "2025-02-10"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-07-30",
+            "AuctionDate": "2026-08-31",
+            "CreateDate": "2026-08-26",
+            "RecordLastUpdated": "2026-08-26"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2025-12-31",
+            "AuctionDate": "2026-01-26",
+            "CreateDate": "2026-01-16",
+            "RecordLastUpdated": "2026-01-16"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-07-10",
+            "AuctionDate": "2024-10-09",
+            "CreateDate": "2024-09-24",
+            "RecordLastUpdated": "2024-09-24"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "NFS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-07-30",
+            "AuctionDate": "2026-08-31",
+            "CreateDate": "2026-08-26",
+            "RecordLastUpdated": "2026-08-26"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-01-22",
+            "CreateDate": "2024-01-24",
+            "RecordLastUpdated": "2024-01-24"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    },
+    {
+      "fixture": "F10",
+      "events": [
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "NOS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-04-20",
+            "AuctionDate": "2026-09-22",
+            "CreateDate": "2026-09-11",
+            "RecordLastUpdated": "2026-09-11"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "CombinedForeclosure",
+          "recordType": "NFS",
+          "dates": {
+            "ForeclosureRecordingDate": "2026-04-20",
+            "AuctionDate": "2026-09-22",
+            "CreateDate": "2026-09-11",
+            "RecordLastUpdated": "2026-09-11"
+          },
+          "sourceEventIdPresent": true
+        },
+        {
+          "dataset": "Preforeclosure",
+          "recordType": "LIS",
+          "dates": {
+            "ForeclosureRecordingDate": "2024-10-17",
+            "CreateDate": "2024-10-18",
+            "RecordLastUpdated": "2024-10-18"
+          },
+          "sourceEventIdPresent": true
+        }
+      ]
+    }
+  ]
+}

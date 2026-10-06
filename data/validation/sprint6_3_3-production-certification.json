@@ -1,0 +1,81 @@
+{
+  "status": "PRODUCTION CERTIFIED — OPPORTUNITY → PROPERTY DURABLE LINEAGE OPERATIONAL",
+  "deployId": "6ab56dd27c58cb6af69e68da",
+  "productionUrl": "https://worksidepropertyintelligence.netlify.app",
+  "health": {
+    "statusCode": 200,
+    "runtime": "netlify",
+    "databaseConfigured": true,
+    "databaseProvider": "postgresql",
+    "persistenceAvailable": true,
+    "durableSessions": true
+  },
+  "lineage": {
+    "totalRows": 1,
+    "activeRows": 1,
+    "id": "2ce14477-ab18-4391-ad2a-8347cc000a15",
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+    "addressResolutionId": "b6f69e57-071c-4029-8eef-c22435e4875e",
+    "assessorEnrichmentId": "943aa186-9598-4735-aa91-5763dbc1356a",
+    "origin": "OPPORTUNITY_ANALYSIS_WORKFLOW",
+    "method": "EXPLICIT_WORKFLOW_CONTEXT",
+    "status": "ACTIVE"
+  },
+  "opportunity": {
+    "atn": "25109130001",
+    "workflowLifecycle": "PROPERTY_SAVED",
+    "propertyLinkStatus": "PROPERTY_LINKED",
+    "canonicalAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+    "screeningStatus": "NEEDS_ADDRESS",
+    "screeningScore": 55,
+    "priority": "HIGH_REVIEW_PRIORITY"
+  },
+  "property": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "propertyType": "Single Family",
+    "bedrooms": 3,
+    "bathrooms": 1.5,
+    "squareFeet": 1265,
+    "yearBuilt": 1966,
+    "estimatedValue": 353000,
+    "valueRange": [323000, 383000],
+    "retainedComps": 15
+  },
+  "evidenceFingerprint": "3fb5a5968cd7fe6cdedb7928bfd44444ccd6bb87dcfbdcc095944cf477745a8b",
+  "population": {
+    "candidates": 11316,
+    "exact": 11263,
+    "unmatched": 53,
+    "high": 312,
+    "medium": 701,
+    "low": 10303,
+    "highResidential": 118,
+    "highSingleFamily": 81,
+    "highSingleFamilyWithSitus": 81
+  },
+  "privacy": {
+    "listDetailMetrics": "PASS — allowlisted; no raw lineage/provenance/provider/owner/contact/database fields",
+    "browserCredentialScan": "PASS",
+    "uiStatus": 200
+  },
+  "mutations": {
+    "migration": false,
+    "linkage": false,
+    "assessorImport": false,
+    "addressMutation": false,
+    "evidenceRefresh": false,
+    "dealCreation": false
+  },
+  "providerCalls": {
+    "rentcast": 0,
+    "google": 0,
+    "county": 0,
+    "supabase": "read traffic expected; reported separately"
+  },
+  "tests": {
+    "sprint6_3_3": "PASS (3)",
+    "foundation": "PASS (128)",
+    "netlifyRuntime": "PASS (18)"
+  }
+}

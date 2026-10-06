@@ -1,0 +1,50 @@
+{
+  "status": "BLOCKED_AT_GATE_3_PROPERTY_SEARCH_CONTRACT",
+  "fixture": "3484 Haven St, Rosamond, CA 93560",
+  "authoritativeApiBase": "https://dtapiuat.datatree.com/api",
+  "historicalIncorrectHost": "https://dtiapiuat.datatree.com/api",
+  "propertyDataRequests": 0,
+  "authenticationRequests": 2,
+  "swaggerRequests": 2,
+  "unrelatedDcIsAuthenticationRequests": 2,
+  "requests": [
+    {
+      "sequence": 1,
+      "category": "swagger",
+      "endpoint": "https://dtapiuat.datatree.com/swagger/ui/index",
+      "httpStatus": 200,
+      "useful": true,
+      "packageAccessNote": "Public Swagger UI retrieved."
+    },
+    {
+      "sequence": 2,
+      "category": "swagger",
+      "endpoint": "https://dtapiuat.datatree.com/swagger/docs/v1",
+      "httpStatus": 200,
+      "useful": true,
+      "packageAccessNote": "Swagger 2.0 contract retrieved and inspected."
+    },
+    {
+      "sequence": 3,
+      "category": "authentication",
+      "endpoint": "POST /api/Login/AuthenticateClient",
+      "httpStatus": 200,
+      "tokenReceived": true,
+      "tokenType": "JWT",
+      "tokenPersisted": false,
+      "useful": true,
+      "packageAccessNote": "Token held in memory only; credentials and token omitted."
+    },
+    {
+      "sequence": 4,
+      "category": "authentication",
+      "endpoint": "POST /api/Login/AuthenticateClient (sanitized verification)",
+      "httpStatus": 200,
+      "tokenReceived": true,
+      "tokenType": "JWT",
+      "tokenPersisted": false,
+      "useful": true,
+      "packageAccessNote": "Response shape verified without printing token."
+    }
+  ]
+}

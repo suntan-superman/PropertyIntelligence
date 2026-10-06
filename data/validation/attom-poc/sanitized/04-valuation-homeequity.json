@@ -1,0 +1,121 @@
+{
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "endpoint": "valuation/homeequity",
+  "mode": "attom-id",
+  "propertyCount": 1,
+  "status": {
+    "code": 0,
+    "msg": "SuccessWithResult",
+    "total": 1,
+    "page": 1,
+    "pageSize": 10,
+    "transactionId": null
+  },
+  "attomId": 29411496,
+  "identity": {
+    "attomId": 29411496,
+    "apn": "251-091-30-00-1",
+    "fips": "06029",
+    "standardizedAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+    "matchCode": "ExaStr",
+    "latitude": 34.871303,
+    "longitude": -118.170131,
+    "propertyType": "SFR",
+    "beds": 3,
+    "baths": 1.5,
+    "livingAreaSqFt": null,
+    "yearBuilt": 1966
+  },
+  "data": {
+    "identifier": {
+      "Id": 29411496,
+      "fips": "06029",
+      "apn": "251-091-30-00-1",
+      "apnOrig": "251-091-30-00-1",
+      "attomId": 29411496
+    },
+    "lot": {
+      "lotSize1": 0.221
+    },
+    "address": {
+      "country": "US",
+      "countrySubd": "CA",
+      "line1": "3484 HAVEN ST",
+      "line2": "ROSAMOND, CA 93560",
+      "locality": "ROSAMOND",
+      "matchCode": "ExaStr",
+      "oneLine": "3484 HAVEN ST, ROSAMOND, CA 93560",
+      "postal1": "93560",
+      "postal2": "7635"
+    },
+    "location": {
+      "accuracy": "Rooftop",
+      "latitude": "34.871303",
+      "longitude": "-118.170131",
+      "distance": 0,
+      "geoId": "CO06029, CS0690800, DB0637620, PL0662826, SB0000145525, SB0000147289, SB0000150848, ZI93560",
+      "geoIdV4": {
+        "CI": "80b1871eac564c7fa66431365aa2ed60",
+        "CO": "aeb379fa3b8c6cbb961ac11d18e8b769",
+        "CS": "8ad8dba681f3fc577c02735adfb4d253",
+        "DB": "14544e3be41c218b3c138271a2f740b9",
+        "PL": "d38da76bb447c366ed3aad8aa967eec3",
+        "PZ": "96571e846e5159b5f069160a8a166a01",
+        "SB": "6bb56c12c33a17649aa5f040cb35d2bc,17b9ce5db1fdf4bf27761bdd9ec302a8",
+        "ZI": "839d1ab793bf635005d08a69d52a3d92"
+      }
+    },
+    "summary": {
+      "propClass": "Single Family Residence / Townhouse",
+      "propSubType": "Residential",
+      "propType": "SFR",
+      "propertyType": "SINGLE FAMILY RESIDENCE",
+      "yearBuilt": 1966,
+      "propLandUse": "SFR",
+      "propIndicator": "10"
+    },
+    "building": {
+      "size": {
+        "universalSize": 1265
+      },
+      "rooms": {
+        "bathsTotal": 1.5,
+        "beds": 3
+      }
+    },
+    "vintage": {
+      "lastModified": "2026-09-23",
+      "pubDate": "2026-09-23"
+    },
+    "avm": {
+      "eventDate": "2026-08-30",
+      "amount": {
+        "scr": 91,
+        "value": 121301,
+        "high": 132363,
+        "low": 110239,
+        "valueRange": 11062
+      },
+      "calculations": {
+        "perSizeUnit": 95,
+        "ratioTaxAmt": 34.5,
+        "rangePctOfValue": 18.24
+      }
+    },
+    "homeEquity": {
+      "LTV": 96,
+      "estimatedAvailableEquity": 7120,
+      "estimatedLendableEquity": 5696,
+      "firstAmortizedLoanAmount": 114181,
+      "secondAmortizedLoanAmount": 0,
+      "thirdAmortizedLoanAmount": 0,
+      "totalEstimatedLoanBalance": 114181,
+      "recordLastUpdated": "2026-09-05"
+    }
+  }
+}

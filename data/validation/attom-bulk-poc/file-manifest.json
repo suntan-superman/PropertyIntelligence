@@ -1,0 +1,168 @@
+{
+  "sourceHost": "data.attomdata.com",
+  "remoteDirectory": "Outgoing",
+  "manifest": [
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_RECORDER_0001.Parquet",
+      "bytes": 368254259,
+      "sha256": "ffce0dcc32041902db93a53aa6076b0bdce0f2770aa9bd92a3d185c6b68f18aa",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:12:52.447Z",
+      "datasetClassification": "Recorder",
+      "fileKind": "parquet"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_RECORDER_0001.rpt",
+      "bytes": 900,
+      "sha256": "dcd1fefade1e013657f86eb6710fe47eceeb0243c7b9eb104cbe46eb48be2ca0",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:12:52.941Z",
+      "datasetClassification": "Recorder",
+      "fileKind": "report"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_RECORDERDELETES_0001.Parquet",
+      "bytes": 855648,
+      "sha256": "dfb80e89e01401701ef99107831f0506c5d2053b8298ca7cf45459f49f243ce4",
+      "remoteModifiedUtc": "2026-10-05T18:37:29.000Z",
+      "localDownloadedUtc": "2026-10-05T20:12:57.587Z",
+      "datasetClassification": "RecorderDeletes",
+      "fileKind": "parquet"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_RECORDERDELETES_0001.rpt",
+      "bytes": 922,
+      "sha256": "30c11ce9c77a6b1ceb51388aedeba9f72a60b3a9916ee9100661d78bc677a1b0",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:12:57.987Z",
+      "datasetClassification": "RecorderDeletes",
+      "fileKind": "report"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_ASSIGNMENTRELEASE_0001.Parquet",
+      "bytes": 495012910,
+      "sha256": "0a907732f08dda11d5a08dc8a68a86d8f96f34e19567185a67387361ff00f576",
+      "remoteModifiedUtc": "2026-10-05T18:37:29.000Z",
+      "localDownloadedUtc": "2026-10-05T20:15:41.891Z",
+      "datasetClassification": "AssignmentRelease",
+      "fileKind": "parquet"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_ASSIGNMENTRELEASE_0001.rpt",
+      "bytes": 921,
+      "sha256": "6ebd0f3f99d51e8701eab21c791d026d5433e3215286416f76bf51e4735659b0",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:15:42.339Z",
+      "datasetClassification": "AssignmentRelease",
+      "fileKind": "report"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_COMBINEDFORECLOSURE_0001.Parquet",
+      "bytes": 1509358,
+      "sha256": "17e90f5c875e3917bc13422c3b924c3e6eaa516fee16cf7239cd8817006f90b9",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:15:50.200Z",
+      "datasetClassification": "CombinedForeclosure",
+      "fileKind": "parquet"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_COMBINEDFORECLOSURE_0001.rpt",
+      "bytes": 1050,
+      "sha256": "9b025f50bdfb6b514a421b2c67f556cab472d4411cedfd1f74df69e33cc5ab6a",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:15:50.592Z",
+      "datasetClassification": "CombinedForeclosure",
+      "fileKind": "report"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_LOANMODEL_0001.Parquet",
+      "bytes": 68322665,
+      "sha256": "478c4b5a28500f80ce6f2315046884739ebd3e456386ccb1c0980bf184cf0e11",
+      "remoteModifiedUtc": "2026-10-05T18:37:30.000Z",
+      "localDownloadedUtc": "2026-10-05T20:17:51.621Z",
+      "datasetClassification": "LoanModel",
+      "fileKind": "parquet"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_LOANMODEL_0001.rpt",
+      "bytes": 898,
+      "sha256": "eaf4c54239a7d4b758db3e66dc779232f8ecd7c0ae361c285b25b73e8ab9c301",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:17:51.956Z",
+      "datasetClassification": "LoanModel",
+      "fileKind": "report"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_PREFORECLOSURE_0001.Parquet",
+      "bytes": 6238650,
+      "sha256": "50343438b5d647c0b3901c4ed2efc27f9f58f53678667ee0cefa971ed8045f6f",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:25.332Z",
+      "datasetClassification": "Preforeclosure",
+      "fileKind": "parquet"
+    },
+    {
+      "filename": "PROPERTY_DATA_SAMPLE_PARQUET_PREFORECLOSURE_0001.rpt",
+      "bytes": 921,
+      "sha256": "8d6d5346c66c722d376f0a9b4d727f6ab76c33cba0a95fcb09dabb0a1c15dcda",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:25.750Z",
+      "datasetClassification": "Preforeclosure",
+      "fileKind": "report"
+    },
+    {
+      "filename": "Recorder.json",
+      "bytes": 48047,
+      "sha256": "cca6738126c4032340964be95dbe3b3134a82a3ef8f5b49d4d5f731284253d9b",
+      "remoteModifiedUtc": "2026-10-05T18:37:29.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:26.359Z",
+      "datasetClassification": "Recorder",
+      "fileKind": "layout"
+    },
+    {
+      "filename": "RecorderDeletes.json",
+      "bytes": 258,
+      "sha256": "cfc88b4a752272c63181dca61ee7fae27a94c7138b042ea0caf12e3bb50fcd1f",
+      "remoteModifiedUtc": "2026-10-05T18:37:29.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:26.772Z",
+      "datasetClassification": "RecorderDeletes",
+      "fileKind": "layout"
+    },
+    {
+      "filename": "AssignmentRelease.json",
+      "bytes": 5780,
+      "sha256": "2436d3dc80a981fda43d611b9e7868908da07cf80802c91f9cde35d77b81a737",
+      "remoteModifiedUtc": "2026-10-05T18:37:29.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:27.203Z",
+      "datasetClassification": "AssignmentRelease",
+      "fileKind": "layout"
+    },
+    {
+      "filename": "CombinedForeclosure.json",
+      "bytes": 19496,
+      "sha256": "dc82480db28a25bb6ef30872e57036eb93f3d3c8a255ddd28664feb6ed879159",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:27.650Z",
+      "datasetClassification": "CombinedForeclosure",
+      "fileKind": "layout"
+    },
+    {
+      "filename": "Foreclosure.json",
+      "bytes": 18035,
+      "sha256": "4c23178cba9eccc2cb74d8297f70383f51f9d57a4e4b0940ee85dbcfcc2cb8a4",
+      "remoteModifiedUtc": "2026-10-05T18:37:29.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:28.087Z",
+      "datasetClassification": "Foreclosure",
+      "fileKind": "layout"
+    },
+    {
+      "filename": "LoanModel.json",
+      "bytes": 12579,
+      "sha256": "fc801c29fc66a1f5541ce6787f76f10979d4e7b579b290d5187fd6438ee89b0c",
+      "remoteModifiedUtc": "2026-10-05T18:37:32.000Z",
+      "localDownloadedUtc": "2026-10-05T20:18:28.514Z",
+      "datasetClassification": "LoanModel",
+      "fileKind": "layout"
+    }
+  ]
+}

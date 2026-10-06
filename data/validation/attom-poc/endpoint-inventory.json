@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-09-26T03:32:44.294Z",
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "documentation": {
+    "api": "https://api.developer.attomdata.com/docs",
+    "endpoints": "https://cloud-help.attomdata.com/article/598-endpoints",
+    "v4": "https://cloud-help.attomdata.com/article/613-upgrading-to-property-api-v4"
+  },
+  "attomIdDocumentation": "ATTOM search-parameter documentation identifies ATTOM ID as the most accurate property key and states most endpoints accept it; Home Equity documentation explicitly uses ATTOM ID as the combining key.",
+  "records": [
+    {
+      "family": "identity/basic profile",
+      "endpoint": "property/basicprofile",
+      "searchMode": "address; APN+FIPS",
+      "expectedFields": "ATTOM ID, APN, FIPS, standardized address, match code, coordinates, characteristics",
+      "packageAccess": "documented property API; trial access empirically tested",
+      "test": "yes",
+      "reason": "required identity reconciliation",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "property detail",
+      "endpoint": "property/detail",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "property characteristics, assessment/listing context",
+      "packageAccess": "documented property API",
+      "test": "no",
+      "reason": "outside authorized continuation families; identity gate run stopped before this endpoint",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "detail mortgage",
+      "endpoint": "property/detailmortgage",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "loan position, original amount, dates, lender, terms, balances where licensed",
+      "packageAccess": "documented; package/field availability to confirm",
+      "test": "yes",
+      "reason": "priority mortgage question",
+      "attomIdSupportedForContinuation": "DOCUMENTED"
+    },
+    {
+      "family": "sales history",
+      "endpoint": "saleshistory/expandedhistory",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "transfer date, amount, document/transaction type and number, arms-length indicators",
+      "packageAccess": "documented property API",
+      "test": "yes",
+      "reason": "Feb-2025 event and transfer history",
+      "attomIdSupportedForContinuation": "DOCUMENTED"
+    },
+    {
+      "family": "all events",
+      "endpoint": "allevents/detail",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "broader recorded events",
+      "packageAccess": "documented; duplicate avoided where expanded history is sufficient",
+      "test": "no",
+      "reason": "avoid duplicate report after expanded history",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "preforeclosure",
+      "endpoint": "preforeclosuredetails",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "NOD/LIS, NTS/NOS, auction, default, foreclosure/REO indicators",
+      "packageAccess": "documented; package/field availability to confirm",
+      "test": "yes",
+      "reason": "priority foreclosure question",
+      "attomIdSupportedForContinuation": "DOCUMENTED"
+    },
+    {
+      "family": "home equity/loan model",
+      "endpoint": "valuation/homeequity",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "LTV, estimated equity, lendable equity, first/second/third balances, as-of",
+      "packageAccess": "documented valuation endpoint; report billing/package to confirm",
+      "test": "yes",
+      "reason": "priority equity question; not AVM duplication",
+      "attomIdSupportedForContinuation": "DOCUMENTED"
+    },
+    {
+      "family": "sales basic/detail",
+      "endpoint": "saleshistory/basichistory; saleshistory/detail",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "sale and instrument detail",
+      "packageAccess": "documented",
+      "test": "no",
+      "reason": "expanded history selected to stay within budget",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "deeds/transactions",
+      "endpoint": "deed; transaction",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "deed/instrument details",
+      "packageAccess": "not found as current documented endpoint",
+      "test": "no",
+      "reason": "inventory gap; ask ATTOM",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "assignments/releases",
+      "endpoint": "assignment; release; reconveyance",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "assignment/release dates and instruments",
+      "packageAccess": "not found in current public endpoint docs",
+      "test": "no",
+      "reason": "inventory gap; ask ATTOM",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "liens",
+      "endpoint": "lien/judgment/tax/mechanic/HOA/PACE",
+      "searchMode": "ATTOM ID",
+      "expectedFields": "encumbrance type, amount, date, status",
+      "packageAccess": "not found in current public endpoint docs",
+      "test": "no",
+      "reason": "inventory gap; ask ATTOM",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    },
+    {
+      "family": "bulk/cloud/Snowflake",
+      "endpoint": "Bulk/Cloud/Snowflake delivery",
+      "searchMode": "licensed batch/cloud",
+      "expectedFields": "historical and encumbrance depth at scale",
+      "packageAccess": "BULK_CLOUD_CANDIDATE",
+      "test": "no",
+      "reason": "outside API-only POC and no multi-property calls",
+      "attomIdSupportedForContinuation": "NOT_TESTED_OR_NOT_APPLICABLE"
+    }
+  ]
+}

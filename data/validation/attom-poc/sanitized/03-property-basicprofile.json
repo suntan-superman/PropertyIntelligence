@@ -1,0 +1,30 @@
+{
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "endpoint": "property/basicprofile",
+  "mode": "apn+fips-safe-format",
+  "propertyCount": 0,
+  "status": {
+    "code": 400,
+    "msg": "SuccessWithoutResult",
+    "total": 0,
+    "page": null,
+    "pageSize": null,
+    "transactionId": null
+  },
+  "attomId": null,
+  "data": {
+    "status": {
+      "version": "1.0.0",
+      "code": 400,
+      "msg": "SuccessWithoutResult",
+      "total": 0,
+      "responseDateTime": "2026-09-26T02:39:34.204Z",
+      "transactionID": "8e68efaba64e28d9c5974af82807a645"
+    }
+  }
+}

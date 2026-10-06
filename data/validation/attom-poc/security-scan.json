@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-09-26T03:32:44.330Z",
+  "secretValueFound": false,
+  "populatedHeaderFound": false,
+  "databaseUrlFound": false,
+  "rawHeadersPersisted": false,
+  "note": "Secret values are not printed; raw response artifacts contain bodies only."
+}

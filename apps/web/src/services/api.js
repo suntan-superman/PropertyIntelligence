@@ -18,7 +18,9 @@ const messages={SESSION_EXPIRED:'This analysis session expired before it could b
   IDENTITY_STOP:'Identity / representation must be resolved before creating a deal.',
   DATABASE_NOT_CONFIGURED:'Durable persistence is not configured on this server. The property was not saved.',
   DATABASE_UNAVAILABLE:'Durable persistence is temporarily unavailable. The property was not saved.',
-  PROPERTY_NOT_SAVED:'The property could not be saved. No durable record was created.'};
+  PROPERTY_NOT_SAVED:'The property could not be saved. No durable record was created.',
+  OPPORTUNITY_CONTEXT_MISMATCH:'The originating Opportunity context is no longer coherent. No Property or link was saved.',
+  OPPORTUNITY_PROPERTY_CONFLICT:'This Opportunity or Property is already linked to a different record. No change was saved.'};
 export async function request(path,options={}){
   let res;try{res=await fetch(`/api/${path}`,options);}catch{throw new Error(UNAVAILABLE);}
   const type=(res.headers.get('content-type')??'').split(';')[0].trim().toLowerCase();

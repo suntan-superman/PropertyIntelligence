@@ -19,3 +19,12 @@ data/runtime/
 data/validation/sprint3_2-visual/
 
 data/raw/kern-assessor/*.zip
+
+# ATTOM capability POC raw provider responses are local-only protected evidence.
+data/validation/attom-poc/raw/
+
+# First American/DataTree UAT raw responses are local-only pending retention/licensing review.
+data/validation/datatree-uat/raw/
+
+# ATTOM bulk Parquet samples are licensed local-only evidence.
+data/validation/attom-bulk-poc/raw/

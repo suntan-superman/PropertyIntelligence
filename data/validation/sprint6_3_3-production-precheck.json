@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "stage": "READ_ONLY_PRE_MIGRATION",
+  "migrationInvocations": 0,
+  "productionWrites": 0,
+  "providerCalls": 0,
+  "googleCalls": 0,
+  "countyNetworkCalls": 0,
+  "packetBaseline": {
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+    "canonicalId": "b6f69e57-071c-4029-8eef-c22435e4875e",
+    "assessorId": "943aa186-9598-4735-aa91-5763dbc1356a",
+    "evidenceFingerprint": "04f06dbdc0663010c00bec2d5491c3be32e2e8072641e7452050b4968a238449"
+  },
+  "tls": {
+    "encrypted": true,
+    "authorized": true,
+    "protocol": "TLSv1.3"
+  },
+  "namespace": {
+    "current": "public",
+    "schemas": "{public,pg_catalog}"
+  },
+  "ledgerBefore": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    },
+    {
+      "filename": "005_candidate_address_resolutions.sql",
+      "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1"
+    }
+  ],
+  "candidatePopulation": {
+    "records": 11321,
+    "candidates": 11316,
+    "priorities": {
+      "HIGH_REVIEW_PRIORITY": 312,
+      "LOW_REVIEW_PRIORITY": 10303,
+      "MEDIUM_REVIEW_PRIORITY": 701
+    },
+    "scoreStatusFingerprint": "fc883cf777b35b966d5fdd84d44d2005739e200fea0a19e0497641e50a7a0a17"
+  },
+  "assessor": {
+    "completedBatches": 1,
+    "activeRows": 11316,
+    "exact": 11263,
+    "unmatched": 53
+  },
+  "savedProperty": {
+    "id": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+    "addressLine1": "3484 Haven St",
+    "city": "Rosamond",
+    "state": "CA",
+    "postalCode": "93560",
+    "evidenceRows": 1,
+    "evidenceMetadataFingerprint": "04f06dbdc0663010c00bec2d5491c3be32e2e8072641e7452050b4968a238449"
+  },
+  "protectedBefore": {
+    "sha256": "05d0425d48497df0dbd819cca01e85113ad1edd23fcf4a2a1b29d21c450b724d",
+    "rows": [
+      {
+        "table": "properties",
+        "count": 3,
+        "fingerprint": "5e49603cbadcaabd9dd3f34bbe347194"
+      },
+      {
+        "table": "evidence_snapshots",
+        "count": 16,
+        "fingerprint": "90838bb5e3da1d2245c5d76d3bae4104"
+      },
+      {
+        "table": "opportunity_candidates",
+        "count": 11316,
+        "fingerprint": "b78b2c51f57610d76cd7debfcb4e805d"
+      },
+      {
+        "table": "opportunity_assessor_import_batches",
+        "count": 1,
+        "fingerprint": "704d82b05718a4bb539d72b60ca0c391"
+      },
+      {
+        "table": "opportunity_assessor_enrichments",
+        "count": 11316,
+        "fingerprint": "cca8dbd4fc7fdc5810205f3836821c84"
+      },
+      {
+        "table": "candidate_address_resolutions",
+        "count": 1,
+        "fingerprint": "cea3e5b4c2c6ae314a97bf4b84858a8b"
+      },
+      {
+        "table": "property_intelligence_schema_migrations",
+        "count": 5,
+        "fingerprint": "df4de1081f886e89375eccc086da6db7"
+      }
+    ]
+  },
+  "preMigrationCounts": {
+    "canonicalAddressRows": 1,
+    "lineageRows": 0
+  },
+  "completedStage": "PRE_MIGRATION_BASELINE_CERTIFIED"
+}

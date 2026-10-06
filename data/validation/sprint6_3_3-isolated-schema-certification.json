@@ -1,0 +1,252 @@
+{
+  "status": "PASS",
+  "mode": "ISOLATED_001_006_CERTIFICATION",
+  "productionWrites": 0,
+  "productionMigrationApplied": false,
+  "providerCalls": 0,
+  "googleCalls": 0,
+  "countyNetworkCalls": 0,
+  "migrations": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18"
+    },
+    {
+      "filename": "005_candidate_address_resolutions.sql",
+      "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1"
+    },
+    {
+      "filename": "006_opportunity_property_links.sql",
+      "checksum": "00d0402c5506f0a62b36e208ffbae67017da0287ecf785136715e7aec0c082b6"
+    }
+  ],
+  "tls": {
+    "encrypted": true,
+    "authorized": true,
+    "protocol": "TLSv1.3"
+  },
+  "publicBefore": {
+    "sha256": "05d0425d48497df0dbd819cca01e85113ad1edd23fcf4a2a1b29d21c450b724d",
+    "rows": [
+      {
+        "table": "properties",
+        "count": 3,
+        "fingerprint": "5e49603cbadcaabd9dd3f34bbe347194"
+      },
+      {
+        "table": "evidence_snapshots",
+        "count": 16,
+        "fingerprint": "90838bb5e3da1d2245c5d76d3bae4104"
+      },
+      {
+        "table": "opportunity_candidates",
+        "count": 11316,
+        "fingerprint": "b78b2c51f57610d76cd7debfcb4e805d"
+      },
+      {
+        "table": "opportunity_assessor_import_batches",
+        "count": 1,
+        "fingerprint": "704d82b05718a4bb539d72b60ca0c391"
+      },
+      {
+        "table": "opportunity_assessor_enrichments",
+        "count": 11316,
+        "fingerprint": "cca8dbd4fc7fdc5810205f3836821c84"
+      },
+      {
+        "table": "candidate_address_resolutions",
+        "count": 1,
+        "fingerprint": "cea3e5b4c2c6ae314a97bf4b84858a8b"
+      },
+      {
+        "table": "property_intelligence_schema_migrations",
+        "count": 5,
+        "fingerprint": "df4de1081f886e89375eccc086da6db7"
+      }
+    ]
+  },
+  "qaNamespace": {
+    "schema": "qa_sprint6_3_3_e46a794bdd3a47cbbfdd345765154d06",
+    "currentSchema": "qa_sprint6_3_3_e46a794bdd3a47cbbfdd345765154d06",
+    "currentSchemas": "{qa_sprint6_3_3_e46a794bdd3a47cbbfdd345765154d06,pg_catalog}"
+  },
+  "schema": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "candidate_id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "property_id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "address_resolution_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "assessor_enrichment_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "origin",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "link_method",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "link_status",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      },
+      {
+        "name": "superseded_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_by_context",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "text",
+        "nullable": "YES"
+      }
+    ],
+    "indexes": [
+      "opportunity_property_links_active_candidate_idx",
+      "opportunity_property_links_active_property_idx",
+      "opportunity_property_links_history_idx",
+      "opportunity_property_links_idempotency_idx",
+      "opportunity_property_links_pkey"
+    ],
+    "foreignKeys": [
+      {
+        "conname": "opportunity_property_links_address_resolution_id_fkey",
+        "target_table": "candidate_address_resolutions",
+        "confdeltype": "r"
+      },
+      {
+        "conname": "opportunity_property_links_assessor_enrichment_id_fkey",
+        "target_table": "opportunity_assessor_enrichments",
+        "confdeltype": "r"
+      },
+      {
+        "conname": "opportunity_property_links_candidate_id_fkey",
+        "target_table": "opportunity_candidates",
+        "confdeltype": "r"
+      },
+      {
+        "conname": "opportunity_property_links_property_id_fkey",
+        "target_table": "properties",
+        "confdeltype": "r"
+      }
+    ],
+    "triggers": [
+      "opportunity_property_link_guard"
+    ],
+    "rls": true,
+    "publicApiGrants": 0,
+    "policies": 0,
+    "initialRows": 0
+  },
+  "rollbackQa": {
+    "exactLink": true,
+    "idempotentReplay": true,
+    "sameCandidateConflict": true,
+    "samePropertyConflict": true,
+    "addressCoherence": true,
+    "assessorCoherence": true,
+    "normalizedAddressCoherence": true,
+    "restrictiveFk": true,
+    "immutableHistory": true,
+    "historyRows": 2,
+    "activeRows": 1,
+    "lifecycle": [
+      "NEEDS_ADDRESS",
+      "DISCOVERED",
+      "ADDRESS_RESOLVED",
+      "PROPERTY_SAVED",
+      "DEAL_CREATED"
+    ],
+    "screeningUnchanged": true,
+    "providerCalls": 0
+  },
+  "cleanup": {
+    "rolledBack": true,
+    "schemaRemoved": true
+  },
+  "publicAfter": {
+    "sha256": "05d0425d48497df0dbd819cca01e85113ad1edd23fcf4a2a1b29d21c450b724d",
+    "rows": [
+      {
+        "table": "properties",
+        "count": 3,
+        "fingerprint": "5e49603cbadcaabd9dd3f34bbe347194"
+      },
+      {
+        "table": "evidence_snapshots",
+        "count": 16,
+        "fingerprint": "90838bb5e3da1d2245c5d76d3bae4104"
+      },
+      {
+        "table": "opportunity_candidates",
+        "count": 11316,
+        "fingerprint": "b78b2c51f57610d76cd7debfcb4e805d"
+      },
+      {
+        "table": "opportunity_assessor_import_batches",
+        "count": 1,
+        "fingerprint": "704d82b05718a4bb539d72b60ca0c391"
+      },
+      {
+        "table": "opportunity_assessor_enrichments",
+        "count": 11316,
+        "fingerprint": "cca8dbd4fc7fdc5810205f3836821c84"
+      },
+      {
+        "table": "candidate_address_resolutions",
+        "count": 1,
+        "fingerprint": "cea3e5b4c2c6ae314a97bf4b84858a8b"
+      },
+      {
+        "table": "property_intelligence_schema_migrations",
+        "count": 5,
+        "fingerprint": "df4de1081f886e89375eccc086da6db7"
+      }
+    ]
+  },
+  "completedStage": "ISOLATED_REBUILD_CERTIFIED"
+}

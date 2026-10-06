@@ -1,0 +1,171 @@
+{
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "endpoint": "property/basicprofile",
+  "mode": "address",
+  "propertyCount": 1,
+  "status": {
+    "code": 0,
+    "msg": "SuccessWithResult",
+    "total": 1,
+    "page": 1,
+    "pageSize": 10,
+    "transactionId": null
+  },
+  "attomId": 29411496,
+  "identity": {
+    "attomId": 29411496,
+    "apn": "251-091-30-00-1",
+    "fips": "06029",
+    "standardizedAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+    "matchCode": "ExaStr",
+    "latitude": 34.871303,
+    "longitude": -118.170131,
+    "propertyType": "SFR",
+    "beds": 3,
+    "baths": 1.5,
+    "livingAreaSqFt": 1265,
+    "yearBuilt": 1966
+  },
+  "data": {
+    "identifier": {
+      "Id": 29411496,
+      "fips": "06029",
+      "apn": "251-091-30-00-1",
+      "attomId": 29411496
+    },
+    "lot": {
+      "lotNum": "25",
+      "lotSize1": 0.221,
+      "lotSize2": 9638,
+      "zoningType": "Residential"
+    },
+    "area": {
+      "countrySecSubd": "Kern",
+      "subdName": "9M61-62",
+      "subdTractNum": "1786",
+      "censusTractIdent": "5803",
+      "censusBlockGroup": "1"
+    },
+    "address": {
+      "country": "US",
+      "countrySubd": "CA",
+      "line1": "3484 HAVEN ST",
+      "line2": "ROSAMOND, CA 93560",
+      "locality": "ROSAMOND",
+      "matchCode": "ExaStr",
+      "oneLine": "3484 HAVEN ST, ROSAMOND, CA 93560",
+      "postal1": "93560",
+      "postal2": "7635"
+    },
+    "location": {
+      "accuracy": "Rooftop",
+      "latitude": "34.871303",
+      "longitude": "-118.170131",
+      "distance": 0,
+      "geoid": "CO06029, CS0690800, DB0637620, PL0662826, SB0000145525, SB0000147289, SB0000150848, ZI93560",
+      "geoIdV4": {
+        "CI": "80b1871eac564c7fa66431365aa2ed60",
+        "CO": "aeb379fa3b8c6cbb961ac11d18e8b769",
+        "CS": "8ad8dba681f3fc577c02735adfb4d253",
+        "DB": "14544e3be41c218b3c138271a2f740b9",
+        "PL": "d38da76bb447c366ed3aad8aa967eec3",
+        "PZ": "96571e846e5159b5f069160a8a166a01",
+        "SB": "6bb56c12c33a17649aa5f040cb35d2bc,17b9ce5db1fdf4bf27761bdd9ec302a8",
+        "ZI": "839d1ab793bf635005d08a69d52a3d92"
+      }
+    },
+    "summary": {
+      "absenteeInd": "ABSENTEE(MAIL AND SITUS NOT =)",
+      "propClass": "Single Family Residence / Townhouse",
+      "propSubType": "Residential",
+      "propType": "SFR",
+      "propertyType": "SINGLE FAMILY RESIDENCE",
+      "yearBuilt": 1966,
+      "propLandUse": "SFR",
+      "propIndicator": 10,
+      "legal1": "TRACT 1786 , BLOCK , LOT 25"
+    },
+    "utilities": {
+      "heatingType": "FLOOR/WALL FURNACE"
+    },
+    "sale": {
+      "saleSearchDate": "2025-02-12",
+      "saleTransDate": "2025-02-11",
+      "transactionIdent": "1050958823",
+      "saleAmountData": {
+        "saleAmt": 117500,
+        "saleRecDate": "2025-02-12",
+        "saleDisclosureType": 0,
+        "saleDocNum": "0000015503",
+        "saleTransType": "Resale"
+      }
+    },
+    "building": {
+      "size": {
+        "bldgSize": 1265,
+        "grossSize": 1265,
+        "grossSizeAdjusted": 1265,
+        "groundFloorSize": 1029,
+        "livingSize": 1265,
+        "sizeInd": "LIVING SQFT",
+        "universalSize": 1265
+      },
+      "rooms": {
+        "bathsFull": 0,
+        "bathsPartial": 1,
+        "bathsTotal": 1.5,
+        "beds": 3,
+        "roomsTotal": 5
+      },
+      "interior": {},
+      "construction": {
+        "constructionType": "FRAME",
+        "frameType": "WOOD"
+      },
+      "parking": {
+        "garageType": "Garage, Attached",
+        "prkgSize": 236,
+        "prkgType": "Garage, Attached"
+      },
+      "summary": {
+        "levels": 1
+      }
+    },
+    "assessment": {
+      "appraised": {},
+      "assessed": {
+        "assdLandValue": 24147,
+        "assdTtlValue": 160588
+      },
+      "market": {},
+      "tax": {
+        "taxAmt": 3515.58,
+        "taxPerSizeUnit": 2.78,
+        "taxYear": 2025,
+        "exemption": {},
+        "exemptiontype": {}
+      },
+      "delinquentyear": 2018,
+      "improvementPercent": 84,
+      "owner": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+      "mortgage": {
+        "FirstConcurrent": {
+          "amount": 117500,
+          "lenderLastName": "[REDACTED_FROM_SHAREABLE_EXTRACT]"
+        },
+        "SecondConcurrent": {
+          "amount": 0
+        }
+      }
+    },
+    "vintage": {
+      "lastModified": "2026-09-23",
+      "pubDate": "2026-09-23"
+    }
+  }
+}

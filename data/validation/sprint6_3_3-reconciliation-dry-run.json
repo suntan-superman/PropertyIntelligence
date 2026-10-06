@@ -1,0 +1,154 @@
+{
+  "status": "STOP_DRY_RUN",
+  "mode": "READ_ONLY_RECONCILIATION",
+  "writes": {
+    "performed": false
+  },
+  "providerCalls": {
+    "rentcast": 0,
+    "google": 0,
+    "county": 0
+  },
+  "requested": {
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b"
+  },
+  "plannedOperation": "ALREADY_LINKED_EXPLICIT_WORKFLOW",
+  "migrationLedger": [
+    {
+      "filename": "001_persistent_intelligence.sql",
+      "checksum": "10388d31537f8f65cfadc1b8c6ab590d84707a65ea6ff18e886f23147b85ebfe",
+      "appliedAt": "2026-09-19T02:05:45.008Z"
+    },
+    {
+      "filename": "002_acquisition_decisions.sql",
+      "checksum": "3ef7649d10f76297d74c12b8e8527e936407f39a7b195482014b545dbeda6ce7",
+      "appliedAt": "2026-09-19T02:59:07.144Z"
+    },
+    {
+      "filename": "003_opportunity_discovery.sql",
+      "checksum": "d7ac242d9ff2230a5ffe78290ccbedcd6bb002e73a99cd325baa6ef56901ed77",
+      "appliedAt": "2026-09-19T16:36:46.141Z"
+    },
+    {
+      "filename": "004_kern_assessor_opportunity_enrichment.sql",
+      "checksum": "df557e0aec7d276e628ebced3c1fcc43e743f974d60c51290e3b369bd4e08c18",
+      "appliedAt": "2026-09-23T20:25:49.044Z"
+    },
+    {
+      "filename": "005_candidate_address_resolutions.sql",
+      "checksum": "d123cb84e38dca2bffab0559d7fe579bcea612186b37007581ad0a26ac2b29e1",
+      "appliedAt": "2026-09-24T14:53:36.797Z"
+    },
+    {
+      "filename": "006_opportunity_property_links.sql",
+      "checksum": "00d0402c5506f0a62b36e208ffbae67017da0287ecf785136715e7aec0c082b6",
+      "appliedAt": "2026-09-24T18:16:22.025Z"
+    }
+  ],
+  "schemaLinkTablePresent": true,
+  "candidate": {
+    "id": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "candidateKey": "ATN:25109130001",
+    "atn": "25109130001",
+    "apn": null,
+    "priorityBand": "HIGH_REVIEW_PRIORITY",
+    "screeningScore": 55,
+    "scoreVersion": "kern-screen-v1",
+    "identityStatus": "PARTIAL",
+    "candidateStatus": "NEEDS_ADDRESS",
+    "resolvedPropertyId": null
+  },
+  "property": {
+    "id": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+    "addressLine1": "3484 Haven St",
+    "city": "Rosamond",
+    "state": "CA",
+    "postalCode": "93560",
+    "normalizedAddress": "3484 HAVEN ST ROSAMOND CA 93560",
+    "identityStatus": "UNCONFIRMED",
+    "archived": false
+  },
+  "canonicalAddress": {
+    "id": "b6f69e57-071c-4029-8eef-c22435e4875e",
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "street": "3484 HAVEN ST",
+    "city": "ROSAMOND",
+    "state": "CA",
+    "postalCode": "93560",
+    "formattedAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+    "resolutionSource": "ANALYST",
+    "resolutionMethod": "MANUAL_EXTERNAL_LOOKUP",
+    "verificationStatus": "ANALYST_CONFIRMED",
+    "analystConfirmed": true,
+    "version": 1
+  },
+  "assessorContext": {
+    "id": "943aa186-9598-4735-aa91-5763dbc1356a",
+    "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+    "assessorAtn": "25109130001",
+    "apn9": "251091302",
+    "ptsAtn": "25109130001",
+    "crosswalkStatus": "MATCHED_EXACT",
+    "situsStatus": "SITUS_PRESENT",
+    "situsRaw": "3484 HAVEN ST, ROSAMOND"
+  },
+  "evidence": [
+    {
+      "id": "72e73e75-6d5e-428b-9a51-4c64ad23f30e",
+      "source": "RentCast",
+      "sourceRecordId": null,
+      "retrievedAt": "2026-09-24T17:41:15.020Z",
+      "snapshotType": "PROVIDER_RETRIEVAL",
+      "status": "READY_PROPERTY",
+      "fieldTypes": {
+        "property": "object",
+        "valuation": "object",
+        "provenance": "array"
+      },
+      "metadataFingerprint": "04f06dbdc0663010c00bec2d5491c3be32e2e8072641e7452050b4968a238449"
+    }
+  ],
+  "linkState": {
+    "activeLinkCount": 1,
+    "totalHistoryCount": 1,
+    "activeLinks": [
+      {
+        "id": "2ce14477-ab18-4391-ad2a-8347cc000a15",
+        "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+        "addressResolutionId": "b6f69e57-071c-4029-8eef-c22435e4875e",
+        "assessorEnrichmentId": "943aa186-9598-4735-aa91-5763dbc1356a",
+        "origin": "OPPORTUNITY_ANALYSIS_WORKFLOW",
+        "linkMethod": "EXPLICIT_WORKFLOW_CONTEXT"
+      }
+    ]
+  },
+  "reconciliation": {
+    "exactCandidatePropertyContext": true,
+    "canonicalAddressExactMatch": true,
+    "candidateResolvedPropertyConflict": false,
+    "activePropertyLinkConflict": false,
+    "originRecoverable": true,
+    "evidenceRows": 1,
+    "plannedLink": {
+      "candidateId": "01a98c28-a14b-4c60-ab10-581684c99389",
+      "propertyId": "37cb8526-c1e7-4896-8525-a9cdb82f370b",
+      "addressResolutionId": "b6f69e57-071c-4029-8eef-c22435e4875e",
+      "assessorEnrichmentId": "943aa186-9598-4735-aa91-5763dbc1356a",
+      "origin": "OPPORTUNITY_ANALYSIS_WORKFLOW",
+      "linkMethod": "EXPLICIT_WORKFLOW_CONTEXT",
+      "linkStatus": "ACTIVE",
+      "createdByContext": "OPPORTUNITY_ANALYSIS"
+    }
+  },
+  "proof": {
+    "readOnlyEvidence": true,
+    "noAddressInference": true,
+    "noStringOrFuzzyLinking": true,
+    "noEvidenceRefresh": true,
+    "noDealCreation": true,
+    "propertyEvidenceMetadataFingerprints": [
+      "04f06dbdc0663010c00bec2d5491c3be32e2e8072641e7452050b4968a238449"
+    ]
+  }
+}

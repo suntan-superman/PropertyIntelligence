@@ -1,0 +1,179 @@
+{
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "endpoint": "saleshistory/expandedhistory",
+  "mode": "attom-id",
+  "propertyCount": 1,
+  "status": {
+    "code": 0,
+    "msg": "SuccessWithResult",
+    "total": 1,
+    "page": 1,
+    "pageSize": 10,
+    "transactionId": null
+  },
+  "attomId": 29411496,
+  "identity": {
+    "attomId": 29411496,
+    "apn": "251-091-30-00-1",
+    "fips": "06029",
+    "standardizedAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+    "matchCode": "ExaStr",
+    "latitude": 34.871303,
+    "longitude": -118.170131,
+    "propertyType": "SFR",
+    "beds": null,
+    "baths": null,
+    "livingAreaSqFt": null,
+    "yearBuilt": 1966
+  },
+  "data": {
+    "identifier": {
+      "Id": 29411496,
+      "fips": "06029",
+      "apn": "251-091-30-00-1",
+      "attomId": 29411496
+    },
+    "area": {
+      "blockNum": "1",
+      "countrySecSubd": "Kern",
+      "countyUse1": "0101",
+      "munCode": "KE",
+      "munName": "KERN",
+      "subdName": "9M61-62",
+      "subdTractNum": "1786",
+      "taxCodeArea": "11-010"
+    },
+    "address": {
+      "country": "US",
+      "countrySubd": "CA",
+      "line1": "3484 HAVEN ST",
+      "line2": "ROSAMOND, CA 93560",
+      "locality": "ROSAMOND",
+      "matchCode": "ExaStr",
+      "oneLine": "3484 HAVEN ST, ROSAMOND, CA 93560",
+      "postal1": "93560",
+      "postal2": "7635",
+      "stateFips": "06"
+    },
+    "location": {
+      "accuracy": "Rooftop",
+      "latitude": "34.871303",
+      "longitude": "-118.170131",
+      "distance": 0,
+      "geoid": "CO06029, CS0690800, DB0637620, PL0662826, SB0000145525, SB0000147289, SB0000150848, ZI93560",
+      "geoIdV4": {
+        "CI": "80b1871eac564c7fa66431365aa2ed60",
+        "CO": "aeb379fa3b8c6cbb961ac11d18e8b769",
+        "CS": "8ad8dba681f3fc577c02735adfb4d253",
+        "DB": "14544e3be41c218b3c138271a2f740b9",
+        "PL": "d38da76bb447c366ed3aad8aa967eec3",
+        "PZ": "96571e846e5159b5f069160a8a166a01",
+        "SB": "6bb56c12c33a17649aa5f040cb35d2bc,17b9ce5db1fdf4bf27761bdd9ec302a8",
+        "ZI": "839d1ab793bf635005d08a69d52a3d92"
+      }
+    },
+    "summary": {
+      "absenteeInd": "ABSENTEE(MAIL AND SITUS NOT =)",
+      "propClass": "Single Family Residence / Townhouse",
+      "propSubType": "Residential",
+      "propType": "SFR",
+      "propertyType": "SINGLE FAMILY RESIDENCE",
+      "yearBuilt": 1966,
+      "propLandUse": "SFR",
+      "propIndicator": 10,
+      "quitClaimFlag": "False"
+    },
+    "foreclosure": [
+      {
+        "sequence": 1
+      }
+    ],
+    "saleHistory": [
+      {
+        "sequence": 1,
+        "saleSearchDate": "2025-02-12",
+        "saleTransDate": "2025-02-11",
+        "transactionIdent": "1050958823",
+        "buyerName": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+        "sellerName": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+        "deedInLieuOfIndicator": "N",
+        "amount": {
+          "saleAmt": 117500,
+          "saleRecDate": "2025-02-12",
+          "saleDisclosureType": 0,
+          "saleDocNum": "0000015503",
+          "saleTransType": "Resale",
+          "propIndicator": 10,
+          "deedType": "CS"
+        },
+        "calculation": {
+          "priceperbed": 39166,
+          "pricepersizeunit": 92.89
+        },
+        "title": {
+          "companyName": "CLEAR TITLE"
+        },
+        "mortgage": {
+          "FirstConcurrent": {
+            "amount": 117500,
+            "lenderLastName": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+            "companyCode": "-3",
+            "date": "2025-02-12",
+            "loanTypeCode": "SCB"
+          },
+          "SecondConcurrent": {
+            "amount": 0,
+            "companyCode": "-1"
+          }
+        },
+        "vintage": {
+          "lastModified": "2025-12-15"
+        }
+      },
+      {
+        "sequence": 2,
+        "saleSearchDate": "1994-09-16",
+        "saleTransDate": "1994-09-16",
+        "transactionIdent": "735909780",
+        "buyerName": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+        "deedInLieuOfIndicator": "N",
+        "amount": {
+          "saleAmt": 68500,
+          "saleCode": "SALE PRICE (FULL) Full sales price as per documents",
+          "saleRecDate": "1994-09-16",
+          "saleDisclosureType": 0,
+          "saleDocType": "DEED",
+          "saleDocNum": "0000136546",
+          "saleTransType": "Resale",
+          "propIndicator": 10,
+          "deedType": "GD"
+        },
+        "calculation": {
+          "priceperbed": 22833,
+          "pricepersizeunit": 54.15
+        },
+        "title": {
+          "companyName": "FIDELITY NATIONAL TITLE",
+          "companyCode": "1788"
+        },
+        "mortgage": {
+          "FirstConcurrent": {},
+          "SecondConcurrent": {}
+        },
+        "vintage": {
+          "lastModified": "2020-09-03"
+        }
+      }
+    ],
+    "owner": "[REDACTED_FROM_SHAREABLE_EXTRACT]",
+    "vintage": {
+      "lastModified": "2020-09-03",
+      "pubDate": "2020-09-03"
+    }
+  }
+}

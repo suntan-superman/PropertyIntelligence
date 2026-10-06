@@ -1,0 +1,47 @@
+{
+  "fixture": {
+    "address": "3484 Haven St, Rosamond, CA 93560",
+    "apn9": "251091302",
+    "atn": "25109130001",
+    "fips": "06029"
+  },
+  "endpoint": "preforeclosuredetails",
+  "mode": "attom-id",
+  "propertyCount": 1,
+  "status": {
+    "code": 0,
+    "msg": null,
+    "total": 0,
+    "page": null,
+    "pageSize": null,
+    "transactionId": null
+  },
+  "attomId": 29411496,
+  "identity": {
+    "attomId": null,
+    "apn": null,
+    "fips": null,
+    "standardizedAddress": null,
+    "matchCode": null,
+    "latitude": null,
+    "longitude": null,
+    "propertyType": null,
+    "beds": null,
+    "baths": null,
+    "livingAreaSqFt": null,
+    "yearBuilt": null
+  },
+  "data": {
+    "PropertyIdentification": {
+      "ATTOMID": 29411496,
+      "parcelId": "251-091-30-00-1",
+      "streetAddress": "HAVEN",
+      "city": "ROSAMOND",
+      "county": "Kern",
+      "stateCode": "CA",
+      "zip5": "93560"
+    },
+    "Default": [],
+    "Auction": []
+  }
+}
