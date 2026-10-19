@@ -44,6 +44,11 @@ export async function initializeFirebaseDurableProperties({authentication}={}){
   return createDurablePropertyService({repository:createFirestoreDurablePropertyRepository({firestore:getFirestore(app)})});
 }
 
+export function durableWorkspaceDocument(document={}){
+  const version=document.currentVersionMetadata;
+  return {id:document.id,propertyId:document.propertyId,documentType:document.documentType,description:document.description,source:document.source,sourceDate:document.sourceDate,uploadedAt:document.uploadedAt,updatedAt:document.updatedAt,reviewStatus:document.reviewStatus,confidentiality:document.confidentiality,redistributionPermission:document.redistributionPermission,appendixSelected:document.appendixSelected,evidenceClaim:document.evidenceClaim,currentVersion:document.currentVersion,versionCount:document.versionCount,eligibilityConsistent:document.eligibilityConsistent,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,pageCount:version.pageCount,uploadedAt:version.uploadedAt,scanStatus:version.scanStatus}:null};
+}
+
 /**
  * Read-only supporting-document metadata for cloud workspace views. File bytes,
  * Storage paths and scanner credentials remain server-side and are not needed
@@ -57,7 +62,7 @@ export async function initializeFirebaseDocumentMetadata({authentication,durable
   if(app.options.projectId!==authentication.expectedProjectId)throw new Error('FIRESTORE_PROJECT_MISMATCH');
   const repository=createFirestoreSupportingDocumentRepository({firestore:getFirestore(app)});
   return {async list({user,propertyId}){
-    const property=await durableProperties.get({user,id:propertyId}),records=await repository.list(user.organizationId,property.id),documents=records.map(publicSupportingDocument);
+    const property=await durableProperties.get({user,id:propertyId}),records=await repository.list(user.organizationId,property.id),documents=records.map(record=>durableWorkspaceDocument(publicSupportingDocument(record)));
     return {documents,completeness:documentCompleteness(documents)};
   }};
 }
