@@ -21,9 +21,10 @@ async function requestBody(request,maximum=16_000){
 }
 
 function publicUser(user){return {uid:user.uid,role:user.role,emailVerified:user.emailVerified,providerResearchAllowed:user.providerResearchAllowed,organizationId:user.organizationId,authenticatedAt:user.authenticatedAt,sessionExpiresAt:user.sessionExpiresAt};}
+const durableRoute=path=>path.match(/^\/api\/durable-properties\/([A-Za-z0-9._-]{1,128})(?:\/(workspace|archive|restore))?$/);
 
 /** Protects the deployed workbench API with the same Firebase session boundary as PI local development. */
-export function createNetlifyAuthenticatedApi({api,authentication}={}){
+export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,documentMetadata=null}={}){
   if(typeof api!=='function'||!authentication?.enabled)throw new Error('NETLIFY_AUTHENTICATION_REQUIRED');
   return async request=>{
     const path=routePath(request),adapted=nodeRequest(request);
@@ -46,10 +47,32 @@ export function createNetlifyAuthenticatedApi({api,authentication}={}){
         try{return json(200,{enabled:true,user:publicUser(await authentication.authenticate(adapted))});}
         catch(error){if(error?.code==='SESSION_COOKIE_MISSING')return json(200,{enabled:true,user:null});throw error;}
       }
-      await authentication.authenticate(adapted);
+      const user=await authentication.authenticate(adapted);
+      if(path==='/api/durable-properties'&&request.method==='GET'){
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
+        const service=await durableProperties(),includeArchived=new URL(request.url).searchParams.get('includeArchived')==='true',properties=await service.list({user,includeArchived});
+        return json(200,{enabled:true,properties});
+      }
+      const durableMatch=durableRoute(path);
+      if(durableMatch){
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
+        const [,id,action]=durableMatch,service=await durableProperties();
+        if(request.method==='GET'&&(!action||action==='workspace')){
+          const property=await service.get({user,id});
+          if(!action)return json(200,{property});
+          const [revisions,reports,documentRegister]=await Promise.all([service.scenarioRevisions({user,id}),service.reports({user,id}),typeof documentMetadata==='function'?documentMetadata().then(metadata=>metadata.list({user,propertyId:id})):Promise.resolve({documents:[],completeness:[]})]);
+          return json(200,{property,revisions,reports,documents:documentRegister.documents,documentCompleteness:documentRegister.completeness});
+        }
+        if(request.method==='POST'&&['archive','restore'].includes(action)){
+          if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json'))return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
+          authentication.requireCsrf(adapted);
+          return json(200,{property:await service.setArchived({user,id,archived:action==='archive'})});
+        }
+        return json(405,{error:'METHOD_NOT_ALLOWED'});
+      }
       return api(request);
     }catch(error){
-      const status=Number.isInteger(error?.status)?error.status:400,code=/^[A-Z0-9_-]+$/.test(String(error?.code??error?.message))?String(error.code??error.message):'AUTHENTICATION_FAILED';
+      const unavailable=['4','8','14'].includes(String(error?.code))||/firestore.*(?:unavailable|deadline|credential)/i.test(String(error?.message??'')),status=unavailable?503:Number.isInteger(error?.status)?error.status:400,code=unavailable?'DURABLE_PROPERTY_STORAGE_UNAVAILABLE':/^[A-Z0-9_-]+$/.test(String(error?.code??error?.message))?String(error.code??error.message):'AUTHENTICATION_FAILED';
       return json(status,{error:code,code});
     }
   };

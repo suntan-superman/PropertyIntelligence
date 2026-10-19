@@ -5,7 +5,13 @@ import {createNetlifyAuthenticatedApi} from '../../src/auth/netlify-auth.js';
 const api=createRuntime({runtime:'netlify',env:process.env});
 let authenticatedApi;
 async function runtime(){
-  authenticatedApi??=import('../../src/auth/firebase-admin.js').then(({initializeFirebaseAuthentication})=>initializeFirebaseAuthentication({env:process.env,secureCookies:true})).then(authentication=>createNetlifyAuthenticatedApi({api,authentication}));
+  authenticatedApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseDocumentMetadata})=>{
+    const authentication=await initializeFirebaseAuthentication({env:process.env,secureCookies:true});
+    let durablePromise=null,metadataPromise=null;
+    const durableProperties=()=>durablePromise??=initializeFirebaseDurableProperties({authentication});
+    const documentMetadata=()=>metadataPromise??=durableProperties().then(service=>initializeFirebaseDocumentMetadata({authentication,durableProperties:service}));
+    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,documentMetadata});
+  });
   return authenticatedApi;
 }
 export default async function handler(request){

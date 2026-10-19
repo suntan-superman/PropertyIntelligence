@@ -44,6 +44,24 @@ export async function initializeFirebaseDurableProperties({authentication}={}){
   return createDurablePropertyService({repository:createFirestoreDurablePropertyRepository({firestore:getFirestore(app)})});
 }
 
+/**
+ * Read-only supporting-document metadata for cloud workspace views. File bytes,
+ * Storage paths and scanner credentials remain server-side and are not needed
+ * to list the evidence register.
+ */
+export async function initializeFirebaseDocumentMetadata({authentication,durableProperties}={}){
+  if(!authentication?.enabled||!authentication.expectedProjectId)throw new Error('FIREBASE_AUTHENTICATION_REQUIRED');
+  if(!durableProperties)throw new Error('DURABLE_PROPERTY_SERVICE_REQUIRED');
+  const [{getApp},{getFirestore},{createFirestoreSupportingDocumentRepository},{publicSupportingDocument,documentCompleteness}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/firestore'),import('../investment-workspace/firebase-supporting-documents.js'),import('../investment-workspace/supporting-documents.js')]);
+  const app=getApp('pi-v2-3a');
+  if(app.options.projectId!==authentication.expectedProjectId)throw new Error('FIRESTORE_PROJECT_MISMATCH');
+  const repository=createFirestoreSupportingDocumentRepository({firestore:getFirestore(app)});
+  return {async list({user,propertyId}){
+    const property=await durableProperties.get({user,id:propertyId}),records=await repository.list(user.organizationId,property.id),documents=records.map(publicSupportingDocument);
+    return {documents,completeness:documentCompleteness(documents)};
+  }};
+}
+
 export async function initializeFirebaseSupportingDocuments({authentication,durableProperties,malwareScanner,bucketName=process.env.PI_FIREBASE_STORAGE_BUCKET}={}){
   if(!authentication?.enabled||!authentication.expectedProjectId)throw new Error('FIREBASE_AUTHENTICATION_REQUIRED');
   if(!durableProperties)throw new Error('DURABLE_PROPERTY_SERVICE_REQUIRED');

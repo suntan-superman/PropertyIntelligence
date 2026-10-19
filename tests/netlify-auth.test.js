@@ -34,6 +34,28 @@ test('health remains available for deployment monitoring without opening busines
   const health=await secured(new Request('https://pi.example/api/health'));assert.equal(health.status,200);
 });
 
+test('authenticated Netlify workspace restores organization-scoped Firestore properties and revisions',async()=>{
+  const property={id:'property-one',organizationId:organization,address:'400 Decatur St, Bakersfield, CA 93308',lifecycleStatus:'SAVED_PROPERTY'},revision={scenarioId:'scenario-one',revision:1,scenario:{name:'Scenario 1'}},report={id:'report-one',kind:'full'},calls=[];
+  const durableService={
+    async list(input){calls.push(['list',input.user.organizationId,input.includeArchived]);return [property];},
+    async get(input){calls.push(['get',input.user.organizationId,input.id]);return property;},
+    async scenarioRevisions(input){calls.push(['scenarios',input.user.organizationId,input.id]);return [revision];},
+    async reports(input){calls.push(['reports',input.user.organizationId,input.id]);return [report];},
+    async setArchived(input){calls.push(['archive',input.user.organizationId,input.id,input.archived]);return {...property,lifecycleStatus:input.archived?'ARCHIVED_PROPERTY':'SAVED_PROPERTY'};}
+  },documentService={async list(input){calls.push(['documents',input.user.organizationId,input.propertyId]);return {documents:[{id:'document-one'}],completeness:[]};}},cloud=createNetlifyAuthenticatedApi({api,authentication,durableProperties:async()=>durableService,documentMetadata:async()=>documentService});
+  const config=await cloud(new Request('https://pi.example/api/auth/config')),csrf=(await config.json()).csrfToken,csrfCookie=config.headers.get('set-cookie').split(';')[0],login=await cloud(new Request('https://pi.example/api/auth/session',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json','X-PI-CSRF':csrf,Cookie:csrfCookie},body:JSON.stringify({idToken:'id-token'})})),sessionCookie=login.headers.get('set-cookie').split(';')[0],cookie=`${csrfCookie}; ${sessionCookie}`;
+  const list=await cloud(new Request('https://pi.example/api/durable-properties?includeArchived=true',{headers:{Cookie:cookie}})),listed=await list.json();assert.equal(list.status,200);assert.equal(listed.properties[0].address,property.address);
+  const workspace=await cloud(new Request('https://pi.example/api/durable-properties/property-one/workspace',{headers:{Cookie:cookie}})),restored=await workspace.json();assert.equal(workspace.status,200);assert.equal(restored.revisions[0].scenarioId,'scenario-one');assert.equal(restored.reports[0].id,'report-one');assert.equal(restored.documents[0].id,'document-one');
+  const denied=await cloud(new Request('https://pi.example/api/durable-properties/property-one/archive',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json',Cookie:cookie},body:'{}'}));assert.equal(denied.status,403);
+  const archived=await cloud(new Request('https://pi.example/api/durable-properties/property-one/archive',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json','X-PI-CSRF':csrf,Cookie:cookie},body:'{}'}));assert.equal(archived.status,200);assert.equal((await archived.json()).property.lifecycleStatus,'ARCHIVED_PROPERTY');
+  assert.ok(calls.every(call=>call[1]===organization));assert.deepEqual(calls.map(call=>call[0]),['list','get','scenarios','reports','documents','archive']);
+});
+
 test('Firebase Admin dependency bridge loads jose through ESM in the Netlify bundle',async()=>{
   const files=[new URL('../node_modules/jwks-rsa/src/utils.js',import.meta.url),new URL('../node_modules/jwks-rsa/src/integrations/passport.js',import.meta.url)],source=(await Promise.all(files.map(file=>readFile(file,'utf8')))).join('\n');assert.doesNotMatch(source,/require\(['"]jose['"]\)/);assert.match(source,/PI_JWKS_ESM_INTEROP_PATCH_v1/);assert.match(source,/PI_JWKS_PASSPORT_ESM_INTEROP_PATCH_v1/);
+});
+
+test('deployed durable workspace stays behind server APIs and hides private document internals',async()=>{
+  const source=await readFile(new URL('../apps/web/src/features/durable-workspace/CloudPropertyWorkspace.jsx',import.meta.url),'utf8');
+  assert.doesNotMatch(source,/firebase\/firestore|getFirestore|storageKey|sha256/i);assert.match(source,/\/api\/durable-properties/);assert.match(source,/Saved Property is a lifecycle status, not legal verification/);assert.match(source,/Opening this view does not recalculate or change underwriting or Monte Carlo results/);
 });

@@ -2,9 +2,11 @@
 
 ## Intended deployment surface
 
-The Netlify build serves the existing serverless Property Intelligence workbench and Supabase-backed APIs. Guided Analysis, its private retained evidence graph, supporting-document uploads, and local PDF generation remain local/private-development surfaces; their ignored evidence and runtime files must not be copied into the public site bundle.
+The Netlify build serves the authenticated serverless Property Intelligence workbench, the legacy PostgreSQL-backed APIs, and the organization-scoped Firestore durable-property workspace. Guided Analysis source evidence, supporting-document file bytes/uploads, and local PDF generation remain private-development surfaces; their ignored evidence and runtime files must not be copied into the public site bundle.
 
 The Netlify API now fails closed behind Firebase Authentication. `/api/health` remains public for deployment monitoring. `/api/auth/config`, `/api/auth/session`, `/api/auth/me`, and `/api/auth/logout` establish a same-origin, CSRF-protected Firebase session. All other API routes require the server-verified session cookie.
+
+`/api/durable-properties` and `/api/durable-properties/:id/workspace` use Firebase Admin on the server to restore the authenticated user's organization-scoped properties, immutable scenario revisions, report history, and sanitized supporting-document metadata. The browser never initializes Firestore or receives Storage paths, hashes, service-account material, or direct database permissions. Archive/restore uses the same CSRF and role boundary. Historical report metadata is available, but historical PDF bytes are not reconstructed or exposed by this connection.
 
 ## Required Netlify variables
 
@@ -33,5 +35,6 @@ After a deploy preview is created:
 3. `GET /api/fixtures` without a session returns 401.
 4. Sign in through the browser and confirm `/api/auth/me` reports the Administrator role, verified email, and `property-intelligence-local` organization.
 5. Load a packaged fixture and verify zero provider calls; do not use live research as a deployment smoke test.
+6. Open **Durable Property Workspace**, confirm `400 Decatur St, Bakersfield, CA 93308`, and verify its saved revisions, report history and supporting-document register load without a provider request or database write.
 
 Rollback by publishing the prior reviewed Netlify deploy. If authentication configuration is incomplete, the function returns `AUTHENTICATION_NOT_CONFIGURED` and does not fall back to an unauthenticated API.
