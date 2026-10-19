@@ -1,0 +1,16 @@
+.workspace-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 330px;
+}
+
+.workspace-actions a {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .workspace-actions {
+    min-width: 0;
+  }
+}

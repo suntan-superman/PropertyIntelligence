@@ -1,0 +1,88 @@
+{
+  "status": "PASS_WITH_RESOURCE_LIMIT_DEVIATION",
+  "auditedAt": "2026-10-19T03:22:39.580Z",
+  "nodeVersion": "v22.12.0",
+  "projectId": "property-intelligence-8238b",
+  "organizationId": "property-intelligence-local",
+  "administrator": {
+    "uid": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+    "emailVerified": true,
+    "role": "Administrator",
+    "organizationId": "property-intelligence-local"
+  },
+  "property": {
+    "id": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "address": "400 Decatur St, Bakersfield, CA 93308",
+    "updatedAt": "2026-10-19T03:08:25.583Z",
+    "lastEditedBy": "d2NTUCs0lGe6C64pDnRGtgTXm0O2"
+  },
+  "document": {
+    "id": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+    "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897",
+    "scanStatus": "CLEAN",
+    "reviewStatus": "REVIEWED",
+    "redistributionPermission": "APPROVED",
+    "appendixSelected": true,
+    "storagePath": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/253ed077-bfd7-49a0-a71a-2cfe75271a0a/versions/1/a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897.pdf"
+  },
+  "report": {
+    "id": "a79f7dce-df72-4e15-ae88-e86008c4f8d5",
+    "firestorePath": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/reportRevisions/a79f7dce-df72-4e15-ae88-e86008c4f8d5",
+    "filename": "QA_NOT_FOR_DISTRIBUTION_400_Decatur_St_Bakersfield_CA_93308_Full_Investor_Package_2026-10-18_R1.pdf",
+    "status": "QA_NOT_FOR_DISTRIBUTION",
+    "generatedAt": "2026-10-19T03:08:25.583Z",
+    "path": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-live-document-acceptance\\continuation\\QA_NOT_FOR_DISTRIBUTION_400_Decatur_St_Bakersfield_CA_93308_Full_Investor_Package_2026-10-18_R1.pdf",
+    "sha256": "a6c991440b7b2d60f93f3567eac1a0bda5f1b0154b1fae44b07db9d195905186",
+    "pageCount": 14,
+    "indexPage": 12,
+    "coverPage": 13,
+    "sourcePage": 14,
+    "pageNumberingVerified": true,
+    "noBlankPages": true,
+    "syntheticWarningsPreserved": true
+  },
+  "screenshots": {
+    "document-register-cross-session-refresh": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-live-document-acceptance\\continuation\\document-register-cross-session-refresh.png",
+    "qa-report-appendix-index": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-live-document-acceptance\\continuation\\qa-report-appendix-index.png",
+    "qa-report-provenance-cover": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-live-document-acceptance\\continuation\\qa-report-provenance-cover.png",
+    "qa-report-original-document": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-live-document-acceptance\\continuation\\qa-report-original-document.png"
+  },
+  "integrity": {
+    "stablePropertyIdUnchanged": true,
+    "evidenceHash": "0a6292b84385502e80e1a739d12aaa47a394f4446db6f4c867f447002077638e",
+    "evidenceUnchanged": true,
+    "scenarioHash": "90d9329b881b5f9945d1f9291efec0489915fef1f8c2c3d11734da771603f887",
+    "scenarioUnchanged": true,
+    "financialAndMonteCarloUnchanged": true,
+    "documentAndVersionUnchanged": true,
+    "storageObjectCount": 1,
+    "additionalStorageObjects": 0,
+    "providerRequests": 0
+  },
+  "usage": {
+    "continuationFirestoreWrites": 3,
+    "writeBreakdown": {
+      "documentIncludedAudit": 1,
+      "reportRevisionCreate": 1,
+      "propertyTimestampUpdate": 1
+    },
+    "privateStoragePreflightReads": 1,
+    "privateStorageReportReads": 1,
+    "totalPrivateStorageReads": 2,
+    "authorizedPrivateStorageReads": 1,
+    "resourceLimitConformance": false,
+    "uploads": 0,
+    "newVersions": 0,
+    "scannerInvocations": 0,
+    "storageCreates": 0,
+    "storageDeletes": 0,
+    "reportRequests": 1,
+    "automaticRetries": 0
+  },
+  "tests": {
+    "documentSecurity": 50,
+    "webBuild": "PASS",
+    "bootstrapRegression": "PASS"
+  },
+  "recommendation": "NO_GO_PENDING_REVIEW_OF_STORAGE_READ_LIMIT_DEVIATION"
+}

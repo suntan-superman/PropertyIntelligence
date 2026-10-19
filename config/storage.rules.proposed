@@ -1,0 +1,11 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // PI V2.5 document bytes are read and written only by Firebase Admin after
+    // server-side session, role, organization, MIME, size and malware checks.
+    // The browser never receives bucket paths or unrestricted download URLs.
+    match /{object=**} {
+      allow read, write: if false;
+    }
+  }
+}

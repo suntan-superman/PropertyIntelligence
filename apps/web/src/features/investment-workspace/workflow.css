@@ -1,0 +1,127 @@
+.investment-workspace button.primary-action {
+  padding: 11px 18px;
+  box-shadow: 0 2px 4px #102f4520;
+}
+
+.iw-workspace-notice {
+  margin: 14px 0;
+  padding: 10px 14px;
+  background: #fffaf0;
+  border-left: 4px solid #b99245;
+}
+
+.iw-workspace-notice summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.iw-stage-nav {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 20px 0 6px;
+}
+
+.iw-stage-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  background: #eef4f5;
+  color: #315466;
+  border-color: #cfdee3;
+}
+
+.iw-stage-nav button span {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #d4e4e5;
+}
+
+.iw-stage-nav button[aria-selected="true"] {
+  background: #153f50;
+  color: white;
+  border-color: #153f50;
+}
+
+.iw-stage-nav button[aria-selected="true"] span {
+  background: #54b4a5;
+  color: #102f46;
+}
+
+.iw-stage-content:focus {
+  outline: none;
+}
+
+.iw-scenario label:first-child {
+  min-width: 210px;
+}
+
+.iw-next-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid #d8e3e7;
+  margin-top: 24px;
+  padding-top: 18px;
+}
+
+.iw-next-action span {
+  color: #5a707e;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.iw-report-actions {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #f1f6f8;
+  border-radius: 7px;
+}
+
+.iw-risk-table th:not(:first-child),
+.iw-risk-table td:not(:first-child) {
+  min-width: 155px;
+}
+
+.iw-risk-input {
+  display: grid;
+  gap: 5px;
+}
+
+.iw-risk-input input {
+  width: 100%;
+}
+
+.iw-risk-input small {
+  width: max-content;
+  max-width: 100%;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #edf2f3;
+  color: #536a76;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.iw-risk-input .origin-inherited { background: #e3f3ef; color: #17675e; }
+.iw-risk-input .origin-illustrative { background: #fff2d7; color: #7a5816; }
+.iw-risk-input .origin-manual { background: #e7edf8; color: #304f81; }
+
+@media (max-width: 1050px) {
+  .iw-stage-nav { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 650px) {
+  .iw-stage-nav { grid-template-columns: 1fr; }
+}

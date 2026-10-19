@@ -1,0 +1,20 @@
+.iw-comparable-wrap { max-width:100%;overflow-x:auto; }
+.investment-workspace .iw-comparable-table,.investment-workspace .iw-listing-table { table-layout:fixed;min-width:0; }
+.iw-comparable-table th:nth-child(1){width:20%}.iw-comparable-table th:nth-child(2){width:15%}.iw-comparable-table th:nth-child(3){width:16%}.iw-comparable-table th:nth-child(4){width:24%}.iw-comparable-table th:nth-child(5){width:25%}
+.iw-listing-table th:nth-child(1){width:24%}.iw-listing-table th:nth-child(2){width:16%}.iw-listing-table th:nth-child(3){width:18%}.iw-listing-table th:nth-child(4){width:24%}.iw-listing-table th:nth-child(5){width:18%}
+.iw-comparable-table td>span,.iw-listing-table td>span { display:block;margin-top:3px; }
+.iw-comp-address { overflow-wrap:anywhere; }
+.iw-comp-address .link { font-size:14px;font-weight:800;line-height:1.35;text-decoration:underline;text-underline-offset:2px; }
+.iw-comp-actions { min-width:0; }
+.iw-comp-actions .iw-check { margin-bottom:5px; }
+.iw-comp-actions .pi-source-details dl { grid-template-columns:minmax(0,1fr);gap:2px; }
+.iw-comp-actions .pi-source-details dd { margin-bottom:6px; }
+.iw-comp-review { margin:8px 0 0;padding:0;border:0; }
+.iw-comp-review summary { display:inline-block;padding:3px 0;color:#176d63;text-decoration:underline;text-underline-offset:2px; }
+.iw-comp-review label { margin-top:8px; }
+.iw-comp-review textarea { min-height:82px; }
+.iw-comp-review p { color:#5d727b;font-size:11px; }
+.iw-comp-warning { margin:7px 0 0;padding:7px 8px;border-left:3px solid #b99245;background:#fff7e5;color:#714c1c;font-size:11px; }
+.iw-flag { display:inline-block;margin-top:7px;padding:3px 7px;border-radius:999px;background:#fff0d8;color:#7a4c0b;font-size:10px;font-weight:800; }
+.iw-selected-sale { background:#edf7f4;box-shadow:inset 4px 0 #168274; }
+@media(max-width:900px){.investment-workspace .iw-comparable-table,.investment-workspace .iw-listing-table{min-width:920px;}}

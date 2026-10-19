@@ -2,25 +2,14 @@ import React,{useState} from 'react';
 import {money,percent,text,human} from '../utils/display.js';
 import {additionalDueDiligence,displayValue,evidenceSummary,groupEvidence,humanizeKey,humanizeStatus,latestRecord,missingLabel,propertyFacts} from '../presentation.js';
 import {SourceDetail} from '../presentation.jsx';
+import CompactValuation from './CompactValuation.jsx';
 
 const dateValue=value=>value?new Date(value).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}):null;
 const evidenceValue=(model,field)=>model.evidence?.find(item=>item.field===field);
 const fact=(label,value,field)=> <div className="detail-fact" key={label}><dt>{label}</dt><dd>{displayValue(value,field)}</dd></div>;
 
 export function Valuation({model}){
- const p=model.property,v=p?.valuation,a=model.analysis;
- const low=v?.low,point=v?.price,high=v?.high,markers=[['LOW',low,'range'],['ESTIMATED VALUE',point,'point'],['HIGH',high,'range']].filter(([,value])=>Number.isFinite(value));
- const overlays=a?[['BREAK-EVEN',a.breakEven?.salePrice,'break'],['RESALE',a.base?.grossSale,'resale']].filter(([,value])=>Number.isFinite(value)):[];
- const all=[...markers,...overlays].map(([,n])=>n),min=all.length?Math.min(...all):0,max=all.length?Math.max(...all):1,pad=Math.max(1,(max-min)*.12),domainMin=min-pad,domainMax=max+pad,pos=n=>`${Math.max(0,Math.min(100,(n-domainMin)/(domainMax-domainMin)*100))}%`;
- return <section id="valuation"><div className="section-heading"><div><p className="eyebrow">INDEPENDENT VALUE EVIDENCE</p><h2>Valuation</h2></div><span className="badge warning-badge">{humanizeStatus(model.valuationStatus)}</span></div>
-  <p>Independent estimate is evidence, not verified resale proceeds.</p>{model.state==='SOURCE_STOP'&&<p className="warning">Property representation needs verification before an independent value can be used.</p>}
-  {Number.isFinite(low)&&Number.isFinite(point)&&Number.isFinite(high)?<div className="range-visual" role="img" aria-label={`Estimated value ${money(point)}. Provider range from ${money(low)} to ${money(high)}. ${overlays.map(([label,value])=>`${humanizeKey(label)} ${money(value)}.`).join(' ')}`}>
-   <div className="range-track"><div className="range-band" style={{left:pos(low),right:`${100-Number.parseFloat(pos(high))}%`}}/>{markers.map(([label,value,type])=><div className={`range-marker ${type}`} key={label} style={{left:pos(value)}}><span>{label}</span><b>{money(value)}</b></div>)}{overlays.map(([label,value,type])=><div className={`range-marker overlay ${type}`} key={label} style={{left:pos(value)}}><span>{humanizeKey(label)}</span><b>{money(value)}</b></div>)}</div>
-   <div className="range-axis"><span>{money(domainMin)}</span><span>Provider range</span><span>{money(domainMax)}</span></div>
-  </div>:<p className="unavailable">Estimated value and provider range are {missingLabel('valuation')}.</p>}
-  <div className="valuation-legend"><span>Estimated value</span><span>Provider range</span>{model.mode==='deal'&&<span>Deal assumptions</span>}</div>
-  {model.property?.propertyType==='Manufactured'&&<p className="warning compact-warning">Manufactured-home tenure and comparability remain unresolved.</p>}
- </section>;
+ return <CompactValuation model={model}/>;
 }
 export function PropertyDetails({model}){
  const p=model.property??{},features=evidenceValue(model,'features')?.independentValue??p.features,legal=evidenceValue(model,'legalDescription')?.independentValue??p.legalDescription,zoning=evidenceValue(model,'zoning')?.independentValue??p.zoning;

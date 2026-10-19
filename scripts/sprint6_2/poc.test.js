@@ -10,11 +10,15 @@ import {CACHE,ZIP,ZIP_HASH,PTS,PTS_HASH,fileHash,requireHash,crc32} from './io.j
 import {schema,scanDbf} from './dbf.js';
 import {parseCsv,normalizeIdentifier,parseAmount} from '../../src/sources/kern/csv.js';
 import {screenCandidate,candidateIdentityHints} from '../../src/opportunities/screening.js';
+import {verifyCurrentProtectedBaseline,verifyGeneratedProtectedArtifacts} from '../protected-baselines-v3/verify.js';
 const readJson=async n=>JSON.parse(await readFile(`data/validation/sprint6_2-${n}.json`));
 const summary=await readJson('crosswalk-summary'),high=await readJson('high-priority-312'),audit=await readJson('kern-assessor-source-audit');
 const csv=parseCsv(await readFile('data/validation/sprint6_2-kern-atn-crosswalk.csv','utf8'));
 test('immutable original ZIP and PTS hashes pass; mismatch stops',async()=>{assert.equal(await fileHash(ZIP),ZIP_HASH);assert.equal(await fileHash(PTS),PTS_HASH);assert.throws(()=>requireHash('changed',ZIP_HASH),/SOURCE_HASH_STOP/);});
-test('all protected files including pre-existing dirty PDFs remain byte-identical',async()=>{const b=JSON.parse(await readFile(`${CACHE}/repository-baseline.json`));for(const f of b.files){if(!f.missing)assert.equal(await fileHash(f.path),f.sha256,f.path);}assert.equal(b.files.length,567);});
+test('historical exact-source baseline and narrowly scoped generated-artifact checks pass',async()=>{
+  const baseline=await verifyCurrentProtectedBaseline({file:'config/protected-baselines/sprint6_2-current-v3.json',sourceHash:'a1adde8cdb5600fe51150b192e37de8e7fc6cbdfd3f5631daab255b4ddf8e7d9',historicalFileCount:567,protectedFileCount:541});
+  await verifyGeneratedProtectedArtifacts(baseline);
+});
 test('DBF recomputed land schema, count, no deleted rows and distinct IDs',async()=>{const s=await schema(`${CACHE}/extracted/TaxRoll_Land_2026final/TaxRoll_Land_2026final.dbf`);assert.equal(s.count,426054);assert.equal(s.fields.length,29);assert.equal(audit.land.schema.deleted,0);assert.equal(audit.land.identifiers.ATN.distinct,426054);assert.equal(audit.land.identifiers.APN9.distinct,424125);assert.equal(audit.land.identifiers.APN9.duplicateValues,1095);});
 test('DBF projection excludes private fields and rejects truncated records',async()=>{const dir=await mkdtemp(`${CACHE}/test-`),file=`${dir}/safe.dbf`;const b=Buffer.alloc(65+12+1,32);b.fill(0,0,65);b[0]=3;b.writeUInt32LE(1,4);b.writeUInt16LE(65,8);b.writeUInt16LE(12,10);b.write('ATN',32);b[43]=67;b[48]=11;b[64]=13;b.write('00102001015',66);b[b.length-1]=26;await writeFile(file,b);const rows=[];await scanDbf(file,['ATN'],r=>rows.push(r));assert.deepEqual(rows,[{ATN:'00102001015'}]);await assert.rejects(scanDbf(file,['owner_name'],()=>{}),/REQUIRED_FIELD/);await writeFile(`${dir}/short.dbf`,b.subarray(0,70));await assert.rejects(schema(`${dir}/short.dbf`),/BOUNDS/);});
 test('strict string ATN normalization preserves raw and leading zeros',()=>{const raw='001-020-01-01-5';assert.equal(normalizeAtn(raw),'00102001015');assert.equal(raw,'001-020-01-01-5');assert.equal(normalizeAtn('00102001015'),'00102001015');assert.equal(normalizeAtn(' 00102001015 '),'00102001015');});

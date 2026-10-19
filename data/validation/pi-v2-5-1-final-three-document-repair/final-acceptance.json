@@ -1,0 +1,9 @@
+{
+  "status": "FAIL_STOPPED_NO_RETRY",
+  "at": "2026-10-19T16:17:05.291Z",
+  "name": "AssertionError",
+  "message": "The expression evaluated to a falsy value:\n\n  assert.ok(row)\n",
+  "expected": true,
+  "retryPerformed": false,
+  "cleanupPerformed": false
+}

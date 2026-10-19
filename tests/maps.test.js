@@ -28,6 +28,6 @@ test('Overlap groups include exact duplicates and transitive neighbors without d
 });
 test('Missing coordinates and zero distance/DOM remain distinct; out-of-range locations rejected',async()=>{
   const model=await fixture('fantasia');model.comps[0]={...model.comps[0],latitude:null,distance:0,daysOnMarket:0,price:null,priceText:'Unknown'};
-  const e=mapEntries(model)[1];assert.equal(e.position,null);assert.equal(Object.fromEntries(e.facts).Distance,'0 miles');assert.equal(Object.fromEntries(e.facts)['Days on market'],'0');
+  const e=mapEntries(model)[1];assert.equal(e.position,null);assert.equal(Object.fromEntries(e.facts).Distance,'Distance unavailable');assert.equal(Object.fromEntries(e.facts)['Provider-reported distance'],'0 miles · source method not verified');assert.equal(Object.fromEntries(e.facts)['Days on market'],'0');
   assert.equal(located({latitude:91,longitude:0}),false);assert.equal(located({latitude:0,longitude:0}),true);
 });

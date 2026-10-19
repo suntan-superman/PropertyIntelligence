@@ -1,12 +1,22 @@
 {
-  "status": "BLOCKED_AT_GATE_3_PROPERTY_SEARCH_CONTRACT",
+  "status": "TOTALVIEW_SUCCESS_LAST_FINANCE_CONTRACT_UNRESOLVED",
   "fixture": "3484 Haven St, Rosamond, CA 93560",
   "authoritativeApiBase": "https://dtapiuat.datatree.com/api",
   "historicalIncorrectHost": "https://dtiapiuat.datatree.com/api",
-  "propertyDataRequests": 0,
-  "authenticationRequests": 2,
-  "swaggerRequests": 2,
+  "propertyDataRequests": 1,
+  "reportRequests": 1,
+  "targetPropertyReportRequestCeiling": 10,
+  "hardPropertyReportRequestCeiling": 20,
+  "authenticationRequests": 5,
+  "swaggerRequests": 4,
   "unrelatedDcIsAuthenticationRequests": 2,
+  "identity": {
+    "datatreePropertyId": 10668360,
+    "datatreeParcelNumberRaw": "251-091-30-00-1",
+    "returnedAddress": "3484 HAVEN ST, ROSAMOND, KERN, CA 93560",
+    "landUseDescription": "SFR",
+    "matchQuality": "NOT_RETURNED"
+  },
   "requests": [
     {
       "sequence": 1,
@@ -33,7 +43,7 @@
       "tokenType": "JWT",
       "tokenPersisted": false,
       "useful": true,
-      "packageAccessNote": "Token held in memory only; credentials and token omitted."
+      "packageAccessNote": "Historical token held in memory only; credentials and token omitted."
     },
     {
       "sequence": 4,
@@ -44,7 +54,111 @@
       "tokenType": "JWT",
       "tokenPersisted": false,
       "useful": true,
-      "packageAccessNote": "Response shape verified without printing token."
+      "packageAccessNote": "Historical response shape verified without printing token."
+    },
+    {
+      "sequence": 5,
+      "category": "authentication",
+      "endpoint": "POST /api/Login/AuthenticateClient",
+      "httpStatus": 200,
+      "tokenReceived": true,
+      "tokenType": "JWT string response",
+      "tokenPersisted": false,
+      "useful": true,
+      "packageAccessNote": "Continuation attempt returned bare JWT string; token was not displayed or persisted. No property request followed from this process."
+    },
+    {
+      "sequence": 6,
+      "category": "authentication",
+      "endpoint": "POST /api/Login/AuthenticateClient",
+      "httpStatus": 200,
+      "tokenReceived": true,
+      "tokenType": "JWT string response",
+      "tokenPersisted": false,
+      "useful": true,
+      "packageAccessNote": "Continuation token held in memory only and used for the single SearchStandard request."
+    },
+    {
+      "sequence": 7,
+      "category": "property_search",
+      "endpoint": "POST /api/Search/PropertySearch",
+      "productName": "SearchStandard",
+      "requestContract": "Vendor-provided exact FullAddress equality; exact fixture string; CountOnly=false; MaxReturn=1; SpatialType=Geography; no additional filters.",
+      "httpStatus": 200,
+      "elapsedMs": 653,
+      "resultCount": 1,
+      "datatreePropertyId": 10668360,
+      "datatreeParcelNumberRaw": "251-091-30-00-1",
+      "returnedAddress": "3484 HAVEN ST, ROSAMOND, KERN, CA 93560",
+      "landUseDescription": "SFR",
+      "matchQuality": "NOT_RETURNED",
+      "rawResponse": "data/validation/datatree-uat/raw/searchstandard-3484-haven-20261006.json",
+      "useful": true,
+      "packageAccessNote": "Unique exact-address identity resolved. No report request was made because SearchType semantics remain undocumented."
+    },
+    {
+      "sequence": 8,
+      "category": "swagger",
+      "endpoint": "GET https://dtapiuat.datatree.com/swagger/docs/v1",
+      "httpStatus": 200,
+      "useful": true,
+      "packageAccessNote": "Confirmed ReportRequestVm has optional PropertyId but required SearchType enum [0..5] with no documented meanings; report call withheld rather than guessing."
+    },
+    {
+      "sequence": 9,
+      "category": "authentication",
+      "endpoint": "POST /api/Login/AuthenticateClient",
+      "httpStatus": 200,
+      "tokenReceived": true,
+      "tokenType": "JWT string response",
+      "tokenPersisted": false,
+      "useful": true,
+      "packageAccessNote": "Fresh token held in process memory only and used for the single authorized TotalView request; credentials and token omitted."
+    },
+    {
+      "sequence": 10,
+      "category": "report",
+      "endpoint": "POST /api/Report/GetReport",
+      "productName": "TotalViewReport",
+      "requestContract": "Exact First American written body: ProductNames=[TotalViewReport], SearchType=FullAddress, FullAddress=3484 Haven St Rosamond, CA 93560; no additional parameters.",
+      "httpStatus": 200,
+      "elapsedMs": 4503,
+      "statusDescription": "Report generation completed.",
+      "maxResultsCount": 1,
+      "reportCount": 1,
+      "datatreePropertyId": 10668360,
+      "reportName": "TotalViewReport",
+      "reportStatus": "Ready",
+      "referenceId": null,
+      "orderItemId": 45519838,
+      "returnedSubjectAddress": "3484 HAVEN ST, ROSAMOND, CA 93560",
+      "majorSections": ["SubjectProperty", "OwnerInformation", "LienSummary", "LegalAndVestingData", "LastMarketSaleInformation", "ListingPropertyDetail", "ForeClosureData", "AssociationInformation", "PropertyDetailData", "Transactions", "InvoluntaryLienInfo", "NearByListingData", "NearBySalesData", "MarketTrendData", "ListingHistory", "TaxStatusData", "FileLink"],
+      "rawResponse": "data/validation/datatree-uat/raw/totalview-3484-haven-20261007.json",
+      "useful": true,
+      "packageAccessNote": "Exactly one report returned and subject PropertyId/address matched the existing unique SearchStandard fixture. Nearby/comparable entries were kept distinct from subject data."
+    },
+    {
+      "sequence": 11,
+      "category": "swagger",
+      "endpoint": "GET https://dtapiuat.datatree.com/swagger/docs/v1",
+      "httpStatus": 200,
+      "useful": true,
+      "packageAccessNote": "Read-only contract inspection for Last Finance Document. ReportRequestVm.ProductNames is string[] without allowed values or product-to-endpoint mapping. Existing vendor materials identify Last Finance Document as a document-image product retrieved through GetDocument; no exact API ProductNames wire identifier or request example was established. No authentication, document, or report request followed."
     }
-  ]
+  ],
+  "providerAccounting": {
+    "datatree": {
+      "authentication": 5,
+      "propertySearch": 1,
+      "reports": 1,
+      "swagger": 4
+    },
+    "dcisAuthenticationHistorical": 2,
+    "attom": 0,
+    "rentcast": 0,
+    "google": 0,
+    "county": 0,
+    "supabasePostgresql": 0,
+    "netlify": 0
+  }
 }

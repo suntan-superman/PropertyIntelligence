@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Separate offline route loads aggregate replay facts and six explicit synthetic event examples; quarantine stays separate.",
+    "Event type, materiality, source, date range and review filters work; detail explains evidence limits.",
+    "Local alert acknowledgment, chronological property history and replay idempotency pass.",
+    "1366px, 768px and 390px layouts have no horizontal overflow; detail remains visible.",
+    "No browser errors, external/provider requests, or PI API/database reads."
+  ],
+  "browserErrors": [],
+  "externalRequests": 0,
+  "apiRequests": 0,
+  "providerCalls": 0,
+  "databaseWrites": 0,
+  "notificationsSent": 0,
+  "deployment": 0,
+  "widths": [
+    1366,
+    768,
+    390
+  ]
+}

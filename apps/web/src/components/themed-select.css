@@ -1,0 +1,15 @@
+.pi-themed-select{position:relative;width:100%;min-width:0;font:inherit}
+.pi-native-select-proxy{display:none!important}
+.pi-themed-select>.pi-select-trigger,.investment-workspace .pi-themed-select>.pi-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:38px;padding:8px 10px;border:1px solid #9dbbb8;border-radius:5px;background:#fff;color:#183448;font:inherit;font-weight:500;text-align:left;cursor:pointer}
+.pi-themed-select>.pi-select-trigger:hover,.investment-workspace .pi-themed-select>.pi-select-trigger:hover{background:#f3f8f6;border-color:#176c61}
+.pi-themed-select>.pi-select-trigger:focus-visible,.investment-workspace .pi-themed-select>.pi-select-trigger:focus-visible{outline:3px solid #b46812;outline-offset:2px}
+.pi-themed-select>.pi-select-trigger:disabled,.investment-workspace .pi-themed-select>.pi-select-trigger:disabled{background:#e9eeee;color:#738482;border-color:#ccd8d5;cursor:not-allowed}
+.pi-select-trigger span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pi-select-trigger svg{flex:0 0 16px;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pi-select-menu{position:absolute;z-index:80;top:calc(100% + 4px);left:0;width:max-content;min-width:100%;max-width:min(420px,calc(100vw - 32px));max-height:280px;overflow:auto;padding:4px;border:1px solid #9dbbb8;border-radius:6px;background:#fff;box-shadow:0 10px 28px rgba(18,63,75,.2)}
+.pi-select-menu [role=option]{padding:8px 10px;border-radius:4px;color:#183448;font-size:inherit;font-weight:500;line-height:1.35;white-space:normal;cursor:pointer}
+.pi-select-menu [role=option][data-active]{background:#e2f2ed;color:#123f48}
+.pi-select-menu [role=option][aria-selected=true]{background:#176c61;color:#fff;font-weight:700}
+.pi-select-menu [role=option][aria-selected=true][data-active]{background:#105c55;color:#fff}
+.pi-select-menu [role=option][aria-disabled=true]{color:#81918f;cursor:not-allowed}
+@media(forced-colors:active){.pi-select-menu [role=option][aria-selected=true]{forced-color-adjust:auto}}

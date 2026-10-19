@@ -1,0 +1,87 @@
+{
+  "profileVersion": "attom-sequential-baseline-profile-v1",
+  "profiledAtLocal": "2026-10-08",
+  "status": "BASELINE_CERTIFIED_READY_FOR_DELTA_TEST",
+  "reader": "DuckDB 1.5.6",
+  "scanMethod": "Bounded-memory aggregates with 1 GiB limit; hash and null-count aggregates force decode of every column across every row group; no row-level records exported.",
+  "datasets": [
+    {
+      "dataset": "AssignmentRelease",
+      "rows": 665575,
+      "columns": 35,
+      "fullDecodeScan": "PASS",
+      "criticalNullCounts": {"TransactionID": 0, "AttomID": 0, "ParcelNumberRaw": 0, "SitusStateCountyFIPS": 0, "RecordingDate": 0, "PublicationDate": 0, "MortgageTransactionID": 264863},
+      "keyChecks": {"TransactionID": "unique, 665575/665575", "AttomID": "383902 distinct property IDs", "ParcelNumberRaw": "348698 distinct values", "MortgageTransactionID": "400712 non-null; 368845 distinct"},
+      "situsFipsCounts": {"06111": 102305, "08035": 84167, "12031": 179763, "27123": 85836, "37119": 213504},
+      "priorSample": {"rows": 3865063, "columns": 35, "columnNamesAndTypesMatch": true}
+    },
+    {
+      "dataset": "RecorderDeletes",
+      "rows": 167564,
+      "columns": 1,
+      "fullDecodeScan": "PASS",
+      "criticalNullCounts": {"TransactionID": 0},
+      "keyChecks": {"TransactionID": "unique; COUNT(DISTINCT TransactionID)=167564; actual decoded values read", "decodedTransactionIdRange": {"min": 149267093, "max": 1450443209}},
+      "priorSample": {"rows": 166532, "columns": 1, "columnNamesAndTypesMatch": true},
+      "recovery": {"localBytes": 860496, "sha256": "4dc42ae3617021dcc591bbc2f5d4605c3999ee9a3a72cfe0c9fa8a47ec9ee068", "remoteLocalSizeMatch": true, "remoteLocalPar1HeaderFooter": true, "orderedStream": true, "previousCopyPreserved": true}
+    },
+    {
+      "dataset": "CombinedForeclosure",
+      "rows": 6115,
+      "columns": 111,
+      "fullDecodeScan": "PASS",
+      "criticalNullCounts": {"TransactionID": 0, "ATTOMID": 0, "SitusStateCountyFIPS": 0, "ParcelNumberRaw": 0, "ForeclosureRecordingDate": 66, "PublicationDate": 0},
+      "keyChecks": {"TransactionID": "unique; 6115/6115", "ParcelNumberRaw": "unique; 6115/6115", "ATTOMID": "unique; 6115/6115"},
+      "situsFipsCounts": {"06111": 330, "08035": 159, "12031": 4907, "27123": 211, "37119": 507, "55017": 1},
+      "priorSample": {"rows": 6109, "columns": 111, "columnNamesAndTypesMatch": true, "fips55017Rows": 1},
+      "scopeNote": "The single FIPS 55017 row also occurs in the prior sample; confirm county scope with ATTOM before excluding or treating it as error."
+    },
+    {
+      "dataset": "Foreclosure",
+      "rows": 30824,
+      "columns": 103,
+      "fullDecodeScan": "PASS",
+      "criticalNullCounts": {"TransactionID": 0, "ATTOMID": 0, "SitusStateCountyFIPS": 0, "PublicationDate": 0},
+      "keyChecks": {"TransactionID": "unique; 30824/30824", "ATTOMID": "18041 distinct property IDs"},
+      "situsFipsCounts": {"06111": 5021, "08035": 1802, "12031": 12796, "27123": 3294, "37119": 7911}
+    },
+    {
+      "dataset": "LoanModel",
+      "rows": 1188929,
+      "columns": 42,
+      "fullDecodeScan": "PASS",
+      "criticalNullCounts": {"ATTOMID": 0, "SitusStateCountyFIPS": 0, "CurrentFirstPositionOpenLoanTransactionID": 0, "CurrentSecondPositionOpenLoanTransactionID": 0, "CurrentThirdPositionOpenLoanTransactionID": 0, "PublicationDate": 0},
+      "keyChecks": {"ATTOMID": "unique; 1188929/1188929"},
+      "situsFipsCounts": {"06111": 225175, "08035": 126826, "12031": 335414, "27123": 140962, "37119": 360552},
+      "priorSample": {"rows": 1187700, "columns": 42, "columnNamesAndTypesMatch": true}
+    },
+    {
+      "dataset": "Recorder",
+      "rows": 970412,
+      "columns": 238,
+      "fullDecodeScan": "PASS",
+      "criticalNullCounts": {"TransactionID": 0, "ATTOMID": 0, "DocumentRecordingCountyFIPs": 0, "APNOriginal": 876816, "PropertyAddressFull": 786, "RecordingDate": 281034, "PublicationDate": 0},
+      "keyChecks": {"TransactionID": "unique; 970412/970412", "ATTOMID": "596215 distinct property IDs"},
+      "recordingCountyFipsCounts": {"06111": 165482, "08035": 122513, "12031": 281917, "27123": 107341, "37119": 293159},
+      "priorSample": {"rows": 1230016, "columns": 238, "columnNamesAndTypesMatch": true}
+    }
+  ],
+  "identityAndDatasetRelationships": {
+    "transactionIdDuplicateCounts": {"AssignmentRelease": 0, "RecorderDeletes": 0, "CombinedForeclosure": 0, "Foreclosure": 0, "Recorder": 0},
+    "AssignmentReleaseMortgageTransactionIDToRecorderTransactionIDMatches": 98670,
+    "AssignmentReleaseMortgageTransactionIDNonNull": 400712,
+    "AssignmentReleaseTransactionIDToRecorderTransactionIDMatches": 0,
+    "AssignmentReleaseAttomIdToRecorderAttomIdDistinctMatches": 284521,
+    "LoanModelAttomIdToRecorderAttomIdDistinctMatches": 559216,
+    "RecorderDeletesToAssignmentReleaseTransactionIdMatches": 23,
+    "RecorderDeletesToRecorderTransactionIdMatches": 0,
+    "interpretation": "Counts establish observed structural overlap only. Non-overlap is not treated as a defect absent ATTOM feed-key/time-window semantics; do not infer complete referential integrity or chronology."
+  },
+  "geographySummary": "FIPS 06111, 08035, 12031, 27123, 37119 occur in the geography-bearing files. CombinedForeclosure additionally has one 55017 row, which is also present once in the historical sample; geography scope question remains for ATTOM confirmation.",
+  "sampleComparison": "The five available sample/delivery pairs have identical column names and types. Row counts differ because delivery/sample populations differ; Foreclosure has no corresponding prior sample file in this artifact set.",
+  "limitations": [
+    "ATTOM supplied no authoritative checksum; size, PAR1, DuckDB decode, and local SHA-256 do not establish byte identity to an ATTOM digest.",
+    "No daily update was downloaded; delivery chronology and replay semantics remain untested.",
+    "No production data, provider API, application, scoring, database, or deployment operation occurred."
+  ]
+}

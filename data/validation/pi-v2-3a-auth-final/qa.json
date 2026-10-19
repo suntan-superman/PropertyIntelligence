@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "checks": 11,
+  "providerCalls": 1,
+  "retries": 0,
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final\\01-login.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final\\02-authenticated-guided.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final\\03-provider-confirmation.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final\\04-provider-result.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final\\05-guided-handoff.png"
+  ],
+  "externalRequests": 0,
+  "browserErrors": 0
+}

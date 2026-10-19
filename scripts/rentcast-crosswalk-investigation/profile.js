@@ -1,0 +1,61 @@
+// Local diagnostic profiling only. No identity decisions or application imports.
+import '../../src/analysis/offline.js';
+import {readFile} from 'node:fs/promises';
+import {createReadStream} from 'node:fs';
+import {createInterface} from 'node:readline';
+import {fileHash,zipEntries,zipMember} from '../sprint6_2/io.js';
+import {schema,scanDbf} from '../sprint6_2/dbf.js';
+import {normalizeAtn,normalizeApn9} from '../sprint6_2/core.js';
+import {parseCsv} from '../../src/sources/kern/csv.js';
+import {ROOT,check,saveNew,sha,seal} from '../rentcast-controlled-pilot/core.js';
+import {readJson,verifyProtection} from '../rentcast-controlled-pilot/local.js';
+import {CACHE,PACKAGE,OUT} from './integrity.js';
+import {offlineStatus} from '../../src/analysis/offline.js';
+
+const integrity=await readJson(OUT);await verifyProtection(integrity.originalHashes);
+const mapping=await readJson(`${ROOT}/candidate-mapping.json`),pilots=[];
+for(const c of mapping.candidates){const e=await readJson(`${ROOT}/evidence/${c.pilotCode}.json`);pilots.push({pilotCode:c.pilotCode,county:c.county,candidateId:c.candidateId,assessorId:c.assessor.id,expectedAssessorRow:c.assessor.sourceRow,countySitus:c.countyAddressReview.rawCountySitus,sourceDates:c.evidenceDates,rentcastRecord:e.providerRecord,retrievedAt:e.retrievedAt,originalClassification:e.reconciliation.matchClassification,originalPacketSha256:(await readJson(`${ROOT}/review-packets/${c.pilotCode}-review.json`)).packetSha256,land:[],shape:[],history:[],mineral:[],addressComparison:e.reconciliation.addressComparison});}
+const compact=s=>typeof s==='string'?s.replace(/[ -]/g,''):null;
+const p2=pilots.find(p=>p.pilotCode==='RC-P2'),needle=compact(p2.rentcastRecord.assessorID),exactIdentifierSearch=[];
+const csv=path=>readFile(path,'utf8').then(parseCsv);
+const pts=await csv(mapping.sourcePaths.pts),at=pts.headers.indexOf('atn');check(at>=0,'PTS_ATN_MISSING');
+const ptsCounts=new Map();let ptsInvalid=0;for(const r of pts.rows){const key=normalizeAtn(r[at]);if(!key)ptsInvalid++;else ptsCounts.set(key,(ptsCounts.get(key)??0)+1);}
+function graph(){const a=new Map(),b=new Map(),pairs=new Set();let rows=0,invalid=0,blank=0;return {
+  add(atn,apn){rows++;if(!atn||!apn)blank++;if(!normalizeAtn(atn)||!normalizeApn9(apn)){invalid++;return;}for(const [m,k,v] of [[a,atn,apn],[b,apn,atn]]){const old=m.get(k);if(!old)m.set(k,{rows:1,targets:new Set([v])});else{old.rows++;old.targets.add(v);}}pairs.add(`${atn}|${apn}`);},
+  atn:key=>a.get(key),apn:key=>b.get(key),summary(){return {rows,validRows:rows-invalid,blankRows:blank,invalidRows:invalid,distinctAtns:a.size,distinctApn9s:b.size,distinctPairs:pairs.size,duplicatePairExcess:rows-invalid-pairs.size,duplicateAtnValues:[...a.values()].filter(v=>v.rows>1).length,duplicateApn9Values:[...b.values()].filter(v=>v.rows>1).length,atnToMultipleApn9:[...a.values()].filter(v=>v.targets.size>1).length,apn9ToMultipleAtn:[...b.values()].filter(v=>v.targets.size>1).length,oneToOnePairs:[...a].filter(([key,v])=>v.rows===1&&v.targets.size===1&&b.get([...v.targets][0])?.rows===1&&b.get([...v.targets][0])?.targets.size===1).length};}};}
+const landGraph=graph(),candidateGraph=graph(),mineralGraph=graph(),schemas={},fieldProfiles={},sources={},counts={};
+const landFile=`${CACHE}/extracted/TaxRoll_Land_2026final/TaxRoll_Land_2026final.dbf`,shapeFile=`${CACHE}/extracted/Shapefile_Parcels_Land_2026final/parcels_land_2026final.dbf`,historyFile=`${CACHE}/extracted/TaxRoll_ParcelHistory_2026final/TaxRoll_ParcelHistory_2026final.dbf`,mineralFile=`${CACHE}/extracted/TaxRoll_Mineral_2026final/TaxRoll_Mineral_2026final.dbf`;
+function fields(label,row){fieldProfiles[label]??={};for(const [key,value] of Object.entries(row)){const f=fieldProfiles[label][key]??={rows:0,blank:0,leadingZero:0,lengths:{}};f.rows++;if(!value)f.blank++;if(/^0\d/.test(value))f.leadingZero++;f.lengths[value.length]=(f.lengths[value.length]??0)+1;}}
+function locator(file,s,row,projection){return {file,sourceRow:row,byteOffset:s.headerBytes+(row-1)*s.recordBytes,sourceSha256:integrity.originalHashes[file],projection,projectionSha256:sha(JSON.stringify(projection))};}
+function search(label,file,s,row,index,keys){for(const key of keys)if(compact(row[key])===needle)exactIdentifierSearch.push({table:label,field:key,rawMatch:row[key]===p2.rentcastRecord.assessorID,...locator(file,s,index,Object.fromEntries(keys.map(k=>[k,row[k]])))});}
+async function scan(label,file,names,visit){const s=await schema(file);schemas[label]=s.fields;sources[label]={path:file,sha256:integrity.originalHashes[file]??await fileHash(file)};counts[label]=await scanDbf(file,names,(r,i)=>{fields(label,r);visit(r,i,s);});console.log(JSON.stringify({phase:'local-scan',dataset:label,rows:counts[label].active,deletedRecords:counts[label].deleted}));}
+await scan('land',landFile,['ATN','APN9','TE_NO','ROLL','USE_CODE','ADDR_SITUS'],(r,i,s)=>{landGraph.add(r.ATN,r.APN9);if(ptsCounts.has(r.ATN))candidateGraph.add(r.ATN,r.APN9);search('land',landFile,s,r,i,['ATN','APN9','TE_NO']);for(const p of pilots)if(r.ATN===p.county.atn||r.APN9===p.county.apn9)p.land.push(locator(landFile,s,i,r));});
+const shapeApn=new Map(),shapeApn9=new Map();let shapeDefinitionMismatches=0;
+await scan('landParcels',shapeFile,['APN','APN9','APN_LABEL'],(r,i,s)=>{shapeApn.set(r.APN,(shapeApn.get(r.APN)??0)+1);shapeApn9.set(r.APN9,(shapeApn9.get(r.APN9)??0)+1);
+  // Diagnostic of the explicitly documented APN + final check digit relationship,
+  // not a transformation used to resolve or approve any candidate.
+  if(r.APN9.length!==9||r.APN.length!==8||!r.APN9.startsWith(r.APN))shapeDefinitionMismatches++;
+  search('landParcels',shapeFile,s,r,i,['APN','APN9','APN_LABEL']);for(const p of pilots)if(r.APN9===p.county.apn9||compact(r.APN)===compact(p.rentcastRecord.assessorID))p.shape.push(locator(shapeFile,s,i,r));});
+const historyIds=new Map(),historyStats={creationDates:{blank:0,zero:0,populated:0,min:null,max:null},inactivationDates:{blank:0,zero:0,populated:0,min:null,max:null},creationTypes:{},inactivationTypes:{}};
+await scan('history',historyFile,['APN9','EVT_NUM_CR','EVT_TYP_CR','DT_CREATE','EVT_NUM_IN','EVT_TYP_IN','DT_INACT'],(r,i,s)=>{historyIds.set(r.APN9,(historyIds.get(r.APN9)??0)+1);for(const [field,key] of [['DT_CREATE','creationDates'],['DT_INACT','inactivationDates']]){const d=historyStats[key],v=r[field];if(!v)d.blank++;else if(/^0+$/.test(v))d.zero++;else{d.populated++;if(!d.min||v<d.min)d.min=v;if(!d.max||v>d.max)d.max=v;}}for(const [field,key] of [['EVT_TYP_CR','creationTypes'],['EVT_TYP_IN','inactivationTypes']])historyStats[key][r[field]||'(blank)']=(historyStats[key][r[field]||'(blank)']??0)+1;
+  search('history',historyFile,s,r,i,['APN9']);for(const p of pilots)if(r.APN9===p.county.apn9)p.history.push(locator(historyFile,s,i,r));});
+await scan('mineral',mineralFile,['ATN','APN9','TE_NO','ROLL','USE_CODE'],(r,i,s)=>{mineralGraph.add(r.ATN,r.APN9);search('mineral',mineralFile,s,r,i,['ATN','APN9','TE_NO']);for(const p of pilots)if(r.ATN===p.county.atn||r.APN9===p.county.apn9)p.mineral.push(locator(mineralFile,s,i,r));});
+// Existing fixed-width source: verify its bytes against the fingerprinted archive.
+const kipsFile=`${CACHE}/extracted/KIPS_Situs_2026-06-26/SITS.TXT`,kipsZip=`${PACKAGE}/KIPS_Situs_2026-06-26.zip`;
+const kipsEntry=(await zipEntries(kipsZip)).find(e=>e.name==='SITS.TXT');check(kipsEntry,'KIPS_MEMBER_MISSING');const kipsHash=sha(await zipMember(kipsZip,kipsEntry));check(kipsHash===await fileHash(kipsFile),'KIPS_SOURCE_CHANGED');sources.kips={path:kipsFile,sha256:kipsHash};
+const kipsStats={rows:0,invalidWidth:0,blankTeNo:0,p2TeNoExactMatches:0};for await(const line of createInterface({input:createReadStream(kipsFile),crlfDelay:Infinity})){kipsStats.rows++;if(line.length!==80)kipsStats.invalidWidth++;const te=line.slice(0,10).trim();if(!te)kipsStats.blankTeNo++;if(compact(te)===needle){kipsStats.p2TeNoExactMatches++;exactIdentifierSearch.push({table:'kips',field:'TE_NO',file:kipsFile,sourceRow:kipsStats.rows,sourceSha256:kipsHash,projection:{TE_NO:te},relationshipMeaning:'NOT_DOCUMENTED_NO_JOIN_ALLOWED'});}}
+const relationshipSummary=[];
+for(const p of pilots){const atn=landGraph.atn(p.county.atn),apn=landGraph.apn(p.county.apn9),provider=compact(p.rentcastRecord.assessorID),sameShape=p.shape.filter(r=>r.projection.APN9===p.county.apn9);
+  check(p.land.length===1&&p.land[0].sourceRow===p.expectedAssessorRow&&p.land[0].projection.ATN===p.county.atn&&p.land[0].projection.APN9===p.county.apn9&&p.land[0].projection.ADDR_SITUS===p.countySitus,'PILOT_SOURCE_RELATIONSHIP_CHANGED');
+  p.relationship={rawProviderEqualsCountyAtn:p.rentcastRecord.assessorID===p.county.atn,formattingOnlyProviderEqualsCountyAtn:provider===p.county.atn,providerEqualsCountyApn9:provider===p.county.apn9,providerEqualsExplicitSourceApn:sameShape.length===1&&provider===sameShape[0].projection.APN,atnRows:atn?.rows??0,atnTargets:atn?.targets.size??0,apn9Rows:apn?.rows??0,apn9Targets:apn?.targets.size??0,exactShapeRows:sameShape.length,apnSourceGlobalRows:sameShape.length===1?shapeApn.get(sameShape[0].projection.APN):null,historyRows:p.history.length,mineralMatches:p.mineral.length};
+  p.classification=p.relationship.providerEqualsExplicitSourceApn&&p.relationship.apnSourceGlobalRows===1&&p.relationship.apn9Rows===1?'AUTHORITATIVE_IDENTITY_RELATIONSHIP_ESTABLISHED':p.relationship.formattingOnlyProviderEqualsCountyAtn&&p.relationship.atnRows===1&&p.relationship.apn9Rows===1?'OBSERVED_RELATIONSHIP_ONLY':'IDENTIFIER_RELATIONSHIP_UNRESOLVED';
+  p.classificationScope='Historical county source crosswalk only. Original APN_CONFLICT and analyst state remain unchanged; no current persistence authorization.';
+  p.unresolvedQuestions=p.classification==='OBSERVED_RELATIONSHIP_ONLY'?['County ATN semantic definition and provider use of ATN in assessorID','Freshness of historical relationship; current property identity not verified']:['RentCast explanation of mixed assessorID representations','Freshness of historical relationship; current property identity not verified'];
+  if(p.pilotCode==='RC-P1')p.unresolvedQuestions.push('No inspected county suffix domain defines AV versus Ave equivalence');
+  relationshipSummary.push({pilotCode:p.pilotCode,classification:p.classification,...p.relationship,historyDateFields:p.history.map(r=>({creation:r.projection.DT_CREATE,inactivation:r.projection.DT_INACT,createType:r.projection.EVT_TYP_CR,inactivateType:r.projection.EVT_TYP_IN}))});
+}
+const profiles={land:landGraph.summary(),ptsMatchedLand:candidateGraph.summary(),pts:{sourceRows:pts.rows.length,distinctAtns:ptsCounts.size,duplicateAtnValues:[...ptsCounts.values()].filter(n=>n>1).length,invalid:ptsInvalid,unmatchedAtns:ptsCounts.size-candidateGraph.summary().distinctAtns},landParcels:{rows:counts.landParcels.active,distinctApns:shapeApn.size,distinctApn9s:shapeApn9.size,duplicateApns:[...shapeApn.values()].filter(n=>n>1).length,duplicateApn9s:[...shapeApn9.values()].filter(n=>n>1).length,documentedApnApn9ShapeDisagreements:shapeDefinitionMismatches},history:{rows:counts.history.active,distinctApn9s:historyIds.size,duplicateApn9s:[...historyIds.values()].filter(n=>n>1).length,...historyStats},mineral:mineralGraph.summary(),kips:kipsStats};
+check(offlineStatus().networkAttempts===0,'OFFLINE_NETWORK_STOP');await verifyProtection(integrity.originalHashes);
+const report=seal({version:1,completedAt:new Date().toISOString(),scope:'READ_ONLY_HISTORICAL_SOURCE_INVESTIGATION_NO_IDENTITY_RULE_ENABLED',integrityManifest:OUT,sourceFingerprints:{...integrity.sourceHashes,...Object.fromEntries(Object.values(sources).map(s=>[s.path,s.sha256]))},sourceInventory:sources,schemas,fieldProfiles,profiles,dbfDeletionMarkers:Object.fromEntries(Object.entries(counts).map(([k,s])=>[k,{rows:s.count,read:s.active,deleted:s.deleted}])),pilots,rcP2ExactIdentifierSearch:exactIdentifierSearch,relationshipSummary,providerCalls:0,databaseConnections:0,databaseWrites:0,analystApprovals:0,durableProperties:0,round1Selections:0});
+await saveNew(`${ROOT}/private-crosswalk-investigation.json`,report);
+console.log(JSON.stringify({profiles,relationshipSummary,p2SearchHits:exactIdentifierSearch.map(h=>({table:h.table,field:h.field})),network:offlineStatus(),memoryRssMiB:Math.round(process.memoryUsage().rss/1048576)}));

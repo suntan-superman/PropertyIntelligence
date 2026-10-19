@@ -1,0 +1,5 @@
+.pi-tooltip{position:fixed;top:var(--pi-tooltip-top);left:var(--pi-tooltip-left);z-index:10000;max-width:min(19rem,calc(100vw - 1rem));padding:.55rem .7rem;border:1px solid #315f5b;border-radius:.42rem;background:#102f32;color:#fff;font:500 .82rem/1.35 system-ui,sans-serif;box-shadow:0 6px 20px rgb(10 36 38 / 22%);pointer-events:none}
+.pi-info-tooltip{display:inline-grid!important;place-items:center;width:1.15rem!important;min-width:1.15rem!important;height:1.15rem!important;min-height:1.15rem!important;margin-left:.35rem!important;padding:0!important;border:1px solid #39736e!important;border-radius:50%!important;background:#fff!important;color:#175f59!important;font:700 .72rem/1 system-ui,sans-serif!important;vertical-align:middle;box-shadow:none!important;cursor:help}
+.pi-info-tooltip:hover,.pi-info-tooltip:focus-visible{background:#e7f3f1!important;outline:2px solid #246f68!important;outline-offset:2px}
+.iw-label-with-help,.pi-label-with-help{display:inline-flex;align-items:center;gap:.1rem}
+@media (prefers-reduced-motion:reduce){.pi-tooltip{transition:none}}

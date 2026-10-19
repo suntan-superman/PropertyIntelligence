@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "at": "2026-10-19T16:03:10.710Z",
+  "checks": [
+    "Seller Financial Position exposes inline paperclip actions",
+    "dialog offers existing selection and new upload without leaving Guided Analysis",
+    "one Include in Investor Report decision records review and redistribution approval",
+    "linked document shows filename, source, review status and report selection inline",
+    "one immutable document supports multiple exact evidence fields",
+    "field associations restore across a new browser load from the saved revision",
+    "browser produced no runtime errors",
+    "no external or provider browser requests occurred",
+    "mock storage contains one document and no live upload occurred"
+  ],
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-inline-evidence\\01-attach-evidence-dialog.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-inline-evidence\\02-linked-mortgage-evidence.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-inline-evidence\\03-cross-session-restored-links.png"
+  ],
+  "browserErrors": [],
+  "externalRequests": [],
+  "mockedUploads": 1,
+  "liveUploads": 0,
+  "providerRequests": 0,
+  "firestoreWrites": 0
+}

@@ -1,0 +1,42 @@
+.iw-context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 18px 0;
+  padding: 17px 20px;
+  background: #e7f4ef;
+  border: 1px solid #a9cec3;
+  border-radius: 9px;
+}
+
+.iw-context div {
+  display: grid;
+  gap: 3px;
+}
+
+.iw-context span,
+.iw-context small {
+  color: #4f6d70;
+}
+
+.iw-context strong {
+  font-size: 18px;
+}
+
+.iw-context a {
+  color: #12685e;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.iw-detail {
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 650px) {
+  .iw-context {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

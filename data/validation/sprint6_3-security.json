@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "filesScanned": 44,
+  "filesScanned": 55,
   "opaqueCredentialVariantsChecked": true,
   "credentialValuesPrinted": false,
   "privateKeyAndConnectionLiteralPatterns": true,

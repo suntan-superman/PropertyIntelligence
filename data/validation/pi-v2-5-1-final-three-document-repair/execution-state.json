@@ -1,0 +1,17 @@
+{
+  "status": "FAILED_DO_NOT_RETRY",
+  "startedAt": "2026-10-19T16:13:24.004Z",
+  "authorization": "PI V2.5.1 final three-document repair and acceptance",
+  "failedAt": "2026-10-19T16:13:32.346Z",
+  "failure": {
+    "status": "FAIL_STOPPED_NO_RETRY",
+    "at": "2026-10-19T16:13:32.346Z",
+    "mode": "--execute",
+    "name": "AssertionError",
+    "message": "Expected values to be strictly equal:\n\n409 !== 200\n",
+    "actual": 409,
+    "expected": 200,
+    "retryPerformed": false,
+    "cleanupPerformed": false
+  }
+}

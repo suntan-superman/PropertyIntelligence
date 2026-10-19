@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "at": "2026-10-19T16:00:26.315Z",
+  "checks": [
+    "Decatur promoted before document upload",
+    "document register presents the simplified workflow only on the saved property",
+    "uploaded document remains explicitly unreviewed",
+    "one plain-language checkbox applies the existing report security requirements",
+    "new upload creates a new immutable version and requires a new inclusion decision",
+    "duplicate file hash is rejected",
+    "active PDF content is rejected before storage",
+    "scenario saved without changing certified calculations",
+    "Full Investor Package preview contains numbered appendix index and due-diligence disclaimer",
+    "Opportunity Brief references evidence without embedding files",
+    "exported Full Investor Package includes appendix cover and document pages",
+    "appendix index, identity cover and source page remain readable and ordered",
+    "saved-property workspace exposes Documents action",
+    "browser runtime has no errors",
+    "no provider or external browser request occurred",
+    "every object stayed in mocked private storage",
+    "audit log captured upload, review and report download activity"
+  ],
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\01-private-document-register.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\02-reviewed-appendix-selection.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\pdf-appendix-index.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\pdf-appendix-cover.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\pdf-appendix-source.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\03-saved-property-documents-action.png"
+  ],
+  "pdf": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-supporting-documents\\full-investor-package-with-appendix.pdf",
+  "mockedStorageObjects": 2,
+  "liveCloudStorageUploads": 0,
+  "liveFirestoreWrites": 0,
+  "providerCalls": 0,
+  "externalRequests": [],
+  "browserErrors": []
+}

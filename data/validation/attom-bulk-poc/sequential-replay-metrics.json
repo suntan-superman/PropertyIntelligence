@@ -1,0 +1,105 @@
+{
+  "status": "ONE_DELIVERY_BASELINE_TO_0002_REPLAY_PASS_MORE_EVIDENCE_REQUIRED_FOR_DAILY_READINESS",
+  "replayModel": ["Certified _0001 baseline", "_0002 complete delivery", "_0003 not present in inventory"],
+  "reader": "DuckDB 1.5.6; isolated in-memory replay; no persistent database",
+  "baselineCertified": true,
+  "deliveryOrderEvidence": {
+    "baselinePublicationDate": "2026-10-07",
+    "nonemptyUpdatePublicationDate": "2026-10-08",
+    "done0002MarkerPresent": true,
+    "done0002ModifiedUtc": "2026-10-08T08:44:24Z",
+    "allSixUpdateFilesPrecedeMarker": true,
+    "assignmentReleaseBaselineRemoteMtimeLaterDueVendorReplacement": true,
+    "assignmentReleaseBaselineContentDateRemains": "2026-10-07",
+    "sequence0003Present": false,
+    "done0003Present": false,
+    "conclusion": "Baseline->_0002 order is supported by content PublicationDate and completion marker; broad sequence semantics remain unverified."
+  },
+  "downloadValidation": {
+    "_0002ParquetFiles": 6,
+    "serialOrderedStreams": true,
+    "fastGet": false,
+    "parallelPayloadDownloads": false,
+    "automaticWholeFileRetries": 0,
+    "sizeAndPar1Checks": "PASS all six",
+    "allColumnsAllRowGroupsDecoded": "PASS all six",
+    "schemasMatchCorrespondingBaseline": true,
+    "_0003": "NOT PRESENT"
+  },
+  "vendorConfirmedSemantics": {
+    "preforeclosure": "UPSERT delta; no file present in baseline or _0002",
+    "assignmentRelease": "UPSERT delta",
+    "loanModel": "UPSERT delta",
+    "recorder": "UPSERT delta",
+    "combinedForeclosure": "Full replacement snapshot; disappearance is not cancellation/completion evidence",
+    "recorderDeletes": "Separate dataset-specific transaction invalidations; precise target behavior still requires vendor confirmation",
+    "noCommonUpsertKeyAssumed": true
+  },
+  "datasetKeys": {
+    "AssignmentRelease": "TransactionID",
+    "Foreclosure": "TransactionID",
+    "LoanModel": "ATTOMID",
+    "Recorder": "TransactionID",
+    "CombinedForeclosure": "TransactionID snapshot identity",
+    "RecorderDeletes": "TransactionID invalidation identity"
+  },
+  "vendorObservedEvents": {
+    "Foreclosure": {"newTransactionKeys": 37, "existingTransactionChanges": 0, "newATTOMIDsWithinFeed": 19, "rawRecordTypes": {"LIS":20,"NOD":2,"NOS":8,"NTS":7}},
+    "updatedNODOrNTSTransactionKeys": 0,
+    "preforeclosureNewOrChanged": "UNKNOWN_NOT_IN_DELIVERY",
+    "newATTOMPropertyIdsAcrossAllUpdatedFeeds": 46,
+    "changedAuctionDates": 0,
+    "foreclosureStatusFieldChanges": 0,
+    "combinedForeclosure": {"baselineRows":6115,"updateRows":6115,"newKeys":0,"disappearingKeys":0,"publicationOnlyRefreshRows":6115,"businessFieldChangedRows":0,"auctionDateChanges":0},
+    "assignmentsOrReleases": {"updateRows":0,"newTransactions":0,"changes":0},
+    "recorder": {"updateRows":514,"newTransactions":464,"correctedExistingTransactions":50,"newATTOMIDsWithinFeed":206,"existingRowsWithATTOMIDChange":25},
+    "recorderDeletes": {"uniqueInvalidationIds":30,"matchedTestedRecorderOrAssignmentHistory":0,"unmatchedQuarantined":30,"physicalDeletes":0},
+    "loanModel": {"updateRows":428,"changedExistingProperties":394,"newPropertyIds":34,"existingUnchanged":0,"changedLoanPositionOrInstrumentFields":true,"LTVAvailableEquityLendableEquityChanged":false},
+    "duplicatesInUpdateKeys": 0,
+    "duplicateMutationsOnReplay": 0,
+    "outOfScopeFIPS55017": {"baselineCount":1,"updateCount":1,"dropped":false,"quarantined":true},
+    "identityJoinReview": {"recorderATTOMIDChanges":25,"unmatchedDeletionIds":30}
+  },
+  "replayReliability": {
+    "firstApply": "PASS",
+    "sameUpdateAppliedTwice": "PASS",
+    "secondApplyChangedRows": 0,
+    "secondApplyInsertedRows": 0,
+    "secondApplyNewHistoryVersions": 0,
+    "changedFullRowVersionsPreserved": {"LoanModel":394,"Recorder":50},
+    "CombinedForeclosureBaselineAndUpdateSnapshotsPreserved": 2,
+    "sameSnapshotReplaySuppressed": true,
+    "RecorderDeletesHistoryAppendIdempotent": true,
+    "missingSequenceTest": {"kind":"synthetic", "missing0003BlocksNextSequence": true},
+    "interruptedProcessingTest": {"kind":"synthetic in-memory transaction", "rollbackNoPartialRows": true,"retryPass":true},
+    "deterministicFinalStateAfterReplay": true
+  },
+  "geography": {
+    "expectedFIPS": ["06111","08035","12031","27123","37119"],
+    "combinedForeclosure55017Persists": true,
+    "outOfScopeRowsDropped": 0,
+    "requiresVendorScopeConfirmation": true
+  },
+  "monitoringAssessment": {
+    "dailyNewDistressDiscovery": "PARTIALLY DEMONSTRATED",
+    "existingForeclosureMonitoring": "PARTIALLY DEMONSTRATED",
+    "auctionAlerts": "NOT DEMONSTRATED",
+    "mortgageLifecycle": "PARTIALLY DEMONSTRATED",
+    "loanEquityChanges": "PARTIALLY DEMONSTRATED",
+    "transactionCorrections": "PARTIALLY DEMONSTRATED",
+    "idempotentRecovery": "PARTIALLY DEMONSTRATED",
+    "dailyReadiness": "MORE EVIDENCE REQUIRED"
+  },
+  "nullMeans": "UNKNOWN or NOT PRESENT where specified; not zero or proof of absence",
+  "noProductionWrites": true,
+  "persistentDatabaseWrites": 0,
+  "providerCalls": {"attomApi":0,"rentcast":0,"dataTree":0,"county":0,"google":0,"mls":0},
+  "limitations": [
+    "Only one completed delivery date was available; no _0003 or DONE_0003 was present.",
+    "Preforeclosure was not included in the six-file baseline or _0002.",
+    "RecorderDeletes target semantics and 30 unmatched IDs remain unresolved.",
+    "Twenty-five Recorder corrections changed ATTOMID and need identity/join review.",
+    "CombinedForeclosure includes one out-of-scope FIPS 55017 row in both baseline and update.",
+    "The single observed update does not establish multi-day timing, alert reliability, or licensing value."
+  ]
+}

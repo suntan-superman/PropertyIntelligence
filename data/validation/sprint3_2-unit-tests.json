@@ -1,8 +1,8 @@
 {
-  "at": "2026-09-24T18:38:47.242Z",
-  "command": "node --import ./src/analysis/offline.js --test --test-reporter=tap tests",
-  "tests": 128,
-  "passed": 128,
+  "at": "2026-10-15T00:09:28.512Z",
+  "command": "node --import ./src/analysis/offline.js --test --test-reporter=tap tests/acquisition-linkage.test.js tests/deal-cleanup.test.js tests/discovery-v1-5-2.test.js tests/discovery-v1-5.test.js tests/discovery-v1-6.test.js tests/foundation.test.js tests/investment-report.test.js tests/investment-workspace-report.test.js tests/investment-workspace-v1-4.test.js tests/investment-workspace.test.js tests/investor-mc-integration.test.js tests/investor-presentation.test.js tests/investor-report-v1.test.js tests/maps.test.js tests/monte-carlo-v1.test.js tests/persistence.test.js tests/presentation.test.js tests/property-detail.test.js tests/runtime.test.js tests/sprint2.test.js tests/supabase.test.js tests/unified-v1-3.test.js tests/workbench.test.js",
+  "tests": 380,
+  "passed": 380,
   "failed": 0,
   "exitCode": 0,
   "networkDisabled": true,

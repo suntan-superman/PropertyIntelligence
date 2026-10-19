@@ -1,25 +1,26 @@
 import {money,text} from '../../utils/display.js';
+import {sourceCoordinates,comparableEvidence} from './evidence.js';
 
-export const located=p=>Number.isFinite(p?.latitude)&&Number.isFinite(p?.longitude)&&Math.abs(p.latitude)<=90&&Math.abs(p.longitude)<=180;
+export const located=p=>Boolean(sourceCoordinates(p));
 export function mapEntries(model) {
-  const p=model.property;
+  const p=model.property,subjectCoordinates=sourceCoordinates(p?.coordinates);
   const subject={id:'subject',label:'S',title:`Subject: ${model.address}`,address:model.address,subject:true,
-    position:located(p?.coordinates)?{lat:p.coordinates.latitude,lng:p.coordinates.longitude}:null,
+    position:subjectCoordinates?{lat:subjectCoordinates.latitude,lng:subjectCoordinates.longitude}:null,
     facts:[['Property type',text(p?.propertyType)],['Bedrooms / bathrooms',`${text(p?.bedrooms)} / ${text(p?.bathrooms)}`],
       ['Area / year built',`${text(p?.squareFeet)} SF / ${text(p?.yearBuilt)}`],['Lot / unit',`${text(p?.lotSize)} SF / Unknown`],
       ['Independent AVM',money(p?.valuation?.price)],['Independent AVM range',`${money(p?.valuation?.low)} – ${money(p?.valuation?.high)}`],
-      ...model.metrics.filter(m=>/Purchase|Resale|Break-Even/.test(m.label)).map(m=>[m.label,`${m.display} · ${m.status}`]),
+      ...(model.metrics??[]).filter(m=>/Purchase|Resale|Break-Even/.test(m.label)).map(m=>[m.label,`${m.display} · ${m.status}`]),
       ['Listing status / DOM','Unknown / Unknown'],['Distance','Subject location — not a comparable distance'],
       ['Evidence status',`${model.resolutionStatus} · ${model.valuationStatus}`],['Land tenure','Unknown — unresolved; not inferred'],
-      ['Source',model.provenance.some(p=>p.source==='RentCast')?'RentCast / INDEPENDENT_ONLY (provider-reported)':'Unknown'],
+      ['Source',(model.provenance??[]).some(p=>p.source==='RentCast')?'RentCast / INDEPENDENT_ONLY (provider-reported)':'Unknown'],
       ['Retrieved',model.cache.retrievedAt.join(', ')||'Not available']]};
-  return [subject,...model.comps.map(c=>({id:c.id,label:String(c.number),title:`Comp ${c.number}: ${c.address}`,address:c.address,subject:false,
+  return [subject,...comparableEvidence(model).map(c=>({id:c.id,label:String(c.number),title:`Comp ${c.number}: ${c.address}`,address:c.address,subject:false,
     position:located(c)?{lat:c.latitude,lng:c.longitude}:null,
     facts:[['Property type',text(c.propertyType)],['Bedrooms / bathrooms',`${text(c.bedrooms)} / ${text(c.bathrooms)}`],
       ['Area / year built',`${text(c.squareFeet)} SF / ${text(c.yearBuilt)}`],['Lot / unit',`${text(c.lotSize)} SF / ${text(c.unit)}`],
-      [c.priceLabel,c.priceText],['Provider status',`${text(c.status)} · ${c.badge}`],['Distance',c.distance==null?'Unknown':`${c.distance} miles`],
-      ['Days on market',text(c.daysOnMarket)],['Correlation',text(c.correlation)],['Evidence status',c.sourceStatus],
-      ['Land tenure',c.tenure],['Map location',c.locationStatus],['Retrieved',model.cache.retrievedAt.join(', ')||'Not available']]}))];
+      [c.priceLabel,c.priceText],['Provider status',`${text(c.status)} · ${c.badge}`],['Distance',c.distanceText],
+      ['Provider-reported distance',c.providerDistance===null?'Not returned':`${c.providerDistance} miles · source method not verified`],['Days on market',text(c.daysOnMarket)],['Correlation',text(c.correlation)],['Evidence status',c.sourceStatus],
+      ['Land tenure',c.tenure],['Map location',c.locationStatus],['Source','RentCast retained evidence'],['Sale date',c.saleDate||'Unknown'],['Listed / removed',`${c.listedDate||'Unknown'} / ${c.removedDate||'Unknown'}`],['Last observed',c.lastSeenDate||'Unknown'],['Limitations',c.limitation]]}))];
 }
 // Screen-space connected components; source coordinates are never edited.
 export function overlapGroups(entries,project,radius=32) {

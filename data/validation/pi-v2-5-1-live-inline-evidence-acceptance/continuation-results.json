@@ -1,0 +1,20 @@
+{
+  "status": "FAIL_STOPPED_NO_RETRY",
+  "at": "2026-10-19T13:41:24.115Z",
+  "mode": "--execute",
+  "name": "AssertionError",
+  "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   org: undefined,\n-   org: 'property-intelligence-local',\n    role: 'Administrator',\n    uid: 'd2NTUCs0lGe6C64pDnRGtgTXm0O2',\n    verified: true\n  }\n",
+  "actual": {
+    "uid": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+    "role": "Administrator",
+    "verified": true
+  },
+  "expected": {
+    "uid": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+    "role": "Administrator",
+    "org": "property-intelligence-local",
+    "verified": true
+  },
+  "retryPerformed": false,
+  "cleanupPerformed": false
+}

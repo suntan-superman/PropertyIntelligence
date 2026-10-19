@@ -1,4 +1,5 @@
 import {chromium} from 'playwright-core';
+import puppeteer from 'puppeteer';
 import {existsSync} from 'node:fs';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
@@ -8,12 +9,14 @@ import {reportHtml} from './html.js';
 import {preservation} from '../workbench/model.js';
 export function chromePath(){const candidates=[process.env.PI_CHROME_PATH,'C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'];const found=candidates.find(p=>p&&existsSync(p));if(!found)throw new Error('LOCAL_CHROME_REQUIRED');return found;}
 export async function browser(){return chromium.launch({executablePath:chromePath(),headless:true,args:['--disable-background-networking','--disable-component-update','--disable-sync','--no-first-run']});}
+export async function pdfBrowser(){const configured=process.env.PI_CHROME_PATH||process.env.PUPPETEER_EXECUTABLE_PATH;const options={headless:true,args:['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage','--disable-background-networking','--disable-component-update','--disable-sync','--no-first-run','--font-render-hinting=medium']};if(configured){if(!existsSync(configured))throw new Error('CONFIGURED_CHROME_NOT_FOUND');options.executablePath=configured;}return puppeteer.launch(options);}
 export async function generateReport(model){
   await preservation();if(model.mode!=='deal'||!/^[a-z0-9-]+$/.test(model.id))throw new Error('DEAL_MODEL_REQUIRED');
   if(model.digest!==hash(JSON.stringify({...model,digest:undefined})))throw new Error('MODEL_INTEGRITY_STOP');
-  const html=reportHtml(model),instance=await browser();
+  const html=reportHtml(model),instance=await pdfBrowser();
   try{
-    const page=await instance.newPage();await page.route('**/*',route=>route.abort());
+    const page=await instance.newPage();await page.setRequestInterception(true);page.on('request',request=>request.abort());
+    await page.setJavaScriptEnabled(false);
     await page.setContent(html,{waitUntil:'load'});
     const pdf=await page.pdf({format:'Letter',printBackground:true,displayHeaderFooter:true,
       headerTemplate:'<div style="font-family:Arial;font-size:8px;color:#50685c;width:100%;padding:0 40px">PROPERTY INTELLIGENCE — Independent Deal Review</div>',

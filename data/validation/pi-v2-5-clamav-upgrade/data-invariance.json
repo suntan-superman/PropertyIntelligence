@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "auditedAt": "2026-10-19T03:30:45.982Z",
+  "projectId": "property-intelligence-8238b",
+  "organizationId": "property-intelligence-local",
+  "counts": {
+    "properties": 1,
+    "documents": 1,
+    "documentVersions": 1,
+    "reports": 1,
+    "auditEvents": 4,
+    "storageObjects": 1
+  },
+  "identities": {
+    "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "scenarioId": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+    "scenarioRevision": 1,
+    "documentId": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+    "reportId": "a79f7dce-df72-4e15-ae88-e86008c4f8d5"
+  },
+  "hashes": {
+    "property": "4c3a7b720ce38c56610d89eca7f2ab65b02c6fa4dfa1da4ccda4d1d24f615b88",
+    "evidence": "0a6292b84385502e80e1a739d12aaa47a394f4446db6f4c867f447002077638e",
+    "scenario": "90d9329b881b5f9945d1f9291efec0489915fef1f8c2c3d11734da771603f887",
+    "document": "47f98f5f774be8a5d7c860765c6eb1ed2ad57c29e61440f2cbb936f938780b75",
+    "documentVersion": "ebdfb5e9721c9e548ae2c58232bc534ceaf09f3de55482ef4c3f2bb0bc78a1ba",
+    "reportRecord": "ba6c9c6632c4fde89ea34a4bfbe3ce7996251623feba6ef935f06eff868d3644",
+    "reportPdf": "a6c991440b7b2d60f93f3567eac1a0bda5f1b0154b1fae44b07db9d195905186"
+  },
+  "unchanged": {
+    "propertyIdentity": true,
+    "evidence": true,
+    "scenario": true,
+    "storedDocument": true,
+    "reportHistory": true
+  }
+}

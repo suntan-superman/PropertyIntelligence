@@ -1,0 +1,18 @@
+{
+  "experimentId": "PI_MLS_VALIDATION_R1",
+  "status": "PRE_EXECUTION",
+  "geography": "Kern County, CA",
+  "propertyClass": "Single Family Residential",
+  "sampleSize": 6,
+  "selectionLocked": false,
+  "evidenceStackLocked": false,
+  "assumptionsLocked": false,
+  "monteCarloLocked": false,
+  "mlsAllowedBeforeFreeze": false,
+  "excludedFixtures": [
+    "3484 Haven St, Rosamond, CA 93560"
+  ],
+  "selectionSeed": null,
+  "cohortFingerprint": null,
+  "executionAuthorized": false
+}

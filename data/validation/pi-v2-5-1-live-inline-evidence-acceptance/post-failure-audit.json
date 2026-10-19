@@ -1,0 +1,1719 @@
+{
+  "status": "PARTIAL_ACCEPTANCE_STOPPED",
+  "auditedAt": "2026-10-19T13:35:11.360Z",
+  "failure": {
+    "phase": "POST_SCENARIO_FINANCIAL_INVARIANCE_ASSERTION",
+    "retryPerformed": false,
+    "cleanupPerformed": false,
+    "rootCause": "HARNESS_COMPARED_QA_SCENARIO_PROVENANCE_AS_FINANCIAL_OUTPUT",
+    "analysisDifferences": [
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.scenarioId",
+        "source": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+        "qa": "6f7b1d62-0e91-4da1-9e31-250101000101"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.provenance.inputFingerprint",
+        "source": "95c8bccfc7b63fcc15b88d9a75ba532dea30a258c0266c57a8ebf2715f950447",
+        "qa": "9f1f9ccec26052d0f53ec5c90f21dd13a1cd1fe998e588edf5c97c6ef93922f2"
+      },
+      {
+        "path": "analysis.monteCarlo.provenance.resultFingerprint",
+        "source": "fa6e37eb386d1f0d86258d3f3553b2dc1ae48e1ffcea4f08fb3efe8e5f616c58",
+        "qa": "72abde80f821283ca16348d68d7a7bbe133981cbc9b7213da8995be442e1d3a3"
+      },
+      {
+        "path": "analysis.monteCarlo.provenance.runFingerprint",
+        "source": "06347a1345a95bc3267b3212b4d413235992d55a4073ab75e74bc01e23d20131",
+        "qa": "6af33b6cccd169adc149743b7072709437ed028ed0ae5b1946b2bb89adac6c82"
+      }
+    ],
+    "expectedAnalysisDifferences": [
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionFixed.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.acquisitionRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.exitValue.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.annualRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.fees.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.ltv.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.mode.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.financing.points.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.insurance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.maintenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.other.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.propertyTaxes.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.holdingDaily.utilities.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.marketingDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherAtExit.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.otherUpfront.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.purchasePrice.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabContingencyRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.rehabCost.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.renovationDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingFixed.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellerClosingRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.sellingCommissionRate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.economics.transferCost.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.rate.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.target.type.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.dependence.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.exitValue.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.marketingDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.rehabCost.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.provenance.uncertainty.variables.renovationDays.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.inputs.scenarioId",
+        "source": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+        "qa": "6f7b1d62-0e91-4da1-9e31-250101000101"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.0.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.1.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.2.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.asOf",
+        "source": "2026-10-18T17:30:35.827Z",
+        "qa": "2026-10-19T13:33:54.950Z"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.classification",
+        "source": "INVESTOR_ASSUMPTION",
+        "qa": "SYNTHETIC_TEST_FIXTURE"
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.rationale",
+        "source": "Explicit local analyst assumption, not verified costs or predictive evidence.",
+        "qa": "Explicit artificial demonstration assumption; not observed property economics."
+      },
+      {
+        "path": "analysis.monteCarlo.materialAssumptions.3.provenance.reference",
+        "source": "local-scenario:2908abf4-03a2-4d3c-931f-f61b5e9900c2:r1",
+        "qa": "local-scenario:6f7b1d62-0e91-4da1-9e31-250101000101:r1"
+      },
+      {
+        "path": "analysis.monteCarlo.provenance.inputFingerprint",
+        "source": "95c8bccfc7b63fcc15b88d9a75ba532dea30a258c0266c57a8ebf2715f950447",
+        "qa": "9f1f9ccec26052d0f53ec5c90f21dd13a1cd1fe998e588edf5c97c6ef93922f2"
+      },
+      {
+        "path": "analysis.monteCarlo.provenance.resultFingerprint",
+        "source": "fa6e37eb386d1f0d86258d3f3553b2dc1ae48e1ffcea4f08fb3efe8e5f616c58",
+        "qa": "72abde80f821283ca16348d68d7a7bbe133981cbc9b7213da8995be442e1d3a3"
+      },
+      {
+        "path": "analysis.monteCarlo.provenance.runFingerprint",
+        "source": "06347a1345a95bc3267b3212b4d413235992d55a4073ab75e74bc01e23d20131",
+        "qa": "6af33b6cccd169adc149743b7072709437ed028ed0ae5b1946b2bb89adac6c82"
+      }
+    ],
+    "unexpectedAnalysisDifferences": []
+  },
+  "completedOperations": {
+    "uploads": 3,
+    "scannerInvocations": 3,
+    "reviewUpdates": 3,
+    "integrityStorageReads": 3,
+    "auditEvents": 9,
+    "newScenarioRevisions": 1,
+    "authenticatedPreviewReads": 0,
+    "reportAssemblyReads": 0,
+    "reports": 0,
+    "providerRequests": 0,
+    "automaticRetries": 0,
+    "derivedFirestoreWrites": 29,
+    "writeBreakdown": {
+      "uploadTransactions": 12,
+      "uploadAudits": 3,
+      "reviewTransactions": 6,
+      "reviewAudits": 3,
+      "downloadAudits": 3,
+      "scenarioRevisionTransaction": 2
+    }
+  },
+  "ceilings": {
+    "uploads": "3 / 3",
+    "scannerInvocations": "3 / 3",
+    "storageReads": "3 / 7",
+    "firestoreWrites": "29 / 35",
+    "auditEvents": "9 / 13",
+    "scenarioRevisions": "1 / 1",
+    "reports": "0 / 1",
+    "providerRequests": "0 / 0",
+    "automaticRetries": "0 / 0"
+  },
+  "documents": [
+    {
+      "id": "6f7b1d62-0e91-4da1-9e31-250101000001",
+      "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/6f7b1d62-0e91-4da1-9e31-250101000001",
+      "filename": "01-recorded-mortgage-deed-of-trust.pdf",
+      "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a",
+      "reviewStatus": "REVIEWED",
+      "redistributionPermission": "APPROVED",
+      "appendixSelected": true,
+      "version": {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/6f7b1d62-0e91-4da1-9e31-250101000001/versions/v000001",
+        "scanStatus": "CLEAN",
+        "scanEngine": "ClamAV",
+        "scanEngineVersion": "1.4.6",
+        "signatureVersion": "28158",
+        "signatureUpdatedAt": "2026-10-19T06:26:01.000Z",
+        "scannedAt": "2026-10-19T13:33:42.894Z",
+        "storageKey": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000001/versions/1/a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a.pdf",
+        "storageGeneration": "1792416823105503"
+      },
+      "integrityReadForAudit": false
+    },
+    {
+      "id": "6f7b1d62-0e91-4da1-9e31-250101000002",
+      "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/6f7b1d62-0e91-4da1-9e31-250101000002",
+      "filename": "03-lender-payoff-statement.pdf",
+      "sha256": "60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c",
+      "reviewStatus": "REVIEWED",
+      "redistributionPermission": "APPROVED",
+      "appendixSelected": true,
+      "version": {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/6f7b1d62-0e91-4da1-9e31-250101000002/versions/v000001",
+        "scanStatus": "CLEAN",
+        "scanEngine": "ClamAV",
+        "scanEngineVersion": "1.4.6",
+        "signatureVersion": "28158",
+        "signatureUpdatedAt": "2026-10-19T06:26:01.000Z",
+        "scannedAt": "2026-10-19T13:33:44.411Z",
+        "storageKey": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000002/versions/1/60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c.pdf",
+        "storageGeneration": "1792416824593741"
+      },
+      "integrityReadForAudit": false
+    },
+    {
+      "id": "6f7b1d62-0e91-4da1-9e31-250101000003",
+      "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/6f7b1d62-0e91-4da1-9e31-250101000003",
+      "filename": "05-contractor-rehabilitation-estimate.pdf",
+      "sha256": "775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0",
+      "reviewStatus": "REVIEWED",
+      "redistributionPermission": "APPROVED",
+      "appendixSelected": true,
+      "version": {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/6f7b1d62-0e91-4da1-9e31-250101000003/versions/v000001",
+        "scanStatus": "CLEAN",
+        "scanEngine": "ClamAV",
+        "scanEngineVersion": "1.4.6",
+        "signatureVersion": "28158",
+        "signatureUpdatedAt": "2026-10-19T06:26:01.000Z",
+        "scannedAt": "2026-10-19T13:33:45.844Z",
+        "storageKey": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000003/versions/1/775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0.pdf",
+        "storageGeneration": "1792416826088672"
+      },
+      "integrityReadForAudit": false
+    }
+  ],
+  "scenario": {
+    "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/scenarioRevisions/6f7b1d62-0e91-4da1-9e31-250101000101--r1",
+    "id": "6f7b1d62-0e91-4da1-9e31-250101000101",
+    "revision": 1,
+    "attachmentLinks": 5,
+    "inputsMatchSource": true,
+    "analystEvidenceMatchesSource": true,
+    "certifiedFinancialAndMonteCarloResultsMatch": true,
+    "sourceAnalysisHash": "48a90a422194855fe9a53f99fd4f92d5022b4a4f7afe5410e0a388891914c89b",
+    "qaAnalysisHash": "f3940c60d9be7cccf67d9ba9c358938cd7e5bf4cd0e4086026bb37e01310093f",
+    "differenceScope": "QA scenario identity, timestamps, demonstration classification, rationale, references, and derived provenance fingerprints only"
+  },
+  "integrity": {
+    "originalEvidenceSnapshotsUnchanged": true,
+    "originalScenarioRevisionsUnchanged": true,
+    "originalSupportingDocumentsUnchanged": true,
+    "originalReportRevisionsUnchanged": true,
+    "immutablePropertyIdentityUnchanged": true,
+    "otherPropertiesUnchanged": true,
+    "providerTreesUnchanged": true,
+    "existingLocalScenarioFilesUnchanged": true,
+    "newStorageObjects": 3
+  },
+  "newAudits": [
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/JLkvXhZ5PcJObKD436Es",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000001",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_UPLOADED",
+      "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a",
+      "at": "2026-10-19T13:33:44.807Z",
+      "id": "JLkvXhZ5PcJObKD436Es",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/clLQbktVaE8dSYHONFMR",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000002",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_UPLOADED",
+      "sha256": "60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c",
+      "at": "2026-10-19T13:33:46.285Z",
+      "id": "clLQbktVaE8dSYHONFMR",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/FnvVqDaFipPq3oGvFAoX",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000003",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_UPLOADED",
+      "sha256": "775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0",
+      "at": "2026-10-19T13:33:47.745Z",
+      "id": "FnvVqDaFipPq3oGvFAoX",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/qPKa2FpLqDW4mtORofW0",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000001",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_METADATA_UPDATED",
+      "at": "2026-10-19T13:33:49.591Z",
+      "id": "qPKa2FpLqDW4mtORofW0",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/2Jmtd0hA37SnSn1ZkqUu",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000002",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_METADATA_UPDATED",
+      "at": "2026-10-19T13:33:50.672Z",
+      "id": "2Jmtd0hA37SnSn1ZkqUu",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/AuvUEyFw2LHnrNxTickt",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000003",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_METADATA_UPDATED",
+      "at": "2026-10-19T13:33:51.681Z",
+      "id": "AuvUEyFw2LHnrNxTickt",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/WKv3eC80KRCXXM0u3C50",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000001",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_DOWNLOADED",
+      "at": "2026-10-19T13:33:52.447Z",
+      "id": "WKv3eC80KRCXXM0u3C50",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/lIHnjb5zlI0lsCPYbspb",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000002",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_DOWNLOADED",
+      "at": "2026-10-19T13:33:53.413Z",
+      "id": "lIHnjb5zlI0lsCPYbspb",
+      "immutable": true
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/LK5DEPkrAbILiVCqmaKc",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "6f7b1d62-0e91-4da1-9e31-250101000003",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "action": "DOCUMENT_DOWNLOADED",
+      "at": "2026-10-19T13:33:54.371Z",
+      "id": "LK5DEPkrAbILiVCqmaKc",
+      "immutable": true
+    }
+  ],
+  "report": {
+    "generated": false,
+    "reason": "Critical assertion stopped the run before cross-session/browser/report phases"
+  },
+  "safeContinuation": {
+    "requiresNewExplicitAuthorization": true,
+    "permittedWithoutNewUpload": true,
+    "proposedOperations": [
+      "Compare certified deterministic, Monte Carlo, risk, and financial result sections while allowing QA scenario identity provenance to differ.",
+      "Restore the already-saved QA scenario across logout/login and browser refresh.",
+      "Perform one authenticated document preview.",
+      "Generate one QA Full Investor Package using the three existing CLEAN, reviewed, approved documents."
+    ],
+    "remainingCeilings": {
+      "newUploads": 0,
+      "newScans": 0,
+      "storageReads": 4,
+      "firestoreWrites": 6,
+      "auditEvents": 4,
+      "newScenarioRevisions": 0,
+      "reports": 1
+    },
+    "doNotRepeat": [
+      "uploads",
+      "scans",
+      "review updates",
+      "integrity reads",
+      "scenario save"
+    ]
+  }
+}

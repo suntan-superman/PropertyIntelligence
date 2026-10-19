@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "at": "2026-10-19T02:06:01.961Z",
+  "name": "AssertionError",
+  "message": "QA Full Investor Package generation failed\n\n400 !== 200\n",
+  "actual": 400,
+  "expected": 200,
+  "cleanupPerformed": false,
+  "retryPerformed": false
+}

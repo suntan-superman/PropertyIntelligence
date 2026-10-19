@@ -1,0 +1,11 @@
+{
+  "status": "FAIL_STOPPED_NO_RETRY",
+  "at": "2026-10-19T15:36:12.063Z",
+  "mode": "--execute",
+  "name": "AssertionError",
+  "message": "Expected values to be strictly equal:\n\n4 !== 3\n",
+  "actual": 4,
+  "expected": 3,
+  "retryPerformed": false,
+  "cleanupPerformed": false
+}

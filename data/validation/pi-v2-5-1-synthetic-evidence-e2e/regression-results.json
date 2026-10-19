@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "runDate": "2026-10-19",
+  "nodeVersion": "22.12.0",
+  "suites": [
+    {
+      "command": "npm run pi:v2.5:documents:test",
+      "passed": 51,
+      "failed": 0
+    },
+    {
+      "command": "npm run pi:v2.5.1:inline-evidence:test",
+      "passed": 108,
+      "failed": 0
+    },
+    {
+      "command": "npm run pi:v2.5.1:synthetic-evidence:qa",
+      "passedAssertions": 56,
+      "failedAssertions": 0,
+      "browserErrors": 0,
+      "externalRequests": 0
+    },
+    {
+      "command": "npm run web:build",
+      "status": "PASS",
+      "modulesTransformed": 84
+    }
+  ],
+  "liveStorageWrites": 0,
+  "liveFirestoreWrites": 0,
+  "liveScannerInvocations": 0,
+  "providerRequests": 0
+}

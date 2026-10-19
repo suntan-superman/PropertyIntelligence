@@ -1,0 +1,150 @@
+[
+  {
+    "fixture": "01-recorded-mortgage-deed-of-trust.pdf",
+    "documentId": "synthetic-document-01",
+    "version": 1,
+    "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a",
+    "claims": [
+      {
+        "fieldKey": "SELLER.ORIGINAL_PRINCIPAL",
+        "fieldLabel": "Original recorded mortgage amount"
+      },
+      {
+        "fieldKey": "SELLER.ALGORITHMIC_BALANCE",
+        "fieldLabel": "Estimated outstanding mortgage balance"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": true,
+    "synthetic": true
+  },
+  {
+    "fixture": "02-estimated-mortgage-balance.pdf",
+    "documentId": "synthetic-document-02",
+    "version": 1,
+    "sha256": "26fb791f8ca015f2abd54c40c9c5809758affab73fb720cbde5becccb547506e",
+    "claims": [
+      {
+        "fieldKey": "SELLER.ALGORITHMIC_BALANCE",
+        "fieldLabel": "Estimated outstanding mortgage balance"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": true,
+    "synthetic": true
+  },
+  {
+    "fixture": "03-lender-payoff-statement.pdf",
+    "documentId": "synthetic-document-03",
+    "version": 1,
+    "sha256": "60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c",
+    "claims": [
+      {
+        "fieldKey": "SELLER.VERIFIED_PAYOFF",
+        "fieldLabel": "Verified payoff"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": true,
+    "synthetic": true
+  },
+  {
+    "fixture": "04-delinquent-property-tax-statement.pdf",
+    "documentId": "synthetic-document-04",
+    "version": 1,
+    "sha256": "5d736de2bb86079d06c7d9f276287cf1042af88b52006c900c2972f4c07e5b07",
+    "claims": [
+      {
+        "fieldKey": "SELLER.DELINQUENT_PROPERTY_TAX",
+        "fieldLabel": "Delinquent property taxes"
+      }
+    ],
+    "reviewStatus": "PENDING_REVIEW",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "NOT_APPROVED",
+    "appendixIncluded": false,
+    "synthetic": true
+  },
+  {
+    "fixture": "05-contractor-rehabilitation-estimate.pdf",
+    "documentId": "synthetic-document-05",
+    "version": 2,
+    "sha256": "775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0",
+    "claims": [
+      {
+        "fieldKey": "UNDERWRITING.REHABCOST",
+        "fieldLabel": "Estimated rehabilitation cost"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": true,
+    "synthetic": true
+  },
+  {
+    "fixture": "06-property-inspection-findings.pdf",
+    "documentId": "synthetic-document-06",
+    "version": 1,
+    "sha256": "cb93bbe4b79944727a42ea2ab0bef6caf3cc337bbdd2c52a3f9206733b8f6a71",
+    "claims": [
+      {
+        "fieldKey": "ANALYST.CONDITION_QA",
+        "fieldLabel": "Property condition"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": true,
+    "synthetic": true
+  },
+  {
+    "fixture": "07-wholesale-assignment-agreement.pdf",
+    "documentId": "synthetic-document-07",
+    "version": 1,
+    "sha256": "7562b5e3fb7f83b7982feeef731ae00d1da8bf2acf45c0d990e30ff2d2733637",
+    "claims": [
+      {
+        "fieldKey": "UNDERWRITING.PURCHASEPRICE",
+        "fieldLabel": "Purchase price"
+      },
+      {
+        "fieldKey": "UNDERWRITING.ACQUISITIONFIXED",
+        "fieldLabel": "Acquisition and assignment costs"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "CONFIDENTIAL",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": false,
+    "synthetic": true
+  },
+  {
+    "fixture": "08-comparable-sales-valuation-analysis.pdf",
+    "documentId": "synthetic-document-08",
+    "version": 1,
+    "sha256": "b29f2846edbdce6cd5317d4b83ca18827da4beea360b0ca64dd8b113fad0d63b",
+    "claims": [
+      {
+        "fieldKey": "COMPARABLE_SALES",
+        "fieldLabel": "Comparable sales support"
+      },
+      {
+        "fieldKey": "UNDERWRITING.EXITVALUE",
+        "fieldLabel": "Exit value / ARV support"
+      }
+    ],
+    "reviewStatus": "REVIEWED",
+    "confidentiality": "STANDARD",
+    "redistributionPermission": "APPROVED",
+    "appendixIncluded": true,
+    "synthetic": true
+  }
+]

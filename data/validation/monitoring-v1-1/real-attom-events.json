@@ -1,0 +1,253 @@
+{
+  "manifestVersion": 1,
+  "status": "SANITIZED_REAL_VENDOR_ROW_FIXTURES",
+  "source": "ATTOM _0001 to _0002 certified local replay; DuckDB 1.5.6; no provider or database access",
+  "selectedAtUtc": "2026-10-08T21:21:00Z",
+  "privacy": {
+    "actualAddressesIncluded": false,
+    "ownerOrContactFieldsIncluded": false,
+    "rawRowsIncluded": false,
+    "sourceTransactionIdsPreserved": true,
+    "attomIdsPreservedAsVendorSourceIdentityOnly": true
+  },
+  "vendorClarifications": {
+    "physicalForeclosureDatasetIsPreforeclosureProduct": true,
+    "recorderDeletesTargetsRecorderOnly": true,
+    "unmatchedInvalidationIdsAreTombstones": true,
+    "latestRecorderAttomIdIsCurrentVendorMapping": true,
+    "priorRecorderMappingsRemainInHistory": true,
+    "fips55017Excluded": true
+  },
+  "sourceDeliveries": {
+    "Foreclosure": {
+      "baselineFileSha256": "48b67330715362139e1c34e8551d1611a32d9afac4ac38b50de7492d4dfafb37",
+      "updateFileSha256": "6ce5891c608619afc8afca4ae0bbd162dfb48e034d5370cfbf5336c55cc5d8b7"
+    },
+    "Recorder": {
+      "baselineFileSha256": "83caf29cf23147925f3ea1300c1bdf1fbf20cdbe258c75121ad46e5d88c81659",
+      "updateFileSha256": "a9b459ec7f78b8353277b093285e75a52cbfec9189600770c6b9666672c7a558"
+    },
+    "LoanModel": {
+      "baselineFileSha256": "e9699fdf2c893b2ab3aa20fb8eab2822bd9550b17a077004ca4c540b4dcb8097",
+      "updateFileSha256": "6db431db886adf8482e86ce8147c3b1b6221a77c8e2a1b4149c84ee47e180126"
+    },
+    "RecorderDeletes": {
+      "baselineFileSha256": "4dc42ae3617021dcc591bbc2f5d4605c3999ee9a3a72cfe0c9fa8a47ec9ee068",
+      "updateFileSha256": "b23b2ffd155195b647957241937090cac5d5d180ee85c4ed5a22593b742a0a05"
+    },
+    "CombinedForeclosure": {
+      "baselineFileSha256": "46e1e30a333ed5469092a7f1c755b9177b4ea20f51a14c73cb0d1c004e043f16",
+      "updateFileSha256": "1eeab2685915c3a8337abbc64cadf1e3c0af26b20e4639ce173e2b395b083e34"
+    }
+  },
+  "events": [
+    {
+      "selection": "new_foreclosure_transaction",
+      "source_system": "ATTOM",
+      "source_dataset": "Foreclosure",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/Foreclosure/TransactionID:122142240",
+      "source_transaction_id": "122142240",
+      "attom_id": "999999999",
+      "canonical_property_id": null,
+      "source_fips": "37119",
+      "event_type": "NEW_FORECLOSURE_TRANSACTION",
+      "previous_record_fingerprint": null,
+      "current_record_fingerprint": "f216b61dbb726fa0d41f0741995d65df368a2f5af41d256f51568906c00df5d5",
+      "previous_value": null,
+      "current_value": {
+        "foreclosure_recorded_date": "2026-10-07",
+        "publication_date": "2026-10-08"
+      },
+      "evidence_classification": "RECORDED_EVENT",
+      "identity_reconciliation_status": "IDENTITY_PRESENT_NOT_VERIFIED",
+      "geographic_scope_status": "IN_SCOPE",
+      "source_code_status": "CONFIRMED",
+      "raw_event_code_interpreted": false,
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    },
+    {
+      "selection": "new_recorder_transaction",
+      "source_system": "ATTOM",
+      "source_dataset": "Recorder",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/Recorder/TransactionID:1450695769",
+      "source_transaction_id": "1450695769",
+      "attom_id": "1728286",
+      "canonical_property_id": null,
+      "source_fips": "06111",
+      "event_type": "NEW_RECORDED_TRANSACTION",
+      "previous_record_fingerprint": null,
+      "current_record_fingerprint": "bd513dc1dce96041a302d43c5b3fd378da0c42973c78dd1590b9b1488efce9c5",
+      "previous_value": null,
+      "current_value": {
+        "recorded_date": "2026-09-28",
+        "publication_date": "2026-10-08"
+      },
+      "evidence_classification": "RECORDED_EVENT",
+      "identity_reconciliation_status": "IDENTITY_PRESENT_NOT_VERIFIED",
+      "geographic_scope_status": "IN_SCOPE",
+      "source_code_status": "CONFIRMED",
+      "raw_event_code_interpreted": false,
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    },
+    {
+      "selection": "corrected_recorder_transaction",
+      "source_system": "ATTOM",
+      "source_dataset": "Recorder",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/Recorder/TransactionID:1435693130",
+      "source_transaction_id": "1435693130",
+      "attom_id": "151909655",
+      "canonical_property_id": null,
+      "source_fips": "12031",
+      "event_type": "RECORDED_TRANSACTION_CORRECTED",
+      "previous_record_fingerprint": "45107010335b46ebab161945cf1352f78e01629ebf9607407adf116245fdf10b",
+      "current_record_fingerprint": "d1307c12e7babab191eb19e166ad8ba58f8b0e730133bc1e93f57bdd80bcfcf4",
+      "previous_value": {
+        "record_fingerprint": "45107010335b46ebab161945cf1352f78e01629ebf9607407adf116245fdf10b"
+      },
+      "current_value": {
+        "record_fingerprint": "d1307c12e7babab191eb19e166ad8ba58f8b0e730133bc1e93f57bdd80bcfcf4"
+      },
+      "full_record_change_verified": true,
+      "changed_field_names_withheld_for_privacy": true,
+      "evidence_classification": "RECORDED_EVENT",
+      "identity_reconciliation_status": "IDENTITY_PRESENT_NOT_VERIFIED",
+      "geographic_scope_status": "IN_SCOPE",
+      "source_code_status": "CONFIRMED",
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    },
+    {
+      "selection": "recorder_attomid_mapping_correction",
+      "source_system": "ATTOM",
+      "source_dataset": "Recorder",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/Recorder/TransactionID:1437310359",
+      "source_transaction_id": "1437310359",
+      "attom_id": null,
+      "canonical_property_id": null,
+      "source_fips": "06111",
+      "event_type": "PROPERTY_IDENTITY_CHANGED",
+      "previous_record_fingerprint": "9cbacac1ca102d2a23dc42e9806dda431c62cf76cda2b5f78406ed93ca733af2",
+      "current_record_fingerprint": "8933c03856a9d3d3eafe26b8ead1f623907662f3f3ba04add82402b2a0da585c",
+      "previous_value": {
+        "attom_id": "1003533044"
+      },
+      "current_value": {
+        "attom_id": "999999999"
+      },
+      "previous_attom_id": "1003533044",
+      "current_attom_id": "999999999",
+      "current_mapping_authoritative_per_vendor_guidance": true,
+      "prior_mapping_retained_in_history": true,
+      "evidence_classification": "RECORDED_EVENT",
+      "identity_reconciliation_status": "CONFLICT",
+      "geographic_scope_status": "IN_SCOPE",
+      "source_code_status": "CONFIRMED",
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    },
+    {
+      "selection": "loan_model_change",
+      "source_system": "ATTOM",
+      "source_dataset": "LoanModel",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/LoanModel/ATTOMID:121133",
+      "source_transaction_id": null,
+      "attom_id": "121133",
+      "canonical_property_id": null,
+      "source_fips": "12031",
+      "event_type": "LOAN_MODEL_CHANGE",
+      "previous_record_fingerprint": "8a920a0a334de9423faa861fd6527c1087b397dd29742e1a4a1fe627adc70e76",
+      "current_record_fingerprint": "832412283e2e5ecbaf8cf245ea127ab8f47bccd7576762dc25db6d4b18fb5aa3",
+      "previous_value": {
+        "first_position_amount": 241544,
+        "second_position_amount": 0,
+        "third_position_amount": 0,
+        "ltv": 103,
+        "available_equity": 0,
+        "lendable_equity": 0
+      },
+      "current_value": {
+        "first_position_amount": 241544,
+        "second_position_amount": 71535,
+        "third_position_amount": 0,
+        "ltv": 103,
+        "available_equity": 0,
+        "lendable_equity": 0
+      },
+      "recorded_payoff_inferred": false,
+      "evidence_classification": "PROVIDER MODEL UPDATE",
+      "identity_reconciliation_status": "IDENTITY_PRESENT_NOT_VERIFIED",
+      "geographic_scope_status": "IN_SCOPE",
+      "source_code_status": "CONFIRMED",
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    },
+    {
+      "selection": "unmatched_recorder_deletes_tombstone",
+      "source_system": "ATTOM",
+      "source_dataset": "RecorderDeletes",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/RecorderDeletes/TransactionID:1422806320",
+      "source_transaction_id": "1422806320",
+      "attom_id": null,
+      "canonical_property_id": null,
+      "source_fips": null,
+      "event_type": "RECORDED_TRANSACTION_INVALIDATED",
+      "previous_record_fingerprint": null,
+      "current_record_fingerprint": "993a9a8fe84f9186945710cc5837eda0ed605bdf6937cb4c5fb13f10f12fde7c",
+      "previous_value": null,
+      "current_value": {
+        "matched_recorder_history": false,
+        "physical_delete": false
+      },
+      "tombstone_semantics_vendor_confirmed": true,
+      "evidence_classification": "UNRESOLVED / REQUIRES REVIEW",
+      "identity_reconciliation_status": "MISSING_IDENTITY",
+      "geographic_scope_status": "UNKNOWN",
+      "source_code_status": "CONFIRMED",
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    },
+    {
+      "selection": "combined_foreclosure_publication_only",
+      "source_system": "ATTOM",
+      "source_dataset": "CombinedForeclosure",
+      "source_delivery_id": "ATTOM-_0002-2026-10-08",
+      "source_evidence_reference": "_0002/CombinedForeclosure/TransactionID:63154921",
+      "source_transaction_id": "63154921",
+      "attom_id": "30786916",
+      "canonical_property_id": null,
+      "source_fips": "12031",
+      "event_type": "COMBINED_FORECLOSURE_REFRESH",
+      "previous_record_fingerprint": "e3491c9313ead2a8679d4712c6abbaf5a4678cc5e2e1181ba84bd38c999b8290",
+      "current_record_fingerprint": "332a2e40a056f8ca2eb35137d0afd0909724c075889b71777fb28cea675d32e4",
+      "previous_value": {
+        "publication_date": "2026-10-07"
+      },
+      "current_value": {
+        "publication_date": "2026-10-08"
+      },
+      "business_fields_unchanged": true,
+      "publication_only": true,
+      "evidence_classification": "RECORDED_EVENT",
+      "identity_reconciliation_status": "IDENTITY_PRESENT_NOT_VERIFIED",
+      "geographic_scope_status": "IN_SCOPE",
+      "source_code_status": "CONFIRMED",
+      "expected_materiality": "UNRESOLVED",
+      "expected_processing_status": "QUARANTINED",
+      "expected_alert": false
+    }
+  ]
+}

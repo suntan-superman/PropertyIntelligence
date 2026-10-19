@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checks": [
+    "Synthetic dashboard summary and property priority rows reconcile; priority order is high then medium/recent; quarantines excluded.",
+    "1366px desktop, 768px tablet, and 390px mobile screenshots captured; no horizontal overflow.",
+    "Priority, event type, source, date, and alert-status filters work; detail is plain language with expandable source provenance.",
+    "Property selection updates detail/history; local acknowledgment is read-state only; replay creates no duplicate events/alerts; diagnostics expand.",
+    "Certified ATTOM evidence mode reports seven source/monitoring events and zero alerts without loading source rows as properties or mixing synthetic properties.",
+    "No console errors, external/provider calls, or PI API/database reads."
+  ],
+  "screenshots": [
+    "screenshots/monitoring-v1-1-desktop-1366.png",
+    "screenshots/monitoring-v1-1-tablet-768.png",
+    "screenshots/monitoring-v1-1-mobile-390.png"
+  ],
+  "browserErrors": [],
+  "externalRequests": 0,
+  "apiRequests": 0,
+  "providerCalls": 0,
+  "databaseWrites": 0,
+  "notificationsSent": 0,
+  "deployments": 0,
+  "viewportWidths": [
+    1366,
+    768,
+    390
+  ]
+}

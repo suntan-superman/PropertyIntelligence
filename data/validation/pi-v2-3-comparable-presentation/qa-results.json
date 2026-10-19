@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "at": "2026-10-18T16:56:41.210Z",
+  "checks": [
+    "address is the primary comparable row control",
+    "suggested comparable columns are present",
+    "raw references are hidden in the normal collapsed view",
+    "desktop view has no document-level horizontal overflow",
+    "Source Details opens from the keyboard",
+    "raw audit reference appears only after Source Details opens",
+    "inclusion persists after saved revision reload",
+    "analyst notes persist after saved revision reload",
+    "same scenario remains selected after reload",
+    "listing table is address-first and hides raw references by default",
+    "listing desktop view has no document-level horizontal overflow",
+    "browser runtime has no errors",
+    "no provider or other external requests were completed"
+  ],
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3-comparable-presentation\\01-address-first-comparables.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3-comparable-presentation\\02-source-details-open.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3-comparable-presentation\\03-listings-cleanup.png"
+  ],
+  "providerCalls": 0,
+  "databaseWrites": 0,
+  "externalRequests": [],
+  "browserErrors": []
+}

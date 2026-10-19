@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "node": "v22.12.0",
+  "projectId": "property-intelligence-8238b",
+  "organizationId": "property-intelligence-local",
+  "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+  "address": "400 Decatur St, Bakersfield, CA 93308",
+  "scenarioId": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+  "evidenceSnapshotId": "3630507840c38236a84bd1c30c93adcccc52db72bc94a197343c6566c62f8e71",
+  "firestoreWrites": 0,
+  "providerRequests": 0,
+  "crossSessionRestoration": true,
+  "firestoreStateUnchanged": true,
+  "screenshots": [
+    "01-live-authenticated-saved-property.png",
+    "02-live-linked-analysis.png",
+    "03-live-cross-session-restoration.png"
+  ]
+}

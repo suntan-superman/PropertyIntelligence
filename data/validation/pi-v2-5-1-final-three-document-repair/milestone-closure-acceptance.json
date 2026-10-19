@@ -1,0 +1,146 @@
+{
+  "status": "PASS",
+  "classification": "PI V2.5.1 ACCEPTED FOR PRIVATE DEVELOPMENT",
+  "completedAt": "2026-10-19T16:37:29.566Z",
+  "repair": {
+    "firestoreWritesThisRun": 0,
+    "repeated": false,
+    "existingRepairVerified": true
+  },
+  "report": {
+    "id": "6f7b1d62-0e91-4da1-9e31-250101000202",
+    "firestorePath": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/reportRevisions/6f7b1d62-0e91-4da1-9e31-250101000202",
+    "path": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\QA_NOT_FOR_DISTRIBUTION_400_Decatur_St_Bakersfield_CA_93308_Full_Investor_Package_2026-10-19_R1.pdf",
+    "filename": "QA_NOT_FOR_DISTRIBUTION_400_Decatur_St_Bakersfield_CA_93308_Full_Investor_Package_2026-10-19_R1.pdf",
+    "sha256": "be92285e120555227e47934119684f4264ffa0cbacde44a7dbbd0042fe389c0f",
+    "pageCount": 25,
+    "indexPage": 16,
+    "coverPages": [
+      17,
+      20,
+      23
+    ],
+    "sourcePages": [
+      18,
+      19,
+      21,
+      22,
+      24,
+      25
+    ],
+    "pageNumberingVerified": true,
+    "qaLabelEveryPage": true,
+    "updatedDisclaimerPresent": true,
+    "noDuplicateAppendices": true,
+    "authorizedAppendixCount": 3,
+    "screenshots": [
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-index.png",
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-1-provenance-cover.png",
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-2-provenance-cover.png",
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-3-provenance-cover.png",
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-1-synthetic-document.png",
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-2-synthetic-document.png",
+      "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-3-synthetic-document.png"
+    ]
+  },
+  "register": {
+    "screenshot": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\document-register-report-only.png",
+    "documentCount": 4,
+    "authorizedDocumentsVisible": 3,
+    "preservedFourthDocumentVisibleAndBlocked": true
+  },
+  "scenario": {
+    "id": "6f7b1d62-0e91-4da1-9e31-250101000101",
+    "revision": 1,
+    "associations": 5,
+    "financialAndMonteCarloInvariant": true,
+    "sourceProjectionHash": "e1f16939009b7e8af6d75df6b83022cee4dd7615f190c602b33a98e1f3e98cc8",
+    "qaProjectionHash": "e1f16939009b7e8af6d75df6b83022cee4dd7615f190c602b33a98e1f3e98cc8"
+  },
+  "resourceUsage": {
+    "repairFirestoreWrites": 0,
+    "reportFirestoreWrites": 5,
+    "totalFirestoreWrites": 5,
+    "storageReads": [
+      {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000001/versions/1/a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a.pdf",
+        "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a",
+        "sizeBytes": 3975
+      },
+      {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000003/versions/1/775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0.pdf",
+        "sha256": "775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0",
+        "sizeBytes": 3906
+      },
+      {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000002/versions/1/60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c.pdf",
+        "sha256": "60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c",
+        "sizeBytes": 3851
+      }
+    ],
+    "reports": 1,
+    "uploads": 0,
+    "scannerInvocations": 0,
+    "providerRequests": 0,
+    "automaticRetries": 0,
+    "scenarioSaves": 0,
+    "metadataRepairs": 0,
+    "reportAuditEvents": 3,
+    "transactions": [
+      [
+        {
+          "operation": "create",
+          "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/reportRevisions/6f7b1d62-0e91-4da1-9e31-250101000202"
+        },
+        {
+          "operation": "update",
+          "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9"
+        }
+      ]
+    ],
+    "reportAudits": [
+      {
+        "path": "organizations/property-intelligence-local/documentAuditEvents/vghU1i5iBYIqPKCG44q6",
+        "action": "DOCUMENT_INCLUDED_IN_REPORT",
+        "documentId": "6f7b1d62-0e91-4da1-9e31-250101000003"
+      },
+      {
+        "path": "organizations/property-intelligence-local/documentAuditEvents/LylWFXLfrREhtoDYR5th",
+        "action": "DOCUMENT_INCLUDED_IN_REPORT",
+        "documentId": "6f7b1d62-0e91-4da1-9e31-250101000001"
+      },
+      {
+        "path": "organizations/property-intelligence-local/documentAuditEvents/XS40D0g6TMRXACQs2O0B",
+        "action": "DOCUMENT_INCLUDED_IN_REPORT",
+        "documentId": "6f7b1d62-0e91-4da1-9e31-250101000002"
+      }
+    ]
+  },
+  "integrity": {
+    "evidenceSnapshotsUnchanged": true,
+    "scenarioRevisionsUnchanged": true,
+    "parentDocumentRecordsUnchanged": true,
+    "authorizedVersionIdentitiesAndHashesUnchanged": true,
+    "preservedFourthDocumentUnchanged": true,
+    "historicalReportsUnchanged": true,
+    "storageObjectsUnchanged": true,
+    "otherPropertiesUnchanged": true,
+    "newUploads": 0,
+    "newScans": 0,
+    "metadataRepairs": 0,
+    "scenarioSaves": 0,
+    "providerRequests": 0,
+    "automaticRetries": 0
+  },
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\document-register-report-only.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-index.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-1-provenance-cover.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-2-provenance-cover.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-3-provenance-cover.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-1-synthetic-document.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-2-synthetic-document.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-final-three-document-repair\\appendix-3-synthetic-document.png"
+  ],
+  "recommendation": "ACCEPTED_FOR_PRIVATE_DEVELOPMENT"
+}

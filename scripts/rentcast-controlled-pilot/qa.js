@@ -1,0 +1,16 @@
+import '../../src/analysis/offline.js';
+import {spawnSync} from 'node:child_process';
+import {ROOT,saveNew,check} from './core.js';
+import {readJson,verifyProtection} from './local.js';
+import {fileHash} from '../sprint6_2/io.js';
+const files=['scripts/rentcast-controlled-pilot/pilot.test.js','tests/foundation.test.js','scripts/mls-validation-round1/harness.test.js','scripts/identity-resolution-pilot/pilot.test.js','scripts/identity-resolution-pilot/review.test.js'];
+const suffix=process.argv.includes('--post')?'post':'pre';
+const run=spawnSync(process.execPath,['--import','./src/analysis/offline.js','--test','--test-reporter=tap',...files],{encoding:'utf8',timeout:180000,maxBuffer:16*1024*1024});
+const output=(run.stdout??'')+(run.stderr??'');
+const count=key=>Number(new RegExp(`^# ${key} (\\d+)$`,'m').exec(output)?.[1]??NaN);
+const sourceHashes={};for(const path of ['core.js','local.js','prepare.js','run.js','pilot.test.js','qa.js'].map(n=>`scripts/rentcast-controlled-pilot/${n}`).concat(`${ROOT}/vendor-confirmation-2026-10-09.json`))sourceHashes[path]=await fileHash(path);
+const report={recordedAt:new Date().toISOString(),runtime:process.version,exitCode:run.status,tests:count('tests'),passed:count('pass'),failed:count('fail'),skipped:count('skipped'),files,sourceHashes,protection:await verifyProtection(await readJson(`${ROOT}/protected-before.json`)),network:'Existing offline guard preloaded in every test process',output};
+await saveNew(`${ROOT}/qa/${suffix}-${Date.now()}.json`,report);
+console.log(JSON.stringify({...report,sourceHashes:undefined,output:undefined}));
+check(run.status===0&&report.tests>0&&report.passed===report.tests&&report.failed===0&&report.skipped===0,'OFFLINE_QA_FAILED');
+if(suffix==='pre')await saveNew(`${ROOT}/offline-qa.json`,{...report,output:undefined});

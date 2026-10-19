@@ -3,6 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {fileHash} from '../sprint6_2/io.js';
+import {verifyCurrentProtectedBaseline} from '../protected-baselines-v3/verify.js';
 const sql=await readFile('netlify/database/migrations/004_kern_assessor_opportunity_enrichment.sql','utf8');
 test('004 is additive and never writes existing candidates or rewrites previous migrations',()=>{
   assert.equal((sql.match(/CREATE TABLE /g)??[]).length,2);
@@ -27,8 +28,7 @@ test('no owner/contact/geometry payload columns and public data API denied',()=>
   assert.equal((sql.match(/ENABLE ROW LEVEL SECURITY/g)??[]).length,2);
   assert.match(sql,/REVOKE ALL ON opportunity_assessor_import_batches, opportunity_assessor_enrichments FROM PUBLIC/);
 });
-test('protected pre-work baseline unchanged except four explicitly scoped integration files',async()=>{
-  const b=JSON.parse(await readFile('data/runtime/sprint6_3/baseline.json'));
-  const scoped=new Set(['package.json','src/workbench/api/router.js','apps/web/src/app/App.jsx','apps/web/src/features/opportunities/Opportunities.jsx']);
-  for(const f of b.files)if(!scoped.has(f.path))assert.equal(await fileHash(f.path),f.sha256,f.path);
+test('historical pre-work baseline remains intact; current immutable files retain exact hashes',async()=>{
+  const b=await verifyCurrentProtectedBaseline({file:'config/protected-baselines/sprint6_3-current-v3.json',sourceHash:'eefc99778702317f8da83d93ef3f80aa3a8abd73eac3f5dab04725af092160d3',historicalFileCount:592,protectedFileCount:566});
+  assert.ok(b.reconciled.length>=14);
 });

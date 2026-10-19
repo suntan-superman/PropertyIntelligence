@@ -29,3 +29,6 @@ The command performs sequential, read-only metadata requests. It writes a failur
 
 Start with npm run web:dev, 
 then open http://127.0.0.1:4173.
+
+
+npm run pi:local

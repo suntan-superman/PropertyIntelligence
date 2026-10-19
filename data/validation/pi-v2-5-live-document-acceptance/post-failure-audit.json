@@ -1,0 +1,155 @@
+{
+  "status": "PARTIAL_ACCEPTANCE_AUDIT",
+  "at": "2026-10-19T03:08:46.308Z",
+  "projectId": "property-intelligence-8238b",
+  "administrator": {
+    "uid": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+    "emailVerified": true,
+    "role": "Administrator",
+    "organizationId": "property-intelligence-local"
+  },
+  "property": {
+    "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "id": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "address": "400 Decatur St, Bakersfield, CA 93308",
+    "dataHash": "4c3a7b720ce38c56610d89eca7f2ab65b02c6fa4dfa1da4ccda4d1d24f615b88",
+    "createdAt": "2026-10-18T20:09:45.229Z",
+    "updatedAt": "2026-10-19T03:08:25.583Z",
+    "lastEditedBy": "d2NTUCs0lGe6C64pDnRGtgTXm0O2"
+  },
+  "evidence": {
+    "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/evidenceSnapshots/224580d33d1b4dc96f32959bf03c7644d911360c519250c1732c17e33b5422b2",
+    "dataHash": "0a6292b84385502e80e1a739d12aaa47a394f4446db6f4c867f447002077638e",
+    "unchanged": true
+  },
+  "scenario": {
+    "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/scenarioRevisions/2908abf4-03a2-4d3c-931f-f61b5e9900c2--r1",
+    "dataHash": "90d9329b881b5f9945d1f9291efec0489915fef1f8c2c3d11734da771603f887",
+    "unchanged": true,
+    "scenarioPayloadHash": "3ec5bf373dd688148b1400486cb41ccb12d601b944bcaa1e01718215fc7ff8b4",
+    "id": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+    "name": "Scenario 1",
+    "propertyRef": "RESEARCH-EB66B8421C47",
+    "revision": 1,
+    "evidenceFingerprint": "3630507840c38236a84bd1c30c93adcccc52db72bc94a197343c6566c62f8e71",
+    "hasAnalysis": true
+  },
+  "documents": [
+    {
+      "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "id": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "organizationId": "property-intelligence-local",
+      "documentType": "OTHER",
+      "description": "PI V2.5 document acceptance test",
+      "source": "Property Intelligence synthetic QA",
+      "sourceDate": "2026-10-18",
+      "reviewStatus": "REVIEWED",
+      "redistributionPermission": "APPROVED",
+      "appendixSelected": true,
+      "currentVersion": 1,
+      "uploadedAt": "2026-10-19T02:05:55.817Z",
+      "reviewedAt": "2026-10-19T02:05:57.885Z",
+      "reviewedBy": "d2NTUCs0lGe6C64pDnRGtgTXm0O2"
+    }
+  ],
+  "versions": [
+    {
+      "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/253ed077-bfd7-49a0-a71a-2cfe75271a0a/versions/v000001",
+      "version": 1,
+      "filename": "PI_V2_5_DOCUMENT_ACCEPTANCE_TEST.pdf",
+      "mimeType": "application/pdf",
+      "sizeBytes": 1504,
+      "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897",
+      "scanStatus": "CLEAN",
+      "scanEngine": "ClamAV",
+      "scanEngineVersion": "1.4.3",
+      "scanSignatureVersion": "28157",
+      "scanSignatureUpdatedAt": "2026-10-18T06:24:14.000Z",
+      "scannedAt": "2026-10-19T02:05:55.366Z",
+      "storageKey": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/253ed077-bfd7-49a0-a71a-2cfe75271a0a/versions/1/a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897.pdf"
+    }
+  ],
+  "hashReservations": [
+    {
+      "path": "organizations/property-intelligence-local/documentHashes/a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897",
+      "organizationId": "property-intelligence-local",
+      "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+      "documentId": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "version": 1,
+      "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897",
+      "createdAt": "2026-10-19T02:05:55.817Z"
+    }
+  ],
+  "audits": [
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/uQA0PMXrfy0HD2kSjQMs",
+      "action": "DOCUMENT_UPLOADED",
+      "at": "2026-10-19T02:05:56.436Z",
+      "documentId": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897"
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/CmD9QcJT3KH3Z9iEJ5BP",
+      "action": "DOCUMENT_METADATA_UPDATED",
+      "at": "2026-10-19T02:05:58.315Z",
+      "documentId": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "version": null,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "sha256": null
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/RhwaYu6sC7bsRGQztnF9",
+      "action": "DOCUMENT_DOWNLOADED",
+      "at": "2026-10-19T02:06:00.756Z",
+      "documentId": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "sha256": null
+    },
+    {
+      "path": "organizations/property-intelligence-local/documentAuditEvents/FxM8l8eVRupojabYQQV5",
+      "action": "DOCUMENT_INCLUDED_IN_REPORT",
+      "at": "2026-10-19T03:08:25.202Z",
+      "documentId": "253ed077-bfd7-49a0-a71a-2cfe75271a0a",
+      "version": 1,
+      "userId": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+      "sha256": null
+    }
+  ],
+  "reports": [
+    "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/reportRevisions/a79f7dce-df72-4e15-ae88-e86008c4f8d5"
+  ],
+  "storageObjects": [
+    {
+      "name": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/253ed077-bfd7-49a0-a71a-2cfe75271a0a/versions/1/a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897.pdf",
+      "size": 1504,
+      "generation": "1792375555581290",
+      "created": "2026-10-19T02:05:55.587Z",
+      "updated": "2026-10-19T02:05:55.587Z",
+      "contentType": "application/pdf",
+      "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897",
+      "cacheControl": "private, no-store, max-age=0"
+    }
+  ],
+  "reportDiagnostic": {
+    "valid": false,
+    "propertyFound": false,
+    "name": "Error",
+    "message": "Choose a valid property and scenario name.",
+    "errors": null
+  },
+  "derivedLiveWrites": {
+    "uploadTransaction": 4,
+    "uploadAudit": 1,
+    "reviewTransaction": 2,
+    "reviewAudit": 1,
+    "downloadAudit": 1,
+    "total": 9
+  },
+  "providerRequests": 0,
+  "cleanupPerformed": false,
+  "retryPerformed": false
+}

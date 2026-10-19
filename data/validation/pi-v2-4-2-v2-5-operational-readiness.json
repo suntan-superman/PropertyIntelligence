@@ -1,0 +1,46 @@
+{
+  "status": "PASS_WITH_LIVE_STORAGE_BLOCKED",
+  "date": "2026-10-18",
+  "node": "v22.12.0",
+  "projectId": "property-intelligence-8238b",
+  "firestore": {
+    "database": "(default)",
+    "location": "us-west2",
+    "mode": "FIRESTORE_NATIVE",
+    "clientRulesDenyAll": true,
+    "operationalQaWrites": 0
+  },
+  "authentication": {
+    "administratorUid": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+    "administratorEnabled": true,
+    "administratorEmailVerified": false,
+    "administratorRolePreserved": true,
+    "explicitOrganizationId": "property-intelligence-local",
+    "organizationFallbackRemoved": true,
+    "tokensRevokedAfterClaimUpdate": true
+  },
+  "decatur": {
+    "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "evidenceSnapshotId": "3630507840c38236a84bd1c30c93adcccc52db72bc94a197343c6566c62f8e71",
+    "scenarioId": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+    "scenarioRevision": 1,
+    "crossSessionRestoration": true,
+    "duplicateCreated": false
+  },
+  "v25": {
+    "storageBucketCount": 0,
+    "cloudRunServiceCount": 0,
+    "liveUploads": 0,
+    "liveFirestoreWrites": 0,
+    "providerCalls": 0,
+    "supportingDocumentTests": "48/48",
+    "browserPdfChecks": "17/17",
+    "financialReportRegressions": "149/149",
+    "dependencyVulnerabilities": 0
+  },
+  "decision": {
+    "v242LocalPersistence": "GO",
+    "v25Application": "GO",
+    "v25LiveInfrastructure": "NO_GO_PENDING_APPROVAL_AND_EMAIL_VERIFICATION"
+  }
+}

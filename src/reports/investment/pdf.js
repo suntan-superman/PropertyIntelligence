@@ -1,12 +1,12 @@
-import {browser} from '../pdf.js';
+import {pdfBrowser} from '../pdf.js';
 import {investmentHtml} from './html.js';
 
 export async function renderInvestmentPdf(model){
-  const started=Date.now();const instance=await browser();
+  const started=Date.now();const instance=await pdfBrowser();
   const timer=setTimeout(()=>instance.close().catch(()=>{}),30000);
   try{
-    const context=await instance.newContext({javaScriptEnabled:false});const page=await context.newPage();
-    await page.route('**/*',route=>route.abort());await page.setContent(investmentHtml(model),{waitUntil:'load',timeout:10000});
+    const page=await instance.newPage();await page.setJavaScriptEnabled(false);await page.setRequestInterception(true);page.on('request',request=>request.abort());
+    await page.setContent(investmentHtml(model),{waitUntil:'load',timeout:10000});
     const layout=await page.evaluate(({address,date})=>{
       const source=document.querySelector('#source'),sections=[...source.children];let content,pageNode;const pages=[];
       const makePage=()=>{if(pages.length>=200)throw new Error('REPORT_PAGE_LIMIT');pageNode=document.createElement('div');pageNode.className='page';const header=document.createElement('header');header.textContent=`PROPERTY INTELLIGENCE · ${address.slice(0,85)}`;content=document.createElement('div');content.className='content';const footer=document.createElement('footer');footer.textContent=date;pageNode.append(header,content,footer);document.body.append(pageNode);pages.push(pageNode);};
@@ -40,7 +40,7 @@ export async function renderInvestmentPdf(model){
       return {pages:pages.length,overflow:pages.some(p=>p.querySelector('.content').scrollHeight>p.querySelector('.content').clientHeight)};
     },{address:model.property.address??'Address not supplied',date:model.reportMeta.generatedAt.slice(0,10)});
     if(layout.overflow)throw new Error('REPORT_LAYOUT_STOP');
-    const bytes=await page.pdf({format:'Letter',printBackground:true,preferCSSPageSize:true,margin:{top:0,bottom:0,left:0,right:0},timeout:15000});
+    const bytes=await page.pdf({format:'Letter',printBackground:true,preferCSSPageSize:true,margin:{top:0,bottom:0,left:0,right:0}});
     if(bytes.length>20_000_000)throw new Error('REPORT_SIZE_LIMIT');
     return {bytes,pages:layout.pages,renderMs:Date.now()-started,byteLength:bytes.length};
   }finally{clearTimeout(timer);await instance.close();}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": 13,
+  "firebasePasswordOperations": 1,
+  "additionalReauthentications": 0,
+  "providerRequests": 5,
+  "providerRetries": 0,
+  "estimatedSpendingCents": 100,
+  "durablePropertiesCreated": 0,
+  "dailyConfiguredRequestLimit": 20,
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3b-research\\01-arosa-sold-research-ready.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3b-research\\02-arosa-sold-research-complete.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3b-research\\03-new-property-unified-research.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3b-research\\04-new-property-guided-handoff.png"
+  ],
+  "externalRequests": 0,
+  "browserErrors": 0
+}

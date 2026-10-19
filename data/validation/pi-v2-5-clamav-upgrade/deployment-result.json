@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-10-19T03:30:19.013Z",
+  "projectId": "property-intelligence-8238b",
+  "region": "us-west2",
+  "service": "pi-malware-scanner",
+  "previousRevision": "pi-malware-scanner-00010-nf7",
+  "revision": "pi-malware-scanner-00013-jop",
+  "trafficPercent": 100,
+  "engine": "ClamAV",
+  "engineVersion": "1.4.6",
+  "signatureVersion": "28157",
+  "signatureUpdatedAt": "2026-10-18T06:24:14.000Z",
+  "image": {
+    "tag": "2026-10-18-clamav-1-4-6",
+    "digest": "sha256:a0de0132a1bb2b868350a00fff603f64bca67ae2f734b7af53892cd2a85e2d97",
+    "sizeBytes": 345739564,
+    "buildId": "8d10e162-e52b-4ae7-940a-7261f1715d38",
+    "buildDurationSeconds": 63
+  },
+  "runtime": {
+    "authentication": "required",
+    "invoker": "firebase-adminsdk-fbsvc@property-intelligence-8238b.iam.gserviceaccount.com",
+    "serviceAccount": "pi-malware-scanner@property-intelligence-8238b.iam.gserviceaccount.com",
+    "minimumInstances": 0,
+    "maximumInstances": 1,
+    "concurrency": 1,
+    "timeoutSeconds": 60,
+    "cpu": 1,
+    "memory": "2Gi"
+  },
+  "verification": {
+    "authenticatedHealth": "PASS",
+    "unauthenticatedStatus": 403,
+    "signatureUpdate": "PASS",
+    "harmlessResult": "CLEAN",
+    "harmlessSha256": "eaf0fd2f6582d24e0d419c748a6cd5d3d5deb63a1cefbf3c1577962799f85cea",
+    "eicarResult": "INFECTED",
+    "eicarSha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+    "invalidHashStatus": 422,
+    "failureProducedClean": false,
+    "staleSignaturesFailClosed": true,
+    "documentSecurityTests": "51/51 PASS",
+    "dataInvariance": "PASS"
+  },
+  "piDataOperations": {
+    "propertyDocumentUploads": 0,
+    "firestoreWrites": 0,
+    "storageObjectWrites": 0,
+    "providerRequests": 0,
+    "financialCalculationChanges": 0
+  },
+  "rollbackRevision": "pi-malware-scanner-00010-nf7"
+}

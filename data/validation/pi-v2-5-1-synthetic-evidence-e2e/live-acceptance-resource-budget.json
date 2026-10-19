@@ -1,0 +1,30 @@
+{
+  "status": "PROPOSED_NOT_EXECUTED",
+  "approvalRequired": true,
+  "documents": [
+    "03-lender-payoff-statement.pdf",
+    "05-contractor-rehabilitation-estimate.pdf",
+    "08-comparable-sales-valuation-analysis.pdf"
+  ],
+  "maximums": {
+    "newUploads": 3,
+    "storageObjects": 3,
+    "storageWrites": 3,
+    "scannerInvocations": 3,
+    "integrityVerificationReads": 3,
+    "authenticatedPreviewReads": 1,
+    "reportAssemblyReads": 3,
+    "totalStorageReads": 7,
+    "firestoreWrites": 35,
+    "documentAuditEvents": 13,
+    "newQaScenarioRevisions": 1,
+    "qaReportGenerations": 1,
+    "providerRequests": 0,
+    "automaticRetries": 0
+  },
+  "notes": [
+    "Integrity-verification reads and report-assembly reads are budgeted separately.",
+    "Stop before live upload until this plan is explicitly approved.",
+    "Existing Decatur evidence, scenario revisions, and report history remain immutable."
+  ]
+}

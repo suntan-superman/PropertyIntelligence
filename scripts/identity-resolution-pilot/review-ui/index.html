@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PI · Private identity review</title><link rel="stylesheet" href="/review.css"><link rel="stylesheet" href="/suggestion.css"><link rel="stylesheet" href="/streamlined.css"><script src="/review.js" defer></script></head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">PI</span><div>Property Intelligence<small>Identity resolution pilot</small></div></div><span class="local-badge">LOCAL REVIEW ONLY</span></header>
+<main>
+  <section id="login" class="login card">
+    <p class="eyebrow">PRIVATE ANALYST WORKSPACE</p><h1>Review evidence.<br>Confirm identity.</h1>
+    <p>Enter the access code shown in the local server terminal. This interface records analyst decisions only. It cannot create a Property.</p>
+    <form id="login-form"><label for="access-code">Local access code</label><input id="access-code" type="password" autocomplete="off" spellcheck="false" required><button type="submit">Open private review</button></form>
+    <p id="login-error" class="error" role="alert"></p><small>Access is limited to this computer and the authorized reviewer. Do not share the code or use a tunnel.</small>
+  </section>
+  <div id="workspace" hidden>
+    <section class="intro"><div><p class="eyebrow">THREE-PROPERTY TECHNICAL PILOT</p><h1>Canonical identity review</h1><p>Evidence first. No provider lookups, database writes, or Property creation.</p></div><button id="lock" class="secondary" type="button">Lock review</button></section>
+    <nav id="pilot-nav" aria-label="Pilot candidates"></nav>
+    <div id="navigation-warning" class="notice" hidden>There are unsaved edits. Save your decision or <button id="discard" type="button" class="text-button">discard edits and continue</button>.</div>
+    <div id="page-message" role="status" aria-live="polite"></div>
+    <section id="review-content" hidden>
+      <p id="synthetic-banner" class="notice" hidden>SYNTHETIC QA ONLY — not an actual property, provider result or analyst decision.</p>
+      <div id="stale-warning" class="notice danger" role="alert" hidden>The packet has changed since the saved decision. Its prior decision is invalid for this packet. Review the evidence again; no approval carries forward.</div>
+      <div class="review-grid">
+        <aside class="evidence-column">
+          <section class="card evidence"><div class="section-heading"><h2 id="packet-title">Source packet</h2><span class="tag">COUNTY EVIDENCE</span></div>
+            <dl id="identity-facts" class="facts"></dl>
+            <div class="situs"><p class="eyebrow">RAW ASSESSOR SITUS</p><p id="raw-situs"></p><small>Read-only county evidence. Not postal validation.</small></div>
+            <dl id="classification-facts" class="facts"></dl>
+            <div class="notice" id="missing-components"></div>
+            <h3>Evidence dates</h3><dl id="source-dates" class="facts"></dl>
+            <details><summary>Packet integrity &amp; canonical status</summary><dl id="integrity-facts" class="facts"></dl></details>
+          </section>
+          <section class="card warning-card" id="acreage-card" hidden><p class="eyebrow">COUNTY QUALITY REVIEW</p><h2>Acreage discrepancy</h2><p>The county record carries <code>ACREAGE_DELTA_GT_0_01</code>. Review and acknowledge this issue. It does not automatically disqualify the property.</p></section>
+          <section class="card quiet"><h3>Review boundary</h3><p>Street and city are unverified county prefill. Supply evidence for every confirmed component. State and ZIP are never inferred.</p><p>Keep owner names and contact information out of notes. References are text only; this interface never opens them or calls a provider.</p></section>
+        </aside>
+        <section class="card form-card">
+          <div class="section-heading"><div><p class="eyebrow">ANALYST CONFIRMATION</p><h2>Address &amp; evidence</h2></div><span id="saved-status" class="tag">NOT REVIEWED</span></div>
+          <p class="muted">Formatting is checked by PI's existing canonical validator. Only your evidence review can establish that these components belong to this county identity.</p>
+          <section id="review-assessment" class="tier-card" aria-live="polite">
+            <div class="section-heading"><h3 id="review-tier">Evidence assessment</h3><span class="tag">NOT AN APPROVAL</span></div>
+            <p id="tier-address" class="suggested-address"></p><small id="tier-attribution" hidden>Google Maps · Temporary suggestion</small>
+            <p id="tier-identity"></p><ul id="tier-reasons"></ul><p id="tier-action"></p>
+            <p class="small muted">County relationships are as-of the existing source snapshot, not a fresh database check. Geocoding does not verify parcel identity. Shared Google retention is not authorized.</p>
+          </section>
+          <details id="supporting-review"><summary>View supporting evidence</summary>
+          <section id="google-suggestion" class="suggestion" aria-labelledby="suggestion-title">
+            <div class="section-heading"><h3 id="suggestion-title">Suggested Address — Google Geocoding</h3><span class="google-attribution">Google Maps</span></div>
+            <p id="suggestion-unavailable" class="muted">Previous address suggestion unavailable. New verification requires separate authorization.</p>
+            <div id="suggestion-content" hidden>
+              <p class="eyebrow">PROPOSAL ONLY · NOT ANALYST-VERIFIED</p><p id="suggestion-address" class="suggested-address"></p>
+              <dl id="suggestion-facts" class="facts"></dl>
+              <p class="suggestion-notice">Google address matching does not verify county parcel identity.</p>
+              <p id="suggestion-limitations" class="small muted"></p>
+              <div class="suggestion-actions"><button id="use-suggestion" class="secondary" type="button">Use suggested components</button><button id="review-differences" class="text-button" type="button">Review differences</button><button id="suggestion-needs-evidence" class="text-button" type="button">Needs more evidence</button></div>
+              <section id="suggestion-differences" tabindex="-1" hidden><h4>Compare with county evidence</h4><p id="suggestion-suffix" class="notice" hidden>County suffix: CI<br>Suggested suffix: Circle/Cir<br>Suffix equivalence is unresolved. Do not normalize or approve automatically.</p><div id="suggestion-difference-list"></div></section>
+            </div>
+            <div class="future-verify"><button id="verify-address" type="button" disabled aria-describedby="verify-disabled-reason">Verify Address</button><small id="verify-disabled-reason">Disabled. A new request requires separate authorization; no replacement lookup will occur.</small></div>
+          </section>
+          <section id="assembled-evidence"><h3>Source-specific component references</h3><div id="assembled-reference-list"></div><p class="small muted">References identify existing records; they are not independent verification or permission for permanent retention.</p></section>
+          </details>
+          <section id="decision-audit" class="audit-summary" hidden><h3>Historical decision audit</h3><p id="audit-state"></p><ul id="audit-entries"></ul><p class="small muted">Historical decisions are preserved. Availability, reuse permission and current effectiveness are separate; no canonical identity is created here.</p></section>
+          <form id="decision-form" novalidate>
+            <section id="routine-controls" hidden>
+              <label class="check attest"><input id="routine-evidence-ack" type="checkbox"><span>I reviewed the displayed address and supporting sources for all four components. I confirm their evidence supports this county identity and no material discrepancy remains. This does not grant permanent Google retention.</span></label>
+              <label for="routine-notes">Review notes <span class="required">Optional for confirmation; required for Needs more evidence or Reject.</span></label><textarea id="routine-notes" rows="2" maxlength="4000" placeholder="Record additional rationale or an unresolved issue."></textarea>
+              <button id="use-detailed-review" class="text-button" type="button">Use detailed component controls instead</button>
+            </section>
+            <details id="detailed-review" open><summary>Detailed component review</summary>
+            <div id="component-fields"></div>
+            <label for="address-change-notes">If street or city differs from the county prefill, explain why</label><textarea id="address-change-notes" rows="2" maxlength="2000" placeholder="Describe the discrepancy and the source supporting the correction."></textarea>
+            <fieldset class="review-section"><legend>Evidence assessment</legend>
+              <label for="contradiction-status">Unresolved identity or address contradictions</label><select id="contradiction-status"><option value="NOT_REVIEWED">Not yet assessed</option><option value="NONE_REMAINING">I reviewed the evidence; none remain</option><option value="UNRESOLVED">Contradictory evidence remains</option></select>
+              <label for="supporting-evidence">Supporting evidence references <span class="required">Required for every decision</span></label><textarea id="supporting-evidence" rows="2" maxlength="3000" placeholder="Document title, date, page or record reference. For incomplete reviews, identify the evidence reviewed and remaining gaps."></textarea>
+              <label for="review-notes">Review notes <span class="required">Required</span></label><textarea id="review-notes" rows="3" maxlength="4000" placeholder="Explain your decision. Do not include owner or contact information."></textarea>
+            </fieldset>
+            <fieldset id="acreage-review" class="review-section acreage" hidden><legend>Acreage-review acknowledgment</legend><label class="check"><input id="acreage-ack" type="checkbox"><span>I reviewed the county acreage-discrepancy flag.</span></label><label for="acreage-notes">Acreage review notes <span class="required">Required</span></label><textarea id="acreage-notes" rows="2" maxlength="2000" placeholder="Document the issue, what was reviewed, and any outstanding uncertainty."></textarea></fieldset>
+            </details>
+            <fieldset class="review-section"><legend>Record your decision</legend>
+              <div class="two-columns"><div><label for="reviewer">Authorized reviewer</label><input id="reviewer" readonly autocomplete="off"></div><div><label for="decision">Decision</label><select id="decision"><option value="">Select a decision</option><option value="APPROVED">Approved</option><option value="NEEDS_MORE_EVIDENCE">Needs more evidence</option><option value="REJECTED">Rejected</option></select></div></div>
+              <p class="muted small">Approval requires all four components, evidence references and explicit verification, with no unresolved contradictions. An incomplete address can be recorded as Needs more evidence or Rejected; it is not a confirmed canonical address.</p>
+              <label class="check attest"><input id="reviewer-ack" type="checkbox"><span>I am the named authorized reviewer. I personally reviewed this packet and the supporting evidence and intend to record this decision.</span></label>
+              <p class="small muted">The review timestamp is captured in UTC when you save. The decision is bound to the packet fingerprint shown in Source packet.</p>
+            </fieldset>
+            <section id="validation-results" aria-live="polite"></section>
+            <div class="form-actions"><button id="validate" class="secondary" type="button">Validate without saving</button><button id="save" type="submit">Save local decision</button></div>
+            <p class="save-boundary">Saves only the private local decision artifact. No canonical resolution, Property, or database record is created.</p>
+            <p id="save-confirmation" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+  </div>
+</main><footer>Workside Software · Private technical review · Round 1 remains PRE_EXECUTION</footer>
+</body></html>

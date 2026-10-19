@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-19T03:30:19.013Z",
+  "endpoint": "https://pi-malware-scanner-a4kl4h4uzq-wl.a.run.app",
+  "engine": "ClamAV",
+  "engineVersion": "1.4.6",
+  "signatureVersion": "28157",
+  "signatureUpdatedAt": "2026-10-18T06:24:14.000Z",
+  "signatureAgeHours": 21.101,
+  "unauthenticatedStatus": 403,
+  "clean": {
+    "status": 200,
+    "result": "CLEAN",
+    "sha256": "eaf0fd2f6582d24e0d419c748a6cd5d3d5deb63a1cefbf3c1577962799f85cea"
+  },
+  "eicar": {
+    "status": 200,
+    "result": "INFECTED",
+    "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+  },
+  "failure": {
+    "status": 422,
+    "error": "SCANNER_HASH_MISMATCH",
+    "producedClean": false
+  }
+}

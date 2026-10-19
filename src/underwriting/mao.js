@@ -1,7 +1,8 @@
 import {hash} from '../io/files.js';
 import {acquisitionDecisionQuestions} from '../analysis/diligenceQuestions.js';
 
-export const MAO_MODEL_VERSION='sprint5-mao-v1';
+// v2 corrects debt accounting and percentage precision; v1 snapshots are not rewritten.
+export const MAO_MODEL_VERSION='sprint5-mao-v2';
 export const STRATEGY='FIX_AND_FLIP';
 export const HURDLE_TYPES=Object.freeze(['CASH_ON_CASH','RETURN_ON_TOTAL_PROJECT_COST','PROFIT_MARGIN_ON_SALE']);
 export const COST_BASES=Object.freeze(['FIXED','PERCENT_OF_PURCHASE','PERCENT_OF_EXIT','PER_DAY','PER_MONTH']);
@@ -29,7 +30,8 @@ function normalizeLine(line, fallbackName='cost') {
   const basis=String(source.basis??source.costBasis??'FIXED').toUpperCase();
   if(!COST_BASES.includes(basis))throw new Error('INVALID_COST_BASIS');
   if(amount!==null&&amount!==undefined&&!finiteNonNegative(amount))throw new Error('INVALID_COST_AMOUNT');
-  if(amount!==null&&amount!==undefined)amount=roundCents(amount);
+  // A fractional rate such as .015 must not be rounded to .02 as if it were USD.
+  if(amount!==null&&amount!==undefined&&!basis.startsWith('PERCENT_'))amount=roundCents(amount);
   return {...source,name:source.name??source.field??fallbackName,basis,amount,status,
     percentage:source.percentage??source.rate??(basis.startsWith('PERCENT_')?amount:null),
     source:source.source??null,notes:source.notes??null};
@@ -152,18 +154,23 @@ function compile(input,exitValue,rehabMultiplier) {
     const interestRate=costs.financingInfo.interestRate??null,duration=costs.financingInfo.expectedDurationDays??costs.days;
     if(loanAmount===null&&ltv===null)unknown.push('loan amount or LTV');
     else {
+      if(loanAmount!==null&&!finiteNonNegative(loanAmount))throw new Error('INVALID_LOAN_AMOUNT');
+      if(loanAmount!==null&&ltv!==null)throw new Error('CONFLICTING_LOAN_BASIS');
       const loanFixed=loanAmount??0,loanCoeff=ltv===null?0:rate(ltv,'ltv');
-      if(loanAmount!==null)fixed.project+=loanFixed;
-      else {purchaseCoeff+=loanCoeff;cashPurchaseCoeff+=loanCoeff;}
+      if(loanCoeff>1)throw new Error('INVALID_LTV');
+      // Acquisition principal funds purchase, then is repaid at exit. It is not
+      // an additional expense or profit. Only interest/fees increase project cost.
+      fixed.cash-=loanFixed;
+      cashPurchaseCoeff-=loanCoeff;
       if(interestRate===null||duration===null)unknown.push('financing interest');
       else {const annual=rate(interestRate,'interest_rate'),interestFixed=loanFixed*annual*duration/365,interestCoeff=loanCoeff*annual*duration/365;fixed.project+=interestFixed;fixed.cash+=interestFixed;purchaseCoeff+=interestCoeff;cashPurchaseCoeff+=interestCoeff;}
     }
     const points=costs.financingInfo.points??costs.financingInfo.originationRate??null;
     if(points!==null){const p=rate(points,'points');if(loanAmount!==null){fixed.project+=loanAmount*p;fixed.cash+=loanAmount*p;}else{purchaseCoeff+=p*rate(ltv,'ltv');cashPurchaseCoeff+=p*rate(ltv,'ltv');}}
-    const financingFees=costs.financingInfo.financingFees??null;if(financingFees===null)unknown.push('financing fees');else {fixed.project+=financingFees;fixed.cash+=financingFees;}
+    const financingFees=costs.financingInfo.financingFees??null;if(financingFees===null)unknown.push('financing fees');else {if(!finiteNonNegative(financingFees))throw new Error('INVALID_FINANCING_FEES');fixed.project+=financingFees;fixed.cash+=financingFees;}
   }
   const k=1+purchaseCoeff,cashK=1+cashPurchaseCoeff;
-  return {fixedProject:roundCents(fixed.project),fixedCash:roundCents(fixed.cash),purchaseCoefficient:k,cashCoefficient:cashK,unknown:[...new Set(unknown)],costs,rehab,financingMode};
+  return {fixedProject:roundCents(fixed.project),fixedCash:roundCents(fixed.cash),purchaseCoefficient:k,cashCoefficient:cashK,minimumPurchase:financingMode==='CASH'?0:(costs.financingInfo.loanAmount??0),unknown:[...new Set(unknown)],costs,rehab,financingMode};
 }
 
 function evaluateCompiled(compiled,exitValue,purchasePrice,hurdle) {
@@ -172,7 +179,7 @@ function evaluateCompiled(compiled,exitValue,purchasePrice,hurdle) {
   const modeledProfit=exitValue-projectCost;
   const modeledSaleProceeds=exitValue-(projectCost-purchasePrice);
   let metric=null;
-  if(hurdle.type==='CASH_ON_CASH')metric=cashInvested===0?null:modeledProfit/cashInvested;
+  if(hurdle.type==='CASH_ON_CASH')metric=cashInvested<=0?null:modeledProfit/cashInvested;
   if(hurdle.type==='RETURN_ON_TOTAL_PROJECT_COST')metric=projectCost===0?null:modeledProfit/projectCost;
   if(hurdle.type==='PROFIT_MARGIN_ON_SALE')metric=exitValue===0?null:modeledProfit/exitValue;
   return {purchasePrice:roundCents(purchasePrice),modeledProfit:roundCents(modeledProfit),totalProjectCost:roundCents(projectCost),cashInvested:roundCents(cashInvested),modeledSaleProceeds:roundCents(modeledSaleProceeds),selectedReturnMetric:metric===null?null:Number(metric.toFixed(10)),hurdleRate:hurdle.rate,meetsHurdle:metric!==null&&metric+1e-10>=hurdle.rate};
@@ -180,7 +187,7 @@ function evaluateCompiled(compiled,exitValue,purchasePrice,hurdle) {
 
 export function evaluateMao(input,{exitValue,purchasePrice,rehabMultiplier=1}={}) {
   if(!finiteNonNegative(exitValue)||!finiteNonNegative(purchasePrice))throw new Error('INVALID_EVALUATION_PRICE');
-  const hurdle=normalizeHurdle(input);const compiled=compile(input,exitValue,rehabMultiplier);return {...evaluateCompiled(compiled,exitValue,purchasePrice,hurdle),costCompleteness:compiled.unknown.length?'INCOMPLETE':'COMPLETE',unknownCosts:compiled.unknown,warnings:[...compiled.rehab.warnings,...(compiled.unknown.length?[UNKNOWN_MAO_WARNING]:[])]};
+  const hurdle=normalizeHurdle(input);const compiled=compile(input,exitValue,rehabMultiplier);if(purchasePrice<compiled.minimumPurchase)throw new Error('LOAN_EXCEEDS_PURCHASE');return {...evaluateCompiled(compiled,exitValue,purchasePrice,hurdle),costCompleteness:compiled.unknown.length?'INCOMPLETE':'COMPLETE',unknownCosts:compiled.unknown,warnings:[...compiled.rehab.warnings,...(compiled.unknown.length?[UNKNOWN_MAO_WARNING]:[])]};
 }
 
 export function solveMao(input,{exitValue,rehabMultiplier=1}={}) {
@@ -193,10 +200,13 @@ export function solveMao(input,{exitValue,rehabMultiplier=1}={}) {
   else if(hurdle.type==='RETURN_ON_TOTAL_PROJECT_COST')raw=(exitValue-fixed*(1+r))/(k*(1+r));
   else raw=((1-r)*exitValue-fixed)/k;
   if(!Number.isFinite(raw))return {status:'UNAVAILABLE',exitValue:roundCents(exitValue),reason:'SOLVER_UNAVAILABLE',costCompleteness:unknown.length?'INCOMPLETE':'COMPLETE',unknownCosts:unknown,warnings:[...compiled.rehab.warnings]};
-  let price=Math.max(0,Math.floor(raw*100+1e-8)/100);
+  if(raw<compiled.minimumPurchase)return {status:'UNAVAILABLE',reason:'NO_FEASIBLE_PURCHASE_PRICE',exitValue:roundCents(exitValue),costCompleteness:unknown.length?'INCOMPLETE':'COMPLETE',unknownCosts:unknown,warnings:[...compiled.rehab.warnings]};
+  let price=Math.max(compiled.minimumPurchase,Math.floor(raw*100+1e-8)/100);
   let evaluation=evaluateCompiled(compiled,exitValue,price,hurdle);
   for(let i=0;i<3&&evaluateCompiled(compiled,exitValue,price+0.01,hurdle).meetsHurdle;i++)price=roundCents(price+0.01);
-  for(let i=0;i<3&&!evaluation.meetsHurdle&&price>=0;i++){price=roundCents(Math.max(0,price-0.01));evaluation=evaluateCompiled(compiled,exitValue,price,hurdle);}
+  for(let i=0;i<3&&!evaluation.meetsHurdle&&price>=compiled.minimumPurchase;i++){price=roundCents(Math.max(compiled.minimumPurchase,price-0.01));evaluation=evaluateCompiled(compiled,exitValue,price,hurdle);}
+  evaluation=evaluateCompiled(compiled,exitValue,price,hurdle);
+  if(!evaluation.meetsHurdle)return {status:'UNAVAILABLE',reason:'NO_FEASIBLE_PURCHASE_PRICE',exitValue:roundCents(exitValue),costCompleteness:unknown.length?'INCOMPLETE':'COMPLETE',unknownCosts:unknown,warnings:[...compiled.rehab.warnings]};
   return {status:'AVAILABLE',costCompleteness:unknown.length?'INCOMPLETE':'COMPLETE',unknownCosts:unknown,warnings:[...compiled.rehab.warnings,...(unknown.length?[UNKNOWN_MAO_WARNING]:[])],hurdle,solver:{method:'EXACT_LINEAR',bounds:{minimum:0,maximum:Math.max(0,raw)},toleranceCents:1,iterationCap:6,rawSolution:raw},...evaluation,exitValue:roundCents(exitValue),rehabMultiplier};
 }
 

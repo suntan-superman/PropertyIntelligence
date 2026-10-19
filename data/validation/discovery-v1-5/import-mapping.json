@@ -1,0 +1,63 @@
+{
+  "version": "pi-discovery-import-mapping-v1",
+  "scope": "Retained Kern County V1.5 discovery pilot",
+  "supportedFormat": "CSV",
+  "unsupportedFormats": {
+    "xlsx": "No existing tested workbook parser is present in the PI dependency graph.",
+    "pdf": "No reliable structured candidate extraction path is implemented."
+  },
+  "selection": {
+    "eligibility": "HIGH_REVIEW_PRIORITY + RESIDENTIAL_SINGLE_FAMILY",
+    "ordering": "historical local_ref ascending",
+    "eligibleBeforeExclusion": 81,
+    "authorizedPriorFixtureExclusions": 1,
+    "accepted": 80,
+    "rejectedForMissingZip": 0
+  },
+  "columns": [
+    {
+      "input": "kern_power_to_sell_2026-09-15.csv: atn",
+      "output": "sourceIdentity.atn",
+      "handling": "Exact source string; never numeric-coerced, padded, truncated or treated as APN."
+    },
+    {
+      "input": "sprint6_2-kern-atn-crosswalk.csv: apn9",
+      "output": "sourceIdentity.apn9",
+      "handling": "Exact retained county crosswalk value; never derived from ATN."
+    },
+    {
+      "input": "sprint6_2-kern-atn-crosswalk.csv: use_code/use_description",
+      "output": "propertyType and assessor classification",
+      "handling": "Source-reported classification; no inferred occupancy or condition."
+    },
+    {
+      "input": "exact-situs.json joined by exact normalized ATN",
+      "output": "address.rawSitus, address.street, address.city",
+      "handling": "Original situs retained. California is jurisdiction-supported; ZIP remains absent."
+    },
+    {
+      "input": "kern_power_to_sell_2026-09-15.csv: parcel_amount_owed",
+      "output": "historicalAmount",
+      "handling": "Historical list amount only; not a current balance, lien, payoff or seller equity."
+    },
+    {
+      "input": "retained source identity and file date",
+      "output": "source.reference, source.observedDate, source.retrievedDate",
+      "handling": "Preserved as provenance for HISTORICAL_POWER_TO_SELL."
+    }
+  ],
+  "validationSummary": {
+    "accepted": 80,
+    "coreIdentityMissing": 0,
+    "supportedZipValues": 0,
+    "zip93312Evaluable": false,
+    "duplicateCandidateIds": 0,
+    "duplicatePilotAtns": 0,
+    "duplicatePilotApn9s": 0,
+    "currentNodRecords": "NOT CHECKED / NOT AVAILABLE",
+    "currentTrusteeSaleNotices": "NOT CHECKED / NOT AVAILABLE",
+    "currentLienRecords": "NOT CHECKED / NOT AVAILABLE",
+    "valuationEvidence": "NOT CHECKED / NOT AVAILABLE"
+  },
+  "privacy": "This shareable mapping contains counts and field names only; candidate addresses and parcel identifiers remain in gitignored runtime data."
+}

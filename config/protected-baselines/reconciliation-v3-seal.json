@@ -1,0 +1,74 @@
+{
+  "schema": "PI_DETACHED_PROTECTION_SEAL_V3",
+  "authorization": "PI — VERSIONED PROTECTED BASELINE RECONCILIATION; user authorization 2026-10-09; six source transitions plus narrowly required baseline-reference helpers/tests.",
+  "files": [
+    {
+      "path": "config/protected-baselines/sprint6_1-nested-v3.json",
+      "sha256": "4e85c67e6e6014b6f57c05aa8969742b23badbe1bf9f17d4efeb9c9ba67b7313"
+    },
+    {
+      "path": "config/protected-baselines/sprint6_2-current-v2.json",
+      "sha256": "512fd4075662f29ca1012b4567c1b38d60ba2c335ab46546d15fbc1ab3d387f2"
+    },
+    {
+      "path": "config/protected-baselines/sprint6_2-current-v3.json",
+      "sha256": "65a8727acc5cec709ee900d83b46e114f20bed3b74f106761d64419a111653ba"
+    },
+    {
+      "path": "config/protected-baselines/sprint6_3-current-v2.json",
+      "sha256": "7fb518c89ee7c6b607e9038515fc04de732bfc1244713ce4a2270d0bd0a88ee3"
+    },
+    {
+      "path": "config/protected-baselines/sprint6_3-current-v3.json",
+      "sha256": "c34b73173ea1b4d89b87aee6b66599aa1d092b1d39831b56063cf9a566b49f49"
+    },
+    {
+      "path": "data/runtime/sprint6_2-kern-assessor/repository-baseline.json",
+      "sha256": "a1adde8cdb5600fe51150b192e37de8e7fc6cbdfd3f5631daab255b4ddf8e7d9"
+    },
+    {
+      "path": "data/runtime/sprint6_3/baseline.json",
+      "sha256": "eefc99778702317f8da83d93ef3f80aa3a8abd73eac3f5dab04725af092160d3"
+    },
+    {
+      "path": "data/validation/sprint6_1-protected.json",
+      "sha256": "483d243301a8aaf180a95e381eb10408a2cf76935a9eb9494bc04fe89a003b42"
+    },
+    {
+      "path": "docs/PI_SPRINT6_2_BASELINE_DISCREPANCY_AUDIT.md",
+      "sha256": "72dc81963d3beb22263d8cc66cfe118ba8a035a3dfe17139a989dba212831537"
+    },
+    {
+      "path": "scripts/protected-baseline-qa.js",
+      "sha256": "44f91437feaa69da94ce4a3bc7cd23b2b7d734f8b378d6c6140bfd6ed49f8e76"
+    },
+    {
+      "path": "scripts/protected-baselines-v3/certify.js",
+      "sha256": "2a02a5db59e15bd95d1d12d8ad41534b8ec603f2039e328871d4ce308ff7af1f"
+    },
+    {
+      "path": "scripts/protected-baselines-v3/contract.js",
+      "sha256": "bfef15219832f77a22b48d43522638d8b110c3ab82dc47a6b3c8b9e2c93dd36c"
+    },
+    {
+      "path": "scripts/protected-baselines-v3/reconciliation.test.js",
+      "sha256": "568fd099b484401c65f972c9c0f6f206411880fde00699958e09afb59d8c8d70"
+    },
+    {
+      "path": "scripts/protected-baselines-v3/verify.js",
+      "sha256": "37a144dff1e60d1e8d7837b1de7e9884af991051553d98ec2f88d301cf944093"
+    },
+    {
+      "path": "scripts/sprint6_2/poc.test.js",
+      "sha256": "43fdbbdcc69c69a3661f9f4f8e3ffc12113a1ba7f81fdd6d31ee0a6e5fddf333"
+    },
+    {
+      "path": "scripts/sprint6_3/schema-review.test.js",
+      "sha256": "f9424ea05f15d54fe3e7488ab8cf0a9b3e0d10e7d555e31f4a2b141bf5ff8306"
+    },
+    {
+      "path": "scripts/sprint6_3/source-plan.js",
+      "sha256": "0bc72220da1c2f3f4a7431c52540f8eebad55e09aef1d1e6c8c82f060f6920e4"
+    }
+  ]
+}

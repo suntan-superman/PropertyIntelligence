@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "at": "2026-10-18T18:18:42.815Z",
+  "backend": "in-memory Firestore substitute",
+  "liveFirestoreWrites": 0,
+  "providerCalls": 0,
+  "checks": [
+    "Decatur opens as retained preliminary research without a provider call",
+    "promotion dialog identifies the reviewed address",
+    "promotion dialog preserves unknown APN uncertainty",
+    "promotion dialog shows the immutable evidence snapshot",
+    "successful promotion is explicitly acknowledged",
+    "My Workspace restores Decatur as a Saved Property",
+    "Saved Properties shows lifecycle metadata and a stable ID",
+    "workspace desktop has no horizontal overflow",
+    "a separate browser page restores the same organization property",
+    "archive confirmation explains history preservation",
+    "archived property remains recoverable",
+    "restore returns the property to active lifecycle",
+    "duplicate save is rejected instead of silently merged",
+    "browser runtime has no errors",
+    "no provider or other external requests were completed"
+  ],
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-4-durable-properties\\01-save-as-property-confirmation.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-4-durable-properties\\02-saved-property-workspace.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-4-durable-properties\\03-archived-property-recoverable.png"
+  ],
+  "externalRequests": [],
+  "browserErrors": []
+}

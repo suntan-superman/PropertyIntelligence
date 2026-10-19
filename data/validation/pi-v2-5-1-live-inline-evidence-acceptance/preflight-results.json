@@ -1,0 +1,250 @@
+{
+  "status": "PASS_READ_ONLY",
+  "at": "2026-10-19T13:33:41.270Z",
+  "nodeVersion": "v22.12.0",
+  "projectId": "property-intelligence-8238b",
+  "organizationId": "property-intelligence-local",
+  "administrator": {
+    "uid": "d2NTUCs0lGe6C64pDnRGtgTXm0O2",
+    "emailVerified": true,
+    "role": "Administrator",
+    "organizationId": "property-intelligence-local",
+    "passwordAuthenticationVerified": true
+  },
+  "property": {
+    "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "id": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "address": "400 Decatur St, Bakersfield, CA 93308",
+    "hash": "4c3a7b720ce38c56610d89eca7f2ab65b02c6fa4dfa1da4ccda4d1d24f615b88",
+    "immutableIdentityHash": "0fd499b308f10d0ae6786f69dab73db39397ff97246b60bb4ee6a2c93a392d23"
+  },
+  "baseline": {
+    "evidenceHashes": {
+      "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/evidenceSnapshots/224580d33d1b4dc96f32959bf03c7644d911360c519250c1732c17e33b5422b2": "0a6292b84385502e80e1a739d12aaa47a394f4446db6f4c867f447002077638e"
+    },
+    "scenarioHashes": {
+      "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/scenarioRevisions/2908abf4-03a2-4d3c-931f-f61b5e9900c2--r1": "90d9329b881b5f9945d1f9291efec0489915fef1f8c2c3d11734da771603f887"
+    },
+    "reportHashes": {
+      "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/reportRevisions/a79f7dce-df72-4e15-ae88-e86008c4f8d5": "ba6c9c6632c4fde89ea34a4bfbe3ce7996251623feba6ef935f06eff868d3644"
+    },
+    "documentHashes": {
+      "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/253ed077-bfd7-49a0-a71a-2cfe75271a0a": "47f98f5f774be8a5d7c860765c6eb1ed2ad57c29e61440f2cbb936f938780b75"
+    },
+    "existingDocumentVersions": [
+      {
+        "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/supportingDocuments/253ed077-bfd7-49a0-a71a-2cfe75271a0a/versions/v000001",
+        "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897",
+        "scanStatus": "CLEAN",
+        "hash": "ebdfb5e9721c9e548ae2c58232bc534ceaf09f3de55482ef4c3f2bb0bc78a1ba"
+      }
+    ],
+    "otherPropertyHashes": {},
+    "auditCount": 4,
+    "storageObjects": [
+      {
+        "name": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/253ed077-bfd7-49a0-a71a-2cfe75271a0a/versions/1/a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897.pdf",
+        "size": 1504,
+        "generation": "1792375555581290",
+        "sha256": "a47d8bfde5289d5bc4b75a9d427d4231886845fcef183c78975853ea649b2897"
+      }
+    ],
+    "providerTrees": {
+      "research": [
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/080ce2ebcf75f2c3f613323a5f8c139031fdf0269eb3ac4585ddb8be0692a42c/1b3974ba284c154237021998f6efd57e0310f82243a986a8fa01982676709d43.index.json",
+          "size": 202,
+          "sha256": "b231f923d9a05dbeaab3cb925f5ef230d723e16c31f29e3ba4c18cc50c21bc00"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/080ce2ebcf75f2c3f613323a5f8c139031fdf0269eb3ac4585ddb8be0692a42c/da42b92b1d35b3dceefddd51f7647389bfcd0e7744f265a6a039567b85d09db3.json",
+          "size": 3221,
+          "sha256": "f4bcd8727046206bcd6dcd1453a523a61421e883c86c9f0b02ea42539db6db65"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/1c1723df5d64614d3ea2a468a2dc18fb1e1379767b2aceb61bc2aea21b485837/1e484fed2038fee772110bc72125245550bf6772605a161eb5ff10b239027622.index.json",
+          "size": 202,
+          "sha256": "fd40df3c2b68e6ea2b6cc10877cc28bbf5a7dd2034e665198c10a7aa4335a6dc"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/1c1723df5d64614d3ea2a468a2dc18fb1e1379767b2aceb61bc2aea21b485837/4606a6bbb74eb9c82f2855382325fe3cc0cffbb4eef042afaba0fe2a3a495996.json",
+          "size": 3221,
+          "sha256": "d24c67c44a8ad26dba37a7321501654309132f1567a97994fcff18817bfec9ad"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/1c1723df5d64614d3ea2a468a2dc18fb1e1379767b2aceb61bc2aea21b485837/7183c7e9509320f876eb6315f843a78ea76b4ce9ba0125121bed16dcbc16fa50.json",
+          "size": 15635,
+          "sha256": "27ee071b6a7ea1f859d64eba48aaa50c6447715875172a593897fd46bcbe843d"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/1c1723df5d64614d3ea2a468a2dc18fb1e1379767b2aceb61bc2aea21b485837/7c63bf0001a51a4cbe56247c1998ce6298da63b4fd5202bda3d650de62829d5e.index.json",
+          "size": 202,
+          "sha256": "561b761766895b9971604a1954be24d07d8a12e987d018163d6471bf63ab7c68"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/1c1723df5d64614d3ea2a468a2dc18fb1e1379767b2aceb61bc2aea21b485837/a92927ed9c4f0430769e1507b306df2e161e091d2da172716c4aedcde3e60968.json",
+          "size": 148547,
+          "sha256": "92b231884dd1537856de81f49809ad959df3b3258d759bc86b12b0c0d983d0d3"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/1c1723df5d64614d3ea2a468a2dc18fb1e1379767b2aceb61bc2aea21b485837/c9f3171adb69c2a45a1887d075c83dfac4a5a33d40f06333e049dafa489f4870.index.json",
+          "size": 202,
+          "sha256": "b7b14ef6da2f5025c0b78b369308322255636258ac32c772b0b11e74bdeaf460"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/a30ec21aa9d123d5a5b099bda475275b4e70d23e7c2b7cc53093e9771714f597/343b644bce415a5a622c46fbe1bac39a5e392d3dedb0c895414d9b1e599f82c8.json",
+          "size": 15504,
+          "sha256": "5c60c782092a4642a6789fd6243f0ad1a7b9037023a65e7667afbcdf6681ab0f"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/a30ec21aa9d123d5a5b099bda475275b4e70d23e7c2b7cc53093e9771714f597/70553016d660475892f56e6743ca600f6bc40cc9b25c29aebaf5d67555d3fae6.json",
+          "size": 12639,
+          "sha256": "561df2c80308807f4152e86515ab74875251881f589c7d2dcfb6c3b13fd1b975"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/a30ec21aa9d123d5a5b099bda475275b4e70d23e7c2b7cc53093e9771714f597/72c743c804e21ef536563659c0e96e94dd2f4060688b3c7efc25cea6696b459c.index.json",
+          "size": 202,
+          "sha256": "33cb53140d9bc78b2169c597bd63a5f664d6a79b02e68a63a51728565e76f28d"
+        },
+        {
+          "path": "data/raw/rentcast/property-research-v2-3/a30ec21aa9d123d5a5b099bda475275b4e70d23e7c2b7cc53093e9771714f597/811e3c6ede676c29b7b5a7ee4ee92c2a2fbbab443d5eee8070438104cbfdd8c0.index.json",
+          "size": 202,
+          "sha256": "71752c5ba5440d5fb8d267dc82bd5306c451398ec652e3409bf1deae4bb90a31"
+        }
+      ],
+      "usage": [
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-reservations/38bf82051cfa18eb95784086f5b48f61a168dd23f4798e1c044ea0293b7cbc33.json",
+          "size": 527,
+          "sha256": "97c1d8d075c42d090f6a5adbb39eb5ec47ebbe7d38ee5911eb0b203c6491c794"
+        },
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-reservations/3dbd6128a7787a613295ee5762b20ba2df9e3ea3210ff3f6a3148f94cb7f16a0.json",
+          "size": 527,
+          "sha256": "615a156f4a5b179f4b871185b1b6d2221f8ae904389786a6d6078914c9d8494b"
+        },
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-reservations/63100ae839e2687af977c174a6fd64ba594112bf3efbf908300668c28fb8a7f4.json",
+          "size": 521,
+          "sha256": "79c01570ecb5648ccc4406d03c56a6e45625518bade400d8d71fc02405e64d18"
+        },
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-reservations/bee3d620a481b04bded4797502317931a419689e922cb3f4d312ed0ee590eb51.json",
+          "size": 521,
+          "sha256": "3c7251284d0a02507ec18c336c9856ba1c217346b5ae9b0394d19e04d427c016"
+        },
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-reservations/e9d345f84b2fed1bb9180f59dc81842d750ccaf16c25f779d7cf12b5544a4659.json",
+          "size": 527,
+          "sha256": "83e4f15fd313d8174090e6558ce3260633d9f12bec561318544a9608c9128546"
+        },
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-reservations/eef6a2f18e89cc3c2509c0a1743d734bed45c0a71c9871604cbe472215c8cd32.json",
+          "size": 527,
+          "sha256": "7e3312140dfd3abc2f7a54e93b391ee18a363f07b7ea3b5b8ba665e37f608d6f"
+        },
+        {
+          "path": "data/runtime/pi-v2-3/usage/automatic-usage.jsonl",
+          "size": 16379,
+          "sha256": "871053cb2d9a338e7604d66eff6b552fae2c5386f3c2914516f319d4b01c8317"
+        }
+      ]
+    },
+    "localScenarioFiles": [
+      {
+        "path": "data/runtime/investment-workspace-v1/scenarios/0f75719a-293b-4b29-bace-d3c5b71a4b20.r1.json",
+        "size": 37898,
+        "sha256": "fb28ad62ce7d4e045da3ce6ac10329c0548ee479bd78847939769a90d595674b"
+      },
+      {
+        "path": "data/runtime/investment-workspace-v1/scenarios/0f75719a-293b-4b29-bace-d3c5b71a4b20.r2.json",
+        "size": 37898,
+        "sha256": "c24b41c596302b297e5940baffa245c1293454ed18e564155a9d1dab856623fe"
+      },
+      {
+        "path": "data/runtime/investment-workspace-v1/scenarios/2908abf4-03a2-4d3c-931f-f61b5e9900c2.r1.json",
+        "size": 41290,
+        "sha256": "b59ce565ab763a6572d1262205c4f4b2b7029b80401037f9b0e0d0966263696f"
+      },
+      {
+        "path": "data/runtime/investment-workspace-v1/scenarios/84dd0a9e-08e5-4b35-b1e2-a482c722f608.r1.json",
+        "size": 38117,
+        "sha256": "33b46688a92217411c3f0a60ac0e1121f793c5cf0ff18bf761a12c5ab6860b7e"
+      }
+    ]
+  },
+  "sourceScenario": {
+    "path": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/scenarioRevisions/2908abf4-03a2-4d3c-931f-f61b5e9900c2--r1",
+    "id": "2908abf4-03a2-4d3c-931f-f61b5e9900c2",
+    "revision": 1,
+    "payloadHash": "3ec5bf373dd688148b1400486cb41ccb12d601b944bcaa1e01718215fc7ff8b4",
+    "financialHash": "33780a6b62252b64b332798c80fdfc218a477dbdbd6f81a93973c6e86cb23b94",
+    "certifiedRecalculationMatched": true
+  },
+  "storage": {
+    "bucket": "property-intelligence-8238b.firebasestorage.app",
+    "location": "US-WEST2",
+    "uniformBucketAccess": true,
+    "publicAccessPrevention": "enforced",
+    "publicIamBindings": 0,
+    "iamVerificationMethod": "UNIFORM_ACCESS_PLUS_PUBLIC_ACCESS_PREVENTION_AND_ANONYMOUS_DENIAL",
+    "operational": true
+  },
+  "scanner": {
+    "status": "ready",
+    "engine": "ClamAV",
+    "engineVersion": "1.4.6",
+    "signatureVersion": "28158",
+    "signatureUpdatedAt": "2026-10-19T06:26:01.000Z",
+    "signatureAgeHours": 7.127789166666667
+  },
+  "cleanEnforcement": {
+    "servicePolicyVerified": true,
+    "securityRegressionStatus": "PASS"
+  },
+  "fixtures": [
+    {
+      "file": "01-recorded-mortgage-deed-of-trust.pdf",
+      "path": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\tests\\fixtures\\pi-v2-5-1-synthetic-evidence\\01-recorded-mortgage-deed-of-trust.pdf",
+      "sizeBytes": 3975,
+      "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a",
+      "pages": 2,
+      "warningEveryPage": true,
+      "duplicateHash": false
+    },
+    {
+      "file": "03-lender-payoff-statement.pdf",
+      "path": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\tests\\fixtures\\pi-v2-5-1-synthetic-evidence\\03-lender-payoff-statement.pdf",
+      "sizeBytes": 3851,
+      "sha256": "60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c",
+      "pages": 2,
+      "warningEveryPage": true,
+      "duplicateHash": false
+    },
+    {
+      "file": "05-contractor-rehabilitation-estimate.pdf",
+      "path": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\tests\\fixtures\\pi-v2-5-1-synthetic-evidence\\05-contractor-rehabilitation-estimate.pdf",
+      "sizeBytes": 3906,
+      "sha256": "775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0",
+      "pages": 2,
+      "warningEveryPage": true,
+      "duplicateHash": false
+    }
+  ],
+  "duplicateCheckPassed": true,
+  "plannedLimits": {
+    "uploads": 3,
+    "scannerInvocations": 3,
+    "storageReads": 7,
+    "firestoreWrites": 35,
+    "auditEvents": 13,
+    "scenarioRevisions": 1,
+    "reports": 1,
+    "providerRequests": 0,
+    "automaticRetries": 0
+  },
+  "mutationsPerformed": 0,
+  "storageObjectReads": 0,
+  "scannerInvocations": 0,
+  "providerRequests": 0
+}

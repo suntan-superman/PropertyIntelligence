@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": 12,
+  "providerCalls": 0,
+  "retries": 0,
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final-4\\01-login.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final-4\\02-authenticated-guided.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-3a-auth-final-4\\03-remembered-email.png"
+  ],
+  "externalRequests": 0,
+  "browserErrors": 0
+}

@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "at": "2026-10-19T15:36:47.988Z",
+  "nodeVersion": "v22.12.0",
+  "contracts": {
+    "sessionEstablishmentFields": [
+      "uid",
+      "role",
+      "emailVerified"
+    ],
+    "organizationResolutionEndpoint": "/api/auth/me",
+    "bootstrapEndpoint": "/api/investment/bootstrap",
+    "scenarioEndpoint": "/api/investment/scenarios",
+    "documentRegisterEndpoint": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents",
+    "documentPreviewPattern": "/api/durable-properties/:propertyId/documents/:documentId/versions/:version/download",
+    "reportEndpoint": "/api/investment/report",
+    "reportRequest": {
+      "id": "6f7b1d62-0e91-4da1-9e31-250101000101",
+      "revision": 1,
+      "kind": "full",
+      "pdf": true,
+      "qaAcceptance": true
+    },
+    "reportResponse": {
+      "status": 200,
+      "contentType": "application/pdf",
+      "filenamePrefix": "QA_NOT_FOR_DISTRIBUTION_"
+    }
+  },
+  "identityGuards": {
+    "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+    "subjectRef": "RESEARCH-EB66B8421C47",
+    "evidenceSnapshot": "3630507840c38236a84bd1c30c93adcccc52db72bc94a197343c6566c62f8e71",
+    "scenarioId": "6f7b1d62-0e91-4da1-9e31-250101000101",
+    "scenarioRevision": 1,
+    "documentIds": [
+      "6f7b1d62-0e91-4da1-9e31-250101000001",
+      "6f7b1d62-0e91-4da1-9e31-250101000002",
+      "6f7b1d62-0e91-4da1-9e31-250101000003"
+    ],
+    "documentVersion": 1,
+    "associations": 5,
+    "substitutionPrevented": true
+  },
+  "sequence": {
+    "freshSessions": 2,
+    "logoutInvalidatedFirstSession": true,
+    "bootstrapBeforeReport": true,
+    "crossSessionRestored": true,
+    "inlineBrowserRestored": true,
+    "financialAndMonteCarloInvariant": true
+  },
+  "resourceAccounting": {
+    "storageReads": 4,
+    "firestoreWrites": 6,
+    "auditEvents": 4,
+    "reports": 1,
+    "uploads": 0,
+    "scannerInvocations": 0,
+    "scenarioRevisions": 0,
+    "providerRequests": 0,
+    "automaticRetries": 0
+  },
+  "storageReadOrder": [
+    {
+      "key": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000001/versions/1/a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a.pdf",
+      "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a"
+    },
+    {
+      "key": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000001/versions/1/a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a.pdf",
+      "sha256": "a6af653d497d3886a84852616b9f46e59ff42e415a739a0f616ae4b8cc5e5a6a"
+    },
+    {
+      "key": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000002/versions/1/60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c.pdf",
+      "sha256": "60b9ebbca8aca57db587eaf422ccecbecbc3964ee13b55a3f9bb7c2a5692728c"
+    },
+    {
+      "key": "organizations/property-intelligence-local/properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents/6f7b1d62-0e91-4da1-9e31-250101000003/versions/1/775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0.pdf",
+      "sha256": "775fbe2d91a5e40a5906c394fe8309b2ccf0be891652d1fdc132ab931172d2c0"
+    }
+  ],
+  "auditOrder": [
+    "DOCUMENT_DOWNLOADED",
+    "DOCUMENT_INCLUDED_IN_REPORT",
+    "DOCUMENT_INCLUDED_IN_REPORT",
+    "DOCUMENT_INCLUDED_IN_REPORT"
+  ],
+  "report": {
+    "id": "6f7b1d62-0e91-4da1-9e31-250101000201",
+    "path": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-live-inline-evidence-acceptance\\offline-rehearsal\\offline-QA-NOT-FOR-DISTRIBUTION-investor-package.pdf",
+    "sha256": "bbeef22c938287a0615511c35aa549036e1c00e6d50cd71295d4029e9a325f09",
+    "pageCount": 25,
+    "indexPage": 16,
+    "coverPages": [
+      17,
+      20,
+      23
+    ],
+    "sourcePages": [
+      18,
+      19,
+      21,
+      22,
+      24,
+      25
+    ],
+    "pageNumbering": true,
+    "qaWarningEveryPage": true,
+    "noDuplicateAppendices": true
+  },
+  "screenshots": [
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-live-inline-evidence-acceptance\\offline-rehearsal\\offline-restored-seller-links.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-live-inline-evidence-acceptance\\offline-rehearsal\\offline-authenticated-preview.png",
+    "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-5-1-live-inline-evidence-acceptance\\offline-rehearsal\\offline-restored-rehab-link.png"
+  ]
+}

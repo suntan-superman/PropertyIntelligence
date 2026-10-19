@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "controls": {
+    "pdfMimeSignatureAndHashValidation": true,
+    "cleanScanRequiredBeforeStorage": true,
+    "scannerFailureFailsClosed": true,
+    "unauthenticatedDownloadDenied": true,
+    "crossTenantAccessDenied": true,
+    "storedByteIntegrityVerified": true,
+    "unreviewedDocumentExcluded": true,
+    "confidentialDocumentExcluded": true,
+    "supersededVersionExcluded": true,
+    "exactImmutableVersionUsed": true,
+    "appendixDeduplication": true,
+    "noAutomaticVerificationElevation": true,
+    "noExternalBrowserRequests": true,
+    "noProviderRequests": true,
+    "noLiveCloudWrites": true
+  }
+}

@@ -1,0 +1,173 @@
+Administrator session · Email verified
+Sign out
+PROPERTY INTELLIGENCE
+Guided Analysis
+Discover Opportunities
+My Workspace
+LOCAL
+Identify property
+Property evidence
+Guided analysis
+GUIDED INVESTMENT ANALYSIS · LOCAL
+Evaluate this opportunity step by step
+
+Follow the evidence, enter your assumptions, review risk and prepare a professional investor package.
+
+Local retained evidence
+Open Advanced Workspace
+CURRENT PROPERTY
+400 Decatur St, Bakersfield, CA 93308
+Single Family · 3 BD / 1 BA · 824 SF
+1 RESEARCH WARNING
+Saved Property · evidence snapshot locked
+Change Property
+SAVED PROPERTY
+ACTIVE SCENARIO
+DECATUR INLINE EVIDENCE LIVE QA · R1
+SCENARIO NAME
+Save
+Scenario actions
+Saved r1 · 10/19/2026
+1
+Identify Property
+Complete
+2
+Property Research
+Not started
+3
+Comparable Sales
+Not started
+4
+Seller & Property Evidence
+Current
+5
+Financial Analysis
+Complete
+6
+Risk Analysis
+Complete
+7
+Investor Reports
+Not started
+STEP 4 OF 7
+Seller & Property Evidence
+
+Record mortgage, payoff, lien, tax, occupancy, condition and supporting-document evidence without treating unknown amounts as zero.
+
+Seller Financial Position
+Analyst Evidence
+Supporting Documents
+Seller Financial Position
+
+Revisioned analyst evidence for seller obligations and illustrative equity—not investor acquisition financing.
+
+Saved with scenario revision
+Estimated balance is not payoff. Only a separately verified payoff is labeled lender-confirmed. Missing mortgage, lien or tax evidence remains unknown and blocks equity/proceeds totals.
+Original recorded mortgage amount
+i
+PRESENT
+Evidence status
+Present / amount available
+Amount ($)
+Evidence source
+Evidence date
+RECORDED DOCUMENT · source and date are required when an amount/status is asserted.
+📎 Attach Evidence
+1 linked · 1 reviewed
+01-recorded-mortgage-deed-of-trust.pdf
+Northstar QA Recording Services · 2026-01-14 · Reviewed
+Preview
+Unlink
+Estimated outstanding mortgage balance
+i
+PRESENT
+Evidence status
+Present / amount available
+Amount ($)
+Evidence source
+Evidence date
+SOURCE REPORTED · source and date are required when an amount/status is asserted.
+📎 Attach Evidence
+2 linked · 2 reviewed
+01-recorded-mortgage-deed-of-trust.pdf
+Northstar QA Recording Services · 2026-01-14 · Reviewed
+Preview
+Unlink
+03-lender-payoff-statement.pdf
+Pioneer Test Lending Services · 2026-10-18 · Reviewed
+Preview
+Unlink
+Verified payoff
+i
+PRESENT
+Evidence status
+Present / amount available
+Amount ($)
+Evidence source
+Evidence date
+INDEPENDENTLY VERIFIED · source and date are required when an amount/status is asserted.
+📎 Attach Evidence
+1 linked · 1 reviewed
+03-lender-payoff-statement.pdf
+Pioneer Test Lending Services · 2026-10-18 · Reviewed
+Preview
+Unlink
+Delinquent property taxes
+i
+PRESENT
+Evidence status
+Present / amount available
+Amount ($)
+Evidence source
+Evidence date
+SOURCE REPORTED · source and date are required when an amount/status is asserted.
+📎 Attach Evidence
+0 linked
+Analyst proposed sale price
+i
+PRESENT
+Evidence status
+Present / amount available
+Amount ($)
+Evidence source
+Evidence date
+ANALYST ASSUMPTION · source and date are required when an amount/status is asserted.
+📎 Attach Evidence
+0 linked
+Other liens
+i
+
+Add each known lien separately. If lien status has not been checked, leave the category unknown.
+
+Add another lien
+
+Other liens are UNKNOWN. Add evidence or explicitly record an absent/released status before equity can be calculated.
+
+Illustrative seller equity and proceeds
+Valuation basis
+Provider as-is AVM
+Selected property valuation
+i
+$255,000
+Mortgage obligation used
+i
+$101,000
+Known obligations subtotal
+i
+$101,900
+Illustrative gross equity
+i
+Not available
+Estimated seller proceeds
+i
+Not available
+Not calculable—unknown is not zero.
+Other liens
+
+Illustrative gross amounts before commissions, closing costs, repairs, concessions, taxes due at closing, prepayment charges and any unresolved obligations. These seller obligations are never added to acquisition expenses or MAO.
+
+← Back
+Continue →
+Skip for Now
+Save & Exit
+Local private research · loopback access only · authenticated provider requests are quota-limited, duplicate-protected and usage-logged · explicit Saved Property changes use organization-scoped server storage · no MLS selection or deployment.

@@ -15,7 +15,7 @@ export function reviewFlags(r){const flags=[];if(r.crosswalk_status==='UNMATCHED
 }
 export async function buildPlan(){
   requireHash(await fileHash(ZIP),ZIP_HASH);requireHash(await fileHash(PTS),PTS_HASH);
-  const baseline=JSON.parse(await readFile('data/runtime/sprint6_3/baseline.json'));
+  const baseline=JSON.parse(await readFile('config/protected-baselines/sprint6_3-current-v3.json'));
   for(const f of baseline.files.filter(f=>/sprint6_2[-_/]|SPRINT6_2_/.test(f.path)))requireHash(await fileHash(f.path),f.sha256);
   const audit=JSON.parse(await readFile('data/validation/sprint6_2-kern-assessor-source-audit.json'));
   const domain=new Map(audit.dbfProfiles.TaxRoll_UseCodes_2026final.domain.map(r=>[r.USE_CODE,r.USE_DESC]));

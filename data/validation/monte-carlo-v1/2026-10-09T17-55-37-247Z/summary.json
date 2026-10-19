@@ -1,0 +1,194 @@
+{
+  "modelVersion": "pi-monte-carlo-v1",
+  "modelFingerprint": "01b34b027b7dee10c0dd0848a2764fa6be82fdfda3208b2a38dad4a31c66cd54",
+  "generatorVersion": "sha256-mulberry32-v1",
+  "runtime": "v22.12.0",
+  "scope": "LOCAL_SYNTHETIC_ONLY",
+  "startedAt": "2026-10-09T17:55:37.274Z",
+  "sourceHashes": {
+    "src/underwriting/mao.js": "ce80b905f08a74105b6ebd04358c5958d95f1b8ec4ec5337fc581ee31bddcee1",
+    "tests/fixtures/monteCarlo.js": "a90b117853486e6dac0141c2f45a3018c450565037f43a54c8243701fafbaeee",
+    "tests/monte-carlo-v1.test.js": "203deca3b027395623ce0a33c9c882a00a2488680128f24ad7f9a7af875147e6",
+    "scripts/monte-carlo-v1-certify.js": "119b777a95c68c42255924f382c0bf71a4c6500baef7e584f378f9c8a9e2cdca",
+    "src/analysis/monteCarlo/contract.js": "2bd9aad59a517b82bd1e952a3afc0f0629bc3e3fb44e29e56fdf4f99775478b1",
+    "src/analysis/monteCarlo/sampling.js": "723cd8014045f0b933b16141c930cf1fe07e681d09bea2437b8793d09d78313f",
+    "src/analysis/monteCarlo/statistics.js": "f60e55fea9fd1b2e9a9639af8b94cddfb6fc563a778a4b064d97bd7585a22999",
+    "src/analysis/monteCarlo/economics.js": "8a1123d134f008058713d075fcecb8b2279358e3427e0a72ca9e5f1486991aca",
+    "src/analysis/monteCarlo/index.js": "5456cc392c0df0df5bd99af1456a81ef942534b35166062b7ee6c94cc3fe1fee"
+  },
+  "tests": {
+    "files": [
+      "tests/monte-carlo-v1.test.js",
+      "tests/acquisition-linkage.test.js",
+      "tests/investment-report.test.js",
+      "tests/investor-report-v1.test.js"
+    ],
+    "tests": 94,
+    "passed": 94,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "legacyMao": {
+    "status": "PASS",
+    "checks": 10,
+    "isolatedCopyRetained": true,
+    "mainHistoricalArtifactWritten": false,
+    "note": "Unchanged existing QA body; its hard-coded report label is historical. Actual MAO version is captured in source and focused tests."
+  },
+  "cases": [
+    {
+      "name": "A_STRONG_MARGIN",
+      "status": "PASS",
+      "iterations": 10000,
+      "elapsedMs": 2453.2098000000005,
+      "resultFingerprint": "b854e2c29320e50adda00c821763922bef9a22d51fb03253416176a99c82266f",
+      "deterministicProfit": 88798.01,
+      "meanProfit": 88888.967639,
+      "probabilityOfLoss": 0,
+      "deterministicMao": 203418,
+      "riskAdjustedMao": 205508.23,
+      "exactReplay": true
+    },
+    {
+      "name": "B_MARGINAL",
+      "status": "PASS",
+      "iterations": 10000,
+      "elapsedMs": 2439.7751,
+      "resultFingerprint": "c8c6fc92afdd229614e2a335735ae270cf928773e0340b4b314460d784cc89b1",
+      "deterministicProfit": 438.01,
+      "meanProfit": 595.242123,
+      "probabilityOfLoss": 0.4702,
+      "deterministicMao": 125910.38,
+      "riskAdjustedMao": 118337.4,
+      "exactReplay": true
+    },
+    {
+      "name": "C_RENOVATION_OVERRUN",
+      "status": "PASS",
+      "iterations": 10000,
+      "elapsedMs": 2530.9092999999993,
+      "resultFingerprint": "4a88b988d5e22c54adb616e635ab7f95946f58921188d706750be34e8395d38f",
+      "deterministicProfit": 43298.01,
+      "meanProfit": 32803.6849,
+      "probabilityOfLoss": 0.1019,
+      "deterministicMao": 163835.25,
+      "riskAdjustedMao": 148273.63,
+      "exactReplay": true
+    },
+    {
+      "name": "D_MARKET_DOWNTURN",
+      "status": "PASS",
+      "iterations": 10000,
+      "elapsedMs": 2450.142599999999,
+      "resultFingerprint": "a8e661e9922862be7541c23e5107b41b34de976fef0fcbfefd19db8ad5785886",
+      "deterministicProfit": 32398.01,
+      "meanProfit": 8691.802589,
+      "probabilityOfLoss": 0.3997,
+      "deterministicMao": 153945.04,
+      "riskAdjustedMao": 110083.36,
+      "exactReplay": true
+    },
+    {
+      "name": "E_INVALID",
+      "status": "EXPECTED_REJECTION",
+      "reason": "MC_INVALID_rehabCost",
+      "fabricatedOutput": false
+    }
+  ],
+  "benchmarks": [
+    {
+      "iterations": 1000,
+      "mode": "CORE_WITHOUT_SENSITIVITY_OR_RISK_MAO",
+      "elapsedMs": 13.579200000000128,
+      "heapBeforeBytes": 79450016,
+      "heapAfterBytes": 81212912,
+      "rssBytes": 183721984,
+      "processPeakRssKiB": 180876,
+      "meanProfit": 371.64062,
+      "p10": -12981.449999999999,
+      "p90": 13048.359,
+      "probabilityOfLoss": 0.467,
+      "meanProfitStandardError": 304.53006542520967,
+      "probabilityOfLossStandardError": 0.015776913513105152,
+      "note": "Monte Carlo estimator standard errors only, not predictive accuracy; plug-in probability SE is zero at observed 0/1 and does not prove no tail risk.",
+      "sampleFingerprint": "60b31ab5965f3b51794a976abe6187482d8495b9da4e3f4518bf9e7fc77ac384"
+    },
+    {
+      "iterations": 10000,
+      "mode": "CORE_WITHOUT_SENSITIVITY_OR_RISK_MAO",
+      "elapsedMs": 110.69050000000061,
+      "heapBeforeBytes": 81280520,
+      "heapAfterBytes": 91317968,
+      "rssBytes": 183943168,
+      "processPeakRssKiB": 180876,
+      "meanProfit": 595.242123,
+      "p10": -12656.067,
+      "p90": 13517.496000000001,
+      "probabilityOfLoss": 0.4702,
+      "meanProfitStandardError": 96.47389127037046,
+      "probabilityOfLossStandardError": 0.004991111699811977,
+      "note": "Monte Carlo estimator standard errors only, not predictive accuracy; plug-in probability SE is zero at observed 0/1 and does not prove no tail risk.",
+      "sampleFingerprint": "f82883b0afbcec61b48534fbe7c762aeb30a0d41435599b0240257aa79003946"
+    },
+    {
+      "iterations": 50000,
+      "mode": "CORE_WITHOUT_SENSITIVITY_OR_RISK_MAO",
+      "elapsedMs": 610.4478999999992,
+      "heapBeforeBytes": 91342544,
+      "heapAfterBytes": 70454736,
+      "rssBytes": 190607360,
+      "processPeakRssKiB": 193576,
+      "meanProfit": 504.72837200000004,
+      "p10": -12575.773,
+      "p90": 13490.524,
+      "probabilityOfLoss": 0.479,
+      "meanProfitStandardError": 43.22853299895503,
+      "probabilityOfLossStandardError": 0.0022340948950302,
+      "note": "Monte Carlo estimator standard errors only, not predictive accuracy; plug-in probability SE is zero at observed 0/1 and does not prove no tail risk.",
+      "sampleFingerprint": "0d8fc24a212de3705772a932bfae94cf95e4c384e453f424bbd2fa98ffc3c41d"
+    },
+    {
+      "iterations": 100000,
+      "mode": "CORE_WITHOUT_SENSITIVITY_OR_RISK_MAO",
+      "elapsedMs": 1198.2193999999981,
+      "heapBeforeBytes": 70502384,
+      "heapAfterBytes": 234079984,
+      "rssBytes": 301641728,
+      "processPeakRssKiB": 306124,
+      "meanProfit": 461.7859176,
+      "p10": -12635.609,
+      "p90": 13482.424,
+      "probabilityOfLoss": 0.48109,
+      "meanProfitStandardError": 30.616620868238524,
+      "probabilityOfLossStandardError": 0.0015800076325765012,
+      "note": "Monte Carlo estimator standard errors only, not predictive accuracy; plug-in probability SE is zero at observed 0/1 and does not prove no tail risk.",
+      "sampleFingerprint": "a26a18b8f6da6c3cf707e604d03702041c09623e7cb747e0b67044495eaf400e"
+    }
+  ],
+  "providerCalls": 0,
+  "databaseConnections": 0,
+  "databaseWrites": 0,
+  "realPropertyAnalyses": 0,
+  "round1Selections": 0,
+  "stability": {
+    "status": "PASS",
+    "meanVsAnalytical": "within four estimator standard errors plus three-cent rounding allowance at each count",
+    "comparison": "10,000 versus 50,000 within four combined estimator standard errors; nested samples, conservative diagnostic only",
+    "note": "No claim that error must decrease monotonically with iterations; no predictive accuracy or assumption calibration measured."
+  },
+  "preservation": {
+    "status": "PASS",
+    "paths": 193,
+    "unexpectedChanges": 0
+  },
+  "network": {
+    "networkDisabled": true,
+    "networkAttempts": 0,
+    "providerCalls": 0
+  },
+  "sourceBundleFingerprint": "94682d485c61b3027cd5c06216886c0954e9d6c08be9edc47be0ce8201c55661",
+  "status": "MONTE CARLO V1 CERTIFIED",
+  "completedAt": "2026-10-09T17:56:01.152Z"
+}

@@ -1,0 +1,13 @@
+.iw-seller-boundary{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;margin:12px 0;background:#edf7f4;border:1px solid #b9d9d3;border-radius:7px}
+.iw-seller-boundary h3,.iw-seller-boundary p{margin:2px 0}
+.iw-financial-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.iw-financial-row{border:1px solid #cbdbe2;border-radius:7px;padding:14px;background:#fbfcfd}
+.iw-financial-row h4{margin:0}.iw-financial-row .iw-row{margin:0 0 8px}
+.iw-financial-status{font-size:10px;font-weight:700;letter-spacing:.04em;padding:3px 7px;border-radius:10px;background:#e9eef1;color:#516874}
+.iw-financial-status.status-present{background:#dff2eb;color:#17675e}
+.iw-financial-row>small{display:block;color:#5a707c;margin-top:8px}
+.iw-seller-position .iw-pill{color:#fff}
+.iw-liens,.iw-equity-illustration{margin-top:18px;padding-top:14px;border-top:1px solid #d3e0e5}
+.iw-lien-row{margin-bottom:12px}.iw-lien-row>button{margin-top:7px}
+.iw-equity-illustration .iw-error ul{margin:5px 0}.iw-seller-position .iw-metric strong{overflow-wrap:anywhere}
+@media(max-width:900px){.iw-financial-grid{grid-template-columns:1fr}.iw-seller-boundary{align-items:flex-start;flex-direction:column}}

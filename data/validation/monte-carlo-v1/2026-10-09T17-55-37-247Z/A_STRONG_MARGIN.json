@@ -1,0 +1,803 @@
+{
+  "modelVersion": "pi-monte-carlo-v1",
+  "strategy": "FIX_AND_FLIP",
+  "economicsVersion": "pi-flip-cents-v1",
+  "simulation": {
+    "iterations": 10000,
+    "seed": "synthetic-mc-certification-v1",
+    "generatorVersion": "sha256-mulberry32-v1",
+    "invalidSamplePolicy": "ABORT_ENTIRE_RUN_NO_RESAMPLING",
+    "samplesAccepted": 10000,
+    "samplesDiscarded": 0
+  },
+  "inputs": {
+    "assumptionsVersion": "synthetic-flip-assumptions-v1",
+    "economics": {
+      "acquisitionFixed": 2200,
+      "acquisitionRate": 0.015,
+      "exitValue": 300000,
+      "financing": {
+        "annualRate": 0.1,
+        "fees": 800,
+        "ltv": 0.7,
+        "mode": "ACQUISITION_INTEREST_ONLY",
+        "points": 0.02
+      },
+      "holdingDaily": {
+        "insurance": 4,
+        "maintenance": 3,
+        "other": 2,
+        "propertyTaxes": 8,
+        "utilities": 6
+      },
+      "marketingDays": 45,
+      "otherAtExit": 350,
+      "otherUpfront": 500,
+      "purchasePrice": 145000,
+      "rehabContingencyRate": 0.05,
+      "rehabCost": 30000,
+      "renovationDays": 75,
+      "sellerClosingFixed": 1800,
+      "sellerClosingRate": 0.01,
+      "sellingCommissionRate": 0.05,
+      "transferCost": 750
+    },
+    "provenance": {
+      "economics.acquisitionFixed": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.acquisitionFixed"
+      },
+      "economics.acquisitionRate": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.acquisitionRate"
+      },
+      "economics.exitValue": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.exitValue"
+      },
+      "economics.financing.annualRate": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.financing.annualRate"
+      },
+      "economics.financing.fees": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.financing.fees"
+      },
+      "economics.financing.ltv": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.financing.ltv"
+      },
+      "economics.financing.mode": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.financing.mode"
+      },
+      "economics.financing.points": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.financing.points"
+      },
+      "economics.holdingDaily.insurance": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.holdingDaily.insurance"
+      },
+      "economics.holdingDaily.maintenance": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.holdingDaily.maintenance"
+      },
+      "economics.holdingDaily.other": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.holdingDaily.other"
+      },
+      "economics.holdingDaily.propertyTaxes": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.holdingDaily.propertyTaxes"
+      },
+      "economics.holdingDaily.utilities": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.holdingDaily.utilities"
+      },
+      "economics.marketingDays": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.marketingDays"
+      },
+      "economics.otherAtExit": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.otherAtExit"
+      },
+      "economics.otherUpfront": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.otherUpfront"
+      },
+      "economics.purchasePrice": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.purchasePrice"
+      },
+      "economics.rehabContingencyRate": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.rehabContingencyRate"
+      },
+      "economics.rehabCost": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.rehabCost"
+      },
+      "economics.renovationDays": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.renovationDays"
+      },
+      "economics.sellerClosingFixed": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.sellerClosingFixed"
+      },
+      "economics.sellerClosingRate": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.sellerClosingRate"
+      },
+      "economics.sellingCommissionRate": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.sellingCommissionRate"
+      },
+      "economics.transferCost": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:economics.transferCost"
+      },
+      "target.rate": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:target.rate"
+      },
+      "target.type": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:target.type"
+      },
+      "uncertainty.dependence": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.dependence"
+      },
+      "uncertainty.variables.exitValue": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.exitValue"
+      },
+      "uncertainty.variables.marketingDays": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.marketingDays"
+      },
+      "uncertainty.variables.rehabCost": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.rehabCost"
+      },
+      "uncertainty.variables.renovationDays": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.renovationDays"
+      }
+    },
+    "scenarioId": "SYNTHETIC_MC_A_STRONG_MARGIN",
+    "simulation": {
+      "iterations": 10000,
+      "seed": "synthetic-mc-certification-v1"
+    },
+    "strategy": "FIX_AND_FLIP",
+    "target": {
+      "rate": 0.25,
+      "type": "CASH_ON_CASH"
+    },
+    "uncertainty": {
+      "dependence": {
+        "conditionalIndependenceRationale": "Residual sale and scope cost estimates assumed independent within each declared regime, not empirically calibrated.",
+        "method": "SHARED_SCENARIO_MIXTURE",
+        "rationale": "Synthetic stable-scope scenario; cost and timing tail risk intentionally modest.",
+        "scenarios": [
+          {
+            "factors": {
+              "exitValue": 1,
+              "marketingDays": 1,
+              "rehabCost": 1,
+              "renovationDays": 1
+            },
+            "name": "BASE",
+            "probability": 1
+          }
+        ]
+      },
+      "variables": {
+        "exitValue": {
+          "family": "TRIANGULAR",
+          "max": 315000,
+          "min": 285000,
+          "mode": 300000
+        },
+        "marketingDays": {
+          "family": "CONSTANT",
+          "value": 45
+        },
+        "rehabCost": {
+          "family": "TRIANGULAR",
+          "max": 33000,
+          "min": 27000,
+          "mode": 30000
+        },
+        "renovationDays": {
+          "family": "CONSTANT",
+          "value": 75
+        }
+      }
+    }
+  },
+  "deterministic": {
+    "modeledProfit": 88798.01,
+    "totalProjectCost": 211201.99,
+    "grossSale": 300000,
+    "netSaleProceeds": 279100,
+    "roi": 0.420441161562919,
+    "cashOnCash": 0.9999551811845658,
+    "profitMargin": 0.29599336666666665,
+    "cashRequired": 88801.99,
+    "preSaleEquity": 88801.99,
+    "exitEquity": 177600,
+    "loanPrincipal": 101500,
+    "holdDays": 120,
+    "renovationDays": 75,
+    "marketingDays": 45,
+    "costs": {
+      "purchase": 145000,
+      "acquisitionFixed": 2200,
+      "acquisitionPercent": 2175,
+      "rehab": 30000,
+      "contingency": 1500,
+      "otherUpfront": 500,
+      "origination": 2030,
+      "financingFees": 800,
+      "interest": 3336.99,
+      "holding_insurance": 480,
+      "holding_maintenance": 360,
+      "holding_other": 240,
+      "holding_propertyTaxes": 960,
+      "holding_utilities": 720,
+      "sellingCommission": 15000,
+      "sellerClosingFixed": 1800,
+      "sellerClosingPercent": 3000,
+      "transfer": 750,
+      "otherAtExit": 350
+    }
+  },
+  "mao": {
+    "method": "MONOTONE_INTEGER_CENT_BISECTION",
+    "target": {
+      "rate": 0.25,
+      "type": "CASH_ON_CASH"
+    },
+    "deterministic": {
+      "status": "AVAILABLE",
+      "purchasePrice": 203418,
+      "nextCentPasses": false
+    },
+    "breakEven": {
+      "status": "AVAILABLE",
+      "purchasePrice": 229407.66,
+      "nextCentPasses": false
+    },
+    "economicsAtMao": {
+      "modeledProfit": 27341.48,
+      "totalProjectCost": 272658.52,
+      "grossSale": 300000,
+      "netSaleProceeds": 279100,
+      "roi": 0.10027737259044757,
+      "cashOnCash": 0.25,
+      "profitMargin": 0.09113826666666666,
+      "cashRequired": 109365.92,
+      "preSaleEquity": 109365.92,
+      "exitEquity": 136707.4,
+      "loanPrincipal": 142392.6,
+      "holdDays": 120,
+      "renovationDays": 75,
+      "marketingDays": 45,
+      "costs": {
+        "purchase": 203418,
+        "acquisitionFixed": 2200,
+        "acquisitionPercent": 3051.27,
+        "rehab": 30000,
+        "contingency": 1500,
+        "otherUpfront": 500,
+        "origination": 2847.85,
+        "financingFees": 800,
+        "interest": 4681.4,
+        "holding_insurance": 480,
+        "holding_maintenance": 360,
+        "holding_other": 240,
+        "holding_propertyTaxes": 960,
+        "holding_utilities": 720,
+        "sellingCommission": 15000,
+        "sellerClosingFixed": 1800,
+        "sellerClosingPercent": 3000,
+        "transfer": 750,
+        "otherAtExit": 350
+      }
+    }
+  },
+  "results": {
+    "profit": {
+      "mean": 88888.967639,
+      "median": 88978.285,
+      "p5": 78935.31599999999,
+      "p10": 80851.20999999999,
+      "p50": 88978.285,
+      "p90": 96710.31999999999,
+      "p95": 98459.76449999999,
+      "sampleMinimum": 72473.92,
+      "sampleMaximum": 104527.01
+    },
+    "probabilityOfProfit": 1,
+    "probabilityOfLoss": 0,
+    "probabilityOfBreakEven": 0,
+    "expectedLossConditionalOnLoss": null,
+    "expectedLossMagnitude": 0,
+    "roi": {
+      "mean": 0.4208479271094064,
+      "median": 0.4212156579613827,
+      "p5": 0.37409940458800534,
+      "p10": 0.383041971352235,
+      "p50": 0.4212156579613827,
+      "p90": 0.45755904105809814,
+      "p95": 0.465990693208171,
+      "sampleMinimum": 0.3405717160032699,
+      "sampleMaximum": 0.49795927564646997
+    },
+    "cashOnCash": {
+      "mean": 1.0012981829291465,
+      "median": 1.0020517356310574,
+      "p5": 0.8832768283299818,
+      "p10": 0.9065913724098463,
+      "p50": 1.0020517356310574,
+      "p90": 1.0940647607667129,
+      "p95": 1.1165485530228239,
+      "sampleMinimum": 0.7939364806295235,
+      "sampleMaximum": 1.206389581149361
+    },
+    "undefinedRoiCount": 0,
+    "undefinedCashOnCashCount": 0,
+    "cashRequired": {
+      "mean": 88810.44406699999,
+      "median": 88826.745,
+      "p5": 86663.85900000001,
+      "p10": 87043.386,
+      "p50": 88826.745,
+      "p90": 90586.50200000001,
+      "p95": 90989.13149999999,
+      "sampleMinimum": 85696.47,
+      "sampleMaximum": 91881.86
+    },
+    "holdingDays": {
+      "mean": 120,
+      "median": 120,
+      "p5": 120,
+      "p10": 120,
+      "p50": 120,
+      "p90": 120,
+      "p95": 120,
+      "sampleMinimum": 120,
+      "sampleMaximum": 120
+    },
+    "probabilityExceedingTarget": 1,
+    "probabilityMeetingTarget": 1,
+    "profitDistribution": [
+      {
+        "min": 72473.92,
+        "max": 74076.5745,
+        "count": 9
+      },
+      {
+        "min": 74076.5745,
+        "max": 75679.22899999999,
+        "count": 52
+      },
+      {
+        "min": 75679.22899999999,
+        "max": 77281.8835,
+        "count": 144
+      },
+      {
+        "min": 77281.8835,
+        "max": 78884.538,
+        "count": 285
+      },
+      {
+        "min": 78884.538,
+        "max": 80487.1925,
+        "count": 397
+      },
+      {
+        "min": 80487.1925,
+        "max": 82089.847,
+        "count": 507
+      },
+      {
+        "min": 82089.847,
+        "max": 83692.5015,
+        "count": 616
+      },
+      {
+        "min": 83692.5015,
+        "max": 85295.156,
+        "count": 787
+      },
+      {
+        "min": 85295.156,
+        "max": 86897.81049999999,
+        "count": 868
+      },
+      {
+        "min": 86897.81049999999,
+        "max": 88500.465,
+        "count": 1034
+      },
+      {
+        "min": 88500.465,
+        "max": 90103.1195,
+        "count": 1044
+      },
+      {
+        "min": 90103.1195,
+        "max": 91705.774,
+        "count": 983
+      },
+      {
+        "min": 91705.774,
+        "max": 93308.4285,
+        "count": 857
+      },
+      {
+        "min": 93308.4285,
+        "max": 94911.083,
+        "count": 737
+      },
+      {
+        "min": 94911.083,
+        "max": 96513.73749999999,
+        "count": 609
+      },
+      {
+        "min": 96513.73749999999,
+        "max": 98116.39199999999,
+        "count": 487
+      },
+      {
+        "min": 98116.39199999999,
+        "max": 99719.0465,
+        "count": 321
+      },
+      {
+        "min": 99719.0465,
+        "max": 101321.701,
+        "count": 170
+      },
+      {
+        "min": 101321.701,
+        "max": 102924.35549999999,
+        "count": 81
+      },
+      {
+        "min": 102924.35549999999,
+        "max": 104527.01,
+        "count": 12
+      }
+    ],
+    "samplingError": {
+      "meanProfitStandardError": 58.73663253755936,
+      "probabilityOfLossStandardError": 0,
+      "note": "Monte Carlo estimator standard errors only, not predictive accuracy; plug-in probability SE is zero at observed 0/1 and does not prove no tail risk."
+    }
+  },
+  "sensitivity": {
+    "method": "PAIRED_COMMON_RANDOM_NUMBER_STRESSES_V1",
+    "stresses": [
+      {
+        "factor": "exitValue",
+        "stress": "-10%",
+        "effects": {
+          "netProfit": {
+            "meanChange": -28209.941183999996,
+            "pairedStandardError": 5.7468657304348225,
+            "firstHalf": -28205.567946,
+            "secondHalf": -28214.314422000003
+          },
+          "lossProbability": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          },
+          "cashRequired": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          },
+          "holdingDays": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          }
+        }
+      },
+      {
+        "factor": "rehabCost",
+        "stress": "+20%",
+        "effects": {
+          "netProfit": {
+            "meanChange": -6301.6908490000005,
+            "pairedStandardError": 2.596732619823382,
+            "firstHalf": -6302.773752,
+            "secondHalf": -6300.607946
+          },
+          "lossProbability": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          },
+          "cashRequired": {
+            "meanChange": 6301.6908490000005,
+            "pairedStandardError": 2.596732619823382,
+            "firstHalf": 6302.773751999999,
+            "secondHalf": 6300.607946
+          },
+          "holdingDays": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          }
+        }
+      },
+      {
+        "factor": "renovationDays",
+        "stress": "+30 days",
+        "effects": {
+          "netProfit": {
+            "meanChange": -1524.24,
+            "pairedStandardError": 6.984421758013871e-14,
+            "firstHalf": -1524.2400000000002,
+            "secondHalf": -1524.24
+          },
+          "lossProbability": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          },
+          "cashRequired": {
+            "meanChange": 1524.2399999999998,
+            "pairedStandardError": 7.018161966402306e-14,
+            "firstHalf": 1524.24,
+            "secondHalf": 1524.2399999999998
+          },
+          "holdingDays": {
+            "meanChange": 30,
+            "pairedStandardError": 0,
+            "firstHalf": 30,
+            "secondHalf": 30
+          }
+        }
+      },
+      {
+        "factor": "marketingDays",
+        "stress": "+30 days",
+        "effects": {
+          "netProfit": {
+            "meanChange": -1524.24,
+            "pairedStandardError": 6.984421758013871e-14,
+            "firstHalf": -1524.2400000000002,
+            "secondHalf": -1524.24
+          },
+          "lossProbability": {
+            "meanChange": 0,
+            "pairedStandardError": 0,
+            "firstHalf": 0,
+            "secondHalf": 0
+          },
+          "cashRequired": {
+            "meanChange": 1524.2399999999998,
+            "pairedStandardError": 7.018161966402306e-14,
+            "firstHalf": 1524.24,
+            "secondHalf": 1524.2399999999998
+          },
+          "holdingDays": {
+            "meanChange": 30,
+            "pairedStandardError": 0,
+            "firstHalf": 30,
+            "secondHalf": 30
+          }
+        }
+      }
+    ],
+    "rankings": {
+      "netProfit": {
+        "status": "UNRESOLVED_OR_TIED",
+        "ranking": null
+      },
+      "lossProbability": {
+        "status": "UNRESOLVED_OR_TIED",
+        "ranking": null
+      },
+      "cashRequired": {
+        "status": "UNRESOLVED_OR_TIED",
+        "ranking": null
+      },
+      "holdingDays": {
+        "status": "UNRESOLVED_OR_TIED",
+        "ranking": null
+      }
+    },
+    "note": "Reuse each complete joint scenario; change only the named variable, then recompute dependent holding/finance costs. Unequal stress sizes are explicit assumptions, not causal effects or variance shares. Stability is a within-run heuristic, not external validation."
+  },
+  "riskAdjustedMao": {
+    "status": "AVAILABLE",
+    "purchasePrice": 205508.23,
+    "nextCentPasses": false,
+    "method": "EMPIRICAL_COMMON_SAMPLES_CENT_BISECTION",
+    "rule": {
+      "minimumProfit": 20000,
+      "minimumProbability": 0.8,
+      "maximumPurchasePrice": 500000,
+      "provenance": {
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "reference": "synthetic:mc-v1-risk-policy",
+        "asOf": null,
+        "rationale": "Explicit artificial minimum-profit, probability and search-bound assumptions for computational QA; not an approved investor risk policy."
+      }
+    },
+    "requiredCount": 8000,
+    "probabilityAtPrice": 0.8,
+    "probabilityAtNextCent": 0.7999,
+    "note": "Sample-based conditional price ceiling, not a calibrated guarantee. BOUND_LIMITED is not a proven global maximum. Does not replace deterministic MAO or investor policy."
+  },
+  "dependenceDiagnostics": {
+    "method": "SHARED_SCENARIO_MIXTURE",
+    "regimeCounts": {
+      "BASE": 10000
+    },
+    "rehabHoldingSpearman": null,
+    "exitHoldingSpearman": null,
+    "note": "Observed sample association under declared scenario assumptions; not causal or empirically estimated correlation."
+  },
+  "evidenceStatus": "CONDITIONAL_ON_INPUT_EVIDENCE_AND_ASSUMPTIONS",
+  "materialAssumptions": [
+    {
+      "variable": "exitValue",
+      "distribution": {
+        "family": "TRIANGULAR",
+        "max": 315000,
+        "min": 285000,
+        "mode": 300000
+      },
+      "provenance": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.exitValue"
+      }
+    },
+    {
+      "variable": "rehabCost",
+      "distribution": {
+        "family": "TRIANGULAR",
+        "max": 33000,
+        "min": 27000,
+        "mode": 30000
+      },
+      "provenance": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.rehabCost"
+      }
+    },
+    {
+      "variable": "renovationDays",
+      "distribution": {
+        "family": "CONSTANT",
+        "value": 75
+      },
+      "provenance": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.renovationDays"
+      }
+    },
+    {
+      "variable": "marketingDays",
+      "distribution": {
+        "family": "CONSTANT",
+        "value": 45
+      },
+      "provenance": {
+        "asOf": null,
+        "classification": "SYNTHETIC_TEST_FIXTURE",
+        "rationale": "Artificial certification assumption, not a live property value or empirically calibrated estimate.",
+        "reference": "synthetic:A_STRONG_MARGIN:uncertainty.variables.marketingDays"
+      }
+    }
+  ],
+  "interpretations": [
+    "Results are conditional on synthetic-flip-assumptions-v1; probability is not empirical confidence.",
+    "The specified renovation-cost stress reduces mean profit; this is not a calibrated event likelihood.",
+    "Longer holding increases modeled interest on outstanding acquisition debt."
+  ],
+  "limitations": [
+    "Conditional on stated assumptions; not empirically calibrated future-performance probabilities.",
+    "Percentiles describe simulated outcomes, not confidence guarantees or worst possible losses.",
+    "Bounded input/scenario support excludes unmodeled tail events, title, condition, tax and transaction risks.",
+    "Rehab and contingency are modeled as spent; no contingency reserve is counted again as equity or profit.",
+    "Acquisition-only interest-only debt; rehab paid upfront, holding/interest funded before sale, principal repaid at sale. No construction draws, amortization, tax benefits or refinancing.",
+    "Sensitivity is paired hypothetical stress, not causal attribution or calibrated variance contribution.",
+    "No provider valuation range is automatically converted to a probability distribution."
+  ],
+  "provenance": {
+    "inputFingerprint": "e1f4e41e6ae315a7710eff43bb8cc74fe2a1bf26196b33af4ee8dc319004512d",
+    "modelFingerprint": "01b34b027b7dee10c0dd0848a2764fa6be82fdfda3208b2a38dad4a31c66cd54",
+    "sampleFingerprint": "eebff6d8382cab8defd906eab10c03958355e8da8677f1bebae08aad8e35ffcb",
+    "runFingerprint": "47d5bda0b03a3b57612744c2bcd82e607561fe211cdd09c5c7d11540a42761ca",
+    "resultFingerprint": "b854e2c29320e50adda00c821763922bef9a22d51fb03253416176a99c82266f"
+  }
+}

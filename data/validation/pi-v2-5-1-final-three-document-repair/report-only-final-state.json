@@ -1,0 +1,11 @@
+{
+  "status": "FAILED_DO_NOT_REPEAT",
+  "failure": {
+    "status": "FAIL_STOPPED_NO_RETRY",
+    "at": "2026-10-19T16:31:36.851Z",
+    "name": "Error",
+    "message": "ENOENT: no such file or directory, open 'C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\runtime\\sprint6_2-kern-assessor\\exact-situs.json'",
+    "retryPerformed": false,
+    "cleanupPerformed": false
+  }
+}

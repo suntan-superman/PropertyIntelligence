@@ -1,124 +1,124 @@
 {
   "status": "PASS",
-  "at": "2026-09-20T23:59:41.284Z",
+  "at": "2026-10-07T13:26:37.975Z",
   "results": [
     {
       "fixture": "complete",
       "pages": 8,
-      "renderMs": 633,
-      "bytes": 101937,
+      "renderMs": 885,
+      "bytes": 263176,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "sparse",
       "pages": 6,
-      "renderMs": 549,
-      "bytes": 93456,
+      "renderMs": 736,
+      "bytes": 214561,
       "comps": 0,
       "status": "PASS"
     },
     {
       "fixture": "exit-conflict",
       "pages": 8,
-      "renderMs": 590,
-      "bytes": 102316,
+      "renderMs": 745,
+      "bytes": 268172,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "many-encumbrances",
       "pages": 11,
-      "renderMs": 621,
-      "bytes": 109555,
+      "renderMs": 850,
+      "bytes": 349715,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "large-rehab",
       "pages": 34,
-      "renderMs": 651,
-      "bytes": 152276,
+      "renderMs": 853,
+      "bytes": 516989,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "all-15-comps",
       "pages": 8,
-      "renderMs": 648,
-      "bytes": 101937,
+      "renderMs": 771,
+      "bytes": 263176,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "long-legal",
       "pages": 14,
-      "renderMs": 604,
-      "bytes": 112923,
+      "renderMs": 775,
+      "bytes": 321071,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "many-diligence",
       "pages": 14,
-      "renderMs": 622,
-      "bytes": 113723,
+      "renderMs": 831,
+      "bytes": 385545,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "manufactured",
       "pages": 8,
-      "renderMs": 606,
-      "bytes": 102156,
+      "renderMs": 753,
+      "bytes": 265777,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "explicit-zero",
       "pages": 8,
-      "renderMs": 600,
-      "bytes": 101954,
+      "renderMs": 809,
+      "bytes": 263192,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "no-condition",
       "pages": 8,
-      "renderMs": 618,
-      "bytes": 101736,
+      "renderMs": 753,
+      "bytes": 262972,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "historical",
       "pages": 8,
-      "renderMs": 600,
-      "bytes": 101964,
+      "renderMs": 779,
+      "bytes": 263201,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "long-sources",
       "pages": 10,
-      "renderMs": 599,
-      "bytes": 105933,
+      "renderMs": 761,
+      "bytes": 289492,
       "comps": 15,
       "status": "PASS"
     },
     {
       "fixture": "minimal",
       "pages": 6,
-      "renderMs": 588,
-      "bytes": 93456,
+      "renderMs": 770,
+      "bytes": 214561,
       "comps": 0,
       "status": "PASS"
     },
     {
       "fixture": "extreme-dollars",
       "pages": 8,
-      "renderMs": 607,
-      "bytes": 101944,
+      "renderMs": 785,
+      "bytes": 263180,
       "comps": 15,
       "status": "PASS"
     }

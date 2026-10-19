@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // PI V2.4 uses Firebase Admin only after server-side session, role and
+    // organization checks. Browser SDK access remains completely disabled.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

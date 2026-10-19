@@ -1,0 +1,27 @@
+{
+  "classification": "FUNCTIONAL ACCEPTANCE PASSED — RESOURCE DEVIATION REVIEWED AND ACCEPTED",
+  "reviewDate": "2026-10-18",
+  "projectId": "property-intelligence-8238b",
+  "organizationId": "property-intelligence-local",
+  "propertyId": "52638a00-8167-4cff-85c0-f56a0445a5a9",
+  "reportRevisionId": "a79f7dce-df72-4e15-ae88-e86008c4f8d5",
+  "strictLimitAuditPreservedAt": "data/validation/pi-v2-5-live-document-acceptance/continuation/continuation-results.json",
+  "resourceDisposition": {
+    "authorizedPrivateStorageReads": 1,
+    "actualPrivateStorageReads": 2,
+    "preflightIntegrityVerificationReads": 1,
+    "reportAssemblyReads": 1,
+    "deviationAccepted": true
+  },
+  "otherUsage": {
+    "firestoreWrites": 3,
+    "newUploads": 0,
+    "malwareScans": 0,
+    "providerRequests": 0,
+    "automaticRetries": 0
+  },
+  "operationalScope": "PRIVATE_DEVELOPMENT_AUTHENTICATED_UPLOADS_ONLY",
+  "publicDeploymentAuthorized": false,
+  "unrestrictedOnboardingAuthorized": false,
+  "externalBetaPrerequisite": "Upgrade ClamAV to the recommended patched version and rerun relevant security checks."
+}

@@ -20,7 +20,7 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
     if(url.startsWith('https://maps.googleapis.com/maps/api/js')&&network==='auth')return route.fulfill({contentType:'text/javascript',body:'window.gm_authFailure();'});
     return route.abort();
   });
-  if(missing){const m=await fixture('fantasia');m.comps[0]={...m.comps[0],latitude:null,longitude:null,mappable:false,locationStatus:'Map location unavailable'};
+  if(missing){const m=await fixture('fantasia');m.comps[0]={...m.comps[0],latitude:null,longitude:null,mappable:false,locationStatus:'Map location unavailable',providerAttributes:{...m.comps[0].providerAttributes,latitude:null,longitude:null}};
     // Two exact duplicates exercise the expansion picker without any coordinate offset.
     m.comps[2]={...m.comps[2],latitude:m.comps[1].latitude,longitude:m.comps[1].longitude};
     m.comps[0].address='<img src=x onerror="window.__injected=true">';
@@ -28,7 +28,7 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
   }
   if(network==='missing')await page.route(`${app.url}/api/maps/config`,route=>route.fulfill({contentType:'application/json',body:JSON.stringify({configured:false,reason:'Browser key not configured.'})}));
   try {
-    await page.goto(app.url);await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();
+    await page.goto(app.url);await page.evaluate(()=>{document.documentElement.dataset.piDevelopment='true';});await page.getByRole('button',{name:'Florida Portfolio / Fantasia',exact:true}).click();
     const engine=network==='mock'&&!noTiles?'STREET':'OFFLINE_FALLBACK';
     await page.locator(`[data-map-engine="${engine}"]`).waitFor({timeout:18000});
     assert.equal(await page.locator('[data-comp-row]').count(),15);
@@ -37,38 +37,38 @@ async function scenario(name,{width=1366,network='mock',noTiles=false,missing=fa
       assert.equal(await page.evaluate(()=>window.__mapTestInstances.at(-1).markers.filter(m=>!m.title.startsWith('Expand ')).length),missing?15:16);
       assert.equal(await page.evaluate(()=>window.__mapTestInstances.at(-1).options.mapTypeId),'roadmap');
       const originalPositions=await page.evaluate(()=>window.__mapTestInstances.at(-1).markers.filter(m=>!m.title.startsWith('Expand ')).map(m=>m.position));
-      await page.locator('[data-comp-row="comp-2"] button').click();await page.locator('[data-map-popup="comp-2"]').waitFor();
+      await page.locator('[data-comp-row="comp-2"] button.row-select').click();await page.locator('[data-map-popup="comp-2"]').waitFor();
       assert.match(await page.locator('[data-map-popup="comp-2"]').innerText(),/Days on market/);assert.match(await page.locator('[data-map-popup="comp-2"]').innerText(),/Land tenure unknown/);
       assert.equal(await page.locator('[data-map-popup="comp-2"]').evaluate(el=>el.scrollWidth<=el.clientWidth),true,'Popup text must wrap without horizontal clipping');
-      assert.equal(await page.locator('[data-comp-row="comp-2"] button').getAttribute('aria-pressed'),'true');
-      await page.getByRole('button',{name:'Close popup',exact:true}).click();assert.equal(await page.locator('[data-comp-row="comp-2"] button').getAttribute('aria-pressed'),'false');
+      assert.equal(await page.locator('[data-comp-row="comp-2"] button.row-select').getAttribute('aria-pressed'),'true');
+      await page.getByRole('button',{name:'Close popup',exact:true}).click();assert.equal(await page.locator('[data-comp-row="comp-2"] button.row-select').getAttribute('aria-pressed'),'false');
       await page.getByRole('button',{name:/^Subject: 8426/}).click();await page.locator('[data-map-popup="subject"]').waitFor();assert.match(await page.locator('[data-map-popup="subject"]').innerText(),/\$122,000/);
       await page.getByRole('button',{name:'Close popup',exact:true}).click();
-      await page.locator('[data-comp-row="comp-2"] button').click();await page.getByRole('button',{name:'Close popup',exact:true}).focus();await page.keyboard.press('Escape');assert.equal(await page.locator('[data-comp-row="comp-2"] button').getAttribute('aria-pressed'),'false');
+      await page.locator('[data-comp-row="comp-2"] button.row-select').click();await page.getByRole('button',{name:'Close popup',exact:true}).focus();await page.keyboard.press('Escape');assert.equal(await page.locator('[data-comp-row="comp-2"] button.row-select').getAttribute('aria-pressed'),'false');
       await page.locator('.map-overlaps button').first().click();await page.locator('.map-overlap-roster').waitFor();
       await page.locator('.map-overlap-roster li button').first().click();assert.equal(await page.locator('[data-map-popup]').count(),1);
       await page.getByRole('button',{name:'Zoom to group',exact:true}).click();
       const newPositions=await page.evaluate(()=>window.__mapTestInstances.at(-1).markers.filter(m=>!m.title.startsWith('Expand ')).map(m=>m.position));assert.deepEqual(newPositions,originalPositions);
       if(missing){
-        await page.locator('[data-comp-row="comp-1"] button').click();assert.match(await page.locator('[data-testid="selected-comp"]').innerText(),/Map location unavailable/);assert.equal(await page.locator('[data-map-popup]').count(),0);
+        await page.locator('[data-comp-row="comp-1"] button.row-select').click();assert.match(await page.locator('[data-testid="selected-comp"]').innerText(),/Map location unavailable/);assert.equal(await page.locator('[data-map-popup]').count(),0);
         assert.equal(await page.evaluate(()=>window.__injected),undefined);
       }
       assert.equal(requests.length,1,'No repeated Maps API load on selection or rerender');
       await page.locator('#comps').screenshot({path:resolve(`${root}/${name}.png`)});
       await page.locator('.comp-map').screenshot({path:resolve(`${root}/${name}-popup.png`)});
       // A real browser offline transition must preserve selected evidence and all comps.
-      await page.locator('[data-comp-row="comp-2"] button').click();await context.setOffline(true);
+      await page.locator('[data-comp-row="comp-2"] button.row-select').click();await context.setOffline(true);
       await page.locator('[data-map-engine="OFFLINE_FALLBACK"]').waitFor();await page.locator('[data-map-popup="comp-2"]').waitFor();
       assert.equal(await page.locator('.comp-pin').count(),missing?14:15);
       await context.setOffline(false);assert.equal(await page.locator('[data-map-engine="OFFLINE_FALLBACK"]').count(),1,'No automatic retry storm');
       await page.getByRole('button',{name:'Retry street basemap',exact:true}).click();await page.locator('[data-map-engine="STREET"]').waitFor();await page.locator('[data-map-popup="comp-2"]').waitFor();
     }else {
       assert.equal(await page.locator('.comp-pin').count(),15);
-      await page.locator('[data-comp-row="comp-2"] button').click();await page.locator('[data-map-popup="comp-2"]').waitFor();
+      await page.locator('[data-comp-row="comp-2"] button.row-select').click();await page.locator('[data-map-popup="comp-2"]').waitFor();
       assert.match(await page.locator('[data-map-popup="comp-2"]').innerText(),/Provider status/);
       await page.locator('.comp-pin').filter({hasText:/^3$/}).focus();await page.keyboard.press('Enter');await page.locator('[data-map-popup="comp-3"]').waitFor();
       assert.equal(await page.locator('[data-map-popup="comp-3"]').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
-      assert.equal(await page.locator('[data-comp-row="comp-3"] button').getAttribute('aria-pressed'),'true');
+      assert.equal(await page.locator('[data-comp-row="comp-3"] button.row-select').getAttribute('aria-pressed'),'true');
       await page.locator('#comps').screenshot({path:resolve(`${root}/${name}.png`)});
       await page.locator('.comp-map').screenshot({path:resolve(`${root}/${name}-popup.png`)});
     }

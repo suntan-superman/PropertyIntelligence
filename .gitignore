@@ -1,7 +1,55 @@
 node_modules/
+
+# Package/build/test caches and generated frontend output.
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+blob-report/
+*.tsbuildinfo
+apps/web/dist/
+apps/web/.vite/
+
+# Editor and operating-system noise.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Local environment credentials; keep only the blank example template trackable.
 .env
 .env.*
 !.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.env
+!*.env.example
+.envrc
+**/.envrc
+
+# Common local credential stores and private-key material.
+**/secrets/
+**/credentials/
+credentials.json
+client_secret*.json
+service-account*.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+.netrc
+.git-credentials
+.npmrc
+.aws/
+.ssh/
+
 data/raw/rentcast/
 data/normalized/
 data/comparisons/
@@ -9,14 +57,33 @@ data/validation/foundation-*
 data/cache/parcels/*.json
 data/cache/parcels/*.tmp
 *.log
-apps/web/dist/
-apps/web/.vite/
+*.tmp
+*.bak
+*.orig
+*.rej
 data/reports/
 data/validation/sprint3-visual/
 data/validation/map-update/
 .netlify/
 data/runtime/
+.tmp/
 data/validation/sprint3_2-visual/
+
+# Regenerable QA runs and binary render artifacts. Keep compact JSON manifests
+# and Markdown certification notes visible to Git, but do not upload every
+# locally rendered report page or repeated browser run.
+data/validation/**/run-*/
+data/validation/**/*.pdf
+data/validation/**/*.png
+data/validation/**/*.html
+data/validation/**/*.tap
+data/validation/**/*.log
+
+# Local report-review output and manually supplied proof documents. Canonical
+# synthetic fixtures used by tests live under tests/fixtures and remain tracked.
+/reports/
+/sample_proof_docs/
+/*.pdf
 
 data/raw/kern-assessor/*.zip
 
@@ -28,3 +95,17 @@ data/validation/datatree-uat/raw/
 
 # ATTOM bulk Parquet samples are licensed local-only evidence.
 data/validation/attom-bulk-poc/raw/
+
+# Synthetic investor report PDF QA output; regenerate locally, do not commit artifacts.
+data/validation/investor-report-v1/
+
+# Private source correspondence and account screenshots; retain locally only.
+/source_docs/
+
+# Firebase emulator/runtime output. Configuration and rules remain trackable.
+.firebase/
+firebase-debug.log
+firestore-debug.log
+database-debug.log
+ui-debug.log
+firebase-export-*/
