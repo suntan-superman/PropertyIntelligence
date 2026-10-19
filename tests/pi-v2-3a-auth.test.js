@@ -41,8 +41,10 @@ test('missing and Firebase-rejected session cookies return distinct safe failure
 });
 
 test('credential binding requires a real service-account document for the expected project',async()=>{
-  const directory=await mkdtemp(path.join(tmpdir(),'pi-firebase-binding-')),file=path.join(directory,'service.json'),base={type:'service_account',project_id:PROJECT,private_key:'-----BEGIN PRIVATE KEY-----\nsynthetic\n-----END PRIVATE KEY-----\n',client_email:'synthetic@example.invalid'};await writeFile(file,JSON.stringify(base));
+  const directory=await mkdtemp(path.join(tmpdir(),'pi-firebase-binding-')),file=path.join(directory,'service.json'),base={type:'service_account',project_id:PROJECT,private_key:'-----BEGIN PRIVATE KEY-----\nsynthetic\n-----END PRIVATE KEY-----\n',client_email:`synthetic@${PROJECT}.iam.gserviceaccount.com`};await writeFile(file,JSON.stringify(base));
   assert.equal((await verifyFirebaseCredentialBinding({FIREBASE_PROJECT_ID:PROJECT,GOOGLE_APPLICATION_CREDENTIALS:file})).credentialProjectId,PROJECT);
+  const encoded=Buffer.from(JSON.stringify(base)).toString('base64'),environment=await verifyFirebaseCredentialBinding({FIREBASE_PROJECT_ID:PROJECT,FIREBASE_SERVICE_ACCOUNT_JSON_BASE64:encoded});assert.equal(environment.source,'environment');assert.equal(environment.credentialProjectId,PROJECT);
+  await assert.rejects(verifyFirebaseCredentialBinding({FIREBASE_PROJECT_ID:PROJECT,FIREBASE_SERVICE_ACCOUNT_JSON_BASE64:'not base64'}),/CREDENTIAL_ENV_INVALID/);
   await writeFile(file,JSON.stringify({...base,project_id:'wrong-project'}));await assert.rejects(verifyFirebaseCredentialBinding({FIREBASE_PROJECT_ID:PROJECT,GOOGLE_APPLICATION_CREDENTIALS:file}),/PROJECT_MISMATCH/);
 });
 

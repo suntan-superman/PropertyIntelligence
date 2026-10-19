@@ -87,7 +87,7 @@ export async function startInvestmentWorkspace({port=4175,root=process.cwd(),sto
       const url=new URL(req.url,origin);
       if(url.pathname==='/api/auth/config'&&req.method==='GET'){
         if(!authentication){json(200,{enabled:false});return;}
-        const csrfToken=authentication.issueCsrf(res);json(200,{enabled:true,projectId:authentication.expectedProjectId,csrfToken});return;
+        const csrfToken=authentication.issueCsrf(res);json(200,{enabled:true,firebaseConfig:authentication.clientConfig,projectId:authentication.expectedProjectId,csrfToken});return;
       }
       if(url.pathname==='/api/auth/session'&&req.method==='POST'){
         if(!authentication){json(404,{error:'Authentication is not configured.'});return;}
@@ -99,7 +99,7 @@ export async function startInvestmentWorkspace({port=4175,root=process.cwd(),sto
         if(!authentication){json(204,{});return;}if(req.headers.origin!==origin){json(403,{error:'Local authentication origin is required.'});return;}authentication.requireCsrf(req);authentication.clearSession(res);json(200,{ok:true});return;
       }
       if(url.pathname==='/api/auth/me'&&req.method==='GET'){
-        if(!authentication){json(200,{enabled:false,user:null});return;}const user=await authentication.authenticate(req);json(200,{enabled:true,user:{uid:user.uid,role:user.role,emailVerified:user.emailVerified,providerResearchAllowed:user.providerResearchAllowed,organizationId:user.organizationId,authenticatedAt:user.authenticatedAt,sessionExpiresAt:user.sessionExpiresAt}});return;
+        if(!authentication){json(200,{enabled:false,user:null});return;}let user;try{user=await authentication.authenticate(req);}catch(error){if(error?.code==='SESSION_COOKIE_MISSING'){json(200,{enabled:true,user:null});return;}throw error;}json(200,{enabled:true,user:{uid:user.uid,role:user.role,emailVerified:user.emailVerified,providerResearchAllowed:user.providerResearchAllowed,organizationId:user.organizationId,authenticatedAt:user.authenticatedAt,sessionExpiresAt:user.sessionExpiresAt}});return;
       }
       if(url.pathname==='/api/lead-intake/v1'){
         if(req.method!=='POST'||!req.headers['content-type']?.startsWith('application/json')){json(415,{error:'JSON POST required.'});return;}

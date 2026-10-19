@@ -59,6 +59,10 @@ export function createApi({runtime='local',loadFixture,resolveCached,live,mapCon
     if(origin&&origin!==url.origin)return json(403,{error:'SAME_ORIGIN_REQUIRED'});
     try{
       if(request.method==='GET'){
+        // The standalone workbench is an offline/local QA surface. The Netlify
+        // wrapper intercepts this path and returns its fail-closed Firebase
+        // configuration before requests reach this router.
+        if(path==='/api/auth/config')return json(200,{enabled:false});
         if(path==='/api/health'){
           let persistenceAvailable=Boolean(persistence),databaseError=null;
           if(persistence)try{await persistence.query('SELECT 1');}catch(error){persistenceAvailable=false;databaseError=safeDatabaseError(error);}

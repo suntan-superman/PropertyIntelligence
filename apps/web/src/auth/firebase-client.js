@@ -1,10 +1,19 @@
 import {getApp,getApps,initializeApp} from 'firebase/app';
 import {browserLocalPersistence,getAuth,setPersistence} from 'firebase/auth';
 
-export function firebaseWebConfiguration(env=import.meta.env){
-  const config={apiKey:env.PI_PUBLIC_FIREBASE_API_KEY,authDomain:env.PI_PUBLIC_FIREBASE_AUTH_DOMAIN,projectId:env.PI_PUBLIC_FIREBASE_PROJECT_ID,appId:env.PI_PUBLIC_FIREBASE_APP_ID};
+let runtimeConfiguration=null;
+
+export function firebaseWebConfiguration(){
+  const config=runtimeConfiguration;
+  if(!config)throw new Error('Firebase web configuration has not been loaded from the authenticated server.');
   if(Object.values(config).some(value=>typeof value!=='string'||!value.trim()))throw new Error('Firebase web configuration is incomplete.');
   return config;
+}
+
+export function configureFirebaseClient(config){
+  if(!config||['apiKey','authDomain','projectId','appId'].some(key=>typeof config[key]!=='string'||!config[key].trim()))throw new Error('Firebase web configuration is incomplete.');
+  if(getApps().length&&JSON.stringify(firebaseWebConfiguration())!==JSON.stringify(config))throw new Error('Firebase web configuration cannot change during an authenticated session.');
+  runtimeConfiguration={apiKey:config.apiKey,authDomain:config.authDomain,projectId:config.projectId,appId:config.appId};
 }
 
 export async function firebaseClient(){
