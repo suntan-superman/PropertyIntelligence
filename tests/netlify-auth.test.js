@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createFirebaseSessionService,CSRF_COOKIE,SESSION_COOKIE} from '../src/auth/firebase-session.js';
-import {createNetlifyAuthenticatedApi} from '../src/auth/netlify-auth.js';
+import {createNetlifyAuthenticatedApi,durableWorkspaceReport} from '../src/auth/netlify-auth.js';
 import {durableWorkspaceDocument} from '../src/auth/firebase-admin.js';
 
 const project='netlify-auth-test',organization='property-intelligence-local',uid='admin-test',now=new Date('2026-10-19T20:00:00.000Z');
@@ -61,4 +61,6 @@ test('deployed durable workspace stays behind server APIs and hides private docu
   assert.doesNotMatch(source,/firebase\/firestore|getFirestore|storageKey|sha256/i);assert.match(source,/\/api\/durable-properties/);assert.match(source,/Saved Property is a lifecycle status, not legal verification/);assert.match(source,/Opening this view does not recalculate or change underwriting or Monte Carlo results/);
   const sanitized=durableWorkspaceDocument({id:'document-one',propertyId:'property-one',currentVersion:1,currentVersionMetadata:{version:1,filename:'evidence.pdf',mimeType:'application/pdf',sizeBytes:10,pageCount:1,uploadedAt:'2026-10-19T00:00:00.000Z',scanStatus:'CLEAN',sha256:'secret-hash',storageKey:'private/path'}});
   assert.equal(sanitized.currentVersionMetadata.filename,'evidence.pdf');assert.doesNotMatch(JSON.stringify(sanitized),/secret-hash|private\/path|sha256|storageKey/);
+  const report=durableWorkspaceReport({id:'report-one',scenarioId:'scenario-one',revision:1,kind:'full',status:'generated',generatedAt:'2026-10-19T00:00:00.000Z',supportingDocuments:[{documentId:'internal-document',sha256:'secret-hash',storageKey:'private/path'}]});
+  assert.equal(report.supportingDocumentCount,1);assert.doesNotMatch(JSON.stringify(report),/secret-hash|private\/path|sha256|storageKey|internal-document/);
 });

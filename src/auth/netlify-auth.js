@@ -21,6 +21,7 @@ async function requestBody(request,maximum=16_000){
 }
 
 function publicUser(user){return {uid:user.uid,role:user.role,emailVerified:user.emailVerified,providerResearchAllowed:user.providerResearchAllowed,organizationId:user.organizationId,authenticatedAt:user.authenticatedAt,sessionExpiresAt:user.sessionExpiresAt};}
+export const durableWorkspaceReport=report=>({id:report.id,scenarioId:report.scenarioId,scenarioName:report.scenarioName,revision:report.revision,kind:report.kind,status:report.status,generatedAt:report.generatedAt,supportingDocumentCount:Array.isArray(report.supportingDocuments)?report.supportingDocuments.length:0});
 const durableRoute=path=>path.match(/^\/api\/durable-properties\/([A-Za-z0-9._-]{1,128})(?:\/(workspace|archive|restore))?$/);
 
 /** Protects the deployed workbench API with the same Firebase session boundary as PI local development. */
@@ -61,7 +62,7 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
           const property=await service.get({user,id});
           if(!action)return json(200,{property});
           const [revisions,reports,documentRegister]=await Promise.all([service.scenarioRevisions({user,id}),service.reports({user,id}),typeof documentMetadata==='function'?documentMetadata().then(metadata=>metadata.list({user,propertyId:id})):Promise.resolve({documents:[],completeness:[]})]);
-          return json(200,{property,revisions,reports,documents:documentRegister.documents,documentCompleteness:documentRegister.completeness});
+          return json(200,{property,revisions,reports:reports.map(durableWorkspaceReport),documents:documentRegister.documents,documentCompleteness:documentRegister.completeness});
         }
         if(request.method==='POST'&&['archive','restore'].includes(action)){
           if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json'))return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
