@@ -237,6 +237,14 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
         const input=await requestBody(request,15*1024*1024),encoded=String(input?.file?.base64??'');if(!encoded||encoded.length%4!==0||!/^[A-Za-z0-9+/]*={0,2}$/.test(encoded))return json(422,{error:'DOCUMENT_BASE64_INVALID'});const bytes=Buffer.from(encoded,'base64');if(bytes.toString('base64')!==encoded)return json(422,{error:'DOCUMENT_BASE64_INVALID'});
         const document=await service.upload({user,propertyId,metadata:input.metadata,file:{filename:input.file?.filename,mimeType:input.file?.mimeType,bytes},documentId:input.documentId??null});return json(201,{document:safeWorkspaceDocument(document)});
       }
+      if(['/api/durable-properties/preview','/api/durable-properties/save'].includes(path)&&request.method==='POST'){
+        if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
+        if(typeof durableProperties!=='function'||typeof retainedEvidence!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
+        const input=await requestBody(request),evidenceService=await retainedEvidence(),record=await evidenceService.find({user,subjectRef:input?.subjectRef});if(!record)return json(404,{error:'RETAINED_SUBJECT_NOT_FOUND'});
+        const service=await durableProperties(),subject=record.payload.property,scenario=input?.scenarioId?(await Promise.all((await service.list({user,includeArchived:true})).map(property=>service.scenarioRevisions({user,id:property.id})))).flat().map(link=>link.scenario).find(item=>item?.id===input.scenarioId)??null:null;
+        if(path.endsWith('/preview'))return json(200,await service.preview({user,subject,scenario}));
+        authentication.requireCsrf(adapted);return json(200,{property:await service.promote({user,subject,scenario})});
+      }
       const durableMatch=durableRoute(path);
       if(durableMatch){
         if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
