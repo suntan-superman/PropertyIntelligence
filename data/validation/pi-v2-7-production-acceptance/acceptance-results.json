@@ -1,0 +1,563 @@
+{
+  "classification": "PI V2.7 — CLOUD PDF EXPORT AND COVER INTEGRATION: PRODUCTION ACCEPTED",
+  "base": "https://worksidepropertyintelligence.netlify.app",
+  "commit": "4002fe45b145a049893ec39d4749f922107e8a21",
+  "scenario": {
+    "id": "6f7b1d62-0e91-4da1-9e31-250101000101",
+    "revision": 1,
+    "evidenceSnapshot": "3630507840c38236a84bd1c30c93adcccc52db72bc94a197343c6566c62f8e71",
+    "evidenceAssociations": 5
+  },
+  "files": {
+    "brief": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-7-production-acceptance\\QA_NOT_FOR_DISTRIBUTION_400_Decatur_St_Bakersfield_CA_93308_Opportunity_Brief_2026-10-19_R1.pdf",
+    "full": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-7-production-acceptance\\QA_NOT_FOR_DISTRIBUTION_400_Decatur_St_Bakersfield_CA_93308_Full_Investor_Package_2026-10-19_R1.pdf",
+    "screenshots": [
+      "production-report-controls.png",
+      "production-full-package-ready.png",
+      "cover.png",
+      "appendix-index.png",
+      "appendix-1-provenance.png",
+      "appendix-1-document.png"
+    ]
+  },
+  "inspection": {
+    "brief": {
+      "pageCount": 3
+    },
+    "full": {
+      "pageCount": 22,
+      "indexPage": 13,
+      "coverPages": [
+        14,
+        17,
+        20
+      ],
+      "syntheticPages": [
+        15,
+        16,
+        18,
+        19,
+        21,
+        22
+      ]
+    }
+  },
+  "resources": {
+    "pdfRequests": 4,
+    "storageReads": 3,
+    "firestoreDocumentWrites": 11,
+    "reportHistoryEntries": 4,
+    "newUploads": 0,
+    "malwareScans": 0,
+    "providerRequests": 0,
+    "scenarioRevisions": 0,
+    "automaticRetries": 0,
+    "correctedContinuations": 3,
+    "harnessCaptureDeviation": "Three successful Brief renders were retained in report history after capture-only assertions stopped their harness runs. The final continuation reused the already downloaded Brief and requested only the Full Package."
+  },
+  "integrity": {
+    "financialProjectionSha256": "eca64c63a7a8760e014ceddb653ba7dff91e8f51d2f0aa9090f9d0e28b5da3d9",
+    "unchanged": true,
+    "documentsBefore": 4,
+    "documentsAfter": 4,
+    "reportsBeforeFinalContinuation": 31,
+    "reportsAfter": 31
+  },
+  "checks": [
+    {
+      "name": "control Sign in",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "exact Decatur property restored",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "exact QA scenario revision restored",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "five evidence associations restored",
+      "pass": true,
+      "details": "5"
+    },
+    {
+      "name": "three authorized immutable document identities linked",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "fourth historical document remains preserved",
+      "pass": true,
+      "details": "4"
+    },
+    {
+      "name": "previously downloaded Opportunity Brief retained",
+      "pass": true,
+      "details": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-7-production-acceptance\\browser-downloads"
+    },
+    {
+      "name": "retained Brief PDF signature",
+      "pass": true,
+      "details": "%PDF-1.7\n%����\n\n8 0 "
+    },
+    {
+      "name": "previously downloaded Full Investor Package retained",
+      "pass": true,
+      "details": "C:\\Users\\sjroy\\Source\\PropertyIntelligence\\data\\validation\\pi-v2-7-production-acceptance\\browser-downloads"
+    },
+    {
+      "name": "retained Brief PDF signature",
+      "pass": true,
+      "details": "%PDF-1.7\n%����\n\n9 0 "
+    },
+    {
+      "name": "brief page 1 is legible",
+      "pass": true,
+      "details": "4751"
+    },
+    {
+      "name": "brief page 2 is legible",
+      "pass": true,
+      "details": "684"
+    },
+    {
+      "name": "brief page 3 is legible",
+      "pass": true,
+      "details": "1256"
+    },
+    {
+      "name": "Opportunity Brief has no Full Package cover",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Opportunity Brief has no embedded appendix provenance pages",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Opportunity Brief page 1 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Opportunity Brief page 2 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Opportunity Brief page 3 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "full page 1 is legible",
+      "pass": true,
+      "details": "1204"
+    },
+    {
+      "name": "full page 2 is legible",
+      "pass": true,
+      "details": "4182"
+    },
+    {
+      "name": "full page 3 is legible",
+      "pass": true,
+      "details": "1834"
+    },
+    {
+      "name": "full page 4 is legible",
+      "pass": true,
+      "details": "3253"
+    },
+    {
+      "name": "full page 5 is legible",
+      "pass": true,
+      "details": "2450"
+    },
+    {
+      "name": "full page 6 is legible",
+      "pass": true,
+      "details": "2030"
+    },
+    {
+      "name": "full page 7 is legible",
+      "pass": true,
+      "details": "2431"
+    },
+    {
+      "name": "full page 8 is legible",
+      "pass": true,
+      "details": "2631"
+    },
+    {
+      "name": "full page 9 is legible",
+      "pass": true,
+      "details": "2991"
+    },
+    {
+      "name": "full page 10 is legible",
+      "pass": true,
+      "details": "2496"
+    },
+    {
+      "name": "full page 11 is legible",
+      "pass": true,
+      "details": "2655"
+    },
+    {
+      "name": "full page 12 is legible",
+      "pass": true,
+      "details": "618"
+    },
+    {
+      "name": "full page 13 is legible",
+      "pass": true,
+      "details": "1665"
+    },
+    {
+      "name": "full page 14 is legible",
+      "pass": true,
+      "details": "580"
+    },
+    {
+      "name": "full page 15 is legible",
+      "pass": true,
+      "details": "923"
+    },
+    {
+      "name": "full page 16 is legible",
+      "pass": true,
+      "details": "954"
+    },
+    {
+      "name": "full page 17 is legible",
+      "pass": true,
+      "details": "573"
+    },
+    {
+      "name": "full page 18 is legible",
+      "pass": true,
+      "details": "816"
+    },
+    {
+      "name": "full page 19 is legible",
+      "pass": true,
+      "details": "926"
+    },
+    {
+      "name": "full page 20 is legible",
+      "pass": true,
+      "details": "539"
+    },
+    {
+      "name": "full page 21 is legible",
+      "pass": true,
+      "details": "882"
+    },
+    {
+      "name": "full page 22 is legible",
+      "pass": true,
+      "details": "959"
+    },
+    {
+      "name": "Full Package cover is page 1",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "cover property is Decatur",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "cover is synthetic QA",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "cover includes approved disclaimer",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "appendix index exists",
+      "pass": true,
+      "details": "13"
+    },
+    {
+      "name": "exactly three appendix provenance covers",
+      "pass": true,
+      "details": "[14,17,20]"
+    },
+    {
+      "name": "synthetic source pages retained",
+      "pass": true,
+      "details": "[15,16,18,19,21,22]"
+    },
+    {
+      "name": "appendix order follows index",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "no duplicate appendix pages",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "unrelated document excluded: PI V2.5 document acceptance test",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 1 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 2 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 3 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 4 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 5 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 6 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 7 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 8 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 9 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 10 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 11 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 12 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 13 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 14 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 15 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 16 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 17 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 18 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 19 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 20 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 21 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "Full Package page 22 numbered",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "financial and Monte Carlo projection unchanged",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "scenario revision unchanged",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "fourth historical document unchanged",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "no report history write during read-only validation",
+      "pass": true,
+      "details": "31 -> 31"
+    },
+    {
+      "name": "no cloud PDF request during read-only validation",
+      "pass": true,
+      "details": "[{\"method\":\"GET\",\"path\":\"/api/auth/config\"},{\"method\":\"GET\",\"path\":\"/api/auth/me\"},{\"method\":\"POST\",\"path\":\"/api/auth/session\"},{\"method\":\"GET\",\"path\":\"/api/auth/me\"},{\"method\":\"GET\",\"path\":\"/api/investment/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenarios\"},{\"method\":\"GET\",\"path\":\"/api/discovery/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/discovery/state\"},{\"method\":\"GET\",\"path\":\"/api/incoming-leads\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties\"},{\"method\":\"GET\",\"path\":\"/api/investment/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenario-revisions\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/workspace\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"},{\"method\":\"GET\",\"path\":\"/api/investment/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenarios\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenario-revisions\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"},{\"method\":\"POST\",\"path\":\"/api/investment/analyze\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenario-revisions\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/workspace\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"}]"
+    },
+    {
+      "name": "no provider request",
+      "pass": true,
+      "details": "[{\"method\":\"GET\",\"path\":\"/api/auth/config\"},{\"method\":\"GET\",\"path\":\"/api/auth/me\"},{\"method\":\"POST\",\"path\":\"/api/auth/session\"},{\"method\":\"GET\",\"path\":\"/api/auth/me\"},{\"method\":\"GET\",\"path\":\"/api/investment/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenarios\"},{\"method\":\"GET\",\"path\":\"/api/discovery/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/discovery/state\"},{\"method\":\"GET\",\"path\":\"/api/incoming-leads\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties\"},{\"method\":\"GET\",\"path\":\"/api/investment/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenario-revisions\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/workspace\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"},{\"method\":\"GET\",\"path\":\"/api/investment/bootstrap\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenarios\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenario-revisions\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"},{\"method\":\"POST\",\"path\":\"/api/investment/analyze\"},{\"method\":\"GET\",\"path\":\"/api/investment/scenario-revisions\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/workspace\"},{\"method\":\"GET\",\"path\":\"/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents\"}]"
+    },
+    {
+      "name": "no uploads, scans or scenario saves",
+      "pass": true,
+      "details": ""
+    },
+    {
+      "name": "no browser runtime errors",
+      "pass": true,
+      "details": "[]"
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/auth/config"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/session"
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/bootstrap"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/scenarios"
+    },
+    {
+      "method": "GET",
+      "path": "/api/discovery/bootstrap"
+    },
+    {
+      "method": "GET",
+      "path": "/api/discovery/state"
+    },
+    {
+      "method": "GET",
+      "path": "/api/incoming-leads"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/bootstrap"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/scenario-revisions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/workspace"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/bootstrap"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/scenarios"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/scenario-revisions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents"
+    },
+    {
+      "method": "POST",
+      "path": "/api/investment/analyze"
+    },
+    {
+      "method": "GET",
+      "path": "/api/investment/scenario-revisions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/workspace"
+    },
+    {
+      "method": "GET",
+      "path": "/api/durable-properties/52638a00-8167-4cff-85c0-f56a0445a5a9/documents"
+    }
+  ]
+}
