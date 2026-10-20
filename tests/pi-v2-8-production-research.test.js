@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
 import {memoryStore} from '../src/sources/rentcast/stores.js';
 import {createProductionPropertyResearch,DEFAULT_RESEARCH_BUDGET} from '../src/investment-workspace/firestore-production-research.js';
 import {identityMatches} from '../src/sources/rentcast/propertyLookup.js';
@@ -35,4 +36,8 @@ test('V2.8 authorization, spending and UI boundaries remain explicit and fail cl
 
 test('V2.8 treats spelled and abbreviated street directions as the same provider address',()=>{
   const normalized=canonicalProviderAddress({street:'40924 173rd Street East',city:'Lancaster',state:'CA',zip:'93535'}),params=soldParams(normalized);assert.equal(normalized.street,'40924 173rd St E');assert.equal(identityMatches(normalized,subject),true);assert.equal(Object.hasOwn(params,'includeTotalCount'),false);
+});
+
+test('Guided Analysis follows a newly retained evidence snapshot without rewriting a saved scenario',async()=>{
+  const workspace=await readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8');assert.match(workspace,/updated\.evidenceFingerprint!==p\.evidenceFingerprint\)location\.hash=investmentRoute\(updated\.ref,updated\.evidenceFingerprint,null,'Sold Sales',mode\)/);assert.doesNotMatch(workspace,/updated\.evidenceFingerprint[^\n]+save\(/);
 });
