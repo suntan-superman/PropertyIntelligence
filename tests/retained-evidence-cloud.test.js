@@ -18,8 +18,8 @@ test('local retained-evidence import contains every reviewed research subject an
 });
 
 test('retained evidence is immutable, hash-verified and tenant-scoped',async()=>{
-  const property={ref:'subject-one',address:'1 Main St',evidenceFingerprint:'snapshot-one',sales:[]},record=createRetainedEvidenceRecord({organizationId,property,importedAt:now.toISOString(),importedBy:uid}),repository={async list(org){assert.equal(org,organizationId);return [record];},async get(org,id){assert.equal(org,organizationId);return id===record.id?record:null;}},service=createRetainedEvidenceService({repository}),listed=await service.bootstrap({user:{uid,organizationId}});
-  assert.equal(listed.properties[0].ref,'subject-one');assert.equal((await service.find({user:{uid,organizationId},subjectRef:'subject-one'})).payloadHash,record.payloadHash);
+  const property={ref:'subject-one',address:'1 Main St',evidenceFingerprint:'snapshot-one',sales:[]},record=createRetainedEvidenceRecord({organizationId,property,propertyDetail:{subjectRef:'subject-one',evidenceFingerprint:'snapshot-one'},importedAt:now.toISOString(),importedBy:uid}),repository={async list(org){assert.equal(org,organizationId);return [record];},async get(org,id){assert.equal(org,organizationId);return id===record.id?record:null;}},service=createRetainedEvidenceService({repository}),listed=await service.bootstrap({user:{uid,organizationId}});
+  assert.equal(listed.properties[0].ref,'subject-one');assert.equal(listed.propertyDetails[0].subjectRef,'subject-one');assert.equal((await service.find({user:{uid,organizationId},subjectRef:'subject-one'})).payloadHash,record.payloadHash);
   assert.throws(()=>verifyRetainedEvidenceRecord({...record,payload:{...record.payload,property:{...record.payload.property,address:'tampered'}}}),/INTEGRITY/);
   await assert.rejects(()=>service.list({user:{uid}}),/AUTHENTICATION_REQUIRED/);
 });

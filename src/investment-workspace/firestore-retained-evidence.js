@@ -53,6 +53,6 @@ export function createRetainedEvidenceService({repository}={}){
     async list({user}){return records(user);},
     async find({user,subjectRef,evidenceFingerprint=null}){return (await records(user)).find(record=>record.subjectRef===subjectRef&&(!evidenceFingerprint||record.evidenceFingerprint===evidenceFingerprint))??null;},
     async get({user,id}){return repository.get(trustedUser(user).organizationId,id);},
-    async bootstrap({user}){const rows=await records(user);return {properties:rows.map(row=>structuredClone(row.payload.property)),propertyDetails:rows.map(row=>row.payload.propertyDetail).filter(Boolean).map(structuredClone),records:rows};}
+    async bootstrap({user}){const rows=await records(user);return {properties:rows.map(row=>structuredClone(row.payload.property)),propertyDetails:rows.map(row=>row.payload.propertyDetail).filter(Boolean).map(value=>structuredClone(value)),records:rows};}
   };
 }
