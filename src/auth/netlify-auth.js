@@ -1,3 +1,5 @@
+import {searchRetainedAddress} from '../../apps/web/src/features/property-search/address-identity.js';
+
 const json=(status,body,headers={})=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...headers}});
 
 function routePath(request){
@@ -38,6 +40,7 @@ function retainedDetailWithLifecycle(detail,subject){
   if(!detail)return durableWorkspacePropertyDetail(subject);
   return {...structuredClone(detail),id:subject.durablePropertyId??detail.id,subjectKind:subject.subjectKind,evidenceSnapshotId:subject.evidenceFingerprint,evidenceFingerprint:subject.evidenceFingerprint};
 }
+const addressParts=property=>property?.addressComponents??{street:property?.street??'',city:property?.city??'',state:property?.state??'',zip:property?.zip??''};
 async function cloudEvidence({user,durableService,evidenceService,includeArchived=true}){
   const durable=await durableService.list({user,includeArchived}),retained=evidenceService?await evidenceService.bootstrap({user}):{properties:[],propertyDetails:[],records:[]},durableBySubject=new Map(durable.map(item=>[item.sourceSubjectRef,item]));
   const properties=retained.properties.map(subject=>retainedSubjectWithLifecycle(subject,durableBySubject.get(subject.ref))),retainedRefs=new Set(properties.map(item=>item.ref));
@@ -83,7 +86,7 @@ const qaScenario=scenario=>scenario?.demonstration===true||/(^|\b)(QA|FIXTURE|SY
 const reportDownloadHeaders=(filenameValue,result)=>({'Content-Type':'application/pdf','Content-Length':String(result.bytes.length),'Content-Disposition':`attachment; filename="${filename(filenameValue).replaceAll('"','_')}"`,'Cache-Control':'private, no-store, max-age=0','Pragma':'no-cache','X-Content-Type-Options':'nosniff','X-PI-Report-Pages':String(result.totalPages),'X-PI-Appendix-Pages':String(result.appendixPages)});
 
 /** Protects the deployed workbench API with the same Firebase session boundary as PI local development. */
-export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,retainedEvidence=null,documentMetadata=null,pdfRenderer=null,pdfAvailable=typeof pdfRenderer==='function'}={}){
+export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,retainedEvidence=null,productionResearch=null,addressValidation=null,documentMetadata=null,pdfRenderer=null,pdfAvailable=typeof pdfRenderer==='function'}={}){
   if(typeof api!=='function'||!authentication?.enabled)throw new Error('NETLIFY_AUTHENTICATION_REQUIRED');
   let pdfBusy=false;
   const inFlightReportRequests=new Set();
@@ -125,14 +128,37 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
       if(path==='/api/discovery/bootstrap'&&request.method==='GET')return json(200,{sourceSnapshotDate:null,fingerprint:'PRIVATE_CLOUD_DISCOVERY_NOT_LOADED',records:[],counterexamples:[],limits:{batchSize:80,shortlistSize:6},viewCounts:{allCountyRecords:0,residential:0,needsResearch:0},universe:{total:0,countySitusPresent:0,countySitusMissing:0,countySitusMalformed:0,assessorUnmatched:0,geometryAvailable:0}});
       if(path==='/api/discovery/state'&&request.method==='GET')return json(200,{shortlist:[],batches:[],candidateStatus:{},activeBatchId:null,history:[]});
       if(path==='/api/incoming-leads'&&request.method==='GET')return json(200,{intakeEnabled:false,records:[]});
-      if(path==='/api/property-research/capability'&&request.method==='GET')return json(200,{enabled:typeof retainedEvidence==='function',liveProviderEnabled:false,cacheRestoreEnabled:typeof retainedEvidence==='function',cacheRestoreOnly:true,workflow:'RETAINED_EVIDENCE_ONLY_V1',provider:'RentCast',remainingRequestBudget:{providerRequests:0},blockers:['LIVE_PROVIDER_RESEARCH_DISABLED']});
+      if(path==='/api/property-research/capability'&&request.method==='GET'){
+        if(typeof productionResearch==='function')return json(200,await (await productionResearch()).capability({user}));
+        return json(200,{enabled:typeof retainedEvidence==='function',liveProviderEnabled:false,cacheRestoreEnabled:typeof retainedEvidence==='function',cacheRestoreOnly:true,workflow:'RETAINED_EVIDENCE_ONLY_V1',provider:'RentCast',remainingRequestBudget:{providerRequests:0},blockers:['LIVE_PROVIDER_RESEARCH_DISABLED']});
+      }
+      if(path==='/api/admin/provider-research-settings'){
+        if(typeof productionResearch!=='function')return json(503,{error:'PRODUCTION_RESEARCH_NOT_CONFIGURED'});const service=await productionResearch();
+        if(request.method==='GET')return json(200,{settings:await service.getSettings({user})});
+        if(request.method==='POST'){if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json'))return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});authentication.requireCsrf(adapted);const input=await requestBody(request);return json(200,{settings:await service.updateSettings({user,patch:input})});}
+      }
+      if(path==='/api/discovery/address-validation/start'&&request.method==='POST'){
+        if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});const input=await requestBody(request),evidenceService=typeof retainedEvidence==='function'?await retainedEvidence():null,retained=evidenceService?await evidenceService.bootstrap({user}):{properties:[]},match=searchRetainedAddress(input,retained.properties);
+        if(match.status==='MATCH'){const property=match.matches[0];return json(200,{kind:'RETAINED_MATCH',propertyRef:property.ref,evidenceFingerprint:property.evidenceFingerprint,message:'Retained evidence became available before provider research. No Google or RentCast request was made.'});}
+        if(match.status==='AMBIGUOUS')return json(200,{kind:'RETAINED_AMBIGUOUS',matches:match.matches.map(item=>({ref:item.ref,address:item.address,evidenceFingerprint:item.evidenceFingerprint})),message:'Multiple retained subjects match this normalized address. Select the intended subject; no provider request was made.'});
+        if(typeof addressValidation!=='function')return json(503,{error:'ADDRESS_VALIDATION_NOT_CONFIGURED'});return json(200,{kind:'GOOGLE_VALIDATION',...await (await addressValidation()).validateForResearch(input,{userId:user.uid})});
+      }
+      if(path==='/api/discovery/address-validation/confirm'&&request.method==='POST'){
+        if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});if(typeof addressValidation!=='function')return json(503,{error:'ADDRESS_VALIDATION_NOT_CONFIGURED'});return json(200,await (await addressValidation()).confirmForResearch(await requestBody(request),{userId:user.uid}));
+      }
       if(path==='/api/property-research/local-evidence'&&request.method==='GET'){
         if(typeof retainedEvidence!=='function')return json(200,{entries:[]});const service=await retainedEvidence(),records=await service.list({user});return json(200,{entries:records.map(localEvidenceEntry)});
       }
       if(path==='/api/property-research/research'&&request.method==='POST'){
         if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
         if(typeof retainedEvidence!=='function')return json(503,{error:'RETAINED_EVIDENCE_STORAGE_NOT_CONFIGURED'});
-        const input=await requestBody(request,16_000),service=await retainedEvidence(),record=input?.localEvidenceKey?await service.get({user,id:input.localEvidenceKey}):await service.find({user,subjectRef:input?.retainedSubjectRef});
+        const input=await requestBody(request,16_000),service=await retainedEvidence(),record=input?.localEvidenceKey?await service.get({user,id:input.localEvidenceKey}):input?.retainedSubjectRef?await service.find({user,subjectRef:input.retainedSubjectRef}):null;
+        if(!record&&input?.retainedSubjectRef)return json(404,{error:'LOCAL_EVIDENCE_NOT_FOUND'});
+        if(typeof productionResearch==='function'){
+          let validated=null;if(!record){if(typeof addressValidation!=='function')return json(503,{error:'ADDRESS_VALIDATION_NOT_CONFIGURED'});validated=await (await addressValidation()).consumeResearchToken(input?.addressValidationToken,{userId:user.uid});}
+          const property=record?.payload.property??null,detail=record?.payload.propertyDetail??null,address=property?addressParts(property):validated.confirmedAddress,addressContext=property?{classification:'RETAINED_EVIDENCE',confirmationMethod:'RETAINED_SUBJECT',originalAddress:address,confirmedAddress:address,legalIdentityVerified:false}:{classification:validated.classification,confirmationMethod:validated.confirmationMethod,originalAddress:validated.originalAddress,confirmedAddress:validated.confirmedAddress,googleEvidence:validated.googleEvidence,legalIdentityVerified:false};
+          return json(200,await (await productionResearch()).research({user,address,addressValidation:addressContext,currentProperty:property,currentDetail:detail,operations:property?['valuation','comparableSales']:['propertyRecords','valuation']}));
+        }
         if(!record)return json(404,{error:'LOCAL_EVIDENCE_NOT_FOUND'});
         const property=record.payload.property,available={propertyRecords:Boolean(property.propertyRef),valuation:Number.isFinite(property.avm?.price),comparableSales:Array.isArray(property.sales)&&property.sales.length>0},labels={propertyRecords:'Property records',valuation:'Valuation',comparableSales:'Comparable sales'},operations=Object.entries(available).map(([key,value])=>({key,label:labels[key],status:value?'Available':'Unavailable',requestsUsed:0,estimatedCostCents:0,source:'Organization retained evidence',...(value?{}:{error:'NOT_PRESENT_IN_RETAINED_SNAPSHOT'})}));
         return json(200,{status:operations.every(item=>item.status==='Available')?'COMPLETE':'PARTIAL',property,operations,requestsUsed:0,estimatedSpendingCents:0,automaticRetries:0,durablePropertyCreated:false,identityBoundary:'Restored provider-reported evidence remains preliminary and is not legal parcel, title or ownership verification.'});

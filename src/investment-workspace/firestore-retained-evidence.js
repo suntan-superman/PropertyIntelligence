@@ -49,10 +49,13 @@ const trustedUser=user=>{if(!user?.uid||!user?.organizationId)throw Object.assig
 export function createRetainedEvidenceService({repository}={}){
   if(!repository)throw new Error('RETAINED_EVIDENCE_REPOSITORY_REQUIRED');
   const records=async user=>repository.list(trustedUser(user).organizationId);
+  const newest=rows=>[...rows].sort((a,b)=>String(b.importedAt).localeCompare(String(a.importedAt))||b.id.localeCompare(a.id));
+  const current=rows=>{const selected=new Map();for(const row of newest(rows))if(!selected.has(row.subjectRef))selected.set(row.subjectRef,row);return [...selected.values()].sort((a,b)=>a.payload.property.address.localeCompare(b.payload.property.address));};
   return {
-    async list({user}){return records(user);},
-    async find({user,subjectRef,evidenceFingerprint=null}){return (await records(user)).find(record=>record.subjectRef===subjectRef&&(!evidenceFingerprint||record.evidenceFingerprint===evidenceFingerprint))??null;},
+    async list({user,includeHistorical=false}={}){const rows=await records(user);return includeHistorical?newest(rows):current(rows);},
+    async find({user,subjectRef,evidenceFingerprint=null}){return newest(await records(user)).find(record=>record.subjectRef===subjectRef&&(!evidenceFingerprint||record.evidenceFingerprint===evidenceFingerprint))??null;},
     async get({user,id}){return repository.get(trustedUser(user).organizationId,id);},
-    async bootstrap({user}){const rows=await records(user);return {properties:rows.map(row=>structuredClone(row.payload.property)),propertyDetails:rows.map(row=>row.payload.propertyDetail).filter(Boolean).map(value=>structuredClone(value)),records:rows};}
+    async persist({user,property,propertyDetail=null,classification='RETAINED_RESEARCH',source='Authenticated RentCast research'}={}){const trusted=trustedUser(user);if(trusted.role!=='Administrator')throw Object.assign(new Error('ROLE_NOT_AUTHORIZED'),{status:403});const record=createRetainedEvidenceRecord({organizationId:trusted.organizationId,property,propertyDetail,classification,source,importedAt:new Date().toISOString(),importedBy:trusted.uid});return repository.createImmutable(record);},
+    async bootstrap({user}){const rows=current(await records(user));return {properties:rows.map(row=>structuredClone(row.payload.property)),propertyDetails:rows.map(row=>row.payload.propertyDetail).filter(Boolean).map(value=>structuredClone(value)),records:rows};}
   };
 }

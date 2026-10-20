@@ -47,6 +47,15 @@
 .local-evidence-grid .local-evidence-remove:hover,.local-evidence-grid .local-evidence-remove:focus-visible { color:#682b20;background:transparent; }
 .empty-local-evidence { padding:12px;border:1px dashed #b9ceca;border-radius:6px;background:#fff; }
 .address-result { scroll-margin-top:90px; }
+.research-budget { margin-top:12px;padding:12px 16px;border:1px solid #bfd2ce;border-radius:8px;background:#f8fbfa; }
+.research-budget>summary { display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;color:#0b3746; }
+.research-budget>summary span { display:grid;gap:3px; }
+.research-budget>summary small { color:#617174;font-weight:400; }
+.research-budget>summary b { color:#176d63;font-size:.82rem; }
+.research-budget form { display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;align-items:end;gap:10px;margin-top:14px; }
+.research-budget label { display:grid;gap:5px;font-size:.78rem;font-weight:700; }
+.research-budget input { width:100%; }
+.research-budget p { margin:10px 0 0;color:#176d63; }
 
 .address-validation-review {
   display: grid;
@@ -91,4 +100,4 @@
 .research-state.retrieved { background:#dff3e8;color:#176345; }
 .research-state.unavailable { background:#fff0e2;color:#96530f; }
 .research-progress-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px; }
-@media(max-width:850px){.research-progress-grid,.address-comparison,.local-evidence-grid{grid-template-columns:1fr;}}
+@media(max-width:850px){.research-progress-grid,.address-comparison,.local-evidence-grid,.research-budget form{grid-template-columns:1fr;}}

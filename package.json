@@ -90,6 +90,7 @@
     "pi:retained-evidence:preflight": "node scripts/migrate-retained-evidence-to-firestore.js",
     "pi:retained-evidence:apply": "node scripts/migrate-retained-evidence-to-firestore.js --apply",
     "pi:retained-evidence:test": "node --test tests/retained-evidence-cloud.test.js tests/netlify-auth.test.js tests/pi-v2-7-cloud-pdf.test.js",
+    "pi:v2.8:production-research:test": "node --test tests/pi-v2-8-production-research.test.js tests/retained-evidence-cloud.test.js tests/netlify-auth.test.js tests/pi-v2-3c-address-validation.test.js",
     "pi:local": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:no-documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence",

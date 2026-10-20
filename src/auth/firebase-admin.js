@@ -52,6 +52,16 @@ export async function initializeFirebaseRetainedEvidence({authentication}={}){
   return createRetainedEvidenceService({repository:createFirestoreRetainedEvidenceRepository({firestore:getFirestore(app)})});
 }
 
+export async function initializeFirebaseProductionResearch({authentication,retainedEvidence,env=process.env}={}){
+  if(!authentication?.enabled||!authentication.expectedProjectId||!retainedEvidence)throw new Error('FIREBASE_PRODUCTION_RESEARCH_REQUIRED');
+  const apiKey=String(env.RENTCAST_API_KEY??env.MARKET_DATA_API_KEY??'').trim();if(!apiKey||/\s/.test(apiKey))throw new Error('RENTCAST_API_KEY_REQUIRED');
+  const organizationId=String(env.PI_FIREBASE_ORGANIZATION_ID??'').trim();if(!organizationId)throw new Error('PI_FIREBASE_ORGANIZATION_ID_REQUIRED');
+  const [{getApp},{getFirestore},{createFirestoreRentCastStore,createFirestoreResearchRepository,createProductionPropertyResearch},{createFirestoreAddressValidation}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/firestore'),import('../investment-workspace/firestore-production-research.js'),import('../discovery/firestore-address-validation.js')]);
+  const app=getApp('pi-v2-3a');if(app.options.projectId!==authentication.expectedProjectId)throw new Error('FIRESTORE_PROJECT_MISMATCH');const firestore=getFirestore(app),clock=()=>new Date();
+  const store=createFirestoreRentCastStore({firestore,organizationId}),repository=createFirestoreResearchRepository({firestore,organizationId,clock}),research=createProductionPropertyResearch({organizationId,repository,store,apiKey,evidenceService:retainedEvidence,clock}),addressValidation=createFirestoreAddressValidation({firestore,organizationId,googleApiKey:String(env.GOOGLE_GEOCODING_API_KEY??env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY??'').trim()||null,clock});
+  return {research,addressValidation};
+}
+
 export function durableWorkspaceDocument(document={}){
   const version=document.currentVersionMetadata;
   return {id:document.id,propertyId:document.propertyId,documentType:document.documentType,description:document.description,source:document.source,sourceDate:document.sourceDate,uploadedAt:document.uploadedAt,updatedAt:document.updatedAt,reviewStatus:document.reviewStatus,confidentiality:document.confidentiality,redistributionPermission:document.redistributionPermission,appendixSelected:document.appendixSelected,evidenceClaim:document.evidenceClaim,currentVersion:document.currentVersion,versionCount:document.versionCount,eligibilityConsistent:document.eligibilityConsistent,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,pageCount:version.pageCount,uploadedAt:version.uploadedAt,scanStatus:version.scanStatus}:null};
