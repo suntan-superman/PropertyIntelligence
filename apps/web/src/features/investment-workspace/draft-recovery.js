@@ -11,7 +11,13 @@ export function writeWorkspaceDraft(value,storage=localStorage){
 }
 
 export function readWorkspaceDraft(storage=localStorage){
-  try{return JSON.parse(storage.getItem(WORKSPACE_DRAFT_KEY))??{};}catch{return {};}
+  try{
+    const value=JSON.parse(storage.getItem(WORKSPACE_DRAFT_KEY));
+    if(!value||typeof value!=='object'||Array.isArray(value))return {};
+    const object=input=>input&&typeof input==='object'&&!Array.isArray(input)?input:{};
+    const drafts=Array.isArray(value.drafts)?value.drafts.filter(item=>item&&typeof item==='object'&&typeof item.id==='string'&&typeof item.propertyRef==='string').map(item=>({...item,inputs:object(item.inputs),risk:{...object(item.risk),variables:object(item.risk?.variables)},compReviews:object(item.compReviews),analystEvidence:Array.isArray(item.analystEvidence)?item.analystEvidence:[],evidenceAttachments:Array.isArray(item.evidenceAttachments)?item.evidenceAttachments:[]})):[];
+    return {drafts,selected:Array.isArray(value.selected)?value.selected.filter(item=>typeof item==='string'):[],activeId:typeof value.activeId==='string'?value.activeId:'',subject:typeof value.subject==='string'?value.subject:'',mode:value.mode==='advanced'?'advanced':'guided',guidedProgress:object(value.guidedProgress)};
+  }catch{return {};}
 }
 
 export function writeSessionRecovery(value,{reason='SESSION_EXPIRED',storage=localStorage,now=()=>new Date()}={}){

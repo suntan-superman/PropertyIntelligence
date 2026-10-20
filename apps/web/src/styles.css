@@ -81,3 +81,4 @@ html[data-pi-development="true"] #fixtures{display:flex}
 select option{background:#fff;color:#183448}
 select option:hover,select option:focus{background:#e2f2ed linear-gradient(0deg,#e2f2ed,#e2f2ed);color:#183448}
 select option:checked{background:#176c61 linear-gradient(0deg,#176c61,#176c61);color:#fff}
+.application-failure{max-width:760px;margin:12vh auto;padding:32px;border:1px solid #b9d0cb;border-left:5px solid #b77915;border-radius:8px;background:#fff}.application-failure h1{margin-top:0}.application-failure div{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.application-failure a{font-weight:700}

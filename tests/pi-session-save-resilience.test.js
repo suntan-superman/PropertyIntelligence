@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {SESSION_RECOVERY_KEY,WORKSPACE_DRAFT_KEY,readSessionRecovery,saveReminderDue,writeSessionRecovery} from '../apps/web/src/features/investment-workspace/draft-recovery.js';
+import {SESSION_RECOVERY_KEY,WORKSPACE_DRAFT_KEY,readSessionRecovery,readWorkspaceDraft,saveReminderDue,writeSessionRecovery} from '../apps/web/src/features/investment-workspace/draft-recovery.js';
 import {isSessionAuthenticationFailure} from '../apps/web/src/auth/session-lifecycle.js';
 
 const storage=()=>{const values=new Map();return {values,getItem:key=>values.get(key)??null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)};};
@@ -20,6 +20,13 @@ test('recovery checkpoint is not manufactured when every scenario is already sav
   const local=storage();
   assert.equal(writeSessionRecovery({drafts:[{id:'saved',dirty:false}]},{storage:local}),null);
   assert.equal(local.values.has(SESSION_RECOVERY_KEY),false);
+});
+
+test('stale or malformed browser workspace state cannot crash a deployed route',()=>{
+  const malformed=storage();malformed.setItem(WORKSPACE_DRAFT_KEY,JSON.stringify({drafts:{old:true},selected:'not-an-array',activeId:7,subject:null,guidedProgress:[]}));
+  assert.deepEqual(readWorkspaceDraft(malformed),{drafts:[],selected:[],activeId:'',subject:'',mode:'guided',guidedProgress:{}});
+  const legacy=storage();legacy.setItem(WORKSPACE_DRAFT_KEY,JSON.stringify({drafts:[null,{id:'valid',propertyRef:'P-1',dirty:true,inputs:null,risk:null}],selected:['P-1',2],activeId:'valid',subject:'P-1',mode:'advanced',guidedProgress:null}));
+  const restored=readWorkspaceDraft(legacy);assert.equal(restored.drafts.length,1);assert.deepEqual(restored.drafts[0].inputs,{});assert.deepEqual(restored.drafts[0].risk,{variables:{}});assert.deepEqual(restored.selected,['P-1']);assert.equal(restored.mode,'advanced');
 });
 
 test('save reminder becomes due only for a sufficiently old dirty draft',()=>{

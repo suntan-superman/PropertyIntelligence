@@ -8,7 +8,7 @@ import {createMemoryDurablePropertyRepository} from '../src/investment-workspace
 import {createMemoryPrivateDocumentStorage,createMemorySupportingDocumentRepository} from '../src/investment-workspace/memory-supporting-documents.js';
 import {createMockMalwareScanner,createSupportingDocumentService,createUnavailableMalwareScanner,inspectSupportingDocument,SupportingDocumentError} from '../src/investment-workspace/supporting-documents.js';
 import {addQaAcceptanceLabel,addSupportingEvidenceToHtml,appendSupportingDocuments,INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER,markQaNotForDistribution} from '../src/investment-workspace/document-appendices.js';
-import {createCloudRunMalwareScanner,normalizeGoogleIdentityToken} from '../src/investment-workspace/cloud-run-malware-scanner.js';
+import {createCloudRunMalwareScanner,loadCloudRunMalwareScanner,normalizeGoogleIdentityToken} from '../src/investment-workspace/cloud-run-malware-scanner.js';
 import {requireInvestmentBootstrap} from '../src/investment-workspace/server.js';
 
 const analyst={uid:'analyst-docs',role:'Analyst',organizationId:'kern-docs'},administrator={...analyst,uid:'admin-docs',role:'Administrator'},viewer={...analyst,uid:'viewer-docs',role:'Viewer'},other={...analyst,uid:'other-docs',organizationId:'other-docs'};
@@ -105,6 +105,12 @@ test('Cloud Run identity tokens are preserved beyond the previous 500-character 
   const token=`${'a'.repeat(320)}.${'b'.repeat(320)}.${'c'.repeat(320)}`;
   assert.equal(normalizeGoogleIdentityToken(`Bearer ${token}`),token);
   assert.throws(()=>normalizeGoogleIdentityToken('Bearer truncated-token'),/MALWARE_SCANNER_ID_TOKEN_UNAVAILABLE/);
+});
+
+test('serverless scanner loader binds the Firebase service account without filesystem credentials',async()=>{
+  const account={type:'service_account',project_id:'property-intelligence-test',client_email:'scanner-invoker@property-intelligence-test.iam.gserviceaccount.com',private_key:'-----BEGIN PRIVATE KEY-----\ntest\n-----END PRIVATE KEY-----\n'},env={FIREBASE_PROJECT_ID:account.project_id,FIREBASE_SERVICE_ACCOUNT_JSON_BASE64:Buffer.from(JSON.stringify(account)).toString('base64'),PI_MALWARE_SCANNER_URL:'https://scanner.example.test'};
+  const scanner=await loadCloudRunMalwareScanner(env);assert.equal(typeof scanner.scan,'function');
+  await assert.rejects(()=>loadCloudRunMalwareScanner({...env,FIREBASE_PROJECT_ID:'another-project'}),/MALWARE_SCANNER_IDENTITY_CONFIGURATION_INVALID/);
 });
 
 test('full package appends indexed PDF and image pages while brief only references evidence',async()=>{

@@ -78,6 +78,7 @@ data/validation/**/*.png
 data/validation/**/*.html
 data/validation/**/*.tap
 data/validation/**/*.log
+data/validation/netlify-*-audit.json
 
 # Local report-review output and manually supplied proof documents. Canonical
 # synthetic fixtures used by tests live under tests/fixtures and remain tracked.

@@ -8,6 +8,26 @@ import {installSessionExpiryMonitor} from './auth/session-lifecycle.js';
 const App=React.lazy(()=>import('./app/App.jsx'));
 const Monitoring=React.lazy(()=>import('./features/monitoring/Monitoring.jsx'));
 import './styles.css';
+
+const DEPLOY_RELOAD_KEY='pi-deploy-reload-at';
+const deploymentLoadFailure=error=>/dynamically imported module|module script|failed to fetch.*module|loading chunk|chunkloaderror/i.test(String(error?.message??error??''));
+function recoverDeploymentLoad(error){
+  if(!deploymentLoadFailure(error))return false;
+  const prior=Number(sessionStorage.getItem(DEPLOY_RELOAD_KEY)??0),now=Date.now();
+  if(now-prior<60_000)return false;
+  sessionStorage.setItem(DEPLOY_RELOAD_KEY,String(now));
+  location.reload();
+  return true;
+}
+window.addEventListener('vite:preloadError',event=>{event.preventDefault();recoverDeploymentLoad(event.payload??event);});
+window.addEventListener('unhandledrejection',event=>{if(recoverDeploymentLoad(event.reason))event.preventDefault();});
+
+class ApplicationBoundary extends React.Component{
+  constructor(props){super(props);this.state={error:null};}
+  static getDerivedStateFromError(error){return {error};}
+  componentDidCatch(error){recoverDeploymentLoad(error);}
+  render(){if(!this.state.error)return this.props.children;return <main className="application-failure" role="alert"><h1>Property Intelligence could not open this page</h1><p>Your saved property and scenario have not been changed. The application may have been updated while this browser tab was open.</p><div><button onClick={()=>location.reload()}>Reload current page</button><a href="#my-workspace" onClick={()=>this.setState({error:null})}>Return to My Workspace</a></div></main>;}
+}
 document.documentElement.dataset.piDevelopment=__PI_LOCAL_INVESTMENT__?'true':'false';
 const InvestmentWorkspace=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/investment-workspace/Workspace.jsx')):null;
 const PropertyDetail=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/property-detail/PropertyDetail.jsx')):null;
@@ -27,4 +47,4 @@ function LocalApplication(){
   if(__PI_LOCAL_INVESTMENT__)return <Home/>;
   return <React.Suspense fallback={<p>Loading Property Intelligence…</p>}><App/></React.Suspense>;
 }
-createRoot(document.getElementById('root')).render(<NotificationDialogProvider><TooltipProvider><AuthenticationGate><LocalApplication/></AuthenticationGate></TooltipProvider></NotificationDialogProvider>);
+createRoot(document.getElementById('root')).render(<ApplicationBoundary><NotificationDialogProvider><TooltipProvider><AuthenticationGate><LocalApplication/></AuthenticationGate></TooltipProvider></NotificationDialogProvider></ApplicationBoundary>);
