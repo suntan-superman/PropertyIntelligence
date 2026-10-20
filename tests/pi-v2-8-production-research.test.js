@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {memoryStore} from '../src/sources/rentcast/stores.js';
 import {createProductionPropertyResearch,DEFAULT_RESEARCH_BUDGET} from '../src/investment-workspace/firestore-production-research.js';
+import {identityMatches} from '../src/sources/rentcast/propertyLookup.js';
 
 const now=new Date('2026-10-20T18:00:00.000Z'),address={street:'40924 173rd Street E',city:'Lancaster',state:'CA',zip:'93535'},user={uid:'admin',role:'Administrator',organizationId:'property-intelligence-local',providerResearchAllowed:true},subject={id:'lancaster-1',formattedAddress:'40924 173rd St E, Lancaster, CA 93535',addressLine1:'40924 173rd St E',city:'Lancaster',state:'CA',zipCode:'93535',county:'Los Angeles',countyFips:'037',propertyType:'Single Family',bedrooms:3,bathrooms:2,squareFootage:1176,lotSize:29185,yearBuilt:1979,latitude:34.62,longitude:-117.83,assessorID:'TEST-APN-1',ownerOccupied:false};
 
@@ -29,4 +30,8 @@ test('V2.8 explicit comparable research accepts same-county Lancaster sales and 
 
 test('V2.8 authorization, spending and UI boundaries remain explicit and fail closed',async()=>{
   const {service}=harness();assert.equal((await service.capability({user})).workflow,'AUTHENTICATED_PRODUCTION_RESEARCH_V2_8');await assert.rejects(()=>service.research({user:{...user,role:'Analyst',providerResearchAllowed:false},address}),/PROVIDER_RESEARCH_NOT_AUTHORIZED/);await assert.rejects(()=>service.research({user:{...user,organizationId:'foreign'},address}),/ORGANIZATION_NOT_AUTHORIZED/);
+});
+
+test('V2.8 treats spelled and abbreviated street directions as the same provider address',()=>{
+  assert.equal(identityMatches({street:'40924 173rd Street East',city:'Lancaster',state:'CA',zip:'93535'},subject),true);
 });
