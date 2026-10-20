@@ -149,16 +149,24 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
       if(path==='/api/property-research/local-evidence'&&request.method==='GET'){
         if(typeof retainedEvidence!=='function')return json(200,{entries:[]});const service=await retainedEvidence(),records=await service.list({user});return json(200,{entries:records.map(localEvidenceEntry)});
       }
-      if(path==='/api/property-research/research'&&request.method==='POST'){
+      if(path==='/api/property-research/quote'&&request.method==='POST'){
         if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
         if(typeof retainedEvidence!=='function')return json(503,{error:'RETAINED_EVIDENCE_STORAGE_NOT_CONFIGURED'});
-        const input=await requestBody(request,16_000),service=await retainedEvidence(),record=input?.localEvidenceKey?await service.get({user,id:input.localEvidenceKey}):input?.retainedSubjectRef?await service.find({user,subjectRef:input.retainedSubjectRef}):null;
+        if(typeof productionResearch!=='function')return json(503,{error:'PRODUCTION_RESEARCH_NOT_CONFIGURED'});
+        const input=await requestBody(request,16_000),evidenceService=await retainedEvidence(),record=input?.localEvidenceKey?await evidenceService.get({user,id:input.localEvidenceKey}):input?.retainedSubjectRef?await evidenceService.find({user,subjectRef:input.retainedSubjectRef}):null;
         if(!record&&input?.retainedSubjectRef)return json(404,{error:'LOCAL_EVIDENCE_NOT_FOUND'});
+        let validated=null;if(!record){if(typeof addressValidation!=='function')return json(503,{error:'ADDRESS_VALIDATION_NOT_CONFIGURED'});validated=await (await addressValidation()).consumeResearchToken(input?.addressValidationToken,{userId:user.uid});}
+        const property=record?.payload.property??null,detail=record?.payload.propertyDetail??null,address=property?addressParts(property):validated.confirmedAddress,addressContext=property?{classification:'RETAINED_EVIDENCE',confirmationMethod:'RETAINED_SUBJECT',originalAddress:address,confirmedAddress:address,legalIdentityVerified:false}:{classification:validated.classification,confirmationMethod:validated.confirmationMethod,originalAddress:validated.originalAddress,confirmedAddress:validated.confirmedAddress,googleEvidence:validated.googleEvidence,legalIdentityVerified:false};
+        return json(200,await (await productionResearch()).quote({user,address,addressValidation:addressContext,currentProperty:property,currentDetail:detail,operations:Array.isArray(input.operations)?input.operations:property?['valuation','comparableSales']:['propertyRecords','valuation'],refresh:input.refresh===true,subjectRef:property?.ref??null}));
+      }
+      if(path==='/api/property-research/research'&&request.method==='POST'){
+        if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
         if(typeof productionResearch==='function'){
-          let validated=null;if(!record){if(typeof addressValidation!=='function')return json(503,{error:'ADDRESS_VALIDATION_NOT_CONFIGURED'});validated=await (await addressValidation()).consumeResearchToken(input?.addressValidationToken,{userId:user.uid});}
-          const property=record?.payload.property??null,detail=record?.payload.propertyDetail??null,address=property?addressParts(property):validated.confirmedAddress,addressContext=property?{classification:'RETAINED_EVIDENCE',confirmationMethod:'RETAINED_SUBJECT',originalAddress:address,confirmedAddress:address,legalIdentityVerified:false}:{classification:validated.classification,confirmationMethod:validated.confirmationMethod,originalAddress:validated.originalAddress,confirmedAddress:validated.confirmedAddress,googleEvidence:validated.googleEvidence,legalIdentityVerified:false};
-          return json(200,await (await productionResearch()).research({user,address,addressValidation:addressContext,currentProperty:property,currentDetail:detail,operations:property?['valuation','comparableSales']:['propertyRecords','valuation']}));
+          const input=await requestBody(request,4_000);
+          return json(200,await (await productionResearch()).research({user,approvalId:input?.approvalId,idempotencyKey:input?.idempotencyKey}));
         }
+        if(typeof retainedEvidence!=='function')return json(503,{error:'RETAINED_EVIDENCE_STORAGE_NOT_CONFIGURED'});
+        const input=await requestBody(request,16_000),service=await retainedEvidence(),record=input?.localEvidenceKey?await service.get({user,id:input.localEvidenceKey}):input?.retainedSubjectRef?await service.find({user,subjectRef:input.retainedSubjectRef}):null;
         if(!record)return json(404,{error:'LOCAL_EVIDENCE_NOT_FOUND'});
         const property=record.payload.property,available={propertyRecords:Boolean(property.propertyRef),valuation:Number.isFinite(property.avm?.price),comparableSales:Array.isArray(property.sales)&&property.sales.length>0},labels={propertyRecords:'Property records',valuation:'Valuation',comparableSales:'Comparable sales'},operations=Object.entries(available).map(([key,value])=>({key,label:labels[key],status:value?'Available':'Unavailable',requestsUsed:0,estimatedCostCents:0,source:'Organization retained evidence',...(value?{}:{error:'NOT_PRESENT_IN_RETAINED_SNAPSHOT'})}));
         return json(200,{status:operations.every(item=>item.status==='Available')?'COMPLETE':'PARTIAL',property,operations,requestsUsed:0,estimatedSpendingCents:0,automaticRetries:0,durablePropertyCreated:false,identityBoundary:'Restored provider-reported evidence remains preliminary and is not legal parcel, title or ownership verification.'});

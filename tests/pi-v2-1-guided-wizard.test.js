@@ -64,7 +64,7 @@ test('Crestview abbreviation variants and Haven resolve without a provider reque
 
 test('guided UI reuses the original scenario, evidence, risk and report implementation',async()=>{
   const source=await readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8');
-  for(const required of ['SellerFinancialPosition','ScenarioComparison','synchronizeRiskMostLikely','runRisk','saveAndPreview','Export PDF','Open Advanced Workspace','Save &amp; Exit','GuidedWorkspaceHeader','ScenarioActionsMenu','Scenario actions','Change Property','identifyRoute'])assert.match(source,new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
+  for(const required of ['SellerFinancialPosition','ScenarioComparison','synchronizeRiskMostLikely','runRisk','saveAndPreview','Generate PDF','Open Advanced Workspace','Save &amp; Exit','GuidedWorkspaceHeader','ScenarioActionsMenu','Scenario actions','Change Property','identifyRoute'])assert.match(source,new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
   assert.match(source,/document\.addEventListener\('pointerdown',outside\)/);
   assert.match(source,/event\.key==='Escape'/);
   assert.match(source,/aria-expanded=\{open\}/);
@@ -82,12 +82,13 @@ test('Save and Exit opens the exact saved analysis instead of the durable-proper
   assert.match(myWorkspace,/workspace-row-focus/);
 });
 
-test('unknown-address path uses the unified authenticated research policy without repeated approval barriers',async()=>{
-  const source=await readFile('apps/web/src/features/discovery/Discovery.jsx','utf8');
+test('unknown-address path uses one authenticated cost confirmation without passwords or manual tokens',async()=>{
+  const [source,approval]=await Promise.all([readFile('apps/web/src/features/discovery/Discovery.jsx','utf8'),readFile('apps/web/src/features/property-research/paid-research.js','utf8')]);
   assert.match(source,/Research New Property/);
-  assert.match(source,/property-research\/research/);
-  assert.match(source,/AUTHENTICATED_RESEARCH_V1/);
+  assert.match(approval,/property-research\/quote/);
+  assert.match(approval,/property-research\/research/);
+  assert.match(approval,/Approve & Research/);
   assert.doesNotMatch(source,/property-research\/(?:preview|plan|authorize|run)/);
-  assert.doesNotMatch(source,/Confirm and Research|Authorize and Run Research|request-bound authorization/);
+  assert.doesNotMatch(source,/passwordRef|researchPassword|Authorize and Run Research|request-bound authorization/);
   assert.match(source,/Start Guided Analysis/);
 });
