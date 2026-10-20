@@ -86,6 +86,7 @@
     "pi:v2.6.2:report-quality:test": "node --test tests/pi-v2-6-2-cover-page.test.js tests/pi-v2-6-investor-report-quality.test.js tests/investment-workspace-report.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/pi-v2-5-1-inline-evidence.test.js tests/pi-v2-5-supporting-documents.test.js tests/pi-v2-5-document-eligibility-firestore.test.js tests/seller-financial-position.test.js tests/monte-carlo-v1.test.js",
     "pi:v2.6.2:report-quality:qa": "node scripts/pi-v2-6-investor-report-quality-qa.js",
     "pi:v2.6.2:cover:qa": "node scripts/pi-v2-6-2-cover-integration-qa.js",
+    "pi:v2.7:cloud-pdf:test": "node --test tests/pi-v2-7-cloud-pdf.test.js tests/pi-v2-6-2-cover-page.test.js tests/investment-workspace-report.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/pi-v2-5-supporting-documents.test.js tests/pi-v2-5-document-eligibility-firestore.test.js",
     "pi:local": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:no-documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence",
@@ -143,6 +144,7 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "0.1.80",
+    "@sparticuz/chromium": "153.0.0",
     "firebase": "12.7.0",
     "firebase-admin": "14.5.0",
     "google-auth-library": "11.3.1",
@@ -153,6 +155,7 @@
     "pg-connection-string": "2.14.0",
     "playwright-core": "1.58.2",
     "puppeteer": "25.12.0",
+    "puppeteer-core": "25.12.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "vite": "6.4.3"

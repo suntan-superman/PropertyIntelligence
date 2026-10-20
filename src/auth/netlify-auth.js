@@ -54,9 +54,14 @@ function selectedReportDocuments(documents,references=[]){
   }).filter(Boolean).map((item,index)=>({...item,index:index+1}));
 }
 
+const qaScenario=scenario=>scenario?.demonstration===true||/(^|\b)(QA|FIXTURE|SYNTHETIC)(\b|$)|ARTIFICIAL DEMONSTRATION/i.test(String(scenario?.name??''));
+const reportDownloadHeaders=(filenameValue,result)=>({'Content-Type':'application/pdf','Content-Length':String(result.bytes.length),'Content-Disposition':`attachment; filename="${filename(filenameValue).replaceAll('"','_')}"`,'Cache-Control':'private, no-store, max-age=0','Pragma':'no-cache','X-Content-Type-Options':'nosniff','X-PI-Report-Pages':String(result.totalPages),'X-PI-Appendix-Pages':String(result.appendixPages)});
+
 /** Protects the deployed workbench API with the same Firebase session boundary as PI local development. */
-export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,documentMetadata=null}={}){
+export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,documentMetadata=null,pdfRenderer=null,pdfAvailable=typeof pdfRenderer==='function'}={}){
   if(typeof api!=='function'||!authentication?.enabled)throw new Error('NETLIFY_AUTHENTICATION_REQUIRED');
+  let pdfBusy=false;
+  const inFlightReportRequests=new Set();
   return async request=>{
     const path=routePath(request),adapted=nodeRequest(request);
     try{
@@ -123,19 +128,36 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
       }
       if(path==='/api/investment/report'&&request.method==='POST'){
         if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
-        const input=await requestBody(request,64_000);if(input?.pdf===true)return json(501,{error:'DEPLOYED_PDF_RENDERER_NOT_AVAILABLE'});
+        const input=await requestBody(request,64_000),wantsPdf=input?.pdf===true;
+        if(wantsPdf){authentication.requireCsrf(adapted);if(typeof pdfRenderer!=='function')return json(501,{error:'DEPLOYED_PDF_RENDERER_NOT_AVAILABLE'});if(pdfBusy)return json(409,{error:'PDF_RENDER_IN_PROGRESS'});}
         if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
         const service=await durableProperties(),properties=await service.list({user,includeArchived:false}),links=(await Promise.all(properties.map(property=>service.scenarioRevisions({user,id:property.id})))).flat(),scenario=links.map(link=>link.scenario).find(item=>item?.id===input?.id&&item.revision===input?.revision);
         if(!scenario?.analysis)return json(409,{error:'SAVED_COMPLETE_SCENARIO_REQUIRED'});
         const propertyRecord=properties.find(item=>item.sourceSubjectRef===scenario.propertyRef);if(!propertyRecord)return json(404,{error:'DURABLE_PROPERTY_NOT_FOUND'});
         const allowed=new Set(Object.keys(scenario.compReviews??{})),property={...durableWorkspaceSubject(propertyRecord),sales:[...allowed].map(evidenceRef=>({evidenceRef}))},evidence={properties:[property],fingerprint:property.evidenceFingerprint,disclaimer:'Durable cloud records preserve saved property identity, scenario revisions and evidence references. Missing evidence remains Unknown and is not inferred.'};
         try{
-          const [{validateDraft},{workspaceReportHtml},{addSupportingEvidenceToHtml},{reportFilename}]=await Promise.all([import('../investment-workspace/store.js'),import('../investment-workspace/report-html.js'),import('../investment-workspace/document-appendices.js'),import('../../apps/web/src/features/investment-workspace/report-filename.js')]);
-          validateDraft(scenario,evidence);let appendices=[];
-          if(typeof documentMetadata==='function'&&propertyRecord.id){const register=await documentRegister(await documentMetadata(),{user,propertyId:propertyRecord.id});appendices=selectedReportDocuments(register.documents,scenario.evidenceAttachments);}
-          const generatedAt=new Date().toISOString(),kind=input.kind==='full'?'full':'brief',base=workspaceReportHtml(property,scenario,evidence,kind,{generatedAt,supportingDocuments:appendices}),html=addSupportingEvidenceToHtml(base,appendices,{kind}),filename=reportFilename({property,scenario,kind,generatedAt});
-          return json(200,{html,filename,generatedAt,pdfAvailable:false,supportingDocumentCount:appendices.length});
-        }catch(error){return json(422,{error:error.message,errors:error.errors??{}});}
+          const [{validateDraft},{workspaceReportHtml},{addSupportingEvidenceToHtml,addQaAcceptanceLabel},{reportFilename}]=await Promise.all([import('../investment-workspace/store.js'),import('../investment-workspace/report-html.js'),import('../investment-workspace/document-appendices.js'),import('../../apps/web/src/features/investment-workspace/report-filename.js')]);
+          validateDraft(scenario,evidence);
+          const kind=input.kind==='full'?'full':'brief',qaNotForDistribution=qaScenario(scenario),requestId=String(input.requestId??'').trim();
+          if(wantsPdf&&requestId&&!/^[A-Za-z0-9_-]{8,100}$/.test(requestId))return json(422,{error:'REPORT_REQUEST_ID_INVALID'});
+          const dedupeKey=wantsPdf?`${user.uid}:${scenario.id}:${scenario.revision}:${kind}:${requestId||'single'}`:null;
+          if(dedupeKey&&inFlightReportRequests.has(dedupeKey))return json(409,{error:'DUPLICATE_REPORT_REQUEST'});
+          if(dedupeKey)inFlightReportRequests.add(dedupeKey);
+          if(wantsPdf)pdfBusy=true;
+          try{
+            let appendices=[],documentService=null;
+            if(typeof documentMetadata==='function'&&propertyRecord.id){
+              documentService=await documentMetadata();
+              if(wantsPdf&&kind==='full'&&typeof documentService.reportDocuments==='function')appendices=await documentService.reportDocuments({user,propertyId:propertyRecord.id,references:scenario.evidenceAttachments??[]});
+              else{const register=await documentRegister(documentService,{user,propertyId:propertyRecord.id});appendices=selectedReportDocuments(register.documents,scenario.evidenceAttachments);}
+            }
+            const generatedAt=new Date().toISOString(),base=workspaceReportHtml(property,scenario,evidence,kind,{generatedAt,supportingDocuments:appendices,qaNotForDistribution}),withEvidence=addSupportingEvidenceToHtml(base,appendices,{kind}),html=qaNotForDistribution?addQaAcceptanceLabel(withEvidence):withEvidence,baseFilename=reportFilename({property,scenario,kind,generatedAt}),reportFilenameValue=qaNotForDistribution?`QA_NOT_FOR_DISTRIBUTION_${baseFilename}`:baseFilename;
+            if(!wantsPdf)return json(200,{html,filename:reportFilenameValue,generatedAt,pdfAvailable:Boolean(pdfAvailable),supportingDocumentCount:appendices.length,classification:qaNotForDistribution?'SYNTHETIC_QA':'PRELIMINARY'});
+            const result=await pdfRenderer(html,{appendices:kind==='full'?appendices:[],qaNotForDistribution}),documentReferences=kind==='full'?appendices.map(item=>({documentId:item.document.id,version:item.version.version,sha256:item.version.sha256,appendix:item.index,claims:item.claims??[]})):[];
+            await service.linkReport({user,subjectRef:scenario.propertyRef,scenario,kind,filename:reportFilenameValue,status:qaNotForDistribution?'QA_NOT_FOR_DISTRIBUTION':'DOWNLOADED',supportingDocuments:documentReferences});
+            return new Response(result.bytes,{status:200,headers:reportDownloadHeaders(reportFilenameValue,result)});
+          }finally{if(wantsPdf)pdfBusy=false;if(dedupeKey)inFlightReportRequests.delete(dedupeKey);}
+        }catch(error){return json(Number.isInteger(error?.status)?error.status:422,{error:/^[A-Z0-9_-]+$/.test(String(error?.code??error?.message))?String(error.code??error.message):'PDF_RENDER_FAILED',errors:error.errors??{}});}
       }
       const supportingMatch=documentRoute(path);
       if(supportingMatch&&request.method==='GET'){

@@ -16,7 +16,7 @@ async function runtime(){
       }
       return initializeFirebaseDocumentMetadata({authentication,durableProperties:service});
     });
-    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,documentMetadata});
+    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,documentMetadata,pdfAvailable:true});
   });
   return authenticatedApi;
 }
