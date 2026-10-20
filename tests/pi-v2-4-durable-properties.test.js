@@ -46,7 +46,7 @@ test('archiving preserves evidence, scenarios and reports and supports restorati
 test('saved scenario revisions are immutable and later revisions remain distinct',async()=>{
   const f=fixture();await f.service.promote({user:analyst,subject:decatur,scenario});await f.service.linkScenarioRevision({user:analyst,subjectRef:decatur.ref,scenario});
   await assert.rejects(()=>f.service.linkScenarioRevision({user:analyst,subjectRef:decatur.ref,scenario:{...scenario,inputs:{purchasePrice:'1'}}}),/IMMUTABLE_SCENARIO_REVISION_CONFLICT/);
-  await f.service.linkScenarioRevision({user:analyst,subjectRef:decatur.ref,scenario:{...scenario,revision:4,inputs:{purchasePrice:'145000'},savedAt:'2026-10-18T19:00:00.000Z'}});const property=(await f.service.list({user:analyst}))[0],revisions=await f.service.scenarioRevisions({user:analyst,id:property.id});assert.equal(property.scenarioCount,1);assert.deepEqual(revisions.map(item=>item.revision),[3,4]);
+  await f.service.linkScenarioRevision({user:analyst,subjectRef:decatur.ref,scenario:{...scenario,revision:4,evidenceFingerprint:'snapshot-decatur-with-comps',inputs:{purchasePrice:'145000'},savedAt:'2026-10-18T19:00:00.000Z'}});const property=(await f.service.list({user:analyst}))[0],revisions=await f.service.scenarioRevisions({user:analyst,id:property.id});assert.equal(property.scenarioCount,1);assert.deepEqual(revisions.map(item=>item.revision),[3,4]);assert.deepEqual(property.evidenceSnapshotIds,[decatur.evidenceFingerprint,'snapshot-decatur-with-comps']);
 });
 
 test('lifecycle and verification remain separate and Firestore stays server-only',async()=>{
