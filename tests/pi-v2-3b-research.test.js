@@ -67,9 +67,15 @@ test('missing account configuration stays default-deny with one actionable workf
 test('versioned provider client admits only the bounded V2.3B request contracts',async()=>{
   assert.equal(validateResearchRequestV2_3B('/properties',{address:'21950 Arosa Rd, Tehachapi, CA 93561'}),true);
   assert.equal(validateResearchRequestV2_3B('/avm/value',{address:'21950 Arosa Rd, Tehachapi, CA 93561',lookupSubjectAttributes:true,compCount:15,maxRadius:2,daysOld:180}),true);
-  assert.equal(validateResearchRequestV2_3B('/properties',{address:'21950 Arosa Rd, Tehachapi, CA 93561',radius:2,saleDateRange:365,propertyType:'Single Family',limit:50,offset:0,includeTotalCount:true}),true);
+  assert.equal(validateResearchRequestV2_3B('/properties',{address:'21950 Arosa Rd, Tehachapi, CA 93561',radius:2,saleDateRange:365,propertyType:'Single Family',limit:50,offset:0}),true);
   assert.equal(validateResearchRequestV2_3B('/properties',{address:'21950 Arosa Rd, Tehachapi, CA 93561',radius:20,saleDateRange:365,propertyType:'Single Family',limit:50,offset:0,includeTotalCount:true}),false);
   assert.equal(validateResearchRequestV2_3B('/listings/sale',{address:'21950 Arosa Rd, Tehachapi, CA 93561'}),false);
+});
+
+test('provider client distinguishes a bounded timeout from a network failure without retrying',async()=>{
+  const client=createResearchClientV2_3B({apiKey:'synthetic-v23b-key',baseUrl:'https://api.rentcast.io/v1',timeoutMs:5,maxRetries:0,maxCalls:1,delayMs:0},{store:memoryStore(),fetchImpl:async(_url,{signal})=>new Promise((_resolve,reject)=>signal.addEventListener('abort',()=>reject(new DOMException('Aborted','AbortError')),{once:true}))});
+  await assert.rejects(client.get('/properties',{address:'40924 173rd St E, Lancaster, CA, 93535',radius:2,saleDateRange:365,propertyType:'Single Family',limit:50,offset:0}),error=>error.code==='TIMEOUT_STOP');
+  assert.equal(client.metrics.apiCalls,1);assert.equal(client.metrics.retries,0);assert.deepEqual(client.metrics.events,[{endpoint:'/properties',status:'TIMEOUT_STOP',attempt:0}]);
 });
 
 test('unknown property stops dependent operations when Property Records fails',async()=>{

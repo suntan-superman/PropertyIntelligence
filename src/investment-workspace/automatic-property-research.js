@@ -29,9 +29,12 @@ const expandedProviderAddress=address=>({...address,street:replaceSuffix(address
 const addressFamilyKey=address=>[replaceSuffix(address?.street,value=>value),address?.city,address?.state].map(value=>String(value??'').toUpperCase().replace(/[^A-Z0-9]+/g,' ').trim()).join('|');
 const addressFromProviderQuery=value=>{const parts=String(value??'').split(',').map(part=>part.trim()),stateZip=parts.slice(2).join(' '),zip=stateZip.match(/\b\d{5}(?:-\d{4})?\b/)?.[0]??'',state=parts[2]?.match(/[A-Za-z]{2}/)?.[0]??'';return {street:parts[0]??'',city:parts[1]??'',state:state.toUpperCase(),zip};};
 export const avmParams=address=>({address:queryAddress(address),lookupSubjectAttributes:true,compCount:15,maxRadius:2,daysOld:180});
-export const soldParams=address=>({address:queryAddress(address),radius:2,saleDateRange:365,propertyType:'Single Family',limit:50,offset:0,includeTotalCount:true});
+// The total-count header is not used by PI and RentCast documents that computing
+// it can significantly increase response time. Keep the sold search bounded to
+// the first 50 observations without asking the provider to count every match.
+export const soldParams=address=>({address:queryAddress(address),radius:2,saleDateRange:365,propertyType:'Single Family',limit:50,offset:0});
 const cacheFor=(operation,address)=>cacheLocation(operation==='valuation'?'/avm/value':'/properties',operation==='propertyRecords'?{address:queryAddress(address)}:operation==='valuation'?avmParams(address):soldParams(address),'data/raw/rentcast/property-research-v2-3');
-const cacheLocationsFor=(operation,address)=>{const seen=new Set();return [canonicalProviderAddress(address),address,expandedProviderAddress(address)].map(candidate=>cacheFor(operation,candidate)).filter(location=>{if(seen.has(location.index))return false;seen.add(location.index);return true;});};
+const cacheLocationsFor=(operation,address)=>{const seen=new Set(),locations=[];for(const candidate of [canonicalProviderAddress(address),address,expandedProviderAddress(address)]){locations.push(cacheFor(operation,candidate));if(operation==='comparableSales')locations.push(cacheLocation('/properties',{...soldParams(candidate),includeTotalCount:true},'data/raw/rentcast/property-research-v2-3'));}return locations.filter(location=>{if(seen.has(location.index))return false;seen.add(location.index);return true;});};
 export async function compatibleCache(store,operation,address){for(const location of cacheLocationsFor(operation,address)){const record=await store.get(location);if(record)return record;}return null;}
 async function cachedPropertyCatalog(store){
   if(typeof store.list!=='function')return [];
@@ -112,7 +115,7 @@ export async function restoreDurablePropertyEvidence(evidence,durableRecords,{ge
   }
   return addCachedPropertyResearch(next);
 }
-function publicFailure(error){const code=error?.code??error?.message??'PROVIDER_ERROR';if(['QUOTA_STOP','QUOTA_BUDGET_STOP','RATE_LIMIT_STOP','DAILY_USER_LIMIT','DAILY_PROVIDER_LIMIT','MONTHLY_SPENDING_LIMIT','AUTHORIZATION_REQUEST_LIMIT'].includes(code))return 'QUOTA_EXCEEDED';if(['NETWORK_STOP','PROVIDER_UNAVAILABLE_STOP'].includes(code))return 'PROVIDER_ERROR';return /^[A-Z0-9_]+$/.test(String(code))?String(code):'PROVIDER_ERROR';}
+function publicFailure(error){const code=error?.code??error?.message??'PROVIDER_ERROR';if(['QUOTA_STOP','QUOTA_BUDGET_STOP','RATE_LIMIT_STOP','DAILY_USER_LIMIT','DAILY_PROVIDER_LIMIT','MONTHLY_SPENDING_LIMIT','AUTHORIZATION_REQUEST_LIMIT'].includes(code))return 'QUOTA_EXCEEDED';if(['NETWORK_STOP','TIMEOUT_STOP','PROVIDER_UNAVAILABLE_STOP'].includes(code))return 'PROVIDER_ERROR';return /^[A-Z0-9_]+$/.test(String(code))?String(code):'PROVIDER_ERROR';}
 
 export function createAutomaticPropertyResearch({accessControl,authentication,client,store,ledgerDirectory,operationalEvidence,limits={},organizationId='property-intelligence-local',clock=()=>new Date(),authorizationTtlMs=DEFAULT_TTL_MS,onEvidence=()=>{},evidenceProvider=()=>({properties:[],propertyDetails:[]})}={}){
   const maximumRequests=limits.maximumRequestsPerProperty??3,maximumEstimatedCostCents=limits.maximumEstimatedCostPerPropertyCents??100,usageFile=path.join(ledgerDirectory,'automatic-usage.jsonl'),reservationDirectory=path.join(ledgerDirectory,'automatic-reservations'),authorizations=new Map();let publish=onEvidence,provide=evidenceProvider;

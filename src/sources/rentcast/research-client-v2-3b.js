@@ -14,7 +14,8 @@ export function validateResearchRequestV2_3B(endpoint,params){
   if(Object.keys(params).length===1)return true;
   return typeof params.radius==='number'&&params.radius>0&&params.radius<=3
     &&Number.isSafeInteger(params.saleDateRange)&&params.saleDateRange>=1&&params.saleDateRange<=365
-    &&params.propertyType==='Single Family'&&params.limit===50&&params.offset===0&&params.includeTotalCount===true;
+    &&params.propertyType==='Single Family'&&params.limit===50&&params.offset===0
+    &&(params.includeTotalCount===undefined||params.includeTotalCount===true);
 }
 
 // Versioned transport for the V2.3B research shapes. The original provider client
@@ -34,9 +35,10 @@ export function createResearchClientV2_3B(config,{fetchImpl=fetch,sleep=ms=>new 
       try{
         response=await fetchImpl(url,{method:'GET',redirect:'error',signal:controller.signal,headers:{Accept:'application/json','X-Api-Key':config.apiKey}});
         const responseText=await response.text();try{body=JSON.parse(responseText);}catch{body={parseError:'Non-JSON response omitted'};malformed=true;}
-      }catch{
-        metrics.events.push({endpoint,status:'NETWORK_OR_TIMEOUT',attempt});
-        if(attempt===config.maxRetries)throw new ProviderStop('NETWORK_STOP');
+      }catch(error){
+        const code=controller.signal.aborted||error?.name==='AbortError'?'TIMEOUT_STOP':'NETWORK_STOP';
+        metrics.events.push({endpoint,status:code,attempt});
+        if(attempt===config.maxRetries)throw new ProviderStop(code);
         metrics.retries++;await sleep(500*2**attempt+Math.floor(Math.random()*100));continue;
       }finally{clearTimeout(timeout);}
       const entry=await store.put(location,{retrievedAt:clock(),httpStatus:response.status,body:redact(body,[config.apiKey])});
