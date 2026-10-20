@@ -2,11 +2,13 @@
 
 ## Intended deployment surface
 
-The Netlify build serves the authenticated serverless Property Intelligence workbench, the legacy PostgreSQL-backed APIs, and the organization-scoped Firestore durable-property workspace. Guided Analysis source evidence, supporting-document file bytes/uploads, and local PDF generation remain private-development surfaces; their ignored evidence and runtime files must not be copied into the public site bundle.
+The Netlify build serves the same Guided Analysis, Discover Opportunities and My Workspace desktop shell used by the private local runtime. The organization-scoped durable workspace is restored from Firestore through authenticated server APIs. The obsolete serverless workbench is not the Netlify entry surface.
+
+Durable property identity, immutable scenario revisions, report history and sanitized document metadata are available in the deployed shell. Evidence that was retained only in ignored local files is not copied into the site bundle; where an immutable Firestore evidence payload is absent, the deployed UI reports that evidence as Unknown instead of fabricating it. Private supporting-document bytes and local PDF rendering remain server-controlled and are not exposed as static assets.
 
 The Netlify API now fails closed behind Firebase Authentication. `/api/health` remains public for deployment monitoring. `/api/auth/config`, `/api/auth/session`, `/api/auth/me`, and `/api/auth/logout` establish a same-origin, CSRF-protected Firebase session. All other API routes require the server-verified session cookie.
 
-`/api/durable-properties` and `/api/durable-properties/:id/workspace` use Firebase Admin on the server to restore the authenticated user's organization-scoped properties, immutable scenario revisions, report history, and sanitized supporting-document metadata. The browser never initializes Firestore or receives Storage paths, hashes, service-account material, or direct database permissions. Archive/restore uses the same CSRF and role boundary. Historical report metadata is available, but historical PDF bytes are not reconstructed or exposed by this connection.
+`/api/durable-properties`, `/api/investment/bootstrap`, `/api/investment/scenarios` and `/api/durable-properties/:id/workspace` use Firebase Admin on the server to restore the authenticated user's organization-scoped properties, immutable scenario revisions, report history, and sanitized supporting-document metadata. The browser never initializes Firestore or receives Storage paths, hashes, service-account material, or direct database permissions. Archive/restore and scenario revision writes use the same CSRF and role boundary. Historical report metadata is available, but historical PDF bytes are not reconstructed or exposed by this connection.
 
 ## Required Netlify variables
 

@@ -36,7 +36,7 @@ test('health remains available for deployment monitoring without opening busines
 });
 
 test('authenticated Netlify workspace restores organization-scoped Firestore properties and revisions',async()=>{
-  const property={id:'property-one',organizationId:organization,address:'400 Decatur St, Bakersfield, CA 93308',lifecycleStatus:'SAVED_PROPERTY'},revision={scenarioId:'scenario-one',revision:1,scenario:{name:'Scenario 1'}},report={id:'report-one',kind:'full'},calls=[];
+  const property={id:'property-one',organizationId:organization,address:'400 Decatur St, Bakersfield, CA 93308',sourceSubjectRef:'research-one',evidenceSnapshotIds:['snapshot-one'],lifecycleStatus:'SAVED_PROPERTY'},revision={scenarioId:'scenario-one',revision:1,scenario:{id:'scenario-one',propertyRef:'research-one',evidenceFingerprint:'snapshot-one',name:'Scenario 1',revision:1,savedAt:'2026-10-19T00:00:00.000Z'}},report={id:'report-one',kind:'full'},calls=[];
   const durableService={
     async list(input){calls.push(['list',input.user.organizationId,input.includeArchived]);return [property];},
     async get(input){calls.push(['get',input.user.organizationId,input.id]);return property;},
@@ -46,10 +46,12 @@ test('authenticated Netlify workspace restores organization-scoped Firestore pro
   },documentService={async list(input){calls.push(['documents',input.user.organizationId,input.propertyId]);return {documents:[{id:'document-one'}],completeness:[]};}},cloud=createNetlifyAuthenticatedApi({api,authentication,durableProperties:async()=>durableService,documentMetadata:async()=>documentService});
   const config=await cloud(new Request('https://pi.example/api/auth/config')),csrf=(await config.json()).csrfToken,csrfCookie=config.headers.get('set-cookie').split(';')[0],login=await cloud(new Request('https://pi.example/api/auth/session',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json','X-PI-CSRF':csrf,Cookie:csrfCookie},body:JSON.stringify({idToken:'id-token'})})),sessionCookie=login.headers.get('set-cookie').split(';')[0],cookie=`${csrfCookie}; ${sessionCookie}`;
   const list=await cloud(new Request('https://pi.example/api/durable-properties?includeArchived=true',{headers:{Cookie:cookie}})),listed=await list.json();assert.equal(list.status,200);assert.equal(listed.properties[0].address,property.address);
+  const bootstrap=await cloud(new Request('https://pi.example/api/investment/bootstrap',{headers:{Cookie:cookie}})),bootstrapped=await bootstrap.json();assert.equal(bootstrap.status,200);assert.equal(bootstrapped.properties[0].address,property.address);
+  const scenarioList=await cloud(new Request('https://pi.example/api/investment/scenarios',{headers:{Cookie:cookie}}));assert.equal(scenarioList.status,200);assert.equal((await scenarioList.json())[0].id,'scenario-one');
   const workspace=await cloud(new Request('https://pi.example/api/durable-properties/property-one/workspace',{headers:{Cookie:cookie}})),restored=await workspace.json();assert.equal(workspace.status,200);assert.equal(restored.revisions[0].scenarioId,'scenario-one');assert.equal(restored.reports[0].id,'report-one');assert.equal(restored.documents[0].id,'document-one');
   const denied=await cloud(new Request('https://pi.example/api/durable-properties/property-one/archive',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json',Cookie:cookie},body:'{}'}));assert.equal(denied.status,403);
   const archived=await cloud(new Request('https://pi.example/api/durable-properties/property-one/archive',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json','X-PI-CSRF':csrf,Cookie:cookie},body:'{}'}));assert.equal(archived.status,200);assert.equal((await archived.json()).property.lifecycleStatus,'ARCHIVED_PROPERTY');
-  assert.ok(calls.every(call=>call[1]===organization));assert.deepEqual(calls.map(call=>call[0]),['list','get','scenarios','reports','documents','archive']);
+  assert.ok(calls.every(call=>call[1]===organization));assert.deepEqual(calls.map(call=>call[0]),['list','reports','list','scenarios','list','scenarios','get','scenarios','reports','documents','archive']);
 });
 
 test('Firebase Admin dependency bridge loads jose through ESM in the Netlify bundle',async()=>{
@@ -57,10 +59,11 @@ test('Firebase Admin dependency bridge loads jose through ESM in the Netlify bun
 });
 
 test('deployed durable workspace stays behind server APIs and hides private document internals',async()=>{
-  const source=await readFile(new URL('../apps/web/src/features/durable-workspace/CloudPropertyWorkspace.jsx',import.meta.url),'utf8');
-  assert.doesNotMatch(source,/firebase\/firestore|getFirestore|storageKey|sha256/i);assert.match(source,/\/api\/durable-properties/);assert.match(source,/Saved Property is a lifecycle status, not legal verification/);assert.match(source,/Opening this view does not recalculate or change underwriting or Monte Carlo results/);
+  const source=await readFile(new URL('../apps/web/src/features/desktop-shell/MyWorkspace.jsx',import.meta.url),'utf8');
+  assert.doesNotMatch(source,/firebase\/firestore|getFirestore|storageKey|sha256/i);assert.match(source,/\/api\/durable-properties/);assert.match(source,/Saved Property/);assert.match(source,/legal identity not verified/);
   const sanitized=durableWorkspaceDocument({id:'document-one',propertyId:'property-one',currentVersion:1,currentVersionMetadata:{version:1,filename:'evidence.pdf',mimeType:'application/pdf',sizeBytes:10,pageCount:1,uploadedAt:'2026-10-19T00:00:00.000Z',scanStatus:'CLEAN',sha256:'secret-hash',storageKey:'private/path'}});
   assert.equal(sanitized.currentVersionMetadata.filename,'evidence.pdf');assert.doesNotMatch(JSON.stringify(sanitized),/secret-hash|private\/path|sha256|storageKey/);
   const report=durableWorkspaceReport({id:'report-one',scenarioId:'scenario-one',revision:1,kind:'full',status:'generated',generatedAt:'2026-10-19T00:00:00.000Z',supportingDocuments:[{documentId:'internal-document',sha256:'secret-hash',storageKey:'private/path'}]});
   assert.equal(report.supportingDocumentCount,1);assert.doesNotMatch(JSON.stringify(report),/secret-hash|private\/path|sha256|storageKey|internal-document/);
+  const netlifyConfig=await readFile(new URL('../apps/web/vite.netlify.config.js',import.meta.url),'utf8'),entry=await readFile(new URL('../apps/web/src/main.jsx',import.meta.url),'utf8');assert.match(netlifyConfig,/__PI_LOCAL_INVESTMENT__\s*:\s*true/);assert.match(entry,/if\(__PI_LOCAL_INVESTMENT__\)return <Home\/>/);
 });

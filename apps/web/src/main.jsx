@@ -23,6 +23,8 @@ function LocalApplication(){
   if(__PI_LOCAL_INVESTMENT__&&(hash.startsWith('#my-workspace')||hash.startsWith('#incoming-leads')||hash.startsWith('#saved-properties')||hash.startsWith('#saved-deals')||hash.startsWith('#workspace-research')||hash.startsWith('#shortlists')||hash.startsWith('#reports')||hash.startsWith('#fixtures')))return <React.Suspense fallback={<p>Loading saved work…</p>}><MyWorkspace hash={hash}/></React.Suspense>;
   if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#property-detail'))return <React.Suspense fallback={<p>Loading Property Detail…</p>}><PropertyDetail hash={hash}/></React.Suspense>;
   if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#investment'))return <React.Suspense fallback={<p>Loading local investment workspace…</p>}><InvestmentWorkspace hash={hash}/></React.Suspense>;
-  return <React.Suspense fallback={<p>Loading Property Intelligence…</p>}>{hash==='#monitoring'?<Monitoring/>:<App/>}</React.Suspense>;
+  if(hash==='#monitoring')return <React.Suspense fallback={<p>Loading Property Intelligence…</p>}><Monitoring/></React.Suspense>;
+  if(__PI_LOCAL_INVESTMENT__)return <Home/>;
+  return <React.Suspense fallback={<p>Loading Property Intelligence…</p>}><App/></React.Suspense>;
 }
 createRoot(document.getElementById('root')).render(<NotificationDialogProvider><TooltipProvider><AuthenticationGate><LocalApplication/></AuthenticationGate></TooltipProvider></NotificationDialogProvider>);

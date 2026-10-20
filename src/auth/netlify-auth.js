@@ -21,8 +21,15 @@ async function requestBody(request,maximum=16_000){
 }
 
 function publicUser(user){return {uid:user.uid,role:user.role,emailVerified:user.emailVerified,providerResearchAllowed:user.providerResearchAllowed,organizationId:user.organizationId,authenticatedAt:user.authenticatedAt,sessionExpiresAt:user.sessionExpiresAt};}
-export const durableWorkspaceReport=report=>({id:report.id,scenarioId:report.scenarioId,scenarioName:report.scenarioName,revision:report.revision,kind:report.kind,status:report.status,generatedAt:report.generatedAt,supportingDocumentCount:Array.isArray(report.supportingDocuments)?report.supportingDocuments.length:0});
+const filename=value=>String(value??'').split(/[\\/]/).at(-1).slice(0,180);
+export const durableWorkspaceReport=report=>({id:report.id,propertyAddress:report.propertyAddress,propertyRef:report.propertyRef,scenarioId:report.scenarioId,scenarioName:report.scenarioName,revision:report.revision,evidenceSnapshotId:report.evidenceSnapshotId,kind:report.kind,filename:filename(report.filename),status:report.status,generatedAt:report.generatedAt,supportingDocumentCount:Array.isArray(report.supportingDocuments)?report.supportingDocuments.length:0});
+export const durableWorkspaceSubject=property=>{
+  const evidenceFingerprint=property.evidenceSnapshotIds?.at(-1)??null,components=property.addressComponents??{};
+  return {ref:property.sourceSubjectRef,address:property.address,addressComponents:components,street:components.street??'',city:components.city??'',state:components.state??'',zip:components.zip??'',subjectKind:property.lifecycleStatus==='ARCHIVED_PROPERTY'?'PRELIMINARY_RESEARCH':'DURABLE_SAVED',durablePropertyId:property.id,lifecycleStatus:property.lifecycleStatus,verificationStatus:property.verificationStatus,evidenceFingerprint,attributes:{propertyType:property.propertyType??'Unknown'},avm:{price:null,low:null,high:null},sales:[],findings:['The durable cloud record preserves this property and its saved scenarios. Detailed retained evidence remains unknown unless present in the immutable snapshot payload.'],historicalTrigger:{amount:null,sourceDate:null,sourceRef:null,meaning:'Historical county evidence is not present in this cloud record.'},countyUse:{code:null,sourceRef:null},identityStatus:property.identityConfidence??'Identity confidence unknown',reviewDate:property.updatedAt,propertyRef:null,valuationRef:null,propertyRetrievedAt:null,valuationRetrievedAt:null,providerAsOf:null,valuationAsOf:null};
+};
+const classifyScenario=scenario=>{const marked=scenario?.demonstration===true||/(^|\b)(QA|FIXTURE|SYNTHETIC)(\b|$)|ARTIFICIAL DEMONSTRATION/i.test(String(scenario?.name??''));return {...scenario,_workspaceClassification:marked?'CONFIRMED_QA':'USER_OR_UNCLASSIFIED',_workspaceClassificationReasons:marked?['QA/test marker']:[]};};
 const durableRoute=path=>path.match(/^\/api\/durable-properties\/([A-Za-z0-9._-]{1,128})(?:\/(workspace|archive|restore))?$/);
+const documentListRoute=path=>path.match(/^\/api\/durable-properties\/([A-Za-z0-9._-]{1,128})\/documents$/);
 
 /** Protects the deployed workbench API with the same Firebase session boundary as PI local development. */
 export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,documentMetadata=null}={}){
@@ -51,8 +58,51 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
       const user=await authentication.authenticate(adapted);
       if(path==='/api/durable-properties'&&request.method==='GET'){
         if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
-        const service=await durableProperties(),includeArchived=new URL(request.url).searchParams.get('includeArchived')==='true',properties=await service.list({user,includeArchived});
-        return json(200,{enabled:true,properties});
+        const service=await durableProperties(),includeArchived=new URL(request.url).searchParams.get('includeArchived')==='true',properties=await service.list({user,includeArchived}),reports=(await Promise.all(properties.map(property=>service.reports({user,id:property.id})))).flat().map(durableWorkspaceReport);
+        return json(200,{enabled:true,properties,reports});
+      }
+      if(request.method==='GET'&&['/api/investment/bootstrap','/api/investment/scenarios','/api/investment/scenario-revisions'].includes(path)){
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
+        const service=await durableProperties(),properties=await service.list({user,includeArchived:true}),links=(await Promise.all(properties.map(property=>service.scenarioRevisions({user,id:property.id})))).flat(),scenarios=links.map(link=>link.scenario).filter(Boolean).sort((a,b)=>String(a.savedAt).localeCompare(String(b.savedAt))||a.revision-b.revision);
+        if(path==='/api/investment/bootstrap'){const subjects=properties.map(durableWorkspaceSubject),fingerprints=[...new Set(subjects.map(subject=>subject.evidenceFingerprint).filter(Boolean))];return json(200,{properties:subjects,propertyDetails:[],evidenceFingerprint:fingerprints.length===1?fingerprints[0]:null,disclaimer:'Durable cloud records preserve saved property identity, scenario revisions and evidence references. Missing evidence remains Unknown and is not inferred.'});}
+        if(path==='/api/investment/scenario-revisions')return json(200,scenarios);
+        const latest=new Map();for(const scenario of scenarios)if(!latest.has(scenario.id)||latest.get(scenario.id).revision<scenario.revision)latest.set(scenario.id,scenario);
+        return json(200,[...latest.values()].map(classifyScenario));
+      }
+      if(path==='/api/discovery/bootstrap'&&request.method==='GET')return json(200,{records:[],candidates:[],counterexamples:[]});
+      if(path==='/api/discovery/state'&&request.method==='GET')return json(200,{shortlist:[],batches:[],candidateStatus:{},activeBatchId:null});
+      if(path==='/api/incoming-leads'&&request.method==='GET')return json(200,{intakeEnabled:false,records:[]});
+      if(path==='/api/property-research/capability'&&request.method==='GET')return json(200,{enabled:false,provider:'RentCast',remainingRequestBudget:null,blockers:['DEPLOYED_PROVIDER_RESEARCH_NOT_ENABLED']});
+      if(path==='/api/property-research/local-evidence'&&request.method==='GET')return json(200,{entries:[]});
+      if(path==='/api/investment/analyze'&&request.method==='POST'){
+        if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
+        const input=await requestBody(request,64_000),raw=input?.scenario,service=await durableProperties(),properties=await service.list({user,includeArchived:false}),property=properties.find(item=>item.sourceSubjectRef===raw?.propertyRef);
+        if(!property)return json(404,{error:'DURABLE_PROPERTY_NOT_FOUND'});
+        const links=await service.scenarioRevisions({user,id:property.id}),baseline=links.map(link=>link.scenario).filter(item=>item?.id===raw?.id).sort((a,b)=>b.revision-a.revision)[0]??null,allowed=new Set(Object.keys(baseline?.compReviews??{}));
+        if(Object.keys(raw?.compReviews??{}).some(reference=>!allowed.has(reference)))return json(409,{error:'COMPARABLE_EVIDENCE_NOT_RESTORED'});
+        const subject={...durableWorkspaceSubject(property),sales:[...allowed].map(evidenceRef=>({evidenceRef}))},evidence={properties:[subject],fingerprint:subject.evidenceFingerprint};
+        try{const [{validateDraft},{analyze}]=await Promise.all([import('../investment-workspace/store.js'),import('../investment-workspace/analysis.js')]),scenario=validateDraft(raw,evidence);return json(200,analyze(scenario,{risk:input.risk===true}));}
+        catch(error){return json(422,{error:error.message,errors:error.errors??{}});}
+      }
+      if(path==='/api/investment/save'&&request.method==='POST'){
+        if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
+        authentication.requireCsrf(adapted);
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
+        const raw=await requestBody(request,64_000),service=await durableProperties(),properties=await service.list({user,includeArchived:false}),property=properties.find(item=>item.sourceSubjectRef===raw?.propertyRef);
+        if(!property)return json(404,{error:'DURABLE_PROPERTY_NOT_FOUND'});
+        const links=await service.scenarioRevisions({user,id:property.id}),sameScenario=links.map(link=>link.scenario).filter(item=>item?.id===raw?.id).sort((a,b)=>b.revision-a.revision),baseline=sameScenario[0]??null;
+        if((raw?.revision??0)!==(baseline?.revision??0))return json(409,{error:'SCENARIO_REVISION_CONFLICT'});
+        const allowed=new Set(Object.keys(baseline?.compReviews??{}));if(Object.keys(raw?.compReviews??{}).some(reference=>!allowed.has(reference)))return json(409,{error:'COMPARABLE_EVIDENCE_NOT_RESTORED'});
+        const subject={...durableWorkspaceSubject(property),sales:[...allowed].map(evidenceRef=>({evidenceRef}))},evidence={properties:[subject],fingerprint:subject.evidenceFingerprint};
+        try{const [{validateDraft},{analyze}]=await Promise.all([import('../investment-workspace/store.js'),import('../investment-workspace/analysis.js')]),clean=validateDraft(raw,evidence),saved={...clean,revision:(baseline?.revision??0)+1,savedAt:new Date().toISOString()};try{saved.analysis=analyze(saved,{risk:saved.riskRequested});saved.validation=null;}catch(error){saved.analysis=null;saved.validation={message:error.message,errors:error.errors??{}};}await service.linkScenarioRevision({user,subjectRef:saved.propertyRef,scenario:saved});return json(200,saved);}
+        catch(error){return json(422,{error:error.message,errors:error.errors??{}});}
+      }
+      const documentListMatch=documentListRoute(path);
+      if(documentListMatch&&request.method==='GET'){
+        if(typeof documentMetadata!=='function')return json(503,{error:'SUPPORTING_DOCUMENT_STORAGE_NOT_CONFIGURED'});
+        const register=await documentMetadata().then(metadata=>metadata.list({user,propertyId:documentListMatch[1]}));
+        return json(200,{enabled:true,documents:register.documents,completeness:register.completeness});
       }
       const durableMatch=durableRoute(path);
       if(durableMatch){
