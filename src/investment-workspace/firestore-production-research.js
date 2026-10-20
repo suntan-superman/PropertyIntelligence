@@ -15,7 +15,8 @@ const labels={propertyRecords:'Property records',valuation:'Valuation',comparabl
 const statusError=error=>{
   const code=String(error?.code??error?.message??'PROVIDER_ERROR');
   if(['QUOTA_STOP','QUOTA_BUDGET_STOP','RATE_LIMIT_STOP','DAILY_BUDGET_EXCEEDED','MONTHLY_BUDGET_EXCEEDED','OPERATION_BUDGET_EXCEEDED'].includes(code))return {code:'QUOTA_EXCEEDED',status:429};
-  if(['NETWORK_STOP','TIMEOUT_STOP','PROVIDER_UNAVAILABLE_STOP'].includes(code))return {code:'PROVIDER_ERROR',status:502};
+  if(code==='TIMEOUT_STOP')return {code:'PROVIDER_TIMEOUT',status:504};
+  if(['NETWORK_STOP','PROVIDER_UNAVAILABLE_STOP'].includes(code))return {code:'PROVIDER_ERROR',status:502};
   if(code==='ADDRESS_AMBIGUOUS')return {code:'AMBIGUOUS_MATCH',status:409};
   if(code==='NO_MATCH')return {code:'NO_PROPERTY_FOUND',status:404};
   return {code:/^[A-Z0-9_-]+$/.test(code)?code:'PROVIDER_ERROR',status:Number.isInteger(error?.status)?error.status:400};
