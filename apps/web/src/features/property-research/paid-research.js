@@ -30,5 +30,11 @@ export async function approveAndRunProviderResearch({dialog,payload,skipConfirma
     });
     if(!approved)return {cancelled:true,quote};
   }
-  return {cancelled:false,quote,result:await post('/api/property-research/research',{approvalId:quote.approvalId,idempotencyKey:crypto.randomUUID()})};
+  const result=await post('/api/property-research/research',{approvalId:quote.approvalId,idempotencyKey:crypto.randomUUID()}),timedOut=result.operations?.filter(item=>item.error==='PROVIDER_TIMEOUT')??[];
+  if(timedOut.length)await dialog.notify({
+    title:'RentCast request timed out',
+    message:`${timedOut.map(item=>item.label).join(' and ')} did not finish within the configured provider timeout. No automatic retry occurred. You may retry immediately, but the prior request's billing status may be unknown.`,
+    confirmLabel:'Close',tone:'warning'
+  });
+  return {cancelled:false,quote,result};
 }
