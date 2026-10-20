@@ -66,7 +66,7 @@ function saleEvidence(property,record){
 }
 function propertyFromEvidence(evidence,address){const match=searchRetainedAddress(address,evidence?.properties??[]);if(match.status==='AMBIGUOUS')throw new ResearchStop('AMBIGUOUS_RETAINED_SUBJECT',409);return match.status==='MATCH'?match.matches[0]:null;}
 function operationState(property,key){if(key==='propertyRecords')return Boolean(property);if(key==='valuation')return finite(property?.avm?.price);return Array.isArray(property?.sales)&&property.sales.length>0;}
-function updateDetail(property,detail){
+export function updateDetail(property,detail){
   if(!detail)return null;
   const sales=(property.sales??[]).map((sale,index)=>({...sale,id:sale.evidenceRef,sourceReference:sale.evidenceRef,evidenceKind:'RECORDED_SALE',salePrice:sale.salePrice,squareFeet:sale.squareFootage,providerId:sale.providerId,latitude:sale.latitude,longitude:sale.longitude,retrievedAt:property.saleSearch?.retrievedAt,number:index+1}));
   const listings=(property.listings??[]).map((listing,index)=>({...listing,id:listing.providerId??`valuation-listing-${index+1}`,sourceReference:property.valuationRef,evidenceKind:'AVM_OBSERVATION',squareFeet:listing.squareFeet,providerAttributes:listing.providerAttributes??listing}));
@@ -89,7 +89,8 @@ export async function addCachedPropertyResearch(evidence){
     if(!operationState(next,'comparableSales')){let cached=null;for(const location of cacheLocationsFor('comparableSales',address)){cached=await readCache(location);if(cached)break;}if(cached)next=mergeSales(next,cached);}
     properties.push(next);
   }
-  return {...evidence,properties};
+  const byRef=new Map(properties.map(property=>[property.ref,property])),propertyDetails=(evidence.propertyDetails??[]).map(detail=>byRef.has(detail.subjectRef)?updateDetail(byRef.get(detail.subjectRef),detail):detail);
+  return {...evidence,properties,propertyDetails};
 }
 
 export async function restoreDurablePropertyEvidence(evidence,durableRecords,{get=readCache}={}){

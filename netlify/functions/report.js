@@ -6,10 +6,11 @@ const api=createRuntime({runtime:'netlify',env:process.env});
 let authenticatedReportApi;
 
 async function runtime(){
-  authenticatedReportApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments})=>{
+  authenticatedReportApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments})=>{
     const authentication=await initializeFirebaseAuthentication({env:process.env,secureCookies:true});
-    let durablePromise=null,metadataPromise=null;
+    let durablePromise=null,evidencePromise=null,metadataPromise=null;
     const durableProperties=()=>durablePromise??=initializeFirebaseDurableProperties({authentication});
+    const retainedEvidence=()=>evidencePromise??=initializeFirebaseRetainedEvidence({authentication});
     const documentMetadata=()=>metadataPromise??=durableProperties().then(async service=>{
       if(process.env.PI_FIREBASE_STORAGE_BUCKET&&process.env.PI_MALWARE_SCANNER_URL){
         const {loadCloudRunMalwareScanner}=await import('../../src/investment-workspace/cloud-run-malware-scanner.js'),malwareScanner=await loadCloudRunMalwareScanner(process.env);
@@ -17,7 +18,7 @@ async function runtime(){
       }
       return initializeFirebaseDocumentMetadata({authentication,durableProperties:service});
     });
-    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,documentMetadata,pdfRenderer:renderNetlifyWorkspacePdf});
+    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,documentMetadata,pdfRenderer:renderNetlifyWorkspacePdf});
   });
   return authenticatedReportApi;
 }

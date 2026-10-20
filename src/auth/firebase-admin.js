@@ -44,6 +44,14 @@ export async function initializeFirebaseDurableProperties({authentication}={}){
   return createDurablePropertyService({repository:createFirestoreDurablePropertyRepository({firestore:getFirestore(app)})});
 }
 
+export async function initializeFirebaseRetainedEvidence({authentication}={}){
+  if(!authentication?.enabled||!authentication.expectedProjectId)throw new Error('FIREBASE_AUTHENTICATION_REQUIRED');
+  const [{getApp},{getFirestore},{createFirestoreRetainedEvidenceRepository,createRetainedEvidenceService}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/firestore'),import('../investment-workspace/firestore-retained-evidence.js')]);
+  const app=getApp('pi-v2-3a');
+  if(app.options.projectId!==authentication.expectedProjectId)throw new Error('FIRESTORE_PROJECT_MISMATCH');
+  return createRetainedEvidenceService({repository:createFirestoreRetainedEvidenceRepository({firestore:getFirestore(app)})});
+}
+
 export function durableWorkspaceDocument(document={}){
   const version=document.currentVersionMetadata;
   return {id:document.id,propertyId:document.propertyId,documentType:document.documentType,description:document.description,source:document.source,sourceDate:document.sourceDate,uploadedAt:document.uploadedAt,updatedAt:document.updatedAt,reviewStatus:document.reviewStatus,confidentiality:document.confidentiality,redistributionPermission:document.redistributionPermission,appendixSelected:document.appendixSelected,evidenceClaim:document.evidenceClaim,currentVersion:document.currentVersion,versionCount:document.versionCount,eligibilityConsistent:document.eligibilityConsistent,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,pageCount:version.pageCount,uploadedAt:version.uploadedAt,scanStatus:version.scanStatus}:null};
