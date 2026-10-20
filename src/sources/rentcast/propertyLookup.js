@@ -2,8 +2,7 @@ import { ProviderStop } from './client.js';
 export function addressKey(value) {
   return String(value ?? '').toUpperCase().replace(/[.,]/g, '').trim().split(/\s+/)
     .map((token) => ({ PARKWAY:'PKWY', CIRCLE:'CIR', PLACE:'PL', STREET:'ST', ROAD:'RD',
-      AVENUE:'AVE', DRIVE:'DR', FLORIDA:'FL', NORTH:'N', SOUTH:'S', EAST:'E', WEST:'W',
-      NORTHEAST:'NE', NORTHWEST:'NW', SOUTHEAST:'SE', SOUTHWEST:'SW' })[token] || token).join(' ');
+      AVENUE:'AVE', DRIVE:'DR', FLORIDA:'FL' })[token] || token).join(' ');
 }
 export const completeAddress = (address) => Boolean(address.street && address.city && address.state);
 export const queryAddress = (address) => [address.street, address.city, address.state, address.zip].filter(Boolean).join(', ');
