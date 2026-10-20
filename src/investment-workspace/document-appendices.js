@@ -22,7 +22,8 @@ export function addSupportingEvidenceToHtml(html,documents,{kind='full'}={}){
 export function addQaAcceptanceLabel(html){
   const label='<div class="pi-qa-acceptance-label" role="note">QA / NOT FOR DISTRIBUTION · Synthetic document acceptance package</div>';
   const style='<style>.pi-qa-acceptance-label{position:fixed;z-index:1000;top:8px;right:42px;border:1px solid #b75c14;background:#fff1d6;color:#7a2d08;padding:4px 9px;font:700 8px Arial,sans-serif;letter-spacing:.06em}.pi-qa-acceptance-notice{border:2px solid #b75c14;background:#fff8e8;color:#5c260b;padding:10px 14px;margin:0 0 14px;font:700 11px Arial,sans-serif}</style>';
-  return String(html).replace('</head>',`${style}</head>`).replace(/<body([^>]*)>/,`<body$1>${label}<div class="pi-qa-acceptance-notice">QA / NOT FOR DISTRIBUTION — This package contains synthetic test material and is not suitable for investor reliance.</div>`);
+  const notice='<div class="pi-qa-acceptance-notice">QA / NOT FOR DISTRIBUTION — This package contains synthetic test material and is not suitable for investor reliance.</div>',hasCover=String(html).includes('<!-- PI_FULL_PACKAGE_COVER_END -->'),source=String(html).replace('</head>',`${style}</head>`).replace(/<body([^>]*)>/,hasCover?'<body$1>':`<body$1>${label}`);
+  return hasCover?source.replace('<!-- PI_FULL_PACKAGE_COVER_END -->',`<!-- PI_FULL_PACKAGE_COVER_END -->${notice}`):source.replace(label,`${label}${notice}`);
 }
 
 function wrap(text,width=86){const words=String(text??'').split(/\s+/),lines=[];let line='';for(const word of words){if(`${line} ${word}`.trim().length>width){lines.push(line);line=word;}else line=`${line} ${word}`.trim();}if(line)lines.push(line);return lines.slice(0,8);}
@@ -45,9 +46,10 @@ export async function appendSupportingDocuments(baseBytes,appendices=[]){
   return {bytes:Buffer.from(await output.save({useObjectStreams:true,addDefaultPage:false})),appendixPages,totalPages};
 }
 
-export async function markQaNotForDistribution(bytes){
+export async function markQaNotForDistribution(bytes,{skipFirstPage=false}={}){
   const pdf=await PDFDocument.load(bytes,{ignoreEncryption:false,updateMetadata:false}),font=await pdf.embedFont(StandardFonts.HelveticaBold);
-  for(const page of pdf.getPages()){
+  for(const [index,page] of pdf.getPages().entries()){
+    if(skipFirstPage&&index===0)continue;
     const {width,height}=page.getSize();
     page.drawRectangle({x:Math.max(24,width-238),y:height-22,width:202,height:14,color:rgb(.98,.91,.76),borderColor:rgb(.73,.35,.05),borderWidth:.5});
     page.drawText('QA / NOT FOR DISTRIBUTION',{x:Math.max(31,width-223),y:height-18,size:7,font,color:rgb(.55,.18,.03)});

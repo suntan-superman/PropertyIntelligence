@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-10-20T01:19:44.067Z",
+  "reports": [
+    {
+      "id": "Decatur-synthetic-QA",
+      "pdf": "Decatur-synthetic-QA-Full-Investor-Package.pdf",
+      "cover": "Decatur-synthetic-QA-cover.png",
+      "address": "400 Decatur St, Bakersfield, CA 93308",
+      "classification": "SYNTHETIC QA / NOT FOR INVESTOR DISTRIBUTION",
+      "pageCount": 22,
+      "appendixPages": 9,
+      "pdfSha256": "d3ab4dff4b1a8e65cd8cdff23b05dcbba1e2a1d4f93f08f10624aef1667a17d0",
+      "firstPageCharacters": 1188,
+      "noBlankOrClippedPages": true,
+      "paginationVerified": true
+    },
+    {
+      "id": "Crestview-normal-preliminary",
+      "pdf": "Crestview-normal-preliminary-Full-Investor-Package.pdf",
+      "cover": "Crestview-normal-preliminary-cover.png",
+      "address": "1708 Crestview Dr, Bakersfield, CA 93305",
+      "classification": "PRELIMINARY — FOR INFORMATIONAL PURPOSES",
+      "pageCount": 13,
+      "appendixPages": 0,
+      "pdfSha256": "7bd170066be9d4d7bb0e6e26b38dd38e7fd9a7c6c0d6ddd7694ff61ac77aaede",
+      "firstPageCharacters": 1163,
+      "noBlankOrClippedPages": true,
+      "paginationVerified": true
+    }
+  ],
+  "verification": {
+    "coverFirstPage": true,
+    "dynamicPropertyAndDate": true,
+    "classification": true,
+    "approvedDisclaimer": true,
+    "kernDisclaimerPreserved": true,
+    "appendicesPreserved": true,
+    "financialAndMonteCarloInvariant": true,
+    "opportunityBriefTouched": false,
+    "firebaseWrites": 0,
+    "storageOperations": 0,
+    "providerRequests": 0,
+    "deployment": false
+  }
+}

@@ -12,7 +12,7 @@ export async function renderWorkspacePdf(html,{appendices=[],qaNotForDistributio
   let page;
   try{page=await browser.newPage();let blockedRequests=0;await page.setJavaScriptEnabled(false);await page.setRequestInterception(true);page.on('request',r=>{blockedRequests++;r.abort().catch(()=>{});});await page.setContent(html,{waitUntil:'load'});
     const bytes=await page.pdf({format:'Letter',printBackground:true,preferCSSPageSize:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:`<div style="font:7px Arial;color:#526673;width:100%;padding:0 42px;display:flex;justify-content:space-between;gap:12px"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${footer} · Not investment advice</span>${appendices.length?'':`<span style="white-space:nowrap"><span class="pageNumber"></span> / <span class="totalPages"></span></span>`}</div>`,margin:{top:'.55in',bottom:'.6in',left:'.58in',right:'.58in'}}),merged=await appendSupportingDocuments(bytes,appendices);
-    const finalBytes=qaNotForDistribution?await markQaNotForDistribution(merged.bytes):merged.bytes;
+    const finalBytes=qaNotForDistribution?await markQaNotForDistribution(merged.bytes,{skipFirstPage:html.includes('<!-- PI_FULL_PACKAGE_COVER_START -->')}):merged.bytes;
     return {bytes:finalBytes,blockedRequests,browserVersion:await browser.version(),appendixPages:merged.appendixPages,totalPages:merged.totalPages};
   }finally{page?.removeAllListeners();await browser.close();}
 }
