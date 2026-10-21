@@ -94,6 +94,8 @@
     "pi:v2.8.1:research:test": "node --test tests/pi-v2-8-production-research.test.js tests/retained-evidence-cloud.test.js tests/netlify-auth.test.js tests/pi-v2-3c-address-validation.test.js tests/pi-v2-3b-research.test.js tests/pi-v2-1-guided-wizard.test.js",
     "pi:v2.8.2:report-quality:test": "node --test tests/pi-v2-8-2-report-checklist.test.js tests/pi-v2-7-cloud-pdf.test.js tests/pi-v2-6-2-cover-page.test.js tests/pi-v2-6-investor-report-quality.test.js tests/investment-workspace-report.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/pi-v2-5-supporting-documents.test.js tests/pi-v2-5-document-eligibility-firestore.test.js tests/seller-financial-position.test.js tests/monte-carlo-v1.test.js",
     "pi:v2.8.2:report-quality:qa": "node scripts/pi-v2-8-2-report-qa.js",
+    "pi:v3:test": "node --test tests/pi-v3-commercial.test.js tests/pi-v3-beta-rehearsal.test.js tests/pi-v2-3a-auth.test.js tests/pi-v2-8-production-research.test.js tests/pi-v2-5-supporting-documents.test.js tests/pi-v2-5-document-eligibility-firestore.test.js tests/pi-v2-7-cloud-pdf.test.js tests/pi-v2-8-2-report-checklist.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/monte-carlo-v1.test.js",
+    "pi:v3:qa": "node scripts/pi-v3-commercial-beta-qa.js",
     "pi:local": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:no-documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence",

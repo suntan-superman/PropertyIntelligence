@@ -1,5 +1,5 @@
 import {randomBytes,timingSafeEqual} from 'node:crypto';
-import {AccessDenied,ROLES} from './access-control.js';
+import {AccessDenied,ROLES,normalizeRole,roleCapabilities} from './access-control.js';
 
 export const SESSION_COOKIE='pi_session',CSRF_COOKIE='pi_csrf',SESSION_MAX_AGE_MS=8*60*60*1000;
 export const DEFAULT_RESEARCH_REAUTH_MAX_AGE_MS=5*60*1000;
@@ -9,13 +9,14 @@ const cookie=(name,value,{httpOnly=false,maxAge=null,secure=false}={})=>`${name}
 
 function verifiedUser(decoded,expectedProjectId,initialAdministratorUid,issuer,expectedOrganizationId){
   if(!decoded||decoded.aud!==expectedProjectId||decoded.iss!==`${issuer}/${expectedProjectId}`||typeof decoded.uid!=='string'||!decoded.uid)throw new AccessDenied('AUTHENTICATION_PROJECT_MISMATCH',401);
-  const role=decoded.role;
-  if(!Object.values(ROLES).includes(role))throw new AccessDenied(decoded.uid===initialAdministratorUid?'ADMINISTRATOR_BOOTSTRAP_REQUIRED':'ROLE_NOT_AUTHORIZED',403);
-  if(decoded.uid===initialAdministratorUid&&role!==ROLES.ADMINISTRATOR)throw new AccessDenied('ADMINISTRATOR_BOOTSTRAP_REQUIRED',403);
+  const role=normalizeRole(decoded.role);
+  if(!role)throw new AccessDenied(decoded.uid===initialAdministratorUid?'ADMINISTRATOR_BOOTSTRAP_REQUIRED':'ROLE_NOT_AUTHORIZED',403);
+  if(role===ROLES.SUSPENDED)throw new AccessDenied('ACCOUNT_SUSPENDED',403);
+  if(decoded.uid===initialAdministratorUid&&role!==ROLES.PLATFORM_ADMINISTRATOR)throw new AccessDenied('ADMINISTRATOR_BOOTSTRAP_REQUIRED',403);
   const organizationId=typeof decoded.piOrganizationId==='string'&&decoded.piOrganizationId.trim()?decoded.piOrganizationId.trim():null;
   if(!organizationId)throw new AccessDenied('ORGANIZATION_MEMBERSHIP_REQUIRED',403);
-  if(organizationId!==expectedOrganizationId)throw new AccessDenied('ORGANIZATION_NOT_AUTHORIZED',403);
-  return {uid:decoded.uid,role,emailVerified:decoded.email_verified===true,sessionExpiresAt:decoded.exp?new Date(decoded.exp*1000).toISOString():null,providerResearchAllowed:role===ROLES.ADMINISTRATOR||decoded.piProviderResearch===true,organizationId,authenticatedAt:Number.isFinite(decoded.auth_time)?new Date(decoded.auth_time*1000).toISOString():null};
+  if(decoded.uid===initialAdministratorUid&&organizationId!==expectedOrganizationId)throw new AccessDenied('ORGANIZATION_NOT_AUTHORIZED',403);
+  return {uid:decoded.uid,role,emailVerified:decoded.email_verified===true,sessionExpiresAt:decoded.exp?new Date(decoded.exp*1000).toISOString():null,providerResearchAllowed:roleCapabilities(role).research&&(decoded.piProviderResearch===true||role===ROLES.PLATFORM_ADMINISTRATOR),organizationId,authenticatedAt:Number.isFinite(decoded.auth_time)?new Date(decoded.auth_time*1000).toISOString():null,displayName:String(decoded.name??'').trim(),organizationName:String(decoded.piOrganizationName??'').trim()};
 }
 
 export function createFirebaseSessionService({adminAuth,expectedProjectId,initialAdministratorUid,expectedOrganizationId='property-intelligence-local',publicConfig,clock=()=>new Date(),secureCookies=false,csrfBytes=()=>randomBytes(24)}={}){

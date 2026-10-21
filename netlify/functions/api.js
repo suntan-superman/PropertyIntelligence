@@ -5,13 +5,16 @@ import {createNetlifyAuthenticatedApi} from '../../src/auth/netlify-auth.js';
 const api=createRuntime({runtime:'netlify',env:process.env});
 let authenticatedApi;
 async function runtime(){
-  authenticatedApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseProductionResearch,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments})=>{
+  authenticatedApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseProductionResearch,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments,initializeFirebaseCommercial,initializeFirebaseUserAdministration,initializeFirebaseReportStorage})=>{
     const authentication=await initializeFirebaseAuthentication({env:process.env,secureCookies:true});
-    let durablePromise=null,evidencePromise=null,metadataPromise=null,researchPromise=null;
+    let durablePromise=null,evidencePromise=null,metadataPromise=null,researchPromise=null,commercialPromise=null;
     const durableProperties=()=>durablePromise??=initializeFirebaseDurableProperties({authentication});
     const retainedEvidence=()=>evidencePromise??=initializeFirebaseRetainedEvidence({authentication});
     const production=()=>researchPromise??=retainedEvidence().then(evidence=>initializeFirebaseProductionResearch({authentication,retainedEvidence:evidence,env:process.env}));
     const productionResearch=()=>production().then(value=>value.research),addressValidation=()=>production().then(value=>value.addressValidation);
+    const commercial=()=>commercialPromise??=initializeFirebaseCommercial({authentication,env:process.env});
+    const reportStorage=()=>initializeFirebaseReportStorage({authentication,bucketName:process.env.PI_FIREBASE_STORAGE_BUCKET});
+    const inviteUser=await initializeFirebaseUserAdministration({authentication,env:process.env});
     const documentMetadata=()=>metadataPromise??=durableProperties().then(async service=>{
       if(process.env.PI_FIREBASE_STORAGE_BUCKET&&process.env.PI_MALWARE_SCANNER_URL){
         const {loadCloudRunMalwareScanner}=await import('../../src/investment-workspace/cloud-run-malware-scanner.js'),malwareScanner=await loadCloudRunMalwareScanner(process.env);
@@ -19,7 +22,8 @@ async function runtime(){
       }
       return initializeFirebaseDocumentMetadata({authentication,durableProperties:service});
     });
-    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,productionResearch,addressValidation,documentMetadata,pdfAvailable:true});
+    const {createStripeCheckoutClient,verifyStripeWebhook}=await import('../../src/commercial/commercial-service.js'),checkout=createStripeCheckoutClient({secretKey:process.env.STRIPE_SECRET_KEY,priceId:process.env.STRIPE_PRICE_ID,successUrl:`${process.env.URL??'https://worksidepropertyintelligence.netlify.app'}/#billing-success`,cancelUrl:`${process.env.URL??'https://worksidepropertyintelligence.netlify.app'}/#billing`,enabled:process.env.PI_STRIPE_CHECKOUT_ENABLED==='true',liveModeEnabled:process.env.PI_STRIPE_LIVE_MODE_ENABLED==='true'});
+    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,productionResearch,addressValidation,documentMetadata,commercial,reportStorage,inviteUser,stripeCheckout:input=>checkout.create(input),stripeWebhook:input=>verifyStripeWebhook({...input,secret:process.env.STRIPE_WEBHOOK_SECRET}),pdfAvailable:true});
   });
   return authenticatedApi;
 }

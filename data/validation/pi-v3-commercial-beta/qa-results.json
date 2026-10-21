@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "generatedAt": "2026-10-20T21:00:00.000Z",
+  "classification": "LOCAL_SYNTHETIC_QA",
+  "report": {
+    "filename": "PI-V3-Synthetic-Finalized-Full-Investor-Package.pdf",
+    "pageCount": 13,
+    "sha256": "dc6453014b343aaccd1b6e72ebe41033a9f8333f8322a310491204d298f0196e",
+    "attributionPresent": true,
+    "uidExcluded": true,
+    "noBlankOrClippedPages": true
+  },
+  "screenshots": [
+    "interactive-checklist.png",
+    "administrator-portal.png",
+    "credit-ledger.png",
+    "stripe-checkout-test-mode.png",
+    "report-viewer.png",
+    "finalized-report-cover.png",
+    "finalized-report-attribution.png"
+  ],
+  "regression": {
+    "financialAndMonteCarloInvariant": true,
+    "providerRequests": 0,
+    "liveFirestoreWrites": 0,
+    "storageWrites": 0,
+    "stripeCharges": 0
+  },
+  "note": "The Stripe screenshot and transaction are explicit test doubles because no Stripe test credentials are configured. No external user, live payment, Firebase mutation or provider request was performed."
+}

@@ -14,3 +14,4 @@
     min-width: 0;
   }
 }
+.workspace-report-share{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.workspace-report-share select{max-width:210px}.workspace-report-share small{flex-basis:100%;color:#47666a}

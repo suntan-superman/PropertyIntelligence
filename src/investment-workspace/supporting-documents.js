@@ -11,7 +11,7 @@ export const DOCUMENT_MIME_TYPES=Object.freeze(['application/pdf','image/jpeg','
 export const DEFAULT_DOCUMENT_SIZE_LIMIT=10*1024*1024;
 export const DEFAULT_SIGNATURE_MAX_AGE_MS=24*60*60*1000;
 export const DOCUMENT_ELIGIBILITY_FIELDS=Object.freeze(['reviewStatus','confidentiality','redistributionPermission','appendixSelected','reviewedAt','reviewedBy']);
-const writableRoles=new Set([ROLES.ADMINISTRATOR,ROLES.ANALYST]);
+const writableRoles=new Set(['Administrator',ROLES.PLATFORM_ADMINISTRATOR,ROLES.ORGANIZATION_ADMINISTRATOR,ROLES.ANALYST]);
 const clean=(value,maximum=500)=>String(value??'').trim().replace(/\s+/g,' ').slice(0,maximum);
 const clone=value=>value==null?value:structuredClone(value);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
