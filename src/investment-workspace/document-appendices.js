@@ -5,10 +5,10 @@ const label=value=>String(value??'').replaceAll('_',' ').toLowerCase().replace(/
 export const INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER='Supporting documents and property information are provided for informational purposes and may contain inaccuracies or omissions. Property Intelligence does not independently guarantee their authenticity, completeness or current validity. Investors should conduct their own due diligence, including appropriate title, legal, financial, property-condition and valuation reviews, before making investment decisions.';
 
 export function supportingEvidenceHtml(documents,{kind='full'}={}){
+  if(kind!=='full'||!documents.length)return '';
   const row=item=>{const document=item.document??item,version=document.currentVersionMetadata??item.version,claims=(item.claims??[]).map(claim=>claim.fieldLabel).filter(Boolean);return `<tr><td><b>${esc(`Appendix ${item.index??''}`)}</b></td><td>${esc(label(document.documentType))}<br><span>${esc(document.description||'No description supplied')}</span></td><td>${esc(document.source||'Source not supplied')}<br>${esc(document.sourceDate||'Source date not supplied')}</td><td>${esc(claims.join('; ')||'Property-level supporting evidence')}</td><td>${esc(label(document.reviewStatus))}<br>Immutable version ${esc(version?.version??document.currentVersion)}</td></tr>`;};
-  const message=kind==='brief'?'Supporting evidence is referenced below but attachments are not embedded in the Opportunity Brief.':'Only analyst-selected documents that are reviewed, approved for redistribution and not confidential or provider-restricted are appended.';
-  const disclaimer=kind==='full'?`<div class="notice supporting-document-disclaimer"><b>Investor due-diligence notice.</b> ${esc(INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER)}</div>`:'';
-  if(!documents.length)return `<section class="page supporting-document-index ${kind==='brief'?'brief-references':''}"><div class="workspace-page-id">PROPERTY INTELLIGENCE <span>SUPPORTING EVIDENCE REGISTER</span></div><h1>${kind==='brief'?'Supporting evidence references (not attached)':'Supporting document appendix index'}</h1><p>${esc(message)} A document supports diligence but does not by itself establish a verified claim.</p>${disclaimer}<p class="notice">No approved supporting documents are selected for investor distribution.</p></section>`;
+  const message='Only analyst-selected documents that are reviewed, approved for redistribution and not confidential or provider-restricted are appended.';
+  const disclaimer=`<div class="notice supporting-document-disclaimer"><b>Investor due-diligence notice.</b> ${esc(INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER)}</div>`;
   const pageCount=Math.ceil(documents.length/5),minimum=Math.floor(documents.length/pageCount),extra=documents.length%pageCount,chunks=[];let offset=0;
   for(let index=0;index<pageCount;index++){const size=minimum+(index<extra?1:0);chunks.push(documents.slice(offset,offset+size));offset+=size;}
   return chunks.map((chunk,index)=>{const first=chunks.slice(0,index).reduce((sum,items)=>sum+items.length,0)+1,last=first+chunk.length-1;return `<section class="page supporting-document-index ${kind==='brief'?'brief-references':''}"><div class="workspace-page-id">PROPERTY INTELLIGENCE <span>SUPPORTING EVIDENCE REGISTER</span></div><h1>${kind==='brief'?'Supporting evidence references (not attached)':`Supporting document appendix index${index?' — continued':''}`}</h1>${index===0?`<p>${esc(message)} A document supports diligence but does not by itself establish a verified claim.</p>${disclaimer}`:`<p>Approved supporting documents ${first}–${last} of ${documents.length}. Eligibility is checked again when the package is assembled.</p>`}<table><thead><tr><th>Reference</th><th>Document / description</th><th>Source / date</th><th>Supported claim(s)</th><th>Review / immutable version</th></tr></thead><tbody>${chunk.map(row).join('')}</tbody></table></section>`;}).join('');
@@ -16,7 +16,7 @@ export function supportingEvidenceHtml(documents,{kind='full'}={}){
 
 export function addSupportingEvidenceToHtml(html,documents,{kind='full'}={}){
   if(!Array.isArray(documents))return html;
-  const section=supportingEvidenceHtml(documents,{kind});return html.replace('</body>',`${section}</body>`);
+  const section=supportingEvidenceHtml(documents,{kind});return section?html.replace('</body>',`${section}</body>`):html;
 }
 
 export function addQaAcceptanceLabel(html){

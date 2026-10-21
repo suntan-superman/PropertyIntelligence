@@ -1,0 +1,59 @@
+const PRIORITY=Object.freeze({Critical:0,Important:1,'Follow-up':2});
+const tidy=value=>String(value??'').trim();
+const money=value=>Number.isFinite(Number(value))?Number(value).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'entered';
+const presentEntry=(scenario,categories)=>[...(scenario.analystEvidence??[])].filter(entry=>categories.includes(entry.category)&&entry.status==='PRESENT').sort((a,b)=>String(b.sourceDate??'').localeCompare(String(a.sourceDate??'')))[0]??null;
+const evidenceStatus=entry=>!entry?'Missing':entry.verificationClass==='INDEPENDENTLY_VERIFIED'?'Verified or adequately documented for the stated purpose':entry.verificationClass==='ANALYST_ASSUMPTION'?'Analyst assumption only':entry.verificationClass==='SOURCE_REPORTED'||entry.verificationClass==='UNVERIFIED_NOTE'?'Source-reported, unverified':entry.verificationClass==='RECORDED_DOCUMENT'||entry.verificationClass==='ANALYST_OBSERVED'?'Reviewed but not independently verified':'Missing';
+const linksFor=(scenario,predicate)=>(scenario.evidenceAttachments??[]).filter(link=>predicate(String(link.fieldKey??'').toUpperCase()));
+function documentStatus(scenario,supportingDocuments,predicate){
+  const links=linksFor(scenario,predicate);if(!links.length)return 'Missing';
+  const included=links.map(link=>supportingDocuments.find(item=>item.document?.id===link.documentId&&Number(item.version?.version??item.document?.currentVersion)===Number(link.version))).filter(Boolean);
+  if(included.some(item=>item.document?.reviewStatus==='INDEPENDENTLY_VERIFIED'))return 'Verified or adequately documented for the stated purpose';
+  if(included.length)return 'Reviewed but not independently verified';
+  if(links.some(link=>link.reviewStatus==='REVIEWED'||link.reviewStatus==='INDEPENDENTLY_VERIFIED'))return 'Reviewed but not independently verified';
+  return 'Document supplied, review pending';
+}
+const evidenceRank=Object.freeze({'Missing':0,'Analyst assumption only':1,'Source-reported, unverified':2,'Document supplied, review pending':3,'Reviewed but not independently verified':4,'Verified or adequately documented for the stated purpose':5});
+const strongest=(...statuses)=>statuses.filter(Boolean).sort((a,b)=>(evidenceRank[b]??0)-(evidenceRank[a]??0))[0]??'Missing';
+const item=(priority,category,missingInformation,why,recommendedAction,status)=>({priority,category,missingInformation,why,recommendedAction,status});
+const complete=(category,information,status)=>({category,information,status});
+
+export function generateDueDiligenceChecklist({property,scenario,comparables=[],costs,sellerFinancialPosition,supportingDocuments=[],reconciliation}={}){
+  const outstanding=[],completed=[],primary=comparables.filter(comp=>comp.role==='PRIMARY'),primaryDocumented=primary.filter(comp=>tidy(comp.analystRationale)).length;
+  if(primary.length<3)outstanding.push(item('Critical','Valuation','Supported resale value','The exit value materially drives modeled profit, returns and MAO.',`Select and review 3–5 relevant closed sales and document whether the ${money(scenario.inputs?.exitValue)} exit assumption is supportable.`,'Analyst assumption only'));
+  else if(primaryDocumented<primary.length)outstanding.push(item('Important','Valuation','Comparable relevance and adjustments','Primary labels alone do not establish comparability or an adjusted ARV.','Document relevance, condition differences and any supported adjustments for each Primary comparable.','Source-reported, unverified'));
+  else completed.push(complete('Valuation',`${primary.length} Primary comparables have analyst rationale; adjusted ARV is still not independently established.`,'Reviewed but not independently verified'));
+
+  const rehabDocument=documentStatus(scenario,supportingDocuments,key=>key==='UNDERWRITING.REHABCOST'||key.includes('REHABILITATION'));
+  if(rehabDocument==='Missing'||rehabDocument==='Document supplied, review pending')outstanding.push(item('Critical','Rehabilitation','Contractor-backed rehabilitation scope','Rehabilitation cost and duration materially affect feasibility, financing and profit.',rehabDocument==='Missing'?'Obtain an inspection and itemized contractor estimate; reconcile it to the entered rehabilitation range.':'Review the supplied document, confirm its scope and current applicability, then reconcile it to the entered rehabilitation range.',rehabDocument==='Missing'?'Analyst assumption only':rehabDocument));
+  else if(rehabDocument==='Reviewed but not independently verified')outstanding.push(item('Important','Rehabilitation','Current applicability of rehabilitation support','A reviewed estimate may be incomplete, stale or based on a different scope.','Confirm scope, quantities, exclusions, contingency and current pricing.',rehabDocument));
+  else completed.push(complete('Rehabilitation','Rehabilitation support is documented for its stated purpose.',rehabDocument));
+
+  if(costs?.materialCostsIncomplete)outstanding.push(item('Critical','Project expenses','Complete project expenses','Unentered or unsupported zero costs can materially overstate profit, returns and purchase limits.','Review acquisition, holding, financing, selling, transfer and contingency costs as grouped project expenses.','Analyst assumption only'));
+  else completed.push(complete('Project expenses','All tracked material cost categories contain entered assumptions.','Analyst assumption only'));
+
+  const titleEntry=presentEntry(scenario,['TITLE','LIEN','RELEASE','VERIFIED_PAYOFF','DELINQUENT_TAX']),titleDocument=documentStatus(scenario,supportingDocuments,key=>/TITLE|LIEN|RELEASE|PAYOFF|TAX/.test(key)),titleStatus=strongest(evidenceStatus(titleEntry),titleDocument),sellerOpen=sellerFinancialPosition?.unresolvedObligations?.length>0;
+  if(sellerOpen||!['Verified or adequately documented for the stated purpose'].includes(titleStatus))outstanding.push(item('Critical','Title and seller obligations','Title, liens, taxes and current payoff','Unknown obligations or title defects can prevent transfer and change required cash or seller proceeds.',titleDocument==='Missing'?'Obtain appropriate title/lien research, current lender payoff documentation and current tax status.':'Review and reconcile the supplied title, lien, tax or payoff evidence; confirm authenticity and current applicability where material.',titleStatus));
+  else completed.push(complete('Title and seller obligations','Material seller obligations are documented for the stated purpose.',titleStatus));
+
+  const occupancy=presentEntry(scenario,['OCCUPANCY']),occupancyStatus=strongest(evidenceStatus(occupancy),documentStatus(scenario,supportingDocuments,key=>/OCCUPANCY|LEASE|POSSESSION/.test(key))),reportedNonOwner=property?.ownership?.ownerOccupied===false;
+  if(!occupancy||occupancyStatus!=='Verified or adequately documented for the stated purpose')outstanding.push(item('Critical','Occupancy and possession',reportedNonOwner?'Reported non-owner occupancy; lease and possession terms unresolved':'Occupancy and possession status','Occupancy, lease rights and vacancy timing can delay possession and rehabilitation.','Obtain lease or occupancy documentation, rental terms, possession rights and a lawful vacancy timeline.',occupancy?occupancyStatus:reportedNonOwner?'Source-reported, unverified':'Missing'));
+  else completed.push(complete('Occupancy and possession','Occupancy evidence is documented for its stated purpose.',occupancyStatus));
+
+  const condition=presentEntry(scenario,['CONDITION']),conditionStatus=strongest(evidenceStatus(condition),documentStatus(scenario,supportingDocuments,key=>/CONDITION|INSPECTION/.test(key)));
+  if(!condition||conditionStatus!=='Verified or adequately documented for the stated purpose')outstanding.push(item('Important','Property condition','Material system condition','Hidden roof, foundation, HVAC, plumbing or electrical defects can change scope, schedule and cost.','Obtain a qualified inspection or contractor review of material systems.',conditionStatus));
+  else completed.push(complete('Property condition','Material condition evidence is documented for its stated purpose.',conditionStatus));
+
+  const parcel=property?.parcelIdentifiers?.length||property?.attributes?.assessorId,zoning=tidy(property?.attributes?.zoning),identityStatus=parcel&&zoning?'Source-reported, unverified':'Missing';
+  if(!parcel||!zoning)outstanding.push(item('Important','Property identity and restrictions','Parcel identity, zoning, access or material restrictions','Identity or use restrictions may affect acquisition, rehabilitation, financing or resale.','Confirm parcel identity, zoning, permits, access and material restrictions through appropriate sources.',identityStatus));
+  else completed.push(complete('Property identity and restrictions','Provider-reported parcel and zoning fields are present; legal confirmation remains separate.',identityStatus));
+
+  const contractStatus=documentStatus(scenario,supportingDocuments,key=>key.includes('CONTRACT')||key.includes('ASSIGNMENT')||key.includes('CLOSING'));
+  if(contractStatus==='Missing'||contractStatus==='Document supplied, review pending')outstanding.push(item('Important','Transaction terms','Seller, purchase or assignment terms','Contract availability, assignment restrictions, fees and closing requirements affect execution.','Review the purchase/assignment agreement, fees, deadlines and closing requirements.',contractStatus));
+  else completed.push(complete('Transaction terms','Transaction documentation is available for review.',contractStatus));
+
+  if(reconciliation?.discrepancies?.length)outstanding.push(item('Critical','Evidence reconciliation','Supporting-document amounts differ from scenario inputs','Unresolved like-for-like differences can materially change underwriting.','Review and reconcile each documented amount difference without automatically changing the saved assumptions.','Reviewed but not independently verified'));
+  else if(reconciliation?.rows?.length&&(reconciliation.notReconciled?.length||reconciliation.notComparable?.length))outstanding.push(item('Important','Evidence reconciliation','Structured document comparison remains incomplete','Linked evidence exists, but one or more material amounts cannot yet be compared like-for-like.','Review and reconcile supporting-document amounts against the saved scenario inputs; confirm authenticity and current applicability where material.','Reviewed but not independently verified'));
+
+  const ordered=outstanding.sort((a,b)=>PRIORITY[a.priority]-PRIORITY[b.priority]||a.category.localeCompare(b.category)),critical=ordered.filter(entry=>entry.priority==='Critical').length,important=ordered.filter(entry=>entry.priority==='Important').length,overallStatus=critical?'Preliminary — Material diligence outstanding':important?'Preliminary — Important diligence outstanding':'Preliminary — Core diligence documented';
+  return {title:'Investment Due Diligence Checklist',propertyAddress:property.address,scenarioName:scenario.name,revision:scenario.revision,analysisDate:scenario.savedAt,overallStatus,outstanding:ordered,completed,nextRecommendedActions:[...new Set(ordered.map(entry=>entry.recommendedAction))].slice(0,6),counts:{critical,important,followUp:ordered.filter(entry=>entry.priority==='Follow-up').length,total:ordered.length},footer:'Preliminary diligence summary generated by Property Intelligence. Findings depend on available evidence and analyst-entered assumptions. Independent verification remains the responsibility of the recipient.'};
+}

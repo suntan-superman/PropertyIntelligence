@@ -42,18 +42,22 @@ test('synthetic scenario can never receive ordinary preliminary cover classifica
   assert.ok(labeled.indexOf('PI_FULL_PACKAGE_COVER_END')<labeled.indexOf('<div class="pi-qa-acceptance-notice">'));
 });
 
-test('cover insertion leaves prior Full Package HTML and all calculations byte-for-byte invariant',()=>{
+test('V2.8.2 checklist integration preserves the approved cover, core report content and all calculations',()=>{
   for(const [name,fixture] of Object.entries({decatur,normal})){
     const full=workspaceReportHtml(fixture.property,fixture.scenario,evidence,'full',{generatedAt}),analysis=analyze(fixture.scenario,{risk:fixture.scenario.riskRequested});
-    assert.equal(sha(withoutCover(full)),baselines[name].full);
+    assert.match(withoutCover(full),/Investment Due Diligence Checklist/);
+    assert.match(full,/Project economics · complete input ledger/);
+    assert.match(full,/Sources, dates &amp; licensing boundaries|Sources, dates & licensing boundaries/);
     assert.equal(sha(JSON.stringify(analysis)),baselines[name].analysis);
   }
 });
 
-test('Opportunity Brief remains byte-for-byte unchanged and has no cover',()=>{
+test('Opportunity Brief remains compact, has no cover and preserves calculations',()=>{
   for(const [name,fixture] of Object.entries({decatur,normal})){
-    const brief=workspaceReportHtml(fixture.property,fixture.scenario,evidence,'brief',{generatedAt});
-    assert.equal(sha(brief),baselines[name].brief);
+    const brief=workspaceReportHtml(fixture.property,fixture.scenario,evidence,'brief',{generatedAt}),analysis=analyze(fixture.scenario,{risk:fixture.scenario.riskRequested});
     assert.doesNotMatch(brief,/PI_FULL_PACKAGE_COVER|FULL INVESTOR PACKAGE/);
+    assert.match(brief,/class="checklist-summary"/);
+    assert.doesNotMatch(brief,/class="checklist-table"/);
+    assert.equal(sha(JSON.stringify(analysis)),baselines[name].analysis);
   }
 });

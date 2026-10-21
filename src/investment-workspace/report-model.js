@@ -3,8 +3,10 @@
 import {analyze} from './analysis.js';
 import {ANALYST_EVIDENCE_CATEGORIES,evidenceGapSummary,safeReportEvidence} from './analyst-evidence.js';
 import {deriveSellerFinancialPosition} from '../../apps/web/src/features/investment-workspace/seller-position.js';
+import {groupComparableObservations} from '../../apps/web/src/features/investment-workspace/comparable-identity.js';
+import {generateDueDiligenceChecklist} from './due-diligence-checklist.js';
 
-export const REPORT_VERSION='Property Intelligence V2.6.2 Report Rendering and Evidence Reconciliation';
+export const REPORT_VERSION='Property Intelligence V2.8.2 Report Quality and Due Diligence Checklist';
 export const NOTICE='Preliminary underwriting—not appraisal/title verification. Assumptions are not verified costs; simulation output is not predictive accuracy.';
 export const RISK_NOTICE='Under entered assumptions; not a forecast of actual investment risk';
 export const TYPES=Object.freeze({fact:'PROVIDER-REPORTED FACT',model:'PROVIDER MODEL ESTIMATE',county:'COUNTY HISTORICAL RECORD',assumption:'ANALYST ASSUMPTION',calculation:'PI CALCULATION',review:'PRELIMINARY ADDRESS REVIEW',unknown:'UNKNOWN'});
@@ -42,6 +44,13 @@ const materialCostLabels=Object.freeze({
   sellerClosingRate:'Seller closing rate',transferCost:'Transfer costs',otherUpfront:'Other upfront costs',otherAtExit:'Other exit costs'
 });
 const materialCostKeys=Object.freeze(Object.keys(materialCostLabels));
+const KERN_LOCALITIES=new Set(['bakersfield','boron','delano','frazier park','kernville','lake isabella','lamont','lost hills','maricopa','mc farland','mcfarland','mojave','rosamond','shafter','taft','tehachapi','wasco']);
+const actualKernSource=p=>{
+  const refs=[p.historicalTrigger?.sourceRef,p.countyUse?.sourceRef,...(p.researchProvenance??[]).map(item=>item.reference)].filter(value=>value&&!/^No county|not present|unknown/i.test(String(value)));
+  const city=String(p.addressComponents?.city??p.city??'').trim().toLowerCase(),kernJurisdiction=/^Kern(?: County)?$/i.test(String(p.attributes?.county??'').trim())||KERN_LOCALITIES.has(city);
+  const structuredCountyEvidence=Boolean(p.historicalTrigger?.kind||p.historicalTrigger?.amount!=null||p.countyUse?.code);
+  return refs.some(value=>/Kern County|Power[- ]to[- ]Sell|KERN_/i.test(String(value)))||(kernJurisdiction&&structuredCountyEvidence);
+};
 function costCompleteness(inputs){
   const items=materialCostKeys.map(key=>{
     const raw=inputs?.[key];
@@ -117,15 +126,14 @@ export function reportModel(p,s,{generatedAt=new Date().toISOString(),supporting
   const assumption=v=>datum(v,TYPES.assumption,`${s.name} · revision ${s.revision}`,s.savedAt);
   const calc=v=>datum(v,TYPES.calculation,analysis.economicsVersion,s.savedAt);
   const unknown=source=>datum(null,TYPES.unknown,source);
-  const comparables=p.sales.map((c,index)=>{
-    const review=s.compReviews?.[c.evidenceRef];
+  const comparableGroups=groupComparableObservations(p.sales),comparables=comparableGroups.map((group,index)=>{
+    const c=group.records[0],reviews=group.records.map(record=>s.compReviews?.[record.evidenceRef]).filter(Boolean),roles=reviews.map(review=>String(review.role??'').toUpperCase()),includedReview=reviews.some(review=>review.include===true),excludedReview=reviews.some(review=>review.include===false||String(review.role??'').toUpperCase()==='EXCLUDED');
     // Existing boolean review contract: an explicit false is excluded; absence
     // means not selected. No selection changes the engine's resale assumption.
-    const explicitRole=String(review?.role??'').toUpperCase();
-    const role=review?.include===false||explicitRole==='EXCLUDED'?'EXCLUDED':['PRIMARY','SECONDARY'].includes(explicitRole)?explicitRole:'NOT_CLASSIFIED';
-    const status=role==='EXCLUDED'?'Excluded':role==='PRIMARY'?'Primary comparable':role==='SECONDARY'?'Secondary comparable':review?.include===true?'Included in analyst analysis':'Not selected';
+    const role=roles.includes('PRIMARY')?'PRIMARY':roles.includes('SECONDARY')?'SECONDARY':excludedReview?'EXCLUDED':'NOT_CLASSIFIED';
+    const status=role==='EXCLUDED'?'Excluded':role==='PRIMARY'?'Primary comparable':role==='SECONDARY'?'Secondary comparable':includedReview?'Included in analyst analysis':'Not selected';
     const reference=`RC-SALE-${String(index+1).padStart(3,'0')}`,reported=v=>datum(v,TYPES.fact,`RentCast reported sale · ${c.address} · ${reference}`,c.saleDate,p.saleSearch.retrievedAt);
-    return {reference,privateAuditReference:c.evidenceRef,status,role,analystRationale:review?.notes||null,
+    return {reference,privateAuditReference:c.evidenceRef,privateAuditReferences:group.records.map(record=>record.evidenceRef),status,role,analystRationale:[...new Set(reviews.map(review=>String(review.notes??'').trim()).filter(Boolean))].join(' · ')||null,observationCount:group.records.length,duplicateStatus:group.identityStatus,duplicateReason:group.identityReason,reviewFlags:group.reviewFlags,
       address:reported(c.address),propertyType:reported(c.propertyType),salePrice:reported(c.salePrice),saleDate:reported(c.saleDate),
       distanceMiles:reported(c.distance),livingAreaSqft:reported(c.squareFootage),bedrooms:reported(c.bedrooms),bathrooms:reported(c.bathrooms),ageDays:reported(c.ageDays),
       similarity:reported(c.reason||'Comparability not established; transfer terms and condition unverified'),
@@ -157,8 +165,8 @@ export function reportModel(p,s,{generatedAt=new Date().toISOString(),supporting
   const readiness={status:costs.materialCostsIncomplete||unattributedClaims.length?'NOT_INVESTOR_READY':'INVESTOR_READY_DRAFT',label:costs.materialCostsIncomplete||unattributedClaims.length?'Not investor-ready — material assumptions and evidence require review':'Investor-ready draft',blockers:[...(costs.materialCostsIncomplete?['Material transaction, holding, financing or exit costs remain unreviewed, unknown or explicitly assumed $0.']:[]),...unattributedClaims]};
   const resaleSupport=primary.length?{status:'PRIMARY_RESEARCH_NOT_ADJUSTED_ARV',label:`Analyst exit assumption — ${primary.length} designated primary comparable${primary.length===1?'':'s'}`,notice:'Designated primary research does not establish an adjusted or independently supported ARV.'}:included.length===0?{status:'UNSUPPORTED_NO_SELECTED_COMPS',label:'Analyst exit assumption — no comparable sales selected',notice:'Comparable-supported ARV not established. Exit value not independently supported by selected comps.'}:{status:'UNCLASSIFIED_RESEARCH_NOT_ADJUSTED_ARV',label:`Analyst exit assumption — ${included.length} included sale${included.length===1?'':'s'}; roles not yet classified`,notice:'Comparable-supported ARV not established. No sale is designated Primary, and included research does not establish an adjusted or independently supported ARV.'};
   const grossSpread=Number(s.inputs.exitValue)-Number(s.inputs.purchasePrice)-Number(s.inputs.rehabCost);
-  const actionPlan=['Reconcile each amount-bearing supporting document to the corresponding scenario input.','Obtain a current lender payoff demand and title/lien search.','Validate rehabilitation scope, contingency and schedule with contractor evidence.','Classify 3–5 primary comparables and document adjustments or retain the exit value as unsupported.','Enter realistic acquisition, holding and exit costs before relying on returns or MAO.'];
-  const model={modelVersion:'workspace-report-model-v2.6.2-rendering-evidence',
+  const checklist=generateDueDiligenceChecklist({property:p,scenario:s,comparables,costs,sellerFinancialPosition,supportingDocuments,reconciliation}),actionPlan=checklist.nextRecommendedActions;
+  const model={modelVersion:'workspace-report-model-v2.8.2-due-diligence',
     reportMeta:{reportVersion:REPORT_VERSION,status:'PRELIMINARY / ILLUSTRATIVE',generatedAt,readableReference,propertyRef:p.ref,durablePropertyId:p.durablePropertyId??null,evidenceSnapshotId:p.evidenceSnapshotId??null,scenarioId:s.id,name:s.name,revision:s.revision,savedAt:s.savedAt,evidenceFingerprint:s.evidenceFingerprint,evidenceCutoff:p.saleSearch.retrievedAt??p.historicalTrigger.sourceDate,economicsVersion:analysis.economicsVersion,monteCarloVersion:mc?.modelVersion??'Not run'},
     demonstration:s.demonstration===true,notes:s.notes||null,
     property:{address:fact(p.address),propertyType:fact(p.attributes.propertyType),bedrooms:fact(p.attributes.bedrooms),bathrooms:fact(p.attributes.bathrooms),livingAreaSqft:fact(p.attributes.squareFootage),yearBuilt:fact(p.attributes.yearBuilt),lotArea:fact(p.attributes.lotSize),lastSaleDate:fact(p.attributes.lastSaleDate),lastSalePrice:fact(p.attributes.lastSalePrice)},
@@ -166,7 +174,7 @@ export function reportModel(p,s,{generatedAt=new Date().toISOString(),supporting
     condition:unknown('No inspection or genuine analyst condition estimate supplied'),sellerMotivation:unknown('No seller evidence or genuine analyst estimate supplied'),
     historical:{amount:datum(p.historicalTrigger.amount,TYPES.county,p.historicalTrigger.sourceRef,p.historicalTrigger.sourceDate),meaning:p.historicalTrigger.meaning,countyUse:datum(p.countyUse.code,TYPES.county,p.countyUse.sourceRef||p.historicalTrigger.sourceRef,p.historicalTrigger.sourceDate)},
     valuation:Object.fromEntries(['price','low','high'].map(k=>[k,datum(p.avm[k],TYPES.model,valuationSource,p.valuationAsOf,p.valuationRetrievedAt)])),
-    comparables,resaleSupport,costCompleteness:costs,evidenceReconciliation:reconciliation,readiness,research:{available:comparables.length,included:included.length,primary:primary.length,secondary:comparables.filter(c=>c.role==='SECONDARY').length,unclassified:comparables.filter(c=>c.role==='NOT_CLASSIFIED'&&c.status!=='Not selected').length,excluded:comparables.filter(c=>c.role==='EXCLUDED').length,notSelected:comparables.filter(c=>c.status==='Not selected').length,older,
+    comparables,resaleSupport,costCompleteness:costs,evidenceReconciliation:reconciliation,dueDiligenceChecklist:checklist,supportingDocumentSummary:{approvedLinked:supportingDocuments.length},readiness,research:{available:comparables.length,rawObservations:p.sales.length,duplicateObservations:p.sales.length-comparables.length,possibleDuplicates:comparables.filter(c=>c.duplicateStatus==='POSSIBLE_DUPLICATE').length,included:included.length,primary:primary.length,secondary:comparables.filter(c=>c.role==='SECONDARY').length,unclassified:comparables.filter(c=>c.role==='NOT_CLASSIFIED'&&c.status!=='Not selected').length,excluded:comparables.filter(c=>c.role==='EXCLUDED').length,notSelected:comparables.filter(c=>c.status==='Not selected').length,older,
       quality:comparables.length===0?'No retained sale evidence':comparables.length<3||older>0?'Thin/older evidence':'Unadjusted research examples',
       low:prices.length?Math.min(...prices):null,high:prices.length?Math.max(...prices):null,
       lowestReference:prices.length>1&&Math.min(...prices)<Math.max(...prices)?comparables.find(c=>c.salePrice.value===Math.min(...prices)).reference:null,
@@ -203,7 +211,7 @@ export function reportModel(p,s,{generatedAt=new Date().toISOString(),supporting
       {label:'Scenario inputs',type:TYPES.assumption,source:`${s.name} r${s.revision}`,asOf:s.savedAt,retrievedAt:null},
       {label:'Economics / simulation',type:TYPES.calculation,source:`${analysis.economicsVersion} / ${mc?.modelVersion??'Simulation not run'}`,asOf:s.savedAt,retrievedAt:null}
     ].map(item=>({...item,displayType:TYPE_LABELS[item.type]??item.type})),
-    distribution:{countyNoticeRequired:true,providerEvidence:'Retained provider evidence may be displayed only under the applicable account terms and redistribution rights; this report does not infer broader rights.',countyEvidence:'Keep the complete Kern County disclaimer with every distributed copy or extract containing county-derived information.'}};
+    distribution:{jurisdiction:p.attributes?.county??null,countyNoticeRequired:actualKernSource(p),countyNoticeStatus:actualKernSource(p)?'APPLICABLE_KERN_SOURCE':'NOT_APPLICABLE_NO_KERN_SOURCE',providerEvidence:'Retained provider evidence may be displayed only under the applicable account terms and redistribution rights; this report does not infer broader rights.',countyEvidence:actualKernSource(p)?'Keep the complete Kern County disclaimer with every distributed copy or extract containing county-derived information.':'No Kern County source material is included in this report; no substitute county disclaimer is invented.'}};
   if(/postgres(?:ql)?:\/\/|-----BEGIN .*PRIVATE KEY-----|(?:api[_-]?key|password|token)=/i.test(JSON.stringify(model)))throw new Error('REPORT_SENSITIVE_VALUE_STOP');
   return {model:freeze(model),analysis};
 }

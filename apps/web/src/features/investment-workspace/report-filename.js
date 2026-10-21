@@ -28,9 +28,9 @@ function addressParts(property){
 function compactReference(value){return safePart(value).replace(/^(?:PROPERTY|RESEARCH|GABE)[_-]?/i,'').slice(-12)||'Property';}
 
 export function reportFilename({property,scenario,kind,generatedAt=new Date().toISOString(),timeZone='America/Los_Angeles'}={}){
-  if(!property||!scenario||!['brief','full'].includes(kind)||!Number.isInteger(Number(scenario.revision))||Number(scenario.revision)<1)throw new Error('A saved property, revision and supported report kind are required.');
+  if(!property||!scenario||!['brief','full','checklist'].includes(kind)||!Number.isInteger(Number(scenario.revision))||Number(scenario.revision)<1)throw new Error('A saved property, revision and supported report kind are required.');
   const address=addressParts(property),location=[safePart(normalizeStreet(address.street)),safePart(address.city),safePart(address.state),safePart(address.zip)].filter(Boolean),fallback=`Property_${compactReference(property.ref??scenario.propertyRef)}`;
-  const propertyName=location.length>=2?location.join('_'):fallback,label=kind==='brief'?'Opportunity_Brief':'Full_Investor_Package',suffix=`_${label}_${dateInZone(generatedAt,timeZone)}_R${Number(scenario.revision)}.pdf`,maximum=180;
+  const propertyName=location.length>=2?location.join('_'):fallback,label=kind==='brief'?'Opportunity_Brief':kind==='checklist'?'Investment_Due_Diligence_Checklist':'Full_Investor_Package',suffix=`_${label}_${dateInZone(generatedAt,timeZone)}_R${Number(scenario.revision)}.pdf`,maximum=180;
   const allowed=Math.max(24,maximum-suffix.length),trimmed=propertyName.slice(0,allowed).replace(/[_\. -]+$/g,'')||fallback.slice(0,allowed);
   return `${trimmed}${suffix}`;
 }

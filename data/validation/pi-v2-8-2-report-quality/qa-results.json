@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-10-21T01:02:19.528Z",
+  "property": "40924 173rd St E, Lancaster, CA 93535",
+  "reports": [
+    {
+      "kind": "brief",
+      "filename": "Lancaster-Opportunity-Brief.pdf",
+      "pageCount": 1,
+      "sha256": "a111d0a4dc2bd10188d98bf2743526a90ae87d82219bb55277c9796c3b61eb65",
+      "noBlankOrClippedPages": true,
+      "screenshot": "Lancaster-Opportunity-Brief-page-1.png"
+    },
+    {
+      "kind": "full",
+      "filename": "Lancaster-Full-Investor-Package.pdf",
+      "pageCount": 12,
+      "sha256": "b6e78a2f2489a7ef6bd6f9e2bab8ce00955546a8186503e89dc060a4bbf8557a",
+      "noBlankOrClippedPages": true,
+      "screenshot": "Lancaster-Full-Investor-Package-page-1.png"
+    },
+    {
+      "kind": "checklist",
+      "filename": "Lancaster-Investment-Due-Diligence-Checklist.pdf",
+      "pageCount": 1,
+      "sha256": "0ba2c959773a5a8d7a64e6f3f5e7496810146466c239a9f239062c003c6bc180",
+      "noBlankOrClippedPages": true,
+      "screenshot": "Lancaster-Investment-Due-Diligence-Checklist-page-1.png"
+    }
+  ],
+  "baselinePageCounts": {
+    "opportunityBrief": 3,
+    "fullInvestorPackage": 14,
+    "source": "V2.8.2 acceptance roadmap identified current Lancaster output"
+  },
+  "comparableFindings": {
+    "rawObservations": 7,
+    "logicalTransactions": 5,
+    "duplicateObservations": 2,
+    "possibleDuplicates": 0,
+    "outlier": "$67,500 observation flagged for review and retained"
+  },
+  "verification": {
+    "financialAndMonteCarloInvariant": true,
+    "kernNoticeSuppressed": true,
+    "emptyDocumentIndexSuppressed": true,
+    "briefFullChecklistGenerated": true,
+    "providerRequests": 0,
+    "firebaseWrites": 0,
+    "storageReads": 0,
+    "deployment": false
+  }
+}

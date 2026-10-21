@@ -113,9 +113,9 @@ test('serverless scanner loader binds the Firebase service account without files
   await assert.rejects(()=>loadCloudRunMalwareScanner({...env,FIREBASE_PROJECT_ID:'another-project'}),/MALWARE_SCANNER_IDENTITY_CONFIGURATION_INVALID/);
 });
 
-test('full package appends indexed PDF and image pages while brief only references evidence',async()=>{
+test('full package appends indexed PDF and image pages while brief adds no standalone evidence page',async()=>{
   const base=await pdfBytes('Full investor package'),source=await pdfBytes('Payoff statement'),document={id:'doc-1',documentType:'MORTGAGE_PAYOFF',description:'Lender payoff statement',source:'Example Bank',sourceDate:'2026-10-18',reviewStatus:'REVIEWED',currentVersion:1,currentVersionMetadata:{version:1,filename:'payoff.pdf',mimeType:'application/pdf',sha256:'a'.repeat(64)}},appendices=[{index:1,document,version:{...document.currentVersionMetadata,uploadedAt:'2026-10-18T20:00:00Z'},bytes:source}];
-  const fullHtml=addSupportingEvidenceToHtml('<html><body><p>Package</p></body></html>',appendices,{kind:'full'}),briefHtml=addSupportingEvidenceToHtml('<html><body><p>Brief</p></body></html>',appendices,{kind:'brief'});assert.match(fullHtml,/Supporting document appendix index/);assert.ok(fullHtml.includes(INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER));assert.match(briefHtml,/attachments are not embedded/);assert.ok(!briefHtml.includes(INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER));
+  const fullHtml=addSupportingEvidenceToHtml('<html><body><p>Package</p></body></html>',appendices,{kind:'full'}),briefHtml=addSupportingEvidenceToHtml('<html><body><p>Brief</p></body></html>',appendices,{kind:'brief'});assert.match(fullHtml,/Supporting document appendix index/);assert.ok(fullHtml.includes(INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER));assert.equal(briefHtml,'<html><body><p>Brief</p></body></html>');assert.ok(!briefHtml.includes(INVESTOR_SUPPORTING_DOCUMENT_DISCLAIMER));
   const merged=await appendSupportingDocuments(base,appendices),pdf=await PDFDocument.load(merged.bytes);assert.equal(pdf.getPageCount(),3);assert.equal(merged.appendixPages,2);
 });
 
