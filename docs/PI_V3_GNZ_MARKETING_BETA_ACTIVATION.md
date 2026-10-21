@@ -2,7 +2,7 @@
 
 Classification: **PI V3.0 — GNZ MARKETING BETA ACTIVATED**
 
-Activation completed on 2026-10-20 (America/Los_Angeles) against Netlify production deploy `6ad84a8b123d951e309d1843`.
+Activation completed on 2026-10-20 (America/Los_Angeles). The final verified Netlify production deploy is `6ad84b554fbd74d639d11c6b`.
 
 ## Provisioned organization
 
