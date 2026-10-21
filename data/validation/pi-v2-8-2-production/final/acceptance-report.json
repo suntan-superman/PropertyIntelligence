@@ -1,0 +1,205 @@
+{
+  "status": "PASS",
+  "classification": "PI V2.8.2 — REPORT QUALITY & DUE DILIGENCE CHECKLIST: PRODUCTION ACCEPTED",
+  "startedAt": "2026-10-21T01:12:31.733Z",
+  "completedAt": "2026-10-21T01:14:53.394Z",
+  "origin": "https://worksidepropertyintelligence.netlify.app",
+  "deployment": {
+    "commit": "1d8ebc2a1fa73a32d4eb5d23521701ea7b364b55",
+    "netlifyDeployId": "6ad80f5d5320dc4d5d17eecf"
+  },
+  "authentication": {
+    "freshSessions": 2,
+    "role": "Administrator",
+    "organizationId": "property-intelligence-local",
+    "emailVerified": true
+  },
+  "property": {
+    "id": "4ae3f6ad-3835-4d1f-b9e2-31aaad641ec9",
+    "address": "40924 173rd St E, Lancaster, CA 93535",
+    "subjectRef": "RESEARCH-7B4756C54224",
+    "evidenceSnapshot": "5f5dbe1548bdf9751fde4b8da77e95b480cf0f65cb6f07704e2df68be3b3da3f",
+    "currentRetainedSnapshot": "5f5dbe1548bdf9751fde4b8da77e95b480cf0f65cb6f07704e2df68be3b3da3f"
+  },
+  "scenario": {
+    "id": "dd814fa1-b540-48a0-8dd9-b262c02a8037",
+    "revision": 1,
+    "name": "Scenario 1",
+    "savedAt": "2026-10-21T00:26:56.310Z",
+    "scenarioHash": "6efdb0ea5f960e06e02af4aef1612bd9f875e7c4a6923eac6f1151cd41fedfd1",
+    "financialAndMonteCarloProjectionHash": "9c228120ad9c759381cd150d302a02356d25c09ed221d9fa2efaf74c1fc4cff4",
+    "freshLoginRestored": true,
+    "scenarioHashAfter": "6efdb0ea5f960e06e02af4aef1612bd9f875e7c4a6923eac6f1151cd41fedfd1",
+    "financialAndMonteCarloProjectionHashAfter": "9c228120ad9c759381cd150d302a02356d25c09ed221d9fa2efaf74c1fc4cff4",
+    "unchanged": true
+  },
+  "checklist": {
+    "overallStatus": "Preliminary — Material diligence outstanding",
+    "counts": {
+      "critical": 5,
+      "important": 2,
+      "followUp": 0,
+      "total": 7
+    }
+  },
+  "comparables": {
+    "rawObservations": 15,
+    "logicalTransactions": 13,
+    "duplicateObservations": 2,
+    "possibleDuplicates": 0,
+    "outliers": [
+      "40612 173rd St E, Lancaster, CA 93535"
+    ]
+  },
+  "reports": [
+    {
+      "kind": "brief",
+      "filename": "40924_173rd_St_E_Lancaster_CA_93535_Opportunity_Brief_2026-10-20_R1.pdf",
+      "bytes": 41902,
+      "sha256": "7240bc8898bbbccf472dab799739282a0f04008b1270c403cf161ce5e175a84e",
+      "pageCount": 1,
+      "reportPages": 0,
+      "appendixPages": 0,
+      "pages": [
+        {
+          "number": 1,
+          "characters": 3669,
+          "outOfBounds": 0
+        }
+      ]
+    },
+    {
+      "kind": "full",
+      "filename": "40924_173rd_St_E_Lancaster_CA_93535_Full_Investor_Package_2026-10-20_R1.pdf",
+      "bytes": 296281,
+      "sha256": "358187477bce674e309d5bdf418dab1284cd6d43f6d317c10127d46fd7c84e83",
+      "pageCount": 13,
+      "reportPages": 0,
+      "appendixPages": 0,
+      "pages": [
+        {
+          "number": 1,
+          "characters": 1172,
+          "outOfBounds": 0
+        },
+        {
+          "number": 2,
+          "characters": 3284,
+          "outOfBounds": 0
+        },
+        {
+          "number": 3,
+          "characters": 3639,
+          "outOfBounds": 0
+        },
+        {
+          "number": 4,
+          "characters": 1229,
+          "outOfBounds": 0
+        },
+        {
+          "number": 5,
+          "characters": 3388,
+          "outOfBounds": 0
+        },
+        {
+          "number": 6,
+          "characters": 713,
+          "outOfBounds": 0
+        },
+        {
+          "number": 7,
+          "characters": 2256,
+          "outOfBounds": 0
+        },
+        {
+          "number": 8,
+          "characters": 1932,
+          "outOfBounds": 0
+        },
+        {
+          "number": 9,
+          "characters": 2340,
+          "outOfBounds": 0
+        },
+        {
+          "number": 10,
+          "characters": 2543,
+          "outOfBounds": 0
+        },
+        {
+          "number": 11,
+          "characters": 1712,
+          "outOfBounds": 0
+        },
+        {
+          "number": 12,
+          "characters": 2711,
+          "outOfBounds": 0
+        },
+        {
+          "number": 13,
+          "characters": 2538,
+          "outOfBounds": 0
+        }
+      ]
+    },
+    {
+      "kind": "checklist",
+      "filename": "40924_173rd_St_E_Lancaster_CA_93535_Investment_Due_Diligence_Checklist_2026-10-20_R1.pdf",
+      "bytes": 49263,
+      "sha256": "24e1058f578ad8e19b72890a6ac728074c320a37f9530fb2713120d61103f8cf",
+      "pageCount": 1,
+      "reportPages": 0,
+      "appendixPages": 0,
+      "pages": [
+        {
+          "number": 1,
+          "characters": 3638,
+          "outOfBounds": 0
+        }
+      ]
+    }
+  ],
+  "pageCounts": {
+    "before": {
+      "opportunityBrief": 3,
+      "fullInvestorPackage": 14
+    },
+    "after": {
+      "brief": 1,
+      "full": 13,
+      "checklist": 1
+    }
+  },
+  "browser": {
+    "route": "#investment?subject=RESEARCH-7B4756C54224&snapshot=5f5dbe1548bdf9751fde4b8da77e95b480cf0f65cb6f07704e2df68be3b3da3f&scenario=dd814fa1-b540-48a0-8dd9-b262c02a8037&tab=Reports&mode=guided",
+    "status": "Preliminary — Material diligence outstanding · 5 critical · 2 important · 7 outstanding",
+    "screenshots": [
+      "guided-analysis-checklist-panel.png",
+      "guided-analysis-checklist-preview.png"
+    ],
+    "providerRequests": 0
+  },
+  "resourceUsage": {
+    "reportTransactions": 3,
+    "firestoreDocumentWrites": 6,
+    "storageReads": 0,
+    "newUploads": 0,
+    "malwareScans": 0,
+    "providerRequests": 0,
+    "automaticRetries": 0,
+    "scenarioWrites": 0
+  },
+  "verification": {
+    "exactScenarioRevision": true,
+    "evidenceSnapshotBinding": true,
+    "financialAndMonteCarloInvariant": true,
+    "kernNoticeSuppressed": true,
+    "emptyDocumentIndexSuppressed": true,
+    "checklistImmediatelyAfterExecutiveSummary": true,
+    "allPagesNonblankUnclippedAndNumbered": true,
+    "freshLoginRestoration": true,
+    "historicalReportsPreserved": true
+  }
+}
