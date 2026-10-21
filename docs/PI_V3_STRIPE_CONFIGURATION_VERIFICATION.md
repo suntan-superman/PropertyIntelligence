@@ -1,6 +1,6 @@
 # Property Intelligence V3.0 — Stripe Configuration and Live Payment Acceptance
 
-Status: **GO for private owner payment use. External beta remains disabled.**
+Status: **GO for private owner payment use and the invitation-only GNZ Marketing LLC beta. Public self-registration remains unavailable.**
 
 Final verification was completed on 2026-10-20 (America/Los_Angeles) against Netlify production deploy `6ad845be080a72bf75bba7f1`. No external organization, invitation, onboarding flow, or public beta access was enabled.
 
@@ -14,7 +14,7 @@ Final verification was completed on 2026-10-20 (America/Los_Angeles) against Net
 - Success and cancel URLs: present, HTTPS, and same-site.
 - Webhook endpoint: `https://worksidepropertyintelligence.netlify.app/api/commercial/stripe/webhook`.
 - Webhook: enabled, live, with coverage for `checkout.session.completed`, `charge.refunded`, and `charge.dispute.created`.
-- `PI_EXTERNAL_BETA_ENABLED=false`.
+- `PI_EXTERNAL_BETA_ENABLED=true` as of the bounded GNZ Marketing LLC activation on 2026-10-20. Access still requires a Firebase account with server-issued organization and role claims; the application has no public self-registration flow.
 - `PI_STRIPE_CHECKOUT_ENABLED=true`.
 - `PI_STRIPE_LIVE_MODE_ENABLED=true`.
 - Owner organization: `property-intelligence-local`.
@@ -64,7 +64,7 @@ The acceptance Checkout was created from an authenticated server harness and ope
 - Credit is granted only for a paid `checkout.session.completed` event.
 - Repeated delivery is idempotent by Stripe event source ID.
 - Refund and dispute handling uses compensating ledger entries; historical entries are not rewritten.
-- External beta remains disabled.
+- External access remains invitation-only and organization-scoped.
 
 Focused tests run after live acceptance:
 
@@ -77,12 +77,6 @@ These automated tests cover canceled/failed payment non-credit behavior, signed 
 
 ## Operational disposition
 
-Stripe Checkout and webhook-based credit issuance are accepted for private owner use. Before external beta access:
+Stripe Checkout and webhook-based credit issuance are accepted for private owner use and the specifically authorized GNZ Marketing LLC beta organization. The production Price remains the owner-approved $1 acceptance amount until the intended commercial amount is separately configured and reverified.
 
-1. Set the production Price to the intended commercial amount and re-run the read-only readiness check.
-2. Obtain explicit owner approval for external beta activation.
-3. Create and verify the intended external organization and memberships separately.
-4. Confirm support, refund, dispute, and credit-adjustment operating procedures.
-5. Keep `PI_EXTERNAL_BETA_ENABLED=false` until that approval is recorded.
-
-No Gabe organization, external invitation, complimentary credit grant, or unrestricted onboarding was created during this acceptance.
+The GNZ organization, invitation, and complimentary grant were provisioned only after separate authorization. Their exact activation record is maintained in `docs/PI_V3_GNZ_MARKETING_BETA_ACTIVATION.md`. This does not authorize public registration, another external organization, or unrestricted onboarding.
