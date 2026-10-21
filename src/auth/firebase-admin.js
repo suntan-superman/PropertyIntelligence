@@ -69,6 +69,7 @@ export async function initializeFirebaseUserAdministration({authentication,env=p
   invite.setRole=async input=>{const account=await setClaims(input);return {uid:account.uid};};
   invite.setSuspended=async input=>{await setClaims(input);await auth.updateUser(input.uid,{disabled:input.suspended===true});return {uid:input.uid,disabled:input.suspended===true};};
   invite.sendPasswordReset=sendReset;
+  invite.describeUsers=async uids=>{const identifiers=[...new Set((uids??[]).filter(Boolean))].slice(0,100).map(uid=>({uid}));if(!identifiers.length)return [];const result=await auth.getUsers(identifiers);return result.users.map(account=>({uid:account.uid,email:account.email??'',displayName:account.displayName??'',emailVerified:account.emailVerified===true,disabled:account.disabled===true,createdAt:account.metadata.creationTime??null,lastSignInAt:account.metadata.lastSignInTime??null}));};
   return invite;
 }
 
