@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHmac} from 'node:crypto';
 import {ACKNOWLEDGMENT_TEXT,ACKNOWLEDGMENT_VERSION,createCommercialService,createStripeCheckoutClient,verifyStripeWebhook} from '../src/commercial/commercial-service.js';
+import {createStripeReadinessClient} from '../src/commercial/stripe-readiness.js';
 import {createMemoryCommercialRepository} from '../src/commercial/memory-commercial-repository.js';
 import {ROLES} from '../src/auth/access-control.js';
 import {loadEvidence} from '../src/investment-workspace/evidence.js';
@@ -42,6 +43,11 @@ test('Stripe Checkout is server-priced, test-mode bounded and refund events use 
   await assert.rejects(()=>createStripeCheckoutClient({secretKey:'sk_live_fixture',priceId:'price_live',successUrl:'x',cancelUrl:'x',enabled:true}).create({organizationId:'gabe-test',userId:'analyst-one'}),/STRIPE_LIVE_MODE_DISABLED/);
   await assert.rejects(()=>createStripeCheckoutClient({enabled:false}).create({organizationId:'gabe-test',userId:'analyst-one'}),/STRIPE_CHECKOUT_DISABLED/);
   const repository=createMemoryCommercialRepository(),service=createCommercialService({repository,clock}),paid={id:'evt_paid',type:'checkout.session.completed',data:{object:{id:'cs_paid',payment_intent:'pi_paid',payment_status:'paid',metadata:{organizationId:'gabe-test',creditQuantity:'2'}}}},refund={id:'evt_refund',type:'charge.refunded',data:{object:{payment_intent:'pi_paid'}}};await assert.rejects(()=>service.applyStripeEvent({event:refund}),/STRIPE_PURCHASE_TRANSACTION_NOT_FOUND/);await service.applyStripeEvent({event:paid});await service.applyStripeEvent({event:refund});await service.applyStripeEvent({event:refund});const balance=await repository.creditBalance('gabe-test');assert.equal(balance.available,0);assert.deepEqual(balance.entries.map(row=>row.kind),['PURCHASED_CREDITS','REFUND_ADJUSTMENT']);assert.equal((await service.applyStripeEvent({event:{id:'evt_failed',type:'payment_intent.payment_failed',data:{object:{metadata:{organizationId:'gabe-test'}}}}})).ignored,true);
+});
+
+test('Stripe readiness inspects Price and webhook metadata without exposing credentials or creating objects',async()=>{
+  const requests=[],client=createStripeReadinessClient({secretKey:'sk_live_private_fixture',priceId:'price_live_credit',webhookSecret:'whsec_private_fixture',successUrl:'https://pi.example/#billing-success',cancelUrl:'https://pi.example/#billing',origin:'https://pi.example',fetchImpl:async(url,options)=>{requests.push({url,method:options?.method??'GET',authorization:options?.headers?.Authorization});if(url.includes('/prices/'))return {ok:true,json:async()=>({id:'price_live_credit',active:true,livemode:true,type:'one_time',recurring:null,currency:'usd',unit_amount:999,product:{id:'prod_credit',name:'Property analysis credit',active:true}})};return {ok:true,json:async()=>({data:[{url:'https://pi.example/api/commercial/stripe/webhook',status:'enabled',livemode:true,enabled_events:['checkout.session.completed','charge.refunded','charge.dispute.created']}]})};}}),result=await client.inspect();
+  assert.equal(result.ready,true);assert.deepEqual(result.price,{id:'price_live_credit',active:true,livemode:true,type:'one_time',oneTime:true,currency:'USD',unitAmount:999,product:{id:'prod_credit',name:'Property analysis credit',active:true}});assert.equal(result.webhook.eventCoverage,true);assert.equal(Object.hasOwn(result.configuration,'secretKey'),false);assert.equal(JSON.stringify(result).includes('sk_live_private_fixture'),false);assert.equal(JSON.stringify(result).includes('whsec_private_fixture'),false);assert.deepEqual(requests.map(item=>item.method),['GET','GET']);
 });
 
 test('Phase C enforces platform-only organization creation and cross-organization administration',async()=>{
