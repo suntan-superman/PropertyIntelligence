@@ -118,6 +118,30 @@
 .iw-risk-input .origin-illustrative { background: #fff2d7; color: #7a5816; }
 .iw-risk-input .origin-manual { background: #e7edf8; color: #304f81; }
 
+.iw-required-mark {
+  color: #b42318;
+  font-size: 1.1em;
+  font-weight: 800;
+  line-height: 1;
+  margin-left: 2px;
+}
+
+.iw-risk-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.iw-required-note {
+  color: #9b2c20;
+  font-size: 12px;
+  margin: 0;
+}
+
+.iw-required-note.ready { color: #17675e; }
+
 @media (max-width: 1050px) {
   .iw-stage-nav { grid-template-columns: 1fr 1fr; }
 }

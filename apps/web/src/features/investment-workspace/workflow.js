@@ -100,6 +100,24 @@ export function hasCustomRiskValues(risk){
   return Object.entries(risk?.variables??{}).some(([variable,bounds])=>['min','mode','max'].some(bound=>String(bounds?.[bound]??'').trim()!==''&&riskValueOrigin(risk,variable,bound)!==RISK_VALUE_ORIGINS.INHERITED));
 }
 
+export function riskReadiness(risk={}){
+  const missing=[];
+  for(const key of RISK_VARIABLE_KEYS){
+    const bounds=risk.variables?.[key]??{},numbers={};
+    for(const bound of ['min','mode','max']){
+      const value=bounds[bound],number=Number(value);
+      if(String(value??'').trim()===''||!Number.isFinite(number)||number<0)missing.push(`${key}.${bound}`);
+      else numbers[bound]=number;
+    }
+    if(Object.keys(numbers).length===3&&(numbers.min>numbers.mode||numbers.mode>numbers.max))missing.push(`${key}.order`);
+  }
+  if(!String(risk.seed??'').trim())missing.push('seed');
+  const iterations=Number(risk.iterations);
+  if(!Number.isInteger(iterations)||iterations<100||iterations>20000)missing.push('iterations');
+  if(!String(risk.rationale??'').trim())missing.push('rationale');
+  return {ready:missing.length===0,missing};
+}
+
 export function missingInputSummary(validation={}){
   const preferred=['purchasePrice','rehabCost','exitValue','renovationDays','marketingDays'];
   return [...preferred.filter(key=>validation[key]),...Object.keys(validation).filter(key=>!preferred.includes(key))].map(key=>validation[key]);

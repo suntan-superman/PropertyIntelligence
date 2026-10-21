@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {DEFAULT_RISK_SEED,RISK_VALUE_ORIGINS,editRiskValue,hasCustomRiskValues,illustrativeRiskAssumptions,markIllustrativeRiskValues,riskValueOrigin,synchronizeRiskMostLikely} from '../apps/web/src/features/investment-workspace/workflow.js';
+import {DEFAULT_RISK_SEED,RISK_VALUE_ORIGINS,editRiskValue,hasCustomRiskValues,illustrativeRiskAssumptions,markIllustrativeRiskValues,riskReadiness,riskValueOrigin,synchronizeRiskMostLikely} from '../apps/web/src/features/investment-workspace/workflow.js';
 
 const inputs=(exitValue='315000',rehabCost='40000',renovationDays='90',marketingDays='30')=>({exitValue,rehabCost,renovationDays,marketingDays});
 const blankRisk=()=>({variables:{},valueOrigins:{},seed:'',iterations:1000,rationale:''});
@@ -57,11 +57,22 @@ test('scenario risk records remain isolated and invalid inherited inputs clear r
   assert.equal(firstEdited.variables.exitValue.mode,'330000');
 });
 
+test('Monte Carlo readiness requires every displayed range and required supporting field',()=>{
+  const variables=Object.fromEntries(['exitValue','rehabCost','renovationDays','marketingDays'].map(key=>[key,{min:'1',mode:'2',max:'3'}])),valid={variables,seed:'12345',iterations:'1000',rationale:'Analyst-selected bounds based on the current scenario.'};
+  assert.deepEqual(riskReadiness(valid),{ready:true,missing:[]});
+  const incomplete=riskReadiness({...valid,variables:{...variables,rehabCost:{min:'',mode:'2',max:'1'}},seed:'',iterations:'99',rationale:' '});
+  assert.equal(incomplete.ready,false);assert.deepEqual(incomplete.missing,['rehabCost.min','seed','iterations','rationale']);
+  const unordered=riskReadiness({...valid,variables:{...variables,exitValue:{min:'3',mode:'2',max:'1'}}});assert.equal(unordered.ready,false);assert.deepEqual(unordered.missing,['exitValue.order']);
+});
+
 test('workspace binds asynchronous previews and simulations to the newest active calculation',async()=>{
   const source=await readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8');
   assert.match(source,/analysisRequest=useRef\(0\)/);
   assert.match(source,/request!==analysisRequest\.current/);
   assert.match(source,/data-origin=\{origin\}/);
   assert.match(source,/does not save the draft automatically/);
+  assert.match(source,/disabled=\{busy\|\|!riskCanRun\}/);
+  assert.match(source,/iw-required-mark/);
+  assert.match(source,/aria-required="true"/);
 });
 
