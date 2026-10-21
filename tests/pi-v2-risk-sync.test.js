@@ -88,6 +88,8 @@ test('workspace binds asynchronous previews and simulations to the newest active
   assert.match(source,/aria-required="true"/);
   assert.match(source,/readOnly=\{inherited\}/);
   assert.match(source,/Edit \$\{label\} Most Likely override/);
+  assert.match(source,/Restore Default/);
+  assert.match(source,/Restore the current underwriting value/);
   assert.match(source,/It does not change underwriting/);
 });
 

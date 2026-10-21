@@ -127,6 +127,28 @@
   white-space: nowrap;
 }
 
+.iw-risk-override-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iw-risk-restore {
+  width: auto;
+  min-height: 24px;
+  padding: 3px 7px;
+  border: 1px solid #17675e;
+  background: #fff;
+  color: #17675e;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.iw-risk-restore:hover,
+.iw-risk-restore:focus-visible {
+  background: #e3f3ef;
+}
+
 .iw-risk-input .iw-risk-override input {
   width: auto;
   margin: 0;
