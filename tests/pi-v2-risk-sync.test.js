@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {DEFAULT_RISK_SEED,RISK_VALUE_ORIGINS,editRiskValue,hasCustomRiskValues,illustrativeRiskAssumptions,markIllustrativeRiskValues,riskReadiness,riskValueOrigin,synchronizeRiskMostLikely} from '../apps/web/src/features/investment-workspace/workflow.js';
+import {DEFAULT_RISK_SEED,RISK_VALUE_ORIGINS,editRiskValue,hasCustomRiskValues,illustrativeRiskAssumptions,markIllustrativeRiskValues,riskReadiness,riskValueOrigin,setRiskMostLikelyOverride,synchronizeRiskMostLikely} from '../apps/web/src/features/investment-workspace/workflow.js';
 
 const inputs=(exitValue='315000',rehabCost='40000',renovationDays='90',marketingDays='30')=>({exitValue,rehabCost,renovationDays,marketingDays});
 const blankRisk=()=>({variables:{},valueOrigins:{},seed:'',iterations:1000,rationale:''});
@@ -27,6 +27,18 @@ test('underwriting changes update inherited values but preserve manual overrides
   assert.equal(risk.variables.rehabCost.mode,'45000');
   assert.equal(risk.variables.renovationDays.mode,'100');
   assert.equal(risk.variables.marketingDays.mode,'40');
+});
+
+test('explicit Most Likely override preserves the displayed value and can safely relink to underwriting',()=>{
+  const inherited=synchronizeRiskMostLikely(blankRisk(),inputs()).risk;
+  const overridden=setRiskMostLikelyOverride(inherited,'exitValue',inputs(),true);
+  assert.equal(overridden.variables.exitValue.mode,'315000');
+  assert.equal(riskValueOrigin(overridden,'exitValue','mode'),RISK_VALUE_ORIGINS.MANUAL);
+  assert.equal(synchronizeRiskMostLikely(overridden,inputs('350000')).risk.variables.exitValue.mode,'315000');
+  const relinked=setRiskMostLikelyOverride(overridden,'exitValue',inputs('350000'),false);
+  assert.equal(relinked.variables.exitValue.mode,'350000');
+  assert.equal(riskValueOrigin(relinked,'exitValue','mode'),RISK_VALUE_ORIGINS.INHERITED);
+  assert.equal(synchronizeRiskMostLikely(relinked,inputs('360000')).risk.variables.exitValue.mode,'360000');
 });
 
 test('illustrative preset is labeled and is not silently rewritten by later underwriting changes',()=>{
@@ -74,5 +86,8 @@ test('workspace binds asynchronous previews and simulations to the newest active
   assert.match(source,/disabled=\{busy\|\|!riskCanRun\}/);
   assert.match(source,/iw-required-mark/);
   assert.match(source,/aria-required="true"/);
+  assert.match(source,/readOnly=\{inherited\}/);
+  assert.match(source,/Edit \$\{label\} Most Likely override/);
+  assert.match(source,/It does not change underwriting/);
 });
 

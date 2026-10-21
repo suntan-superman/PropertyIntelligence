@@ -102,6 +102,36 @@
   width: 100%;
 }
 
+.iw-risk-input input[readonly] {
+  background: #eef5f3;
+  border-color: #a8cfc7;
+  color: #294d49;
+  cursor: not-allowed;
+}
+
+.iw-risk-input-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 22px;
+}
+
+.iw-risk-override {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #174f4a;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.iw-risk-input .iw-risk-override input {
+  width: auto;
+  margin: 0;
+}
+
 .iw-risk-input small {
   width: max-content;
   max-width: 100%;
@@ -117,6 +147,14 @@
 .iw-risk-input .origin-inherited { background: #e3f3ef; color: #17675e; }
 .iw-risk-input .origin-illustrative { background: #fff2d7; color: #7a5816; }
 .iw-risk-input .origin-manual { background: #e7edf8; color: #304f81; }
+
+.iw-risk-override-notice {
+  padding: 10px 12px;
+  border-left: 3px solid #b87916;
+  background: #fff8e8;
+  color: #60430e;
+  font-size: 12px;
+}
 
 .iw-required-mark {
   color: #b42318;

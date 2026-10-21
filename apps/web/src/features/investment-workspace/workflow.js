@@ -78,6 +78,12 @@ export function editRiskValue(risk,key,bound,value){
   return {...risk,variables:{...(risk.variables??{}),[key]:{...(risk.variables?.[key]??{}),[bound]:value}},valueOrigins:{...(risk.valueOrigins??{}),[key]:{...(risk.valueOrigins?.[key]??{}),[bound]:RISK_VALUE_ORIGINS.MANUAL}}};
 }
 
+export function setRiskMostLikelyOverride(risk,key,inputs,enabled){
+  if(!RISK_VARIABLE_KEYS.includes(key))throw new Error('Unknown risk assumption field.');
+  const current=risk?.variables?.[key]?.mode??'',underwriting=finitePositive(inputs?.[key]),value=enabled?current:(underwriting===null?'':displayNumber(underwriting));
+  return {...risk,variables:{...(risk.variables??{}),[key]:{...(risk.variables?.[key]??{}),mode:value}},valueOrigins:{...(risk.valueOrigins??{}),[key]:{...(risk.valueOrigins?.[key]??{}),mode:enabled?RISK_VALUE_ORIGINS.MANUAL:RISK_VALUE_ORIGINS.INHERITED}}};
+}
+
 export function illustrativeRiskAssumptions(inputs){
   const values={
     exitValue:finitePositive(inputs?.exitValue),
