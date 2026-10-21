@@ -1,63 +1,88 @@
-# Property Intelligence V3.0 — Stripe Configuration Verification
+# Property Intelligence V3.0 — Stripe Configuration and Live Payment Acceptance
 
-Status: **NO-GO for payment activation**. Production remains safely disabled.
+Status: **GO for private owner payment use. External beta remains disabled.**
 
-Verified against Netlify deploy `6ad83d9e9a77b286d8330490` / commit `af8e5cd2532fee147ae0dce3ebfd2a851a1c6795` on 2026-10-20 (America/Los_Angeles).
+Final verification was completed on 2026-10-20 (America/Los_Angeles) against Netlify production deploy `6ad845be080a72bf75bba7f1`. No external organization, invitation, onboarding flow, or public beta access was enabled.
 
 ## Production configuration
 
-- `STRIPE_SECRET_KEY`: present, Stripe **LIVE** mode, accepted by Stripe read-only API.
-- `STRIPE_PRICE_ID`: present, but Stripe returns `404 resource_missing` for this live account.
-- `STRIPE_WEBHOOK_SECRET`: present.
+- `STRIPE_SECRET_KEY`: present, Stripe **LIVE** mode, and accepted by Stripe.
+- `STRIPE_PRICE_ID`: `price_1USql71P3zfcOCVWYU5XombR`.
+- Product: **Property Intelligence New Property**.
+- Price: active, live, one-time, **$1.00 USD** for the bounded owner acceptance.
+- `STRIPE_WEBHOOK_SECRET`: present and validated against the live endpoint.
 - Success and cancel URLs: present, HTTPS, and same-site.
 - Webhook endpoint: `https://worksidepropertyintelligence.netlify.app/api/commercial/stripe/webhook`.
-- Webhook: enabled, live mode, and subscribed to `checkout.session.completed`, `charge.refunded`, and `charge.dispute.created`.
-- An unsigned webhook request reaches the endpoint and fails closed with `STRIPE_SIGNATURE_INVALID`.
-- Anonymous Stripe-readiness access fails with `SESSION_COOKIE_MISSING`.
-- Authenticated Checkout fails closed with `STRIPE_CHECKOUT_DISABLED`.
+- Webhook: enabled, live, with coverage for `checkout.session.completed`, `charge.refunded`, and `charge.dispute.created`.
 - `PI_EXTERNAL_BETA_ENABLED=false`.
-- `PI_STRIPE_CHECKOUT_ENABLED=false`.
-- `PI_STRIPE_LIVE_MODE_ENABLED=false`.
+- `PI_STRIPE_CHECKOUT_ENABLED=true`.
+- `PI_STRIPE_LIVE_MODE_ENABLED=true`.
+- Owner organization: `property-intelligence-local`.
 
-No Checkout Session, payment, refund, dispute, credit grant, Firestore write, external invitation or live charge was created during verification.
+No secret key, webhook signing secret, card data, private Storage URL, or Firebase credential was written to this report or exposed to the browser.
 
-## Confirmed defect
+## Live acceptance result
 
-The configured Price ID is not retrievable using the configured live secret key. The most likely causes are a test-mode Price copied into the live configuration, a Price from a different Stripe account, or an incorrect identifier. Until corrected, the intended amount, currency, active status and one-time billing type cannot be certified.
+One owner-authorized live Checkout was completed:
 
-Production remediation:
+- Checkout mode: `payment`.
+- Checkout result: `complete` / `paid`.
+- Charged amount: **$1.00 USD**.
+- Credit quantity: `1`.
+- Organization metadata: `property-intelligence-local`.
+- Stripe event: `evt_1USrTc1P3zfcOCVWdKfAUUMF` (`checkout.session.completed`).
+- Stripe pending webhook count after correction: `0`.
+- Firestore credit ledger: exactly one `PURCHASED_CREDITS` entry for `+1`.
+- Final available balance: `1`; reserved balance: `0`.
+- No credit existed before confirmed payment and webhook processing.
+- No browser redirect or client request granted credit.
 
-1. Open Stripe Dashboard in **Live mode**.
-2. Open **Product catalog → intended Property Intelligence credit product → Pricing**.
-3. Confirm the Price is active and one-time, then copy its live `price_...` identifier.
-4. In Netlify, open **worksidepropertyintelligence → Project configuration → Environment variables → STRIPE_PRICE_ID**.
-5. Replace only the incorrect production Price value. Do not change the live secret key, webhook signing secret or activation flags.
-6. Trigger a Netlify production deploy so the function receives the corrected value.
+The same Stripe event reached the application twice after webhook recovery. Both signed deliveries were audited, while the event source ID produced only one credit-ledger entry. Duplicate-delivery idempotency therefore passed in the live workflow.
 
-## Isolated test-mode acceptance requirement
+## Defects encountered and disposition
 
-A hosted Stripe acceptance was not run because no separately scoped test-mode credentials were made available to an isolated staging deployment. Never put `sk_test_...` values into the production live variables and never use the live key for acceptance payments.
+### Incorrect Price value
 
-Recommended staging arrangement:
+The initial `STRIPE_PRICE_ID` contained a comma-separated Price ID and Product ID. Stripe correctly returned `404 resource_missing`. The value was corrected to the intended live `price_...` identifier in local and Netlify production configuration, followed by a production redeploy.
 
-- Stable Netlify deploy alias: `stripe-acceptance--worksidepropertyintelligence.netlify.app`.
-- Scope the test key, test Price, test webhook secret and staging return URLs only to the staging/deploy-preview context.
-- Keep `PI_EXTERNAL_BETA_ENABLED=false` and `PI_STRIPE_LIVE_MODE_ENABLED=false`.
-- Enable Checkout only in that isolated test context.
-- Register the staging webhook URL with Stripe in **Test mode**.
-- Use synthetic organization/payment data and reconcile the test credit ledger after success, failure, cancellation, duplicate delivery, refund and dispute checks.
+### Webhook signing-secret mismatch
 
-## Acceptance already certified offline
+The first paid event reached Netlify but failed closed with HTTP 400 before Firestore processing. A non-actionable signed probe established that local and Netlify shared the same secret, while Stripe used a different live endpoint secret. The endpoint's actual signing secret was copied directly into local and Netlify configuration without exposing it, and production was redeployed. Resending the original event then succeeded; no second Checkout or charge was created.
 
-Automated tests verify server-owned pricing, signed webhook enforcement, no credit before webhook confirmation, duplicate-event idempotency, failed/canceled-payment non-credit behavior, compensating refund/dispute entries, organization ownership, concurrent reservation control and browser redirect non-authority. The focused V3 suite passes 124/124. These tests do not substitute for one Stripe-hosted test-mode Checkout acceptance.
+The original failed webhook delivery remains visible in Stripe's delivery history. It was not erased or reclassified.
 
-## Final activation checklist
+### Return to sign-in during the acceptance
 
-The single owner go-live approval must not be requested as executable approval until both blockers are cleared:
+The acceptance Checkout was created from an authenticated server harness and opened separately, so the browser that completed payment did not have an established PI application session. Returning to the sign-in view was expected for that harness path and had no authority over credit issuance. Normal in-application Checkout starts from an authenticated PI browser session.
 
-1. Correct live Price is verified as active, one-time, and the intended amount/currency.
-2. Isolated Stripe-hosted test-mode acceptance passes.
-3. Production webhook remains enabled and signed-event verification passes.
-4. Credit ledger reconciles exactly after purchase, duplicate event, refund and dispute tests.
-5. External beta, Gabe organization/invitation and the one-time three-credit grant remain pending the combined owner approval.
+## Security and regression verification
 
+- Anonymous Checkout: rejected with `401 SESSION_COOKIE_MISSING`.
+- Unsigned or incorrectly signed webhook: fails closed.
+- Server owns the configured Price; the browser cannot submit an amount or alternate Price ID.
+- Organization ownership comes from the authenticated server session and signed Checkout metadata.
+- Credit is granted only for a paid `checkout.session.completed` event.
+- Repeated delivery is idempotent by Stripe event source ID.
+- Refund and dispute handling uses compensating ledger entries; historical entries are not rewritten.
+- External beta remains disabled.
+
+Focused tests run after live acceptance:
+
+- `tests/pi-v3-commercial.test.js`
+- `tests/pi-v3-beta-rehearsal.test.js`
+- `tests/netlify-auth.test.js`
+- Result: **19 passed, 0 failed**.
+
+These automated tests cover canceled/failed payment non-credit behavior, signed webhook enforcement, duplicate-event idempotency, refunds, disputes, organization isolation, concurrent credit reservation, and redirect non-authority. At the owner's direction, separate live charges for failure, cancellation, refund, and dispute cases were not performed.
+
+## Operational disposition
+
+Stripe Checkout and webhook-based credit issuance are accepted for private owner use. Before external beta access:
+
+1. Set the production Price to the intended commercial amount and re-run the read-only readiness check.
+2. Obtain explicit owner approval for external beta activation.
+3. Create and verify the intended external organization and memberships separately.
+4. Confirm support, refund, dispute, and credit-adjustment operating procedures.
+5. Keep `PI_EXTERNAL_BETA_ENABLED=false` until that approval is recorded.
+
+No Gabe organization, external invitation, complimentary credit grant, or unrestricted onboarding was created during this acceptance.
