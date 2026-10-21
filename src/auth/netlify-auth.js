@@ -134,7 +134,7 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
       if(path==='/api/admin/stripe-readiness'&&request.method==='GET'){
         if(user.role!=='Platform Administrator')return json(403,{error:'PLATFORM_ADMINISTRATOR_REQUIRED'});
         if(typeof stripeReadiness!=='function'||typeof commercial!=='function')return json(503,{error:'STRIPE_READINESS_NOT_CONFIGURED'});
-        const service=await commercial();return json(200,{...(await stripeReadiness()),flags:service.flags});
+        const service=await commercial();try{return json(200,{...(await stripeReadiness()),flags:service.flags});}catch(error){return json(error.status??502,{error:error.message,operation:error.operation??'UNKNOWN',providerStatus:error.providerStatus??null,providerCode:error.providerCode??'UNKNOWN',flags:service.flags});}
       }
       if(path==='/api/commercial/members'&&request.method==='GET'){if(typeof commercial!=='function')return json(503,{error:'COMMERCIAL_CHECKLIST_NOT_CONFIGURED'});return json(200,{members:await (await commercial()).organizationMembers({user})});}
       if(path==='/api/admin/organizations'&&['GET','POST'].includes(request.method)){if(typeof commercial!=='function')return json(503,{error:'COMMERCIAL_ADMIN_NOT_CONFIGURED'});const service=await commercial();if(request.method==='GET')return json(200,{organizations:await service.listOrganizations({user})});if(!sameOrigin(request))return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});authentication.requireCsrf(adapted);return json(201,{organization:await service.createOrganization({user,...await requestBody(request)})});}
