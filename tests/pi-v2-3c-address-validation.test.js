@@ -71,7 +71,7 @@ test('new-property paid route enforces validation while retained subjects use th
   assert.match(server,/searchRetainedAddress\(input,evidence\.properties\)/);
   assert.match(ui,/Validating address/);
   assert.match(ui,/No RentCast request has been made/);
-  assert.match(ui,/originally entered · preserved for audit/i);
+  assert.match(ui,/address you entered · preserved/i);
   assert.match(workspace,/retainedSubjectRef:p\.ref/);
   assert.match(workspace,/approveAndRunProviderResearch/);
   assert.match(research,/originalEnteredAddress/);

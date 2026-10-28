@@ -98,6 +98,7 @@
     "pi:v3:qa": "node scripts/pi-v3-commercial-beta-qa.js",
     "pi:v3.1:test": "node --test tests/pi-v3-1-administration.test.js tests/pi-v3-commercial.test.js tests/pi-v3-beta-rehearsal.test.js tests/netlify-auth.test.js tests/pi-v2-3a-auth.test.js",
     "pi:v3.1:production:verify": "node --env-file=.env scripts/pi-v3-1-production-verify.js",
+    "pi:v3.1.1:address:test": "node --test tests/pi-v3-1-1-address-resolution.test.js tests/pi-v2-3c-address-validation.test.js tests/pi-v2-8-production-research.test.js tests/netlify-auth.test.js",
     "pi:local": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:no-documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence",
