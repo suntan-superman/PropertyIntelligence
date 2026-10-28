@@ -19,7 +19,7 @@ test('all five promotion surfaces reuse the shared SaveAsPropertyButton',async()
   assert.match(button,/\/api\/durable-properties\/preview/);assert.match(button,/\/api\/durable-properties\/save/);
   assert.match(discovery,/Recent Research/);assert.match(discovery,/local-evidence-promote/);assert.match(discovery,/addressResult\.property/);
   assert.match(workspace,/Property status/);assert.match(workspace,/tab==='Research'/);assert.match(workspace,/scenario=\{scenario\}/);assert.match(workspace,/savedAction="open"/);
-  assert.match(guided,/prepareScenario=\{onSave\}/);
+  assert.match(guided,/prepareScenario=\{\(\)=>onSave\(\{propertyReady:true\}\)\}/);assert.match(guided,/label="Save"/);
 });
 
 test('Recent Research is collapsed by default and card selection never performs promotion',async()=>{
@@ -58,4 +58,11 @@ test('preliminary analysis remains read-only while save ordering prevents an orp
   assert.match(button,/!prepareScenario&&scenario\?\.id&&scenario\.revision>0/);assert.match(button,/Property saved; scenario not saved/);
   assert.match(workspace,/DURABLE_PROPERTY_NOT_FOUND:'This preliminary property can be analyzed now/);assert.match(workspace,/setResult\(analysis\);setValidation\(\{\}\)/);
   const analyzeRoute=server.slice(server.indexOf("path==='/api/investment/analyze'"),server.indexOf("path==='/api/investment/save'"));assert.doesNotMatch(analyzeRoute,/if\(!property\)return json\(404,\{error:'DURABLE_PROPERTY_NOT_FOUND'\}\)/);
+});
+
+test('every scenario save entry point promotes a preliminary property before persisting its revision',async()=>{
+  const [button,workspace]=await Promise.all([readFile('apps/web/src/components/SaveAsPropertyButton.jsx','utf8'),readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8')]);
+  assert.match(button,/export async function promotePreliminaryProperty/);assert.match(button,/await request\('\/api\/durable-properties\/save'/);
+  assert.match(workspace,/async function save\(\{propertyReady=false\}=\{\}\)/);assert.match(workspace,/p\?\.subjectKind!=='DURABLE_SAVED'/);assert.match(workspace,/await promotePreliminaryProperty\(/);assert.match(workspace,/return persistScenario\(s\)/);
+  assert.match(workspace,/async function saveAndPreview\(\)/);assert.match(workspace,/async function saveAndExit\(\)/);assert.match(workspace,/onClick=\{saveAndPreview\}/);assert.match(workspace,/onSaveExit=\{saveAndExit\}/);
 });
