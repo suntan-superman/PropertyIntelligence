@@ -6,9 +6,9 @@ const api=createRuntime({runtime:'netlify',env:process.env});
 let authenticatedReportApi;
 
 async function runtime(){
-  authenticatedReportApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments,initializeFirebaseCommercial,initializeFirebaseReportStorage})=>{
+  authenticatedReportApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments,initializeFirebasePropertyPhotos,initializeFirebaseCommercial,initializeFirebaseReportStorage})=>{
     const authentication=await initializeFirebaseAuthentication({env:process.env,secureCookies:true});
-    let durablePromise=null,evidencePromise=null,metadataPromise=null,commercialPromise=null;
+    let durablePromise=null,evidencePromise=null,metadataPromise=null,photosPromise=null,commercialPromise=null;
     const durableProperties=()=>durablePromise??=initializeFirebaseDurableProperties({authentication});
     const retainedEvidence=()=>evidencePromise??=initializeFirebaseRetainedEvidence({authentication});
     const commercial=()=>commercialPromise??=initializeFirebaseCommercial({authentication,env:process.env});
@@ -20,7 +20,12 @@ async function runtime(){
       }
       return initializeFirebaseDocumentMetadata({authentication,durableProperties:service});
     });
-    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,documentMetadata,commercial,reportStorage,pdfRenderer:renderNetlifyWorkspacePdf});
+    const propertyPhotos=()=>photosPromise??=durableProperties().then(async service=>{
+      if(!process.env.PI_FIREBASE_STORAGE_BUCKET||!process.env.PI_MALWARE_SCANNER_URL)throw new Error('PROPERTY_PHOTO_STORAGE_NOT_CONFIGURED');
+      const {loadCloudRunMalwareScanner}=await import('../../src/investment-workspace/cloud-run-malware-scanner.js'),malwareScanner=await loadCloudRunMalwareScanner(process.env);
+      return initializeFirebasePropertyPhotos({authentication,durableProperties:service,malwareScanner,bucketName:process.env.PI_FIREBASE_STORAGE_BUCKET});
+    });
+    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,documentMetadata,propertyPhotos,commercial,reportStorage,pdfRenderer:renderNetlifyWorkspacePdf});
   });
   return authenticatedReportApi;
 }

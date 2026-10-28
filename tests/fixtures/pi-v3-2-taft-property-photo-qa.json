@@ -1,0 +1,1010 @@
+{
+  "capturedAt": "2026-10-28T22:39:09.822Z",
+  "captureMode": "READ_ONLY_FIREBASE_TO_SANITIZED_LOCAL_FIXTURE",
+  "source": {
+    "address": "603 Tyler St, Taft, CA 93268",
+    "originalScenarioRevision": 1,
+    "originalScenarioSavedAt": "2026-10-28T22:14:18.439Z"
+  },
+  "evidence": {
+    "properties": [
+      {
+        "ref": "QA-TAFT-V3-2",
+        "address": "603 Tyler St, Taft, CA 93268",
+        "city": "Taft",
+        "subjectKind": "PRELIMINARY_RESEARCH",
+        "evidenceFingerprint": "taft-v3-2-local-qa-snapshot",
+        "addressComponents": {
+          "street": "603 Tyler St",
+          "city": "Taft",
+          "state": "CA",
+          "zip": "93268"
+        },
+        "providerId": "603-Tyler-St,-Taft,-CA-93268",
+        "providerCoordinates": {
+          "latitude": 35.159545,
+          "longitude": -119.457955
+        },
+        "parcelIdentifiers": [
+          {
+            "type": "ASSESSOR_ID",
+            "value": "19906310",
+            "source": "RentCast provider record"
+          }
+        ],
+        "ownership": {
+          "ownerNames": [
+            "THE GAIL M SMITH TRUST",
+            "Jeanette Rae Gallegos"
+          ],
+          "ownerType": "Organization",
+          "ownerOccupied": false,
+          "source": "RentCast provider record; not independently verified"
+        },
+        "attributes": {
+          "propertyType": "Single Family",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "squareFootage": 948,
+          "lotSize": 6969,
+          "yearBuilt": 1920,
+          "lastSaleDate": "1998-04-09T00:00:00.000Z",
+          "lastSalePrice": 37500,
+          "county": "Kern",
+          "countyFips": "029",
+          "assessorId": "19906310",
+          "legalDescription": "CITY FRD-A , BLOCK 13 , LOT 9",
+          "subdivision": "FORD ADD 01",
+          "zoning": null
+        },
+        "avm": {
+          "price": 183000,
+          "low": 141000,
+          "high": 225000
+        },
+        "propertyRef": "RentCast retained property record · sanitized local QA fixture",
+        "valuationRef": "RentCast retained valuation · sanitized local QA fixture",
+        "propertyRetrievedAt": "2026-10-28T21:51:41.267Z",
+        "valuationRetrievedAt": "2026-10-28T21:51:42.734Z",
+        "providerAsOf": null,
+        "valuationAsOf": null,
+        "reviewDate": "2026-10-28T21:53:24.472Z",
+        "identityStatus": "Provider-reported address match; legal parcel identity not verified",
+        "historicalTrigger": {
+          "kind": null,
+          "amount": null,
+          "sourceDate": null,
+          "sourceRef": "No county distress evidence attached",
+          "meaning": "Current distress is unknown"
+        },
+        "countyUse": {
+          "code": null,
+          "sourceRef": null
+        },
+        "sales": [
+          {
+            "evidenceRef": "TAFT-SALE-01",
+            "address": "707 Tyler St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 3,
+            "bathrooms": 1,
+            "squareFootage": 1174,
+            "distance": 0.12810761759427958,
+            "ageDays": 170,
+            "saleDate": "2026-05-11",
+            "salePrice": 275000,
+            "pricePerSf": 234.2419080068143,
+            "reason": "Provider-reported Sale event · 0.13 mi · 170 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.161399,
+            "longitude": -119.457981
+          },
+          {
+            "evidenceRef": "TAFT-SALE-02",
+            "address": "706 Polk St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 3,
+            "bathrooms": 1,
+            "squareFootage": 1038,
+            "distance": 0.132228982055356,
+            "ageDays": 126,
+            "saleDate": "2026-06-24",
+            "salePrice": 185000,
+            "pricePerSf": 178.22736030828517,
+            "reason": "Provider-reported Sale event · 0.13 mi · 126 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.161405,
+            "longitude": -119.458506
+          },
+          {
+            "evidenceRef": "TAFT-SALE-03",
+            "address": "503 Van Buren St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 3,
+            "bathrooms": 1,
+            "squareFootage": 1111,
+            "distance": 0.18224586223465694,
+            "ageDays": 96,
+            "saleDate": "2026-07-24",
+            "salePrice": 170000,
+            "pricePerSf": 153.015301530153,
+            "reason": "Provider-reported Sale event · 0.18 mi · 96 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.157899,
+            "longitude": -119.455434
+          },
+          {
+            "evidenceRef": "TAFT-SALE-04",
+            "address": "515 Fillmore St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 3,
+            "bathrooms": 2,
+            "squareFootage": 1232,
+            "distance": 0.22206532470905574,
+            "ageDays": 83,
+            "saleDate": "2026-08-06",
+            "salePrice": 185000,
+            "pricePerSf": 150.16233766233765,
+            "reason": "Provider-reported Sale event · 0.22 mi · 83 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.158734,
+            "longitude": -119.461759
+          },
+          {
+            "evidenceRef": "TAFT-SALE-05",
+            "address": "412 Pierce St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 824,
+            "distance": 0.29724076935676697,
+            "ageDays": 268,
+            "saleDate": "2026-02-02",
+            "salePrice": 198000,
+            "pricePerSf": 240.29126213592232,
+            "reason": "Provider-reported Sale event · 0.30 mi · 268 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.157097,
+            "longitude": -119.462282
+          },
+          {
+            "evidenceRef": "TAFT-SALE-06",
+            "address": "801 Fillmore St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 939,
+            "distance": 0.3157381103968994,
+            "ageDays": 264,
+            "saleDate": "2026-02-06",
+            "salePrice": 200000,
+            "pricePerSf": 212.99254526091588,
+            "reason": "Provider-reported Sale event · 0.32 mi · 264 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.162933,
+            "longitude": -119.461706
+          },
+          {
+            "evidenceRef": "TAFT-SALE-07",
+            "address": "506 Buchanan St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 1104,
+            "distance": 0.33128451121984787,
+            "ageDays": 225,
+            "saleDate": "2026-03-17",
+            "salePrice": 200000,
+            "pricePerSf": 181.15942028985506,
+            "reason": "Provider-reported Sale event · 0.33 mi · 225 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.158134,
+            "longitude": -119.46356
+          },
+          {
+            "evidenceRef": "TAFT-SALE-08",
+            "address": "411 Buchanan St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 1040,
+            "distance": 0.4006422417532345,
+            "ageDays": 210,
+            "saleDate": "2026-04-01",
+            "salePrice": 54000,
+            "pricePerSf": 51.92307692307692,
+            "reason": "Provider-reported Sale event · 0.40 mi · 210 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.156936,
+            "longitude": -119.464289
+          },
+          {
+            "evidenceRef": "TAFT-SALE-09",
+            "address": "808 N Lincoln St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 1014,
+            "distance": 0.4754893157943239,
+            "ageDays": 314,
+            "saleDate": "2025-12-18",
+            "salePrice": 90000,
+            "pricePerSf": 88.75739644970415,
+            "reason": "Provider-reported Sale event · 0.48 mi · 314 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.163454,
+            "longitude": -119.464883
+          },
+          {
+            "evidenceRef": "TAFT-SALE-10",
+            "address": "114 N Lincoln St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 2,
+            "squareFootage": 864,
+            "distance": 0.6243442714431154,
+            "ageDays": 99,
+            "saleDate": "2026-07-21",
+            "salePrice": 150000,
+            "pricePerSf": 173.61111111111111,
+            "reason": "Provider-reported Sale event · 0.62 mi · 99 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.152451,
+            "longitude": -119.464801
+          },
+          {
+            "evidenceRef": "TAFT-SALE-11",
+            "address": "121 Lucard St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 945,
+            "distance": 1.2680544810926637,
+            "ageDays": 331,
+            "saleDate": "2025-12-01",
+            "salePrice": 166000,
+            "pricePerSf": 175.66137566137567,
+            "reason": "Provider-reported Sale event · 1.27 mi · 331 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.141697,
+            "longitude": -119.452727
+          },
+          {
+            "evidenceRef": "TAFT-SALE-12",
+            "address": "123 N 10th St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 840,
+            "distance": 1.2894013963414968,
+            "ageDays": 55,
+            "saleDate": "2026-09-03",
+            "salePrice": 75000,
+            "pricePerSf": 89.28571428571429,
+            "reason": "Provider-reported Sale event · 1.29 mi · 55 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.14272,
+            "longitude": -119.467829
+          },
+          {
+            "evidenceRef": "TAFT-SALE-13",
+            "address": "100 E Kern St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 918,
+            "distance": 1.3290763580087102,
+            "ageDays": 194,
+            "saleDate": "2026-04-17",
+            "salePrice": 189000,
+            "pricePerSf": 205.88235294117646,
+            "reason": "Provider-reported Sale event · 1.33 mi · 194 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.141003,
+            "longitude": -119.451693
+          },
+          {
+            "evidenceRef": "TAFT-SALE-14",
+            "address": "104 E Kern St, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 3,
+            "bathrooms": 1,
+            "squareFootage": 1246,
+            "distance": 1.3306345357851088,
+            "ageDays": 363,
+            "saleDate": "2025-10-30",
+            "salePrice": 185000,
+            "pricePerSf": 148.47512038523274,
+            "reason": "Provider-reported Sale event · 1.33 mi · 363 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.141059,
+            "longitude": -119.451351
+          },
+          {
+            "evidenceRef": "TAFT-SALE-15",
+            "address": "108 Woodlawn Ave, Taft, CA 93268",
+            "propertyType": "Single Family",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "squareFootage": 787,
+            "distance": 1.5020942758290186,
+            "ageDays": 293,
+            "saleDate": "2026-01-08",
+            "salePrice": 80000,
+            "pricePerSf": 101.65184243964421,
+            "reason": "Provider-reported Sale event · 1.50 mi · 293 days old. Arm's-length terms and condition remain unverified.",
+            "armsLength": "UNKNOWN",
+            "condition": "UNKNOWN",
+            "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+            "providerId": null,
+            "latitude": 35.139359,
+            "longitude": -119.467827
+          }
+        ],
+        "saleSearch": {
+          "retrievedAt": "2026-10-28T21:53:23.820Z",
+          "returned": 50,
+          "eligible": 26,
+          "radius": 2,
+          "partial": true
+        },
+        "findings": [
+          "Provider-reported property identity, parcel and ownership fields are preliminary. Title, liens, payoff and condition remain unverified."
+        ],
+        "listings": [],
+        "addressValidation": {
+          "classification": "MISSING_ZIP_CONFIRMATION",
+          "confirmationMethod": "GOOGLE_CANDIDATE_CONFIRMED",
+          "originalAddress": {
+            "street": "603 Tyler Street",
+            "city": "Taft",
+            "state": "CA",
+            "zip": ""
+          },
+          "confirmedAddress": {
+            "street": "603 Tyler Street",
+            "city": "Taft",
+            "state": "CA",
+            "zip": "93268"
+          },
+          "googleEvidence": {
+            "source": "GOOGLE_GEOCODING",
+            "retrievedAt": "2026-10-28T21:51:23.995Z",
+            "partialMatch": false,
+            "precision": "ROOFTOP"
+          },
+          "legalIdentityVerified": false
+        },
+        "researchProvenance": [
+          {
+            "source": "Google Geocoding",
+            "kind": "ADDRESS_VALIDATION",
+            "reference": "Sanitized retained QA fixture reference",
+            "retrievedAt": "2026-10-28T21:51:23.995Z"
+          },
+          {
+            "source": "RentCast",
+            "kind": "PROPERTY_RECORDS",
+            "reference": "Sanitized retained QA fixture reference",
+            "retrievedAt": "2026-10-28T21:51:41.267Z"
+          },
+          {
+            "source": "RentCast",
+            "kind": "VALUATION",
+            "reference": "Sanitized retained QA fixture reference",
+            "retrievedAt": "2026-10-28T21:51:42.734Z"
+          },
+          {
+            "source": "RentCast",
+            "kind": "COMPARABLE_SALES",
+            "reference": "Sanitized retained QA fixture reference",
+            "retrievedAt": "2026-10-28T21:53:23.820Z"
+          }
+        ],
+        "evidenceSnapshotId": "taft-v3-2-local-qa-snapshot",
+        "durablePropertyId": null
+      }
+    ],
+    "fingerprint": "taft-v3-2-local-qa-snapshot",
+    "disclaimer": "Kern County information is provided for preliminary research only. County-derived information may be incomplete or outdated and must be independently verified. This notice must remain with distributed copies containing county-derived evidence."
+  },
+  "property": {
+    "ref": "QA-TAFT-V3-2",
+    "address": "603 Tyler St, Taft, CA 93268",
+    "city": "Taft",
+    "subjectKind": "PRELIMINARY_RESEARCH",
+    "evidenceFingerprint": "taft-v3-2-local-qa-snapshot",
+    "addressComponents": {
+      "street": "603 Tyler St",
+      "city": "Taft",
+      "state": "CA",
+      "zip": "93268"
+    },
+    "providerId": "603-Tyler-St,-Taft,-CA-93268",
+    "providerCoordinates": {
+      "latitude": 35.159545,
+      "longitude": -119.457955
+    },
+    "parcelIdentifiers": [
+      {
+        "type": "ASSESSOR_ID",
+        "value": "19906310",
+        "source": "RentCast provider record"
+      }
+    ],
+    "ownership": {
+      "ownerNames": [
+        "THE GAIL M SMITH TRUST",
+        "Jeanette Rae Gallegos"
+      ],
+      "ownerType": "Organization",
+      "ownerOccupied": false,
+      "source": "RentCast provider record; not independently verified"
+    },
+    "attributes": {
+      "propertyType": "Single Family",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "squareFootage": 948,
+      "lotSize": 6969,
+      "yearBuilt": 1920,
+      "lastSaleDate": "1998-04-09T00:00:00.000Z",
+      "lastSalePrice": 37500,
+      "county": "Kern",
+      "countyFips": "029",
+      "assessorId": "19906310",
+      "legalDescription": "CITY FRD-A , BLOCK 13 , LOT 9",
+      "subdivision": "FORD ADD 01",
+      "zoning": null
+    },
+    "avm": {
+      "price": 183000,
+      "low": 141000,
+      "high": 225000
+    },
+    "propertyRef": "RentCast retained property record · sanitized local QA fixture",
+    "valuationRef": "RentCast retained valuation · sanitized local QA fixture",
+    "propertyRetrievedAt": "2026-10-28T21:51:41.267Z",
+    "valuationRetrievedAt": "2026-10-28T21:51:42.734Z",
+    "providerAsOf": null,
+    "valuationAsOf": null,
+    "reviewDate": "2026-10-28T21:53:24.472Z",
+    "identityStatus": "Provider-reported address match; legal parcel identity not verified",
+    "historicalTrigger": {
+      "kind": null,
+      "amount": null,
+      "sourceDate": null,
+      "sourceRef": "No county distress evidence attached",
+      "meaning": "Current distress is unknown"
+    },
+    "countyUse": {
+      "code": null,
+      "sourceRef": null
+    },
+    "sales": [
+      {
+        "evidenceRef": "TAFT-SALE-01",
+        "address": "707 Tyler St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "squareFootage": 1174,
+        "distance": 0.12810761759427958,
+        "ageDays": 170,
+        "saleDate": "2026-05-11",
+        "salePrice": 275000,
+        "pricePerSf": 234.2419080068143,
+        "reason": "Provider-reported Sale event · 0.13 mi · 170 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.161399,
+        "longitude": -119.457981
+      },
+      {
+        "evidenceRef": "TAFT-SALE-02",
+        "address": "706 Polk St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "squareFootage": 1038,
+        "distance": 0.132228982055356,
+        "ageDays": 126,
+        "saleDate": "2026-06-24",
+        "salePrice": 185000,
+        "pricePerSf": 178.22736030828517,
+        "reason": "Provider-reported Sale event · 0.13 mi · 126 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.161405,
+        "longitude": -119.458506
+      },
+      {
+        "evidenceRef": "TAFT-SALE-03",
+        "address": "503 Van Buren St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "squareFootage": 1111,
+        "distance": 0.18224586223465694,
+        "ageDays": 96,
+        "saleDate": "2026-07-24",
+        "salePrice": 170000,
+        "pricePerSf": 153.015301530153,
+        "reason": "Provider-reported Sale event · 0.18 mi · 96 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.157899,
+        "longitude": -119.455434
+      },
+      {
+        "evidenceRef": "TAFT-SALE-04",
+        "address": "515 Fillmore St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "squareFootage": 1232,
+        "distance": 0.22206532470905574,
+        "ageDays": 83,
+        "saleDate": "2026-08-06",
+        "salePrice": 185000,
+        "pricePerSf": 150.16233766233765,
+        "reason": "Provider-reported Sale event · 0.22 mi · 83 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.158734,
+        "longitude": -119.461759
+      },
+      {
+        "evidenceRef": "TAFT-SALE-05",
+        "address": "412 Pierce St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 824,
+        "distance": 0.29724076935676697,
+        "ageDays": 268,
+        "saleDate": "2026-02-02",
+        "salePrice": 198000,
+        "pricePerSf": 240.29126213592232,
+        "reason": "Provider-reported Sale event · 0.30 mi · 268 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.157097,
+        "longitude": -119.462282
+      },
+      {
+        "evidenceRef": "TAFT-SALE-06",
+        "address": "801 Fillmore St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 939,
+        "distance": 0.3157381103968994,
+        "ageDays": 264,
+        "saleDate": "2026-02-06",
+        "salePrice": 200000,
+        "pricePerSf": 212.99254526091588,
+        "reason": "Provider-reported Sale event · 0.32 mi · 264 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.162933,
+        "longitude": -119.461706
+      },
+      {
+        "evidenceRef": "TAFT-SALE-07",
+        "address": "506 Buchanan St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 1104,
+        "distance": 0.33128451121984787,
+        "ageDays": 225,
+        "saleDate": "2026-03-17",
+        "salePrice": 200000,
+        "pricePerSf": 181.15942028985506,
+        "reason": "Provider-reported Sale event · 0.33 mi · 225 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.158134,
+        "longitude": -119.46356
+      },
+      {
+        "evidenceRef": "TAFT-SALE-08",
+        "address": "411 Buchanan St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 1040,
+        "distance": 0.4006422417532345,
+        "ageDays": 210,
+        "saleDate": "2026-04-01",
+        "salePrice": 54000,
+        "pricePerSf": 51.92307692307692,
+        "reason": "Provider-reported Sale event · 0.40 mi · 210 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.156936,
+        "longitude": -119.464289
+      },
+      {
+        "evidenceRef": "TAFT-SALE-09",
+        "address": "808 N Lincoln St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 1014,
+        "distance": 0.4754893157943239,
+        "ageDays": 314,
+        "saleDate": "2025-12-18",
+        "salePrice": 90000,
+        "pricePerSf": 88.75739644970415,
+        "reason": "Provider-reported Sale event · 0.48 mi · 314 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.163454,
+        "longitude": -119.464883
+      },
+      {
+        "evidenceRef": "TAFT-SALE-10",
+        "address": "114 N Lincoln St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "squareFootage": 864,
+        "distance": 0.6243442714431154,
+        "ageDays": 99,
+        "saleDate": "2026-07-21",
+        "salePrice": 150000,
+        "pricePerSf": 173.61111111111111,
+        "reason": "Provider-reported Sale event · 0.62 mi · 99 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.152451,
+        "longitude": -119.464801
+      },
+      {
+        "evidenceRef": "TAFT-SALE-11",
+        "address": "121 Lucard St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 945,
+        "distance": 1.2680544810926637,
+        "ageDays": 331,
+        "saleDate": "2025-12-01",
+        "salePrice": 166000,
+        "pricePerSf": 175.66137566137567,
+        "reason": "Provider-reported Sale event · 1.27 mi · 331 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.141697,
+        "longitude": -119.452727
+      },
+      {
+        "evidenceRef": "TAFT-SALE-12",
+        "address": "123 N 10th St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 840,
+        "distance": 1.2894013963414968,
+        "ageDays": 55,
+        "saleDate": "2026-09-03",
+        "salePrice": 75000,
+        "pricePerSf": 89.28571428571429,
+        "reason": "Provider-reported Sale event · 1.29 mi · 55 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.14272,
+        "longitude": -119.467829
+      },
+      {
+        "evidenceRef": "TAFT-SALE-13",
+        "address": "100 E Kern St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 918,
+        "distance": 1.3290763580087102,
+        "ageDays": 194,
+        "saleDate": "2026-04-17",
+        "salePrice": 189000,
+        "pricePerSf": 205.88235294117646,
+        "reason": "Provider-reported Sale event · 1.33 mi · 194 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.141003,
+        "longitude": -119.451693
+      },
+      {
+        "evidenceRef": "TAFT-SALE-14",
+        "address": "104 E Kern St, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "squareFootage": 1246,
+        "distance": 1.3306345357851088,
+        "ageDays": 363,
+        "saleDate": "2025-10-30",
+        "salePrice": 185000,
+        "pricePerSf": 148.47512038523274,
+        "reason": "Provider-reported Sale event · 1.33 mi · 363 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.141059,
+        "longitude": -119.451351
+      },
+      {
+        "evidenceRef": "TAFT-SALE-15",
+        "address": "108 Woodlawn Ave, Taft, CA 93268",
+        "propertyType": "Single Family",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "squareFootage": 787,
+        "distance": 1.5020942758290186,
+        "ageDays": 293,
+        "saleDate": "2026-01-08",
+        "salePrice": 80000,
+        "pricePerSf": 101.65184243964421,
+        "reason": "Provider-reported Sale event · 1.50 mi · 293 days old. Arm's-length terms and condition remain unverified.",
+        "armsLength": "UNKNOWN",
+        "condition": "UNKNOWN",
+        "transactionType": "SALE_EVENT_OTHER_TRANSFER_DETAILS_NOT_RETURNED",
+        "providerId": null,
+        "latitude": 35.139359,
+        "longitude": -119.467827
+      }
+    ],
+    "saleSearch": {
+      "retrievedAt": "2026-10-28T21:53:23.820Z",
+      "returned": 50,
+      "eligible": 26,
+      "radius": 2,
+      "partial": true
+    },
+    "findings": [
+      "Provider-reported property identity, parcel and ownership fields are preliminary. Title, liens, payoff and condition remain unverified."
+    ],
+    "listings": [],
+    "addressValidation": {
+      "classification": "MISSING_ZIP_CONFIRMATION",
+      "confirmationMethod": "GOOGLE_CANDIDATE_CONFIRMED",
+      "originalAddress": {
+        "street": "603 Tyler Street",
+        "city": "Taft",
+        "state": "CA",
+        "zip": ""
+      },
+      "confirmedAddress": {
+        "street": "603 Tyler Street",
+        "city": "Taft",
+        "state": "CA",
+        "zip": "93268"
+      },
+      "googleEvidence": {
+        "source": "GOOGLE_GEOCODING",
+        "retrievedAt": "2026-10-28T21:51:23.995Z",
+        "partialMatch": false,
+        "precision": "ROOFTOP"
+      },
+      "legalIdentityVerified": false
+    },
+    "researchProvenance": [
+      {
+        "source": "Google Geocoding",
+        "kind": "ADDRESS_VALIDATION",
+        "reference": "Sanitized retained QA fixture reference",
+        "retrievedAt": "2026-10-28T21:51:23.995Z"
+      },
+      {
+        "source": "RentCast",
+        "kind": "PROPERTY_RECORDS",
+        "reference": "Sanitized retained QA fixture reference",
+        "retrievedAt": "2026-10-28T21:51:41.267Z"
+      },
+      {
+        "source": "RentCast",
+        "kind": "VALUATION",
+        "reference": "Sanitized retained QA fixture reference",
+        "retrievedAt": "2026-10-28T21:51:42.734Z"
+      },
+      {
+        "source": "RentCast",
+        "kind": "COMPARABLE_SALES",
+        "reference": "Sanitized retained QA fixture reference",
+        "retrievedAt": "2026-10-28T21:53:23.820Z"
+      }
+    ],
+    "evidenceSnapshotId": "taft-v3-2-local-qa-snapshot",
+    "durablePropertyId": null
+  },
+  "scenario": {
+    "id": "5d1b8f8d-60ad-4a91-8ae1-328c66187851",
+    "propertyRef": "QA-TAFT-V3-2",
+    "name": "Taft V3.2 synthetic property-photo QA",
+    "evidenceFingerprint": "taft-v3-2-local-qa-snapshot",
+    "inputs": {
+      "purchasePrice": "105000",
+      "exitValue": "170000",
+      "rehabCost": "20000",
+      "contingency": "0",
+      "acquisitionFixed": "0",
+      "acquisitionRate": "0",
+      "loanAmount": "0",
+      "annualRate": "0",
+      "points": "0",
+      "financingFees": "0",
+      "renovationDays": "90",
+      "marketingDays": "30",
+      "propertyTaxes": "0",
+      "insurance": "0",
+      "utilities": "0",
+      "maintenance": "0",
+      "otherHolding": "0",
+      "sellingCommissionRate": "0",
+      "sellerClosingFixed": "0",
+      "sellerClosingRate": "0",
+      "transferCost": "0",
+      "otherUpfront": "0",
+      "otherAtExit": "0",
+      "targetRate": "15",
+      "targetProfit": ""
+    },
+    "targetType": "PROFIT_MARGIN_ON_SALE",
+    "notes": "",
+    "risk": {
+      "variables": {
+        "exitValue": {
+          "mode": "170000",
+          "min": "160000",
+          "max": "180000"
+        },
+        "rehabCost": {
+          "mode": "20000",
+          "min": "18000",
+          "max": "25000"
+        },
+        "renovationDays": {
+          "mode": "90",
+          "min": "75",
+          "max": "120"
+        },
+        "marketingDays": {
+          "mode": "30",
+          "min": "15",
+          "max": "45"
+        }
+      },
+      "valueOrigins": {
+        "renovationDays": {
+          "mode": "INHERITED",
+          "min": "MANUAL",
+          "max": "MANUAL"
+        },
+        "marketingDays": {
+          "mode": "INHERITED",
+          "min": "MANUAL",
+          "max": "MANUAL"
+        },
+        "rehabCost": {
+          "mode": "INHERITED",
+          "min": "MANUAL",
+          "max": "MANUAL"
+        },
+        "exitValue": {
+          "mode": "INHERITED",
+          "min": "MANUAL",
+          "max": "MANUAL"
+        }
+      },
+      "seed": "12345",
+      "iterations": 1000,
+      "rationale": "Based on broker experience."
+    },
+    "compReviews": {
+      "TAFT-SALE-01": {
+        "include": true,
+        "notes": "Selected in the existing Taft scenario; transfer terms and condition remain unverified."
+      },
+      "TAFT-SALE-02": {
+        "include": true,
+        "notes": "Selected in the existing Taft scenario; transfer terms and condition remain unverified."
+      },
+      "TAFT-SALE-03": {
+        "include": true,
+        "notes": "Selected in the existing Taft scenario; transfer terms and condition remain unverified."
+      },
+      "TAFT-SALE-04": {
+        "include": true,
+        "notes": "Selected in the existing Taft scenario; transfer terms and condition remain unverified."
+      },
+      "TAFT-SALE-10": {
+        "include": true,
+        "notes": "Selected in the existing Taft scenario; transfer terms and condition remain unverified."
+      },
+      "TAFT-SALE-12": {
+        "include": true,
+        "notes": "Selected in the existing Taft scenario; transfer terms and condition remain unverified."
+      }
+    },
+    "analystEvidence": [],
+    "evidenceAttachments": [],
+    "sellerValuationBasis": "PROVIDER_AVM",
+    "demonstration": true,
+    "riskRequested": true,
+    "revision": 1,
+    "savedAt": "2026-10-28T22:14:18.439Z",
+    "photoSelections": [],
+    "photoRightsAcknowledgment": null
+  }
+}

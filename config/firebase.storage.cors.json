@@ -1,0 +1,16 @@
+[
+  {
+    "origin": [
+      "https://worksidepropertyintelligence.netlify.app"
+    ],
+    "method": [
+      "PUT"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "ETag",
+      "x-goog-if-generation-match"
+    ],
+    "maxAgeSeconds": 600
+  }
+]

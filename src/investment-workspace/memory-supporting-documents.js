@@ -16,5 +16,5 @@ export function createMemorySupportingDocumentRepository(){
 
 export function createMemoryPrivateDocumentStorage(){
   const objects=new Map();
-  return {async put(storageKey,bytes,metadata){objects.set(storageKey,{bytes:Buffer.from(bytes),metadata:clone(metadata)});},async get(storageKey){const object=objects.get(storageKey);if(!object)throw new Error('DOCUMENT_OBJECT_NOT_FOUND');return Buffer.from(object.bytes);},async remove(storageKey){objects.delete(storageKey);},_state:{objects}};
+  return {async put(storageKey,bytes,metadata){objects.set(storageKey,{bytes:Buffer.from(bytes),metadata:clone(metadata)});},async get(storageKey){const object=objects.get(storageKey);if(!object)throw new Error('DOCUMENT_OBJECT_NOT_FOUND');return Buffer.from(object.bytes);},async stat(storageKey){const object=objects.get(storageKey);if(!object)throw new Error('DOCUMENT_OBJECT_NOT_FOUND');return {sizeBytes:object.bytes.length,contentType:object.metadata?.contentType};},async secure(storageKey,metadata){const object=objects.get(storageKey);if(!object)throw new Error('DOCUMENT_OBJECT_NOT_FOUND');object.metadata={...object.metadata,...clone(metadata)};},async remove(storageKey){objects.delete(storageKey);},_state:{objects}};
 }

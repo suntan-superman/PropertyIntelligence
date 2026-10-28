@@ -14,6 +14,8 @@ export const ANALYST_EVIDENCE_CATEGORIES=Object.freeze([
   ['TITLE','Title research'],
   ['PERMITS_ZONING','Permits and zoning'],
   ['OCCUPANCY','Occupancy'],
+  ['DELIVERY_CONDITION','Advertised delivery condition'],
+  ['POSSESSION','Possession / vacancy confirmation'],
   ['CONDITION','Property condition'],
   ['SELLER_AGENT_NOTE','Seller / agent note']
 ]);

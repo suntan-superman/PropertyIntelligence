@@ -1,7 +1,7 @@
 export const WORKFLOW_STAGES=Object.freeze([
   Object.freeze({id:'research',label:'Property Research',tabs:Object.freeze(['Overview','County / Distress','Property Facts','Listings'])}),
   Object.freeze({id:'comparables',label:'Comparable Sales',tabs:Object.freeze(['Sold Sales'])}),
-  Object.freeze({id:'evidence',label:'Seller & Property Evidence',tabs:Object.freeze(['Seller Financial Position','Analyst Evidence','Supporting Documents'])}),
+  Object.freeze({id:'evidence',label:'Seller & Property Evidence',tabs:Object.freeze(['Seller Financial Position','Analyst Evidence','Supporting Documents','Property Photos'])}),
   Object.freeze({id:'financial',label:'Financial Analysis',tabs:Object.freeze(['Underwriting','Scenarios','Risk'])}),
   Object.freeze({id:'reports',label:'Investor Reports',tabs:Object.freeze(['Reports'])})
 ]);
@@ -10,7 +10,7 @@ export const GUIDED_STEPS=Object.freeze([
   Object.freeze({id:'identify',label:'Identify Property',purpose:'Start with a known address. PI checks saved properties and retained research before offering any explicit provider lookup.',tabs:Object.freeze([])}),
   Object.freeze({id:'research',label:'Property Research',purpose:'Review property characteristics, valuation evidence, county indicators and the important information that is still missing.',tabs:Object.freeze(['Overview','County / Distress','Property Facts','Listings'])}),
   Object.freeze({id:'comparables',label:'Comparable Sales',purpose:'Review reported sales separately from listings, then record which examples are relevant and why.',tabs:Object.freeze(['Sold Sales'])}),
-  Object.freeze({id:'evidence',label:'Seller & Property Evidence',purpose:'Record mortgage, payoff, lien, tax, occupancy, condition and supporting-document evidence without treating unknown amounts as zero.',tabs:Object.freeze(['Seller Financial Position','Analyst Evidence','Supporting Documents'])}),
+  Object.freeze({id:'evidence',label:'Seller & Property Evidence',purpose:'Record mortgage, payoff, lien, tax, occupancy, condition, supporting documents and property photos without treating unknown amounts as zero.',tabs:Object.freeze(['Seller Financial Position','Analyst Evidence','Supporting Documents','Property Photos'])}),
   Object.freeze({id:'financial',label:'Financial Analysis',purpose:'Enter your purchase, rehabilitation, resale and financing assumptions, then review calculated returns and offer limits.',tabs:Object.freeze(['Underwriting','Scenarios'])}),
   Object.freeze({id:'risk',label:'Risk Analysis',purpose:'Test editable illustrative ranges only when you choose to run the simulation, and read the results in everyday language.',tabs:Object.freeze(['Risk'])}),
   Object.freeze({id:'reports',label:'Investor Reports',purpose:'Review completeness and unresolved questions, preview a saved revision and export the investor package.',tabs:Object.freeze(['Reports'])})

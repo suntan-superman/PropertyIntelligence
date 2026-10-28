@@ -55,6 +55,9 @@ export function createFirebasePrivateDocumentStorage({bucket}={}){
   return {
     async put(storageKey,bytes,{contentType,sha256}){const file=bucket.file(storageKey);await file.save(bytes,{resumable:false,validation:'crc32c',metadata:{contentType,cacheControl:'private, no-store, max-age=0',contentDisposition:'attachment',metadata:{sha256,private:'true'}},preconditionOpts:{ifGenerationMatch:0}});},
     async get(storageKey){const [bytes]=await bucket.file(storageKey).download();return bytes;},
+    async stat(storageKey){const [metadata]=await bucket.file(storageKey).getMetadata();return {sizeBytes:Number(metadata.size),contentType:metadata.contentType,generation:String(metadata.generation??'')};},
+    async secure(storageKey,{contentType,sha256}){await bucket.file(storageKey).setMetadata({contentType,cacheControl:'private, no-store, max-age=0',contentDisposition:'attachment',metadata:{sha256,private:'true',immutable:'true'}});},
+    async createUploadUrl(storageKey,{contentType,expiresAt}){const headers={'Content-Type':contentType,'x-goog-if-generation-match':'0'},[url]=await bucket.file(storageKey).getSignedUrl({version:'v4',action:'write',expires:expiresAt,contentType,extensionHeaders:{'x-goog-if-generation-match':'0'}});return {url,method:'PUT',headers};},
     async remove(storageKey){await bucket.file(storageKey).delete({ignoreNotFound:true});}
   };
 }

@@ -124,3 +124,16 @@ export async function initializeFirebaseSupportingDocuments({authentication,dura
   if(location!=='US-WEST2'||!uniform||publicAccessPrevention!=='enforced')throw new Error('FIREBASE_STORAGE_SECURITY_CONFIGURATION_REQUIRED');
   return createSupportingDocumentService({repository:createFirestoreSupportingDocumentRepository({firestore:getFirestore(app)}),storage:createFirebasePrivateDocumentStorage({bucket}),malwareScanner,durableProperties});
 }
+
+export async function initializeFirebasePropertyPhotos({authentication,durableProperties,malwareScanner,bucketName=process.env.PI_FIREBASE_STORAGE_BUCKET}={}){
+  if(!authentication?.enabled||!authentication.expectedProjectId)throw new Error('FIREBASE_AUTHENTICATION_REQUIRED');
+  if(!durableProperties)throw new Error('DURABLE_PROPERTY_SERVICE_REQUIRED');
+  if(!malwareScanner)throw new Error('PHOTO_MALWARE_SCANNER_REQUIRED');
+  const name=String(bucketName??'').trim();if(!name)throw new Error('PI_FIREBASE_STORAGE_BUCKET_REQUIRED');
+  if(name!==`${authentication.expectedProjectId}.firebasestorage.app`)throw new Error('FIREBASE_STORAGE_BUCKET_PROJECT_MISMATCH');
+  const [{getApp},{getFirestore},{getStorage},{createFirestorePropertyPhotoRepository},{createFirebasePrivateDocumentStorage},{createPropertyPhotoService}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/firestore'),import('firebase-admin/storage'),import('../investment-workspace/firebase-property-photos.js'),import('../investment-workspace/firebase-supporting-documents.js'),import('../investment-workspace/property-photos.js')]);
+  const app=getApp('pi-v2-3a');if(app.options.projectId!==authentication.expectedProjectId)throw new Error('FIREBASE_STORAGE_PROJECT_MISMATCH');
+  const bucket=getStorage(app).bucket(name),[metadata]=await bucket.getMetadata(),location=String(metadata.location??'').toUpperCase(),uniform=metadata.iamConfiguration?.uniformBucketLevelAccess?.enabled===true,publicAccessPrevention=String(metadata.iamConfiguration?.publicAccessPrevention??'').toLowerCase();
+  if(location!=='US-WEST2'||!uniform||publicAccessPrevention!=='enforced')throw new Error('FIREBASE_STORAGE_SECURITY_CONFIGURATION_REQUIRED');
+  return createPropertyPhotoService({repository:createFirestorePropertyPhotoRepository({firestore:getFirestore(app)}),storage:createFirebasePrivateDocumentStorage({bucket}),malwareScanner,durableProperties});
+}

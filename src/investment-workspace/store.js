@@ -28,6 +28,22 @@ function validateEvidenceAttachments(value=[]){
       ...(hasDocumentAmount?{documentAmount:Number(item.documentAmount),documentAmountCurrency:item.documentAmountCurrency??'USD',documentAmountSemanticType:item.documentAmountSemanticType,documentAmountSourcePage:item.documentAmountSourcePage?Number(item.documentAmountSourcePage):null,documentAmountSourceNote:item.documentAmountSourceNote??'',documentAmountAnalystConfirmed:item.documentAmountAnalystConfirmed===true,documentAmountConfirmedAt:item.documentAmountAnalystConfirmed===true?item.documentAmountConfirmedAt??'':''}:{})};
   });
 }
+function validatePhotoSelections(value=[]){
+  if(!Array.isArray(value)||value.length>12)throw new Error('No more than 12 property photos may be selected for a report.');
+  const seen=new Set(),cover=[];
+  const selections=value.map(item=>{
+    if(!item||!text(item.photoId,128)||!/^[A-Za-z0-9._-]+$/.test(item.photoId)||!Number.isInteger(item.version)||item.version<1||item.version>10_000||!text(item.caption??'',180)||!text(item.category??'OTHER',40)||!text(item.sourceDescription??'',240)||typeof item.isCover!=='boolean')throw new Error('Property photo selection is invalid.');
+    const key=`${item.photoId}:${item.version}`;if(seen.has(key))throw new Error('A property photo version can be selected only once.');seen.add(key);if(item.isCover)cover.push(key);
+    return {photoId:item.photoId,version:item.version,caption:item.caption??'',category:item.category??'OTHER',sourceDescription:item.sourceDescription??'',isCover:item.isCover};
+  });
+  if(cover.length>1)throw new Error('Choose only one report cover photo.');
+  return selections;
+}
+function validatePhotoAcknowledgment(value,selections){
+  if(value==null)return null;
+  if(!value||value.confirmed!==true||!text(value.userId,128)||!text(value.organizationId,128)||!text(value.scenarioId,128)||!Number.isInteger(value.revision)||value.revision<1||!text(value.confirmedAt,40)||Number.isNaN(Date.parse(value.confirmedAt))||!text(value.selectionFingerprint,64)||!/^[a-f0-9]{64}$/.test(value.selectionFingerprint)||!selections.length)throw new Error('Property photo redistribution acknowledgment is invalid.');
+  return {confirmed:true,userId:value.userId,organizationId:value.organizationId,confirmedAt:value.confirmedAt,scenarioId:value.scenarioId,revision:value.revision,selectionFingerprint:value.selectionFingerprint};
+}
 export function validateDraft(s,evidence){
   const property=evidence.properties.find(p=>p.ref===s?.propertyRef);
   if(!property||!idPattern.test(s.id)||!text(s.name,80)||!s.name.trim())throw new Error('Choose a valid property and scenario name.');
@@ -41,8 +57,10 @@ export function validateDraft(s,evidence){
   if(!['PROVIDER_AVM','PROPOSED_SALE_PRICE'].includes(sellerValuationBasis))throw new Error('Choose a supported seller equity valuation basis.');
   const analystEvidence=validateAnalystEvidence(s.analystEvidence??[]);
   const evidenceAttachments=validateEvidenceAttachments(s.evidenceAttachments??[]);
+  const photoSelections=validatePhotoSelections(s.photoSelections??[]),photoRightsAcknowledgment=validatePhotoAcknowledgment(s.photoRightsAcknowledgment??null,photoSelections);
+  if(photoRightsAcknowledgment&&photoRightsAcknowledgment.scenarioId!==s.id)throw new Error('Property photo redistribution acknowledgment belongs to another scenario.');
   return {id:s.id,propertyRef:s.propertyRef,name:s.name.trim(),evidenceFingerprint:fingerprint,inputs:{...s.inputs},targetType:s.targetType,
-    notes:s.notes??'',risk:structuredClone(s.risk??{}),compReviews:structuredClone(s.compReviews??{}),analystEvidence,evidenceAttachments,sellerValuationBasis,demonstration:s.demonstration===true,riskRequested:s.riskRequested===true};
+    notes:s.notes??'',risk:structuredClone(s.risk??{}),compReviews:structuredClone(s.compReviews??{}),analystEvidence,evidenceAttachments,photoSelections,photoRightsAcknowledgment,sellerValuationBasis,demonstration:s.demonstration===true,riskRequested:s.riskRequested===true};
 }
 export function createStore(directory,evidenceSource){
   const evidence=()=>typeof evidenceSource==='function'?evidenceSource():evidenceSource;
