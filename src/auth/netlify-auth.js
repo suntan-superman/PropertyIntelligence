@@ -50,9 +50,9 @@ async function cloudEvidence({user,durableService,evidenceService,includeArchive
 }
 async function exactEvidenceSubject({user,evidenceService,property,scenario}){
   if(!evidenceService)throw Object.assign(new Error('RETAINED_EVIDENCE_STORAGE_NOT_CONFIGURED'),{status:503});
-  const record=await evidenceService.find({user,subjectRef:property.sourceSubjectRef,evidenceFingerprint:scenario?.evidenceFingerprint??property.evidenceSnapshotIds?.at(-1)});
+  const subjectRef=property?.sourceSubjectRef??scenario?.propertyRef,evidenceFingerprint=scenario?.evidenceFingerprint??property?.evidenceSnapshotIds?.at(-1),record=await evidenceService.find({user,subjectRef,evidenceFingerprint});
   if(!record)throw Object.assign(new Error('RETAINED_EVIDENCE_SNAPSHOT_NOT_FOUND'),{status:409});
-  return retainedSubjectWithLifecycle(record.payload.property,property);
+  return property?retainedSubjectWithLifecycle(record.payload.property,property):structuredClone(record.payload.property);
 }
 function localEvidenceEntry(record){
   const property=record.payload.property,times=[property.propertyRetrievedAt,property.valuationRetrievedAt,property.saleSearch?.retrievedAt].filter(Boolean).sort();
@@ -212,7 +212,6 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
         if(!sameOrigin(request)||!request.headers.get('content-type')?.startsWith('application/json')||request.headers.get('x-pi-workspace')!=='local-v1')return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});
         if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
         const input=await requestBody(request,64_000),raw=input?.scenario,service=await durableProperties(),evidenceService=typeof retainedEvidence==='function'?await retainedEvidence():null,properties=await service.list({user,includeArchived:false}),property=properties.find(item=>item.sourceSubjectRef===raw?.propertyRef);
-        if(!property)return json(404,{error:'DURABLE_PROPERTY_NOT_FOUND'});
         const subject=await exactEvidenceSubject({user,evidenceService,property,scenario:raw});if(Object.keys(raw?.compReviews??{}).some(reference=>!subject.sales.some(sale=>sale.evidenceRef===reference)))return json(409,{error:'COMPARABLE_EVIDENCE_NOT_RESTORED'});const evidence={properties:[subject],fingerprint:subject.evidenceFingerprint};
         try{const [{validateDraft},{analyze}]=await Promise.all([import('../investment-workspace/store.js'),import('../investment-workspace/analysis.js')]),scenario=validateDraft(raw,evidence);return json(200,analyze(scenario,{risk:input.risk===true}));}
         catch(error){return json(422,{error:error.message,errors:error.errors??{}});}

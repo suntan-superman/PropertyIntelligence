@@ -49,6 +49,13 @@ test('storage failure propagates and cannot report a browser-local success',asyn
 
 test('workspace promotion event updates durable views only with the confirmed server record',async()=>{
   const [button,workspace]=await Promise.all([readFile('apps/web/src/components/SaveAsPropertyButton.jsx','utf8'),readFile('apps/web/src/features/desktop-shell/MyWorkspace.jsx','utf8')]);
-  const responseIndex=button.indexOf("request('/api/durable-properties/save'"),eventIndex=button.indexOf('window.dispatchEvent');
-  assert.ok(responseIndex>=0&&eventIndex>responseIndex);assert.match(workspace,/window\.addEventListener\(DURABLE_PROPERTY_SAVED_EVENT/);assert.match(workspace,/properties\.some\(item=>item\.id===record\.id\)/);
+  const responseIndex=button.indexOf("request('/api/durable-properties/save'"),eventIndex=button.indexOf('window.dispatchEvent'),scenarioSaveIndex=button.indexOf('prepareScenario?await prepareScenario()');
+  assert.ok(responseIndex>=0&&eventIndex>responseIndex&&scenarioSaveIndex>eventIndex,'the durable parent must be created before its scenario revision is prepared and saved');assert.match(workspace,/window\.addEventListener\(DURABLE_PROPERTY_SAVED_EVENT/);assert.match(workspace,/properties\.some\(item=>item\.id===record\.id\)/);
+});
+
+test('preliminary analysis remains read-only while save ordering prevents an orphaned scenario request',async()=>{
+  const [button,workspace,server]=await Promise.all([readFile('apps/web/src/components/SaveAsPropertyButton.jsx','utf8'),readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8'),readFile('src/auth/netlify-auth.js','utf8')]);
+  assert.match(button,/!prepareScenario&&scenario\?\.id&&scenario\.revision>0/);assert.match(button,/Property saved; scenario not saved/);
+  assert.match(workspace,/DURABLE_PROPERTY_NOT_FOUND:'This preliminary property can be analyzed now/);assert.match(workspace,/setResult\(analysis\);setValidation\(\{\}\)/);
+  const analyzeRoute=server.slice(server.indexOf("path==='/api/investment/analyze'"),server.indexOf("path==='/api/investment/save'"));assert.doesNotMatch(analyzeRoute,/if\(!property\)return json\(404,\{error:'DURABLE_PROPERTY_NOT_FOUND'\}\)/);
 });
