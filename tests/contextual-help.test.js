@@ -25,7 +25,7 @@ test('investor help distinguishes evidence assumptions calculations revisions an
 
 test('required financial concepts receive contextual information icons',()=>{
   for(const concept of ['As-is AVM—not ARV','Project ROI','Cash-on-cash','Return-hurdle MAO','Break-even purchase ceiling','Minimum-profit purchase ceiling','contingency','exitValue'])assert.ok(workspace.includes(concept),concept);
-  assert.match(workspace,/function Metric\(\{label,value,help=metricHelp\[label\]\}\)/);
+  assert.match(workspace,/function Metric\(\{\s*label,\s*value,\s*help\s*=\s*metricHelp\[label\]\s*\}\)/);
   assert.match(workspace,/fieldHelp\[key\]/);
 });
 

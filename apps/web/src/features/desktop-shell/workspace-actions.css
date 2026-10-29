@@ -15,3 +15,4 @@
   }
 }
 .workspace-report-share{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.workspace-report-share select{max-width:210px}.workspace-report-share small{flex-basis:100%;color:#47666a}
+.workspace-actions .danger-text{background:#fff7f5;color:#963b2e;border-color:#c99389}.workspace-actions .danger-text:hover:not(:disabled){background:#fbe6e1}.workspace-artifact-notice{max-width:1420px;margin:16px auto 0;padding:11px 14px;border-left:4px solid #267b69;border-radius:5px;background:#e6f2ef;color:#17383d}

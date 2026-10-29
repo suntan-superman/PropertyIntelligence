@@ -17,3 +17,7 @@ export function recordReportReference({scenario,property,kind,status,filename=nu
 
 export function removeReportReferences(propertyRef){const next=readReportRegistry().filter(row=>row.propertyRef!==propertyRef);localStorage.setItem(KEY,JSON.stringify(next));window.dispatchEvent(new CustomEvent('pi-report-registry-changed',{detail:{propertyRef,removed:true}}));return next;}
 
+const sameReport=(row,report)=>row.id===report.id||(row.scenarioId===report.scenarioId&&row.revision===report.revision&&row.kind===report.kind&&(!report.filename||!row.filename||row.filename===report.filename));
+export function removeReportReference(report){const next=readReportRegistry().filter(row=>!sameReport(row,report));localStorage.setItem(KEY,JSON.stringify(next));window.dispatchEvent(new CustomEvent('pi-report-registry-changed',{detail:{reportId:report.id,removed:true}}));return next;}
+export function removeScenarioReportReferences(scenarioId){const next=readReportRegistry().filter(row=>row.scenarioId!==scenarioId);localStorage.setItem(KEY,JSON.stringify(next));window.dispatchEvent(new CustomEvent('pi-report-registry-changed',{detail:{scenarioId,removed:true}}));return next;}
+

@@ -74,5 +74,22 @@ export function createDurablePropertyService({repository,clock=()=>new Date(),id
   async function linkReport({user,subjectRef,scenario,kind,filename,status,supportingDocuments=[],propertyPhotos=[],finalization=null}){const actor=trustedUser(user,{write:true}),property=await repository.findBySubject(actor.organizationId,subjectRef,{includeArchived:false});if(!property)return null;const timestamp=now(),report={id:idFactory(),propertyId:property.id,propertyAddress:property.address,propertyRef:property.sourceSubjectRef,scenarioId:scenario.id,scenarioName:scenario.name,revision:scenario.revision,evidenceSnapshotId:scenario.evidenceFingerprint,kind,filename,status,supportingDocuments:clone(supportingDocuments),propertyPhotos:clone(propertyPhotos),finalization:finalization?clone({id:finalization.id,status:finalization.status,finalizedAt:finalization.finalizedAt,preparedBy:{displayName:finalization.preparedBy?.displayName,role:finalization.preparedBy?.role},organizationName:finalization.organizationName,counts:finalization.counts,acknowledgmentVersion:finalization.acknowledgment?.version}):null,generatedAt:timestamp,linkedBy:actor.uid};await repository.linkReport(actor.organizationId,property.id,report);return report;}
   async function scenarioRevisions({user,id}){const actor=trustedUser(user);return repository.listScenarioRevisions(actor.organizationId,id);}
   async function reports({user,id}){const actor=trustedUser(user);return repository.listReports(actor.organizationId,id);}
-  return {preview,promote,list,get,findBySubject,setArchived,linkScenarioRevision,linkReport,scenarioRevisions,reports};
+  async function removeReport({user,id,reportId}){
+    const actor=trustedUser(user,{write:true}),property=await repository.get(actor.organizationId,id);
+    if(!property)throw new DurablePropertyError('DURABLE_PROPERTY_NOT_FOUND',404);
+    const report=(await repository.listReports(actor.organizationId,id)).find(item=>item.id===clean(reportId));
+    if(!report)throw new DurablePropertyError('REPORT_NOT_FOUND',404);
+    await repository.removeReport(actor.organizationId,id,report.id);
+    return report;
+  }
+  async function removeScenario({user,id,scenarioId}){
+    const actor=trustedUser(user,{write:true}),property=await repository.get(actor.organizationId,id);
+    if(!property)throw new DurablePropertyError('DURABLE_PROPERTY_NOT_FOUND',404);
+    const target=clean(scenarioId),reportsForScenario=(await repository.listReports(actor.organizationId,id)).filter(item=>item.scenarioId===target);
+    if(reportsForScenario.length)throw new DurablePropertyError('SCENARIO_HAS_REPORTS',409,{reportCount:reportsForScenario.length});
+    const removed=await repository.removeScenarioRevisions(actor.organizationId,id,target);
+    if(!removed)throw new DurablePropertyError('SAVED_SCENARIO_NOT_FOUND',404);
+    return {scenarioId:target,revisionsRemoved:removed};
+  }
+  return {preview,promote,list,get,findBySubject,setArchived,linkScenarioRevision,linkReport,scenarioRevisions,reports,removeReport,removeScenario};
 }

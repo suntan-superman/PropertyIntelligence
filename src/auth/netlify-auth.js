@@ -160,6 +160,17 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
         const service=await durableProperties(),includeArchived=new URL(request.url).searchParams.get('includeArchived')==='true',properties=await service.list({user,includeArchived}),reports=(await Promise.all(properties.map(property=>service.reports({user,id:property.id})))).flat().map(durableWorkspaceReport);
         return json(200,{enabled:true,properties,reports});
       }
+      const workspaceReportRemoval=path.match(/^\/api\/durable-properties\/([A-Za-z0-9._-]{1,128})\/reports\/([A-Za-z0-9._-]{1,128})$/);
+      if(workspaceReportRemoval&&request.method==='DELETE'){
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});if(!sameOrigin(request))return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});authentication.requireCsrf(adapted);
+        const [,propertyId,reportId]=workspaceReportRemoval,durable=await durableProperties(),linked=(await durable.reports({user,id:propertyId})).find(row=>row.id===reportId);if(!linked)return json(404,{error:'REPORT_NOT_FOUND'});
+        let registered={removed:false,reportId,grantsRevoked:0};if(typeof commercial==='function')registered=await (await commercial()).removeReport({user,reportId,propertyId,removeStorage:async input=>{if(typeof reportStorage!=='function')throw Object.assign(new Error('COMMERCIAL_REPORT_STORAGE_NOT_CONFIGURED'),{status:503});return (await reportStorage()).remove(input);}});
+        await durable.removeReport({user,id:propertyId,reportId});return json(200,{removed:true,report:linked,registered});
+      }
+      const workspaceScenarioRemoval=path.match(/^\/api\/durable-properties\/([A-Za-z0-9._-]{1,128})\/scenarios\/([A-Za-z0-9._-]{1,128})$/);
+      if(workspaceScenarioRemoval&&request.method==='DELETE'){
+        if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});if(!sameOrigin(request))return json(403,{error:'AUTHENTICATION_ORIGIN_REQUIRED'});authentication.requireCsrf(adapted);const [,propertyId,scenarioId]=workspaceScenarioRemoval,result=await (await durableProperties()).removeScenario({user,id:propertyId,scenarioId});return json(200,{removed:true,...result});
+      }
       if(request.method==='GET'&&['/api/investment/bootstrap','/api/investment/scenarios','/api/investment/scenario-revisions'].includes(path)){
         if(typeof durableProperties!=='function')return json(503,{error:'DURABLE_PROPERTY_STORAGE_NOT_CONFIGURED'});
         const service=await durableProperties(),evidenceService=typeof retainedEvidence==='function'?await retainedEvidence():null,workspace=await cloudEvidence({user,durableService:service,evidenceService,includeArchived:true}),properties=workspace.durable,links=(await Promise.all(properties.map(property=>service.scenarioRevisions({user,id:property.id})))).flat(),scenarios=links.map(link=>link.scenario).filter(Boolean).sort((a,b)=>String(a.savedAt).localeCompare(String(b.savedAt))||a.revision-b.revision);

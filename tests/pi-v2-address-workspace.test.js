@@ -61,7 +61,7 @@ test('workspace surfaces durable properties analyses research and generated repo
   const workspace=await readFile('apps/web/src/features/desktop-shell/MyWorkspace.jsx','utf8'),discovery=await readFile('apps/web/src/features/discovery/Discovery.jsx','utf8');
   for(const label of ['Saved Properties','Analyses / Deals','Research','Reports'])assert.match(workspace,new RegExp(label.replace('/','\\/')));
   assert.match(workspace,/Analyze New Property/);assert.match(workspace,/WorkspaceSort/);assert.match(workspace,/role="listbox"/);assert.doesNotMatch(workspace,/<label>Sort<select/);
-  assert.match(workspace,/subjectKind==='DURABLE_SAVED'/);assert.match(workspace,/subjectKind==='PRELIMINARY_RESEARCH'/);assert.match(workspace,/readReportRegistry/);
+  assert.match(workspace,/subjectKind==='DURABLE_SAVED'/);assert.match(workspace,/\['PRELIMINARY_RESEARCH','DURABLE_SAVED'\]\.includes\(property\.subjectKind\)/);assert.match(workspace,/readReportRegistry/);
   assert.match(discovery,/Research New Property/);assert.match(discovery,/approveAndRunProviderResearch/);assert.doesNotMatch(discovery,/property-research\/(?:preview|plan|authorize|run)|Confirm and Research|Authorize and Run Research|request-bound authorization/);
   assert.match(discovery,/setRetainedFingerprint\(e\.evidenceFingerprint/);assert.match(discovery,/property\.evidenceFingerprint\?\?retainedFingerprint/);assert.doesNotMatch(discovery,/property\.evidenceFingerprint\?\?data\.evidenceFingerprint/);
 });

@@ -22,6 +22,8 @@ export function createMemoryDurablePropertyRepository(){
     async listScenarioRevisions(organizationId,id){return [...(scenarios.get(orgKey(organizationId,id))?.values()??[])].map(copy).sort((a,b)=>a.linkedAt.localeCompare(b.linkedAt));},
     async linkReport(organizationId,id,report){const key=orgKey(organizationId,id),row=properties.get(key);if(!row)return null;const bucket=reports.get(key)??new Map();bucket.set(report.id,copy(report));reports.set(key,bucket);properties.set(key,{...row,updatedAt:report.generatedAt,lastEditedBy:report.linkedBy});return copy(report);},
     async listReports(organizationId,id){return [...(reports.get(orgKey(organizationId,id))?.values()??[])].map(copy).sort((a,b)=>a.generatedAt.localeCompare(b.generatedAt));},
+    async removeReport(organizationId,id,reportId){const bucket=reports.get(orgKey(organizationId,id));return bucket?.delete(reportId)??false;},
+    async removeScenarioRevisions(organizationId,id,scenarioId){const bucket=scenarios.get(orgKey(organizationId,id));if(!bucket)return 0;let removed=0;for(const [key,row] of bucket)if(row.scenarioId===scenarioId){bucket.delete(key);removed++;}return removed;},
     _state:{properties,keys,scenarios,reports}
   };
 }
