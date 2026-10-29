@@ -2,7 +2,7 @@
 
 ## Status
 
-Implemented and locally certified on October 29, 2026. Production deployment is permitted only after the focused test, build, commit and deployment checks documented below pass.
+Implemented, locally certified and production-verified on October 29, 2026. The release is deployed to the private authenticated Netlify application.
 
 ## Product behavior
 
@@ -93,6 +93,8 @@ Focused automated coverage verifies:
 Generated local artifacts are in `data/validation/pi-v3-3-wholesale-cash-certified/`. Binary PDFs, HTML and page images remain local and ignored by Git. The compact `qa-results.json` manifest is retained for certification evidence.
 
 ## Deployment and rollback
+
+Production deploy `6ae392faf16dd3d98ed4cf55` published commit `8e031bc1984cea942479607bcf268804c59cd258`. An authenticated, read-only browser verification restored saved Tyler scenario revision 3, displayed both evaluation modes, and correctly resolved the legacy scenario to Detailed Underwriting. It recorded no application API failures, page errors, provider requests, scenario writes or report writes. The verification evidence is retained in `production-verification.json`; its screenshot remains a local ignored artifact.
 
 The production release changes only application code and static assets. It creates no new infrastructure and performs no data migration. Existing scenarios without the new metadata remain on the detailed path.
 

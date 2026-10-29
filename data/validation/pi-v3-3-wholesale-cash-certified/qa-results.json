@@ -62,5 +62,24 @@
     "full-package-page-11.png",
     "full-package-page-12.png",
     "full-package-page-13.png"
-  ]
+  ],
+  "production": {
+    "status": "PASS",
+    "verifiedAt": "2026-10-29T18:42:44.943Z",
+    "commit": "8e031bc1984cea942479607bcf268804c59cd258",
+    "netlifyDeployId": "6ae392faf16dd3d98ed4cf55",
+    "authenticatedRole": "Platform Administrator",
+    "organizationId": "property-intelligence-local",
+    "savedProperty": "603 Tyler St, Taft, CA 93268",
+    "savedScenarioRevision": 3,
+    "legacyScenarioResolvedMode": "DETAILED_UNDERWRITING",
+    "availableModes": [
+      "WHOLESALE_CASH",
+      "DETAILED_UNDERWRITING"
+    ],
+    "applicationApiFailures": 0,
+    "providerRequests": 0,
+    "scenarioWrites": 0,
+    "reportWrites": 0
+  }
 }

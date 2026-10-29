@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-29T18:42:44.943Z",
+  "origin": "https://worksidepropertyintelligence.netlify.app",
+  "deployment": {
+    "commit": "8e031bc1984cea942479607bcf268804c59cd258",
+    "netlifyDeployId": "6ae392faf16dd3d98ed4cf55"
+  },
+  "authentication": {
+    "role": "Platform Administrator",
+    "organizationId": "property-intelligence-local",
+    "emailVerified": true
+  },
+  "property": {
+    "id": "911fb89d-0d92-4eb3-b61a-670a6b816f71",
+    "address": "603 Tyler St, Taft, CA 93268"
+  },
+  "scenario": {
+    "id": "ff0642bd-92e6-4d0f-b81c-538f0245aaa1",
+    "revision": 3,
+    "legacyCompatibility": true
+  },
+  "verification": {
+    "route": "#investment?subject=RESEARCH-E2EE47A480A9&snapshot=d54042040bb503c43b7645004b87bf1aa244149b9827b06a7266f581fd77c2dc&scenario=ff0642bd-92e6-4d0f-b81c-538f0245aaa1&mode=guided",
+    "selectedValue": "DETAILED_UNDERWRITING",
+    "options": [
+      "Wholesale / Cash evaluation",
+      "Detailed underwriting"
+    ],
+    "pageErrors": [],
+    "failedApplicationResponses": [],
+    "providerRequests": 0,
+    "screenshot": "data/validation/pi-v3-3-wholesale-cash-certified/production-evaluation-mode.png"
+  },
+  "mutations": {
+    "scenarioWrites": 0,
+    "reportWrites": 0,
+    "providerRequests": 0
+  }
+}
