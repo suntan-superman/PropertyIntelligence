@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-29T23:38:51.581Z",
+  "origin": "https://worksidepropertyintelligence.netlify.app",
+  "removeReportControl": true,
+  "reportConfirmation": true,
+  "removeScenarioControl": true,
+  "scenarioDependencyGuard": true,
+  "liveMutations": 0
+}
