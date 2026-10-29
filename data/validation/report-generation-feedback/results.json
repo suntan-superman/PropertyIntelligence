@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-29T23:13:38.498Z",
+  "origin": "https://worksidepropertyintelligence.netlify.app",
+  "property": "603 Tyler St, Taft, CA 93268",
+  "scenario": {
+    "id": "ff0642bd-92e6-4d0f-b81c-538f0245aaa1",
+    "revision": 4
+  },
+  "stages": [
+    "FINALIZING",
+    "GENERATING",
+    "SUCCESS"
+  ],
+  "mockedFinalizationRequests": 1,
+  "mockedReportRequests": 1,
+  "liveFinalizationWrites": 0,
+  "liveReportWrites": 0,
+  "providerRequests": 0,
+  "downloadFilename": "603_Tyler_St_Full_Investor_Package_QA.pdf",
+  "screenshots": [
+    "finalizing.png",
+    "generating.png",
+    "success.png"
+  ]
+}
