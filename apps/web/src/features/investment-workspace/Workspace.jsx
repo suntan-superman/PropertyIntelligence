@@ -688,6 +688,14 @@ export default function Workspace({ hash = window.location.hash }) {
     [documentReadiness, setDocumentReadiness] = useState([]);
   const s = drafts.find((x) => x.id === activeId && x.propertyRef === subject),
     p = data?.properties.find((x) => x.ref === subject),
+    propertyScenarios = p
+      ? drafts.filter(
+          (x) =>
+            x.propertyRef === p.ref &&
+            x.evidenceFingerprint ===
+              (p.evidenceFingerprint ?? data.evidenceFingerprint),
+        )
+      : [],
     selectedPhotoCount = s?.photoSelections?.length ?? 0,
     photoRightsMissing =
       selectedPhotoCount > 0 &&
@@ -2186,12 +2194,8 @@ export default function Workspace({ hash = window.location.hash }) {
             <GuidedWorkspaceHeader
               property={p}
               scenario={s}
-              scenarios={drafts.filter(
-                (x) =>
-                  x.propertyRef === p.ref &&
-                  x.evidenceFingerprint ===
-                    (p.evidenceFingerprint ?? data.evidenceFingerprint),
-              )}
+              scenarios={propertyScenarios}
+              revisionCount={revisions.filter((x) => x.id === s.id).length}
               current={currentGuided}
               progress={currentProgress}
               needsReview={guidedNeedsReview}
@@ -2213,6 +2217,7 @@ export default function Workspace({ hash = window.location.hash }) {
               onDuplicate={duplicateScenario}
               onNewBlank={createBlankScenario}
               onReset={resetDraft}
+              onViewHistory={() => navigateTab("Scenarios")}
             />
           )}{" "}
           {mode === "advanced" && (
@@ -2234,26 +2239,31 @@ export default function Workspace({ hash = window.location.hash }) {
           {mode === "advanced" && (
             <div className="iw-scenario" data-testid="scenario-toolbar">
               <label>
-                Active scenario
-                <ThemedSelect
-                  aria-label="Scenario"
-                  value={activeId}
-                  onChange={(e) => chooseScenario(e.target.value)}
-                >
-                  {drafts
-                    .filter(
-                      (x) =>
-                        x.propertyRef === p.ref &&
-                        x.evidenceFingerprint ===
-                          (p.evidenceFingerprint ?? data.evidenceFingerprint),
-                    )
-                    .map((x) => (
+                {propertyScenarios.length > 1
+                  ? "Active scenario"
+                  : "Current scenario"}
+                {propertyScenarios.length > 1 ? (
+                  <ThemedSelect
+                    aria-label="Scenario"
+                    value={activeId}
+                    onChange={(e) => chooseScenario(e.target.value)}
+                  >
+                    {propertyScenarios.map((x) => (
                       <option key={x.id} value={x.id}>
                         {x.name} · r{x.revision}
                         {x.dirty ? " · draft" : ""}
                       </option>
                     ))}
-                </ThemedSelect>
+                  </ThemedSelect>
+                ) : (
+                  <div
+                    className="iw-current-scenario"
+                    aria-label="Current scenario"
+                  >
+                    {s.name} · r{s.revision}
+                    {s.dirty ? " · draft" : ""}
+                  </div>
+                )}
               </label>
               <label>
                 Scenario name
@@ -3705,6 +3715,7 @@ function GuidedWorkspaceHeader({
   property,
   scenario,
   scenarios,
+  revisionCount,
   current,
   progress,
   needsReview,
@@ -3720,6 +3731,7 @@ function GuidedWorkspaceHeader({
   onDuplicate,
   onNewBlank,
   onReset,
+  onViewHistory,
 }) {
   return (
     <div className="iw-guided-sticky">
@@ -3782,19 +3794,31 @@ function GuidedWorkspaceHeader({
             data-testid="scenario-toolbar"
           >
             <label>
-              <span>Active scenario</span>
-              <ThemedSelect
-                aria-label="Scenario"
-                value={scenario.id}
-                onChange={(event) => onChooseScenario(event.target.value)}
-              >
-                {scenarios.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name} · r{item.revision}
-                    {item.dirty ? " · draft" : ""}
-                  </option>
-                ))}
-              </ThemedSelect>
+              <span>
+                {scenarios.length > 1 ? "Active scenario" : "Current scenario"}
+              </span>
+              {scenarios.length > 1 ? (
+                <ThemedSelect
+                  aria-label="Scenario"
+                  value={scenario.id}
+                  onChange={(event) => onChooseScenario(event.target.value)}
+                >
+                  {scenarios.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.name} · r{item.revision}
+                      {item.dirty ? " · draft" : ""}
+                    </option>
+                  ))}
+                </ThemedSelect>
+              ) : (
+                <div
+                  className="iw-current-scenario"
+                  aria-label="Current scenario"
+                >
+                  {scenario.name} · r{scenario.revision}
+                  {scenario.dirty ? " · draft" : ""}
+                </div>
+              )}
             </label>
             <label>
               <span>Scenario name</span>
@@ -3812,9 +3836,11 @@ function GuidedWorkspaceHeader({
             />
             <ScenarioActionsMenu
               dismissKey={`${current.id}:${scenario.id}`}
+              revisionCount={revisionCount}
               onDuplicate={onDuplicate}
               onNewBlank={onNewBlank}
               onReset={onReset}
+              onViewHistory={onViewHistory}
             />
             {property.subjectKind === "DURABLE_SAVED" ? (
               <button
@@ -3849,7 +3875,14 @@ function GuidedWorkspaceHeader({
     </div>
   );
 }
-function ScenarioActionsMenu({ dismissKey, onDuplicate, onNewBlank, onReset }) {
+function ScenarioActionsMenu({
+  dismissKey,
+  revisionCount,
+  onDuplicate,
+  onNewBlank,
+  onReset,
+  onViewHistory,
+}) {
   const menu = useRef(null),
     summary = useRef(null),
     [open, setOpen] = useState(false);
@@ -3893,6 +3926,15 @@ function ScenarioActionsMenu({ dismissKey, onDuplicate, onNewBlank, onReset }) {
         <span aria-hidden="true">•••</span>
       </summary>
       <div>
+        {revisionCount > 1 && (
+          <button
+            className="secondary"
+            data-tooltip="Compare this scenario's immutable saved revisions."
+            onClick={() => run(onViewHistory)}
+          >
+            View Revision History ({revisionCount})
+          </button>
+        )}
         <button
           className="secondary"
           data-tooltip="Copy the current assumptions into a separate unsaved scenario."
