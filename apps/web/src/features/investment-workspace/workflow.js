@@ -129,9 +129,13 @@ export function missingInputSummary(validation={}){
   return [...preferred.filter(key=>validation[key]),...Object.keys(validation).filter(key=>!preferred.includes(key))].map(key=>validation[key]);
 }
 
+export function scenarioCalculationKey(scenario){
+  return JSON.stringify([scenario?.id,scenario?.inputs,scenario?.targetType,scenario?.risk,scenario?.evaluationMode,scenario?.financingMode,scenario?.wholesaleFeeTreatment,scenario?.wholesaleFeeAmount,scenario?.expenseTreatments]);
+}
+
 export function scenarioAnalysis(scenario,previewById={}){
   if(!scenario.dirty)return {analysis:scenario.analysis??null,label:`Saved revision r${scenario.revision}`,reason:scenario.validation?.message??null};
   const preview=previewById[scenario.id];
-  if(preview?.key===JSON.stringify([scenario.id,scenario.inputs,scenario.targetType,scenario.risk]))return {analysis:preview.analysis,label:'Unsaved draft — calculated preview',reason:null};
+  if(preview?.key===scenarioCalculationKey(scenario))return {analysis:preview.analysis,label:'Unsaved draft — calculated preview',reason:null};
   return {analysis:null,label:'Unsaved draft — incomplete',reason:preview?.reason??'Complete the required underwriting inputs to calculate this preview.'};
 }

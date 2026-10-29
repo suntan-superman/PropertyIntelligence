@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "milestone": "PI V3.3 local wholesale/cash certification",
+  "generatedAt": "2026-10-29T18:00:00.000Z",
+  "address": "603 Tyler St, Taft, CA 93268",
+  "scenario": {
+    "id": "33000000-0000-4000-8000-000000000033",
+    "revision": 1,
+    "evaluationMode": "WHOLESALE_CASH",
+    "financingMode": "CASH",
+    "feeTreatment": "INCLUDED"
+  },
+  "financials": {
+    "purchasePrice": 111000,
+    "rehabilitation": 20000,
+    "resaleAssumption": 176000,
+    "potentialGrossInvestmentSpread": 45000,
+    "modeledResult": 45000,
+    "roi": 0.3435114503816794,
+    "monteCarloIterations": 1000
+  },
+  "outputs": [
+    {
+      "kind": "brief",
+      "pdf": "603_Tyler_St_Taft_CA_93268_Opportunity_Brief_V3_3_LOCAL_QA.pdf",
+      "html": "603_Tyler_St_Taft_CA_93268_Opportunity_Brief_V3_3_LOCAL_QA.html",
+      "totalPages": 1,
+      "sha256": "c7e2e3be89badd1f2ccd29ebb93cf8cee745b91a7e34272c39678aa322527781"
+    },
+    {
+      "kind": "full",
+      "pdf": "603_Tyler_St_Taft_CA_93268_Full_Investor_Package_V3_3_LOCAL_QA.pdf",
+      "html": "603_Tyler_St_Taft_CA_93268_Full_Investor_Package_V3_3_LOCAL_QA.html",
+      "totalPages": 13,
+      "sha256": "551fbb198fcca1b1d8b69748528c79008c7299dc07d01786ac655541ef770d18"
+    }
+  ],
+  "checks": [
+    "Isolated local fixture; no live Firebase writes",
+    "No provider requests",
+    "No uploads",
+    "No deployment",
+    "Potential gross spread equals resale minus purchase minus rehabilitation",
+    "Fee included in purchase price and not double counted",
+    "Cash financing fields treated as not applicable",
+    "Opportunity Brief generated as one page",
+    "Full Investor Package generated and every page captured for visual inspection",
+    "Financial and Monte Carlo engines unchanged"
+  ],
+  "screenshots": [
+    "opportunity-brief-page-01.png",
+    "full-package-page-01.png",
+    "full-package-page-02.png",
+    "full-package-page-03.png",
+    "full-package-page-04.png",
+    "full-package-page-05.png",
+    "full-package-page-06.png",
+    "full-package-page-07.png",
+    "full-package-page-08.png",
+    "full-package-page-09.png",
+    "full-package-page-10.png",
+    "full-package-page-11.png",
+    "full-package-page-12.png",
+    "full-package-page-13.png"
+  ]
+}

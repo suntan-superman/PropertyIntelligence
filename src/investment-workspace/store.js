@@ -1,6 +1,6 @@
 import {mkdir,readFile,readdir,unlink,writeFile} from 'node:fs/promises';
 import path from 'node:path';
-import {FIELDS, analyze} from './analysis.js';
+import {FIELDS, analyze, EVALUATION_MODES, FEE_TREATMENTS, FINANCING_MODES} from './analysis.js';
 import {validateAnalystEvidence} from './analyst-evidence.js';
 
 const idPattern=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
@@ -53,6 +53,15 @@ export function validateDraft(s,evidence){
   if(!text(s.notes??'',1500)||!text(s.risk?.seed??'',100)||!text(s.risk?.rationale??'',300)||JSON.stringify(s.risk??{}).length>3000)throw new Error('Keep notes and uncertainty settings within the documented limits.');
   for(const [ref,v] of Object.entries(s.compReviews??{}))if(!property.sales.some(c=>c.evidenceRef===ref)||typeof v.include!=='boolean'||!text(v.notes??'',500))throw new Error('Comparable reviews must belong to this property.');
   if(s.demonstration!==undefined&&typeof s.demonstration!=='boolean')throw new Error('Invalid demonstration marker.');
+  const evaluationMode=s.evaluationMode;
+  if(evaluationMode!==undefined&&!Object.values(EVALUATION_MODES).includes(evaluationMode))throw new Error('Choose a supported evaluation mode.');
+  const financingMode=s.financingMode;
+  if(financingMode!==undefined&&!Object.values(FINANCING_MODES).includes(financingMode))throw new Error('Choose cash or acquisition financing.');
+  const wholesaleFeeTreatment=s.wholesaleFeeTreatment;
+  if(wholesaleFeeTreatment!==undefined&&!Object.values(FEE_TREATMENTS).includes(wholesaleFeeTreatment))throw new Error('Choose a supported wholesale fee treatment.');
+  if(s.wholesaleFeeAmount!==undefined&&(String(s.wholesaleFeeAmount).length>30||!['string','number'].includes(typeof s.wholesaleFeeAmount)))throw new Error('Wholesale fee amount is invalid.');
+  const allowedExpenseTreatments=new Set(['ENTERED','NOT_INCLUDED','NOT_APPLICABLE']),expenseTreatments=s.expenseTreatments??{};
+  if(!expenseTreatments||typeof expenseTreatments!=='object'||Array.isArray(expenseTreatments)||Object.keys(expenseTreatments).length>20||Object.entries(expenseTreatments).some(([key,value])=>!/^[A-Za-z][A-Za-z0-9]{0,39}$/.test(key)||!allowedExpenseTreatments.has(value)))throw new Error('Optional expense treatment is invalid.');
   const sellerValuationBasis=s.sellerValuationBasis??'PROVIDER_AVM';
   if(!['PROVIDER_AVM','PROPOSED_SALE_PRICE'].includes(sellerValuationBasis))throw new Error('Choose a supported seller equity valuation basis.');
   const analystEvidence=validateAnalystEvidence(s.analystEvidence??[]);
@@ -60,6 +69,7 @@ export function validateDraft(s,evidence){
   const photoSelections=validatePhotoSelections(s.photoSelections??[]),photoRightsAcknowledgment=validatePhotoAcknowledgment(s.photoRightsAcknowledgment??null,photoSelections);
   if(photoRightsAcknowledgment&&photoRightsAcknowledgment.scenarioId!==s.id)throw new Error('Property photo redistribution acknowledgment belongs to another scenario.');
   return {id:s.id,propertyRef:s.propertyRef,name:s.name.trim(),evidenceFingerprint:fingerprint,inputs:{...s.inputs},targetType:s.targetType,
+    ...(evaluationMode===undefined?{}:{evaluationMode}),...(financingMode===undefined?{}:{financingMode}),...(wholesaleFeeTreatment===undefined?{}:{wholesaleFeeTreatment,wholesaleFeeAmount:s.wholesaleFeeAmount??''}),...(Object.keys(expenseTreatments).length?{expenseTreatments:{...expenseTreatments}}:{}),
     notes:s.notes??'',risk:structuredClone(s.risk??{}),compReviews:structuredClone(s.compReviews??{}),analystEvidence,evidenceAttachments,photoSelections,photoRightsAcknowledgment,sellerValuationBasis,demonstration:s.demonstration===true,riskRequested:s.riskRequested===true};
 }
 export function createStore(directory,evidenceSource){

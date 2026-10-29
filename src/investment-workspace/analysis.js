@@ -13,6 +13,11 @@ export const FIELDS = Object.freeze({
   transferCost:'Transfer costs ($)', otherUpfront:'Other upfront costs ($)', otherAtExit:'Other exit costs ($)', targetRate:'Target return (%)', targetProfit:'Optional minimum profit ($)'
 });
 export const ILLUSTRATIVE_EXPENSE_PRESET=Object.freeze({contingency:'10',acquisitionRate:'1.5',sellingCommissionRate:'5',sellerClosingRate:'1',propertyTaxes:'8',insurance:'3',utilities:'5'});
+export const EVALUATION_MODES=Object.freeze({WHOLESALE_CASH:'WHOLESALE_CASH',DETAILED_UNDERWRITING:'DETAILED_UNDERWRITING'});
+export const FEE_TREATMENTS=Object.freeze({INCLUDED:'INCLUDED',ADDITIONAL:'ADDITIONAL',UNKNOWN:'UNKNOWN'});
+export const FINANCING_MODES=Object.freeze({CASH:'CASH',FINANCED:'FINANCED'});
+export function evaluationMode(s){return s?.evaluationMode===EVALUATION_MODES.WHOLESALE_CASH?EVALUATION_MODES.WHOLESALE_CASH:EVALUATION_MODES.DETAILED_UNDERWRITING;}
+export function scenarioCalculationKey(s){return JSON.stringify([s?.id,s?.inputs,s?.targetType,s?.risk,s?.evaluationMode,s?.financingMode,s?.wholesaleFeeTreatment,s?.wholesaleFeeAmount,s?.expenseTreatments]);}
 export function blankInputs(){return {...Object.fromEntries(Object.keys(FIELDS).map(k=>[k,'0'])),purchasePrice:'',exitValue:'',rehabCost:'',renovationDays:'90',marketingDays:'30',targetRate:'15',targetProfit:''};}
 export function applyIllustrativeExpensePreset(inputs){return {...inputs,...ILLUSTRATIVE_EXPENSE_PRESET};}
 export function economicInput(s){
@@ -21,6 +26,9 @@ export function economicInput(s){
   const numbers=Object.fromEntries(Object.keys(FIELDS).filter(k=>k!=='targetProfit').map(k=>[k,n(k)]));
   if(!numbers.purchasePrice)errors.purchasePrice='Enter an acquisition price greater than zero.';
   if(!numbers.exitValue)errors.exitValue='Enter an explicit resale assumption greater than zero; the AVM is not ARV.';
+  for(const [key,treatment] of Object.entries(s.expenseTreatments??{}))if(Object.hasOwn(numbers,key)&&['NOT_INCLUDED','NOT_APPLICABLE'].includes(treatment))numbers[key]=0;
+  const cash=s.financingMode===FINANCING_MODES.CASH;
+  if(cash){numbers.loanAmount=0;numbers.annualRate=0;numbers.points=0;numbers.financingFees=0;}
   if(numbers.loanAmount>numbers.purchasePrice*.95)errors.loanAmount='Acquisition debt cannot exceed 95% of the acquisition price.';
   if(!numbers.loanAmount&&['annualRate','points','financingFees'].some(k=>numbers[k]))errors.loanAmount='Cash scenarios must have zero interest, points and financing fees.';
   for(const k of ['contingency','acquisitionRate','annualRate','points','sellingCommissionRate','sellerClosingRate','targetRate'])if(numbers[k]>(k==='targetRate'?99:100))errors[k]='Enter a percentage within the supported 0–100 range (target maximum 99%).';
@@ -29,11 +37,13 @@ export function economicInput(s){
   if(i.targetProfit!==''&&i.targetProfit!=null)n('targetProfit');
   const type=s.targetType??'PROFIT_MARGIN_ON_SALE';
   if(!['PROFIT_MARGIN_ON_SALE','RETURN_ON_TOTAL_PROJECT_COST','CASH_ON_CASH'].includes(type))errors.targetRate='Choose a supported return target.';
+  const additionalFee=s.wholesaleFeeTreatment===FEE_TREATMENTS.ADDITIONAL?Number(s.wholesaleFeeAmount):0;
+  if(s.wholesaleFeeTreatment===FEE_TREATMENTS.ADDITIONAL&&(!Number.isFinite(additionalFee)||additionalFee<0||additionalFee>1e9))errors.wholesaleFeeAmount='Enter a nonnegative additional wholesale or assignment fee.';
   if(Object.keys(errors).length)throw Object.assign(new Error('Complete or correct the highlighted analyst assumptions.'),{errors});
   const economics={purchasePrice:numbers.purchasePrice,exitValue:numbers.exitValue,rehabCost:numbers.rehabCost,
     rehabContingencyRate:numbers.contingency/100,acquisitionFixed:numbers.acquisitionFixed,acquisitionRate:numbers.acquisitionRate/100,
     sellingCommissionRate:numbers.sellingCommissionRate/100,sellerClosingFixed:numbers.sellerClosingFixed,sellerClosingRate:numbers.sellerClosingRate/100,
-    transferCost:numbers.transferCost,otherUpfront:numbers.otherUpfront,otherAtExit:numbers.otherAtExit,
+    transferCost:numbers.transferCost,otherUpfront:numbers.otherUpfront+additionalFee,otherAtExit:numbers.otherAtExit,
     renovationDays:numbers.renovationDays,marketingDays:numbers.marketingDays,
     holdingDaily:{propertyTaxes:numbers.propertyTaxes,insurance:numbers.insurance,utilities:numbers.utilities,maintenance:numbers.maintenance,other:numbers.otherHolding},
     financing:{mode:numbers.loanAmount?'ACQUISITION_INTEREST_ONLY':'CASH',ltv:numbers.loanAmount/numbers.purchasePrice,annualRate:numbers.annualRate/100,points:numbers.points/100,fees:numbers.financingFees}};
