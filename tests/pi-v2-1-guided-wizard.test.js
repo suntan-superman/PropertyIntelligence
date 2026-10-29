@@ -46,11 +46,12 @@ test('identify-step route preserves the exact subject snapshot and scenario cont
 
 test('property and workspace navigation retain subject context when returning to Identify Property',async()=>{
   const shell=await readFile('apps/web/src/features/desktop-shell/Shell.jsx','utf8'),detail=await readFile('apps/web/src/features/property-detail/PropertyDetail.jsx','utf8'),workspace=await readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8');
+  const compactWorkspace=workspace.replace(/\s+/g,'');
   assert.match(shell,/guidedHref='#analyze-property'/);
   assert.match(shell,/href=\{guidedHref\}/);
   assert.match(detail,/ProductNav guidedHref=\{identifyRoute\(p\.ref,p\.evidenceFingerprint\?\?data\.evidenceFingerprint\)\}/);
-  assert.match(workspace,/const identifyHref=p\?identifyRoute\(p\.ref,p\.evidenceFingerprint\?\?data\.evidenceFingerprint,activeId\):'#analyze-property'/);
-  assert.match(workspace,/href=\{identifyHref\}>Identify property/);
+  assert.match(compactWorkspace,/constidentifyHref=p\?identifyRoute\(p\.ref,p\.evidenceFingerprint\?\?data\.evidenceFingerprint,activeId,?\):["']#analyze-property["']/);
+  assert.match(compactWorkspace,/href=\{identifyHref\}>Identifyproperty/);
   const discovery=await readFile('apps/web/src/features/discovery/Discovery.jsx','utf8');
   assert.match(discovery,/const bound=identifyRoute\(property\.ref,property\.evidenceFingerprint\?\?retainedFingerprint,addressResult\.resumeScenario\)/);
   assert.match(discovery,/history\.replaceState\(null,'',bound\)/);
@@ -64,12 +65,13 @@ test('Crestview abbreviation variants and Haven resolve without a provider reque
 
 test('guided UI reuses the original scenario, evidence, risk and report implementation',async()=>{
   const source=await readFile('apps/web/src/features/investment-workspace/Workspace.jsx','utf8');
+  const compact=source.replace(/\s+/g,'');
   for(const required of ['SellerFinancialPosition','ScenarioComparison','synchronizeRiskMostLikely','runRisk','saveAndPreview','Generate PDF','Open Advanced Workspace','Save &amp; Exit','GuidedWorkspaceHeader','ScenarioActionsMenu','Scenario actions','Change Property','identifyRoute'])assert.match(source,new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
-  assert.match(source,/document\.addEventListener\('pointerdown',outside\)/);
-  assert.match(source,/event\.key==='Escape'/);
+  assert.match(compact,/document\.addEventListener\(["']pointerdown["'],outside\)/);
+  assert.match(compact,/event\.key===["']Escape["']/);
   assert.match(source,/aria-expanded=\{open\}/);
-  assert.match(source,/if\(mode==='guided'\)window\.scrollTo\(\{top:0,left:0,behavior:'auto'\}\)/);
-  assert.match(source,/function returnToIdentify\(\)\{window\.scrollTo\(\{top:0,left:0,behavior:'auto'\}\)/);
+  assert.match(compact,/if\(mode===["']guided["']\)window\.scrollTo\(\{top:0,left:0,behavior:["']auto["'],?\}\)/);
+  assert.match(compact,/functionreturnToIdentify\(\)\{window\.scrollTo\(\{top:0,left:0,behavior:["']auto["'],?\}\)/);
   assert.doesNotMatch(source,/iw-guided-summary/);
   assert.doesNotMatch(source,/guidedScenarioStore|guidedEvidenceStore|guidedFinancialEngine/);
 });

@@ -354,7 +354,7 @@ const scenarioEvaluationMode = (scenario) =>
   scenario?.evaluationMode === "WHOLESALE_CASH"
     ? "WHOLESALE_CASH"
     : "DETAILED_UNDERWRITING";
-function EvaluationModeSelect({ scenario, onChange }) {
+function EvaluationModeSelect({ scenario, onChange, compact = false }) {
   return (
     <label className="iw-evaluation-mode">
       <span>Evaluation mode</span>
@@ -366,10 +366,12 @@ function EvaluationModeSelect({ scenario, onChange }) {
         <option value="WHOLESALE_CASH">Wholesale / Cash evaluation</option>
         <option value="DETAILED_UNDERWRITING">Detailed underwriting</option>
       </ThemedSelect>
-      <small>
-        Changes the workspace and report emphasis; it does not erase
-        assumptions.
-      </small>
+      {!compact && (
+        <small>
+          Changes the workspace and report emphasis; it does not erase
+          assumptions.
+        </small>
+      )}
     </label>
   );
 }
@@ -2620,289 +2622,288 @@ export default function Workspace({ hash = window.location.hash }) {
                 </button>
               </section>
             )}
-            {tab === "Underwriting" &&
-              evaluationMode === "WHOLESALE_CASH" && (
-                <WholesaleUnderwriting
-                  scenario={s}
-                  property={p}
-                  result={result}
-                  validation={validation}
-                  field={field}
-                  onUpdate={update}
-                  onUpdateInputs={updateInputs}
-                  onUseAvm={() =>
-                    updateInputs(
-                      { ...s.inputs, exitValue: String(p.avm.price) },
-                      {
-                        notes:
-                          `${s.notes}\nExplicitly used retained as-is AVM as starting resale assumption; NOT verified ARV.`.trim(),
-                      },
-                    )
-                  }
-                  waterfall={waterfall}
-                />
-              )}
+            {tab === "Underwriting" && evaluationMode === "WHOLESALE_CASH" && (
+              <WholesaleUnderwriting
+                scenario={s}
+                property={p}
+                result={result}
+                validation={validation}
+                field={field}
+                onUpdate={update}
+                onUpdateInputs={updateInputs}
+                onUseAvm={() =>
+                  updateInputs(
+                    { ...s.inputs, exitValue: String(p.avm.price) },
+                    {
+                      notes:
+                        `${s.notes}\nExplicitly used retained as-is AVM as starting resale assumption; NOT verified ARV.`.trim(),
+                    },
+                  )
+                }
+                waterfall={waterfall}
+              />
+            )}
             {tab === "Underwriting" &&
               evaluationMode === "DETAILED_UNDERWRITING" && (
-              <>
-                <div className="iw-banner">
-                  Analyst assumptions are separate from observed evidence and
-                  calculated outputs. Purchase, rehab and resale begin blank;
-                  disclosed time defaults are 90 renovation days and 30
-                  marketing days.
-                </div>
-                <section
-                  className="iw-observed-context"
-                  aria-label="Observed evidence context"
-                >
-                  <h3>Observed / provider-reported evidence</h3>
-                  <div>
-                    <span>As-is AVM—not ARV</span>
-                    <b>{money(p.avm.price)}</b>
-                    <small>
-                      {p.avm.low == null && p.avm.high == null
-                        ? "Not checked / not available"
-                        : `${money(p.avm.low)}–${money(p.avm.high)} provider range`}
-                    </small>
+                <>
+                  <div className="iw-banner">
+                    Analyst assumptions are separate from observed evidence and
+                    calculated outputs. Purchase, rehab and resale begin blank;
+                    disclosed time defaults are 90 renovation days and 30
+                    marketing days.
                   </div>
-                  <div>
-                    <span>Recorded-sale examples</span>
-                    <b>{p.sales.length}</b>
-                    <small>
-                      {
-                        Object.values(s.compReviews ?? {}).filter(
-                          (x) => x.include,
-                        ).length
-                      }{" "}
-                      selected by analyst
-                    </small>
-                  </div>
-                </section>
-                <div className="iw-row">
-                  <button
-                    className="secondary"
-                    disabled={p.avm.price == null}
-                    onClick={() => {
-                      updateInputs(
-                        { ...s.inputs, exitValue: String(p.avm.price) },
-                        {
-                          notes:
-                            `${s.notes}\nExplicitly used retained as-is AVM as starting resale assumption; NOT verified ARV.`.trim(),
-                        },
-                      );
-                    }}
+                  <section
+                    className="iw-observed-context"
+                    aria-label="Observed evidence context"
                   >
-                    Use AVM as starting assumption
-                  </button>
-                  <label className="iw-check">
-                    <input
-                      type="checkbox"
-                      checked={s.demonstration}
-                      onChange={(e) =>
-                        update({ demonstration: e.target.checked })
-                      }
-                    />
-                    Artificial demonstration assumptions—label reports
-                    explicitly
-                  </label>
-                </div>
-                <div className="iw-editor">
-                  <div>
-                    <h3>Basic underwriting assumptions</h3>
-                    <fieldset className="iw-basic">
-                      <legend>Practical deal inputs</legend>
-                      <div className="iw-inputs">
-                        {Object.entries(primaryFields).map(([key, label]) =>
-                          field(key, label),
-                        )}
-                        <label>
-                          <span>Financing choice</span>
-                          <ThemedSelect
-                            aria-label="Financing choice"
-                            value={financing}
-                            onChange={(e) => setFinancing(e.target.value)}
-                          >
-                            <option value="CASH">Cash</option>
-                            <option value="FINANCED">
-                              Acquisition financing
-                            </option>
-                          </ThemedSelect>
-                          <small>
-                            Acquisition-only; no rehab draws or amortization
-                          </small>
-                        </label>
-                        {financing === "FINANCED" && (
-                          <>
-                            {field("loanAmount", "Financing amount ($)")}
-                            {field("annualRate", "Annual interest rate (%)")}
-                          </>
-                        )}
-                        <label>
-                          <span>Target return definition</span>
-                          <ThemedSelect
-                            aria-label="Target definition"
-                            value={s.targetType}
-                            onChange={(e) =>
-                              update(
-                                { targetType: e.target.value },
-                                { financial: true },
-                              )
-                            }
-                          >
-                            <option value="PROFIT_MARGIN_ON_SALE">
-                              Profit / gross sale
-                            </option>
-                            <option value="RETURN_ON_TOTAL_PROJECT_COST">
-                              Profit / total project cost
-                            </option>
-                            <option value="CASH_ON_CASH">
-                              Profit / peak equity required
-                            </option>
-                          </ThemedSelect>
-                          <small>Not annualized</small>
-                        </label>
-                        {field("targetRate", "Target return (%)")}
-                      </div>
-                    </fieldset>
-                    <section className="iw-preset">
-                      <div>
-                        <h3>Optional illustrative expense preset</h3>
-                        <p>
-                          Hypothetical starting assumptions—not verified local
-                          market rates. Applying this preset changes only this
-                          draft and never overwrites saved revisions
-                          automatically.
-                        </p>
-                      </div>
-                      <button className="secondary" onClick={applyPreset}>
-                        Apply illustrative preset
-                      </button>
-                      <dl>
-                        {presetLabels.map(([label, value]) => (
-                          <React.Fragment key={label}>
-                            <dt>{label}</dt>
-                            <dd>{value}</dd>
-                          </React.Fragment>
-                        ))}
-                      </dl>
-                    </section>
-                    <details className="iw-advanced">
-                      <summary>
-                        Advanced settings · all certified inputs
-                      </summary>
-                      {Object.entries(groups).map(([title, fields]) => {
-                        const advanced = Object.fromEntries(
-                          Object.entries(fields).filter(
-                            ([key]) =>
-                              !primaryKeys.has(key) &&
-                              ![
-                                "targetRate",
-                                "loanAmount",
-                                "annualRate",
-                              ].includes(key),
-                          ),
+                    <h3>Observed / provider-reported evidence</h3>
+                    <div>
+                      <span>As-is AVM—not ARV</span>
+                      <b>{money(p.avm.price)}</b>
+                      <small>
+                        {p.avm.low == null && p.avm.high == null
+                          ? "Not checked / not available"
+                          : `${money(p.avm.low)}–${money(p.avm.high)} provider range`}
+                      </small>
+                    </div>
+                    <div>
+                      <span>Recorded-sale examples</span>
+                      <b>{p.sales.length}</b>
+                      <small>
+                        {
+                          Object.values(s.compReviews ?? {}).filter(
+                            (x) => x.include,
+                          ).length
+                        }{" "}
+                        selected by analyst
+                      </small>
+                    </div>
+                  </section>
+                  <div className="iw-row">
+                    <button
+                      className="secondary"
+                      disabled={p.avm.price == null}
+                      onClick={() => {
+                        updateInputs(
+                          { ...s.inputs, exitValue: String(p.avm.price) },
+                          {
+                            notes:
+                              `${s.notes}\nExplicitly used retained as-is AVM as starting resale assumption; NOT verified ARV.`.trim(),
+                          },
                         );
-                        if (!Object.keys(advanced).length) return null;
-                        return (
-                          <fieldset key={title}>
-                            <legend>{title}</legend>
-                            <div className="iw-inputs">
-                              {Object.entries(advanced).map(([key, label]) =>
-                                field(key, label),
-                              )}
-                            </div>
-                          </fieldset>
-                        );
-                      })}
-                    </details>
-                    <label>
-                      Analyst notes
-                      <textarea
-                        aria-label="Analyst notes"
-                        value={s.notes}
-                        maxLength="1500"
-                        onChange={(e) => update({ notes: e.target.value })}
+                      }}
+                    >
+                      Use AVM as starting assumption
+                    </button>
+                    <label className="iw-check">
+                      <input
+                        type="checkbox"
+                        checked={s.demonstration}
+                        onChange={(e) =>
+                          update({ demonstration: e.target.checked })
+                        }
                       />
+                      Artificial demonstration assumptions—label reports
+                      explicitly
                     </label>
-                    <p className="iw-muted">
-                      A blank seller asking price remains unknown—not $0. MAO
-                      price trials keep loan-to-value constant. Minimum-profit
-                      price ceiling is shown separately from the return-hurdle
-                      MAO.
-                    </p>
                   </div>
-                  <aside>
-                    <h3>Calculated outputs</h3>
-                    {result ? (
-                      <>
-                        <div className="iw-metrics">
-                          <Metric
-                            label="Modeled profit"
-                            value={money(result.deterministic.modeledProfit)}
-                          />
-                          <Metric
-                            label="Project ROI"
-                            value={pct(result.deterministic.roi)}
-                          />
-                          <Metric
-                            label="Cash-on-cash"
-                            value={pct(result.deterministic.cashOnCash)}
-                          />
-                          <Metric
-                            label="Return-hurdle MAO"
-                            value={money(
-                              result.mao.deterministic.purchasePrice,
-                            )}
-                          />
-                          <Metric
-                            label="Break-even purchase ceiling"
-                            value={money(result.mao.breakEven.purchasePrice)}
-                          />
-                          <Metric
-                            label="Peak equity required"
-                            value={money(result.deterministic.cashRequired)}
-                          />
-                          {result.profitMao && (
-                            <Metric
-                              label="Minimum-profit purchase ceiling"
-                              value={money(result.profitMao.purchasePrice)}
-                            />
+                  <div className="iw-editor">
+                    <div>
+                      <h3>Basic underwriting assumptions</h3>
+                      <fieldset className="iw-basic">
+                        <legend>Practical deal inputs</legend>
+                        <div className="iw-inputs">
+                          {Object.entries(primaryFields).map(([key, label]) =>
+                            field(key, label),
                           )}
+                          <label>
+                            <span>Financing choice</span>
+                            <ThemedSelect
+                              aria-label="Financing choice"
+                              value={financing}
+                              onChange={(e) => setFinancing(e.target.value)}
+                            >
+                              <option value="CASH">Cash</option>
+                              <option value="FINANCED">
+                                Acquisition financing
+                              </option>
+                            </ThemedSelect>
+                            <small>
+                              Acquisition-only; no rehab draws or amortization
+                            </small>
+                          </label>
+                          {financing === "FINANCED" && (
+                            <>
+                              {field("loanAmount", "Financing amount ($)")}
+                              {field("annualRate", "Annual interest rate (%)")}
+                            </>
+                          )}
+                          <label>
+                            <span>Target return definition</span>
+                            <ThemedSelect
+                              aria-label="Target definition"
+                              value={s.targetType}
+                              onChange={(e) =>
+                                update(
+                                  { targetType: e.target.value },
+                                  { financial: true },
+                                )
+                              }
+                            >
+                              <option value="PROFIT_MARGIN_ON_SALE">
+                                Profit / gross sale
+                              </option>
+                              <option value="RETURN_ON_TOTAL_PROJECT_COST">
+                                Profit / total project cost
+                              </option>
+                              <option value="CASH_ON_CASH">
+                                Profit / peak equity required
+                              </option>
+                            </ThemedSelect>
+                            <small>Not annualized</small>
+                          </label>
+                          {field("targetRate", "Target return (%)")}
                         </div>
-                        <Source>
-                          Existing engine {result.economicsVersion} · MAO{" "}
-                          {result.mao.deterministic.status}
-                        </Source>
-                        <h3>Complete cost waterfall</h3>
-                        {waterfall}
-                        <h3>Immediate deterministic scenarios</h3>
-                        <div className="iw-stress-grid">
-                          {result.deterministicScenarios.map((x) => (
-                            <article key={x.id}>
-                              <span>{x.label}</span>
-                              <b>{money(x.modeledProfit)}</b>
-                              <small>
-                                {money(x.profitChange)} vs base ·{" "}
-                                {money(x.totalProjectCost)} total cost
-                              </small>
-                            </article>
+                      </fieldset>
+                      <section className="iw-preset">
+                        <div>
+                          <h3>Optional illustrative expense preset</h3>
+                          <p>
+                            Hypothetical starting assumptions—not verified local
+                            market rates. Applying this preset changes only this
+                            draft and never overwrites saved revisions
+                            automatically.
+                          </p>
+                        </div>
+                        <button className="secondary" onClick={applyPreset}>
+                          Apply illustrative preset
+                        </button>
+                        <dl>
+                          {presetLabels.map(([label, value]) => (
+                            <React.Fragment key={label}>
+                              <dt>{label}</dt>
+                              <dd>{value}</dd>
+                            </React.Fragment>
                           ))}
-                        </div>
-                        <p className="iw-muted">
-                          One input changes per case. These are deterministic
-                          stresses, not probabilities.
-                        </p>
-                      </>
-                    ) : (
-                      <p className="iw-empty">
-                        Complete purchase, rehab, resale and valid carrying
-                        assumptions. {Object.values(validation).join(" ")}
+                        </dl>
+                      </section>
+                      <details className="iw-advanced">
+                        <summary>
+                          Advanced settings · all certified inputs
+                        </summary>
+                        {Object.entries(groups).map(([title, fields]) => {
+                          const advanced = Object.fromEntries(
+                            Object.entries(fields).filter(
+                              ([key]) =>
+                                !primaryKeys.has(key) &&
+                                ![
+                                  "targetRate",
+                                  "loanAmount",
+                                  "annualRate",
+                                ].includes(key),
+                            ),
+                          );
+                          if (!Object.keys(advanced).length) return null;
+                          return (
+                            <fieldset key={title}>
+                              <legend>{title}</legend>
+                              <div className="iw-inputs">
+                                {Object.entries(advanced).map(([key, label]) =>
+                                  field(key, label),
+                                )}
+                              </div>
+                            </fieldset>
+                          );
+                        })}
+                      </details>
+                      <label>
+                        Analyst notes
+                        <textarea
+                          aria-label="Analyst notes"
+                          value={s.notes}
+                          maxLength="1500"
+                          onChange={(e) => update({ notes: e.target.value })}
+                        />
+                      </label>
+                      <p className="iw-muted">
+                        A blank seller asking price remains unknown—not $0. MAO
+                        price trials keep loan-to-value constant. Minimum-profit
+                        price ceiling is shown separately from the return-hurdle
+                        MAO.
                       </p>
-                    )}
-                  </aside>
-                </div>
-              </>
-            )}
+                    </div>
+                    <aside>
+                      <h3>Calculated outputs</h3>
+                      {result ? (
+                        <>
+                          <div className="iw-metrics">
+                            <Metric
+                              label="Modeled profit"
+                              value={money(result.deterministic.modeledProfit)}
+                            />
+                            <Metric
+                              label="Project ROI"
+                              value={pct(result.deterministic.roi)}
+                            />
+                            <Metric
+                              label="Cash-on-cash"
+                              value={pct(result.deterministic.cashOnCash)}
+                            />
+                            <Metric
+                              label="Return-hurdle MAO"
+                              value={money(
+                                result.mao.deterministic.purchasePrice,
+                              )}
+                            />
+                            <Metric
+                              label="Break-even purchase ceiling"
+                              value={money(result.mao.breakEven.purchasePrice)}
+                            />
+                            <Metric
+                              label="Peak equity required"
+                              value={money(result.deterministic.cashRequired)}
+                            />
+                            {result.profitMao && (
+                              <Metric
+                                label="Minimum-profit purchase ceiling"
+                                value={money(result.profitMao.purchasePrice)}
+                              />
+                            )}
+                          </div>
+                          <Source>
+                            Existing engine {result.economicsVersion} · MAO{" "}
+                            {result.mao.deterministic.status}
+                          </Source>
+                          <h3>Complete cost waterfall</h3>
+                          {waterfall}
+                          <h3>Immediate deterministic scenarios</h3>
+                          <div className="iw-stress-grid">
+                            {result.deterministicScenarios.map((x) => (
+                              <article key={x.id}>
+                                <span>{x.label}</span>
+                                <b>{money(x.modeledProfit)}</b>
+                                <small>
+                                  {money(x.profitChange)} vs base ·{" "}
+                                  {money(x.totalProjectCost)} total cost
+                                </small>
+                              </article>
+                            ))}
+                          </div>
+                          <p className="iw-muted">
+                            One input changes per case. These are deterministic
+                            stresses, not probabilities.
+                          </p>
+                        </>
+                      ) : (
+                        <p className="iw-empty">
+                          Complete purchase, rehab, resale and valid carrying
+                          assumptions. {Object.values(validation).join(" ")}
+                        </p>
+                      )}
+                    </aside>
+                  </div>
+                </>
+              )}
             {tab === "Scenarios" && (
               <ScenarioComparison
                 records={comparisonRecords}
@@ -3703,15 +3704,26 @@ function GuidedWorkspaceHeader({
         className="iw-guided-property"
         aria-label="Current property and scenario"
       >
-        <div className="iw-guided-property-identity">
-          <span>Current property</span>
-          <h2>{property.address}</h2>
-          <small>
-            {property.attributes.propertyType ?? "Property type unavailable"} ·{" "}
-            {property.attributes.bedrooms ?? "—"} BD /{" "}
-            {property.attributes.bathrooms ?? "—"} BA ·{" "}
-            {property.attributes.squareFootage?.toLocaleString() ?? "—"} SF
-          </small>
+        <div className="iw-guided-property-summary">
+          <div className="iw-guided-property-identity">
+            <span>Current property</span>
+            <h2>{property.address}</h2>
+            <small>
+              {property.attributes.propertyType ?? "Property type unavailable"}
+              {" · "}
+              {property.attributes.bedrooms ?? "—"} BD /{" "}
+              {property.attributes.bathrooms ?? "—"} BA
+              {" · "}
+              {property.attributes.squareFootage?.toLocaleString() ?? "—"} SF
+            </small>
+          </div>
+          <button
+            className="secondary iw-change-property"
+            onClick={onChangeProperty}
+            data-tooltip="Choose another property. PI will warn before leaving an unsaved browser draft."
+          >
+            <span aria-hidden="true">↔</span> Change Property
+          </button>
         </div>
         <div className="iw-guided-research-state">
           <span
@@ -3726,80 +3738,84 @@ function GuidedWorkspaceHeader({
               : "Retained research"}{" "}
             · evidence snapshot locked
           </small>
-          <button
-            className="link"
-            onClick={onChangeProperty}
-            data-tooltip="Choose another property. PI will warn before leaving an unsaved browser draft."
-          >
-            Change Property
-          </button>
           {property.subjectKind !== "DURABLE_SAVED" && (
             <small>
               Saving will create the Property and its first scenario revision.
             </small>
           )}
         </div>
-        <div
-          className="iw-guided-scenario-tools"
-          data-testid="scenario-toolbar"
-        >
-          <label>
-            <span>Active scenario</span>
-            <ThemedSelect
-              aria-label="Scenario"
-              value={scenario.id}
-              onChange={(event) => onChooseScenario(event.target.value)}
-            >
-              {scenarios.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.name} · r{item.revision}
-                  {item.dirty ? " · draft" : ""}
-                </option>
-              ))}
-            </ThemedSelect>
-          </label>
-          <label>
-            <span>Scenario name</span>
-            <input
-              aria-label="Scenario name"
-              maxLength="80"
-              value={scenario.name}
-              onChange={(event) => onRename(event.target.value)}
-            />
-          </label>
-          <EvaluationModeSelect
-            scenario={scenario}
-            onChange={onEvaluationMode}
-          />
-          {property.subjectKind === "DURABLE_SAVED" ? (
-            <button
-              onClick={() => onSave()}
-              disabled={busy}
-              data-testid="save-scenario"
-              data-tooltip="Save now as a new immutable revision. PI also reminds you every 10 minutes while changes remain unsaved."
-            >
-              Save
-            </button>
-          ) : (
-            <SaveAsPropertyButton
-              property={property}
+        <div className="iw-guided-scenario-workspace">
+          <div className="iw-guided-scenario-heading">
+            <strong>Scenario workspace</strong>
+            <small className={scenario.dirty ? "draft" : "saved"}>
+              <span aria-hidden="true">●</span>{" "}
+              {scenario.dirty
+                ? "Draft · browser local"
+                : `Saved r${scenario.revision} · ${date(scenario.savedAt)}`}
+            </small>
+          </div>
+          <div
+            className="iw-guided-scenario-tools"
+            data-testid="scenario-toolbar"
+          >
+            <label>
+              <span>Active scenario</span>
+              <ThemedSelect
+                aria-label="Scenario"
+                value={scenario.id}
+                onChange={(event) => onChooseScenario(event.target.value)}
+              >
+                {scenarios.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name} · r{item.revision}
+                    {item.dirty ? " · draft" : ""}
+                  </option>
+                ))}
+              </ThemedSelect>
+            </label>
+            <label>
+              <span>Scenario name</span>
+              <input
+                aria-label="Scenario name"
+                maxLength="80"
+                value={scenario.name}
+                onChange={(event) => onRename(event.target.value)}
+              />
+            </label>
+            <EvaluationModeSelect
               scenario={scenario}
-              prepareScenario={() => onSave({ propertyReady: true })}
-              className=""
-              label="Save"
+              onChange={onEvaluationMode}
+              compact
             />
-          )}
-          <ScenarioActionsMenu
-            dismissKey={`${current.id}:${scenario.id}`}
-            onDuplicate={onDuplicate}
-            onNewBlank={onNewBlank}
-            onReset={onReset}
-          />
-          <small className={scenario.dirty ? "draft" : "saved"}>
-            {scenario.dirty
-              ? "Draft · browser local"
-              : `Saved r${scenario.revision} · ${date(scenario.savedAt)}`}
-          </small>
+            <div className="iw-guided-actions-field">
+              <span>Actions</span>
+              <ScenarioActionsMenu
+                dismissKey={`${current.id}:${scenario.id}`}
+                onDuplicate={onDuplicate}
+                onNewBlank={onNewBlank}
+                onReset={onReset}
+              />
+            </div>
+            {property.subjectKind === "DURABLE_SAVED" ? (
+              <button
+                className="iw-scenario-save"
+                onClick={() => onSave()}
+                disabled={busy}
+                data-testid="save-scenario"
+                data-tooltip="Save now as a new immutable revision. PI also reminds you every 10 minutes while changes remain unsaved."
+              >
+                Save
+              </button>
+            ) : (
+              <SaveAsPropertyButton
+                property={property}
+                scenario={scenario}
+                prepareScenario={() => onSave({ propertyReady: true })}
+                className="iw-scenario-save"
+                label="Save"
+              />
+            )}
+          </div>
         </div>
       </section>
       <GuidedProgress
@@ -3847,13 +3863,13 @@ function ScenarioActionsMenu({ dismissKey, onDuplicate, onNewBlank, onReset }) {
       <summary
         ref={summary}
         aria-expanded={open}
-        aria-label={`${open ? "Close" : "Open"} scenario actions`}
+        aria-label={`${open ? "Close" : "Open"} Scenario actions`}
         onClick={(event) => {
           event.preventDefault();
           setOpen((value) => !value);
         }}
       >
-        Scenario actions
+        Actions
       </summary>
       <div>
         <button
@@ -4075,7 +4091,9 @@ function ReportReadiness({ scenario, property, result, preview }) {
   return (
     <section className="iw-report-readiness">
       <div>
-        <h3>{wholesale ? "Preliminary Evaluation" : "Analysis completeness"}</h3>
+        <h3>
+          {wholesale ? "Preliminary Evaluation" : "Analysis completeness"}
+        </h3>
         <p>
           {wholesale
             ? "Additional Due Diligence Recommended. Outstanding follow-up does not prevent generation of a clearly qualified preliminary report."
@@ -4093,7 +4111,11 @@ function ReportReadiness({ scenario, property, result, preview }) {
           </article>
         ))}
       </div>
-      <h3>{wholesale ? "Recommended Follow-Up" : "Most important unresolved questions"}</h3>
+      <h3>
+        {wholesale
+          ? "Recommended Follow-Up"
+          : "Most important unresolved questions"}
+      </h3>
       <ol>
         <li>
           Is the resale assumption supported by selected, relevant closed-sale
