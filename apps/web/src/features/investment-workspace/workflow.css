@@ -75,7 +75,7 @@
   color: #5a707e;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
 }
 
 .iw-report-actions {
@@ -166,9 +166,18 @@
   line-height: 1.4;
 }
 
-.iw-risk-input .origin-inherited { background: #e3f3ef; color: #17675e; }
-.iw-risk-input .origin-illustrative { background: #fff2d7; color: #7a5816; }
-.iw-risk-input .origin-manual { background: #e7edf8; color: #304f81; }
+.iw-risk-input .origin-inherited {
+  background: #e3f3ef;
+  color: #17675e;
+}
+.iw-risk-input .origin-illustrative {
+  background: #fff2d7;
+  color: #7a5816;
+}
+.iw-risk-input .origin-manual {
+  background: #e7edf8;
+  color: #304f81;
+}
 
 .iw-risk-override-notice {
   padding: 10px 12px;
@@ -200,7 +209,9 @@
   margin: 0;
 }
 
-.iw-required-note.ready { color: #17675e; }
+.iw-required-note.ready {
+  color: #17675e;
+}
 
 .iw-checklist-panel {
   display: grid;
@@ -216,20 +227,220 @@
 }
 
 .iw-checklist-panel h3,
-.iw-checklist-panel p { margin: 4px 0; }
-.iw-checklist-panel .iw-eyebrow { color: #24675d; font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
-.iw-checklist-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
-.iw-checklist-status { color: #174f45; }
+.iw-checklist-panel p {
+  margin: 4px 0;
+}
+.iw-checklist-panel .iw-eyebrow {
+  color: #24675d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.iw-checklist-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.iw-checklist-status {
+  color: #174f45;
+}
 
 @media (max-width: 1050px) {
-  .iw-stage-nav { grid-template-columns: 1fr 1fr; }
+  .iw-stage-nav {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 650px) {
-  .iw-stage-nav { grid-template-columns: 1fr; }
-  .iw-checklist-panel { grid-template-columns: 1fr; }
-  .iw-checklist-actions { justify-content: flex-start; }
+  .iw-stage-nav {
+    grid-template-columns: 1fr;
+  }
+  .iw-checklist-panel {
+    grid-template-columns: 1fr;
+  }
+  .iw-checklist-actions {
+    justify-content: flex-start;
+  }
 }
 
-.iw-interactive-checklist{margin:18px 0;padding:18px;border:1px solid #bfd2d0;border-radius:8px;background:#f8fbfa}.iw-interactive-checklist>header{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #2c7d70;padding-bottom:12px}.iw-interactive-checklist>header h3{margin:3px 0}.iw-interactive-checklist>header>div:last-child{text-align:right}.iw-interactive-checklist>header small{display:block;color:#63787c}.iw-checklist-items{display:grid;gap:12px;margin:14px 0}.iw-checklist-items>article{background:#fff;border:1px solid #d3e0de;border-left:5px solid #d0a04c;padding:13px}.iw-checklist-items>article.priority-critical{border-left-color:#b94b39}.iw-checklist-item-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start}.iw-checklist-item-head>span{padding:3px 6px;border-radius:3px;background:#fff0d3;color:#6e4a0c;font-size:.72rem;font-weight:800;text-transform:uppercase}.priority-critical .iw-checklist-item-head>span{background:#f8dfda;color:#8c2d1e}.iw-checklist-item-head p{margin:4px 0;color:#566d72}.iw-checklist-action{background:#edf5f3;padding:7px 9px}.iw-checklist-fields{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}.iw-checklist-fields label{font-size:.78rem;font-weight:700}.iw-checklist-fields textarea{min-height:62px}.iw-checklist-fields input,.iw-checklist-fields select,.iw-checklist-fields textarea{width:100%;margin-top:4px}.iw-checklist-item-actions{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0;font-size:.83rem}.iw-checklist-item-actions label{display:flex;align-items:center;gap:5px}.iw-checklist-save{display:flex;align-items:center;gap:12px;margin:12px 0}.iw-finalize-disclosures{margin-top:18px;padding:15px;border:1px solid #d2a85c;background:#fff8e9}.iw-finalize-disclosures h4{margin:0 0 6px}.iw-finalize-disclosures>label{display:flex;align-items:start;gap:9px;padding:10px 0;font-size:.86rem}.iw-finalize-disclosures button{margin-top:4px}@media(max-width:800px){.iw-checklist-fields,.iw-checklist-item-head{grid-template-columns:1fr}.iw-interactive-checklist>header{display:block}.iw-interactive-checklist>header>div:last-child{text-align:left;margin-top:8px}}
-.iw-report-blocker{display:flex;align-items:center;justify-content:space-between;gap:18px}.iw-report-blocker p{margin:4px 0 0}.iw-report-blocker button{flex:0 0 auto}@media(max-width:700px){.iw-report-blocker{align-items:stretch;flex-direction:column}}
+.iw-interactive-checklist {
+  margin: 18px 0;
+  padding: 18px;
+  border: 1px solid #bfd2d0;
+  border-radius: 8px;
+  background: #f8fbfa;
+}
+.iw-interactive-checklist > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 2px solid #2c7d70;
+  padding-bottom: 12px;
+}
+.iw-interactive-checklist > header h3 {
+  margin: 3px 0;
+}
+.iw-interactive-checklist > header > div:last-child {
+  text-align: right;
+}
+.iw-interactive-checklist > header small {
+  display: block;
+  color: #63787c;
+}
+.iw-checklist-items {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0;
+}
+.iw-checklist-items > article {
+  background: #fff;
+  border: 1px solid #d3e0de;
+  border-left: 5px solid #d0a04c;
+  padding: 13px;
+}
+.iw-checklist-items > article.priority-critical {
+  border-left-color: #b94b39;
+}
+.iw-checklist-item-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+.iw-checklist-item-head > span {
+  padding: 3px 6px;
+  border-radius: 3px;
+  background: #fff0d3;
+  color: #6e4a0c;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.priority-critical .iw-checklist-item-head > span {
+  background: #f8dfda;
+  color: #8c2d1e;
+}
+.iw-checklist-item-head p {
+  margin: 4px 0;
+  color: #566d72;
+}
+.iw-checklist-action {
+  background: #edf5f3;
+  padding: 7px 9px;
+}
+.iw-checklist-fields {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+}
+.iw-checklist-fields label {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.iw-checklist-fields textarea {
+  min-height: 62px;
+}
+.iw-checklist-fields input,
+.iw-checklist-fields select,
+.iw-checklist-fields textarea {
+  width: 100%;
+  margin-top: 4px;
+}
+.iw-checklist-item-actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  font-size: 0.83rem;
+}
+.iw-checklist-item-actions label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.iw-checklist-save {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+.iw-finalize-disclosures {
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #d2a85c;
+  background: #fff8e9;
+}
+.iw-finalize-disclosures h4 {
+  margin: 0 0 6px;
+}
+.iw-finalize-disclosures > label {
+  display: flex;
+  align-items: start;
+  gap: 9px;
+  padding: 10px 0;
+  font-size: 0.86rem;
+}
+.iw-finalize-disclosures button {
+  margin-top: 4px;
+}
+.iw-finalization-feedback {
+  margin-top: 12px;
+  padding: 11px 13px;
+  border: 1px solid #a9c9c3;
+  border-left: 4px solid #267d70;
+  border-radius: 5px;
+  background: #edf7f4;
+  color: #173f45;
+}
+.iw-finalization-feedback strong,
+.iw-finalization-feedback p,
+.iw-finalization-feedback small {
+  display: block;
+}
+.iw-finalization-feedback p {
+  margin: 3px 0 0;
+}
+.iw-finalization-feedback.success {
+  border-color: #75af9f;
+  border-left-color: #187263;
+  background: #e5f5ef;
+}
+.iw-finalization-feedback.error {
+  border-color: #d8a49c;
+  border-left-color: #b94b39;
+  background: #fff0ed;
+  color: #762d22;
+}
+@media (max-width: 800px) {
+  .iw-checklist-fields,
+  .iw-checklist-item-head {
+    grid-template-columns: 1fr;
+  }
+  .iw-interactive-checklist > header {
+    display: block;
+  }
+  .iw-interactive-checklist > header > div:last-child {
+    text-align: left;
+    margin-top: 8px;
+  }
+}
+.iw-report-blocker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.iw-report-blocker p {
+  margin: 4px 0 0;
+}
+.iw-report-blocker button {
+  flex: 0 0 auto;
+}
+@media (max-width: 700px) {
+  .iw-report-blocker {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

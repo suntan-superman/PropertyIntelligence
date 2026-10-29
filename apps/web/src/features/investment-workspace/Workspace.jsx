@@ -1387,10 +1387,10 @@ export default function Workspace({ hash = window.location.hash }) {
   }
   async function previewReport(reportKind = kind) {
     if (reportRequest.current) {
-      setStatus(
-        "A report request is already in progress. Wait for it to finish before starting another.",
-      );
-      return;
+      const message =
+        "A report request is already in progress. Wait for it to finish before starting another.";
+      setStatus(message);
+      return { ok: false, error: message };
     }
     reportRequest.current = true;
     setError("");
@@ -1502,6 +1502,11 @@ export default function Workspace({ hash = window.location.hash }) {
     setError("");
     setPdfDownload(null);
     setKind(reportKind);
+    setStatus(
+      finalizationId
+        ? `Generating the finalized Full Investor Package from saved revision ${s.revision}…`
+        : `Generating ${reportKind === "brief" ? "the Opportunity Brief" : reportKind === "checklist" ? "the checklist PDF" : "the Full Investor Package"} from saved revision ${s.revision}…`,
+    );
     try {
       if (photoRightsMissing && reportKind !== "checklist")
         throw new Error(
@@ -1593,13 +1598,31 @@ export default function Workspace({ hash = window.location.hash }) {
       }
       setStatus(
         finalizationId
-          ? `Finalized report generated from revision ${s.revision} with authenticated attribution and disclosures.`
+          ? `Finalized Full Investor Package generated from revision ${s.revision}. Download started: ${filename}`
           : download
             ? `Checklist generated from saved revision ${s.revision} and downloaded.`
             : `PDF generated from saved revision ${s.revision}. Select Download PDF to save it to this device.`,
       );
+      return {
+        ok: true,
+        filename,
+        revision: s.revision,
+        kind: reportKind,
+        downloadStarted: download,
+      };
     } catch (e) {
       setError(e.message);
+      setStatus(
+        finalizationId
+          ? `Finalization was recorded, but the Full Investor Package was not generated: ${e.message}`
+          : e.message,
+      );
+      return {
+        ok: false,
+        error: e.message,
+        revision: s.revision,
+        kind: reportKind,
+      };
     } finally {
       reportRequest.current = false;
       setBusy(false);

@@ -55,5 +55,6 @@ test('cloud renderer serializes concurrent PDF work in one warm function instanc
 
 test('production function is isolated, bounded and UI exposes the three-step report workflow',async()=>{
   const [entry,config,ui]=await Promise.all([readFile(new URL('../netlify/functions/report.js',import.meta.url),'utf8'),readFile(new URL('../netlify.toml',import.meta.url),'utf8'),readFile(new URL('../apps/web/src/features/investment-workspace/Workspace.jsx',import.meta.url),'utf8')]);
-  assert.match(entry,/renderNetlifyWorkspacePdf/);assert.match(entry,/rateLimit/);assert.doesNotMatch(entry,/memory:/);assert.match(config,/from = "\/api\/investment\/report\/pdf"[\s\S]*functions\/report/);assert.match(ui,/deployed\?'\/report\/pdf':'\/report'/);for(const label of ['Preview Report','Generate PDF','Download PDF'])assert.match(ui,new RegExp(label));assert.doesNotMatch(ui,/PDF export remains disabled/);
+  const compactUi=ui.replace(/\s+/g,'');
+  assert.match(entry,/renderNetlifyWorkspacePdf/);assert.match(entry,/rateLimit/);assert.doesNotMatch(entry,/memory:/);assert.match(config,/from = "\/api\/investment\/report\/pdf"[\s\S]*functions\/report/);assert.match(compactUi,/deployed\?["']\/report\/pdf["']:["']\/report["']/);for(const label of ['Preview Report','Generate PDF','Download PDF'])assert.match(ui,new RegExp(label));assert.doesNotMatch(ui,/PDF export remains disabled/);
 });

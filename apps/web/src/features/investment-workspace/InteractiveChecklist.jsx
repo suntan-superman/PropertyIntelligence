@@ -1,33 +1,568 @@
-import React,{useEffect,useMemo,useRef,useState} from 'react';
-import {useAuthentication} from '../../auth/AuthenticationGate.jsx';
-import InlineEvidenceAttachments from './InlineEvidenceAttachments.jsx';
-import {ACKNOWLEDGMENT_TEXT,ACKNOWLEDGMENT_VERSION} from '../../../../../src/commercial/commercial-contract.js';
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useAuthentication } from "../../auth/AuthenticationGate.jsx";
+import InlineEvidenceAttachments from "./InlineEvidenceAttachments.jsx";
+import {
+  ACKNOWLEDGMENT_TEXT,
+  ACKNOWLEDGMENT_VERSION,
+} from "../../../../../src/commercial/commercial-contract.js";
 
-const responseJson=async response=>{const value=await response.json().catch(()=>({}));if(!response.ok)throw Object.assign(new Error(value.error??'CHECKLIST_REQUEST_FAILED'),{status:response.status});return value;};
-const guidedTarget=category=>/valuation/i.test(category)?'Comparables':/rehab|condition/i.test(category)?'Underwriting':/title|obligation|occupancy|identity|transaction/i.test(category)?'Seller Financial Position':'Reports';
-const checklistDraft=value=>Object.fromEntries((value?.outstanding??[]).map(item=>[item.id,item.progress]));
-const sameDraft=(left,right)=>JSON.stringify(left)===JSON.stringify(right);
-const checklistMessage=code=>({
-  CHECKLIST_VERSION_CONFLICT:'This checklist was updated after this page loaded. Your entries remain on this page. Reload the latest checklist before trying again.',
-  CHECKLIST_FINALIZED_IMMUTABLE:'This checklist has already been finalized and can no longer be edited. Create or save a new scenario revision for additional changes.',
-  FINALIZATION_ACKNOWLEDGMENT_REQUIRED:'Confirm the report disclosure before finalizing the package.',
-  FINALIZATION_EXISTS:'This report revision has already been finalized. Use the existing finalized report or save a new scenario revision.',
-  SCENARIO_REVISION_NOT_FOUND:'This saved scenario revision is no longer available. Return to My Workspace and reopen the property.',
-  EVIDENCE_SNAPSHOT_MISMATCH:'The report is no longer connected to the evidence snapshot shown on this page. Reopen the saved scenario from My Workspace.',
-  CHECKLIST_REQUEST_FAILED:'The checklist request did not complete. Your entries remain on this page; try again.'
-}[code]??'The checklist action could not be completed. Your entries remain on this page; try again or reopen the saved scenario.');
-export default function InteractiveChecklist({property,scenario,busy,onBusy,onNavigate,onAttachmentsChange,onGenerateFinalized,reportBlockedReason='',onResolveReportBlock}){
-  const authentication=useAuthentication(),[checklist,setChecklist]=useState(null),[draft,setDraft]=useState({}),[members,setMembers]=useState([]),[message,setMessage]=useState(''),[error,setError]=useState(''),[acknowledged,setAcknowledged]=useState(false),operation=useRef(false),key=`${property?.durablePropertyId}:${scenario?.id}:${scenario?.revision}`;
-  const query=useMemo(()=>new URLSearchParams({propertyId:property?.durablePropertyId??'',scenarioId:scenario?.id??'',revision:String(scenario?.revision??0),evidenceSnapshotId:scenario?.evidenceFingerprint??''}).toString(),[key,scenario?.evidenceFingerprint]);
-  async function load({notice=''}={}){if(!property?.durablePropertyId||scenario?.dirty)return null;setError('');try{const [value,directory]=await Promise.all([responseJson(await fetch(`/api/commercial/checklist?${query}`,{credentials:'same-origin',cache:'no-store'})),responseJson(await fetch('/api/commercial/members',{credentials:'same-origin',cache:'no-store'})).catch(()=>({members:[]}))]);setChecklist(value.checklist);setDraft(checklistDraft(value.checklist));setMembers(directory.members??[]);setAcknowledged(false);if(notice)setMessage(notice);return value.checklist;}catch(reason){setError(reason.message==='COMMERCIAL_CHECKLIST_NOT_CONFIGURED'?'Interactive checklist persistence is not configured for this environment.':checklistMessage(reason.message));return null;}}
-  useEffect(()=>{setChecklist(null);setDraft({});setAcknowledged(false);load();},[key]);
-  const update=(id,patch)=>setDraft(current=>({...current,[id]:{...current[id],...patch}}));
-  async function persist(){const value=await responseJson(await fetch('/api/commercial/checklist',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-PI-CSRF':authentication.csrfToken},body:JSON.stringify({propertyId:property.durablePropertyId,scenarioId:scenario.id,revision:scenario.revision,evidenceSnapshotId:scenario.evidenceFingerprint,expectedVersion:checklist.persistence.version,items:draft})}));setChecklist(value.checklist);setDraft(checklistDraft(value.checklist));return value.checklist;}
-  async function save(){if(operation.current){setMessage('A checklist action is already in progress. Wait for it to finish.');return;}operation.current=true;onBusy?.(true);setError('');setMessage('');try{const saved=await persist();setMessage(`Checklist progress saved${saved.persistence.version>0?` · version ${saved.persistence.version}`:''}.`);}catch(reason){setError(checklistMessage(reason.message));}finally{operation.current=false;onBusy?.(false);}}
-  async function finalize(){if(!acknowledged||reportBlockedReason)return;if(operation.current){setMessage('Finalization is already in progress. No additional report request was sent.');return;}operation.current=true;onBusy?.(true);setError('');setMessage('');try{const baseline=checklistDraft(checklist),current=sameDraft(draft,baseline)?checklist:await persist(),value=await responseJson(await fetch('/api/commercial/reports/finalize',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-PI-CSRF':authentication.csrfToken},body:JSON.stringify({propertyId:property.durablePropertyId,scenarioId:scenario.id,revision:scenario.revision,evidenceSnapshotId:scenario.evidenceFingerprint,checklistVersion:current.persistence.version,acknowledgment:{accepted:true,version:ACKNOWLEDGMENT_VERSION,text:ACKNOWLEDGMENT_TEXT}})}));setMessage('Report disclosures recorded. Generating the Full Investor Package now…');await onGenerateFinalized(value.finalization);}catch(reason){const changed=!sameDraft(draft,checklistDraft(checklist));setError(checklistMessage(reason.message));if(reason.message==='CHECKLIST_VERSION_CONFLICT'&&!changed)await load({notice:'The latest checklist was loaded. Review it, reconfirm the disclosure, and select Finalize & Generate Full Investor Package again.'});}finally{operation.current=false;onBusy?.(false);}}
-  if(scenario?.dirty)return <section className="iw-checklist-panel"><div><span className="iw-eyebrow">Interactive diligence</span><h3>Save this scenario revision first</h3><p>Checklist progress is bound to an immutable scenario revision and evidence snapshot.</p></div></section>;
-  if(!property?.durablePropertyId)return <section className="iw-checklist-panel"><div><span className="iw-eyebrow">Interactive diligence</span><h3>Save this property first</h3><p>A durable property is required before checklist progress and evidence can persist across sessions.</p></div></section>;
-  if(!checklist)return <section className="iw-checklist-panel"><div><span className="iw-eyebrow">Interactive diligence</span><h3>Investment Due Diligence Checklist</h3><p>{error||'Loading organization checklist…'}</p></div>{error&&<button className="secondary" onClick={load}>Retry</button>}</section>;
-  const unresolved=checklist.outstanding.filter(item=>(draft[item.id]?.status??'OPEN')!=='REVIEWED'),critical=unresolved.filter(item=>item.priority==='Critical').length,important=unresolved.filter(item=>item.priority==='Important').length;
-  return <section className="iw-interactive-checklist" aria-labelledby="interactive-checklist-heading"><header><div><span className="iw-eyebrow">{checklist.persistence.version>0?`Checklist progress saved · version ${checklist.persistence.version}`:'Checklist ready · progress not yet saved'}</span><h3 id="interactive-checklist-heading">Investment Due Diligence Checklist</h3><p><b>{property.address}</b> · {scenario.name} · revision {scenario.revision}</p></div><div><b>{critical} critical · {important} important</b><small>{unresolved.length} unresolved</small></div></header>{error&&<div className="iw-error" role="alert"><p>{error}</p>{error.startsWith('This checklist was updated')&&<button className="secondary" disabled={busy} onClick={()=>load({notice:'The latest saved checklist is now displayed.'})}>Reload latest and discard my unsaved checklist edits</button>}</div>}{message&&<p className="iw-status" role="status">{message}</p>}<div className="iw-checklist-items">{checklist.outstanding.map(item=>{const progress=draft[item.id]??item.progress;return <article key={item.id} className={`priority-${item.priority.toLowerCase()}`}><div className="iw-checklist-item-head"><span>{item.priority}</span><div><b>{item.category} · {item.missingInformation}</b><p>{item.why}</p></div><button className="link" onClick={()=>onNavigate(guidedTarget(item.category))}>Open related section →</button></div><p className="iw-checklist-action"><b>Recommended:</b> {item.recommendedAction}</p><div className="iw-checklist-fields"><label>Notes<textarea maxLength="4000" value={progress.notes} onChange={event=>update(item.id,{notes:event.target.value})}/></label><label>Assigned to<select value={progress.assigneeUid??''} onChange={event=>update(item.id,{assigneeUid:event.target.value||null})}><option value="">Unassigned</option>{members.map(member=><option key={member.uid} value={member.uid}>{member.displayName||member.email||member.uid}</option>)}</select></label><label>Due date<input type="date" value={progress.dueDate??''} onChange={event=>update(item.id,{dueDate:event.target.value||null})}/></label></div><div className="iw-checklist-item-actions"><label><input type="radio" name={`status-${item.id}`} checked={progress.status==='OPEN'} onChange={()=>update(item.id,{status:'OPEN'})}/> Open / reopened</label><label><input type="radio" name={`status-${item.id}`} checked={progress.status==='REVIEWED'} onChange={()=>update(item.id,{status:'REVIEWED'})}/> Reviewed</label><label><input type="radio" name={`status-${item.id}`} checked={progress.status==='UNAVAILABLE'} onChange={()=>update(item.id,{status:'UNAVAILABLE'})}/> Information unavailable</label></div><InlineEvidenceAttachments property={property} scenarioId={scenario.id} fieldKey={`DILIGENCE.${item.id}`} fieldLabel={item.missingInformation} links={scenario.evidenceAttachments??[]} onChange={links=>{onAttachmentsChange(links);update(item.id,{documentLinks:links.filter(link=>link.fieldKey===`DILIGENCE.${item.id}`).map(link=>({documentId:link.documentId,version:link.version,fieldKey:link.fieldKey}))});}}/></article>;})}</div><div className="iw-checklist-save"><button disabled={busy} onClick={save}>Save checklist progress</button><small>Saving never changes evidence verification or underwriting values.</small></div><section className="iw-finalize-disclosures"><h4>Finalize and generate the Full Investor Package</h4><p><b>{critical} Critical and {important} Important items remain unresolved.</b> PI will save any checklist changes first, record who elected to distribute this exact revision, and then generate the report. Finalization is not verification, appraisal or investment endorsement.</p>{reportBlockedReason&&<div className="iw-error" role="alert"><p>{reportBlockedReason}</p><button className="secondary" onClick={onResolveReportBlock}>Review photos and confirm permission</button></div>}<label><input type="checkbox" checked={acknowledged} disabled={Boolean(reportBlockedReason)} onChange={event=>setAcknowledged(event.target.checked)}/><span>{ACKNOWLEDGMENT_TEXT}</span></label><button disabled={busy||!acknowledged||scenario.dirty||Boolean(reportBlockedReason)} onClick={finalize}>Finalize &amp; Generate Full Investor Package</button><small>For a preliminary package without a finalization record, use Generate PDF in the report controls below.</small></section></section>;
+const responseJson = async (response) => {
+  const value = await response.json().catch(() => ({}));
+  if (!response.ok)
+    throw Object.assign(new Error(value.error ?? "CHECKLIST_REQUEST_FAILED"), {
+      status: response.status,
+    });
+  return value;
+};
+const guidedTarget = (category) =>
+  /valuation/i.test(category)
+    ? "Comparables"
+    : /rehab|condition/i.test(category)
+      ? "Underwriting"
+      : /title|obligation|occupancy|identity|transaction/i.test(category)
+        ? "Seller Financial Position"
+        : "Reports";
+const checklistDraft = (value) =>
+  Object.fromEntries(
+    (value?.outstanding ?? []).map((item) => [item.id, item.progress]),
+  );
+const sameDraft = (left, right) =>
+  JSON.stringify(left) === JSON.stringify(right);
+const idleFinalization = () => ({ phase: "IDLE", message: "" });
+const checklistMessage = (code) =>
+  ({
+    CHECKLIST_VERSION_CONFLICT:
+      "This checklist was updated after this page loaded. Your entries remain on this page. Reload the latest checklist before trying again.",
+    CHECKLIST_FINALIZED_IMMUTABLE:
+      "This checklist has already been finalized and can no longer be edited. Create or save a new scenario revision for additional changes.",
+    FINALIZATION_ACKNOWLEDGMENT_REQUIRED:
+      "Confirm the report disclosure before finalizing the package.",
+    FINALIZATION_EXISTS:
+      "This report revision has already been finalized. Use the existing finalized report or save a new scenario revision.",
+    SCENARIO_REVISION_NOT_FOUND:
+      "This saved scenario revision is no longer available. Return to My Workspace and reopen the property.",
+    EVIDENCE_SNAPSHOT_MISMATCH:
+      "The report is no longer connected to the evidence snapshot shown on this page. Reopen the saved scenario from My Workspace.",
+    CHECKLIST_REQUEST_FAILED:
+      "The checklist request did not complete. Your entries remain on this page; try again.",
+  })[code] ??
+  "The checklist action could not be completed. Your entries remain on this page; try again or reopen the saved scenario.";
+export default function InteractiveChecklist({
+  property,
+  scenario,
+  busy,
+  onBusy,
+  onNavigate,
+  onAttachmentsChange,
+  onGenerateFinalized,
+  reportBlockedReason = "",
+  onResolveReportBlock,
+}) {
+  const authentication = useAuthentication(),
+    [checklist, setChecklist] = useState(null),
+    [draft, setDraft] = useState({}),
+    [members, setMembers] = useState([]),
+    [message, setMessage] = useState(""),
+    [error, setError] = useState(""),
+    [acknowledged, setAcknowledged] = useState(false),
+    [finalization, setFinalization] = useState(idleFinalization),
+    operation = useRef(false),
+    key = `${property?.durablePropertyId}:${scenario?.id}:${scenario?.revision}`;
+  const query = useMemo(
+    () =>
+      new URLSearchParams({
+        propertyId: property?.durablePropertyId ?? "",
+        scenarioId: scenario?.id ?? "",
+        revision: String(scenario?.revision ?? 0),
+        evidenceSnapshotId: scenario?.evidenceFingerprint ?? "",
+      }).toString(),
+    [key, scenario?.evidenceFingerprint],
+  );
+  async function load({ notice = "" } = {}) {
+    if (!property?.durablePropertyId || scenario?.dirty) return null;
+    setError("");
+    try {
+      const [value, directory] = await Promise.all([
+        responseJson(
+          await fetch(`/api/commercial/checklist?${query}`, {
+            credentials: "same-origin",
+            cache: "no-store",
+          }),
+        ),
+        responseJson(
+          await fetch("/api/commercial/members", {
+            credentials: "same-origin",
+            cache: "no-store",
+          }),
+        ).catch(() => ({ members: [] })),
+      ]);
+      setChecklist(value.checklist);
+      setDraft(checklistDraft(value.checklist));
+      setMembers(directory.members ?? []);
+      setAcknowledged(false);
+      if (notice) setMessage(notice);
+      return value.checklist;
+    } catch (reason) {
+      setError(
+        reason.message === "COMMERCIAL_CHECKLIST_NOT_CONFIGURED"
+          ? "Interactive checklist persistence is not configured for this environment."
+          : checklistMessage(reason.message),
+      );
+      return null;
+    }
+  }
+  useEffect(() => {
+    setChecklist(null);
+    setDraft({});
+    setAcknowledged(false);
+    setFinalization(idleFinalization());
+    load();
+  }, [key]);
+  const update = (id, patch) =>
+    setDraft((current) => ({ ...current, [id]: { ...current[id], ...patch } }));
+  async function persist() {
+    const value = await responseJson(
+      await fetch("/api/commercial/checklist", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-PI-CSRF": authentication.csrfToken,
+        },
+        body: JSON.stringify({
+          propertyId: property.durablePropertyId,
+          scenarioId: scenario.id,
+          revision: scenario.revision,
+          evidenceSnapshotId: scenario.evidenceFingerprint,
+          expectedVersion: checklist.persistence.version,
+          items: draft,
+        }),
+      }),
+    );
+    setChecklist(value.checklist);
+    setDraft(checklistDraft(value.checklist));
+    return value.checklist;
+  }
+  async function save() {
+    if (operation.current) {
+      setMessage(
+        "A checklist action is already in progress. Wait for it to finish.",
+      );
+      return;
+    }
+    operation.current = true;
+    onBusy?.(true);
+    setError("");
+    setMessage("");
+    try {
+      const saved = await persist();
+      setMessage(
+        `Checklist progress saved${saved.persistence.version > 0 ? ` · version ${saved.persistence.version}` : ""}.`,
+      );
+    } catch (reason) {
+      setError(checklistMessage(reason.message));
+    } finally {
+      operation.current = false;
+      onBusy?.(false);
+    }
+  }
+  async function finalize() {
+    if (!acknowledged || reportBlockedReason) return;
+    if (operation.current) {
+      setFinalization({
+        phase: "GENERATING",
+        message:
+          "Finalization is already in progress. No additional report request was sent.",
+      });
+      return;
+    }
+    operation.current = true;
+    onBusy?.(true);
+    setError("");
+    setMessage("");
+    let finalizationRecorded = false;
+    try {
+      const baseline = checklistDraft(checklist),
+        checklistChanged = !sameDraft(draft, baseline);
+      setFinalization({
+        phase: checklistChanged ? "SAVING" : "FINALIZING",
+        message: checklistChanged
+          ? "Saving your checklist changes before finalization…"
+          : "Recording the disclosure acknowledgment for this saved revision…",
+      });
+      const current = checklistChanged ? await persist() : checklist;
+      if (checklistChanged)
+        setFinalization({
+          phase: "FINALIZING",
+          message:
+            "Checklist changes saved. Recording the disclosure acknowledgment for this saved revision…",
+        });
+      const value = await responseJson(
+        await fetch("/api/commercial/reports/finalize", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+            "X-PI-CSRF": authentication.csrfToken,
+          },
+          body: JSON.stringify({
+            propertyId: property.durablePropertyId,
+            scenarioId: scenario.id,
+            revision: scenario.revision,
+            evidenceSnapshotId: scenario.evidenceFingerprint,
+            checklistVersion: current.persistence.version,
+            acknowledgment: {
+              accepted: true,
+              version: ACKNOWLEDGMENT_VERSION,
+              text: ACKNOWLEDGMENT_TEXT,
+            },
+          }),
+        }),
+      );
+      finalizationRecorded = true;
+      setFinalization({
+        phase: "GENERATING",
+        message:
+          "Finalization recorded. Building the PDF and preparing the browser download…",
+      });
+      const generated = await onGenerateFinalized(value.finalization);
+      if (!generated?.ok) {
+        setFinalization({
+          phase: "ERROR",
+          message: `Finalization was recorded, but the PDF was not generated. ${generated?.error ?? "The report request did not return a completed PDF."} No download was started.`,
+        });
+        return;
+      }
+      setFinalization({
+        phase: "SUCCESS",
+        message: `Revision ${scenario.revision} was finalized and ${generated.filename} was generated. The browser download was started and the report was added to report history.`,
+        filename: generated.filename,
+      });
+    } catch (reason) {
+      const changed = !sameDraft(draft, checklistDraft(checklist));
+      const detail = checklistMessage(reason.message);
+      setError(detail);
+      setFinalization({
+        phase: "ERROR",
+        message: finalizationRecorded
+          ? `Finalization was recorded, but report generation did not complete. ${detail}`
+          : `Finalization did not complete. ${detail} No report was generated.`,
+      });
+      if (reason.message === "CHECKLIST_VERSION_CONFLICT" && !changed)
+        await load({
+          notice:
+            "The latest checklist was loaded. Review it, reconfirm the disclosure, and select Finalize & Generate Full Investor Package again.",
+        });
+    } finally {
+      operation.current = false;
+      onBusy?.(false);
+    }
+  }
+  if (scenario?.dirty)
+    return (
+      <section className="iw-checklist-panel">
+        <div>
+          <span className="iw-eyebrow">Interactive diligence</span>
+          <h3>Save this scenario revision first</h3>
+          <p>
+            Checklist progress is bound to an immutable scenario revision and
+            evidence snapshot.
+          </p>
+        </div>
+      </section>
+    );
+  if (!property?.durablePropertyId)
+    return (
+      <section className="iw-checklist-panel">
+        <div>
+          <span className="iw-eyebrow">Interactive diligence</span>
+          <h3>Save this property first</h3>
+          <p>
+            A durable property is required before checklist progress and
+            evidence can persist across sessions.
+          </p>
+        </div>
+      </section>
+    );
+  if (!checklist)
+    return (
+      <section className="iw-checklist-panel">
+        <div>
+          <span className="iw-eyebrow">Interactive diligence</span>
+          <h3>Investment Due Diligence Checklist</h3>
+          <p>{error || "Loading organization checklist…"}</p>
+        </div>
+        {error && (
+          <button className="secondary" onClick={load}>
+            Retry
+          </button>
+        )}
+      </section>
+    );
+  const unresolved = checklist.outstanding.filter(
+      (item) => (draft[item.id]?.status ?? "OPEN") !== "REVIEWED",
+    ),
+    critical = unresolved.filter((item) => item.priority === "Critical").length,
+    important = unresolved.filter(
+      (item) => item.priority === "Important",
+    ).length,
+    finalizationBusy = ["SAVING", "FINALIZING", "GENERATING"].includes(
+      finalization.phase,
+    ),
+    finalizationButtonLabel =
+      finalization.phase === "SAVING"
+        ? "Saving checklist changes…"
+        : finalization.phase === "FINALIZING"
+          ? "Recording finalization…"
+          : finalization.phase === "GENERATING"
+            ? "Generating Full Investor Package…"
+            : finalization.phase === "SUCCESS"
+              ? "Full Investor Package Generated"
+              : "Finalize & Generate Full Investor Package";
+  return (
+    <section
+      className="iw-interactive-checklist"
+      aria-labelledby="interactive-checklist-heading"
+    >
+      <header>
+        <div>
+          <span className="iw-eyebrow">
+            {checklist.persistence.version > 0
+              ? `Checklist progress saved · version ${checklist.persistence.version}`
+              : "Checklist ready · progress not yet saved"}
+          </span>
+          <h3 id="interactive-checklist-heading">
+            Investment Due Diligence Checklist
+          </h3>
+          <p>
+            <b>{property.address}</b> · {scenario.name} · revision{" "}
+            {scenario.revision}
+          </p>
+        </div>
+        <div>
+          <b>
+            {critical} critical · {important} important
+          </b>
+          <small>{unresolved.length} unresolved</small>
+        </div>
+      </header>
+      {error && (
+        <div className="iw-error" role="alert">
+          <p>{error}</p>
+          {error.startsWith("This checklist was updated") && (
+            <button
+              className="secondary"
+              disabled={busy}
+              onClick={() =>
+                load({ notice: "The latest saved checklist is now displayed." })
+              }
+            >
+              Reload latest and discard my unsaved checklist edits
+            </button>
+          )}
+        </div>
+      )}
+      {message && (
+        <p className="iw-status" role="status">
+          {message}
+        </p>
+      )}
+      <div className="iw-checklist-items">
+        {checklist.outstanding.map((item) => {
+          const progress = draft[item.id] ?? item.progress;
+          return (
+            <article
+              key={item.id}
+              className={`priority-${item.priority.toLowerCase()}`}
+            >
+              <div className="iw-checklist-item-head">
+                <span>{item.priority}</span>
+                <div>
+                  <b>
+                    {item.category} · {item.missingInformation}
+                  </b>
+                  <p>{item.why}</p>
+                </div>
+                <button
+                  className="link"
+                  onClick={() => onNavigate(guidedTarget(item.category))}
+                >
+                  Open related section →
+                </button>
+              </div>
+              <p className="iw-checklist-action">
+                <b>Recommended:</b> {item.recommendedAction}
+              </p>
+              <div className="iw-checklist-fields">
+                <label>
+                  Notes
+                  <textarea
+                    maxLength="4000"
+                    value={progress.notes}
+                    onChange={(event) =>
+                      update(item.id, { notes: event.target.value })
+                    }
+                  />
+                </label>
+                <label>
+                  Assigned to
+                  <select
+                    value={progress.assigneeUid ?? ""}
+                    onChange={(event) =>
+                      update(item.id, {
+                        assigneeUid: event.target.value || null,
+                      })
+                    }
+                  >
+                    <option value="">Unassigned</option>
+                    {members.map((member) => (
+                      <option key={member.uid} value={member.uid}>
+                        {member.displayName || member.email || member.uid}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Due date
+                  <input
+                    type="date"
+                    value={progress.dueDate ?? ""}
+                    onChange={(event) =>
+                      update(item.id, { dueDate: event.target.value || null })
+                    }
+                  />
+                </label>
+              </div>
+              <div className="iw-checklist-item-actions">
+                <label>
+                  <input
+                    type="radio"
+                    name={`status-${item.id}`}
+                    checked={progress.status === "OPEN"}
+                    onChange={() => update(item.id, { status: "OPEN" })}
+                  />{" "}
+                  Open / reopened
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name={`status-${item.id}`}
+                    checked={progress.status === "REVIEWED"}
+                    onChange={() => update(item.id, { status: "REVIEWED" })}
+                  />{" "}
+                  Reviewed
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name={`status-${item.id}`}
+                    checked={progress.status === "UNAVAILABLE"}
+                    onChange={() => update(item.id, { status: "UNAVAILABLE" })}
+                  />{" "}
+                  Information unavailable
+                </label>
+              </div>
+              <InlineEvidenceAttachments
+                property={property}
+                scenarioId={scenario.id}
+                fieldKey={`DILIGENCE.${item.id}`}
+                fieldLabel={item.missingInformation}
+                links={scenario.evidenceAttachments ?? []}
+                onChange={(links) => {
+                  onAttachmentsChange(links);
+                  update(item.id, {
+                    documentLinks: links
+                      .filter(
+                        (link) => link.fieldKey === `DILIGENCE.${item.id}`,
+                      )
+                      .map((link) => ({
+                        documentId: link.documentId,
+                        version: link.version,
+                        fieldKey: link.fieldKey,
+                      })),
+                  });
+                }}
+              />
+            </article>
+          );
+        })}
+      </div>
+      <div className="iw-checklist-save">
+        <button disabled={busy} onClick={save}>
+          Save checklist progress
+        </button>
+        <small>
+          Saving never changes evidence verification or underwriting values.
+        </small>
+      </div>
+      <section className="iw-finalize-disclosures">
+        <h4>Finalize and generate the Full Investor Package</h4>
+        <p>
+          <b>
+            {critical} Critical and {important} Important items remain
+            unresolved.
+          </b>{" "}
+          PI will save any checklist changes first, record who elected to
+          distribute this exact revision, and then generate the report.
+          Finalization is not verification, appraisal or investment endorsement.
+        </p>
+        {reportBlockedReason && (
+          <div className="iw-error" role="alert">
+            <p>{reportBlockedReason}</p>
+            <button className="secondary" onClick={onResolveReportBlock}>
+              Review photos and confirm permission
+            </button>
+          </div>
+        )}
+        <label>
+          <input
+            type="checkbox"
+            checked={acknowledged}
+            disabled={Boolean(reportBlockedReason)}
+            onChange={(event) => setAcknowledged(event.target.checked)}
+          />
+          <span>{ACKNOWLEDGMENT_TEXT}</span>
+        </label>
+        <button
+          aria-busy={finalizationBusy}
+          disabled={
+            busy ||
+            !acknowledged ||
+            scenario.dirty ||
+            Boolean(reportBlockedReason) ||
+            finalization.phase === "SUCCESS"
+          }
+          onClick={finalize}
+        >
+          {finalizationButtonLabel}
+        </button>
+        {finalization.phase !== "IDLE" && (
+          <div
+            className={`iw-finalization-feedback ${finalization.phase.toLowerCase()}`}
+            role={finalization.phase === "ERROR" ? "alert" : "status"}
+            aria-live="polite"
+          >
+            <strong>
+              {finalizationBusy
+                ? "Report generation in progress"
+                : finalization.phase === "SUCCESS"
+                  ? "Full Investor Package generated"
+                  : "Full Investor Package was not generated"}
+            </strong>
+            <p>{finalization.message}</p>
+            {finalization.phase === "SUCCESS" && (
+              <small>
+                If your browser blocked the automatic download, use Download PDF
+                in the report controls below.
+              </small>
+            )}
+          </div>
+        )}
+        <small>
+          For a preliminary package without a finalization record, use Generate
+          PDF in the report controls below.
+        </small>
+      </section>
+    </section>
+  );
 }
