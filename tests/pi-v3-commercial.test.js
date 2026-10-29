@@ -25,6 +25,20 @@ test('Phase A persists checklist progress with optimistic concurrency and immuta
   await assert.rejects(()=>service.saveChecklist({user:viewer,derived,...bound,expectedVersion:1,items:{}}),/ROLE_NOT_AUTHORIZED/);
 });
 
+test('a pristine derived checklist can be finalized at version zero without a false conflict',async()=>{
+  const repository=createMemoryCommercialRepository(),service=createCommercialService({repository,clock}),initial=await service.checklist({user:analyst,derived,...bound});
+  assert.equal(initial.persistence.version,0);assert.equal(initial.persistence.id,null);
+  const finalization=await service.finalize({user:analyst,derived,...bound,checklistVersion:0,acknowledgment:{accepted:true,version:ACKNOWLEDGMENT_VERSION,text:ACKNOWLEDGMENT_TEXT}});
+  assert.equal(finalization.checklistVersion,0);assert.equal(finalization.counts.total,2);assert.equal(finalization.status,'FINALIZED_WITH_OUTSTANDING_DILIGENCE');
+  assert.equal((await service.checklist({user:analyst,derived,...bound})).persistence.version,0);
+});
+
+test('finalization still rejects a stale version after checklist progress is persisted',async()=>{
+  const repository=createMemoryCommercialRepository(),service=createCommercialService({repository,clock}),initial=await service.checklist({user:analyst,derived,...bound}),firstId=initial.outstanding[0].id;
+  await service.saveChecklist({user:analyst,derived,...bound,expectedVersion:0,items:{[firstId]:{status:'REVIEWED'}}});
+  await assert.rejects(()=>service.finalize({user:analyst,derived,...bound,checklistVersion:0,acknowledgment:{accepted:true,version:ACKNOWLEDGMENT_VERSION,text:ACKNOWLEDGMENT_TEXT}}),/CHECKLIST_VERSION_CONFLICT/);
+});
+
 test('Phase B grants credits once, reserves atomically, preserves duplicates and releases failed research',async()=>{
   const repository=createMemoryCommercialRepository(),service=createCommercialService({repository,clock});
   await service.grantCredits({user:platform,organizationId:'gabe-test',amount:3,reason:'Initial beta allowance',sourceId:'gabe-initial-three'});await service.grantCredits({user:platform,organizationId:'gabe-test',amount:3,reason:'Duplicate delivery',sourceId:'gabe-initial-three'});assert.equal((await service.creditBalance({user:analyst})).available,3);
