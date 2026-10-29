@@ -161,7 +161,19 @@ try {
     assert.deepEqual(providerRequests, []);
     const file = path.join(OUTPUT, `${viewport.name}.png`);
     await header.screenshot({ path: file });
-    captures.push({ ...viewport, ...metrics, file, providerRequests: 0 });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const viewportFile = path.join(OUTPUT, `${viewport.name}-viewport.png`);
+    await page.screenshot({ path: viewportFile });
+    const pageFile = path.join(OUTPUT, `${viewport.name}-page.png`);
+    await page.screenshot({ path: pageFile, fullPage: true });
+    captures.push({
+      ...viewport,
+      ...metrics,
+      file: path.relative(ROOT, file).replaceAll('\\', '/'),
+      viewportFile: path.relative(ROOT, viewportFile).replaceAll('\\', '/'),
+      pageFile: path.relative(ROOT, pageFile).replaceAll('\\', '/'),
+      providerRequests: 0,
+    });
     await context.close();
   }
 } finally {
@@ -170,7 +182,15 @@ try {
 
 const result = {
   status: 'PASS',
+  validatedAt: new Date().toISOString(),
   origin: ORIGIN,
+  deployment:
+    process.env.PI_DEPLOY_ID && process.env.PI_COMMIT
+      ? {
+          id: process.env.PI_DEPLOY_ID,
+          commit: process.env.PI_COMMIT,
+        }
+      : null,
   property: property.address,
   scenario: { id: scenario.id, revision: scenario.revision },
   captures,
