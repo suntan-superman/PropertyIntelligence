@@ -3787,15 +3787,12 @@ function GuidedWorkspaceHeader({
               onChange={onEvaluationMode}
               compact
             />
-            <div className="iw-guided-actions-field">
-              <span>Actions</span>
-              <ScenarioActionsMenu
-                dismissKey={`${current.id}:${scenario.id}`}
-                onDuplicate={onDuplicate}
-                onNewBlank={onNewBlank}
-                onReset={onReset}
-              />
-            </div>
+            <ScenarioActionsMenu
+              dismissKey={`${current.id}:${scenario.id}`}
+              onDuplicate={onDuplicate}
+              onNewBlank={onNewBlank}
+              onReset={onReset}
+            />
             {property.subjectKind === "DURABLE_SAVED" ? (
               <button
                 className="iw-scenario-save"
@@ -3864,12 +3861,13 @@ function ScenarioActionsMenu({ dismissKey, onDuplicate, onNewBlank, onReset }) {
         ref={summary}
         aria-expanded={open}
         aria-label={`${open ? "Close" : "Open"} Scenario actions`}
+        title="Scenario actions"
         onClick={(event) => {
           event.preventDefault();
           setOpen((value) => !value);
         }}
       >
-        Actions
+        <span aria-hidden="true">•••</span>
       </summary>
       <div>
         <button

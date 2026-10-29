@@ -38,7 +38,9 @@ test('scenario toolbar keeps related controls together and Save last', () => {
   assert.ok(
     toolbar.indexOf('iw-scenario-save') > toolbar.indexOf('ScenarioActionsMenu'),
   );
+  assert.doesNotMatch(toolbar, /<span>Actions<\/span>/);
   assert.match(workspace, /compact/);
+  assert.match(workspace, /<span aria-hidden="true">•••<\/span>/);
 });
 
 test('guided header layout is responsive and visually bounded', () => {

@@ -251,7 +251,7 @@
   grid-template-columns: minmax(155px, 1.05fr) minmax(145px, 0.95fr) minmax(
       190px,
       1.15fr
-    ) minmax(95px, 0.55fr) 92px;
+    ) 44px 92px;
   gap: 8px;
   align-items: end;
 }
@@ -259,8 +259,7 @@
   gap: 3px;
   min-width: 0;
 }
-.iw-guided-scenario-tools label > span,
-.iw-guided-actions-field > span {
+.iw-guided-scenario-tools label > span {
   display: block;
   margin-bottom: 3px;
   color: #5a7077;
@@ -281,9 +280,6 @@
 .iw-guided-scenario-tools .iw-evaluation-mode {
   min-width: 0;
 }
-.iw-guided-actions-field {
-  min-width: 0;
-}
 .investment-workspace .iw-guided-scenario-tools > .iw-scenario-save {
   height: 38px;
   padding: 7px 17px;
@@ -291,13 +287,18 @@
 }
 .iw-scenario-menu {
   position: relative;
+  width: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .iw-scenario-menu summary {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 38px;
-  padding: 7px 12px;
+  width: 44px;
+  padding: 7px;
   border: 1px solid #b9cbd5;
   border-radius: 5px;
   background: #fff;
@@ -306,10 +307,12 @@
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  list-style: none;
 }
-.iw-scenario-menu summary::before {
-  content: "•••";
-  margin-right: 7px;
+.iw-scenario-menu summary::-webkit-details-marker {
+  display: none;
+}
+.iw-scenario-menu summary > span {
   letter-spacing: 1px;
   color: #60747c;
 }
@@ -467,7 +470,7 @@
     grid-template-columns: minmax(145px, 1fr) minmax(135px, 1fr) minmax(
         180px,
         1.1fr
-      ) minmax(90px, 0.6fr) 82px;
+      ) 44px 82px;
   }
   .guided-progress ol,
   .identify-progress ol {
