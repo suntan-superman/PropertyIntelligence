@@ -58,3 +58,19 @@ test('report rendering is optional, photo-aware and financially invariant',async
   assert.match(withPhotos,/Current occupancy/);assert.match(withPhotos,/Advertised delivery condition/);assert.match(withPhotos,/Possession \/ vacancy confirmation/);
   assert.deepEqual(reportModel(property,{...scenario,photoSelections:photos.map(item=>({photoId:item.photo.id,version:1,isCover:item.photo.isCover}))},{generatedAt}).analysis,baseline);
 });
+
+test('report controls explain missing photo permission while standalone checklists remain available',async()=>{
+  const [workspace,checklist,cloud,local]=await Promise.all([
+    readFile(new URL('../apps/web/src/features/investment-workspace/Workspace.jsx',import.meta.url),'utf8'),
+    readFile(new URL('../apps/web/src/features/investment-workspace/InteractiveChecklist.jsx',import.meta.url),'utf8'),
+    readFile(new URL('../src/auth/netlify-auth.js',import.meta.url),'utf8'),
+    readFile(new URL('../src/investment-workspace/server.js',import.meta.url),'utf8')
+  ]);
+  assert.match(workspace,/Photo permission is required before generating an investor report/);
+  assert.match(workspace,/Review photos and confirm permission/);
+  assert.match(workspace,/photoRightsMissing&&kind!=='checklist'/);
+  assert.match(checklist,/reportBlockedReason/);
+  assert.match(checklist,/disabled=\{Boolean\(reportBlockedReason\)\}/);
+  assert.match(cloud,/kind!=='checklist'.*reportPhotos/);
+  assert.match(local,/input\.kind!=='checklist'.*reportPhotos/);
+});
