@@ -31,7 +31,7 @@ test('incomplete material costs prevent a net-profit label without changing calc
   const {model,analysis}=reportModel(property,scenario,{supportingDocuments:documents});
   assert.equal(model.costCompleteness.status,'INCOMPLETE');
   assert.equal(model.economics.netProfitEligible,false);
-  assert.equal(model.economics.profitLabel,'Illustrative modeled spread after entered costs');
+  assert.equal(model.economics.profitLabel,'Illustrative modeled result — incomplete costs');
   assert.equal(model.economics.profit.value,analysis.deterministic.modeledProfit);
   assert.ok(model.costCompleteness.majorUnentered.includes('Selling commission'));
   assert.ok(!JSON.stringify(model).includes('Estimated net profit'));
@@ -105,7 +105,8 @@ test('brief is decision-oriented and omits an unclassified comparable table from
   assert.match(html,/CONTINUE DILIGENCE/);
   assert.match(html,/Primary comparable set not yet classified/);
   assert.match(html,/Evidence discrepancy alert/);
-  assert.match(html,/Gross spread before other costs/);
+  assert.match(html,/Gross spread before unentered expenses/);
+  assert.match(html,/Illustrative ROI — incomplete costs/);
   assert.doesNotMatch(html,/class="sale-summary"/);
   assert.doesNotMatch(html,/Estimated net profit/);
   assert.doesNotMatch(html,/[A-Za-z]:\\Users\\|data[\\/]raw[\\/]/);

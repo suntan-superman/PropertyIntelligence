@@ -100,6 +100,7 @@ data/validation/attom-bulk-poc/raw/
 # Synthetic investor report PDF QA output; regenerate locally, do not commit artifacts.
 data/validation/investor-report-v1/
 data/validation/pi-v3-2-property-photos/
+data/validation/pi-v3-2-1-investor-report-final-polish/
 
 # Private source correspondence and account screenshots; retain locally only.
 /source_docs/

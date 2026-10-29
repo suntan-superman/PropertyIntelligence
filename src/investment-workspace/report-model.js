@@ -6,6 +6,8 @@ import {deriveSellerFinancialPosition} from '../../apps/web/src/features/investm
 import {groupComparableObservations} from '../../apps/web/src/features/investment-workspace/comparable-identity.js';
 import {generateDueDiligenceChecklist} from './due-diligence-checklist.js';
 
+// This identifier is part of the certified calculation/report integration contract.
+// V3.2.1 changes presentation only and must not fork the certified runtime version.
 export const REPORT_VERSION='Property Intelligence V3.2 Property Photo Gallery and Investor Report Polish';
 export const NOTICE='Preliminary underwriting—not appraisal/title verification. Assumptions are not verified costs; simulation output is not predictive accuracy.';
 export const RISK_NOTICE='Under entered assumptions; not a forecast of actual investment risk';
@@ -17,7 +19,7 @@ const TYPE_LABELS=Object.freeze({
 });
 const STATUS_LABELS=Object.freeze({PRESENT:'Present',ABSENT:'Reported absent',RELEASED:'Reported released',NOT_APPLICABLE:'Not applicable',UNKNOWN:'Unknown'});
 const VERIFICATION_LABELS=Object.freeze({
-  RECORDED_DOCUMENT:'Recorded-document evidence',SOURCE_REPORTED:'Source-reported — not independently verified',
+  RECORDED_DOCUMENT:'Recorded-document evidence',SOURCE_REPORTED:'Source-reported / not independently verified',
   ANALYST_ASSUMPTION:'Analyst assumption',INDEPENDENTLY_VERIFIED:'Independently verified',ANALYST_OBSERVED:'Analyst-observed',
   UNVERIFIED_NOTE:'Unverified note',UNKNOWN:'Unknown'
 });
@@ -63,7 +65,7 @@ function costCompleteness(inputs){
   const incomplete=items.filter(item=>['NOT_REVIEWED','UNKNOWN','EXPLICIT_ZERO_ASSUMPTION'].includes(item.status));
   return {items:items.map(item=>({...item,label:materialCostLabels[item.key]})),notReviewed:count('NOT_REVIEWED'),unknown:count('UNKNOWN'),explicitZero:count('EXPLICIT_ZERO_ASSUMPTION'),verifiedZero:0,entered:count('ANALYST_ASSUMPTION'),
     materialCostsIncomplete:incomplete.length>0,majorUnentered:incomplete.map(item=>materialCostLabels[item.key]),
-    status:incomplete.length?'INCOMPLETE':'COMPLETE',profitLabel:incomplete.length?'Illustrative modeled spread after entered costs':'Estimated net profit',
+    status:incomplete.length?'INCOMPLETE':'COMPLETE',profitLabel:incomplete.length?'Illustrative modeled result — incomplete costs':'Estimated net profit',
     notice:incomplete.length?'Material cost categories are unentered or explicitly assumed $0; the result is not an estimated net profit.':'All tracked material cost categories contain an analyst-entered amount; values still require verification.'};
 }
 const claimValue=(s,fieldKey)=>{

@@ -34,7 +34,7 @@ test('three reviewed Primary sales move valuation to completed without claiming 
 test('checklist pagination preserves every item and identifies continuation pages',()=>{
   const outstanding=Array.from({length:17},(_,index)=>({priority:index<3?'Critical':'Important',category:`Category ${index+1}`,missingInformation:`Missing ${index+1}`,why:`Why ${index+1}`,recommendedAction:`Action ${index+1}`,status:'Missing'}));
   const pages=dueDiligenceChecklistPages({dueDiligenceChecklist:{title:'Investment Due Diligence Checklist',propertyAddress:'Test address',scenarioName:'Test scenario',revision:1,analysisDate:'2026-10-20T00:00:00.000Z',overallStatus:'Preliminary',outstanding,completed:[],nextRecommendedActions:['Action 1'],counts:{critical:3,important:14,total:17},footer:'Preliminary'}});
-  assert.equal(pages.length,3);assert.match(pages[1],/continued 2 of 3/);
+  assert.equal(pages.length,2);assert.match(pages[1],/continued 2 of 2/);
   for(const entry of outstanding)assert.equal(pages.filter(page=>page.includes(`>${entry.missingInformation}<`)).length,1);
 });
 

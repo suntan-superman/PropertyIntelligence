@@ -12,6 +12,10 @@ const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 const clone=value=>value==null?value:structuredClone(value);
 const safeId=(value,label)=>{const text=clean(value,128);if(!/^[A-Za-z0-9._-]{1,128}$/.test(text))throw new PropertyPhotoError(`${label}_INVALID`);return text;};
 const isoDate=value=>{const text=clean(value,10);if(text&&!/^\d{4}-\d{2}-\d{2}$/.test(text))throw new PropertyPhotoError('PHOTO_CAPTURE_DATE_INVALID');return text||null;};
+const captureDateSource=(value,date)=>{
+  if(!date)return 'UNKNOWN';
+  return value==='FILE_METADATA'?'FILE_METADATA':'ANALYST_SUPPLIED';
+};
 
 export class PropertyPhotoError extends Error{
   constructor(code,status=400,details={}){super(code);this.code=code;this.status=status;this.details=details;}
@@ -25,7 +29,8 @@ function actor(user,{write=false}={}){
 function filename(value){const name=clean(value,180);if(!name||name!==path.basename(name)||/[\\/\0]/.test(name))throw new PropertyPhotoError('PHOTO_FILENAME_INVALID');return name;}
 function photoMetadata(input={}){
   const category=PHOTO_CATEGORIES.includes(input.category)?input.category:'OTHER';
-  return {caption:clean(input.caption,180),category,sourceDescription:clean(input.sourceDescription,240),captureDate:isoDate(input.captureDate),conditionClaim:clean(input.conditionClaim,120)||null};
+  const captureDate=isoDate(input.captureDate);
+  return {caption:clean(input.caption,180),category,sourceDescription:clean(input.sourceDescription,240),captureDate,captureDateSource:captureDateSource(input.captureDateSource,captureDate),conditionClaim:clean(input.conditionClaim,120)||null};
 }
 function contentSignature(bytes,mimeType){
   if(mimeType==='image/jpeg')return bytes.length>3&&bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
@@ -62,7 +67,7 @@ export function photoSelectionFingerprint(references=[]){
 }
 export function publicPropertyPhoto(record){
   const version=(record.versions??[]).find(item=>item.version===record.currentVersion)??record.versions?.at(-1);
-  return {id:record.id,propertyId:record.propertyId,caption:record.caption,category:record.category,sourceDescription:record.sourceDescription,captureDate:record.captureDate,conditionClaim:record.conditionClaim,displayOrder:record.displayOrder,isCover:Boolean(record.isCover),deletedAt:record.deletedAt??null,uploadedAt:record.uploadedAt,uploadedBy:record.uploadedBy,currentVersion:record.currentVersion,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,width:version.width,height:version.height,sha256:version.sha256,scanStatus:version.scanStatus,uploadedAt:version.uploadedAt}:null};
+  return {id:record.id,propertyId:record.propertyId,caption:record.caption,category:record.category,sourceDescription:record.sourceDescription,captureDate:record.captureDate,captureDateSource:captureDateSource(record.captureDateSource,record.captureDate),conditionClaim:record.conditionClaim,displayOrder:record.displayOrder,isCover:Boolean(record.isCover),deletedAt:record.deletedAt??null,uploadedAt:record.uploadedAt,uploadedBy:record.uploadedBy,currentVersion:record.currentVersion,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,width:version.width,height:version.height,sha256:version.sha256,scanStatus:version.scanStatus,uploadedAt:version.uploadedAt}:null};
 }
 
 export function createPropertyPhotoService({repository,storage,malwareScanner,durableProperties,clock=()=>new Date(),idFactory=randomUUID,limits=PHOTO_LIMITS}={}){
