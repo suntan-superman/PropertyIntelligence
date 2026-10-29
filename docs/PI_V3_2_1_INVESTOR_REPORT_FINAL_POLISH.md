@@ -1,6 +1,6 @@
 # PI V3.2.1 — Investor Report Final Polish
 
-Status: locally certified; production deployment verification recorded below.
+Status: production accepted for the private authenticated application.
 
 ## Scope and result
 
@@ -63,11 +63,15 @@ The broad historical umbrella runner was also sampled: 583 of 625 tests passed. 
 
 ## Production release
 
-- Git commit: `PENDING_DEPLOYMENT`
-- Netlify deploy: `PENDING_DEPLOYMENT`
-- Production health: `PENDING_DEPLOYMENT`
-- Authenticated boundaries: `PENDING_DEPLOYMENT`
-- Release classification: `PENDING_DEPLOYMENT`
+- Git commit: `77827bf7b707d42b5124043366813057cf57b601`
+- Netlify deploy: `6ae381ecc1faa4cea18b0826` (`ready`, exact commit, two functions deployed)
+- Production health: HTTP 200; persistence and authenticated runtime available
+- Unauthenticated profile, report, photo, and PDF routes: HTTP 401 as required
+- Authenticated read-only verification: email-verified Platform Administrator in Workside Software, LLC; 3 durable properties, 11 restored subjects, 13 Tyler photos present and CLEAN, and one authorized commercial report
+- Exact Tyler R3 authenticated report preview: PRELIMINARY; professional photo fallback and incomplete-cost labels present; 9 checklist items; PDF capability advertised
+- Report history before/after verification: 44 / 44
+- Production-verification mutations: 0; generated PDFs: 0; provider requests: 0
+- Release classification: **PI V3.2.1 — INVESTOR REPORT FINAL POLISH: PRODUCTION ACCEPTED**
 
 ## Remaining limitations
 
