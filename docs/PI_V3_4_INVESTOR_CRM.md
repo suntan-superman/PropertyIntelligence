@@ -73,7 +73,7 @@ PI has no configured transactional-email provider. V3.4 therefore deploys campai
 - strict organization authorization and audited platform override
 - private Firestore server access
 - non-enumerable hashed public tokens and no credentials in logs
-- same-origin public token API, no tracking pixels, no public Storage URLs
+- same-origin public token API with bounded per-IP/token request windows, no tracking pixels, no public Storage URLs
 - immutable report/scenario binding and SHA-256 download verification
 - explicit consent, opt-out, bounce and suppression enforcement
 - HTML escaping in prepared email content

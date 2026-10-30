@@ -1,7 +1,18 @@
+import { hash } from "./investor-contract.js";
+
 const json = (status, body, headers = {}) => new Response(JSON.stringify(body), {
   status,
-  headers: { "Content-Type": "application/json", "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", ...headers },
+  headers: { "Content-Type": "application/json", "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", "X-Robots-Tag": "noindex, noarchive", ...headers },
 });
+const publicWindows = new Map();
+const publicRateLimit = (request, token) => {
+  const at = Date.now(), address = request.headers.get("x-nf-client-connection-ip") ?? request.headers.get("x-forwarded-for")?.split(",")[0] ?? "unknown",
+    key = hash(`${address}|${String(token ?? "")}`).slice(0, 32), prior = publicWindows.get(key), windowStart = prior && at - prior.windowStart < 60_000 ? prior.windowStart : at,
+    count = prior && windowStart === prior.windowStart ? prior.count + 1 : 1;
+  publicWindows.set(key, { windowStart, count });
+  if (publicWindows.size > 2_000) for (const [candidate, value] of publicWindows) if (at - value.windowStart >= 60_000) publicWindows.delete(candidate);
+  if (count > 20) throw Object.assign(new Error("INVESTOR_ACCESS_RATE_LIMITED"), { status: 429 });
+};
 const body = async (request, maximum = 2_000_000) => {
   const text = await request.text();
   if (Buffer.byteLength(text) > maximum) throw Object.assign(new Error("INVESTOR_REQUEST_TOO_LARGE"), { status: 413 });
@@ -32,6 +43,7 @@ export async function handlePublicInvestorApi({ request, path, investorCrm, repo
   if (request.headers.get("origin") !== new URL(request.url).origin || !request.headers.get("content-type")?.startsWith("application/json"))
     return json(403, { error: "INVESTOR_ACCESS_ORIGIN_REQUIRED" });
   const input = await body(request, 32_000), service = await investorCrm(), action = String(input.action ?? "VIEW").toUpperCase();
+  publicRateLimit(request, input.token);
   if (action === "VIEW") return json(200, safePublicAccess(await service.authorizeToken(input.token)));
   if (action === "RESPOND") return json(200, await service.respond({ token: input.token, ...input.response }));
   if (action === "UNSUBSCRIBE") return json(200, await service.unsubscribe({ token: input.token }));
@@ -48,6 +60,7 @@ export async function handlePublicInvestorApi({ request, path, investorCrm, repo
       "Content-Disposition": `attachment; filename="${String(authorized.access.reportFilename ?? "Investor Package.pdf").replace(/["\\/]/g, "_").slice(0, 180)}"`,
       "Cache-Control": "private, no-store",
       "X-Content-Type-Options": "nosniff",
+      "X-Robots-Tag": "noindex, noarchive",
     }});
   }
   return json(422, { error: "INVESTOR_ACCESS_ACTION_INVALID" });
