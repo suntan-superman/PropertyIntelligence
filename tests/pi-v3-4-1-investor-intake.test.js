@@ -23,6 +23,10 @@ import {
   formatContactPhone,
   normalizeContactEmail,
 } from "../src/investor-crm/contact-validation.js";
+import {
+  localToday,
+  validateInvestorFields,
+} from "../src/investor-crm/investor-field-validation.js";
 
 const organizationId = "property-intelligence-local",
   admin = {
@@ -164,6 +168,118 @@ test("V3.4.1 contact fields format telephone numbers and validate email on entry
   );
   assert.equal(contactEmailError("buyer@example.com"), "");
   assert.match(contactEmailError("buyer.example.com"), /valid email/);
+});
+test("V3.4.1 structured investor fields reject invalid ranges, dates and contact choices", () => {
+  const today = "2026-10-30";
+  assert.equal(localToday(new Date("2026-10-30T12:00:00.000Z")), today);
+  assert.equal(
+    localToday(new Date("2026-10-31T05:30:00.000Z"), "America/Los_Angeles"),
+    today,
+  );
+  for (const [input, field] of [
+    [
+      {
+        ...base,
+        proofOfFundsStatus: "RECEIVED",
+        proofOfFundsExpirationDate: "2026-06-30",
+      },
+      "proofOfFundsExpirationDate",
+    ],
+    [
+      {
+        ...base,
+        proofOfFundsStatus: "REVIEWED",
+        proofOfFundsExpirationDate: "2026-12-31",
+      },
+      "proofOfFundsReviewDate",
+    ],
+    [{ ...base, typicalClosingDays: "10.5" }, "typicalClosingDays"],
+    [{ ...base, typicalClosingDays: "366" }, "typicalClosingDays"],
+    [{ ...base, streetAddress: "1 Main St" }, "city"],
+    [
+      {
+        ...base,
+        streetAddress: "1 Main St",
+        city: "Bakersfield",
+        state: "CA",
+        zip: "9330",
+      },
+      "zip",
+    ],
+    [
+      {
+        ...base,
+        emailStatus: "PERMITTED",
+        consentSource: "",
+      },
+      "consentSource",
+    ],
+    [{ ...base, consentAt: "2026-10-31" }, "consentAt"],
+    [
+      {
+        firstName: "Phone Only",
+        phone: "6615550101",
+        preferredCommunication: "EMAIL",
+      },
+      "preferredCommunication",
+    ],
+  ])
+    assert.ok(validateInvestorFields(input, { today })[field], field);
+  assert.throws(
+    () =>
+      normalizeInvestor(
+        {
+          ...base,
+          proofOfFundsStatus: "RECEIVED",
+          proofOfFundsExpirationDate: "2026-06-30",
+        },
+        { today },
+      ),
+    /INVESTOR_PROOF_OF_FUNDS_EXPIRATION_DATE_INVALID/,
+  );
+});
+test("V3.4.1 valid current and historical proof-of-funds chronology remains representable", () => {
+  const today = "2026-10-30",
+    active = normalizeInvestor(
+      {
+        ...base,
+        typicalClosingDays: "10",
+        proofOfFundsStatus: "REVIEWED",
+        proofOfFundsReviewDate: "2026-10-29",
+        proofOfFundsExpirationDate: "2026-12-31",
+      },
+      { today },
+    ),
+    expired = normalizeInvestor(
+      {
+        ...base,
+        proofOfFundsStatus: "EXPIRED",
+        proofOfFundsExpirationDate: "2026-06-30",
+      },
+      { today },
+    );
+  assert.equal(active.criteria.typicalClosingDays, 10);
+  assert.equal(active.capability.proofOfFundsExpirationDate, "2026-12-31");
+  assert.equal(expired.capability.proofOfFundsExpirationDate, "2026-06-30");
+});
+test("V3.4.1 service rejects invalid proof-of-funds chronology without changing the record", async () => {
+  const { service } = harness(),
+    created = await service.create({ user: admin, investor: base });
+  await assert.rejects(
+    () =>
+      service.update({
+        user: admin,
+        id: created.id,
+        investor: {
+          proofOfFundsStatus: "RECEIVED",
+          proofOfFundsExpirationDate: "2026-06-30",
+        },
+      }),
+    /INVESTOR_PROOF_OF_FUNDS_EXPIRATION_DATE_INVALID/,
+  );
+  const restored = await service.get({ user: admin, id: created.id });
+  assert.equal(restored.capability.proofOfFundsStatus, "NOT_REQUESTED");
+  assert.equal(restored.capability.proofOfFundsExpirationDate, null);
 });
 test("V3.4.1 ANY is mutually exclusive while multiple specific choices remain supported", () => {
   const any = normalizeInvestor({
@@ -480,11 +596,15 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
     assert.ok(source.includes(heading));
   assert.match(source, /aria-modal="true"/);
   assert.match(source, /aria-invalid=/);
-  assert.match(source, /disabled=\{busy\}/);
+  assert.match(source, /disabled=\{busy \|\| requiredFieldsMissing\}/);
   assert.match(source, /Saving…/);
   assert.match(source, /formatContactPhone\(event\.target\.value\)/);
   assert.match(source, /onBlur=\{\(\) => \{/);
   assert.match(source, /id="investor-email-error"/);
+  assert.match(source, /min=\{[\s\S]*proofOfFundsStatus/);
+  assert.match(source, /max=\{today\}/);
+  assert.match(source, /max="365"/);
+  assert.match(source, /maxLength=\{4000\}/);
   assert.ok(source.includes("Discard the unsaved investor changes?"));
   assert.equal((source.match(/className="crm-label-text"/g) ?? []).length, 4);
   assert.equal((source.match(/aria-hidden="true"/g) ?? []).length >= 4, true);

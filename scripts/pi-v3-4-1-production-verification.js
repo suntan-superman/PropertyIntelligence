@@ -150,6 +150,40 @@ try {
   assert.equal(await emailInput.inputValue(), "investor@example.com");
   assert.equal(await emailInput.getAttribute("aria-invalid"), "false");
   await emailInput.fill("");
+  const now = new Date(),
+    today = new Date(now.getTime() - now.getTimezoneOffset() * 60_000)
+      .toISOString()
+      .slice(0, 10),
+    priorDay = new Date(`${today}T12:00:00.000Z`);
+  priorDay.setUTCDate(priorDay.getUTCDate() - 1);
+  const proofStatus = page.getByLabel("Proof-of-funds status"),
+    proofExpiration = page.getByLabel("Proof-of-funds expiration date"),
+    closingDays = page.getByLabel("Typical closing timeframe (days)");
+  await proofStatus.selectOption("RECEIVED");
+  assert.equal(await proofExpiration.getAttribute("min"), today);
+  await proofExpiration.fill(priorDay.toISOString().slice(0, 10));
+  await proofExpiration.blur();
+  await page
+    .getByText(
+      "Active proof of funds cannot have an expiration date before today.",
+      { exact: true },
+    )
+    .waitFor();
+  await closingDays.fill("0");
+  await closingDays.blur();
+  await page
+    .getByText("Closing timeframe must be a whole number from 1 to 365 days.", {
+      exact: true,
+    })
+    .waitFor();
+  await proofExpiration.scrollIntoViewIfNeeded();
+  await page.screenshot({
+    path: path.join(OUTPUT, "field-validation.png"),
+    fullPage: false,
+  });
+  await proofExpiration.fill("");
+  await closingDays.fill("");
+  await proofStatus.selectOption("NOT_REQUESTED");
   await page.screenshot({
     path: path.join(OUTPUT, "investor-intake.png"),
     fullPage: false,
@@ -253,6 +287,7 @@ try {
       safeDefaults: true,
       phoneFormatting: true,
       emailValidation: true,
+      fieldConstraints: true,
       structuredGeography: true,
       budgetPresets: true,
       importMapping: true,
@@ -261,6 +296,7 @@ try {
     screenshots: [
       "investor-directory.png",
       "investor-intake.png",
+      "field-validation.png",
       "structured-location-budget.png",
       "import-mapping.png",
     ],

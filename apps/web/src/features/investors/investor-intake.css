@@ -224,6 +224,11 @@
 .crm-dialog-actions button {
   min-width: 130px;
 }
+.crm-save-guidance {
+  margin-right: auto;
+  max-width: 430px;
+  color: #5b7074;
+}
 .crm-table td:nth-child(2) {
   min-width: 240px;
 }

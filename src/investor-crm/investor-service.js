@@ -13,6 +13,7 @@ import {
   safeId,
   spreadsheetCell,
 } from "./investor-contract.js";
+import { localToday } from "./investor-field-validation.js";
 import { matchInvestors } from "./matching.js";
 
 const clone = (value) => (value == null ? value : structuredClone(value));
@@ -447,7 +448,9 @@ export function createInvestorCrmService({
     },
     async create({ user, organizationId, investor }) {
       const org = manager(user, organizationId),
-        clean = normalizeInvestor(investor),
+        clean = normalizeInvestor(investor, {
+          today: localToday(clock(), "America/Los_Angeles"),
+        }),
         existing = await repository.listInvestors(org),
         matches = duplicate(clean, existing);
       if (matches.length)
@@ -496,7 +499,10 @@ export function createInvestorCrmService({
       if (!prior) fail("INVESTOR_NOT_FOUND", 404);
       const clean = normalizeInvestor(
           { ...prior, ...investor },
-          { allowMissingContact: !prior.email && !prior.phone },
+          {
+            allowMissingContact: !prior.email && !prior.phone,
+            today: localToday(clock(), "America/Los_Angeles"),
+          },
         ),
         conflicts = duplicate(
           clean,

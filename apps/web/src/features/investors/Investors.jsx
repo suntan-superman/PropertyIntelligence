@@ -11,6 +11,10 @@ import {
   formatContactPhone,
   normalizeContactEmail,
 } from "../../../../../src/investor-crm/contact-validation.js";
+import {
+  localToday,
+  validateInvestorFields,
+} from "../../../../../src/investor-crm/investor-field-validation.js";
 import "./investors.css";
 import "./investor-intake.css";
 import "./pipeline.css";
@@ -43,7 +47,7 @@ const emptyInvestor = {
   emailStatus: "UNKNOWN",
   consentSource: "",
   consentAt: "",
-  preferredCommunication: "EMAIL",
+  preferredCommunication: "NONE",
   notes: "",
 };
 const errorText = (value) =>
@@ -130,7 +134,7 @@ const formFromInvestor = (item) => ({
   emailStatus: item.communication?.emailStatus ?? "UNKNOWN",
   consentSource: item.communication?.consentSource ?? "",
   consentAt: item.communication?.consentAt ?? "",
-  preferredCommunication: item.preferredCommunication ?? "EMAIL",
+  preferredCommunication: item.preferredCommunication ?? "NONE",
 });
 function parseCsv(text) {
   const rows = [];
@@ -1060,7 +1064,7 @@ function CheckGroup({ label, options, value, onChange }) {
     </fieldset>
   );
 }
-function BudgetSelector({ value, set }) {
+function BudgetSelector({ value, set, error, validate, clearError }) {
   const minimum =
       value.minimumAcquisitionAmount === ""
         ? null
@@ -1080,6 +1084,7 @@ function BudgetSelector({ value, set }) {
               ? "500_PLUS"
               : "CUSTOM";
   const choose = (next) => {
+    clearError();
     set("budgetNeedsReview", false);
     set(
       "budgetInterpretation",
@@ -1131,8 +1136,12 @@ function BudgetSelector({ value, set }) {
             <input
               type="number"
               min="0"
+              max="1000000000"
+              step="1000"
               inputMode="numeric"
               value={value.minimumAcquisitionAmount}
+              aria-invalid={Boolean(error)}
+              onBlur={validate}
               onChange={(event) =>
                 set("minimumAcquisitionAmount", event.target.value)
               }
@@ -1143,8 +1152,12 @@ function BudgetSelector({ value, set }) {
             <input
               type="number"
               min="0"
+              max="1000000000"
+              step="1000"
               inputMode="numeric"
               value={value.maximumAcquisitionAmount}
+              aria-invalid={Boolean(error)}
+              onBlur={validate}
               onChange={(event) =>
                 set("maximumAcquisitionAmount", event.target.value)
               }
@@ -1291,7 +1304,8 @@ function GeographySelector({ value, onChange }) {
   );
 }
 function InvestorDialog({ value, setValue, save, close, busy, creating }) {
-  const [errors, setErrors] = React.useState({}),
+  const today = localToday(),
+    [errors, setErrors] = React.useState({}),
     initial = React.useRef(JSON.stringify(value)),
     set = (key, next) => setValue((current) => ({ ...current, [key]: next })),
     setFieldError = (key, message) =>
@@ -1303,6 +1317,17 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
       }),
     clearContactError = (email, phone) => {
       if (email || phone) setFieldError("contact", "");
+    },
+    validateFields = (candidate, fields) => {
+      const validation = validateInvestorFields(candidate, { today });
+      setErrors((current) => {
+        const next = { ...current };
+        for (const field of fields) {
+          if (validation[field]) next[field] = validation[field];
+          else delete next[field];
+        }
+        return next;
+      });
     },
     requestClose = () => {
       if (
@@ -1332,13 +1357,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
       next.contact = "Enter an email address or phone number.";
     if (emailError) next.email = emailError;
     if (phoneError) next.phone = phoneError;
-    if (
-      value.minimumAcquisitionAmount !== "" &&
-      value.maximumAcquisitionAmount !== "" &&
-      Number(value.minimumAcquisitionAmount) >
-        Number(value.maximumAcquisitionAmount)
-    )
-      next.budget = "Minimum budget cannot exceed maximum budget.";
+    Object.assign(next, validateInvestorFields(value, { today }));
     setErrors(next);
     if (Object.keys(next).length) return;
     await save({
@@ -1352,8 +1371,11 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
     });
   };
   const protectedConsent = ["OPTED_OUT", "SUPPRESSED"].includes(
-    value.emailStatus,
-  );
+      value.emailStatus,
+    ),
+    missingName = !(value.firstName || value.lastName || value.fullName).trim(),
+    missingContact = !value.email && !value.phone,
+    requiredFieldsMissing = missingName || missingContact;
   return (
     <div className="crm-dialog-backdrop">
       <form
@@ -1397,8 +1419,9 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
               </span>
               <input
                 autoFocus
+                maxLength={80}
                 value={value.firstName}
-                aria-invalid={Boolean(errors.name)}
+                aria-invalid={Boolean(errors.name || errors.firstName)}
                 onChange={(event) => set("firstName", event.target.value)}
               />
             </label>
@@ -1410,8 +1433,9 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 </span>
               </span>
               <input
+                maxLength={80}
                 value={value.lastName}
-                aria-invalid={Boolean(errors.name)}
+                aria-invalid={Boolean(errors.name || errors.lastName)}
                 onChange={(event) => set("lastName", event.target.value)}
               />
             </label>
@@ -1422,6 +1446,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 <label className="wide">
                   Preserved full name{" "}
                   <input
+                    maxLength={160}
                     value={value.fullName}
                     onChange={(event) => set("fullName", event.target.value)}
                   />
@@ -1433,6 +1458,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             <label className="wide">
               Company (optional)
               <input
+                maxLength={160}
                 value={value.companyName}
                 onChange={(event) => set("companyName", event.target.value)}
               />
@@ -1449,6 +1475,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 autoComplete="email"
                 inputMode="email"
                 spellCheck="false"
+                maxLength={254}
                 value={value.email}
                 aria-invalid={Boolean(errors.email || errors.contact)}
                 aria-describedby={
@@ -1464,7 +1491,11 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 onBlur={() => {
                   const normalized = normalizeContactEmail(value.email);
                   if (normalized !== value.email) set("email", normalized);
-                  setFieldError("email", contactEmailError(normalized));
+                  validateFields({ ...value, email: normalized }, [
+                    "email",
+                    "preferredCommunication",
+                    "consentSource",
+                  ]);
                 }}
               />
               {errors.email && (
@@ -1488,6 +1519,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 type="tel"
                 autoComplete="tel"
                 inputMode="tel"
+                maxLength={22}
                 value={value.phone}
                 aria-invalid={Boolean(errors.phone || errors.contact)}
                 aria-describedby={
@@ -1501,7 +1533,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                     setFieldError("phone", contactPhoneError(next));
                 }}
                 onBlur={() =>
-                  setFieldError("phone", contactPhoneError(value.phone))
+                  validateFields(value, ["phone", "preferredCommunication"])
                 }
               />
               {errors.phone && (
@@ -1537,23 +1569,64 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 Mailing street address
                 <input
                   autoComplete="street-address"
+                  maxLength={180}
                   value={value.streetAddress}
+                  aria-invalid={Boolean(errors.streetAddress)}
+                  onBlur={() =>
+                    validateFields(value, [
+                      "streetAddress",
+                      "city",
+                      "state",
+                      "zip",
+                    ])
+                  }
                   onChange={(event) => set("streetAddress", event.target.value)}
                 />
+                {errors.streetAddress && (
+                  <small className="crm-field-error" role="alert">
+                    {errors.streetAddress}
+                  </small>
+                )}
               </label>
               <label>
                 City
                 <input
                   autoComplete="address-level2"
+                  maxLength={100}
                   value={value.city}
+                  aria-invalid={Boolean(errors.city)}
+                  onBlur={() =>
+                    validateFields(value, [
+                      "streetAddress",
+                      "city",
+                      "state",
+                      "zip",
+                    ])
+                  }
                   onChange={(event) => set("city", event.target.value)}
                 />
+                {errors.city && (
+                  <small className="crm-field-error" role="alert">
+                    {errors.city}
+                  </small>
+                )}
               </label>
               <label>
                 State
                 <select
                   value={value.state}
-                  onChange={(event) => set("state", event.target.value)}
+                  aria-invalid={Boolean(errors.state)}
+                  onChange={(event) => {
+                    const next = event.target.value,
+                      candidate = { ...value, state: next };
+                    set("state", next);
+                    validateFields(candidate, [
+                      "streetAddress",
+                      "city",
+                      "state",
+                      "zip",
+                    ]);
+                  }}
                 >
                   <option value="">Select state</option>
                   {US_STATES.map((state) => (
@@ -1562,14 +1635,36 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                     </option>
                   ))}
                 </select>
+                {errors.state && (
+                  <small className="crm-field-error" role="alert">
+                    {errors.state}
+                  </small>
+                )}
               </label>
               <label>
                 ZIP
                 <input
                   autoComplete="postal-code"
+                  inputMode="numeric"
+                  maxLength={10}
+                  pattern="[0-9]{5}(-[0-9]{4})?"
                   value={value.zip}
+                  aria-invalid={Boolean(errors.zip)}
+                  onBlur={() =>
+                    validateFields(value, [
+                      "streetAddress",
+                      "city",
+                      "state",
+                      "zip",
+                    ])
+                  }
                   onChange={(event) => set("zip", event.target.value)}
                 />
+                {errors.zip && (
+                  <small className="crm-field-error" role="alert">
+                    {errors.zip}
+                  </small>
+                )}
               </label>
             </div>
           </details>
@@ -1590,7 +1685,13 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
               onChange={(next) => set("strategies", next)}
             />
           </div>
-          <BudgetSelector value={value} set={set} />
+          <BudgetSelector
+            value={value}
+            set={set}
+            error={errors.budget}
+            validate={() => validateFields(value, ["budget"])}
+            clearError={() => setFieldError("budget", "")}
+          />
           {errors.budget && (
             <p className="crm-field-error" role="alert">
               {errors.budget}
@@ -1609,23 +1710,40 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
               Purchase method
               <select
                 value={value.fundingPreference}
-                onChange={(event) =>
-                  set("fundingPreference", event.target.value)
-                }
+                aria-invalid={Boolean(errors.fundingPreference)}
+                onChange={(event) => {
+                  const next = event.target.value,
+                    candidate = { ...value, fundingPreference: next };
+                  set("fundingPreference", next);
+                  validateFields(candidate, ["fundingPreference"]);
+                }}
               >
                 <option value="UNKNOWN">Unknown</option>
                 <option value="CASH">Cash</option>
                 <option value="FINANCING">Financed</option>
                 <option value="EITHER">Both</option>
               </select>
+              {errors.fundingPreference && (
+                <small className="crm-field-error" role="alert">
+                  {errors.fundingPreference}
+                </small>
+              )}
             </label>
             <label>
               Proof-of-funds status
               <select
                 value={value.proofOfFundsStatus}
-                onChange={(event) =>
-                  set("proofOfFundsStatus", event.target.value)
-                }
+                aria-invalid={Boolean(errors.proofOfFundsStatus)}
+                onChange={(event) => {
+                  const next = event.target.value,
+                    candidate = { ...value, proofOfFundsStatus: next };
+                  set("proofOfFundsStatus", next);
+                  validateFields(candidate, [
+                    "proofOfFundsStatus",
+                    "proofOfFundsReviewDate",
+                    "proofOfFundsExpirationDate",
+                  ]);
+                }}
               >
                 <option value="NOT_REQUESTED">Not provided</option>
                 <option value="REQUESTED">Requested</option>
@@ -1634,37 +1752,80 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 <option value="EXPIRED">Expired</option>
                 <option value="REJECTED">Rejected</option>
               </select>
+              {errors.proofOfFundsStatus && (
+                <small className="crm-field-error" role="alert">
+                  {errors.proofOfFundsStatus}
+                </small>
+              )}
             </label>
             <label>
               Typical closing timeframe (days)
               <input
                 type="number"
                 min="1"
+                max="365"
+                step="1"
+                inputMode="numeric"
                 value={value.typicalClosingDays}
+                aria-invalid={Boolean(errors.typicalClosingDays)}
                 onChange={(event) =>
                   set("typicalClosingDays", event.target.value)
                 }
+                onBlur={() => validateFields(value, ["typicalClosingDays"])}
               />
+              {errors.typicalClosingDays && (
+                <small className="crm-field-error" role="alert">
+                  {errors.typicalClosingDays}
+                </small>
+              )}
             </label>
             <label>
               Proof-of-funds review date
               <input
                 type="date"
+                max={today}
                 value={value.proofOfFundsReviewDate}
+                aria-invalid={Boolean(errors.proofOfFundsReviewDate)}
                 onChange={(event) =>
                   set("proofOfFundsReviewDate", event.target.value)
                 }
+                onBlur={() =>
+                  validateFields(value, [
+                    "proofOfFundsReviewDate",
+                    "proofOfFundsExpirationDate",
+                  ])
+                }
               />
+              {errors.proofOfFundsReviewDate && (
+                <small className="crm-field-error" role="alert">
+                  {errors.proofOfFundsReviewDate}
+                </small>
+              )}
             </label>
             <label>
               Proof-of-funds expiration date
               <input
                 type="date"
+                min={
+                  ["RECEIVED", "REVIEWED"].includes(value.proofOfFundsStatus)
+                    ? today
+                    : undefined
+                }
+                max={value.proofOfFundsStatus === "EXPIRED" ? today : undefined}
                 value={value.proofOfFundsExpirationDate}
+                aria-invalid={Boolean(errors.proofOfFundsExpirationDate)}
                 onChange={(event) =>
                   set("proofOfFundsExpirationDate", event.target.value)
                 }
+                onBlur={() =>
+                  validateFields(value, ["proofOfFundsExpirationDate"])
+                }
               />
+              {errors.proofOfFundsExpirationDate && (
+                <small className="crm-field-error" role="alert">
+                  {errors.proofOfFundsExpirationDate}
+                </small>
+              )}
             </label>
           </div>
           <p className="crm-privacy">
@@ -1680,7 +1841,18 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
               <select
                 value={value.emailStatus}
                 disabled={protectedConsent}
-                onChange={(event) => set("emailStatus", event.target.value)}
+                aria-invalid={Boolean(errors.emailStatus)}
+                onChange={(event) => {
+                  const next = event.target.value,
+                    candidate = { ...value, emailStatus: next };
+                  set("emailStatus", next);
+                  validateFields(candidate, [
+                    "emailStatus",
+                    "email",
+                    "consentSource",
+                    "consentAt",
+                  ]);
+                }}
               >
                 <option value="UNKNOWN">Not confirmed</option>
                 <option value="PERMITTED">Permitted</option>
@@ -1689,6 +1861,11 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                   <option value="SUPPRESSED">Suppressed</option>
                 )}
               </select>
+              {errors.emailStatus && (
+                <small className="crm-field-error" role="alert">
+                  {errors.emailStatus}
+                </small>
+              )}
               {protectedConsent && (
                 <small>
                   Opt-out and suppression protections cannot be cleared in
@@ -1699,43 +1876,83 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             <label>
               Consent source
               <input
+                maxLength={300}
                 value={value.consentSource}
+                aria-invalid={Boolean(errors.consentSource)}
                 onChange={(event) => set("consentSource", event.target.value)}
+                onBlur={() => validateFields(value, ["consentSource"])}
               />
+              {errors.consentSource && (
+                <small className="crm-field-error" role="alert">
+                  {errors.consentSource}
+                </small>
+              )}
             </label>
             <label>
               Consent date
               <input
                 type="date"
+                max={today}
                 value={value.consentAt}
+                aria-invalid={Boolean(errors.consentAt)}
                 onChange={(event) => set("consentAt", event.target.value)}
+                onBlur={() => validateFields(value, ["consentAt"])}
               />
+              {errors.consentAt && (
+                <small className="crm-field-error" role="alert">
+                  {errors.consentAt}
+                </small>
+              )}
             </label>
             <label>
               Preferred contact method
               <select
                 value={value.preferredCommunication}
-                onChange={(event) =>
-                  set("preferredCommunication", event.target.value)
-                }
+                aria-invalid={Boolean(errors.preferredCommunication)}
+                onChange={(event) => {
+                  const next = event.target.value,
+                    candidate = { ...value, preferredCommunication: next };
+                  set("preferredCommunication", next);
+                  validateFields(candidate, ["preferredCommunication"]);
+                }}
               >
                 <option value="EMAIL">Email</option>
                 <option value="PHONE">Phone</option>
                 <option value="SMS">Text message</option>
                 <option value="NONE">No preference</option>
               </select>
+              {errors.preferredCommunication && (
+                <small className="crm-field-error" role="alert">
+                  {errors.preferredCommunication}
+                </small>
+              )}
             </label>
             <label className="wide">
               Relationship notes
               <textarea
+                maxLength={4000}
                 value={value.notes}
+                aria-invalid={Boolean(errors.notes)}
                 onChange={(event) => set("notes", event.target.value)}
+                onBlur={() => validateFields(value, ["notes"])}
                 placeholder="Investment preferences, relationship history and follow-up notes"
               />
+              <small>{value.notes.length.toLocaleString()} / 4,000</small>
+              {errors.notes && (
+                <small className="crm-field-error" role="alert">
+                  {errors.notes}
+                </small>
+              )}
             </label>
           </div>
         </section>
         <footer className="crm-dialog-actions">
+          {requiredFieldsMissing && (
+            <small className="crm-save-guidance">
+              Enter a name and either an email address or telephone number to
+              save.
+            </small>
+          )}
           <button
             type="button"
             className="secondary"
@@ -1744,7 +1961,9 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
           >
             Cancel
           </button>
-          <button disabled={busy}>{busy ? "Saving…" : "Save investor"}</button>
+          <button disabled={busy || requiredFieldsMissing}>
+            {busy ? "Saving…" : "Save investor"}
+          </button>
         </footer>
       </form>
     </div>

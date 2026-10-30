@@ -5,6 +5,10 @@ import {
   normalizeContactEmail,
   normalizeContactPhone,
 } from "./contact-validation.js";
+import {
+  investorValidationCode,
+  validateInvestorFields,
+} from "./investor-field-validation.js";
 
 export const INVESTOR_STATUSES = Object.freeze([
   "ACTIVE",
@@ -261,7 +265,11 @@ export function normalizeGeographies(value) {
 
 export function normalizeInvestor(
   input = {},
-  { partial = false, allowMissingContact = false } = {},
+  {
+    partial = false,
+    allowMissingContact = false,
+    today = new Date().toISOString().slice(0, 10),
+  } = {},
 ) {
   const email = normalizeEmail(input.email),
     phone = normalizePhone(input.phone ?? input.telephone),
@@ -292,6 +300,14 @@ export function normalizeInvestor(
     throw Object.assign(new Error("INVESTOR_BUDGET_RANGE_INVALID"), {
       status: 422,
     });
+  const fieldErrors = validateInvestorFields(input, { today });
+  if (Object.keys(fieldErrors).length) {
+    const field = Object.keys(fieldErrors)[0];
+    throw Object.assign(new Error(investorValidationCode(field)), {
+      status: 422,
+      fieldErrors,
+    });
+  }
   return {
     firstName: clean(input.firstName, 80),
     lastName: clean(input.lastName, 80),
@@ -300,10 +316,7 @@ export function normalizeInvestor(
     mailingAddress: {
       street: clean(input.mailingAddress?.street ?? input.streetAddress, 180),
       city: clean(input.mailingAddress?.city ?? input.city, 100),
-      state: clean(
-        input.mailingAddress?.state ?? input.state,
-        40,
-      ).toUpperCase(),
+      state: normalizeState(input.mailingAddress?.state ?? input.state),
       zip: clean(input.mailingAddress?.zip ?? input.zip, 20),
     },
     phone,
@@ -313,7 +326,7 @@ export function normalizeInvestor(
     preferredCommunication: oneOf(
       input.preferredCommunication,
       ["EMAIL", "PHONE", "SMS", "NONE"],
-      "EMAIL",
+      "NONE",
     ),
     relationshipOwner: clean(input.relationshipOwner, 128),
     notes: clean(input.notes, 4_000),
