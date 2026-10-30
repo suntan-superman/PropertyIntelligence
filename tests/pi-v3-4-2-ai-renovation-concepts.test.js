@@ -49,6 +49,6 @@ test('Full Investor Package adds concept cover and paired page while brief stays
 });
 
 test('UI and report pipeline expose the paired concept workflow without a generation API',async()=>{
-  const [ui,cloud,local]=await Promise.all([readFile(new URL('../apps/web/src/features/investment-workspace/PropertyPhotos.jsx',import.meta.url),'utf8'),readFile(new URL('../src/auth/netlify-auth.js',import.meta.url),'utf8'),readFile(new URL('../src/investment-workspace/server.js',import.meta.url),'utf8')]);
-  assert.match(ui,/Create Before\/Concept Pair/);assert.match(ui,/AI concepts never count as condition evidence/);assert.match(ui,/originalPhotoVersion/);assert.doesNotMatch(ui,/imagegen|openai|generateConcept/i);assert.match(cloud,/reportConcepts/);assert.match(local,/reportConcepts/);
+  const [ui,css,cloud,local]=await Promise.all([readFile(new URL('../apps/web/src/features/investment-workspace/PropertyPhotos.jsx',import.meta.url),'utf8'),readFile(new URL('../apps/web/src/features/investment-workspace/property-photos.css',import.meta.url),'utf8'),readFile(new URL('../src/auth/netlify-auth.js',import.meta.url),'utf8'),readFile(new URL('../src/investment-workspace/server.js',import.meta.url),'utf8')]);
+  assert.match(ui,/Create Before\/Concept Pair/);assert.match(ui,/AI concepts never count as condition evidence/);assert.match(ui,/originalPhotoVersion/);assert.match(ui,/Selected as report cover/);assert.match(ui,/Save the scenario to preserve/);assert.match(ui,/concept-field-label/);assert.match(css,/\.concept-field-label \.required-marker\{display:inline/);assert.doesNotMatch(ui,/imagegen|openai|generateConcept/i);assert.match(cloud,/reportConcepts/);assert.match(local,/reportConcepts/);
 });
