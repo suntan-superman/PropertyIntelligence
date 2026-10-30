@@ -139,12 +139,16 @@ try {
     fullPage: false,
   });
   await page.getByLabel("Acquisition budget").selectOption("200_TO_500");
-  await page.getByLabel("State", { exact: true }).last().selectOption("CA");
-  await page.getByLabel("Scope").selectOption("COUNTY");
-  await page.getByLabel("County").selectOption("Kern County");
+  const geography = page.locator(".crm-geography");
+  await geography.scrollIntoViewIfNeeded();
+  await geography.locator("select").nth(0).selectOption("CA");
+  await geography.locator("select").nth(1).selectOption("COUNTY");
+  await geography.locator("select").nth(2).selectOption("Kern County");
   await page.getByRole("button", { name: "+ Add location" }).click();
-  await page.getByText("Kern County, CA", { exact: true }).waitFor();
-  await page.locator(".crm-geography").scrollIntoViewIfNeeded();
+  const locationChip = geography.locator(".crm-location-list span").first();
+  await locationChip.waitFor();
+  assert.match(await locationChip.innerText(), /Kern County, CA/);
+  await geography.scrollIntoViewIfNeeded();
   await page.screenshot({
     path: path.join(OUTPUT, "structured-location-budget.png"),
     fullPage: false,
@@ -203,15 +207,13 @@ try {
       }),
     }),
   );
-  await page
-    .locator("input[type=file]")
-    .setInputFiles({
-      name: "synthetic-investors.csv",
-      mimeType: "text/csv",
-      buffer: Buffer.from(
-        'First Name,Last Name,Email,Property Type,Investment Strategy,Investment Threshold,Multiple Geographic Locations\nSynthetic,One,one@example.test,Single Family,Fix & Flip,200000-500000,"Kern County, CA"\nSynthetic,Two,two@example.test,Multifamily,Buy & Hold,200K,Southern California',
-      ),
-    });
+  await page.locator("input[type=file]").setInputFiles({
+    name: "synthetic-investors.csv",
+    mimeType: "text/csv",
+    buffer: Buffer.from(
+      'First Name,Last Name,Email,Property Type,Investment Strategy,Investment Threshold,Multiple Geographic Locations\nSynthetic,One,one@example.test,Single Family,Fix & Flip,200000-500000,"Kern County, CA"\nSynthetic,Two,two@example.test,Multifamily,Buy & Hold,200K,Southern California',
+    ),
+  });
   await page.getByRole("heading", { name: "Map columns" }).waitFor();
   await page.screenshot({
     path: path.join(OUTPUT, "import-mapping.png"),

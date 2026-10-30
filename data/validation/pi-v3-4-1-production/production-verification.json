@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-10-30T14:09:10.812Z",
+  "origin": "https://worksidepropertyintelligence.netlify.app",
+  "authentication": {
+    "role": "Platform Administrator",
+    "organizationId": "property-intelligence-local",
+    "emailVerified": true
+  },
+  "checks": {
+    "friendlyOrganizationName": true,
+    "safeDefaults": true,
+    "structuredGeography": true,
+    "budgetPresets": true,
+    "importMapping": true,
+    "responsiveSourceCertified": true
+  },
+  "screenshots": [
+    "investor-directory.png",
+    "investor-intake.png",
+    "structured-location-budget.png",
+    "import-mapping.png"
+  ],
+  "operations": {
+    "liveInvestorMutations": 0,
+    "providerRequests": 0,
+    "emails": 0,
+    "stripeCharges": 0,
+    "gnzAccesses": 0
+  },
+  "browser": {
+    "pageErrors": [],
+    "failedResponses": []
+  }
+}

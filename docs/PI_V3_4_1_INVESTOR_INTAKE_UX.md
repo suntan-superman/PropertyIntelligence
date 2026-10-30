@@ -51,4 +51,17 @@ Matching remains deterministic and explainable. Statewide preferences match any 
 - Dependency audit: 0 vulnerabilities.
 - Synthetic import: 250 records, idempotent replay confirmed.
 
-Production deployment and browser-verification identifiers are recorded in the final implementation handoff after the existing Netlify GitHub workflow completes.
+## Production verification
+
+- Git commit: `7b4d64b1513c7d1a5acbc88f4cc6a7e5700d9914`
+- Netlify deploy: `6ae4a446c63a1eaea0f1e01f`
+- Published: 2026-10-30 07:06 PDT through the GitHub-triggered Linux build
+- Production health, authentication configuration and application shell: HTTP 200
+- Authenticated browser verification: passed as the email-verified Workside Platform Administrator in `property-intelligence-local`
+- Verified in production: friendly organization label, safe intake defaults, budget presets, structured state/county selection and expanded import mapping
+- Browser page errors and failed application responses: 0
+- Live investor writes, provider requests, emails, Stripe charges and GNZ record accesses: 0
+
+Production evidence is stored in `data/validation/pi-v3-4-1-production/`, including the directory, intake, structured-location and import-mapping screenshots plus the machine-readable verification result.
+
+**Classification: PI V3.4.1 — INVESTOR INTAKE UX & DATA QUALITY: PRODUCTION ACCEPTED.**
