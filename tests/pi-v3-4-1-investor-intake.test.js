@@ -426,6 +426,29 @@ test("V3.4.1 acquisition presets and imported budget syntax have explicit semant
   assert.equal(parseBudgetSource("200000-500000").minimum, 200000);
   assert.equal(parseBudgetSource("$200,000").needsReview, true);
   assert.equal(parseBudgetSource("200K").needsReview, true);
+  const upToFiveHundred = normalizeInvestor({
+    ...base,
+    budgetPreset: "UP_TO_500",
+    minimumAcquisitionAmount: "",
+    maximumAcquisitionAmount: 500000,
+  });
+  assert.equal(upToFiveHundred.criteria.minimumAcquisitionAmount, null);
+  assert.equal(upToFiveHundred.criteria.maximumAcquisitionAmount, 500000);
+  assert.match(
+    matchInvestor(upToFiveHundred, {
+      ...deal,
+      acquisitionPrice: 150000,
+    }).fit,
+    /STRONG|POSSIBLE|NEEDS_REVIEW/,
+  );
+  assert.equal(
+    validateInvestorFields({ ...base, budgetPreset: "CUSTOM" }).budget,
+    "Enter a minimum budget, a maximum budget, or both.",
+  );
+  assert.throws(
+    () => normalizeInvestor({ ...base, budgetPreset: "CUSTOM" }),
+    /INVESTOR_BUDGET_INVALID/,
+  );
   const open = normalizeInvestor({
     ...base,
     minimumAcquisitionAmount: 500000,
@@ -784,6 +807,10 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.doesNotMatch(source, />\s*Property ID \*/);
   assert.match(matchingCss, /\.crm-report-field[\s\S]*gap:\s*8px/);
   assert.match(matchingCss, /\.crm-match-actions[\s\S]*gap:\s*28px/);
+  assert.match(source, /Up to \$500,000/);
+  assert.doesNotMatch(source, /\$200,000–\$500,000/);
+  assert.match(source, /budgetPreset/);
+  assert.match(source, /Do not leave both fields blank/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
 });

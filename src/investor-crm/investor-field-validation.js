@@ -107,6 +107,7 @@ export function validateInvestorFields(
     zip = text(input, "zip", "mailingAddress"),
     minimum = value(input, "minimumAcquisitionAmount", "criteria"),
     maximum = value(input, "maximumAcquisitionAmount", "criteria"),
+    budgetPreset = text(input, "budgetPreset"),
     closingDays = value(input, "typicalClosingDays", "criteria"),
     proofStatus =
       text(input, "proofOfFundsStatus", "capability") || "NOT_REQUESTED",
@@ -167,6 +168,13 @@ export function validateInvestorFields(
     Number(minimum) > Number(maximum)
   )
     errors.budget = "Minimum budget cannot exceed maximum budget.";
+  if (
+    !errors.budget &&
+    budgetPreset === "CUSTOM" &&
+    (minimum === "" || minimum === null || minimum === undefined) &&
+    (maximum === "" || maximum === null || maximum === undefined)
+  )
+    errors.budget = "Enter a minimum budget, a maximum budget, or both.";
 
   const propertyTypes = selected(input, "propertyTypes", "criteria"),
     strategies = selected(input, "strategies", "criteria");

@@ -45,6 +45,7 @@ const emptyInvestor = {
   geographies: [],
   minimumAcquisitionAmount: "",
   maximumAcquisitionAmount: "",
+  budgetPreset: "NONE",
   budgetNeedsReview: false,
   budgetInterpretation: "UNREVIEWED",
   fundingPreference: "UNKNOWN",
@@ -77,8 +78,8 @@ const investorSaveError = (value) => {
     return "Review the proof-of-funds status and dates. The review date cannot be in the future, and an active expiration date cannot be before today or the review date.";
   if (code === "INVESTOR_GEOGRAPHY_INVALID")
     return "Review the preferred location. Select a valid state and a county that belongs to that state.";
-  if (code === "INVESTOR_BUDGET_RANGE_INVALID")
-    return "Review the acquisition budget. The minimum amount cannot exceed the maximum amount.";
+  if (code.startsWith("INVESTOR_BUDGET"))
+    return "Review the acquisition budget. For a custom range, enter a minimum, a maximum, or both; the minimum cannot exceed the maximum.";
   return errorText(code || "INVESTOR_REQUEST_FAILED");
 };
 const INVESTOR_TAB_HELP = {
@@ -167,6 +168,16 @@ const budgetLabel = (criteria) =>
       : criteria.maximumAcquisitionAmount == null
         ? `${money(criteria.minimumAcquisitionAmount)}+`
         : `${money(criteria.minimumAcquisitionAmount)}–${money(criteria.maximumAcquisitionAmount)}`;
+const acquisitionBudgetPreset = (minimum, maximum) =>
+  minimum == null && maximum == null
+    ? "NONE"
+    : minimum == null && Number(maximum) === 200000
+      ? "UP_TO_200"
+      : minimum == null && Number(maximum) === 500000
+        ? "UP_TO_500"
+        : Number(minimum) === 500000 && maximum == null
+          ? "500_PLUS"
+          : "CUSTOM";
 const formFromInvestor = (item) => ({
   ...emptyInvestor,
   ...item,
@@ -180,6 +191,10 @@ const formFromInvestor = (item) => ({
   geographies: item.criteria?.geographies ?? [],
   minimumAcquisitionAmount: item.criteria?.minimumAcquisitionAmount ?? "",
   maximumAcquisitionAmount: item.criteria?.maximumAcquisitionAmount ?? "",
+  budgetPreset: acquisitionBudgetPreset(
+    item.criteria?.minimumAcquisitionAmount,
+    item.criteria?.maximumAcquisitionAmount,
+  ),
   budgetNeedsReview: item.criteria?.budgetNeedsReview ?? false,
   budgetInterpretation: item.criteria?.budgetInterpretation ?? "UNREVIEWED",
   fundingPreference: item.criteria?.fundingPreference ?? "UNKNOWN",
@@ -1344,22 +1359,15 @@ function BudgetSelector({ value, set, error, validate, clearError }) {
       value.maximumAcquisitionAmount === ""
         ? null
         : Number(value.maximumAcquisitionAmount),
-    preset =
-      minimum == null && maximum == null
-        ? "NONE"
-        : minimum == null && maximum === 200000
-          ? "UP_TO_200"
-          : minimum === 200000 && maximum === 500000
-            ? "200_TO_500"
-            : minimum === 500000 && maximum == null
-              ? "500_PLUS"
-              : "CUSTOM";
+    inferredPreset = acquisitionBudgetPreset(minimum, maximum),
+    preset = value.budgetPreset || inferredPreset;
   const choose = (next) => {
     clearError();
+    set("budgetPreset", next);
     set("budgetNeedsReview", false);
     set(
       "budgetInterpretation",
-      next === "UP_TO_200"
+      ["UP_TO_200", "UP_TO_500"].includes(next)
         ? "MAXIMUM"
         : next === "500_PLUS"
           ? "MINIMUM"
@@ -1375,8 +1383,8 @@ function BudgetSelector({ value, set, error, validate, clearError }) {
       set("minimumAcquisitionAmount", "");
       set("maximumAcquisitionAmount", "200000");
     }
-    if (next === "200_TO_500") {
-      set("minimumAcquisitionAmount", "200000");
+    if (next === "UP_TO_500") {
+      set("minimumAcquisitionAmount", "");
       set("maximumAcquisitionAmount", "500000");
     }
     if (next === "500_PLUS") {
@@ -1395,7 +1403,7 @@ function BudgetSelector({ value, set, error, validate, clearError }) {
         <select value={preset} onChange={(event) => choose(event.target.value)}>
           <option value="NONE">Not specified</option>
           <option value="UP_TO_200">Up to $200,000</option>
-          <option value="200_TO_500">$200,000–$500,000</option>
+          <option value="UP_TO_500">Up to $500,000</option>
           <option value="500_PLUS">$500,000+</option>
           <option value="CUSTOM">Custom range</option>
         </select>
@@ -1437,8 +1445,9 @@ function BudgetSelector({ value, set, error, validate, clearError }) {
         </div>
       )}
       <small>
-        An unspecified budget creates no match restriction and does not
-        establish verified purchasing capacity.
+        {preset === "CUSTOM"
+          ? "Enter a minimum, a maximum, or both. Do not leave both fields blank."
+          : "An unspecified budget creates no match restriction and does not establish verified purchasing capacity."}
       </small>
     </div>
   );
