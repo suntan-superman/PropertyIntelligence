@@ -1,4 +1,5 @@
 import {searchRetainedAddress} from '../../apps/web/src/features/property-search/address-identity.js';
+import {handleAuthenticatedInvestorApi,handlePublicInvestorApi} from '../investor-crm/api.js';
 
 const json=(status,body,headers={})=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...headers}});
 
@@ -88,7 +89,7 @@ const qaScenario=scenario=>scenario?.demonstration===true||/(^|\b)(QA|FIXTURE|SY
 const reportDownloadHeaders=(filenameValue,result)=>({'Content-Type':'application/pdf','Content-Length':String(result.bytes.length),'Content-Disposition':`attachment; filename="${filename(filenameValue).replaceAll('"','_')}"`,'Cache-Control':'private, no-store, max-age=0','Pragma':'no-cache','X-Content-Type-Options':'nosniff','X-PI-Report-Pages':String(result.totalPages),'X-PI-Appendix-Pages':String(result.appendixPages)});
 
 /** Protects the deployed workbench API with the same Firebase session boundary as PI local development. */
-export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,retainedEvidence=null,productionResearch=null,addressValidation=null,documentMetadata=null,propertyPhotos=null,commercial=null,reportStorage=null,inviteUser=null,stripeCheckout=null,stripeWebhook=null,stripeReadiness=null,pdfRenderer=null,pdfAvailable=typeof pdfRenderer==='function'}={}){
+export function createNetlifyAuthenticatedApi({api,authentication,durableProperties=null,retainedEvidence=null,productionResearch=null,addressValidation=null,documentMetadata=null,propertyPhotos=null,commercial=null,investorCrm=null,reportStorage=null,inviteUser=null,stripeCheckout=null,stripeWebhook=null,stripeReadiness=null,pdfRenderer=null,pdfAvailable=typeof pdfRenderer==='function'}={}){
   if(typeof api!=='function'||!authentication?.enabled)throw new Error('NETLIFY_AUTHENTICATION_REQUIRED');
   let pdfBusy=false;
   const inFlightReportRequests=new Set();
@@ -116,7 +117,9 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
       if(path==='/api/commercial/stripe/webhook'&&request.method==='POST'){
         if(typeof commercial!=='function'||typeof stripeWebhook!=='function')return json(503,{error:'STRIPE_WEBHOOK_DISABLED'});const payload=await request.text(),event=stripeWebhook({payload,signature:request.headers.get('stripe-signature')});return json(200,await (await commercial()).applyStripeEvent({event}));
       }
+      const publicInvestorResponse=await handlePublicInvestorApi({request,path,investorCrm,reportStorage});if(publicInvestorResponse)return publicInvestorResponse;
       const user=await authentication.authenticate(adapted);
+      const investorResponse=await handleAuthenticatedInvestorApi({request,path,adapted,user,authentication,investorCrm,commercial});if(investorResponse)return investorResponse;
       if(path==='/api/auth/profile'&&['GET','PATCH'].includes(request.method)){
         if(typeof commercial!=='function')return json(503,{error:'COMMERCIAL_PROFILE_NOT_CONFIGURED'});const service=await commercial();
         if(request.method==='GET')return json(200,{profile:await service.profile({user})});

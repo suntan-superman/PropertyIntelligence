@@ -102,6 +102,7 @@
     "pi:v3.2:photos:test": "node --test tests/pi-v3-2-property-photos.test.js tests/investment-workspace-report.test.js tests/pi-v2-8-2-report-checklist.test.js tests/pi-v2-7-cloud-pdf.test.js tests/pi-v2-6-2-cover-page.test.js",
     "pi:v3.2:photos:qa": "node scripts/pi-v3-2-property-photo-qa.js",
     "pi:v3.2.1:report-polish:test": "node --test tests/pi-v3-2-1-investor-report-polish.test.js tests/pi-v3-2-property-photos.test.js tests/pi-v2-8-2-report-checklist.test.js tests/pi-v3-commercial.test.js tests/netlify-auth.test.js tests/pi-v2-7-cloud-pdf.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/monte-carlo-v1.test.js",
+    "pi:v3.4:investor-crm:test": "node --test tests/pi-v3-4-investor-crm.test.js tests/pi-v3-1-administration.test.js tests/netlify-auth.test.js",
     "pi:local": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:no-documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence",
@@ -160,6 +161,7 @@
   "dependencies": {
     "@napi-rs/canvas": "0.1.80",
     "@sparticuz/chromium": "153.0.0",
+    "exceljs": "^4.4.0",
     "firebase": "12.7.0",
     "firebase-admin": "14.5.0",
     "google-auth-library": "11.3.1",
@@ -178,6 +180,7 @@
   },
   "overrides": {
     "@grpc/grpc-js": "1.14.6",
-    "source-map-js": "1.2.2"
+    "source-map-js": "1.2.2",
+    "uuid": "11.1.1"
   }
 }

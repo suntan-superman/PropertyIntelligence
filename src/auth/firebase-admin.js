@@ -61,6 +61,16 @@ export async function initializeFirebaseCommercial({authentication,env=process.e
   return createCommercialService({repository:createFirestoreCommercialRepository({firestore:getFirestore(app)}),flags:{externalBetaEnabled:env.PI_EXTERNAL_BETA_ENABLED==='true',stripeCheckoutEnabled:env.PI_STRIPE_CHECKOUT_ENABLED==='true',stripeLiveModeEnabled:env.PI_STRIPE_LIVE_MODE_ENABLED==='true',ownerOrganizationId:String(env.PI_FIREBASE_ORGANIZATION_ID??'').trim()||null}});
 }
 
+export async function initializeFirebaseInvestorCrm({authentication,env=process.env}={}){
+  if(!authentication?.enabled||!authentication.expectedProjectId)throw new Error('FIREBASE_AUTHENTICATION_REQUIRED');
+  const [{getApp},{getFirestore},{createFirestoreInvestorRepository},{createInvestorCrmService}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/firestore'),import('../investor-crm/firestore-repository.js'),import('../investor-crm/investor-service.js')]);
+  const app=getApp('pi-v2-3a');if(app.options.projectId!==authentication.expectedProjectId)throw new Error('FIRESTORE_PROJECT_MISMATCH');
+  // No general outbound provider is configured in PI today. Campaign preparation,
+  // consent enforcement and secure access are production-ready; dispatch fails
+  // closed until a separately configured transactional provider is supplied.
+  return createInvestorCrmService({repository:createFirestoreInvestorRepository({firestore:getFirestore(app)}),emailSender:null,publicOrigin:String(env.URL??'https://worksidepropertyintelligence.netlify.app').replace(/\/$/,'')});
+}
+
 export async function initializeFirebaseUserAdministration({authentication,env=process.env}={}){
   if(!authentication?.enabled)throw new Error('FIREBASE_AUTHENTICATION_REQUIRED');const [{getApp},{getAuth}]=await Promise.all([import('firebase-admin/app'),import('firebase-admin/auth')]),auth=getAuth(getApp('pi-v2-3a')),apiKey=required(env,'PI_PUBLIC_FIREBASE_API_KEY');
   const sendReset=async({email})=>{const response=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${encodeURIComponent(apiKey)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestType:'PASSWORD_RESET',email})});if(!response.ok)throw Object.assign(new Error('FIREBASE_PASSWORD_RESET_EMAIL_FAILED'),{status:502});return {requested:true};};

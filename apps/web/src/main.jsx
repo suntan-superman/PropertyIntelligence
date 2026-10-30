@@ -35,6 +35,8 @@ const Discovery=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/discov
 const MyWorkspace=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/desktop-shell/MyWorkspace.jsx')):null;
 const AdminPortal=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/admin/AdminPortal.jsx')):null;
 const ReportViewer=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/reports/ReportViewer.jsx')):null;
+const Investors=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/investors/Investors.jsx')):null;
+const PublicInvestorPortal=__PI_LOCAL_INVESTMENT__?React.lazy(()=>import('./features/investors/PublicInvestorPortal.jsx')):null;
 installSessionExpiryMonitor();
 function LocalApplication(){
   const [hash,setHash]=React.useState(window.location.hash);
@@ -48,8 +50,10 @@ function LocalApplication(){
   if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#property-detail'))return <React.Suspense fallback={<p>Loading Property Detail…</p>}><PropertyDetail hash={hash}/></React.Suspense>;
   if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#investment'))return <React.Suspense fallback={<p>Loading local investment workspace…</p>}><InvestmentWorkspace hash={hash}/></React.Suspense>;
   if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#admin'))return <React.Suspense fallback={<p>Loading administration…</p>}><AdminPortal/></React.Suspense>;
+  if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#investors'))return <React.Suspense fallback={<p>Loading private investor relationships…</p>}><Investors/></React.Suspense>;
   if(hash==='#monitoring')return <React.Suspense fallback={<p>Loading Property Intelligence…</p>}><Monitoring/></React.Suspense>;
   if(__PI_LOCAL_INVESTMENT__)return <Home/>;
   return <React.Suspense fallback={<p>Loading Property Intelligence…</p>}><App/></React.Suspense>;
 }
-createRoot(document.getElementById('root')).render(<ApplicationBoundary><NotificationDialogProvider><TooltipProvider><AuthenticationGate><LocalApplication/></AuthenticationGate></TooltipProvider></NotificationDialogProvider></ApplicationBoundary>);
+function Root(){const [hash,setHash]=React.useState(location.hash);React.useEffect(()=>{const sync=()=>setHash(location.hash);addEventListener('hashchange',sync);return()=>removeEventListener('hashchange',sync)},[]);if(__PI_LOCAL_INVESTMENT__&&hash.startsWith('#deal-access'))return <React.Suspense fallback={<p>Opening secure deal access…</p>}><PublicInvestorPortal/></React.Suspense>;return <AuthenticationGate><LocalApplication/></AuthenticationGate>}
+createRoot(document.getElementById('root')).render(<ApplicationBoundary><NotificationDialogProvider><TooltipProvider><Root/></TooltipProvider></NotificationDialogProvider></ApplicationBoundary>);

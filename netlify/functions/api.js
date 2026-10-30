@@ -5,14 +5,15 @@ import {createNetlifyAuthenticatedApi} from '../../src/auth/netlify-auth.js';
 const api=createRuntime({runtime:'netlify',env:process.env});
 let authenticatedApi;
 async function runtime(){
-  authenticatedApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseProductionResearch,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments,initializeFirebasePropertyPhotos,initializeFirebaseCommercial,initializeFirebaseUserAdministration,initializeFirebaseReportStorage})=>{
+  authenticatedApi??=import('../../src/auth/firebase-admin.js').then(async({initializeFirebaseAuthentication,initializeFirebaseDurableProperties,initializeFirebaseRetainedEvidence,initializeFirebaseProductionResearch,initializeFirebaseDocumentMetadata,initializeFirebaseSupportingDocuments,initializeFirebasePropertyPhotos,initializeFirebaseCommercial,initializeFirebaseInvestorCrm,initializeFirebaseUserAdministration,initializeFirebaseReportStorage})=>{
     const authentication=await initializeFirebaseAuthentication({env:process.env,secureCookies:true});
-    let durablePromise=null,evidencePromise=null,metadataPromise=null,photosPromise=null,researchPromise=null,commercialPromise=null;
+    let durablePromise=null,evidencePromise=null,metadataPromise=null,photosPromise=null,researchPromise=null,commercialPromise=null,investorPromise=null;
     const durableProperties=()=>durablePromise??=initializeFirebaseDurableProperties({authentication});
     const retainedEvidence=()=>evidencePromise??=initializeFirebaseRetainedEvidence({authentication});
     const production=()=>researchPromise??=retainedEvidence().then(evidence=>initializeFirebaseProductionResearch({authentication,retainedEvidence:evidence,env:process.env}));
     const productionResearch=()=>production().then(value=>value.research),addressValidation=()=>production().then(value=>value.addressValidation);
     const commercial=()=>commercialPromise??=initializeFirebaseCommercial({authentication,env:process.env});
+    const investorCrm=()=>investorPromise??=initializeFirebaseInvestorCrm({authentication,env:process.env});
     const reportStorage=()=>initializeFirebaseReportStorage({authentication,bucketName:process.env.PI_FIREBASE_STORAGE_BUCKET});
     const inviteUser=await initializeFirebaseUserAdministration({authentication,env:process.env});
     const documentMetadata=()=>metadataPromise??=durableProperties().then(async service=>{
@@ -28,7 +29,7 @@ async function runtime(){
       return initializeFirebasePropertyPhotos({authentication,durableProperties:service,malwareScanner,bucketName:process.env.PI_FIREBASE_STORAGE_BUCKET});
     });
     const origin=process.env.URL??'https://worksidepropertyintelligence.netlify.app',successUrl=process.env.PI_STRIPE_SUCCESS_URL??`${origin}/#billing-success`,cancelUrl=process.env.PI_STRIPE_CANCEL_URL??`${origin}/#billing`,[{createStripeCheckoutClient,verifyStripeWebhook},{createStripeReadinessClient}]=await Promise.all([import('../../src/commercial/commercial-service.js'),import('../../src/commercial/stripe-readiness.js')]),checkout=createStripeCheckoutClient({secretKey:process.env.STRIPE_SECRET_KEY,priceId:process.env.STRIPE_PRICE_ID,successUrl,cancelUrl,enabled:process.env.PI_STRIPE_CHECKOUT_ENABLED==='true',liveModeEnabled:process.env.PI_STRIPE_LIVE_MODE_ENABLED==='true'}),readiness=createStripeReadinessClient({secretKey:process.env.STRIPE_SECRET_KEY,priceId:process.env.STRIPE_PRICE_ID,webhookSecret:process.env.STRIPE_WEBHOOK_SECRET,successUrl,cancelUrl,origin});
-    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,productionResearch,addressValidation,documentMetadata,propertyPhotos,commercial,reportStorage,inviteUser,stripeCheckout:input=>checkout.create(input),stripeWebhook:input=>verifyStripeWebhook({...input,secret:process.env.STRIPE_WEBHOOK_SECRET}),stripeReadiness:()=>readiness.inspect(),pdfAvailable:true});
+    return createNetlifyAuthenticatedApi({api,authentication,durableProperties,retainedEvidence,productionResearch,addressValidation,documentMetadata,propertyPhotos,commercial,investorCrm,reportStorage,inviteUser,stripeCheckout:input=>checkout.create(input),stripeWebhook:input=>verifyStripeWebhook({...input,secret:process.env.STRIPE_WEBHOOK_SECRET}),stripeReadiness:()=>readiness.inspect(),pdfAvailable:true});
   });
   return authenticatedApi;
 }
