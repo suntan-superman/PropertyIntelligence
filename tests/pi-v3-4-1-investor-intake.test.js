@@ -593,6 +593,13 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
         import.meta.url,
       ),
       "utf8",
+    ),
+    directoryCss = await readFile(
+      new URL(
+        "../apps/web/src/features/investors/investors.css",
+        import.meta.url,
+      ),
+      "utf8",
     );
   for (const heading of [
     "Contact information",
@@ -630,6 +637,11 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.equal((source.match(/aria-hidden="true"/g) ?? []).length >= 4, true);
   assert.match(css, /\.crm-label-text\s*\{[^}]*display:\s*inline-flex/s);
   assert.match(css, /\.crm-form-alert\s*\{/);
+  assert.match(
+    directoryCss,
+    /\.crm-toolbar label\{[^}]*flex:0 1 330px[^}]*gap:8px/,
+  );
+  assert.match(directoryCss, /\.crm-toolbar label input\{width:100%/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
 });
