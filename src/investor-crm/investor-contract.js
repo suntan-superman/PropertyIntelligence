@@ -13,6 +13,7 @@ import {
 export const INVESTOR_STATUSES = Object.freeze([
   "ACTIVE",
   "INACTIVE",
+  "NON_RESPONSIVE",
   "DO_NOT_CONTACT",
   "ARCHIVED",
 ]);

@@ -31,6 +31,13 @@ const EMAIL_STATUSES = new Set([
   "SUPPRESSED",
 ]);
 const CONTACT_METHODS = new Set(["EMAIL", "PHONE", "SMS", "NONE"]);
+const INVESTOR_STATUSES = new Set([
+  "ACTIVE",
+  "INACTIVE",
+  "NON_RESPONSIVE",
+  "DO_NOT_CONTACT",
+  "ARCHIVED",
+]);
 
 const value = (input, direct, nested, nestedKey = direct) =>
   input[direct] ?? input[nested]?.[nestedKey] ?? "";
@@ -110,6 +117,7 @@ export function validateInvestorFields(
     consentAt = text(input, "consentAt", "communication"),
     preferredCommunication = text(input, "preferredCommunication") || "NONE",
     notes = text(input, "notes"),
+    investorStatus = text(input, "status") || "ACTIVE",
     mailingStarted = Boolean(street || city || state || zip);
 
   tooLong(errors, "firstName", firstName, 80, "First name");
@@ -241,6 +249,8 @@ export function validateInvestorFields(
   else if (["PHONE", "SMS"].includes(preferredCommunication) && !phone)
     errors.preferredCommunication =
       "Add a telephone number or choose another contact method.";
+  if (invalidChoice(investorStatus, INVESTOR_STATUSES))
+    errors.status = "Select a valid investor status.";
 
   return errors;
 }

@@ -19,7 +19,11 @@ export function matchInvestor(investor, deal) {
     county = upper(deal.county),
     purchase = numeric(deal.acquisitionPrice),
     rehab = numeric(deal.rehabilitationEstimate);
-  if (["DO_NOT_CONTACT", "ARCHIVED", "INACTIVE"].includes(investor.status))
+  if (
+    ["DO_NOT_CONTACT", "ARCHIVED", "INACTIVE", "NON_RESPONSIVE"].includes(
+      investor.status,
+    )
+  )
     exclusions.push(
       `Investor status is ${investor.status.replaceAll("_", " ").toLowerCase()}.`,
     );

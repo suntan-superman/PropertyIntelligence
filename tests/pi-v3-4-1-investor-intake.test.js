@@ -216,6 +216,7 @@ test("V3.4.1 structured investor fields reject invalid ranges, dates and contact
       "consentSource",
     ],
     [{ ...base, consentAt: "2026-10-31" }, "consentAt"],
+    [{ ...base, status: "MAYBE_ACTIVE" }, "status"],
     [
       {
         firstName: "Phone Only",
@@ -650,9 +651,16 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(css, /\.crm-form-alert\s*\{/);
   assert.match(
     directoryCss,
-    /\.crm-toolbar label\{[^}]*flex:0 1 330px[^}]*gap:8px/,
+    /\.crm-toolbar \.crm-search-field\{[^}]*flex:0 1 330px[^}]*gap:8px/,
   );
-  assert.match(directoryCss, /\.crm-toolbar label input\{width:100%/);
+  assert.match(
+    directoryCss,
+    /\.crm-toolbar \.crm-search-field input,\.crm-toolbar \.crm-status-filter select\{width:100%/,
+  );
+  assert.match(source, /Investor status/);
+  assert.match(source, /NON_RESPONSIVE/);
+  assert.match(source, /INVESTOR_STATUS_HELP/);
+  assert.match(directoryCss, /\.crm-investor-status\.non-responsive/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
 });

@@ -549,8 +549,17 @@ export function createInvestorCrmService({
           (await repository.listInvestors(org)).filter(
             (item) => item.id !== investorId,
           ),
-        );
-      if (conflicts.length && confirmPotentialDuplicate !== true)
+        ),
+        identityChanged =
+          clean.normalizedEmail !== prior.normalizedEmail ||
+          clean.normalizedPhone !== prior.normalizedPhone ||
+          clean.fullName !== prior.fullName ||
+          clean.mailingAddress?.street !== prior.mailingAddress?.street;
+      if (
+        conflicts.length &&
+        identityChanged &&
+        confirmPotentialDuplicate !== true
+      )
         throw Object.assign(new Error("POTENTIAL_DUPLICATE_INVESTOR"), {
           status: 409,
           matches: conflicts,
@@ -586,7 +595,7 @@ export function createInvestorCrmService({
         actorUid: user.uid,
         investorId,
       });
-      if (conflicts.length)
+      if (conflicts.length && identityChanged)
         await audit(org, {
           kind: "POTENTIAL_DUPLICATE_INVESTOR_CONFIRMED",
           actorUid: user.uid,

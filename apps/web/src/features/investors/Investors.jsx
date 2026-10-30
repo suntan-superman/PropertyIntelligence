@@ -22,6 +22,7 @@ import "./investor-intake.css";
 import "./pipeline.css";
 
 const emptyInvestor = {
+  status: "ACTIVE",
   firstName: "",
   lastName: "",
   fullName: "",
@@ -85,6 +86,18 @@ const INVESTOR_TAB_HELP = {
   "Deal velocity":
     "Summarize observed campaign responses, offers, commitments and closings without estimating missing history.",
 };
+const INVESTOR_STATUS_HELP = {
+  ACTIVE:
+    "Eligible for deal matching and authorized campaigns when communication permission allows.",
+  INACTIVE:
+    "Retained for history, but excluded from deal matching and campaign delivery.",
+  NON_RESPONSIVE:
+    "Marked as not responding and excluded from deal matching and campaign delivery.",
+  DO_NOT_CONTACT:
+    "Blocks outreach while preserving the investor profile and prior activity.",
+  ARCHIVED:
+    "Retained as a historical record and excluded from normal investor workflows.",
+};
 const money = (value) =>
   value == null
     ? "Not established"
@@ -95,6 +108,11 @@ const money = (value) =>
       }).format(value);
 const when = (value) => (value ? new Date(value).toLocaleString() : "Not yet");
 const labels = {
+  ACTIVE: "Active",
+  INACTIVE: "Inactive",
+  NON_RESPONSIVE: "Non-responsive",
+  DO_NOT_CONTACT: "Do not contact",
+  ARCHIVED: "Archived",
   SF: "Single Family",
   MF: "Multifamily",
   ANY: "Any",
@@ -254,6 +272,7 @@ export default function Investors() {
     [busy, setBusy] = React.useState(false),
     [notice, setNotice] = React.useState(""),
     [search, setSearch] = React.useState(""),
+    [statusFilter, setStatusFilter] = React.useState("ALL"),
     [editing, setEditing] = React.useState(null),
     [form, setForm] = React.useState({ ...emptyInvestor }),
     [importData, setImportData] = React.useState(null),
@@ -553,10 +572,12 @@ export default function Investors() {
       setBusy(false);
     }
   }
-  const investors = (data?.investors ?? []).filter((item) =>
-    `${item.fullName} ${item.companyName} ${item.email} ${item.phone}`
-      .toLowerCase()
-      .includes(search.toLowerCase()),
+  const investors = (data?.investors ?? []).filter(
+    (item) =>
+      (statusFilter === "ALL" || (item.status ?? "ACTIVE") === statusFilter) &&
+      `${item.fullName} ${item.companyName} ${item.email} ${item.phone}`
+        .toLowerCase()
+        .includes(search.toLowerCase()),
   );
   return (
     <main className="investor-crm">
@@ -605,7 +626,7 @@ export default function Investors() {
       {tab === "Directory" && (
         <section className="crm-panel">
           <div className="crm-toolbar">
-            <label>
+            <label className="crm-search-field">
               Search investors
               <input
                 type="search"
@@ -613,6 +634,20 @@ export default function Investors() {
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Name, company, email or phone"
               />
+            </label>
+            <label className="crm-status-filter">
+              Investor status
+              <select
+                value={statusFilter}
+                onChange={(event) => setStatusFilter(event.target.value)}
+              >
+                <option value="ALL">All statuses</option>
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
+                <option value="NON_RESPONSIVE">Non-responsive</option>
+                <option value="DO_NOT_CONTACT">Do not contact</option>
+                <option value="ARCHIVED">Archived</option>
+              </select>
             </label>
             <button
               data-tooltip="Create a private investor profile for this organization, including contact permissions, buying criteria and purchasing capability."
@@ -673,6 +708,7 @@ export default function Investors() {
               <thead>
                 <tr>
                   <th>Investor</th>
+                  <th>Status</th>
                   <th>Investment criteria</th>
                   <th>Purchasing capability</th>
                   <th>Communication</th>
@@ -689,6 +725,13 @@ export default function Investors() {
                         {item.companyName || "Independent investor"} ·{" "}
                         {item.email || item.phone || "No contact method"}
                       </small>
+                    </td>
+                    <td>
+                      <span
+                        className={`crm-investor-status ${(item.status ?? "ACTIVE").toLowerCase().replaceAll("_", "-")}`}
+                      >
+                        {display(item.status ?? "ACTIVE")}
+                      </span>
                     </td>
                     <td>
                       {(item.criteria?.propertyTypes ?? [])
@@ -2025,6 +2068,32 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
         <section>
           <h3>Communication &amp; relationship</h3>
           <div className="crm-form-grid two">
+            <label>
+              Investor status
+              <select
+                value={value.status ?? "ACTIVE"}
+                aria-invalid={Boolean(errors.status)}
+                onChange={(event) => {
+                  const candidate = { ...value, status: event.target.value };
+                  setValue(candidate);
+                  validateFields(candidate, ["status"]);
+                }}
+              >
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
+                <option value="NON_RESPONSIVE">Non-responsive</option>
+                <option value="DO_NOT_CONTACT">Do not contact</option>
+                <option value="ARCHIVED">Archived</option>
+              </select>
+              <small>
+                {INVESTOR_STATUS_HELP[value.status ?? "ACTIVE"]}
+              </small>
+              {errors.status && (
+                <small className="crm-field-error" role="alert">
+                  {errors.status}
+                </small>
+              )}
+            </label>
             <label>
               Email permission
               <select
