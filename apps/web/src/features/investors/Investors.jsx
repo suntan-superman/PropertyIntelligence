@@ -12,6 +12,7 @@ import {
   normalizeContactEmail,
 } from "../../../../../src/investor-crm/contact-validation.js";
 import {
+  addCalendarMonths,
   localToday,
   validateInvestorFields,
 } from "../../../../../src/investor-crm/investor-field-validation.js";
@@ -1736,8 +1737,24 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 aria-invalid={Boolean(errors.proofOfFundsStatus)}
                 onChange={(event) => {
                   const next = event.target.value,
-                    candidate = { ...value, proofOfFundsStatus: next };
-                  set("proofOfFundsStatus", next);
+                    shouldDefaultReview =
+                      next === "REVIEWED" && !value.proofOfFundsReviewDate,
+                    reviewDate = shouldDefaultReview
+                      ? today
+                      : value.proofOfFundsReviewDate,
+                    expirationDate =
+                      next === "REVIEWED" &&
+                      reviewDate &&
+                      !value.proofOfFundsExpirationDate
+                        ? addCalendarMonths(reviewDate)
+                        : value.proofOfFundsExpirationDate,
+                    candidate = {
+                      ...value,
+                      proofOfFundsStatus: next,
+                      proofOfFundsReviewDate: reviewDate,
+                      proofOfFundsExpirationDate: expirationDate,
+                    };
+                  setValue(candidate);
                   validateFields(candidate, [
                     "proofOfFundsStatus",
                     "proofOfFundsReviewDate",
@@ -1786,9 +1803,26 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 max={today}
                 value={value.proofOfFundsReviewDate}
                 aria-invalid={Boolean(errors.proofOfFundsReviewDate)}
-                onChange={(event) =>
-                  set("proofOfFundsReviewDate", event.target.value)
-                }
+                onChange={(event) => {
+                  const nextReviewDate = event.target.value,
+                    priorDefaultExpiration = addCalendarMonths(
+                      value.proofOfFundsReviewDate,
+                    ),
+                    expirationWasAutomatic =
+                      !value.proofOfFundsExpirationDate ||
+                      value.proofOfFundsExpirationDate ===
+                        priorDefaultExpiration,
+                    nextExpirationDate =
+                      value.proofOfFundsStatus === "REVIEWED" &&
+                      expirationWasAutomatic
+                        ? addCalendarMonths(nextReviewDate)
+                        : value.proofOfFundsExpirationDate;
+                  setValue((current) => ({
+                    ...current,
+                    proofOfFundsReviewDate: nextReviewDate,
+                    proofOfFundsExpirationDate: nextExpirationDate,
+                  }));
+                }}
                 onBlur={() =>
                   validateFields(value, [
                     "proofOfFundsReviewDate",
@@ -1844,8 +1878,15 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
                 aria-invalid={Boolean(errors.emailStatus)}
                 onChange={(event) => {
                   const next = event.target.value,
-                    candidate = { ...value, emailStatus: next };
-                  set("emailStatus", next);
+                    candidate = {
+                      ...value,
+                      emailStatus: next,
+                      consentAt:
+                        next === "PERMITTED" && !value.consentAt
+                          ? today
+                          : value.consentAt,
+                    };
+                  setValue(candidate);
                   validateFields(candidate, [
                     "emailStatus",
                     "email",

@@ -24,6 +24,7 @@ import {
   normalizeContactEmail,
 } from "../src/investor-crm/contact-validation.js";
 import {
+  addCalendarMonths,
   localToday,
   validateInvestorFields,
 } from "../src/investor-crm/investor-field-validation.js";
@@ -237,6 +238,12 @@ test("V3.4.1 structured investor fields reject invalid ranges, dates and contact
       ),
     /INVESTOR_PROOF_OF_FUNDS_EXPIRATION_DATE_INVALID/,
   );
+});
+test("V3.4.1 date defaults use calendar months without overflowing month ends", () => {
+  assert.equal(addCalendarMonths("2026-10-30"), "2027-04-30");
+  assert.equal(addCalendarMonths("2026-08-31"), "2027-02-28");
+  assert.equal(addCalendarMonths("2027-08-31"), "2028-02-29");
+  assert.equal(addCalendarMonths("not-a-date"), "");
 });
 test("V3.4.1 valid current and historical proof-of-funds chronology remains representable", () => {
   const today = "2026-10-30",
@@ -603,6 +610,9 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /id="investor-email-error"/);
   assert.match(source, /min=\{[\s\S]*proofOfFundsStatus/);
   assert.match(source, /max=\{today\}/);
+  assert.match(source, /next === "REVIEWED" && !value\.proofOfFundsReviewDate/);
+  assert.match(source, /addCalendarMonths\(reviewDate\)/);
+  assert.match(source, /next === "PERMITTED" && !value\.consentAt/);
   assert.match(source, /max="365"/);
   assert.match(source, /maxLength=\{4000\}/);
   assert.ok(source.includes("Discard the unsaved investor changes?"));

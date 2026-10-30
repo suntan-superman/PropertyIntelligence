@@ -72,6 +72,17 @@ export const localToday = (now = new Date(), timeZone = "") => {
   return local.toISOString().slice(0, 10);
 };
 
+export const addCalendarMonths = (input, months = 6) => {
+  if (!validDate(input) || !Number.isInteger(months)) return "";
+  const [year, month, day] = input.split("-").map(Number),
+    target = new Date(Date.UTC(year, month - 1 + months, 1)),
+    targetYear = target.getUTCFullYear(),
+    targetMonth = target.getUTCMonth(),
+    lastDay = new Date(Date.UTC(targetYear, targetMonth + 1, 0)).getUTCDate(),
+    targetDay = Math.min(day, lastDay);
+  return `${targetYear}-${String(targetMonth + 1).padStart(2, "0")}-${String(targetDay).padStart(2, "0")}`;
+};
+
 export function validateInvestorFields(
   input = {},
   { today = localToday() } = {},
