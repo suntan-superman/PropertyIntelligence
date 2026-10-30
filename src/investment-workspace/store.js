@@ -44,6 +44,17 @@ function validatePhotoAcknowledgment(value,selections){
   if(!value||value.confirmed!==true||!text(value.userId,128)||!text(value.organizationId,128)||!text(value.scenarioId,128)||!Number.isInteger(value.revision)||value.revision<1||!text(value.confirmedAt,40)||Number.isNaN(Date.parse(value.confirmedAt))||!text(value.selectionFingerprint,64)||!/^[a-f0-9]{64}$/.test(value.selectionFingerprint)||!selections.length)throw new Error('Property photo redistribution acknowledgment is invalid.');
   return {confirmed:true,userId:value.userId,organizationId:value.organizationId,confirmedAt:value.confirmedAt,scenarioId:value.scenarioId,revision:value.revision,selectionFingerprint:value.selectionFingerprint};
 }
+function validateRenovationConceptSelections(value=[]){
+  if(!Array.isArray(value)||value.length>6)throw new Error('No more than 6 AI renovation concepts may be selected for a report.');
+  const seen=new Set(),covers=[];
+  const selections=value.map(item=>{
+    if(!item||!text(item.photoId,128)||!/^[A-Za-z0-9._-]+$/.test(item.photoId)||!Number.isInteger(item.version)||item.version<1||item.version>10_000||!text(item.originalPhotoId,128)||!/^[A-Za-z0-9._-]+$/.test(item.originalPhotoId)||!Number.isInteger(item.originalPhotoVersion)||item.originalPhotoVersion<1||item.originalPhotoVersion>10_000||!text(item.conceptTitle??'',180)||!item.conceptTitle?.trim()||!text(item.improvementDescription??'',1000)||typeof item.selectedAsCover!=='boolean')throw new Error('AI renovation concept selection is invalid.');
+    const key=`${item.photoId}:${item.version}`;if(seen.has(key))throw new Error('An AI renovation concept version can be selected only once.');seen.add(key);if(item.selectedAsCover)covers.push(key);
+    return {photoId:item.photoId,version:item.version,originalPhotoId:item.originalPhotoId,originalPhotoVersion:item.originalPhotoVersion,conceptTitle:item.conceptTitle.trim(),improvementDescription:item.improvementDescription??'',selectedAsCover:item.selectedAsCover};
+  });
+  if(covers.length>1)throw new Error('Choose only one AI renovation concept as the report cover.');
+  return selections;
+}
 export function validateDraft(s,evidence){
   const property=evidence.properties.find(p=>p.ref===s?.propertyRef);
   if(!property||!idPattern.test(s.id)||!text(s.name,80)||!s.name.trim())throw new Error('Choose a valid property and scenario name.');
@@ -67,10 +78,12 @@ export function validateDraft(s,evidence){
   const analystEvidence=validateAnalystEvidence(s.analystEvidence??[]);
   const evidenceAttachments=validateEvidenceAttachments(s.evidenceAttachments??[]);
   const photoSelections=validatePhotoSelections(s.photoSelections??[]),photoRightsAcknowledgment=validatePhotoAcknowledgment(s.photoRightsAcknowledgment??null,photoSelections);
+  const renovationConceptSelections=validateRenovationConceptSelections(s.renovationConceptSelections??[]),renovationConceptRightsAcknowledgment=validatePhotoAcknowledgment(s.renovationConceptRightsAcknowledgment??null,renovationConceptSelections);
   if(photoRightsAcknowledgment&&photoRightsAcknowledgment.scenarioId!==s.id)throw new Error('Property photo redistribution acknowledgment belongs to another scenario.');
+  if(renovationConceptRightsAcknowledgment&&renovationConceptRightsAcknowledgment.scenarioId!==s.id)throw new Error('AI renovation concept redistribution acknowledgment belongs to another scenario.');
   return {id:s.id,propertyRef:s.propertyRef,name:s.name.trim(),evidenceFingerprint:fingerprint,inputs:{...s.inputs},targetType:s.targetType,
     ...(evaluationMode===undefined?{}:{evaluationMode}),...(financingMode===undefined?{}:{financingMode}),...(wholesaleFeeTreatment===undefined?{}:{wholesaleFeeTreatment,wholesaleFeeAmount:s.wholesaleFeeAmount??''}),...(Object.keys(expenseTreatments).length?{expenseTreatments:{...expenseTreatments}}:{}),
-    notes:s.notes??'',risk:structuredClone(s.risk??{}),compReviews:structuredClone(s.compReviews??{}),analystEvidence,evidenceAttachments,photoSelections,photoRightsAcknowledgment,sellerValuationBasis,demonstration:s.demonstration===true,riskRequested:s.riskRequested===true};
+    notes:s.notes??'',risk:structuredClone(s.risk??{}),compReviews:structuredClone(s.compReviews??{}),analystEvidence,evidenceAttachments,photoSelections,photoRightsAcknowledgment,renovationConceptSelections,renovationConceptRightsAcknowledgment,sellerValuationBasis,demonstration:s.demonstration===true,riskRequested:s.riskRequested===true};
 }
 export function createStore(directory,evidenceSource){
   const evidence=()=>typeof evidenceSource==='function'?evidenceSource():evidenceSource;

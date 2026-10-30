@@ -104,6 +104,8 @@
     "pi:v3.2.1:report-polish:test": "node --test tests/pi-v3-2-1-investor-report-polish.test.js tests/pi-v3-2-property-photos.test.js tests/pi-v2-8-2-report-checklist.test.js tests/pi-v3-commercial.test.js tests/netlify-auth.test.js tests/pi-v2-7-cloud-pdf.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/monte-carlo-v1.test.js",
     "pi:v3.4:investor-crm:test": "node --test tests/pi-v3-4-investor-crm.test.js tests/pi-v3-1-administration.test.js tests/netlify-auth.test.js",
     "pi:v3.4.1:investor-intake:test": "node --test tests/pi-v3-4-investor-crm.test.js tests/pi-v3-4-1-investor-intake.test.js tests/netlify-auth.test.js",
+    "pi:v3.4.2:concepts:test": "node --test tests/pi-v3-4-2-ai-renovation-concepts.test.js tests/pi-v3-2-property-photos.test.js tests/pi-v3-2-1-investor-report-polish.test.js tests/netlify-auth.test.js tests/pi-v2-5-1-financial-invariance.test.js tests/monte-carlo-v1.test.js",
+    "pi:v3.4.2:concepts:qa": "node scripts/pi-v3-4-2-ai-renovation-concepts-qa.js",
     "pi:local": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence --supporting-documents",
     "pi:local:no-documents": "node scripts/workbench-server.js --investment --google-geocoding --operational-persistence",

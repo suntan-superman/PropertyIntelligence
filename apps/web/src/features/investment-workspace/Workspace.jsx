@@ -697,13 +697,16 @@ export default function Workspace({ hash = window.location.hash }) {
         )
       : [],
     selectedPhotoCount = s?.photoSelections?.length ?? 0,
+    selectedConceptCount = s?.renovationConceptSelections?.length ?? 0,
     photoRightsMissing =
-      selectedPhotoCount > 0 &&
-      !(
-        s?.photoRightsAcknowledgment?.confirmed === true &&
-        s.photoRightsAcknowledgment.scenarioId === s.id &&
-        s.photoRightsAcknowledgment.selectionFingerprint
-      );
+      (selectedPhotoCount > 0 &&
+        !(s?.photoRightsAcknowledgment?.confirmed === true &&
+          s.photoRightsAcknowledgment.scenarioId === s.id &&
+          s.photoRightsAcknowledgment.selectionFingerprint)) ||
+      (selectedConceptCount > 0 &&
+        !(s?.renovationConceptRightsAcknowledgment?.confirmed === true &&
+          s.renovationConceptRightsAcknowledgment.scenarioId === s.id &&
+          s.renovationConceptRightsAcknowledgment.selectionFingerprint));
   const appliedRoute = useRef(""),
     liveWorkspace = useRef(null),
     reminder = useRef({
@@ -4137,6 +4140,18 @@ function ReportReadiness({ scenario, property, result, preview }) {
       warning:
         (scenario.photoSelections?.length ?? 0) > 0 &&
         scenario.photoRightsAcknowledgment?.confirmed !== true,
+    },
+    {
+      label: "AI renovation concepts",
+      status:
+        (scenario.renovationConceptSelections?.length ?? 0)
+          ? scenario.renovationConceptRightsAcknowledgment?.confirmed === true
+            ? `${scenario.renovationConceptSelections.length} selected · concept permission confirmed`
+            : `${scenario.renovationConceptSelections.length} selected · permission required`
+          : "None selected—optional",
+      warning:
+        (scenario.renovationConceptSelections?.length ?? 0) > 0 &&
+        scenario.renovationConceptRightsAcknowledgment?.confirmed !== true,
     },
     {
       label: "Saved report revision",

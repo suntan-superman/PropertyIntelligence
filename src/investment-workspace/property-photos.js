@@ -4,8 +4,9 @@ import sharp from 'sharp';
 import {ROLES} from '../auth/access-control.js';
 
 export const PHOTO_CATEGORIES=Object.freeze(['EXTERIOR','INTERIOR','KITCHEN','BATHROOM','ROOF','FOUNDATION','LANDSCAPING','REPAIRS_DAMAGE','OTHER']);
+export const PHOTO_CLASSIFICATIONS=Object.freeze({ACTUAL:'ACTUAL_PROPERTY_PHOTO',CONCEPT:'AI_GENERATED_CONCEPT'});
 export const PHOTO_MIME_TYPES=Object.freeze(['image/jpeg','image/png','image/webp']);
-export const PHOTO_LIMITS=Object.freeze({maximumBytes:10*1024*1024,maximumPhotos:30,maximumReportPhotos:12,maximumPixels:100_000_000,derivativeWidth:1600,derivativeHeight:1200});
+export const PHOTO_LIMITS=Object.freeze({maximumBytes:10*1024*1024,maximumPhotos:30,maximumReportPhotos:12,maximumReportConcepts:6,maximumPixels:100_000_000,derivativeWidth:1600,derivativeHeight:1200});
 const writableRoles=new Set(['Administrator',ROLES.PLATFORM_ADMINISTRATOR,ROLES.ORGANIZATION_ADMINISTRATOR,ROLES.ANALYST]);
 const clean=(value,maximum=500)=>String(value??'').trim().replace(/\s+/g,' ').slice(0,maximum);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -30,7 +31,12 @@ function filename(value){const name=clean(value,180);if(!name||name!==path.basen
 function photoMetadata(input={}){
   const category=PHOTO_CATEGORIES.includes(input.category)?input.category:'OTHER';
   const captureDate=isoDate(input.captureDate);
-  return {caption:clean(input.caption,180),category,sourceDescription:clean(input.sourceDescription,240),captureDate,captureDateSource:captureDateSource(input.captureDateSource,captureDate),conditionClaim:clean(input.conditionClaim,120)||null};
+  const classification=input.classification===PHOTO_CLASSIFICATIONS.CONCEPT?PHOTO_CLASSIFICATIONS.CONCEPT:PHOTO_CLASSIFICATIONS.ACTUAL;
+  return {caption:clean(input.caption,180),category,sourceDescription:clean(input.sourceDescription,240),captureDate,captureDateSource:captureDateSource(input.captureDateSource,captureDate),conditionClaim:classification===PHOTO_CLASSIFICATIONS.ACTUAL?clean(input.conditionClaim,120)||null:null,classification,
+    conceptTitle:classification===PHOTO_CLASSIFICATIONS.CONCEPT?clean(input.conceptTitle,180):'',improvementDescription:classification===PHOTO_CLASSIFICATIONS.CONCEPT?clean(input.improvementDescription,1000):'',
+    originalPhotoId:classification===PHOTO_CLASSIFICATIONS.CONCEPT?clean(input.originalPhotoId,128):null,originalPhotoVersion:classification===PHOTO_CLASSIFICATIONS.CONCEPT?Number(input.originalPhotoVersion):null,
+    includeInReports:classification===PHOTO_CLASSIFICATIONS.CONCEPT&&input.includeInReports===true,selectedAsCover:classification===PHOTO_CLASSIFICATIONS.CONCEPT&&input.selectedAsCover===true,
+    redistributionAcknowledgment:classification===PHOTO_CLASSIFICATIONS.CONCEPT&&input.redistributionAcknowledgment===true};
 }
 function contentSignature(bytes,mimeType){
   if(mimeType==='image/jpeg')return bytes.length>3&&bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff;
@@ -67,7 +73,13 @@ export function photoSelectionFingerprint(references=[]){
 }
 export function publicPropertyPhoto(record){
   const version=(record.versions??[]).find(item=>item.version===record.currentVersion)??record.versions?.at(-1);
-  return {id:record.id,propertyId:record.propertyId,caption:record.caption,category:record.category,sourceDescription:record.sourceDescription,captureDate:record.captureDate,captureDateSource:captureDateSource(record.captureDateSource,record.captureDate),conditionClaim:record.conditionClaim,displayOrder:record.displayOrder,isCover:Boolean(record.isCover),deletedAt:record.deletedAt??null,uploadedAt:record.uploadedAt,uploadedBy:record.uploadedBy,currentVersion:record.currentVersion,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,width:version.width,height:version.height,sha256:version.sha256,scanStatus:version.scanStatus,uploadedAt:version.uploadedAt}:null};
+  const classification=record.classification===PHOTO_CLASSIFICATIONS.CONCEPT?PHOTO_CLASSIFICATIONS.CONCEPT:PHOTO_CLASSIFICATIONS.ACTUAL;
+  return {id:record.id,propertyId:record.propertyId,caption:record.caption,category:record.category,sourceDescription:record.sourceDescription,captureDate:record.captureDate,captureDateSource:captureDateSource(record.captureDateSource,record.captureDate),conditionClaim:classification===PHOTO_CLASSIFICATIONS.ACTUAL?record.conditionClaim:null,classification,
+    conceptTitle:classification===PHOTO_CLASSIFICATIONS.CONCEPT?record.conceptTitle??'':'',improvementDescription:classification===PHOTO_CLASSIFICATIONS.CONCEPT?record.improvementDescription??'':'',
+    originalPhotoId:classification===PHOTO_CLASSIFICATIONS.CONCEPT?record.originalPhotoId??null:null,originalPhotoVersion:classification===PHOTO_CLASSIFICATIONS.CONCEPT?record.originalPhotoVersion??null:null,
+    includeInReports:classification===PHOTO_CLASSIFICATIONS.CONCEPT&&record.includeInReports===true,selectedAsCover:classification===PHOTO_CLASSIFICATIONS.CONCEPT&&record.selectedAsCover===true,
+    redistributionAcknowledgment:classification===PHOTO_CLASSIFICATIONS.CONCEPT&&record.redistributionAcknowledgment===true,
+    displayOrder:record.displayOrder,isCover:classification===PHOTO_CLASSIFICATIONS.ACTUAL&&Boolean(record.isCover),deletedAt:record.deletedAt??null,uploadedAt:record.uploadedAt,uploadedBy:record.uploadedBy,currentVersion:record.currentVersion,currentVersionMetadata:version?{version:version.version,filename:version.filename,mimeType:version.mimeType,sizeBytes:version.sizeBytes,width:version.width,height:version.height,sha256:version.sha256,scanStatus:version.scanStatus,uploadedAt:version.uploadedAt}:null};
 }
 
 export function createPropertyPhotoService({repository,storage,malwareScanner,durableProperties,clock=()=>new Date(),idFactory=randomUUID,limits=PHOTO_LIMITS}={}){
@@ -78,16 +90,28 @@ export function createPropertyPhotoService({repository,storage,malwareScanner,du
   const validateIntent=file=>{const name=filename(file?.filename),mime=clean(file?.mimeType,100).toLowerCase(),size=Number(file?.sizeBytes);if(!PHOTO_MIME_TYPES.includes(mime))throw new PropertyPhotoError('PHOTO_MIME_TYPE_NOT_ALLOWED',415);if(!Number.isInteger(size)||size<1)throw new PropertyPhotoError('PHOTO_SIZE_INVALID');if(size>limits.maximumBytes)throw new PropertyPhotoError('PHOTO_TOO_LARGE',413,{maximumBytes:limits.maximumBytes});const allowed={'image/jpeg':['.jpg','.jpeg'],'image/png':['.png'],'image/webp':['.webp']}[mime];if(!allowed.includes(path.extname(name).toLowerCase()))throw new PropertyPhotoError('PHOTO_EXTENSION_MISMATCH',415);return {filename:name,mimeType:mime,sizeBytes:size};};
   const uploadKey=(organizationId,propertyId,photoId,mimeType)=>`organizations/${organizationId}/properties/${propertyId}/photos/${photoId}/versions/v000001/original-upload.${extensionFor(mimeType)}`;
   async function availableSlot(who,propertyId){const current=await repository.list(who.organizationId,propertyId);if(current.filter(item=>!item.deletedAt).length>=limits.maximumPhotos)throw new PropertyPhotoError('PHOTO_GALLERY_LIMIT',409,{maximumPhotos:limits.maximumPhotos});return current;}
+  function validatedMetadata(metadata,records){
+    const normalized=photoMetadata(metadata);
+    if(normalized.classification!==PHOTO_CLASSIFICATIONS.CONCEPT)return normalized;
+    if(!normalized.conceptTitle)throw new PropertyPhotoError('CONCEPT_TITLE_REQUIRED');
+    if(!normalized.redistributionAcknowledgment)throw new PropertyPhotoError('CONCEPT_REDISTRIBUTION_ACKNOWLEDGMENT_REQUIRED',409);
+    const original=records.find(item=>item.id===normalized.originalPhotoId&&!item.deletedAt);
+    if(!original||(original.classification??PHOTO_CLASSIFICATIONS.ACTUAL)!==PHOTO_CLASSIFICATIONS.ACTUAL)throw new PropertyPhotoError('CONCEPT_ORIGINAL_PHOTO_INVALID',409);
+    const version=(original.versions??[]).find(item=>item.version===normalized.originalPhotoVersion);
+    if(!version||version.scanStatus!=='CLEAN')throw new PropertyPhotoError('CONCEPT_ORIGINAL_VERSION_UNAVAILABLE',409);
+    return normalized;
+  }
   async function persist({who,propertyId,metadata,inspected,scan,id,originalStorageKey,originalStored=false,current=null}){
     const records=current??await availableSlot(who,propertyId),duplicate=records.find(item=>(item.versions??[]).some(version=>version.sha256===inspected.sha256)&&!item.deletedAt);if(duplicate)throw new PropertyPhotoError('DUPLICATE_PHOTO_CONTENT',409,{photo:publicPropertyPhoto(duplicate)});
+    const normalizedMetadata=validatedMetadata(metadata,records);
     const version=1,uploadedAt=timestamp(),base=`organizations/${who.organizationId}/properties/${propertyId}/photos/${id}/versions/v000001`,derivativeStorageKey=`${base}/report-${inspected.derivativeSha256}.jpg`;
     if(!originalStored)await storage.put(originalStorageKey,inspected.bytes,{contentType:inspected.mimeType,sha256:inspected.sha256});
     else await storage.secure?.(originalStorageKey,{contentType:inspected.mimeType,sha256:inspected.sha256});
     await storage.put(derivativeStorageKey,inspected.derivative,{contentType:inspected.derivativeMimeType,sha256:inspected.derivativeSha256});
     const versionRecord={version,filename:inspected.filename,mimeType:inspected.mimeType,sizeBytes:inspected.sizeBytes,width:inspected.width,height:inspected.height,sha256:inspected.sha256,storageKey:originalStorageKey,derivativeMimeType:inspected.derivativeMimeType,derivativeSizeBytes:inspected.derivativeSizeBytes,derivativeWidth:inspected.derivativeWidth,derivativeHeight:inspected.derivativeHeight,derivativeSha256:inspected.derivativeSha256,derivativeStorageKey,metadataStripped:true,...scan,uploadedAt,uploadedBy:who.uid,immutable:true};
-    const record={id,organizationId:who.organizationId,propertyId,...photoMetadata(metadata),displayOrder:records.filter(item=>!item.deletedAt).length,isCover:records.every(item=>item.deletedAt),deletedAt:null,uploadedAt,uploadedBy:who.uid,updatedAt:uploadedAt,updatedBy:who.uid,currentVersion:version,versions:[versionRecord]};
+    const record={id,organizationId:who.organizationId,propertyId,...normalizedMetadata,displayOrder:records.filter(item=>!item.deletedAt).length,isCover:normalizedMetadata.classification===PHOTO_CLASSIFICATIONS.ACTUAL&&records.filter(item=>!item.deletedAt&&(item.classification??PHOTO_CLASSIFICATIONS.ACTUAL)===PHOTO_CLASSIFICATIONS.ACTUAL).length===0,deletedAt:null,uploadedAt,uploadedBy:who.uid,updatedAt:uploadedAt,updatedBy:who.uid,currentVersion:version,versions:[versionRecord]};
     await repository.create(record,versionRecord);
-    await audit({organizationId:who.organizationId,propertyId,photoId:id,version,userId:who.uid,action:'PROPERTY_PHOTO_UPLOADED',sha256:inspected.sha256});return publicPropertyPhoto(record);
+    await audit({organizationId:who.organizationId,propertyId,photoId:id,version,userId:who.uid,action:normalizedMetadata.classification===PHOTO_CLASSIFICATIONS.CONCEPT?'AI_RENOVATION_CONCEPT_UPLOADED':'PROPERTY_PHOTO_UPLOADED',sha256:inspected.sha256,originalPhotoId:normalizedMetadata.originalPhotoId,originalPhotoVersion:normalizedMetadata.originalPhotoVersion});return publicPropertyPhoto(record);
   }
   async function list({user,propertyId,includeRemoved=false}){const who=actor(user);await propertyAccess(user,propertyId);const records=await repository.list(who.organizationId,propertyId);return records.filter(item=>includeRemoved||!item.deletedAt).map(publicPropertyPhoto).sort((a,b)=>a.displayOrder-b.displayOrder||a.uploadedAt.localeCompare(b.uploadedAt));}
   async function upload({user,propertyId,metadata,file}){
@@ -98,9 +122,12 @@ export function createPropertyPhotoService({repository,storage,malwareScanner,du
   async function completeUpload({user,propertyId,photoId,metadata,file}){const who=actor(user,{write:true});await propertyAccess(user,propertyId);const intent=validateIntent(file),id=safeId(photoId,'PHOTO_ID'),originalStorageKey=uploadKey(who.organizationId,propertyId,id,intent.mimeType);if(typeof storage.stat!=='function')throw new PropertyPhotoError('PHOTO_DIRECT_UPLOAD_NOT_SUPPORTED',409);const object=await storage.stat(originalStorageKey);if(object.contentType!==intent.mimeType||object.sizeBytes!==intent.sizeBytes||object.sizeBytes>limits.maximumBytes)throw new PropertyPhotoError('PHOTO_DIRECT_UPLOAD_MISMATCH',422);const bytes=await storage.get(originalStorageKey),inspected=await inspectPropertyPhoto({bytes,mimeType:intent.mimeType,filename:intent.filename,limits}),scan=validateScan(await malwareScanner.scan(inspected.bytes,{filename:inspected.filename,mimeType:inspected.mimeType,sha256:inspected.sha256}),inspected),current=await availableSlot(who,propertyId);return persist({who,propertyId,metadata,inspected,scan,id,originalStorageKey,originalStored:true,current});}
   async function update({user,propertyId,photoId,patch}){
     const who=actor(user,{write:true});await propertyAccess(user,propertyId);const prior=await repository.get(who.organizationId,propertyId,safeId(photoId,'PHOTO_ID'));if(!prior)throw new PropertyPhotoError('PHOTO_NOT_FOUND',404);const now=timestamp(),next={...prior,...photoMetadata({...prior,...patch}),updatedAt:now,updatedBy:who.uid};
+    if((prior.classification??PHOTO_CLASSIFICATIONS.ACTUAL)===PHOTO_CLASSIFICATIONS.CONCEPT&&(next.originalPhotoId!==prior.originalPhotoId||next.originalPhotoVersion!==prior.originalPhotoVersion||next.classification!==PHOTO_CLASSIFICATIONS.CONCEPT))throw new PropertyPhotoError('CONCEPT_ASSOCIATION_IMMUTABLE',409);
+    if(next.classification===PHOTO_CLASSIFICATIONS.CONCEPT&&!next.conceptTitle)throw new PropertyPhotoError('CONCEPT_TITLE_REQUIRED');
     if(patch.removed===true)Object.assign(next,{deletedAt:now,isCover:false});
     if(patch.removed===false)next.deletedAt=null;
-    if(patch.isCover===true&&!next.deletedAt){await repository.setCover(who.organizationId,propertyId,photoId,now,who.uid);next.isCover=true;}else{await repository.update(who.organizationId,propertyId,photoId,next);if(patch.removed===true&&prior.isCover){const replacement=(await repository.list(who.organizationId,propertyId)).filter(item=>!item.deletedAt&&item.id!==photoId).sort((a,b)=>a.displayOrder-b.displayOrder)[0];if(replacement)await repository.setCover(who.organizationId,propertyId,replacement.id,now,who.uid);}}
+    if(patch.isCover===true&&next.classification===PHOTO_CLASSIFICATIONS.CONCEPT)throw new PropertyPhotoError('CONCEPT_CANNOT_BE_PROPERTY_COVER',409);
+    if(patch.isCover===true&&!next.deletedAt){await repository.setCover(who.organizationId,propertyId,photoId,now,who.uid);next.isCover=true;}else{await repository.update(who.organizationId,propertyId,photoId,next);if(patch.removed===true&&prior.isCover){const replacement=(await repository.list(who.organizationId,propertyId)).filter(item=>!item.deletedAt&&item.id!==photoId&&(item.classification??PHOTO_CLASSIFICATIONS.ACTUAL)===PHOTO_CLASSIFICATIONS.ACTUAL).sort((a,b)=>a.displayOrder-b.displayOrder)[0];if(replacement)await repository.setCover(who.organizationId,propertyId,replacement.id,now,who.uid);}}
     await audit({organizationId:who.organizationId,propertyId,photoId,version:prior.currentVersion,userId:who.uid,action:patch.removed===true?'PROPERTY_PHOTO_REMOVED':'PROPERTY_PHOTO_METADATA_UPDATED'});return publicPropertyPhoto(await repository.get(who.organizationId,propertyId,photoId));
   }
   async function reorder({user,propertyId,photoIds}){const who=actor(user,{write:true});await propertyAccess(user,propertyId);const active=(await repository.list(who.organizationId,propertyId)).filter(item=>!item.deletedAt),ids=(Array.isArray(photoIds)?photoIds:[]).map(id=>safeId(id,'PHOTO_ID'));if(ids.length!==active.length||new Set(ids).size!==ids.length||active.some(item=>!ids.includes(item.id)))throw new PropertyPhotoError('PHOTO_ORDER_INVALID');await repository.reorder(who.organizationId,propertyId,ids,timestamp(),who.uid);await audit({organizationId:who.organizationId,propertyId,userId:who.uid,action:'PROPERTY_PHOTOS_REORDERED'});return list({user,propertyId});}
@@ -110,8 +137,28 @@ export function createPropertyPhotoService({repository,storage,malwareScanner,du
     if(references.length>limits.maximumReportPhotos)throw new PropertyPhotoError('PHOTO_REPORT_LIMIT',409,{maximumReportPhotos:limits.maximumReportPhotos});
     const identities=references.map(reference=>`${safeId(reference.photoId,'PHOTO_ID')}:${Number(reference.version)}`);if(identities.some((identity,index)=>!Number.isInteger(Number(references[index].version))||Number(references[index].version)<1)||new Set(identities).size!==identities.length)throw new PropertyPhotoError('PHOTO_REPORT_SELECTION_INVALID',409);
     const expected=photoSelectionFingerprint(references),ackRevision=Number(ack?.revision),scenarioRevision=Number(scenario.revision);if(!ack||ack.confirmed!==true||!clean(ack.userId,128)||!clean(ack.confirmedAt,40)||Number.isNaN(Date.parse(ack.confirmedAt))||ack.organizationId!==user.organizationId||ack.scenarioId!==scenario.id||!Number.isInteger(ackRevision)||ackRevision<1||ackRevision>scenarioRevision||ack.selectionFingerprint!==expected)throw new PropertyPhotoError('PHOTO_REDISTRIBUTION_ACKNOWLEDGMENT_REQUIRED',409);
-    const results=[];for(const reference of references){const {record,version,bytes}=await bytesFor({user,propertyId,photoId:reference.photoId,version:reference.version});results.push({photo:{...publicPropertyPhoto(record),caption:clean(reference.caption??record.caption,180),category:PHOTO_CATEGORIES.includes(reference.category)?reference.category:record.category,sourceDescription:clean(reference.sourceDescription??record.sourceDescription,240),isCover:reference.isCover===true},version,bytes,dataUrl:`data:${version.derivativeMimeType};base64,${bytes.toString('base64')}`});}
+    const results=[];for(const reference of references){const {record,version,bytes}=await bytesFor({user,propertyId,photoId:reference.photoId,version:reference.version});if((record.classification??PHOTO_CLASSIFICATIONS.ACTUAL)!==PHOTO_CLASSIFICATIONS.ACTUAL)throw new PropertyPhotoError('CONCEPT_NOT_PROPERTY_EVIDENCE',409);results.push({photo:{...publicPropertyPhoto(record),caption:clean(reference.caption??record.caption,180),category:PHOTO_CATEGORIES.includes(reference.category)?reference.category:record.category,sourceDescription:clean(reference.sourceDescription??record.sourceDescription,240),isCover:reference.isCover===true},version,bytes,dataUrl:`data:${version.derivativeMimeType};base64,${bytes.toString('base64')}`});}
     if(auditInclusion)await audit({organizationId:user.organizationId,propertyId,userId:user.uid,action:'PROPERTY_PHOTOS_INCLUDED_IN_REPORT',scenarioId:scenario.id,revision:scenario.revision,photoVersions:results.map(item=>`${item.photo.id}:v${item.version.version}`)});return results;
   }
-  return {list,upload,initiateUpload,completeUpload,update,reorder,preview:bytesFor,reportPhotos};
+  async function reportConcepts({user,propertyId,scenario,auditInclusion=false}){
+    actor(user);await propertyAccess(user,propertyId);
+    const references=Array.isArray(scenario?.renovationConceptSelections)?scenario.renovationConceptSelections:[];
+    if(!references.length)return [];
+    if(references.length>limits.maximumReportConcepts)throw new PropertyPhotoError('CONCEPT_REPORT_LIMIT',409,{maximumReportConcepts:limits.maximumReportConcepts});
+    const ack=scenario?.renovationConceptRightsAcknowledgment,expected=photoSelectionFingerprint(references),ackRevision=Number(ack?.revision),scenarioRevision=Number(scenario.revision);
+    if(!ack||ack.confirmed!==true||ack.organizationId!==user.organizationId||ack.scenarioId!==scenario.id||!Number.isInteger(ackRevision)||ackRevision<1||ackRevision>scenarioRevision||ack.selectionFingerprint!==expected)throw new PropertyPhotoError('CONCEPT_REDISTRIBUTION_ACKNOWLEDGMENT_REQUIRED',409);
+    const identities=references.map(reference=>`${safeId(reference.photoId,'PHOTO_ID')}:${Number(reference.version)}`);if(identities.some((identity,index)=>!Number.isInteger(Number(references[index].version))||Number(references[index].version)<1)||new Set(identities).size!==identities.length)throw new PropertyPhotoError('CONCEPT_REPORT_SELECTION_INVALID',409);
+    const results=[];
+    for(const reference of references){
+      const conceptResult=await bytesFor({user,propertyId,photoId:reference.photoId,version:reference.version}),concept=conceptResult.record;
+      if(concept.classification!==PHOTO_CLASSIFICATIONS.CONCEPT||concept.originalPhotoId!==reference.originalPhotoId||concept.originalPhotoVersion!==Number(reference.originalPhotoVersion)||concept.redistributionAcknowledgment!==true)throw new PropertyPhotoError('CONCEPT_REPORT_SELECTION_INELIGIBLE',409);
+      const originalResult=await bytesFor({user,propertyId,photoId:concept.originalPhotoId,version:concept.originalPhotoVersion});
+      if((originalResult.record.classification??PHOTO_CLASSIFICATIONS.ACTUAL)!==PHOTO_CLASSIFICATIONS.ACTUAL)throw new PropertyPhotoError('CONCEPT_ORIGINAL_PHOTO_INVALID',409);
+      results.push({concept:{...publicPropertyPhoto(concept),conceptTitle:clean(reference.conceptTitle??concept.conceptTitle,180),improvementDescription:clean(reference.improvementDescription??concept.improvementDescription,1000),selectedAsCover:reference.selectedAsCover===true},version:conceptResult.version,dataUrl:`data:${conceptResult.version.derivativeMimeType};base64,${conceptResult.bytes.toString('base64')}`,original:{photo:publicPropertyPhoto(originalResult.record),version:originalResult.version,dataUrl:`data:${originalResult.version.derivativeMimeType};base64,${originalResult.bytes.toString('base64')}`}});
+    }
+    if(results.filter(item=>item.concept.selectedAsCover).length>1)throw new PropertyPhotoError('CONCEPT_COVER_SELECTION_INVALID',409);
+    if(auditInclusion)await audit({organizationId:user.organizationId,propertyId,userId:user.uid,action:'AI_RENOVATION_CONCEPTS_INCLUDED_IN_REPORT',scenarioId:scenario.id,revision:scenario.revision,conceptVersions:results.map(item=>`${item.concept.id}:v${item.version.version}`)});
+    return results;
+  }
+  return {list,upload,initiateUpload,completeUpload,update,reorder,preview:bytesFor,reportPhotos,reportConcepts};
 }

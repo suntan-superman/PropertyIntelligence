@@ -1,0 +1,351 @@
+{
+  "status": "PASS",
+  "classification": "PI V3.4.2 LOCAL AI RENOVATION CONCEPT CERTIFICATION",
+  "generatedAt": "2026-10-30T18:00:00.000Z",
+  "fixtures": {
+    "existingCondition": {
+      "filename": "existing-condition.jpg",
+      "sha256": "c48266e860b309b10bf34c637f1b705f056d1e2dd7d86f3d1fefb620b6759598"
+    },
+    "aiConcept": {
+      "filename": "ai-renovation-concept.png",
+      "sha256": "1ba28b176829336a761ff43ea8d016d1acc3116f5e79532a48bf3e123f5373c2"
+    }
+  },
+  "pair": {
+    "originalPhotoId": "qa-actual-photo",
+    "originalVersion": 1,
+    "conceptId": "qa-ai-concept",
+    "conceptVersion": 1,
+    "classification": "AI_GENERATED_CONCEPT",
+    "selectedAsCover": true
+  },
+  "reports": [
+    {
+      "kind": "brief",
+      "filename": "AI-Concept-Opportunity-Brief.pdf",
+      "pageCount": 1,
+      "sha256": "790bf226713e2e52dbf8ff4923cc91a3ae2a43d28d0eab27849ac0a3a587fba9",
+      "blockedRequests": 1,
+      "contactSheet": "AI-Concept-Opportunity-Brief-all-pages.png",
+      "pages": [
+        "AI-Concept-Opportunity-Brief-page-01.png"
+      ]
+    },
+    {
+      "kind": "full",
+      "filename": "AI-Concept-Full-Investor-Package.pdf",
+      "pageCount": 15,
+      "sha256": "81a8c0534d1a9dde6fe568f7f127743867fde178661369557dd96a56ebc37842",
+      "blockedRequests": 2,
+      "contactSheet": "AI-Concept-Full-Investor-Package-all-pages.png",
+      "pages": [
+        "AI-Concept-Full-Investor-Package-page-01.png",
+        "AI-Concept-Full-Investor-Package-page-02.png",
+        "AI-Concept-Full-Investor-Package-page-03.png",
+        "AI-Concept-Full-Investor-Package-page-04.png",
+        "AI-Concept-Full-Investor-Package-page-05.png",
+        "AI-Concept-Full-Investor-Package-page-06.png",
+        "AI-Concept-Full-Investor-Package-page-07.png",
+        "AI-Concept-Full-Investor-Package-page-08.png",
+        "AI-Concept-Full-Investor-Package-page-09.png",
+        "AI-Concept-Full-Investor-Package-page-10.png",
+        "AI-Concept-Full-Investor-Package-page-11.png",
+        "AI-Concept-Full-Investor-Package-page-12.png",
+        "AI-Concept-Full-Investor-Package-page-13.png",
+        "AI-Concept-Full-Investor-Package-page-14.png",
+        "AI-Concept-Full-Investor-Package-page-15.png"
+      ]
+    }
+  ],
+  "financialInvariance": {
+    "equal": true,
+    "baselineSha256": "16a3b35a41f0acccefd133f7fe3c5fd984432be3c7731ec76e84c209cf941c8a",
+    "deterministic": {
+      "modeledProfit": 45000,
+      "totalProjectCost": 125000,
+      "grossSale": 170000,
+      "netSaleProceeds": 170000,
+      "roi": 0.36,
+      "cashOnCash": 0.36,
+      "profitMargin": 0.2647058823529412,
+      "cashRequired": 125000,
+      "preSaleEquity": 125000,
+      "exitEquity": 170000,
+      "loanPrincipal": 0,
+      "holdDays": 120,
+      "renovationDays": 90,
+      "marketingDays": 30,
+      "costs": {
+        "purchase": 105000,
+        "acquisitionFixed": 0,
+        "acquisitionPercent": 0,
+        "rehab": 20000,
+        "contingency": 0,
+        "otherUpfront": 0,
+        "origination": 0,
+        "financingFees": 0,
+        "interest": 0,
+        "holding_propertyTaxes": 0,
+        "holding_insurance": 0,
+        "holding_utilities": 0,
+        "holding_maintenance": 0,
+        "holding_other": 0,
+        "sellingCommission": 0,
+        "sellerClosingFixed": 0,
+        "sellerClosingPercent": 0,
+        "transfer": 0,
+        "otherAtExit": 0
+      }
+    },
+    "mao": {
+      "method": "MONOTONE_INTEGER_CENT_BISECTION",
+      "target": {
+        "type": "PROFIT_MARGIN_ON_SALE",
+        "rate": 0.15
+      },
+      "deterministic": {
+        "status": "AVAILABLE",
+        "purchasePrice": 124500,
+        "nextCentPasses": false
+      },
+      "breakEven": {
+        "status": "AVAILABLE",
+        "purchasePrice": 150000,
+        "nextCentPasses": false
+      },
+      "economicsAtMao": {
+        "modeledProfit": 25500,
+        "totalProjectCost": 144500,
+        "grossSale": 170000,
+        "netSaleProceeds": 170000,
+        "roi": 0.17647058823529413,
+        "cashOnCash": 0.17647058823529413,
+        "profitMargin": 0.15,
+        "cashRequired": 144500,
+        "preSaleEquity": 144500,
+        "exitEquity": 170000,
+        "loanPrincipal": 0,
+        "holdDays": 120,
+        "renovationDays": 90,
+        "marketingDays": 30,
+        "costs": {
+          "purchase": 124500,
+          "acquisitionFixed": 0,
+          "acquisitionPercent": 0,
+          "rehab": 20000,
+          "contingency": 0,
+          "otherUpfront": 0,
+          "origination": 0,
+          "financingFees": 0,
+          "interest": 0,
+          "holding_propertyTaxes": 0,
+          "holding_insurance": 0,
+          "holding_utilities": 0,
+          "holding_maintenance": 0,
+          "holding_other": 0,
+          "sellingCommission": 0,
+          "sellerClosingFixed": 0,
+          "sellerClosingPercent": 0,
+          "transfer": 0,
+          "otherAtExit": 0
+        }
+      }
+    },
+    "monteCarlo": {
+      "profit": {
+        "mean": 43884.30382,
+        "median": 43896.81,
+        "p5": 36708.1425,
+        "p10": 37959.008,
+        "p50": 43896.81,
+        "p90": 49292.278999999995,
+        "p95": 50908.0205,
+        "sampleMinimum": 32128.38,
+        "sampleMaximum": 54737.61
+      },
+      "probabilityOfProfit": 1,
+      "probabilityOfLoss": 0,
+      "probabilityOfBreakEven": 0,
+      "expectedLossConditionalOnLoss": null,
+      "expectedLossMagnitude": 0,
+      "roi": {
+        "mean": 0.3486682021313738,
+        "median": 0.3487748910151106,
+        "p5": 0.28769601080783047,
+        "p10": 0.2997281849663103,
+        "p50": 0.3487748910151106,
+        "p90": 0.3945194546164433,
+        "p95": 0.40665498656338156,
+        "sampleMinimum": 0.24975877977860914,
+        "sampleMaximum": 0.4400076365638678
+      },
+      "cashOnCash": {
+        "mean": 0.3486682021313738,
+        "median": 0.3487748910151106,
+        "p5": 0.28769601080783047,
+        "p10": 0.2997281849663103,
+        "p50": 0.3487748910151106,
+        "p90": 0.3945194546164433,
+        "p95": 0.40665498656338156,
+        "sampleMinimum": 0.24975877977860914,
+        "sampleMaximum": 0.4400076365638678
+      },
+      "undefinedRoiCount": 0,
+      "undefinedCashOnCashCount": 0,
+      "cashRequired": {
+        "mean": 125932.31023,
+        "median": 125756.01000000001,
+        "p5": 123797.4825,
+        "p10": 124105.622,
+        "p50": 125756.01000000001,
+        "p90": 128161.516,
+        "p95": 128602.8915,
+        "sampleMinimum": 123024.5,
+        "sampleMaximum": 129785.48
+      },
+      "holdingDays": {
+        "mean": 125.51081051668262,
+        "median": 125.24288817271373,
+        "p5": 107.27915082418042,
+        "p10": 111.54448369138763,
+        "p50": 125.24288817271373,
+        "p90": 140.23314070678873,
+        "p95": 144.0069020943747,
+        "sampleMinimum": 97.13226325896184,
+        "sampleMaximum": 157.89243983228795
+      },
+      "probabilityExceedingTarget": 1,
+      "probabilityMeetingTarget": 1,
+      "profitDistribution": [
+        {
+          "min": 32128.38,
+          "max": 33258.8415,
+          "count": 5
+        },
+        {
+          "min": 33258.8415,
+          "max": 34389.303,
+          "count": 7
+        },
+        {
+          "min": 34389.303,
+          "max": 35519.7645,
+          "count": 16
+        },
+        {
+          "min": 35519.7645,
+          "max": 36650.226,
+          "count": 21
+        },
+        {
+          "min": 36650.226,
+          "max": 37780.6875,
+          "count": 44
+        },
+        {
+          "min": 37780.6875,
+          "max": 38911.149,
+          "count": 44
+        },
+        {
+          "min": 38911.149,
+          "max": 40041.6105,
+          "count": 48
+        },
+        {
+          "min": 40041.6105,
+          "max": 41172.072,
+          "count": 82
+        },
+        {
+          "min": 41172.072,
+          "max": 42302.5335,
+          "count": 75
+        },
+        {
+          "min": 42302.5335,
+          "max": 43432.994999999995,
+          "count": 118
+        },
+        {
+          "min": 43432.994999999995,
+          "max": 44563.4565,
+          "count": 99
+        },
+        {
+          "min": 44563.4565,
+          "max": 45693.918,
+          "count": 87
+        },
+        {
+          "min": 45693.918,
+          "max": 46824.379499999995,
+          "count": 97
+        },
+        {
+          "min": 46824.379499999995,
+          "max": 47954.841,
+          "count": 88
+        },
+        {
+          "min": 47954.841,
+          "max": 49085.3025,
+          "count": 53
+        },
+        {
+          "min": 49085.3025,
+          "max": 50215.763999999996,
+          "count": 44
+        },
+        {
+          "min": 50215.763999999996,
+          "max": 51346.2255,
+          "count": 33
+        },
+        {
+          "min": 51346.2255,
+          "max": 52476.687,
+          "count": 22
+        },
+        {
+          "min": 52476.687,
+          "max": 53607.148499999996,
+          "count": 7
+        },
+        {
+          "min": 53607.148499999996,
+          "max": 54737.61,
+          "count": 10
+        }
+      ],
+      "samplingError": {
+        "meanProfitStandardError": 135.5016156173214,
+        "probabilityOfLossStandardError": 0,
+        "note": "Monte Carlo estimator standard errors only, not predictive accuracy; plug-in probability SE is zero at observed 0/1 and does not prove no tail risk."
+      }
+    }
+  },
+  "security": {
+    "privateObjects": 4,
+    "malwareScans": 2,
+    "allClean": true,
+    "metadataStrippedDerivatives": 2,
+    "organizationIsolation": "covered by automated test",
+    "redistributionEnforced": true
+  },
+  "scope": {
+    "firebaseReads": 0,
+    "firebaseWrites": 0,
+    "liveStorageWrites": 0,
+    "providerRequests": 0,
+    "aiGenerationRequests": 0,
+    "deployment": false
+  },
+  "screenshots": {
+    "gallery": "renovation-concept-gallery-pair.png",
+    "conceptCover": "AI-Concept-Full-Investor-Package-page-01.png",
+    "beforeConceptPage": "AI-Concept-Full-Investor-Package-page-02.png",
+    "opportunityBrief": "AI-Concept-Opportunity-Brief-page-01.png"
+  }
+}
