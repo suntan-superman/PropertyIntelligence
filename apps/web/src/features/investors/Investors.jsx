@@ -17,8 +17,15 @@ import {
   localToday,
   validateInvestorFields,
 } from "../../../../../src/investor-crm/investor-field-validation.js";
+import {
+  filterMatchProperties,
+  latestReportForProperty,
+  latestScenarioForProperty,
+  populateDealFromProperty,
+} from "./deal-property-selection.js";
 import "./investors.css";
 import "./investor-intake.css";
+import "./investor-matching.css";
 import "./pipeline.css";
 
 const emptyInvestor = {
@@ -113,6 +120,8 @@ const labels = {
   NON_RESPONSIVE: "Non-responsive",
   DO_NOT_CONTACT: "Do not contact",
   ARCHIVED: "Archived",
+  SAVED_PROPERTY: "Active",
+  ARCHIVED_PROPERTY: "Archived",
   SF: "Single Family",
   MF: "Multifamily",
   ANY: "Any",
@@ -278,6 +287,11 @@ export default function Investors() {
     [importData, setImportData] = React.useState(null),
     [preview, setPreview] = React.useState(null),
     [reports, setReports] = React.useState([]),
+    [properties, setProperties] = React.useState([]),
+    [evidenceProperties, setEvidenceProperties] = React.useState([]),
+    [scenarios, setScenarios] = React.useState([]),
+    [propertySearch, setPropertySearch] = React.useState(""),
+    [propertyStatus, setPropertyStatus] = React.useState("SAVED_PROPERTY"),
     [deal, setDeal] = React.useState({
       propertyId: "",
       propertyAddress: "",
@@ -319,10 +333,14 @@ export default function Investors() {
   const load = React.useCallback(async () => {
     setBusy(true);
     try {
-      const [value, reportValue] = await Promise.all([
-        api(`/api/investor-crm/bootstrap${query}`),
-        api("/api/commercial/reports"),
-      ]);
+      const [value, reportValue, propertyValue, scenarioValue, evidenceValue] =
+        await Promise.all([
+          api(`/api/investor-crm/bootstrap${query}`),
+          api("/api/commercial/reports"),
+          api("/api/durable-properties?includeArchived=true"),
+          api("/api/investment/scenario-revisions"),
+          api("/api/investment/bootstrap"),
+        ]);
       setData(value);
       setReports(
         (reportValue.reports ?? []).filter(
@@ -331,6 +349,13 @@ export default function Investors() {
             item.organizationId === organizationId,
         ),
       );
+      setProperties(
+        (propertyValue.properties ?? []).filter(
+          (item) => item.organizationId === organizationId,
+        ),
+      );
+      setScenarios(Array.isArray(scenarioValue) ? scenarioValue : []);
+      setEvidenceProperties(evidenceValue.properties ?? []);
       setNotice("");
     } catch (error) {
       setNotice(errorText(error.message));
@@ -490,6 +515,30 @@ export default function Investors() {
       setBusy(false);
     }
   }
+  function selectMatchProperty(propertyId) {
+    const property = properties.find((item) => item.id === propertyId);
+    if (!property) {
+      setDeal((current) => ({
+        ...current,
+        propertyId: "",
+        propertyAddress: "",
+      }));
+      setReportId("");
+      setMatches(null);
+      return;
+    }
+    setDeal((current) =>
+      populateDealFromProperty({
+        property,
+        evidenceProperties,
+        scenarios,
+        current,
+      }),
+    );
+    setReportId(latestReportForProperty(reports, property.id)?.id ?? "");
+    setMatches(null);
+    setSelected([]);
+  }
   async function campaign() {
     const report = reports.find((item) => item.id === reportId);
     if (!report) {
@@ -579,6 +628,22 @@ export default function Investors() {
         .toLowerCase()
         .includes(search.toLowerCase()),
   );
+  const matchProperties = filterMatchProperties(properties, {
+      search: propertySearch,
+      status: propertyStatus,
+    }),
+    selectedProperty = properties.find(
+      (property) => property.id === deal.propertyId,
+    ),
+    selectedScenario = latestScenarioForProperty(selectedProperty, scenarios),
+    matchPropertyOptions =
+      selectedProperty &&
+      !matchProperties.some((property) => property.id === selectedProperty.id)
+        ? [selectedProperty, ...matchProperties]
+        : matchProperties,
+    propertyReports = reports.filter(
+      (report) => report.propertyId === deal.propertyId,
+    );
   return (
     <main className="investor-crm">
       <ProductNav active="investors" />
@@ -896,8 +961,77 @@ export default function Investors() {
             Rules are deterministic and explain every inclusion, exclusion and
             missing preference. A match is not a recommendation.
           </p>
-          <DealForm value={deal} setValue={setDeal} />
-          <div className="crm-toolbar">
+          <section
+            className="crm-property-picker"
+            aria-labelledby="match-property-heading"
+          >
+            <div>
+              <h3 id="match-property-heading">Choose a saved property</h3>
+              <p>
+                Search by address and lifecycle status. PI loads the saved
+                property and latest scenario values for review; no provider
+                request is made.
+              </p>
+            </div>
+            <div className="crm-property-picker-controls">
+              <label>
+                Search property address
+                <input
+                  type="search"
+                  value={propertySearch}
+                  onChange={(event) => setPropertySearch(event.target.value)}
+                  placeholder="Street, city, state or ZIP"
+                />
+              </label>
+              <label>
+                Property status
+                <select
+                  value={propertyStatus}
+                  onChange={(event) => setPropertyStatus(event.target.value)}
+                >
+                  <option value="SAVED_PROPERTY">Active saved properties</option>
+                  <option value="ARCHIVED_PROPERTY">Archived properties</option>
+                  <option value="ALL">All statuses</option>
+                </select>
+              </label>
+              <label className="crm-property-selection">
+                Saved property
+                <select
+                  value={deal.propertyId}
+                  onChange={(event) => selectMatchProperty(event.target.value)}
+                >
+                  <option value="">Select a property by address</option>
+                  {matchPropertyOptions.map((property) => (
+                    <option value={property.id} key={property.id}>
+                      {property.address} · {display(property.lifecycleStatus)}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            {selectedProperty && (
+              <p className="crm-property-loaded" role="status">
+                <b>{selectedProperty.address}</b> loaded
+                {selectedScenario
+                  ? ` from ${selectedScenario.name || "saved scenario"}, revision ${selectedScenario.revision}.`
+                  : ". No saved scenario values were available."}
+                {" "}Review the populated deal fields before matching.
+              </p>
+            )}
+            {!matchProperties.length && !selectedProperty && (
+              <p className="crm-empty crm-property-empty">
+                No saved properties match this address and status.
+              </p>
+            )}
+          </section>
+          {selectedProperty ? (
+            <DealForm value={deal} setValue={setDeal} />
+          ) : (
+            <p className="crm-empty crm-deal-placeholder">
+              Choose a saved property to load its matching details.
+            </p>
+          )}
+          <div className="crm-match-actions">
             <button
               data-tooltip="Compare this deal with organization-owned investor criteria using explainable rules. No messages are sent."
               disabled={busy || !deal.propertyId || !deal.propertyAddress}
@@ -905,31 +1039,29 @@ export default function Investors() {
             >
               Run deterministic match
             </button>
-            <label>
+            <label className="crm-report-field">
               Immutable report
               <select
                 value={reportId}
-                onChange={(event) => {
-                  const id = event.target.value,
-                    set = reports.find((row) => row.id === id);
-                  setReportId(id);
-                  if (set)
-                    setDeal((current) => ({
-                      ...current,
-                      propertyId: set.propertyId,
-                      propertyAddress:
-                        set.propertyAddress ?? current.propertyAddress,
-                    }));
-                }}
+                disabled={!deal.propertyId}
+                onChange={(event) => setReportId(event.target.value)}
               >
-                <option value="">Select generated report</option>
-                {reports.map((report) => (
+                <option value="">
+                  {deal.propertyId
+                    ? "Select generated report"
+                    : "Choose a property first"}
+                </option>
+                {propertyReports.map((report) => (
                   <option value={report.id} key={report.id}>
                     {report.propertyAddress || report.filename} · revision{" "}
                     {report.revision}
                   </option>
                 ))}
               </select>
+              <small>
+                Required only when preparing a distribution campaign after
+                matching.
+              </small>
             </label>
           </div>
           {matches && (
@@ -2244,27 +2376,14 @@ function DealForm({ value, setValue }) {
   return (
     <div className="crm-form-grid compact">
       <label>
-        Property ID *
-        <input
-          value={value.propertyId}
-          onChange={(e) => set("propertyId", e.target.value)}
-        />
-      </label>
-      <label>
-        Property address *
-        <input
-          value={value.propertyAddress}
-          onChange={(e) => set("propertyAddress", e.target.value)}
-        />
-      </label>
-      <label>
         Property type
         <select
           value={value.propertyType}
           onChange={(e) => set("propertyType", e.target.value)}
         >
-          <option>SF</option>
-          <option>MF</option>
+          <option value="">Not specified</option>
+          <option value="SF">Single Family</option>
+          <option value="MF">Multifamily</option>
         </select>
       </label>
       <label>

@@ -28,6 +28,12 @@ import {
   localToday,
   validateInvestorFields,
 } from "../src/investor-crm/investor-field-validation.js";
+import {
+  filterMatchProperties,
+  latestReportForProperty,
+  latestScenarioForProperty,
+  populateDealFromProperty,
+} from "../apps/web/src/features/investors/deal-property-selection.js";
 
 const organizationId = "property-intelligence-local",
   admin = {
@@ -245,6 +251,110 @@ test("V3.4.1 date defaults use calendar months without overflowing month ends", 
   assert.equal(addCalendarMonths("2026-08-31"), "2027-02-28");
   assert.equal(addCalendarMonths("2027-08-31"), "2028-02-29");
   assert.equal(addCalendarMonths("not-a-date"), "");
+});
+test("V3.4.1 matching selects saved properties by address and hydrates exact saved values", () => {
+  const properties = [
+      {
+        id: "property-active",
+        organizationId,
+        address: "603 Tyler St, Taft, CA 93268",
+        addressComponents: { state: "CA" },
+        sourceSubjectRef: "RESEARCH-TYLER",
+        propertyType: "Single Family",
+        lifecycleStatus: "SAVED_PROPERTY",
+      },
+      {
+        id: "property-archived",
+        organizationId,
+        address: "100 Old St, Taft, CA 93268",
+        sourceSubjectRef: "RESEARCH-OLD",
+        lifecycleStatus: "ARCHIVED_PROPERTY",
+      },
+    ],
+    scenarios = [
+      {
+        id: "scenario-tyler",
+        propertyRef: "RESEARCH-TYLER",
+        name: "Scenario 1",
+        revision: 3,
+        savedAt: "2026-10-29T10:00:00.000Z",
+        financingMode: "CASH",
+        evaluationMode: "WHOLESALE_CASH",
+        inputs: {
+          purchasePrice: "111000",
+          rehabCost: "20000",
+          exitValue: "176000",
+        },
+      },
+      {
+        id: "scenario-tyler",
+        propertyRef: "RESEARCH-TYLER",
+        name: "Scenario 1",
+        revision: 4,
+        savedAt: "2026-10-30T10:00:00.000Z",
+        financingMode: "CASH",
+        evaluationMode: "WHOLESALE_CASH",
+        closingTimelineDays: 14,
+        inputs: {
+          purchasePrice: "112000",
+          rehabCost: "21000",
+          exitValue: "178000",
+        },
+      },
+    ],
+    evidenceProperties = [
+      {
+        durablePropertyId: "property-active",
+        ref: "RESEARCH-TYLER",
+        attributes: { county: "Kern County", propertyType: "Single Family" },
+      },
+    ],
+    reports = [
+      {
+        id: "older-report",
+        propertyId: "property-active",
+        revision: 3,
+        generatedAt: "2026-10-29T12:00:00.000Z",
+      },
+      {
+        id: "latest-report",
+        propertyId: "property-active",
+        revision: 4,
+        generatedAt: "2026-10-30T12:00:00.000Z",
+      },
+    ];
+  assert.deepEqual(
+    filterMatchProperties(properties, { search: "tyler", status: "SAVED_PROPERTY" }).map(
+      (item) => item.id,
+    ),
+    ["property-active"],
+  );
+  assert.equal(
+    latestScenarioForProperty(properties[0], scenarios).revision,
+    4,
+  );
+  assert.deepEqual(
+    populateDealFromProperty({
+      property: properties[0],
+      evidenceProperties,
+      scenarios,
+      current: { strategy: "FIX_AND_FLIP" },
+    }),
+    {
+      strategy: "WHOLESALE",
+      propertyId: "property-active",
+      propertyAddress: "603 Tyler St, Taft, CA 93268",
+      propertyType: "SF",
+      state: "CA",
+      county: "Kern County",
+      fundingOrientation: "CASH",
+      acquisitionPrice: "112000",
+      rehabilitationEstimate: "21000",
+      estimatedResale: "178000",
+      closingTimelineDays: "14",
+    },
+  );
+  assert.equal(latestReportForProperty(reports, "property-active").id, "latest-report");
 });
 test("V3.4.1 valid current and historical proof-of-funds chronology remains representable", () => {
   const today = "2026-10-30",
@@ -601,6 +711,13 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
         import.meta.url,
       ),
       "utf8",
+    ),
+    matchingCss = await readFile(
+      new URL(
+        "../apps/web/src/features/investors/investor-matching.css",
+        import.meta.url,
+      ),
+      "utf8",
     );
   for (const heading of [
     "Contact information",
@@ -661,6 +778,12 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /NON_RESPONSIVE/);
   assert.match(source, /INVESTOR_STATUS_HELP/);
   assert.match(directoryCss, /\.crm-investor-status\.non-responsive/);
+  assert.match(source, /Search property address/);
+  assert.match(source, /Active saved properties/);
+  assert.match(source, /populateDealFromProperty/);
+  assert.doesNotMatch(source, />\s*Property ID \*/);
+  assert.match(matchingCss, /\.crm-report-field[\s\S]*gap:\s*8px/);
+  assert.match(matchingCss, /\.crm-match-actions[\s\S]*gap:\s*28px/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
 });

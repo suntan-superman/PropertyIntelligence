@@ -1,0 +1,91 @@
+.crm-property-picker {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid #c7dad7;
+  border-radius: 8px;
+  background: #f7faf9;
+}
+
+.crm-property-picker h3 {
+  margin: 0 0 5px;
+}
+
+.crm-property-picker p {
+  margin: 5px 0;
+}
+
+.crm-property-picker-controls {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1.8fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.crm-property-picker-controls label,
+.crm-report-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.crm-property-picker-controls input,
+.crm-property-picker-controls select,
+.crm-report-field select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.crm-property-loaded {
+  padding: 10px 12px;
+  border-left: 4px solid #087b70;
+  background: #e9f5f2;
+}
+
+.crm-property-empty {
+  padding: 18px;
+}
+
+.crm-deal-placeholder {
+  margin: 0;
+  padding: 20px;
+  border: 1px dashed #9ebfba;
+  border-radius: 7px;
+  background: #fbfdfc;
+}
+
+.crm-match-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.crm-match-actions > button {
+  margin-top: 24px;
+}
+
+.crm-report-field {
+  min-width: min(100%, 330px);
+}
+
+.crm-report-field small {
+  max-width: 390px;
+  color: #536d72;
+}
+
+@media (max-width: 760px) {
+  .crm-property-picker-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .crm-match-actions {
+    display: grid;
+    gap: 14px;
+  }
+
+  .crm-match-actions > button {
+    margin-top: 0;
+  }
+}
