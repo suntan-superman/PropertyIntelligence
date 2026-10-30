@@ -7,7 +7,8 @@ const workspace=await readFile(new URL('../apps/web/src/features/investment-work
 const main=await readFile(new URL('../apps/web/src/main.jsx',import.meta.url),'utf8');
 
 test('one application tooltip provider covers explicit help and every button',()=>{
-  assert.match(main,/<TooltipProvider><AuthenticationGate><LocalApplication\/><\/AuthenticationGate><\/TooltipProvider>/);
+  assert.match(main,/<TooltipProvider><Root\/><\/TooltipProvider>/);
+  assert.match(main,/return <AuthenticationGate><LocalApplication\/><\/AuthenticationGate>/);
   assert.match(tooltip,/closest\('\[data-tooltip\], button, a\[href\]'\)/);
   assert.match(tooltip,/role="tooltip"/);
   assert.match(tooltip,/aria-describedby/);

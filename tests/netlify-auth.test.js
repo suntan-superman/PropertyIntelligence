@@ -32,6 +32,12 @@ test('Netlify API fails closed until a same-origin Firebase session is establish
   const foreign=await secured(new Request('https://pi.example/api/auth/session',{method:'POST',headers:{Origin:'https://evil.example','Content-Type':'application/json','X-PI-CSRF':csrf,Cookie:csrfCookie},body:JSON.stringify({idToken:'id-token'})}));assert.equal(foreign.status,403);
 });
 
+test('public investor access failures remain private and non-indexable',async()=>{
+  const investorCrm=async()=>({authorizeToken:async()=>{throw Object.assign(new Error('INVESTOR_REPORT_ACCESS_INVALID'),{status:404});}}),handler=createNetlifyAuthenticatedApi({api,authentication,investorCrm});
+  const response=await handler(new Request('https://pi.example/api/investor-access',{method:'POST',headers:{Origin:'https://pi.example','Content-Type':'application/json'},body:JSON.stringify({action:'VIEW',token:'invalid'})}));
+  assert.equal(response.status,404);assert.equal(response.headers.get('cache-control'),'no-store');assert.equal(response.headers.get('x-robots-tag'),'noindex, noarchive');assert.equal((await response.json()).error,'INVESTOR_REPORT_ACCESS_INVALID');
+});
+
 test('health remains available for deployment monitoring without opening business APIs',async()=>{
   const health=await secured(new Request('https://pi.example/api/health'));assert.equal(health.status,200);
 });
