@@ -1,14 +1,18 @@
 .crm-investor-dialog {
   max-width: 940px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
 .crm-investor-dialog > header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   padding: 22px 28px 18px;
   border-bottom: 1px solid #dfe9e7;
   background: #fbfcfc;
+  box-shadow: 0 5px 14px #082f3a12;
 }
 .crm-investor-dialog > header h2 {
   margin: 3px 0 4px;

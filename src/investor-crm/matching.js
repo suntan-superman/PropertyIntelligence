@@ -110,11 +110,8 @@ export function matchInvestor(investor, deal) {
     else
       reasons.push("Rehabilitation estimate is within the recorded tolerance.");
   }
-  if (criteria.activelyBuying === "NO")
-    exclusions.push("Investor is not actively buying.");
-  else if (criteria.activelyBuying === "YES")
-    reasons.push("Investor is recorded as actively buying.");
-  else missing.push("Active-buying status is unknown.");
+  if (investor.status === "ACTIVE")
+    reasons.push("Investor profile status is active.");
 
   const funding = upper(criteria.fundingPreference),
     cash = upper(investor.capability?.cashBuyer),

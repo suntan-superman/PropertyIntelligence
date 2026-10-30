@@ -341,7 +341,7 @@ test("V3.4.1 matching selects saved properties by address and hydrates exact sav
       current: { strategy: "FIX_AND_FLIP" },
     }),
     {
-      strategy: "WHOLESALE",
+      strategy: "FIX_AND_FLIP",
       propertyId: "property-active",
       propertyAddress: "603 Tyler St, Taft, CA 93268",
       propertyType: "SF",
@@ -531,9 +531,45 @@ test("V3.4.1 statewide, county, multiple and unknown-county matching remain expl
       { ...deal, county: "" },
     );
   assert.ok(county.reasons.some((value) => /geography/.test(value)));
+  assert.ok(
+    county.reasons.some((value) => /profile status is active/i.test(value)),
+  );
+  assert.ok(!county.missing.some((value) => /active-buying/i.test(value)));
   assert.ok(statewide.reasons.some((value) => /geography/.test(value)));
   assert.ok(unknown.missing.some((value) => /county/i.test(value)));
   assert.ok(!unknown.exclusions.some((value) => /location/i.test(value)));
+});
+test("V3.4.1 active cash buyer matches a lower-priced opportunity by buyer strategy", () => {
+  const caleb = normalizeInvestor({
+      firstName: "Caleb",
+      lastName: "Williams",
+      email: "caleb@example.test",
+      status: "ACTIVE",
+      propertyTypes: ["ANY"],
+      strategies: ["FIX_AND_FLIP"],
+      geographies: [
+        { state: "CA", scope: "COUNTY", county: "Kern County" },
+      ],
+      maximumAcquisitionAmount: 500000,
+      fundingPreference: "CASH",
+      cashBuyer: "YES",
+      emailStatus: "PERMITTED",
+      consentSource: "Synthetic QA consent",
+      consentAt: "2026-10-30",
+    }),
+    result = matchInvestor(caleb, {
+      ...deal,
+      propertyAddress: "603 Tyler St, Taft, CA 93268",
+      strategy: "FIX_AND_FLIP",
+      acquisitionPrice: 105000,
+      rehabilitationEstimate: 20000,
+      fundingOrientation: "CASH",
+    });
+  assert.notEqual(result.fit, "NOT_MATCHED");
+  assert.equal(result.exclusions.length, 0);
+  assert.ok(
+    result.reasons.some((value) => /within the recorded range/i.test(value)),
+  );
 });
 test("V3.4.1 safe capability and communication defaults do not imply verification or permission", () => {
   const record = normalizeInvestor(base);
@@ -811,6 +847,12 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.doesNotMatch(source, /\$200,000–\$500,000/);
   assert.match(source, /budgetPreset/);
   assert.match(source, /Do not leave both fields blank/);
+  assert.match(source, /Buyer strategy sought/);
+  assert.match(source, /dialogInvestorName/);
+  assert.match(
+    css,
+    /\.crm-investor-dialog > header\s*\{[^}]*position:\s*sticky[^}]*top:\s*0/s,
+  );
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
 });

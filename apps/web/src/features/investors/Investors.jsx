@@ -1686,7 +1686,11 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
       revealErrors();
     }
   };
-  const protectedConsent = ["OPTED_OUT", "SUPPRESSED"].includes(
+  const dialogInvestorName =
+      `${value.firstName} ${value.lastName}`.trim() ||
+      value.fullName ||
+      "investor",
+    protectedConsent = ["OPTED_OUT", "SUPPRESSED"].includes(
       value.emailStatus,
     ),
     missingName = !(value.firstName || value.lastName || value.fullName).trim(),
@@ -1706,7 +1710,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
           <div>
             <p className="eyebrow">INVESTOR DIRECTORY</p>
             <h2 id="investor-dialog-title">
-              {creating ? "Add investor" : `Edit ${value.fullName}`}
+              {creating ? "Add investor" : `Edit ${dialogInvestorName}`}
             </h2>
             <p>
               {creating
@@ -2396,7 +2400,7 @@ function DealForm({ value, setValue }) {
         </select>
       </label>
       <label>
-        Strategy
+        Buyer strategy sought
         <select
           value={value.strategy}
           onChange={(e) => set("strategy", e.target.value)}

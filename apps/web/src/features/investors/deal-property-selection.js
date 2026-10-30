@@ -24,7 +24,6 @@ const strategy = (scenario, fallback) => {
   const saved = text(scenario?.strategy).toUpperCase();
   if (["FIX_AND_FLIP", "BUY_AND_HOLD", "WHOLESALE"].includes(saved))
     return saved;
-  if (scenario?.evaluationMode === "WHOLESALE_CASH") return "WHOLESALE";
   return fallback || "FIX_AND_FLIP";
 };
 
