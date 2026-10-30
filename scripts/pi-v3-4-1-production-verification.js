@@ -134,8 +134,8 @@ try {
     await page.getByLabel("Email permission").inputValue(),
     "UNKNOWN",
   );
-  const phoneInput = page.getByLabel("Phone", { exact: true }),
-    emailInput = page.getByLabel("Email", { exact: true });
+  const phoneInput = page.locator('input[type="tel"]'),
+    emailInput = page.locator('input[type="email"]');
   await phoneInput.fill("6615550101");
   assert.equal(await phoneInput.inputValue(), "(661) 555-0101");
   await phoneInput.fill("");

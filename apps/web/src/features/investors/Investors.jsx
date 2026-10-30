@@ -1390,7 +1390,10 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
           <div className="crm-form-grid two">
             <label>
               <span className="crm-label-text">
-                First name <span className="required">*</span>
+                First name{" "}
+                <span className="required" aria-hidden="true">
+                  *
+                </span>
               </span>
               <input
                 autoFocus
@@ -1401,7 +1404,10 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             </label>
             <label>
               <span className="crm-label-text">
-                Last name <span className="required">*</span>
+                Last name{" "}
+                <span className="required" aria-hidden="true">
+                  *
+                </span>
               </span>
               <input
                 value={value.lastName}
@@ -1433,7 +1439,10 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             </label>
             <label>
               <span className="crm-label-text">
-                Email <span className="required">†</span>
+                Email{" "}
+                <span className="required" aria-hidden="true">
+                  †
+                </span>
               </span>
               <input
                 type="email"
@@ -1470,7 +1479,10 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             </label>
             <label>
               <span className="crm-label-text">
-                Phone <span className="required">†</span>
+                Phone{" "}
+                <span className="required" aria-hidden="true">
+                  †
+                </span>
               </span>
               <input
                 type="tel"

@@ -487,6 +487,7 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /id="investor-email-error"/);
   assert.ok(source.includes("Discard the unsaved investor changes?"));
   assert.equal((source.match(/className="crm-label-text"/g) ?? []).length, 4);
+  assert.equal((source.match(/aria-hidden="true"/g) ?? []).length >= 4, true);
   assert.match(css, /\.crm-label-text\s*\{[^}]*display:\s*inline-flex/s);
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
