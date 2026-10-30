@@ -1,1 +1,2 @@
 .crm-cards article button{margin-top:12px}.crm-cards details{margin-top:12px}.crm-pipeline{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid #d6e2e0}.crm-pipeline span{font-weight:700}.crm-pipeline select{max-width:155px;padding:7px;border:1px solid #9ebfba;border-radius:4px}
+.investor-crm .crm-tabs button{color:#075f59;background:transparent}.investor-crm .crm-tabs button.active{color:#fff;background:#08756b;border-color:#08756b}
