@@ -8,9 +8,17 @@ import {createMemoryPrivateDocumentStorage} from '../src/investment-workspace/me
 import {createMockMalwareScanner} from '../src/investment-workspace/supporting-documents.js';
 import {workspaceReportHtml} from '../src/investment-workspace/report-html.js';
 import {reportModel} from '../src/investment-workspace/report-model.js';
+import {mergeActivePhotoUpdate} from '../apps/web/src/features/investment-workspace/property-photo-state.js';
 
 const user={uid:'analyst-one',organizationId:'org-one',role:'Analyst'},other={...user,uid:'analyst-two',organizationId:'org-two'};
 const now=new Date('2026-10-28T18:00:00.000Z');
+
+test('removed photo records disappear from active browser gallery state',()=>{
+  const photos=[{id:'keep',caption:'Keep'},{id:'remove',caption:'Remove'}];
+  const removed={...photos[1],deletedAt:'2026-10-30T19:00:00.000Z'};
+  assert.deepEqual(mergeActivePhotoUpdate(photos,removed,{removed:true}),[photos[0]]);
+  assert.deepEqual(mergeActivePhotoUpdate(photos,removed,{}),[photos[0]],'a removed server record fails closed even if the patch flag is absent');
+});
 async function image(format='jpeg',text='SYNTHETIC QA PROPERTY PHOTO'){
   const svg=Buffer.from(`<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#164b5b"/><rect x="80" y="80" width="1040" height="640" fill="#e8f2f0"/><text x="600" y="390" text-anchor="middle" font-size="44" font-family="Arial" fill="#164b5b">${text}</text></svg>`);
   return sharp(svg).withMetadata({exif:{IFD0:{Copyright:'QA fixture'},IFD3:{GPSLatitudeRef:'N'}}})[format]().toBuffer();
