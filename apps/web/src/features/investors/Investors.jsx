@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthentication } from "../../auth/AuthenticationGate.jsx";
+import { useNotificationDialog } from "../../components/NotificationDialog.jsx";
 import { ProductNav } from "../desktop-shell/Shell.jsx";
 import {
   US_STATES,
@@ -56,6 +57,22 @@ const errorText = (value) =>
     .replaceAll("_", " ")
     .toLowerCase()
     .replace(/^./, (letter) => letter.toUpperCase());
+const investorSaveError = (value) => {
+  const code = String(value ?? "");
+  if (code === "POTENTIAL_DUPLICATE_INVESTOR")
+    return "Another investor already uses this email address or telephone number. Review the existing investor before creating a duplicate.";
+  if (code === "INVESTOR_EMAIL_INVALID")
+    return "Enter a valid email address, or remove it and provide a valid telephone number.";
+  if (code === "INVESTOR_PHONE_INVALID")
+    return "Enter a valid telephone number, or remove it and provide a valid email address.";
+  if (code.includes("PROOF_OF_FUNDS"))
+    return "Review the proof-of-funds status and dates. The review date cannot be in the future, and an active expiration date cannot be before today or the review date.";
+  if (code === "INVESTOR_GEOGRAPHY_INVALID")
+    return "Review the preferred location. Select a valid state and a county that belongs to that state.";
+  if (code === "INVESTOR_BUDGET_RANGE_INVALID")
+    return "Review the acquisition budget. The minimum amount cannot exceed the maximum amount.";
+  return errorText(code || "INVESTOR_REQUEST_FAILED");
+};
 const money = (value) =>
   value == null
     ? "Not established"
@@ -217,6 +234,7 @@ async function readImport(file) {
 
 export default function Investors() {
   const auth = useAuthentication(),
+    dialog = useNotificationDialog(),
     params = new URLSearchParams(location.hash.split("?")[1] ?? ""),
     organizationId = params.get("organization") || auth.user.organizationId,
     [tab, setTab] = React.useState("Directory"),
@@ -306,10 +324,11 @@ export default function Investors() {
       setForm({ ...emptyInvestor });
       setNotice(creating ? "Investor added." : "Investor updated.");
       await load();
-      return true;
+      return { ok: true };
     } catch (error) {
-      setNotice(errorText(error.message));
-      return false;
+      const message = investorSaveError(error.message);
+      setNotice(message);
+      return { ok: false, message };
     } finally {
       setBusy(false);
     }
@@ -427,9 +446,18 @@ export default function Investors() {
   }
   async function dispatchCampaign(item) {
     if (
-      !confirm(
-        `Send this immutable report to ${item.investorIds?.length ?? 0} selected investor(s)? Consent and suppression will be checked again by the server.`,
-      )
+      !(await dialog.confirm({
+        title: "Send this investor campaign?",
+        message:
+          "PI will send the selected immutable report after the server rechecks consent and suppression for every recipient.",
+        details: [
+          ["Selected investors", item.investorIds?.length ?? 0],
+          ["Report", item.reportFilename ?? "Immutable investor report"],
+        ],
+        confirmLabel: "Send Campaign",
+        cancelLabel: "Cancel",
+        tone: "warning",
+      }))
     )
       return;
     setBusy(true);
@@ -1307,7 +1335,10 @@ function GeographySelector({ value, onChange }) {
 function InvestorDialog({ value, setValue, save, close, busy, creating }) {
   const today = localToday(),
     [errors, setErrors] = React.useState({}),
+    [submitError, setSubmitError] = React.useState(""),
+    dialog = useNotificationDialog(),
     initial = React.useRef(JSON.stringify(value)),
+    errorSummaryRef = React.useRef(null),
     set = (key, next) => setValue((current) => ({ ...current, [key]: next })),
     setFieldError = (key, message) =>
       setErrors((current) => {
@@ -1330,21 +1361,40 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
         return next;
       });
     },
-    requestClose = () => {
+    revealErrors = () =>
+      requestAnimationFrame(() => {
+        errorSummaryRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        errorSummaryRef.current?.focus();
+      }),
+    requestClose = async () => {
       if (
         JSON.stringify(value) !== initial.current &&
-        !confirm("Discard the unsaved investor changes?")
+        !(await dialog.confirm({
+          title: "Discard unsaved investor changes?",
+          message:
+            "The information entered in this investor form has not been saved. Closing now will discard those changes.",
+          confirmLabel: "Discard Changes",
+          cancelLabel: "Keep Editing",
+          tone: "warning",
+        }))
       )
         return;
       close();
     };
   React.useEffect(() => {
+    setSubmitError("");
+  }, [value]);
+  React.useEffect(() => {
     const onKeyDown = (event) => {
-      if (event.key === "Escape" && !busy) requestClose();
+      if (event.key === "Escape" && !busy && !dialog.isOpen)
+        void requestClose();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [busy, value]);
+  }, [busy, value, dialog.isOpen]);
   const submit = async (event) => {
     event.preventDefault();
     const next = {},
@@ -1360,8 +1410,12 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
     if (phoneError) next.phone = phoneError;
     Object.assign(next, validateInvestorFields(value, { today }));
     setErrors(next);
-    if (Object.keys(next).length) return;
-    await save({
+    setSubmitError("");
+    if (Object.keys(next).length) {
+      revealErrors();
+      return;
+    }
+    const result = await save({
       ...value,
       email: normalizeContactEmail(value.email),
       fullName:
@@ -1370,6 +1424,10 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
           : value.fullName,
       geographies: value.geographies,
     });
+    if (result?.ok === false) {
+      setSubmitError(result.message || "The investor could not be saved.");
+      revealErrors();
+    }
   };
   const protectedConsent = ["OPTED_OUT", "SUPPRESSED"].includes(
       value.emailStatus,
@@ -1408,6 +1466,29 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             ×
           </button>
         </header>
+        {(submitError || Object.keys(errors).length > 0) && (
+          <div
+            className="crm-form-alert"
+            ref={errorSummaryRef}
+            tabIndex="-1"
+            role="alert"
+            aria-live="assertive"
+          >
+            <h3>Investor was not saved</h3>
+            {submitError ? (
+              <p>{submitError}</p>
+            ) : (
+              <>
+                <p>Correct the following information and select Save investor again:</p>
+                <ul>
+                  {[...new Set(Object.values(errors))].map((message) => (
+                    <li key={message}>{message}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        )}
         <section>
           <h3>Contact information</h3>
           <div className="crm-form-grid two">

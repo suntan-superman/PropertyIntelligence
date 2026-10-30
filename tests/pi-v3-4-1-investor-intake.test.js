@@ -605,6 +605,13 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /aria-invalid=/);
   assert.match(source, /disabled=\{busy \|\| requiredFieldsMissing\}/);
   assert.match(source, /Saving…/);
+  assert.doesNotMatch(source, /!confirm\(/);
+  assert.match(source, /dialog\.confirm\(\{/);
+  assert.match(source, /Discard unsaved investor changes\?/);
+  assert.match(source, /className="crm-form-alert"/);
+  assert.match(source, /Investor was not saved/);
+  assert.match(source, /Another investor already uses this email address/);
+  assert.match(source, /errorSummaryRef\.current\?\.scrollIntoView/);
   assert.match(source, /formatContactPhone\(event\.target\.value\)/);
   assert.match(source, /onBlur=\{\(\) => \{/);
   assert.match(source, /id="investor-email-error"/);
@@ -615,10 +622,11 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /next === "PERMITTED" && !value\.consentAt/);
   assert.match(source, /max="365"/);
   assert.match(source, /maxLength=\{4000\}/);
-  assert.ok(source.includes("Discard the unsaved investor changes?"));
+  assert.ok(source.includes("Discard unsaved investor changes?"));
   assert.equal((source.match(/className="crm-label-text"/g) ?? []).length, 4);
   assert.equal((source.match(/aria-hidden="true"/g) ?? []).length >= 4, true);
   assert.match(css, /\.crm-label-text\s*\{[^}]*display:\s*inline-flex/s);
+  assert.match(css, /\.crm-form-alert\s*\{/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)/);
   assert.match(css, /grid-template-columns:\s*1fr/);
 });
