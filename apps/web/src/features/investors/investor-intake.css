@@ -1,0 +1,278 @@
+.crm-investor-dialog {
+  max-width: 940px;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.crm-investor-dialog > header {
+  padding: 22px 28px 18px;
+  border-bottom: 1px solid #dfe9e7;
+  background: #fbfcfc;
+}
+.crm-investor-dialog > header h2 {
+  margin: 3px 0 4px;
+  font-size: 25px;
+}
+.crm-investor-dialog > header p:last-child {
+  margin: 0;
+  color: #5a6d71;
+}
+.crm-investor-dialog > header > button {
+  font-size: 22px;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+.crm-investor-dialog > section {
+  padding: 20px 28px;
+  border-bottom: 1px solid #e2eae9;
+}
+.crm-investor-dialog > section h3 {
+  margin: 0 0 15px;
+  font-size: 17px;
+  color: #123b43;
+}
+.crm-investor-dialog > section h4 {
+  margin: 22px 0 10px;
+}
+.crm-form-grid.two {
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+}
+.crm-form-grid.two input,
+.crm-form-grid.two select,
+.crm-form-grid.two textarea,
+.crm-budget select,
+.crm-budget input,
+.crm-location-entry select {
+  min-height: 42px;
+  font-size: 14px;
+}
+.crm-form-grid.two label,
+.crm-budget label,
+.crm-location-entry label {
+  font-size: 13px;
+  color: #304e54;
+}
+.crm-form-grid input:focus-visible,
+.crm-form-grid select:focus-visible,
+.crm-form-grid textarea:focus-visible,
+.crm-budget input:focus-visible,
+.crm-budget select:focus-visible,
+.crm-location-entry select:focus-visible,
+.crm-dialog button:focus-visible {
+  outline: 3px solid #78bdb4;
+  outline-offset: 2px;
+}
+.crm-form-grid [aria-invalid="true"] {
+  border-color: #b63325;
+  background: #fff7f5;
+}
+.required,
+.crm-field-error {
+  color: #a72f22;
+}
+.crm-field-error {
+  margin: 5px 0 0;
+  font-size: 12px;
+}
+.crm-required-note {
+  font-size: 12px;
+  color: #5b7074;
+  margin: 12px 0 0;
+}
+.crm-additional {
+  margin-top: 15px;
+  border: 1px solid #d7e3e1;
+  border-radius: 7px;
+  padding: 12px 14px;
+}
+.crm-additional summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #17645d;
+}
+.crm-additional .crm-form-grid {
+  margin-top: 14px;
+}
+.crm-criteria-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.crm-choice-group {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.crm-choice-group legend {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.crm-choice-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 18px 8px 0;
+  font-size: 14px;
+}
+.crm-choice-group input {
+  width: 18px;
+  height: 18px;
+  accent-color: #08756b;
+}
+.crm-budget {
+  margin-top: 15px;
+}
+.crm-budget > label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.crm-budget > small {
+  display: block;
+  color: #5a7074;
+  margin-top: 7px;
+}
+.crm-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-top: 10px;
+}
+.crm-pair label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.crm-budget select,
+.crm-budget input,
+.crm-location-entry select {
+  padding: 10px;
+  border: 1px solid #9ebfba;
+  border-radius: 6px;
+  background: white;
+  width: 100%;
+}
+.crm-geography {
+  border: 1px solid #d5e4e1;
+  border-radius: 8px;
+  padding: 14px;
+  background: #f9fbfb;
+}
+.crm-location-entry {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.4fr auto;
+  gap: 10px;
+  align-items: end;
+}
+.crm-location-entry label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.crm-location-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.crm-location-list > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 8px 7px 11px;
+  background: #e2f1ee;
+  border: 1px solid #acd0ca;
+  border-radius: 999px;
+  font-size: 12px;
+}
+.crm-location-list > span button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #075f59;
+  font-size: 18px;
+  line-height: 1;
+}
+.crm-privacy {
+  font-size: 12px;
+  color: #4e656a;
+  border-left: 3px solid #6ba99f;
+}
+.crm-dialog-actions {
+  position: sticky;
+  bottom: 0;
+  justify-content: flex-end !important;
+  padding: 15px 28px;
+  background: white;
+  border-top: 1px solid #dce7e5;
+  box-shadow: 0 -6px 16px #082f3a0d;
+}
+.crm-dialog-actions button {
+  min-width: 130px;
+}
+.crm-table td:nth-child(2) {
+  min-width: 240px;
+}
+.crm-table td:nth-child(3) {
+  min-width: 150px;
+}
+.crm-mapping > p {
+  color: #536d72;
+}
+.crm-mapping .crm-form-grid.compact {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 850px) {
+  .crm-dialog-backdrop {
+    padding: 8px;
+  }
+  .crm-investor-dialog {
+    max-height: calc(100vh - 16px);
+  }
+  .crm-investor-dialog > header,
+  .crm-investor-dialog > section,
+  .crm-dialog-actions {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .crm-location-entry {
+    grid-template-columns: 1fr 1fr;
+  }
+  .crm-location-entry button {
+    align-self: end;
+  }
+  .crm-mapping .crm-form-grid.compact {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .crm-form-grid.two,
+  .crm-criteria-grid,
+  .crm-pair,
+  .crm-location-entry,
+  .crm-mapping .crm-form-grid.compact {
+    grid-template-columns: 1fr;
+  }
+  .crm-investor-dialog > header {
+    align-items: flex-start;
+  }
+  .crm-dialog-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+  }
+  .crm-dialog-actions button {
+    width: 100%;
+    min-width: 0;
+  }
+  .crm-choice-group label {
+    min-height: 36px;
+  }
+  .crm-location-entry button {
+    width: 100%;
+  }
+}
