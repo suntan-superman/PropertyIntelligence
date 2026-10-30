@@ -17,6 +17,12 @@ import {
   US_GEOGRAPHY,
   countiesForState,
 } from "../src/investor-crm/us-geography.js";
+import {
+  contactEmailError,
+  contactPhoneError,
+  formatContactPhone,
+  normalizeContactEmail,
+} from "../src/investor-crm/contact-validation.js";
 
 const organizationId = "property-intelligence-local",
   admin = {
@@ -145,6 +151,19 @@ test("V3.4.1 email, telephone and optional mailing-address validation are safe",
     state: "CA",
     zip: "93301",
   });
+});
+test("V3.4.1 contact fields format telephone numbers and validate email on entry", () => {
+  assert.equal(formatContactPhone("6615550101"), "(661) 555-0101");
+  assert.equal(formatContactPhone("1-661-555-0101"), "(661) 555-0101");
+  assert.equal(formatContactPhone("+44 20 7946 0958"), "+442079460958");
+  assert.equal(contactPhoneError("(661) 555-0101"), "");
+  assert.match(contactPhoneError("12"), /valid telephone/);
+  assert.equal(
+    normalizeContactEmail(" Buyer@Example.COM "),
+    "buyer@example.com",
+  );
+  assert.equal(contactEmailError("buyer@example.com"), "");
+  assert.match(contactEmailError("buyer.example.com"), /valid email/);
 });
 test("V3.4.1 ANY is mutually exclusive while multiple specific choices remain supported", () => {
   const any = normalizeInvestor({
@@ -463,6 +482,9 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /aria-invalid=/);
   assert.match(source, /disabled=\{busy\}/);
   assert.match(source, /Saving…/);
+  assert.match(source, /formatContactPhone\(event\.target\.value\)/);
+  assert.match(source, /onBlur=\{\(\) => \{/);
+  assert.match(source, /id="investor-email-error"/);
   assert.ok(source.includes("Discard the unsaved investor changes?"));
   assert.equal((source.match(/className="crm-label-text"/g) ?? []).length, 4);
   assert.match(css, /\.crm-label-text\s*\{[^}]*display:\s*inline-flex/s);

@@ -1,5 +1,10 @@
 import { createHash } from "node:crypto";
 import { US_GEOGRAPHY } from "./us-geography.js";
+import {
+  isValidContactEmail,
+  normalizeContactEmail,
+  normalizeContactPhone,
+} from "./contact-validation.js";
 
 export const INVESTOR_STATUSES = Object.freeze([
   "ACTIVE",
@@ -71,16 +76,9 @@ export const safeId = (value, label = "ID") => {
     throw Object.assign(new Error(`${label}_INVALID`), { status: 422 });
   return result;
 };
-export const normalizeEmail = (value) => clean(value, 254).toLowerCase();
-export const normalizePhone = (value) => {
-  const digits = String(value ?? "").replace(/\D/g, "");
-  if (!digits) return "";
-  return digits.length === 11 && digits.startsWith("1")
-    ? digits.slice(1)
-    : digits;
-};
-export const validEmail = (value) =>
-  !value || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
+export const normalizeEmail = normalizeContactEmail;
+export const normalizePhone = normalizeContactPhone;
+export const validEmail = isValidContactEmail;
 export const formulaSafe = (value) => {
   const result = clean(value, 2_000);
   return /^[=+\-@]/.test(result) ? `'${result}` : result;

@@ -5,6 +5,12 @@ import {
   US_STATES,
   countiesForState,
 } from "../../../../../src/investor-crm/us-geography.js";
+import {
+  contactEmailError,
+  contactPhoneError,
+  formatContactPhone,
+  normalizeContactEmail,
+} from "../../../../../src/investor-crm/contact-validation.js";
 import "./investors.css";
 import "./investor-intake.css";
 import "./pipeline.css";
@@ -107,6 +113,7 @@ const formFromInvestor = (item) => ({
   city: item.mailingAddress?.city ?? "",
   state: item.mailingAddress?.state ?? "",
   zip: item.mailingAddress?.zip ?? "",
+  phone: formatContactPhone(item.phone),
   propertyTypes: item.criteria?.propertyTypes ?? [],
   strategies: item.criteria?.strategies ?? [],
   geographies: item.criteria?.geographies ?? [],
@@ -1287,6 +1294,16 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
   const [errors, setErrors] = React.useState({}),
     initial = React.useRef(JSON.stringify(value)),
     set = (key, next) => setValue((current) => ({ ...current, [key]: next })),
+    setFieldError = (key, message) =>
+      setErrors((current) => {
+        const next = { ...current };
+        if (message) next[key] = message;
+        else delete next[key];
+        return next;
+      }),
+    clearContactError = (email, phone) => {
+      if (email || phone) setFieldError("contact", "");
+    },
     requestClose = () => {
       if (
         JSON.stringify(value) !== initial.current &&
@@ -1306,16 +1323,15 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
     event.preventDefault();
     const next = {},
       name = (value.firstName || value.lastName || value.fullName).trim(),
-      digits = value.phone.replace(/\D/g, "");
+      emailError = contactEmailError(value.email),
+      phoneError = contactPhoneError(value.phone);
     if (!name)
       next.name =
         "Enter at least a first name, last name or preserved full name.";
     if (!value.email && !value.phone)
       next.contact = "Enter an email address or phone number.";
-    if (value.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value.email))
-      next.email = "Enter a valid email address.";
-    if (value.phone && (digits.length < 7 || digits.length > 15))
-      next.phone = "Enter a valid telephone number.";
+    if (emailError) next.email = emailError;
+    if (phoneError) next.phone = phoneError;
     if (
       value.minimumAcquisitionAmount !== "" &&
       value.maximumAcquisitionAmount !== "" &&
@@ -1327,6 +1343,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
     if (Object.keys(next).length) return;
     await save({
       ...value,
+      email: normalizeContactEmail(value.email),
       fullName:
         value.firstName || value.lastName
           ? `${value.firstName} ${value.lastName}`.trim()
@@ -1421,12 +1438,34 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
               <input
                 type="email"
                 autoComplete="email"
+                inputMode="email"
+                spellCheck="false"
                 value={value.email}
                 aria-invalid={Boolean(errors.email || errors.contact)}
-                onChange={(event) => set("email", event.target.value)}
+                aria-describedby={
+                  errors.email ? "investor-email-error" : undefined
+                }
+                onChange={(event) => {
+                  const next = event.target.value;
+                  set("email", next);
+                  clearContactError(next, value.phone);
+                  if (errors.email)
+                    setFieldError("email", contactEmailError(next));
+                }}
+                onBlur={() => {
+                  const normalized = normalizeContactEmail(value.email);
+                  if (normalized !== value.email) set("email", normalized);
+                  setFieldError("email", contactEmailError(normalized));
+                }}
               />
               {errors.email && (
-                <small className="crm-field-error">{errors.email}</small>
+                <small
+                  id="investor-email-error"
+                  className="crm-field-error"
+                  role="alert"
+                >
+                  {errors.email}
+                </small>
               )}
             </label>
             <label>
@@ -1436,12 +1475,31 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
               <input
                 type="tel"
                 autoComplete="tel"
+                inputMode="tel"
                 value={value.phone}
                 aria-invalid={Boolean(errors.phone || errors.contact)}
-                onChange={(event) => set("phone", event.target.value)}
+                aria-describedby={
+                  errors.phone ? "investor-phone-error" : undefined
+                }
+                onChange={(event) => {
+                  const next = formatContactPhone(event.target.value);
+                  set("phone", next);
+                  clearContactError(value.email, next);
+                  if (errors.phone)
+                    setFieldError("phone", contactPhoneError(next));
+                }}
+                onBlur={() =>
+                  setFieldError("phone", contactPhoneError(value.phone))
+                }
               />
               {errors.phone && (
-                <small className="crm-field-error">{errors.phone}</small>
+                <small
+                  id="investor-phone-error"
+                  className="crm-field-error"
+                  role="alert"
+                >
+                  {errors.phone}
+                </small>
               )}
             </label>
           </div>

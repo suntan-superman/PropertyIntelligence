@@ -134,6 +134,22 @@ try {
     await page.getByLabel("Email permission").inputValue(),
     "UNKNOWN",
   );
+  const phoneInput = page.getByLabel("Phone", { exact: true }),
+    emailInput = page.getByLabel("Email", { exact: true });
+  await phoneInput.fill("6615550101");
+  assert.equal(await phoneInput.inputValue(), "(661) 555-0101");
+  await phoneInput.fill("");
+  await emailInput.fill("invalid-email");
+  await emailInput.blur();
+  assert.equal(await emailInput.getAttribute("aria-invalid"), "true");
+  await page
+    .getByText("Enter a valid email address.", { exact: true })
+    .waitFor();
+  await emailInput.fill("Investor@Example.COM");
+  await emailInput.blur();
+  assert.equal(await emailInput.inputValue(), "investor@example.com");
+  assert.equal(await emailInput.getAttribute("aria-invalid"), "false");
+  await emailInput.fill("");
   await page.screenshot({
     path: path.join(OUTPUT, "investor-intake.png"),
     fullPage: false,
@@ -235,6 +251,8 @@ try {
     checks: {
       friendlyOrganizationName: true,
       safeDefaults: true,
+      phoneFormatting: true,
+      emailValidation: true,
       structuredGeography: true,
       budgetPresets: true,
       importMapping: true,
