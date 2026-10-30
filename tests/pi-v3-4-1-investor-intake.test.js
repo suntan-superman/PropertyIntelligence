@@ -621,6 +621,17 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /Email or telephone number already in use/);
   assert.match(source, /Create Separate Investor/);
   assert.match(source, /confirmPotentialDuplicate/);
+  for (const tooltip of [
+    "Review and edit this organization's private investor profiles",
+    "Upload a CSV or XLSX file, review column mapping",
+    "Compare a deal with saved investor criteria using deterministic rules",
+    "Review prepared report distributions, delivery status",
+    "Summarize observed campaign responses, offers, commitments and closings",
+    "Create a private investor profile for this organization",
+    "Private proof-of-funds documents are not included",
+    "This does not send email",
+  ])
+    assert.ok(source.includes(tooltip), tooltip);
   assert.match(source, /errorSummaryRef\.current\?\.scrollIntoView/);
   assert.match(source, /formatContactPhone\(event\.target\.value\)/);
   assert.match(source, /onBlur=\{\(\) => \{/);

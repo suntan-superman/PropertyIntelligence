@@ -73,6 +73,18 @@ const investorSaveError = (value) => {
     return "Review the acquisition budget. The minimum amount cannot exceed the maximum amount.";
   return errorText(code || "INVESTOR_REQUEST_FAILED");
 };
+const INVESTOR_TAB_HELP = {
+  Directory:
+    "Review and edit this organization's private investor profiles, buying criteria, contact permissions and observed activity.",
+  Import:
+    "Upload a CSV or XLSX file, review column mapping and potential duplicates, then choose whether to create or update investor records.",
+  Matching:
+    "Compare a deal with saved investor criteria using deterministic rules. This does not recommend an investor or send a message.",
+  Campaigns:
+    "Review prepared report distributions, delivery status and each recipient's observed pipeline activity.",
+  "Deal velocity":
+    "Summarize observed campaign responses, offers, commitments and closings without estimating missing history.",
+};
 const money = (value) =>
   value == null
     ? "Not established"
@@ -582,6 +594,7 @@ export default function Investors() {
             <button
               key={name}
               className={tab === name ? "active" : ""}
+              data-tooltip={INVESTOR_TAB_HELP[name]}
               onClick={() => setTab(name)}
             >
               {name}
@@ -602,6 +615,7 @@ export default function Investors() {
               />
             </label>
             <button
+              data-tooltip="Create a private investor profile for this organization, including contact permissions, buying criteria and purchasing capability."
               onClick={() => {
                 setEditing("new");
                 setForm({
@@ -617,6 +631,7 @@ export default function Investors() {
             <a
               className="crm-button secondary"
               href={`/api/investor-crm/export${query}`}
+              data-tooltip="Download this organization's investor directory as a CSV file. Private proof-of-funds documents are not included."
             >
               Export CSV
             </a>
@@ -712,6 +727,7 @@ export default function Investors() {
                     <td>
                       <button
                         className="secondary"
+                        data-tooltip={`Review and update ${item.fullName}'s profile, criteria and permissions without changing prior campaign history.`}
                         onClick={() => {
                           setEditing(item.id);
                           setForm(formFromInvestor(item));
@@ -816,6 +832,7 @@ export default function Investors() {
                 </pre>
               </details>
               <button
+                data-tooltip="Create or update the validated investor rows shown in this preview. Rows marked invalid are not imported."
                 disabled={
                   busy ||
                   preview.summary.valid + (preview.summary.needsReview ?? 0) ===
@@ -839,6 +856,7 @@ export default function Investors() {
           <DealForm value={deal} setValue={setDeal} />
           <div className="crm-toolbar">
             <button
+              data-tooltip="Compare this deal with organization-owned investor criteria using explainable rules. No messages are sent."
               disabled={busy || !deal.propertyId || !deal.propertyAddress}
               onClick={runMatch}
             >
@@ -907,6 +925,7 @@ export default function Investors() {
                 </label>
               ))}
               <button
+                data-tooltip="Create a draft distribution campaign for the selected investors and immutable report. This does not send email."
                 disabled={busy || !selected.length || !reportId}
                 onClick={campaign}
               >
@@ -943,6 +962,7 @@ export default function Investors() {
                   data?.outboundEmailEnabled &&
                   !item.distributedAt && (
                     <button
+                      data-tooltip="Review the recipients and immutable report, then request server-authorized delivery with consent and suppression rechecked."
                       disabled={busy}
                       onClick={() => dispatchCampaign(item)}
                     >
@@ -1106,7 +1126,11 @@ function ImportMapping({ headers, mapping, disabled, onApply }) {
           </label>
         ))}
       </div>
-      <button disabled={disabled} onClick={() => onApply(value)}>
+      <button
+        disabled={disabled}
+        data-tooltip="Check the selected column mappings and preview row-level validation results without writing investor records."
+        onClick={() => onApply(value)}
+      >
         Validate this mapping
       </button>
     </section>
@@ -1345,7 +1369,12 @@ function GeographySelector({ value, onChange }) {
             </select>
           </label>
         )}
-        <button type="button" className="secondary" onClick={add}>
+        <button
+          type="button"
+          className="secondary"
+          data-tooltip="Add the selected state or county to this investor's preferred buying locations."
+          onClick={add}
+        >
           + Add location
         </button>
       </div>
@@ -1362,6 +1391,7 @@ function GeographySelector({ value, onChange }) {
             <button
               type="button"
               aria-label={`Remove ${locationLabel(item)}`}
+              data-tooltip={`Remove ${locationLabel(item)} from this investor's preferred buying locations.`}
               onClick={() =>
                 onChange(value.filter((_, itemIndex) => itemIndex !== index))
               }
@@ -1505,6 +1535,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             className="secondary"
             onClick={requestClose}
             aria-label="Close investor form"
+            data-tooltip="Close this form. PI will ask before discarding any unsaved investor information."
           >
             ×
           </button>
@@ -2123,10 +2154,14 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
             className="secondary"
             disabled={busy}
             onClick={requestClose}
+            data-tooltip="Close this form without saving. PI will ask before discarding entered information."
           >
             Cancel
           </button>
-          <button disabled={busy || requiredFieldsMissing}>
+          <button
+            disabled={busy || requiredFieldsMissing}
+            data-tooltip="Validate the entered profile and save it to this organization's private investor directory."
+          >
             {busy ? "Saving…" : "Save investor"}
           </button>
         </footer>
