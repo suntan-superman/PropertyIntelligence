@@ -350,7 +350,9 @@ export function createNetlifyAuthenticatedApi({api,authentication,durablePropert
     }catch(error){
       if(process.env.PI_DEBUG_NETLIFY_API==='true')console.error(error);
       const unavailable=['4','8','14'].includes(String(error?.code))||/firestore.*(?:unavailable|deadline|credential)/i.test(String(error?.message??'')),status=unavailable?503:Number.isInteger(error?.status)?error.status:400,code=unavailable?'DURABLE_PROPERTY_STORAGE_UNAVAILABLE':/^[A-Z0-9_-]+$/.test(String(error?.code??error?.message))?String(error.code??error.message):'AUTHENTICATION_FAILED';
-      return json(status,{error:code,code},path==='/api/investor-access'?{'X-Robots-Tag':'noindex, noarchive'}:{});
+      const body={error:code,code};
+      if(code==='POTENTIAL_DUPLICATE_INVESTOR'&&Array.isArray(error?.matches))body.matches=error.matches.map(item=>({id:item.id,fullName:item.fullName,email:item.email,phone:item.phone,matchingFields:Array.isArray(item.matchingFields)?item.matchingFields:[]}));
+      return json(status,body,path==='/api/investor-access'?{'X-Robots-Tag':'noindex, noarchive'}:{});
     }
   };
 }

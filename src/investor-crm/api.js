@@ -82,8 +82,8 @@ export async function handleAuthenticatedInvestorApi({ request, path, adapted, u
     : { investors: await service.list({ user, organizationId: url.searchParams.get("organizationId") ?? undefined }) });
   if (investorRoute && investorRoute[1] !== "merge" && ["POST", "PATCH", "DELETE"].includes(request.method)) {
     mutation(request, authentication, adapted); const input = await body(request);
-    if (request.method === "POST") return json(201, { investor: await service.create({ user, organizationId: orgFrom(request, input), investor: input.investor }) });
-    if (request.method === "PATCH") return json(200, { investor: await service.update({ user, organizationId: orgFrom(request, input), id: investorRoute[1], investor: input.investor }) });
+    if (request.method === "POST") return json(201, { investor: await service.create({ user, organizationId: orgFrom(request, input), investor: input.investor, confirmPotentialDuplicate: input.confirmPotentialDuplicate === true }) });
+    if (request.method === "PATCH") return json(200, { investor: await service.update({ user, organizationId: orgFrom(request, input), id: investorRoute[1], investor: input.investor, confirmPotentialDuplicate: input.confirmPotentialDuplicate === true }) });
     return json(200, { investor: await service.archive({ user, organizationId: orgFrom(request, input), id: investorRoute[1], archived: true }) });
   }
   if (path === "/api/investor-crm/import/preview" && request.method === "POST") {

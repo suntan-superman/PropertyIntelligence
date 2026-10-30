@@ -267,6 +267,30 @@ const duplicate = (candidate, existing) =>
         item.mailingAddress?.street?.toLowerCase() ===
           candidate.mailingAddress.street.toLowerCase()),
   );
+const duplicateMatches = (candidate, existing) =>
+  duplicate(candidate, existing).map((item) => ({
+    id: item.id,
+    fullName: item.fullName,
+    email: item.email,
+    phone: item.phone,
+    matchingFields: [
+      ...(candidate.normalizedEmail &&
+      item.normalizedEmail === candidate.normalizedEmail
+        ? ["EMAIL"]
+        : []),
+      ...(candidate.normalizedPhone &&
+      item.normalizedPhone === candidate.normalizedPhone
+        ? ["PHONE"]
+        : []),
+      ...(candidate.fullName &&
+      item.fullName.toLowerCase() === candidate.fullName.toLowerCase() &&
+      candidate.mailingAddress.street &&
+      item.mailingAddress?.street?.toLowerCase() ===
+        candidate.mailingAddress.street.toLowerCase()
+        ? ["NAME_AND_ADDRESS"]
+        : []),
+    ],
+  }));
 const safeInvestor = (record) => {
   const copy = clone(record);
   if (copy.capability) delete copy.capability.proofOfFundsDocumentReferences;
@@ -446,22 +470,22 @@ export function createInvestorCrmService({
         });
       return publicInvestor(safeInvestor(record), activities);
     },
-    async create({ user, organizationId, investor }) {
+    async create({
+      user,
+      organizationId,
+      investor,
+      confirmPotentialDuplicate = false,
+    }) {
       const org = manager(user, organizationId),
         clean = normalizeInvestor(investor, {
           today: localToday(clock(), "America/Los_Angeles"),
         }),
         existing = await repository.listInvestors(org),
-        matches = duplicate(clean, existing);
-      if (matches.length)
+        matches = duplicateMatches(clean, existing);
+      if (matches.length && confirmPotentialDuplicate !== true)
         throw Object.assign(new Error("POTENTIAL_DUPLICATE_INVESTOR"), {
           status: 409,
-          matches: matches.map((item) => ({
-            id: item.id,
-            fullName: item.fullName,
-            email: item.email,
-            phone: item.phone,
-          })),
+          matches,
         });
       const at = now(clock);
       if (
@@ -490,9 +514,25 @@ export function createInvestorCrmService({
         actorUid: user.uid,
         investorId: record.id,
       });
+      if (matches.length)
+        await audit(org, {
+          kind: "POTENTIAL_DUPLICATE_INVESTOR_CONFIRMED",
+          actorUid: user.uid,
+          investorId: record.id,
+          matchingInvestors: matches.map((item) => ({
+            investorId: item.id,
+            matchingFields: item.matchingFields,
+          })),
+        });
       return safeInvestor(record);
     },
-    async update({ user, organizationId, id, investor }) {
+    async update({
+      user,
+      organizationId,
+      id,
+      investor,
+      confirmPotentialDuplicate = false,
+    }) {
       const org = manager(user, organizationId),
         investorId = safeId(id, "INVESTOR_ID"),
         prior = await repository.getInvestor(org, investorId);
@@ -504,21 +544,16 @@ export function createInvestorCrmService({
             today: localToday(clock(), "America/Los_Angeles"),
           },
         ),
-        conflicts = duplicate(
+        conflicts = duplicateMatches(
           clean,
           (await repository.listInvestors(org)).filter(
             (item) => item.id !== investorId,
           ),
         );
-      if (conflicts.length)
+      if (conflicts.length && confirmPotentialDuplicate !== true)
         throw Object.assign(new Error("POTENTIAL_DUPLICATE_INVESTOR"), {
           status: 409,
-          matches: conflicts.map((item) => ({
-            id: item.id,
-            fullName: item.fullName,
-            email: item.email,
-            phone: item.phone,
-          })),
+          matches: conflicts,
         });
       if (
         ["OPTED_OUT", "SUPPRESSED"].includes(prior.communication?.emailStatus)
@@ -551,6 +586,16 @@ export function createInvestorCrmService({
         actorUid: user.uid,
         investorId,
       });
+      if (conflicts.length)
+        await audit(org, {
+          kind: "POTENTIAL_DUPLICATE_INVESTOR_CONFIRMED",
+          actorUid: user.uid,
+          investorId,
+          matchingInvestors: conflicts.map((item) => ({
+            investorId: item.id,
+            matchingFields: item.matchingFields,
+          })),
+        });
       return safeInvestor(next);
     },
     async archive({ user, organizationId, id, archived = true }) {

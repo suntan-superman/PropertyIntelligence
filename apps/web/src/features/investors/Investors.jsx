@@ -277,7 +277,10 @@ export default function Investors() {
         }),
         value = await response.json().catch(() => ({}));
       if (!response.ok)
-        throw new Error(value.error || "INVESTOR_REQUEST_FAILED");
+        throw Object.assign(
+          new Error(value.error || "INVESTOR_REQUEST_FAILED"),
+          { response: value, status: response.status },
+        );
       return value;
     },
     [auth.csrfToken],
@@ -311,15 +314,55 @@ export default function Investors() {
     const creating = editing === "new";
     setBusy(true);
     try {
-      await api(
-        creating
+      const path = creating
           ? "/api/investor-crm/investors"
           : `/api/investor-crm/investors/${editing}`,
-        {
-          method: creating ? "POST" : "PATCH",
-          body: JSON.stringify({ organizationId, investor }),
-        },
-      );
+        persist = (confirmPotentialDuplicate = false) =>
+          api(path, {
+            method: creating ? "POST" : "PATCH",
+            body: JSON.stringify({
+              organizationId,
+              investor,
+              confirmPotentialDuplicate,
+            }),
+          });
+      try {
+        await persist();
+      } catch (error) {
+        if (error.message !== "POTENTIAL_DUPLICATE_INVESTOR") throw error;
+        const matches = error.response?.matches ?? [],
+          fieldLabel = (fields = []) => {
+            const values = [];
+            if (fields.includes("EMAIL")) values.push("email address");
+            if (fields.includes("PHONE")) values.push("telephone number");
+            if (fields.includes("NAME_AND_ADDRESS"))
+              values.push("name and mailing address");
+            return values.join(" and ") || "contact information";
+          },
+          confirmed = await dialog.confirm({
+            title: "Email or telephone number already in use",
+            message:
+              "PI found another investor with matching contact information. Multiple people may share firm contact details, but continuing will create a separate investor record. Confirm that this is intentional.",
+            details: matches.length
+              ? matches.map((match, index) => [
+                  `Existing investor ${index + 1}`,
+                  `${match.fullName || "Unnamed investor"} — matching ${fieldLabel(match.matchingFields)}`,
+                ])
+              : [
+                  [
+                    "Conflict",
+                    "An existing investor has matching contact information",
+                  ],
+                ],
+            confirmLabel: creating
+              ? "Create Separate Investor"
+              : "Save Separate Investor",
+            cancelLabel: "Review Information",
+            tone: "warning",
+          });
+        if (!confirmed) return { ok: false, cancelled: true };
+        await persist(true);
+      }
       setEditing(null);
       setForm({ ...emptyInvestor });
       setNotice(creating ? "Investor added." : "Investor updated.");
@@ -1424,7 +1467,7 @@ function InvestorDialog({ value, setValue, save, close, busy, creating }) {
           : value.fullName,
       geographies: value.geographies,
     });
-    if (result?.ok === false) {
+    if (result?.ok === false && !result.cancelled) {
       setSubmitError(result.message || "The investor could not be saved.");
       revealErrors();
     }

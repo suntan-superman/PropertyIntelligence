@@ -611,6 +611,9 @@ test("V3.4.1 intake UI exposes responsive, accessible sections and duplicate-sub
   assert.match(source, /className="crm-form-alert"/);
   assert.match(source, /Investor was not saved/);
   assert.match(source, /Another investor already uses this email address/);
+  assert.match(source, /Email or telephone number already in use/);
+  assert.match(source, /Create Separate Investor/);
+  assert.match(source, /confirmPotentialDuplicate/);
   assert.match(source, /errorSummaryRef\.current\?\.scrollIntoView/);
   assert.match(source, /formatContactPhone\(event\.target\.value\)/);
   assert.match(source, /onBlur=\{\(\) => \{/);
